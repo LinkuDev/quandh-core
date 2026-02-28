@@ -7,6 +7,8 @@
 
 | Method | Path |
 |---|---|
+| GET | `/api/document-types/public` |
+| GET | `/api/document-types/public-options` |
 | GET | `/api/document-types/stats` |
 | GET | `/api/document-types` |
 | GET | `/api/document-types/{documentType}` |

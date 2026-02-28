@@ -12,6 +12,34 @@ use Symfony\Component\HttpFoundation\BinaryFileResponse;
 
 class OrganizationService
 {
+    public function publicList(array $filters = []): Collection
+    {
+        $publicFilters = [
+            ...$filters,
+            'status' => StatusEnum::Active->value,
+            'sort_by' => 'sort_order',
+            'sort_order' => 'asc',
+        ];
+
+        return $this->getFlatTreeOrdered($publicFilters);
+    }
+
+    public function publicOptions(array $filters = []): Collection
+    {
+        $publicFilters = [
+            ...$filters,
+            'status' => StatusEnum::Active->value,
+            'sort_by' => 'sort_order',
+            'sort_order' => 'asc',
+        ];
+
+        return Organization::query()
+            ->select(['id', 'name', 'description'])
+            ->filter($publicFilters)
+            ->treeOrder()
+            ->get();
+    }
+
     public function stats(array $filters): array
     {
         $base = Organization::filter($filters);

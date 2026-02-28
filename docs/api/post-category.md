@@ -28,6 +28,30 @@ Quản lý danh mục tin tức phân cấp theo cấu trúc cây `parent_id`: t
 
 ---
 
+## Danh sách danh mục công khai
+
+| | |
+|---|---|
+| **Method** | GET |
+| **Path** | `/api/post-categories/public` |
+| **Auth** | Không cần |
+| **Query** | `search` (name). Chỉ trả dữ liệu `active`, sắp xếp theo thứ tự cây. |
+| **Response** | Collection không phân trang (PostCategoryResource), phù hợp cho dropdown/chọn danh mục. |
+
+---
+
+## Danh sách danh mục công khai (dropdown tối ưu)
+
+| | |
+|---|---|
+| **Method** | GET |
+| **Path** | `/api/post-categories/public-options` |
+| **Auth** | Không cần |
+| **Query** | `search` (name). Chỉ trả dữ liệu `active`, sắp xếp theo thứ tự cây. |
+| **Response** | Collection không phân trang với 3 trường: `id`, `name`, `description`. |
+
+---
+
 ## Cây danh mục
 
 | | |

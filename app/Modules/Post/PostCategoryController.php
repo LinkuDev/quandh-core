@@ -16,6 +16,7 @@ use App\Modules\Post\Resources\PostCategoryCollection;
 use App\Modules\Post\Resources\PostCategoryTreeResource;
 use Illuminate\Http\Request;
 use App\Modules\Post\Services\PostCategoryService;
+use App\Modules\Core\Resources\PublicOptionResource;
 
 /**
  * @group Post - Category
@@ -26,6 +27,40 @@ class PostCategoryController extends Controller
 {
     public function __construct(private PostCategoryService $postCategoryService)
     {
+    }
+
+    /**
+     * Danh sách danh mục công khai
+     *
+     * Trả về danh sách danh mục đang hoạt động (active), thứ tự theo cây, dùng cho các chức năng công khai.
+     *
+     * @unauthenticated
+     * @queryParam search string Từ khóa tìm kiếm (name). Example: tin-tuc
+     * @apiResourceCollection App\Modules\Post\Resources\PostCategoryCollection
+     * @apiResourceModel App\Modules\Post\Models\PostCategory
+     * @apiResourceAdditional success=true
+     */
+    public function public(FilterRequest $request)
+    {
+        $categories = $this->postCategoryService->publicList($request->all());
+        return $this->successCollection(new PostCategoryCollection($categories));
+    }
+
+    /**
+     * Danh sách danh mục công khai cho dropdown
+     *
+     * Trả về dữ liệu tối giản chỉ gồm id, name, description để tối ưu payload cho dropdown.
+     *
+     * @unauthenticated
+     * @queryParam search string Từ khóa tìm kiếm (name). Example: tin-tuc
+     * @apiResourceCollection App\Modules\Core\Resources\PublicOptionResource
+     * @apiResourceModel App\Modules\Post\Models\PostCategory
+     * @apiResourceAdditional success=true
+     */
+    public function publicOptions(FilterRequest $request)
+    {
+        $categories = $this->postCategoryService->publicOptions($request->all());
+        return $this->successCollection(PublicOptionResource::collection($categories));
     }
 
     /**

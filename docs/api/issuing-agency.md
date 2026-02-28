@@ -7,6 +7,8 @@
 
 | Method | Path |
 |---|---|
+| GET | `/api/issuing-agencies/public` |
+| GET | `/api/issuing-agencies/public-options` |
 | GET | `/api/issuing-agencies/stats` |
 | GET | `/api/issuing-agencies` |
 | GET | `/api/issuing-agencies/{issuingAgency}` |

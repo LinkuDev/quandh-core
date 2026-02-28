@@ -14,6 +14,7 @@ use App\Modules\Document\Requests\UpdateCatalogRequest;
 use App\Modules\Document\Resources\CatalogCollection;
 use App\Modules\Document\Resources\CatalogResource;
 use App\Modules\Document\Services\CatalogService;
+use App\Modules\Core\Resources\PublicOptionResource;
 
 /**
  * @group Document - Loại văn bản
@@ -24,6 +25,44 @@ class DocumentTypeController extends Controller
 {
     public function __construct(private CatalogService $catalogService)
     {
+    }
+
+    /**
+     * Danh sách loại văn bản công khai
+     *
+     * Trả về danh sách loại văn bản đang hoạt động để hiển thị cho các chức năng công khai.
+     *
+     * @unauthenticated
+     * @queryParam search string Từ khóa tìm kiếm theo tên.
+     * @queryParam sort_by string Sắp xếp theo: id, name, created_at, updated_at. Example: name
+     * @queryParam sort_order string Thứ tự: asc, desc. Example: asc
+     * @apiResourceCollection App\Modules\Document\Resources\CatalogCollection
+     * @apiResourceModel App\Modules\Document\Models\DocumentType
+     * @apiResourceAdditional success=true
+     */
+    public function public(FilterRequest $request)
+    {
+        $items = $this->catalogService->publicCatalog(DocumentType::class, $request->all());
+        return $this->successCollection(new CatalogCollection($items));
+    }
+
+    /**
+     * Danh sách loại văn bản công khai cho dropdown
+     *
+     * Trả về dữ liệu tối giản chỉ gồm id, name, description để tối ưu payload cho dropdown.
+     *
+     * @unauthenticated
+     * @queryParam search string Từ khóa tìm kiếm theo tên.
+     * @queryParam sort_by string Sắp xếp theo: id, name, created_at, updated_at. Example: name
+     * @queryParam sort_order string Thứ tự: asc, desc. Example: asc
+     * @apiResourceCollection App\Modules\Core\Resources\PublicOptionResource
+     * @apiResourceModel App\Modules\Document\Models\DocumentType
+     * @apiResourceAdditional success=true
+     */
+    public function publicOptions(FilterRequest $request)
+    {
+        $items = $this->catalogService->publicOptions(DocumentType::class, $request->all());
+        return $this->successCollection(PublicOptionResource::collection($items));
     }
 
     /**

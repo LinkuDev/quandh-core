@@ -7,6 +7,8 @@
 
 | Method | Path |
 |---|---|
+| GET | `/api/document-fields/public` |
+| GET | `/api/document-fields/public-options` |
 | GET | `/api/document-fields/stats` |
 | GET | `/api/document-fields` |
 | GET | `/api/document-fields/{documentField}` |

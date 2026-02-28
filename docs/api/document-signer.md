@@ -7,6 +7,8 @@
 
 | Method | Path |
 |---|---|
+| GET | `/api/document-signers/public` |
+| GET | `/api/document-signers/public-options` |
 | GET | `/api/document-signers/stats` |
 | GET | `/api/document-signers` |
 | GET | `/api/document-signers/{documentSigner}` |

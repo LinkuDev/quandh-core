@@ -118,6 +118,8 @@ class LogActivity
             'export'         => 'Xuất dữ liệu',
             'import'         => 'Nhập dữ liệu',
             'stats'          => 'Xem thống kê',
+            'public'         => 'Xem dữ liệu công khai',
+            'public-options' => 'Xem dữ liệu dropdown công khai',
             'bulk-delete'    => 'Xóa hàng loạt',
             'bulk-status'    => 'Cập nhật trạng thái hàng loạt',
             'tree'           => 'Xem cây',
@@ -166,7 +168,7 @@ class LogActivity
             'incrementView'     => 'Tăng lượt xem',
             'destroyByDate'     => 'Xóa theo khoảng thời gian',
             'destroyAll'        => 'Xóa toàn bộ',
-            'public'            => 'Xem cấu hình công khai',
+            'public'            => 'Xem dữ liệu công khai',
         ];
 
         $actionLabel = $actionLabels[$action] ?? $action;

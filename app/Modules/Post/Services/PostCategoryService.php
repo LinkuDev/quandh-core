@@ -13,6 +13,34 @@ use Symfony\Component\HttpFoundation\BinaryFileResponse;
 
 class PostCategoryService
 {
+    public function publicList(array $filters = []): Collection
+    {
+        $publicFilters = [
+            ...$filters,
+            'status' => StatusEnum::Active->value,
+            'sort_by' => 'sort_order',
+            'sort_order' => 'asc',
+        ];
+
+        return $this->getFlatTreeOrdered($publicFilters);
+    }
+
+    public function publicOptions(array $filters = []): Collection
+    {
+        $publicFilters = [
+            ...$filters,
+            'status' => StatusEnum::Active->value,
+            'sort_by' => 'sort_order',
+            'sort_order' => 'asc',
+        ];
+
+        return PostCategory::query()
+            ->select(['id', 'name', 'description'])
+            ->filter($publicFilters)
+            ->treeOrder()
+            ->get();
+    }
+
     public function stats(array $filters): array
     {
         $base = PostCategory::filter($filters);

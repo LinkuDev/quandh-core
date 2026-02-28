@@ -14,6 +14,7 @@ use App\Modules\Document\Requests\UpdateCatalogRequest;
 use App\Modules\Document\Resources\CatalogCollection;
 use App\Modules\Document\Resources\CatalogResource;
 use App\Modules\Document\Services\CatalogService;
+use App\Modules\Core\Resources\PublicOptionResource;
 
 /**
  * @group Document - Người ký
@@ -24,6 +25,44 @@ class DocumentSignerController extends Controller
 {
     public function __construct(private CatalogService $catalogService)
     {
+    }
+
+    /**
+     * Danh sách người ký công khai
+     *
+     * Trả về danh sách người ký đang hoạt động để hiển thị cho các chức năng công khai.
+     *
+     * @unauthenticated
+     * @queryParam search string Từ khóa tìm kiếm theo tên.
+     * @queryParam sort_by string Sắp xếp theo: id, name, created_at, updated_at. Example: name
+     * @queryParam sort_order string Thứ tự: asc, desc. Example: asc
+     * @apiResourceCollection App\Modules\Document\Resources\CatalogCollection
+     * @apiResourceModel App\Modules\Document\Models\DocumentSigner
+     * @apiResourceAdditional success=true
+     */
+    public function public(FilterRequest $request)
+    {
+        $items = $this->catalogService->publicCatalog(DocumentSigner::class, $request->all());
+        return $this->successCollection(new CatalogCollection($items));
+    }
+
+    /**
+     * Danh sách người ký công khai cho dropdown
+     *
+     * Trả về dữ liệu tối giản chỉ gồm id, name, description để tối ưu payload cho dropdown.
+     *
+     * @unauthenticated
+     * @queryParam search string Từ khóa tìm kiếm theo tên.
+     * @queryParam sort_by string Sắp xếp theo: id, name, created_at, updated_at. Example: name
+     * @queryParam sort_order string Thứ tự: asc, desc. Example: asc
+     * @apiResourceCollection App\Modules\Core\Resources\PublicOptionResource
+     * @apiResourceModel App\Modules\Document\Models\DocumentSigner
+     * @apiResourceAdditional success=true
+     */
+    public function publicOptions(FilterRequest $request)
+    {
+        $items = $this->catalogService->publicOptions(DocumentSigner::class, $request->all());
+        return $this->successCollection(PublicOptionResource::collection($items));
     }
 
     /**

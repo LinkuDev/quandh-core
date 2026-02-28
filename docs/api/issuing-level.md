@@ -7,6 +7,8 @@
 
 | Method | Path |
 |---|---|
+| GET | `/api/issuing-levels/public` |
+| GET | `/api/issuing-levels/public-options` |
 | GET | `/api/issuing-levels/stats` |
 | GET | `/api/issuing-levels` |
 | GET | `/api/issuing-levels/{issuingLevel}` |

@@ -28,6 +28,30 @@ Quản lý organization (tổ chức) phân cấp theo `parent_id`: thống kê,
 
 ---
 
+## Danh sách organization công khai
+
+| | |
+|---|---|
+| **Method** | GET |
+| **Path** | `/api/organizations/public` |
+| **Auth** | Không cần |
+| **Query** | `search` (name, slug). Chỉ trả dữ liệu `active`, sắp xếp theo thứ tự cây. |
+| **Response** | Collection không phân trang (OrganizationResource), phù hợp cho dropdown/chọn organization. |
+
+---
+
+## Danh sách organization công khai (dropdown tối ưu)
+
+| | |
+|---|---|
+| **Method** | GET |
+| **Path** | `/api/organizations/public-options` |
+| **Auth** | Không cần |
+| **Query** | `search` (name, slug). Chỉ trả dữ liệu `active`, sắp xếp theo thứ tự cây. |
+| **Response** | Collection không phân trang với 3 trường: `id`, `name`, `description`. |
+
+---
+
 ## Cây organization
 
 | | |

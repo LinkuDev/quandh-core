@@ -11,6 +11,41 @@ use Symfony\Component\HttpFoundation\BinaryFileResponse;
 
 class CatalogService
 {
+    public function publicCatalog(string $modelClass, array $filters)
+    {
+        /** @var Model $model */
+        $model = app($modelClass);
+
+        $publicFilters = [
+            ...$filters,
+            'status' => DocumentStatusEnum::Active->value,
+            'sort_by' => $filters['sort_by'] ?? 'name',
+            'sort_order' => $filters['sort_order'] ?? 'asc',
+        ];
+
+        return $model->newQuery()
+            ->filter($publicFilters)
+            ->get();
+    }
+
+    public function publicOptions(string $modelClass, array $filters)
+    {
+        /** @var Model $model */
+        $model = app($modelClass);
+
+        $publicFilters = [
+            ...$filters,
+            'status' => DocumentStatusEnum::Active->value,
+            'sort_by' => $filters['sort_by'] ?? 'name',
+            'sort_order' => $filters['sort_order'] ?? 'asc',
+        ];
+
+        return $model->newQuery()
+            ->select(['id', 'name', 'description'])
+            ->filter($publicFilters)
+            ->get();
+    }
+
     public function stats(string $modelClass, array $filters): array
     {
         /** @var Model $model */

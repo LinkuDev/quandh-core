@@ -23,6 +23,7 @@ class SettingController extends Controller
      *
      * Trả về các key có is_public = true, nhóm theo group. Không cần xác thực.
      *
+     * @unauthenticated
      * @response 200 {"success": true, "data": {"general": {"copyright": "© 2026", "language": "vi"}, "social": {...}}}
      */
     public function public(Request $request)

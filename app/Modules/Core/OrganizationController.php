@@ -14,6 +14,7 @@ use App\Modules\Core\Requests\ImportOrganizationRequest;
 use App\Modules\Core\Resources\OrganizationResource;
 use App\Modules\Core\Resources\OrganizationCollection;
 use App\Modules\Core\Resources\OrganizationTreeResource;
+use App\Modules\Core\Resources\PublicOptionResource;
 use Illuminate\Http\Request;
 use App\Modules\Core\Services\OrganizationService;
 
@@ -26,6 +27,40 @@ class OrganizationController extends Controller
 {
     public function __construct(private OrganizationService $organizationService)
     {
+    }
+
+    /**
+     * Danh sách organization công khai
+     *
+     * Trả về danh sách organization đang hoạt động (active), thứ tự theo cây, dùng cho các chức năng công khai.
+     *
+     * @unauthenticated
+     * @queryParam search string Từ khóa tìm kiếm (name, slug). Example: cong-ty
+     * @apiResourceCollection App\Modules\Core\Resources\OrganizationCollection
+     * @apiResourceModel App\Modules\Core\Models\Organization
+     * @apiResourceAdditional success=true
+     */
+    public function public(FilterRequest $request)
+    {
+        $items = $this->organizationService->publicList($request->all());
+        return $this->successCollection(new OrganizationCollection($items));
+    }
+
+    /**
+     * Danh sách organization công khai cho dropdown
+     *
+     * Trả về dữ liệu tối giản chỉ gồm id, name, description để tối ưu payload cho dropdown.
+     *
+     * @unauthenticated
+     * @queryParam search string Từ khóa tìm kiếm (name, slug). Example: cong-ty
+     * @apiResourceCollection App\Modules\Core\Resources\PublicOptionResource
+     * @apiResourceModel App\Modules\Core\Models\Organization
+     * @apiResourceAdditional success=true
+     */
+    public function publicOptions(FilterRequest $request)
+    {
+        $items = $this->organizationService->publicOptions($request->all());
+        return $this->successCollection(PublicOptionResource::collection($items));
     }
 
     /**
