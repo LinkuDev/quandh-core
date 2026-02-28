@@ -85,6 +85,9 @@
                                                                                 <li class="tocify-item level-2" data-unique="auth-POSTapi-auth-logout">
                                 <a href="#auth-POSTapi-auth-logout">Đăng xuất</a>
                             </li>
+                                                                                <li class="tocify-item level-2" data-unique="auth-POSTapi-auth-switch-organization">
+                                <a href="#auth-POSTapi-auth-switch-organization">Chuyển tổ chức làm việc</a>
+                            </li>
                                                                         </ul>
                             </ul>
                     <ul id="tocify-header-core-logactivity" class="tocify-header">
@@ -744,7 +747,7 @@
 <p>
 </p>
 
-<p>Trả về access_token và thông tin user dùng cho các request cần xác thực.</p>
+<p>Trả về access_token, thông tin user và danh sách organization user có thể truy cập.</p>
 
 <span id="example-requests-POSTapi-auth-login">
 <blockquote>Example request:</blockquote>
@@ -822,7 +825,14 @@ print_r(json_decode((string) $body));</code></pre></div>
             &quot;name&quot;: &quot;Admin&quot;,
             &quot;email&quot;: &quot;admin@example.com&quot;,
             &quot;status&quot;: &quot;active&quot;
-        }
+        },
+        &quot;available_organizations&quot;: [
+            {
+                &quot;id&quot;: 2,
+                &quot;name&quot;: &quot;Sở Nội vụ&quot;
+            }
+        ],
+        &quot;current_organization_id&quot;: 2
     }
 }</code>
  </pre>
@@ -1443,6 +1453,190 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <p>Example: <code>application/json</code></p>
             </div>
                         </form>
+
+                    <h2 id="auth-POSTapi-auth-switch-organization">Chuyển tổ chức làm việc</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+<p>Chọn organization để frontend gắn vào header <code>X-Organization-Id</code> cho các request tiếp theo.</p>
+
+<span id="example-requests-POSTapi-auth-switch-organization">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://localhost/api/auth/switch-organization" \
+    --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"organization_id\": 2
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/auth/switch-organization"
+);
+
+const headers = {
+    "Authorization": "Bearer Bearer {YOUR_ACCESS_TOKEN}",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "organization_id": 2
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/auth/switch-organization';
+$response = $client-&gt;post(
+    $url,
+    [
+        'headers' =&gt; [
+            'Authorization' =&gt; 'Bearer Bearer {YOUR_ACCESS_TOKEN}',
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+        'json' =&gt; [
+            'organization_id' =&gt; 2,
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-auth-switch-organization">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: true,
+    &quot;message&quot;: &quot;Đ&atilde; chuyển tổ chức l&agrave;m việc.&quot;,
+    &quot;data&quot;: {
+        &quot;current_organization_id&quot;: 2,
+        &quot;current_organization&quot;: {
+            &quot;id&quot;: 2,
+            &quot;name&quot;: &quot;Sở Nội vụ&quot;
+        }
+    }
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-POSTapi-auth-switch-organization" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-auth-switch-organization"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-auth-switch-organization"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-auth-switch-organization" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-auth-switch-organization">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-auth-switch-organization" data-method="POST"
+      data-path="api/auth/switch-organization"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-auth-switch-organization', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-auth-switch-organization"
+                    onclick="tryItOut('POSTapi-auth-switch-organization');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-auth-switch-organization"
+                    onclick="cancelTryOut('POSTapi-auth-switch-organization');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-auth-switch-organization"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/auth/switch-organization</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="POSTapi-auth-switch-organization"
+               value="Bearer Bearer {YOUR_ACCESS_TOKEN}"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer Bearer {YOUR_ACCESS_TOKEN}</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-auth-switch-organization"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-auth-switch-organization"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>organization_id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="organization_id"                data-endpoint="POSTapi-auth-switch-organization"
+               value="2"
+               data-component="body">
+    <br>
+<p>ID tổ chức muốn chuyển. Example: <code>2</code></p>
+        </div>
+        </form>
 
                 <h1 id="core-logactivity">Core - LogActivity</h1>
 
@@ -4115,7 +4309,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "Content-Type: multipart/form-data" \
     --header "Accept: application/json" \
-    --form "file=@/tmp/phphbu12q0a76nj0JyJ345" </code></pre></div>
+    --form "file=@/tmp/phpj8s41qkcbo1t4s0XdbH" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -4153,7 +4347,7 @@ $response = $client-&gt;post(
         'multipart' =&gt; [
             [
                 'name' =&gt; 'file',
-                'contents' =&gt; fopen('/tmp/phphbu12q0a76nj0JyJ345', 'r')
+                'contents' =&gt; fopen('/tmp/phpj8s41qkcbo1t4s0XdbH', 'r')
             ],
         ],
     ]
@@ -4269,7 +4463,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>File excel (xlsx, xls, csv). Cột: name, slug, description, status. Example: <code>/tmp/phphbu12q0a76nj0JyJ345</code></p>
+<p>File excel (xlsx, xls, csv). Cột: name, slug, description, status. Example: <code>/tmp/phpj8s41qkcbo1t4s0XdbH</code></p>
         </div>
         </form>
 
@@ -7162,7 +7356,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "Content-Type: multipart/form-data" \
     --header "Accept: application/json" \
-    --form "file=@/tmp/phpblci50l9una1219i0TH" </code></pre></div>
+    --form "file=@/tmp/php3jv4oihiucbd9bDJ7Xz" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -7200,7 +7394,7 @@ $response = $client-&gt;post(
         'multipart' =&gt; [
             [
                 'name' =&gt; 'file',
-                'contents' =&gt; fopen('/tmp/phpblci50l9una1219i0TH', 'r')
+                'contents' =&gt; fopen('/tmp/php3jv4oihiucbd9bDJ7Xz', 'r')
             ],
         ],
     ]
@@ -7316,7 +7510,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>File excel (xlsx, xls, csv). Cột: name, guard_name, description, sort_order, parent_id. Example: <code>/tmp/phpblci50l9una1219i0TH</code></p>
+<p>File excel (xlsx, xls, csv). Cột: name, guard_name, description, sort_order, parent_id. Example: <code>/tmp/php3jv4oihiucbd9bDJ7Xz</code></p>
         </div>
         </form>
 
@@ -9822,7 +10016,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "Content-Type: multipart/form-data" \
     --header "Accept: application/json" \
-    --form "file=@/tmp/phpe026e1s4p4118qUFHvn" </code></pre></div>
+    --form "file=@/tmp/phppnf9mv8iu1os2JCFLru" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -9860,7 +10054,7 @@ $response = $client-&gt;post(
         'multipart' =&gt; [
             [
                 'name' =&gt; 'file',
-                'contents' =&gt; fopen('/tmp/phpe026e1s4p4118qUFHvn', 'r')
+                'contents' =&gt; fopen('/tmp/phppnf9mv8iu1os2JCFLru', 'r')
             ],
         ],
     ]
@@ -9976,7 +10170,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>File excel (xlsx, xls, csv). Cột: name, guard_name, organization_id. Example: <code>/tmp/phpe026e1s4p4118qUFHvn</code></p>
+<p>File excel (xlsx, xls, csv). Cột: name, guard_name, organization_id. Example: <code>/tmp/phppnf9mv8iu1os2JCFLru</code></p>
         </div>
         </form>
 
@@ -10519,17 +10713,17 @@ print_r(json_decode((string) $body));</code></pre></div>
             &quot;id&quot;: 1,
             &quot;name&quot;: &quot;Super Admin&quot;,
             &quot;guard_name&quot;: &quot;web&quot;,
-            &quot;organization_id&quot;: 1,
+            &quot;organization_id&quot;: null,
             &quot;created_at&quot;: &quot;06:28:53 28/02/2026&quot;,
-            &quot;updated_at&quot;: &quot;06:28:53 28/02/2026&quot;
+            &quot;updated_at&quot;: &quot;10:54:50 28/02/2026&quot;
         },
         {
             &quot;id&quot;: 1,
             &quot;name&quot;: &quot;Super Admin&quot;,
             &quot;guard_name&quot;: &quot;web&quot;,
-            &quot;organization_id&quot;: 1,
+            &quot;organization_id&quot;: null,
             &quot;created_at&quot;: &quot;06:28:53 28/02/2026&quot;,
-            &quot;updated_at&quot;: &quot;06:28:53 28/02/2026&quot;
+            &quot;updated_at&quot;: &quot;10:54:50 28/02/2026&quot;
         }
     ],
     &quot;links&quot;: {
@@ -10807,11 +11001,8 @@ print_r(json_decode((string) $body));</code></pre></div>
         &quot;id&quot;: 1,
         &quot;name&quot;: &quot;Super Admin&quot;,
         &quot;guard_name&quot;: &quot;web&quot;,
-        &quot;organization_id&quot;: 1,
-        &quot;organization&quot;: {
-            &quot;id&quot;: 1,
-            &quot;name&quot;: &quot;Default&quot;
-        },
+        &quot;organization_id&quot;: null,
+        &quot;organization&quot;: null,
         &quot;permissions&quot;: [
             &quot;users.stats&quot;,
             &quot;users.index&quot;,
@@ -10958,7 +11149,7 @@ print_r(json_decode((string) $body));</code></pre></div>
             &quot;settings.update&quot;
         ],
         &quot;created_at&quot;: &quot;06:28:53 28/02/2026&quot;,
-        &quot;updated_at&quot;: &quot;06:28:53 28/02/2026&quot;
+        &quot;updated_at&quot;: &quot;10:54:50 28/02/2026&quot;
     },
     &quot;success&quot;: &quot;true&quot;
 }</code>
@@ -11095,7 +11286,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --data "{
     \"name\": \"admin\",
     \"guard_name\": \"web\",
-    \"organization_id\": 1,
     \"permission_ids\": [
         1,
         2,
@@ -11119,7 +11309,6 @@ const headers = {
 let body = {
     "name": "admin",
     "guard_name": "web",
-    "organization_id": 1,
     "permission_ids": [
         1,
         2,
@@ -11148,7 +11337,6 @@ $response = $client-&gt;post(
         'json' =&gt; [
             'name' =&gt; 'admin',
             'guard_name' =&gt; 'web',
-            'organization_id' =&gt; 1,
             'permission_ids' =&gt; [
                 1,
                 2,
@@ -11173,7 +11361,7 @@ print_r(json_decode((string) $body));</code></pre></div>
         &quot;id&quot;: 1,
         &quot;name&quot;: &quot;Super Admin&quot;,
         &quot;guard_name&quot;: &quot;web&quot;,
-        &quot;organization_id&quot;: 1,
+        &quot;organization_id&quot;: null,
         &quot;permissions&quot;: [
             &quot;users.stats&quot;,
             &quot;users.index&quot;,
@@ -11320,7 +11508,7 @@ print_r(json_decode((string) $body));</code></pre></div>
             &quot;settings.update&quot;
         ],
         &quot;created_at&quot;: &quot;06:28:53 28/02/2026&quot;,
-        &quot;updated_at&quot;: &quot;06:28:53 28/02/2026&quot;
+        &quot;updated_at&quot;: &quot;10:54:50 28/02/2026&quot;
     },
     &quot;success&quot;: &quot;true&quot;,
     &quot;message&quot;: &quot;Vai tr&ograve; đ&atilde; được tạo th&agrave;nh c&ocirc;ng!&quot;
@@ -11436,18 +11624,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <p>Guard name (mặc định web). Example: <code>web</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>organization_id</code></b>&nbsp;&nbsp;
-<small>integer</small>&nbsp;
-<i>optional</i> &nbsp;
- &nbsp;
-                <input type="number" style="display: none"
-               step="any"               name="organization_id"                data-endpoint="POSTapi-roles"
-               value="1"
-               data-component="body">
-    <br>
-<p>ID organization (nullable). Example: <code>1</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>permission_ids</code></b>&nbsp;&nbsp;
 <small>string[]</small>&nbsp;
 <i>optional</i> &nbsp;
@@ -11484,7 +11660,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --data "{
     \"name\": \"editor\",
     \"guard_name\": \"web\",
-    \"organization_id\": 1,
     \"permission_ids\": [
         1,
         2
@@ -11507,7 +11682,6 @@ const headers = {
 let body = {
     "name": "editor",
     "guard_name": "web",
-    "organization_id": 1,
     "permission_ids": [
         1,
         2
@@ -11535,7 +11709,6 @@ $response = $client-&gt;put(
         'json' =&gt; [
             'name' =&gt; 'editor',
             'guard_name' =&gt; 'web',
-            'organization_id' =&gt; 1,
             'permission_ids' =&gt; [
                 1,
                 2,
@@ -11559,7 +11732,7 @@ print_r(json_decode((string) $body));</code></pre></div>
         &quot;id&quot;: 1,
         &quot;name&quot;: &quot;Super Admin&quot;,
         &quot;guard_name&quot;: &quot;web&quot;,
-        &quot;organization_id&quot;: 1,
+        &quot;organization_id&quot;: null,
         &quot;permissions&quot;: [
             &quot;users.stats&quot;,
             &quot;users.index&quot;,
@@ -11706,7 +11879,7 @@ print_r(json_decode((string) $body));</code></pre></div>
             &quot;settings.update&quot;
         ],
         &quot;created_at&quot;: &quot;06:28:53 28/02/2026&quot;,
-        &quot;updated_at&quot;: &quot;06:28:53 28/02/2026&quot;
+        &quot;updated_at&quot;: &quot;10:54:50 28/02/2026&quot;
     },
     &quot;success&quot;: &quot;true&quot;,
     &quot;message&quot;: &quot;Vai tr&ograve; đ&atilde; được cập nhật!&quot;
@@ -11847,18 +12020,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <p>Guard name. Example: <code>web</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>organization_id</code></b>&nbsp;&nbsp;
-<small>integer</small>&nbsp;
-<i>optional</i> &nbsp;
- &nbsp;
-                <input type="number" style="display: none"
-               step="any"               name="organization_id"                data-endpoint="PUTapi-roles--role_id-"
-               value="1"
-               data-component="body">
-    <br>
-<p>ID organization (nullable). Example: <code>1</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>permission_ids</code></b>&nbsp;&nbsp;
 <small>string[]</small>&nbsp;
 <i>optional</i> &nbsp;
@@ -11895,7 +12056,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --data "{
     \"name\": \"editor\",
     \"guard_name\": \"web\",
-    \"organization_id\": 1,
     \"permission_ids\": [
         1,
         2
@@ -11918,7 +12078,6 @@ const headers = {
 let body = {
     "name": "editor",
     "guard_name": "web",
-    "organization_id": 1,
     "permission_ids": [
         1,
         2
@@ -11946,7 +12105,6 @@ $response = $client-&gt;patch(
         'json' =&gt; [
             'name' =&gt; 'editor',
             'guard_name' =&gt; 'web',
-            'organization_id' =&gt; 1,
             'permission_ids' =&gt; [
                 1,
                 2,
@@ -11970,7 +12128,7 @@ print_r(json_decode((string) $body));</code></pre></div>
         &quot;id&quot;: 1,
         &quot;name&quot;: &quot;Super Admin&quot;,
         &quot;guard_name&quot;: &quot;web&quot;,
-        &quot;organization_id&quot;: 1,
+        &quot;organization_id&quot;: null,
         &quot;permissions&quot;: [
             &quot;users.stats&quot;,
             &quot;users.index&quot;,
@@ -12117,7 +12275,7 @@ print_r(json_decode((string) $body));</code></pre></div>
             &quot;settings.update&quot;
         ],
         &quot;created_at&quot;: &quot;06:28:53 28/02/2026&quot;,
-        &quot;updated_at&quot;: &quot;06:28:53 28/02/2026&quot;
+        &quot;updated_at&quot;: &quot;10:54:50 28/02/2026&quot;
     },
     &quot;success&quot;: &quot;true&quot;,
     &quot;message&quot;: &quot;Vai tr&ograve; đ&atilde; được cập nhật!&quot;
@@ -12256,18 +12414,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
                data-component="body">
     <br>
 <p>Guard name. Example: <code>web</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>organization_id</code></b>&nbsp;&nbsp;
-<small>integer</small>&nbsp;
-<i>optional</i> &nbsp;
- &nbsp;
-                <input type="number" style="display: none"
-               step="any"               name="organization_id"                data-endpoint="PATCHapi-roles--role_id-"
-               value="1"
-               data-component="body">
-    <br>
-<p>ID organization (nullable). Example: <code>1</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>permission_ids</code></b>&nbsp;&nbsp;
@@ -13411,7 +13557,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "Content-Type: multipart/form-data" \
     --header "Accept: application/json" \
-    --form "file=@/tmp/php219bjedluujf8vgQG5r" </code></pre></div>
+    --form "file=@/tmp/phphc2gucmbmpms0OVoXFU" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -13449,7 +13595,7 @@ $response = $client-&gt;post(
         'multipart' =&gt; [
             [
                 'name' =&gt; 'file',
-                'contents' =&gt; fopen('/tmp/php219bjedluujf8vgQG5r', 'r')
+                'contents' =&gt; fopen('/tmp/phphc2gucmbmpms0OVoXFU', 'r')
             ],
         ],
     ]
@@ -13565,7 +13711,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>File excel (xlsx, xls, csv). Cột: name, email, password, status. Example: <code>/tmp/php219bjedluujf8vgQG5r</code></p>
+<p>File excel (xlsx, xls, csv). Cột: name, email, password, status. Example: <code>/tmp/phphc2gucmbmpms0OVoXFU</code></p>
         </div>
         </form>
 
@@ -14313,26 +14459,28 @@ print_r(json_decode((string) $body));</code></pre></div>
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: [
         {
-            &quot;id&quot;: 62,
+            &quot;id&quot;: 85,
             &quot;name&quot;: &quot;Ms. Elisabeth Okuneva&quot;,
             &quot;email&quot;: &quot;gulgowski.asia@example.com&quot;,
             &quot;user_name&quot;: &quot;idickens&quot;,
             &quot;status&quot;: &quot;inactive&quot;,
             &quot;created_by&quot;: &quot;N/A&quot;,
             &quot;updated_by&quot;: &quot;N/A&quot;,
-            &quot;created_at&quot;: &quot;28/02/2026 09:22:11&quot;,
-            &quot;updated_at&quot;: &quot;28/02/2026 09:22:11&quot;
+            &quot;assignments&quot;: [],
+            &quot;created_at&quot;: &quot;28/02/2026 10:56:46&quot;,
+            &quot;updated_at&quot;: &quot;28/02/2026 10:56:46&quot;
         },
         {
-            &quot;id&quot;: 63,
+            &quot;id&quot;: 86,
             &quot;name&quot;: &quot;Mya DuBuque&quot;,
             &quot;email&quot;: &quot;breitenberg.gilbert@example.com&quot;,
             &quot;user_name&quot;: &quot;price.amber&quot;,
             &quot;status&quot;: &quot;inactive&quot;,
             &quot;created_by&quot;: &quot;N/A&quot;,
             &quot;updated_by&quot;: &quot;N/A&quot;,
-            &quot;created_at&quot;: &quot;28/02/2026 09:22:11&quot;,
-            &quot;updated_at&quot;: &quot;28/02/2026 09:22:11&quot;
+            &quot;assignments&quot;: [],
+            &quot;created_at&quot;: &quot;28/02/2026 10:56:46&quot;,
+            &quot;updated_at&quot;: &quot;28/02/2026 10:56:46&quot;
         }
     ],
     &quot;links&quot;: {
@@ -14607,15 +14755,16 @@ print_r(json_decode((string) $body));</code></pre></div>
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: {
-        &quot;id&quot;: 64,
+        &quot;id&quot;: 87,
         &quot;name&quot;: &quot;Morgan Hirthe&quot;,
         &quot;email&quot;: &quot;dare.emelie@example.com&quot;,
         &quot;user_name&quot;: &quot;imclaughlin&quot;,
         &quot;status&quot;: &quot;inactive&quot;,
         &quot;created_by&quot;: &quot;N/A&quot;,
         &quot;updated_by&quot;: &quot;N/A&quot;,
-        &quot;created_at&quot;: &quot;28/02/2026 09:22:11&quot;,
-        &quot;updated_at&quot;: &quot;28/02/2026 09:22:11&quot;
+        &quot;assignments&quot;: [],
+        &quot;created_at&quot;: &quot;28/02/2026 10:56:46&quot;,
+        &quot;updated_at&quot;: &quot;28/02/2026 10:56:46&quot;
     },
     &quot;success&quot;: &quot;true&quot;
 }</code>
@@ -14752,9 +14901,12 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --data "{
     \"name\": \"Nguyễn Văn A\",
     \"email\": \"user@example.com\",
-    \"user_name\": \"i\",
+    \"user_name\": \"nguyenvana\",
     \"password\": \"password123\",
     \"status\": \"active\",
+    \"assignments\": [
+        \"architecto\"
+    ],
     \"password_confirmation\": \"architecto\"
 }"
 </code></pre></div>
@@ -14774,9 +14926,12 @@ const headers = {
 let body = {
     "name": "Nguyễn Văn A",
     "email": "user@example.com",
-    "user_name": "i",
+    "user_name": "nguyenvana",
     "password": "password123",
     "status": "active",
+    "assignments": [
+        "architecto"
+    ],
     "password_confirmation": "architecto"
 };
 
@@ -14801,9 +14956,12 @@ $response = $client-&gt;post(
         'json' =&gt; [
             'name' =&gt; 'Nguyễn Văn A',
             'email' =&gt; 'user@example.com',
-            'user_name' =&gt; 'i',
+            'user_name' =&gt; 'nguyenvana',
             'password' =&gt; 'password123',
             'status' =&gt; 'active',
+            'assignments' =&gt; [
+                'architecto',
+            ],
             'password_confirmation' =&gt; 'architecto',
         ],
     ]
@@ -14821,15 +14979,16 @@ print_r(json_decode((string) $body));</code></pre></div>
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: {
-        &quot;id&quot;: 65,
+        &quot;id&quot;: 88,
         &quot;name&quot;: &quot;Ms. Elisabeth Okuneva&quot;,
         &quot;email&quot;: &quot;idickens@example.org&quot;,
         &quot;user_name&quot;: &quot;aschuster&quot;,
         &quot;status&quot;: &quot;active&quot;,
         &quot;created_by&quot;: &quot;N/A&quot;,
         &quot;updated_by&quot;: &quot;N/A&quot;,
-        &quot;created_at&quot;: &quot;28/02/2026 09:22:11&quot;,
-        &quot;updated_at&quot;: &quot;28/02/2026 09:22:11&quot;
+        &quot;assignments&quot;: [],
+        &quot;created_at&quot;: &quot;28/02/2026 10:56:46&quot;,
+        &quot;updated_at&quot;: &quot;28/02/2026 10:56:46&quot;
     },
     &quot;success&quot;: &quot;true&quot;,
     &quot;message&quot;: &quot;T&agrave;i khoản đ&atilde; được tạo th&agrave;nh c&ocirc;ng!&quot;
@@ -14951,10 +15110,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="user_name"                data-endpoint="POSTapi-users"
-               value="i"
+               value="nguyenvana"
                data-component="body">
     <br>
-<p>Must match the regex /^[a-zA-Z0-9._-]*$/. Must not be greater than 100 characters. Example: <code>i</code></p>
+<p>Tên đăng nhập (không dấu cách, cho phép . <em> -). Must match the regex /^[a-zA-Z0-9.</em>-]*$/. Must not be greater than 100 characters. Example: <code>nguyenvana</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>password</code></b>&nbsp;&nbsp;
@@ -14979,6 +15138,44 @@ You can check the Dev Tools console for debugging information.</code></pre>
                data-component="body">
     <br>
 <p>Trạng thái: active, inactive, banned. Example: <code>active</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+        <details>
+            <summary style="padding-bottom: 10px;">
+                <b style="line-height: 2;"><code>assignments</code></b>&nbsp;&nbsp;
+<small>string[]</small>&nbsp;
+<i>optional</i> &nbsp;
+ &nbsp;
+<br>
+<p>Danh sách gán vai trò theo tổ chức. Ví dụ: [{&quot;role_id&quot;:1,&quot;organization_ids&quot;:[2,3]},{&quot;role_id&quot;:5,&quot;organization_ids&quot;:[9]}]</p>
+            </summary>
+                                                <div style="margin-left: 14px; clear: unset;">
+                        <b style="line-height: 2;"><code>role_id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="assignments.0.role_id"                data-endpoint="POSTapi-users"
+               value="16"
+               data-component="body">
+    <br>
+<p>The <code>id</code> of an existing record in the roles table. Example: <code>16</code></p>
+                    </div>
+                                                                <div style="margin-left: 14px; clear: unset;">
+                        <b style="line-height: 2;"><code>organization_ids</code></b>&nbsp;&nbsp;
+<small>integer[]</small>&nbsp;
+<i>optional</i> &nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="assignments.0.organization_ids[0]"                data-endpoint="POSTapi-users"
+               data-component="body">
+        <input type="number" style="display: none"
+               name="assignments.0.organization_ids[1]"                data-endpoint="POSTapi-users"
+               data-component="body">
+    <br>
+<p>The <code>id</code> of an existing record in the organizations table.</p>
+                    </div>
+                                    </details>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>password_confirmation</code></b>&nbsp;&nbsp;
@@ -15015,9 +15212,12 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --data "{
     \"name\": \"architecto\",
     \"email\": \"gbailey@example.net\",
-    \"user_name\": \"i\",
+    \"user_name\": \"nguyenvanb\",
     \"password\": \"|]|{+-\",
     \"status\": \"architecto\",
+    \"assignments\": [
+        \"architecto\"
+    ],
     \"password_confirmation\": \"architecto\"
 }"
 </code></pre></div>
@@ -15037,9 +15237,12 @@ const headers = {
 let body = {
     "name": "architecto",
     "email": "gbailey@example.net",
-    "user_name": "i",
+    "user_name": "nguyenvanb",
     "password": "|]|{+-",
     "status": "architecto",
+    "assignments": [
+        "architecto"
+    ],
     "password_confirmation": "architecto"
 };
 
@@ -15064,9 +15267,12 @@ $response = $client-&gt;put(
         'json' =&gt; [
             'name' =&gt; 'architecto',
             'email' =&gt; 'gbailey@example.net',
-            'user_name' =&gt; 'i',
+            'user_name' =&gt; 'nguyenvanb',
             'password' =&gt; '|]|{+-',
             'status' =&gt; 'architecto',
+            'assignments' =&gt; [
+                'architecto',
+            ],
             'password_confirmation' =&gt; 'architecto',
         ],
     ]
@@ -15084,15 +15290,16 @@ print_r(json_decode((string) $body));</code></pre></div>
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: {
-        &quot;id&quot;: 66,
+        &quot;id&quot;: 89,
         &quot;name&quot;: &quot;Ms. Elisabeth Okuneva&quot;,
         &quot;email&quot;: &quot;aschuster@example.com&quot;,
         &quot;user_name&quot;: &quot;gilbert32&quot;,
         &quot;status&quot;: &quot;active&quot;,
         &quot;created_by&quot;: &quot;N/A&quot;,
         &quot;updated_by&quot;: &quot;N/A&quot;,
-        &quot;created_at&quot;: &quot;28/02/2026 09:22:11&quot;,
-        &quot;updated_at&quot;: &quot;28/02/2026 09:22:11&quot;
+        &quot;assignments&quot;: [],
+        &quot;created_at&quot;: &quot;28/02/2026 10:56:46&quot;,
+        &quot;updated_at&quot;: &quot;28/02/2026 10:56:46&quot;
     },
     &quot;success&quot;: &quot;true&quot;,
     &quot;message&quot;: &quot;T&agrave;i khoản đ&atilde; được cập nhật!&quot;
@@ -15239,10 +15446,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="user_name"                data-endpoint="PUTapi-users--user_id-"
-               value="i"
+               value="nguyenvanb"
                data-component="body">
     <br>
-<p>Must match the regex /^[a-zA-Z0-9._-]*$/. Must not be greater than 100 characters. Example: <code>i</code></p>
+<p>Tên đăng nhập (không dấu cách, cho phép . <em> -). Must match the regex /^[a-zA-Z0-9.</em>-]*$/. Must not be greater than 100 characters. Example: <code>nguyenvanb</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>password</code></b>&nbsp;&nbsp;
@@ -15267,6 +15474,44 @@ You can check the Dev Tools console for debugging information.</code></pre>
                data-component="body">
     <br>
 <p>Trạng thái: active, inactive, banned. Example: <code>architecto</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+        <details>
+            <summary style="padding-bottom: 10px;">
+                <b style="line-height: 2;"><code>assignments</code></b>&nbsp;&nbsp;
+<small>string[]</small>&nbsp;
+<i>optional</i> &nbsp;
+ &nbsp;
+<br>
+<p>Danh sách gán vai trò theo tổ chức. Khi gửi field này, hệ thống sẽ đồng bộ lại toàn bộ phân quyền của user.</p>
+            </summary>
+                                                <div style="margin-left: 14px; clear: unset;">
+                        <b style="line-height: 2;"><code>role_id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="assignments.0.role_id"                data-endpoint="PUTapi-users--user_id-"
+               value="16"
+               data-component="body">
+    <br>
+<p>The <code>id</code> of an existing record in the roles table. Example: <code>16</code></p>
+                    </div>
+                                                                <div style="margin-left: 14px; clear: unset;">
+                        <b style="line-height: 2;"><code>organization_ids</code></b>&nbsp;&nbsp;
+<small>integer[]</small>&nbsp;
+<i>optional</i> &nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="assignments.0.organization_ids[0]"                data-endpoint="PUTapi-users--user_id-"
+               data-component="body">
+        <input type="number" style="display: none"
+               name="assignments.0.organization_ids[1]"                data-endpoint="PUTapi-users--user_id-"
+               data-component="body">
+    <br>
+<p>The <code>id</code> of an existing record in the organizations table.</p>
+                    </div>
+                                    </details>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>password_confirmation</code></b>&nbsp;&nbsp;
@@ -15303,9 +15548,12 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --data "{
     \"name\": \"architecto\",
     \"email\": \"gbailey@example.net\",
-    \"user_name\": \"i\",
+    \"user_name\": \"nguyenvanb\",
     \"password\": \"|]|{+-\",
     \"status\": \"architecto\",
+    \"assignments\": [
+        \"architecto\"
+    ],
     \"password_confirmation\": \"architecto\"
 }"
 </code></pre></div>
@@ -15325,9 +15573,12 @@ const headers = {
 let body = {
     "name": "architecto",
     "email": "gbailey@example.net",
-    "user_name": "i",
+    "user_name": "nguyenvanb",
     "password": "|]|{+-",
     "status": "architecto",
+    "assignments": [
+        "architecto"
+    ],
     "password_confirmation": "architecto"
 };
 
@@ -15352,9 +15603,12 @@ $response = $client-&gt;patch(
         'json' =&gt; [
             'name' =&gt; 'architecto',
             'email' =&gt; 'gbailey@example.net',
-            'user_name' =&gt; 'i',
+            'user_name' =&gt; 'nguyenvanb',
             'password' =&gt; '|]|{+-',
             'status' =&gt; 'architecto',
+            'assignments' =&gt; [
+                'architecto',
+            ],
             'password_confirmation' =&gt; 'architecto',
         ],
     ]
@@ -15372,15 +15626,16 @@ print_r(json_decode((string) $body));</code></pre></div>
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: {
-        &quot;id&quot;: 67,
+        &quot;id&quot;: 90,
         &quot;name&quot;: &quot;Ms. Elisabeth Okuneva&quot;,
         &quot;email&quot;: &quot;gilbert32@example.com&quot;,
         &quot;user_name&quot;: &quot;hirthe.theo&quot;,
         &quot;status&quot;: &quot;active&quot;,
         &quot;created_by&quot;: &quot;N/A&quot;,
         &quot;updated_by&quot;: &quot;N/A&quot;,
-        &quot;created_at&quot;: &quot;28/02/2026 09:22:11&quot;,
-        &quot;updated_at&quot;: &quot;28/02/2026 09:22:11&quot;
+        &quot;assignments&quot;: [],
+        &quot;created_at&quot;: &quot;28/02/2026 10:56:46&quot;,
+        &quot;updated_at&quot;: &quot;28/02/2026 10:56:46&quot;
     },
     &quot;success&quot;: &quot;true&quot;,
     &quot;message&quot;: &quot;T&agrave;i khoản đ&atilde; được cập nhật!&quot;
@@ -15527,10 +15782,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="user_name"                data-endpoint="PATCHapi-users--user_id-"
-               value="i"
+               value="nguyenvanb"
                data-component="body">
     <br>
-<p>Must match the regex /^[a-zA-Z0-9._-]*$/. Must not be greater than 100 characters. Example: <code>i</code></p>
+<p>Tên đăng nhập (không dấu cách, cho phép . <em> -). Must match the regex /^[a-zA-Z0-9.</em>-]*$/. Must not be greater than 100 characters. Example: <code>nguyenvanb</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>password</code></b>&nbsp;&nbsp;
@@ -15555,6 +15810,44 @@ You can check the Dev Tools console for debugging information.</code></pre>
                data-component="body">
     <br>
 <p>Trạng thái: active, inactive, banned. Example: <code>architecto</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+        <details>
+            <summary style="padding-bottom: 10px;">
+                <b style="line-height: 2;"><code>assignments</code></b>&nbsp;&nbsp;
+<small>string[]</small>&nbsp;
+<i>optional</i> &nbsp;
+ &nbsp;
+<br>
+<p>Danh sách gán vai trò theo tổ chức. Khi gửi field này, hệ thống sẽ đồng bộ lại toàn bộ phân quyền của user.</p>
+            </summary>
+                                                <div style="margin-left: 14px; clear: unset;">
+                        <b style="line-height: 2;"><code>role_id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="assignments.0.role_id"                data-endpoint="PATCHapi-users--user_id-"
+               value="16"
+               data-component="body">
+    <br>
+<p>The <code>id</code> of an existing record in the roles table. Example: <code>16</code></p>
+                    </div>
+                                                                <div style="margin-left: 14px; clear: unset;">
+                        <b style="line-height: 2;"><code>organization_ids</code></b>&nbsp;&nbsp;
+<small>integer[]</small>&nbsp;
+<i>optional</i> &nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="assignments.0.organization_ids[0]"                data-endpoint="PATCHapi-users--user_id-"
+               data-component="body">
+        <input type="number" style="display: none"
+               name="assignments.0.organization_ids[1]"                data-endpoint="PATCHapi-users--user_id-"
+               data-component="body">
+    <br>
+<p>The <code>id</code> of an existing record in the organizations table.</p>
+                    </div>
+                                    </details>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>password_confirmation</code></b>&nbsp;&nbsp;
@@ -15822,15 +16115,16 @@ print_r(json_decode((string) $body));</code></pre></div>
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: {
-        &quot;id&quot;: 68,
+        &quot;id&quot;: 91,
         &quot;name&quot;: &quot;Morgan Hirthe&quot;,
         &quot;email&quot;: &quot;imclaughlin@example.org&quot;,
         &quot;user_name&quot;: &quot;okeefe.isidro&quot;,
         &quot;status&quot;: &quot;inactive&quot;,
         &quot;created_by&quot;: &quot;N/A&quot;,
         &quot;updated_by&quot;: &quot;N/A&quot;,
-        &quot;created_at&quot;: &quot;28/02/2026 09:22:11&quot;,
-        &quot;updated_at&quot;: &quot;28/02/2026 09:22:11&quot;
+        &quot;assignments&quot;: [],
+        &quot;created_at&quot;: &quot;28/02/2026 10:56:46&quot;,
+        &quot;updated_at&quot;: &quot;28/02/2026 10:56:46&quot;
     },
     &quot;success&quot;: &quot;true&quot;,
     &quot;message&quot;: &quot;Cập nhật trạng th&aacute;i th&agrave;nh c&ocirc;ng!&quot;
@@ -16045,24 +16339,24 @@ print_r(json_decode((string) $body));</code></pre></div>
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: [
         {
-            &quot;id&quot;: 34,
+            &quot;id&quot;: 67,
             &quot;name&quot;: &quot;Bailey Ltd&quot;,
             &quot;description&quot;: &quot;Et fugiat sunt nihil accusantium.&quot;,
             &quot;status&quot;: &quot;inactive&quot;,
             &quot;created_by&quot;: &quot;N/A&quot;,
             &quot;updated_by&quot;: &quot;N/A&quot;,
-            &quot;created_at&quot;: &quot;09:21:59 28/02/2026&quot;,
-            &quot;updated_at&quot;: &quot;09:21:59 28/02/2026&quot;
+            &quot;created_at&quot;: &quot;10:56:46 28/02/2026&quot;,
+            &quot;updated_at&quot;: &quot;10:56:46 28/02/2026&quot;
         },
         {
-            &quot;id&quot;: 35,
+            &quot;id&quot;: 68,
             &quot;name&quot;: &quot;Runte-Considine&quot;,
             &quot;description&quot;: &quot;Provident perspiciatis quo omnis nostrum aut adipisci quidem.&quot;,
             &quot;status&quot;: &quot;active&quot;,
             &quot;created_by&quot;: &quot;N/A&quot;,
             &quot;updated_by&quot;: &quot;N/A&quot;,
-            &quot;created_at&quot;: &quot;09:21:59 28/02/2026&quot;,
-            &quot;updated_at&quot;: &quot;09:21:59 28/02/2026&quot;
+            &quot;created_at&quot;: &quot;10:56:46 28/02/2026&quot;,
+            &quot;updated_at&quot;: &quot;10:56:46 28/02/2026&quot;
         }
     ],
     &quot;success&quot;: &quot;true&quot;
@@ -16308,12 +16602,12 @@ print_r(json_decode((string) $body));</code></pre></div>
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: [
         {
-            &quot;id&quot;: 36,
+            &quot;id&quot;: 69,
             &quot;name&quot;: &quot;Bailey Ltd&quot;,
             &quot;description&quot;: &quot;Et fugiat sunt nihil accusantium.&quot;
         },
         {
-            &quot;id&quot;: 37,
+            &quot;id&quot;: 70,
             &quot;name&quot;: &quot;Runte-Considine&quot;,
             &quot;description&quot;: &quot;Provident perspiciatis quo omnis nostrum aut adipisci quidem.&quot;
         }
@@ -16764,7 +17058,7 @@ Must be one of:
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "Content-Type: multipart/form-data" \
     --header "Accept: application/json" \
-    --form "file=@/tmp/php06iprdgn2vh59aMyGpQ" </code></pre></div>
+    --form "file=@/tmp/phpu4q2ci19l5qlflyrHbQ" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -16802,7 +17096,7 @@ $response = $client-&gt;post(
         'multipart' =&gt; [
             [
                 'name' =&gt; 'file',
-                'contents' =&gt; fopen('/tmp/php06iprdgn2vh59aMyGpQ', 'r')
+                'contents' =&gt; fopen('/tmp/phpu4q2ci19l5qlflyrHbQ', 'r')
             ],
         ],
     ]
@@ -16918,7 +17212,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>File Excel (xlsx, xls, csv). Example: <code>/tmp/php06iprdgn2vh59aMyGpQ</code></p>
+<p>File Excel (xlsx, xls, csv). Example: <code>/tmp/phpu4q2ci19l5qlflyrHbQ</code></p>
         </div>
         </form>
 
@@ -17666,24 +17960,24 @@ print_r(json_decode((string) $body));</code></pre></div>
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: [
         {
-            &quot;id&quot;: 38,
+            &quot;id&quot;: 71,
             &quot;name&quot;: &quot;Bailey Ltd&quot;,
             &quot;description&quot;: &quot;Et fugiat sunt nihil accusantium.&quot;,
             &quot;status&quot;: &quot;inactive&quot;,
             &quot;created_by&quot;: &quot;N/A&quot;,
             &quot;updated_by&quot;: &quot;N/A&quot;,
-            &quot;created_at&quot;: &quot;09:22:01 28/02/2026&quot;,
-            &quot;updated_at&quot;: &quot;09:22:01 28/02/2026&quot;
+            &quot;created_at&quot;: &quot;10:56:49 28/02/2026&quot;,
+            &quot;updated_at&quot;: &quot;10:56:49 28/02/2026&quot;
         },
         {
-            &quot;id&quot;: 39,
+            &quot;id&quot;: 72,
             &quot;name&quot;: &quot;Runte-Considine&quot;,
             &quot;description&quot;: &quot;Provident perspiciatis quo omnis nostrum aut adipisci quidem.&quot;,
             &quot;status&quot;: &quot;active&quot;,
             &quot;created_by&quot;: &quot;N/A&quot;,
             &quot;updated_by&quot;: &quot;N/A&quot;,
-            &quot;created_at&quot;: &quot;09:22:01 28/02/2026&quot;,
-            &quot;updated_at&quot;: &quot;09:22:01 28/02/2026&quot;
+            &quot;created_at&quot;: &quot;10:56:49 28/02/2026&quot;,
+            &quot;updated_at&quot;: &quot;10:56:49 28/02/2026&quot;
         }
     ],
     &quot;links&quot;: {
@@ -17958,14 +18252,14 @@ print_r(json_decode((string) $body));</code></pre></div>
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: {
-        &quot;id&quot;: 40,
+        &quot;id&quot;: 73,
         &quot;name&quot;: &quot;Price Ltd&quot;,
         &quot;description&quot;: &quot;Commodi incidunt iure odit.&quot;,
         &quot;status&quot;: &quot;active&quot;,
         &quot;created_by&quot;: &quot;N/A&quot;,
         &quot;updated_by&quot;: &quot;N/A&quot;,
-        &quot;created_at&quot;: &quot;09:22:01 28/02/2026&quot;,
-        &quot;updated_at&quot;: &quot;09:22:01 28/02/2026&quot;
+        &quot;created_at&quot;: &quot;10:56:49 28/02/2026&quot;,
+        &quot;updated_at&quot;: &quot;10:56:49 28/02/2026&quot;
     },
     &quot;success&quot;: &quot;true&quot;
 }</code>
@@ -18162,14 +18456,14 @@ print_r(json_decode((string) $body));</code></pre></div>
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: {
-        &quot;id&quot;: 41,
+        &quot;id&quot;: 74,
         &quot;name&quot;: &quot;Ernser Group&quot;,
         &quot;description&quot;: &quot;Mollitia modi deserunt aut ab provident perspiciatis quo.&quot;,
         &quot;status&quot;: &quot;active&quot;,
         &quot;created_by&quot;: &quot;N/A&quot;,
         &quot;updated_by&quot;: &quot;N/A&quot;,
-        &quot;created_at&quot;: &quot;09:22:01 28/02/2026&quot;,
-        &quot;updated_at&quot;: &quot;09:22:01 28/02/2026&quot;
+        &quot;created_at&quot;: &quot;10:56:49 28/02/2026&quot;,
+        &quot;updated_at&quot;: &quot;10:56:49 28/02/2026&quot;
     },
     &quot;success&quot;: &quot;true&quot;,
     &quot;message&quot;: &quot;Tạo cơ quan ban h&agrave;nh th&agrave;nh c&ocirc;ng!&quot;
@@ -18379,14 +18673,14 @@ print_r(json_decode((string) $body));</code></pre></div>
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: {
-        &quot;id&quot;: 42,
+        &quot;id&quot;: 75,
         &quot;name&quot;: &quot;Bailey Ltd&quot;,
         &quot;description&quot;: &quot;Et fugiat sunt nihil accusantium.&quot;,
         &quot;status&quot;: &quot;inactive&quot;,
         &quot;created_by&quot;: &quot;N/A&quot;,
         &quot;updated_by&quot;: &quot;N/A&quot;,
-        &quot;created_at&quot;: &quot;09:22:01 28/02/2026&quot;,
-        &quot;updated_at&quot;: &quot;09:22:01 28/02/2026&quot;
+        &quot;created_at&quot;: &quot;10:56:49 28/02/2026&quot;,
+        &quot;updated_at&quot;: &quot;10:56:49 28/02/2026&quot;
     },
     &quot;success&quot;: &quot;true&quot;,
     &quot;message&quot;: &quot;Cập nhật cơ quan ban h&agrave;nh th&agrave;nh c&ocirc;ng!&quot;
@@ -18621,14 +18915,14 @@ print_r(json_decode((string) $body));</code></pre></div>
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: {
-        &quot;id&quot;: 43,
+        &quot;id&quot;: 76,
         &quot;name&quot;: &quot;Bailey Ltd&quot;,
         &quot;description&quot;: &quot;Et fugiat sunt nihil accusantium.&quot;,
         &quot;status&quot;: &quot;inactive&quot;,
         &quot;created_by&quot;: &quot;N/A&quot;,
         &quot;updated_by&quot;: &quot;N/A&quot;,
-        &quot;created_at&quot;: &quot;09:22:01 28/02/2026&quot;,
-        &quot;updated_at&quot;: &quot;09:22:01 28/02/2026&quot;
+        &quot;created_at&quot;: &quot;10:56:49 28/02/2026&quot;,
+        &quot;updated_at&quot;: &quot;10:56:49 28/02/2026&quot;
     },
     &quot;success&quot;: &quot;true&quot;,
     &quot;message&quot;: &quot;Cập nhật cơ quan ban h&agrave;nh th&agrave;nh c&ocirc;ng!&quot;
@@ -19034,14 +19328,14 @@ print_r(json_decode((string) $body));</code></pre></div>
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: {
-        &quot;id&quot;: 44,
+        &quot;id&quot;: 77,
         &quot;name&quot;: &quot;Price Ltd&quot;,
         &quot;description&quot;: &quot;Commodi incidunt iure odit.&quot;,
         &quot;status&quot;: &quot;active&quot;,
         &quot;created_by&quot;: &quot;N/A&quot;,
         &quot;updated_by&quot;: &quot;N/A&quot;,
-        &quot;created_at&quot;: &quot;09:22:01 28/02/2026&quot;,
-        &quot;updated_at&quot;: &quot;09:22:01 28/02/2026&quot;
+        &quot;created_at&quot;: &quot;10:56:49 28/02/2026&quot;,
+        &quot;updated_at&quot;: &quot;10:56:49 28/02/2026&quot;
     },
     &quot;success&quot;: &quot;true&quot;,
     &quot;message&quot;: &quot;Đổi trạng th&aacute;i th&agrave;nh c&ocirc;ng!&quot;
@@ -19256,24 +19550,24 @@ print_r(json_decode((string) $body));</code></pre></div>
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: [
         {
-            &quot;id&quot;: 34,
+            &quot;id&quot;: 67,
             &quot;name&quot;: &quot;modi deserunt&quot;,
             &quot;description&quot;: &quot;Provident perspiciatis quo omnis nostrum aut adipisci quidem.&quot;,
             &quot;status&quot;: &quot;active&quot;,
             &quot;created_by&quot;: &quot;N/A&quot;,
             &quot;updated_by&quot;: &quot;N/A&quot;,
-            &quot;created_at&quot;: &quot;09:21:58 28/02/2026&quot;,
-            &quot;updated_at&quot;: &quot;09:21:58 28/02/2026&quot;
+            &quot;created_at&quot;: &quot;10:56:46 28/02/2026&quot;,
+            &quot;updated_at&quot;: &quot;10:56:46 28/02/2026&quot;
         },
         {
-            &quot;id&quot;: 35,
+            &quot;id&quot;: 68,
             &quot;name&quot;: &quot;qui commodi&quot;,
             &quot;description&quot;: &quot;Odit et et modi.&quot;,
             &quot;status&quot;: &quot;active&quot;,
             &quot;created_by&quot;: &quot;N/A&quot;,
             &quot;updated_by&quot;: &quot;N/A&quot;,
-            &quot;created_at&quot;: &quot;09:21:58 28/02/2026&quot;,
-            &quot;updated_at&quot;: &quot;09:21:58 28/02/2026&quot;
+            &quot;created_at&quot;: &quot;10:56:46 28/02/2026&quot;,
+            &quot;updated_at&quot;: &quot;10:56:46 28/02/2026&quot;
         }
     ],
     &quot;success&quot;: &quot;true&quot;
@@ -19519,12 +19813,12 @@ print_r(json_decode((string) $body));</code></pre></div>
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: [
         {
-            &quot;id&quot;: 36,
+            &quot;id&quot;: 69,
             &quot;name&quot;: &quot;provident perspiciatis&quot;,
             &quot;description&quot;: null
         },
         {
-            &quot;id&quot;: 37,
+            &quot;id&quot;: 70,
             &quot;name&quot;: &quot;nostrum aut&quot;,
             &quot;description&quot;: &quot;Nostrum qui commodi incidunt iure.&quot;
         }
@@ -19975,7 +20269,7 @@ Must be one of:
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "Content-Type: multipart/form-data" \
     --header "Accept: application/json" \
-    --form "file=@/tmp/phpfjl109mit9rpe0IP2ie" </code></pre></div>
+    --form "file=@/tmp/phpilkr78lavs0ab5pRTrQ" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -20013,7 +20307,7 @@ $response = $client-&gt;post(
         'multipart' =&gt; [
             [
                 'name' =&gt; 'file',
-                'contents' =&gt; fopen('/tmp/phpfjl109mit9rpe0IP2ie', 'r')
+                'contents' =&gt; fopen('/tmp/phpilkr78lavs0ab5pRTrQ', 'r')
             ],
         ],
     ]
@@ -20129,7 +20423,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>File Excel (xlsx, xls, csv). Example: <code>/tmp/phpfjl109mit9rpe0IP2ie</code></p>
+<p>File Excel (xlsx, xls, csv). Example: <code>/tmp/phpilkr78lavs0ab5pRTrQ</code></p>
         </div>
         </form>
 
@@ -20877,24 +21171,24 @@ print_r(json_decode((string) $body));</code></pre></div>
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: [
         {
-            &quot;id&quot;: 38,
+            &quot;id&quot;: 71,
             &quot;name&quot;: &quot;adipisci molestias&quot;,
             &quot;description&quot;: &quot;Distinctio eum doloremque id aut libero aliquam veniam corporis.&quot;,
             &quot;status&quot;: &quot;inactive&quot;,
             &quot;created_by&quot;: &quot;N/A&quot;,
             &quot;updated_by&quot;: &quot;N/A&quot;,
-            &quot;created_at&quot;: &quot;09:22:01 28/02/2026&quot;,
-            &quot;updated_at&quot;: &quot;09:22:01 28/02/2026&quot;
+            &quot;created_at&quot;: &quot;10:56:49 28/02/2026&quot;,
+            &quot;updated_at&quot;: &quot;10:56:49 28/02/2026&quot;
         },
         {
-            &quot;id&quot;: 39,
+            &quot;id&quot;: 72,
             &quot;name&quot;: &quot;mollitia deleniti&quot;,
             &quot;description&quot;: &quot;Quia officia est dignissimos neque.&quot;,
             &quot;status&quot;: &quot;inactive&quot;,
             &quot;created_by&quot;: &quot;N/A&quot;,
             &quot;updated_by&quot;: &quot;N/A&quot;,
-            &quot;created_at&quot;: &quot;09:22:01 28/02/2026&quot;,
-            &quot;updated_at&quot;: &quot;09:22:01 28/02/2026&quot;
+            &quot;created_at&quot;: &quot;10:56:49 28/02/2026&quot;,
+            &quot;updated_at&quot;: &quot;10:56:49 28/02/2026&quot;
         }
     ],
     &quot;links&quot;: {
@@ -21169,14 +21463,14 @@ print_r(json_decode((string) $body));</code></pre></div>
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: {
-        &quot;id&quot;: 40,
+        &quot;id&quot;: 73,
         &quot;name&quot;: &quot;et modi&quot;,
         &quot;description&quot;: null,
         &quot;status&quot;: &quot;inactive&quot;,
         &quot;created_by&quot;: &quot;N/A&quot;,
         &quot;updated_by&quot;: &quot;N/A&quot;,
-        &quot;created_at&quot;: &quot;09:22:01 28/02/2026&quot;,
-        &quot;updated_at&quot;: &quot;09:22:01 28/02/2026&quot;
+        &quot;created_at&quot;: &quot;10:56:49 28/02/2026&quot;,
+        &quot;updated_at&quot;: &quot;10:56:49 28/02/2026&quot;
     },
     &quot;success&quot;: &quot;true&quot;
 }</code>
@@ -21373,14 +21667,14 @@ print_r(json_decode((string) $body));</code></pre></div>
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: {
-        &quot;id&quot;: 41,
+        &quot;id&quot;: 74,
         &quot;name&quot;: &quot;distinctio eum&quot;,
         &quot;description&quot;: null,
         &quot;status&quot;: &quot;inactive&quot;,
         &quot;created_by&quot;: &quot;N/A&quot;,
         &quot;updated_by&quot;: &quot;N/A&quot;,
-        &quot;created_at&quot;: &quot;09:22:01 28/02/2026&quot;,
-        &quot;updated_at&quot;: &quot;09:22:01 28/02/2026&quot;
+        &quot;created_at&quot;: &quot;10:56:49 28/02/2026&quot;,
+        &quot;updated_at&quot;: &quot;10:56:49 28/02/2026&quot;
     },
     &quot;success&quot;: &quot;true&quot;,
     &quot;message&quot;: &quot;Tạo cấp ban h&agrave;nh th&agrave;nh c&ocirc;ng!&quot;
@@ -21590,14 +21884,14 @@ print_r(json_decode((string) $body));</code></pre></div>
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: {
-        &quot;id&quot;: 42,
+        &quot;id&quot;: 75,
         &quot;name&quot;: &quot;doloremque id&quot;,
         &quot;description&quot;: null,
         &quot;status&quot;: &quot;active&quot;,
         &quot;created_by&quot;: &quot;N/A&quot;,
         &quot;updated_by&quot;: &quot;N/A&quot;,
-        &quot;created_at&quot;: &quot;09:22:01 28/02/2026&quot;,
-        &quot;updated_at&quot;: &quot;09:22:01 28/02/2026&quot;
+        &quot;created_at&quot;: &quot;10:56:49 28/02/2026&quot;,
+        &quot;updated_at&quot;: &quot;10:56:49 28/02/2026&quot;
     },
     &quot;success&quot;: &quot;true&quot;,
     &quot;message&quot;: &quot;Cập nhật cấp ban h&agrave;nh th&agrave;nh c&ocirc;ng!&quot;
@@ -21832,14 +22126,14 @@ print_r(json_decode((string) $body));</code></pre></div>
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: {
-        &quot;id&quot;: 43,
+        &quot;id&quot;: 76,
         &quot;name&quot;: &quot;aut libero&quot;,
         &quot;description&quot;: &quot;Corporis dolorem mollitia deleniti nemo odit quia officia.&quot;,
         &quot;status&quot;: &quot;inactive&quot;,
         &quot;created_by&quot;: &quot;N/A&quot;,
         &quot;updated_by&quot;: &quot;N/A&quot;,
-        &quot;created_at&quot;: &quot;09:22:01 28/02/2026&quot;,
-        &quot;updated_at&quot;: &quot;09:22:01 28/02/2026&quot;
+        &quot;created_at&quot;: &quot;10:56:49 28/02/2026&quot;,
+        &quot;updated_at&quot;: &quot;10:56:49 28/02/2026&quot;
     },
     &quot;success&quot;: &quot;true&quot;,
     &quot;message&quot;: &quot;Cập nhật cấp ban h&agrave;nh th&agrave;nh c&ocirc;ng!&quot;
@@ -22245,14 +22539,14 @@ print_r(json_decode((string) $body));</code></pre></div>
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: {
-        &quot;id&quot;: 44,
+        &quot;id&quot;: 77,
         &quot;name&quot;: &quot;ipsum nostrum&quot;,
         &quot;description&quot;: null,
         &quot;status&quot;: &quot;active&quot;,
         &quot;created_by&quot;: &quot;N/A&quot;,
         &quot;updated_by&quot;: &quot;N/A&quot;,
-        &quot;created_at&quot;: &quot;09:22:01 28/02/2026&quot;,
-        &quot;updated_at&quot;: &quot;09:22:01 28/02/2026&quot;
+        &quot;created_at&quot;: &quot;10:56:49 28/02/2026&quot;,
+        &quot;updated_at&quot;: &quot;10:56:49 28/02/2026&quot;
     },
     &quot;success&quot;: &quot;true&quot;,
     &quot;message&quot;: &quot;Đổi trạng th&aacute;i th&agrave;nh c&ocirc;ng!&quot;
@@ -22467,24 +22761,24 @@ print_r(json_decode((string) $body));</code></pre></div>
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: [
         {
-            &quot;id&quot;: 34,
+            &quot;id&quot;: 67,
             &quot;name&quot;: &quot;nihil accusantium&quot;,
             &quot;description&quot;: &quot;Modi deserunt aut ab provident perspiciatis.&quot;,
             &quot;status&quot;: &quot;active&quot;,
             &quot;created_by&quot;: &quot;N/A&quot;,
             &quot;updated_by&quot;: &quot;N/A&quot;,
-            &quot;created_at&quot;: &quot;09:21:58 28/02/2026&quot;,
-            &quot;updated_at&quot;: &quot;09:21:58 28/02/2026&quot;
+            &quot;created_at&quot;: &quot;10:56:46 28/02/2026&quot;,
+            &quot;updated_at&quot;: &quot;10:56:46 28/02/2026&quot;
         },
         {
-            &quot;id&quot;: 35,
+            &quot;id&quot;: 68,
             &quot;name&quot;: &quot;omnis nostrum&quot;,
             &quot;description&quot;: null,
             &quot;status&quot;: &quot;active&quot;,
             &quot;created_by&quot;: &quot;N/A&quot;,
             &quot;updated_by&quot;: &quot;N/A&quot;,
-            &quot;created_at&quot;: &quot;09:21:58 28/02/2026&quot;,
-            &quot;updated_at&quot;: &quot;09:21:58 28/02/2026&quot;
+            &quot;created_at&quot;: &quot;10:56:46 28/02/2026&quot;,
+            &quot;updated_at&quot;: &quot;10:56:46 28/02/2026&quot;
         }
     ],
     &quot;success&quot;: &quot;true&quot;
@@ -22730,12 +23024,12 @@ print_r(json_decode((string) $body));</code></pre></div>
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: [
         {
-            &quot;id&quot;: 36,
+            &quot;id&quot;: 69,
             &quot;name&quot;: &quot;harum mollitia&quot;,
             &quot;description&quot;: null
         },
         {
-            &quot;id&quot;: 37,
+            &quot;id&quot;: 70,
             &quot;name&quot;: &quot;aut ab&quot;,
             &quot;description&quot;: &quot;Quo omnis nostrum aut adipisci.&quot;
         }
@@ -23186,7 +23480,7 @@ Must be one of:
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "Content-Type: multipart/form-data" \
     --header "Accept: application/json" \
-    --form "file=@/tmp/phptt1m4eikab6q9Oi0lMW" </code></pre></div>
+    --form "file=@/tmp/php228c1cjbv64hdCaT1XC" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -23224,7 +23518,7 @@ $response = $client-&gt;post(
         'multipart' =&gt; [
             [
                 'name' =&gt; 'file',
-                'contents' =&gt; fopen('/tmp/phptt1m4eikab6q9Oi0lMW', 'r')
+                'contents' =&gt; fopen('/tmp/php228c1cjbv64hdCaT1XC', 'r')
             ],
         ],
     ]
@@ -23340,7 +23634,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>File Excel (xlsx, xls, csv). Example: <code>/tmp/phptt1m4eikab6q9Oi0lMW</code></p>
+<p>File Excel (xlsx, xls, csv). Example: <code>/tmp/php228c1cjbv64hdCaT1XC</code></p>
         </div>
         </form>
 
@@ -24088,24 +24382,24 @@ print_r(json_decode((string) $body));</code></pre></div>
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: [
         {
-            &quot;id&quot;: 38,
+            &quot;id&quot;: 71,
             &quot;name&quot;: &quot;autem et&quot;,
             &quot;description&quot;: null,
             &quot;status&quot;: &quot;inactive&quot;,
             &quot;created_by&quot;: &quot;N/A&quot;,
             &quot;updated_by&quot;: &quot;N/A&quot;,
-            &quot;created_at&quot;: &quot;09:22:01 28/02/2026&quot;,
-            &quot;updated_at&quot;: &quot;09:22:01 28/02/2026&quot;
+            &quot;created_at&quot;: &quot;10:56:48 28/02/2026&quot;,
+            &quot;updated_at&quot;: &quot;10:56:48 28/02/2026&quot;
         },
         {
-            &quot;id&quot;: 39,
+            &quot;id&quot;: 72,
             &quot;name&quot;: &quot;tempora ex&quot;,
             &quot;description&quot;: null,
             &quot;status&quot;: &quot;inactive&quot;,
             &quot;created_by&quot;: &quot;N/A&quot;,
             &quot;updated_by&quot;: &quot;N/A&quot;,
-            &quot;created_at&quot;: &quot;09:22:01 28/02/2026&quot;,
-            &quot;updated_at&quot;: &quot;09:22:01 28/02/2026&quot;
+            &quot;created_at&quot;: &quot;10:56:48 28/02/2026&quot;,
+            &quot;updated_at&quot;: &quot;10:56:48 28/02/2026&quot;
         }
     ],
     &quot;links&quot;: {
@@ -24380,14 +24674,14 @@ print_r(json_decode((string) $body));</code></pre></div>
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: {
-        &quot;id&quot;: 40,
+        &quot;id&quot;: 73,
         &quot;name&quot;: &quot;incidunt iure&quot;,
         &quot;description&quot;: null,
         &quot;status&quot;: &quot;active&quot;,
         &quot;created_by&quot;: &quot;N/A&quot;,
         &quot;updated_by&quot;: &quot;N/A&quot;,
-        &quot;created_at&quot;: &quot;09:22:01 28/02/2026&quot;,
-        &quot;updated_at&quot;: &quot;09:22:01 28/02/2026&quot;
+        &quot;created_at&quot;: &quot;10:56:48 28/02/2026&quot;,
+        &quot;updated_at&quot;: &quot;10:56:48 28/02/2026&quot;
     },
     &quot;success&quot;: &quot;true&quot;
 }</code>
@@ -24584,14 +24878,14 @@ print_r(json_decode((string) $body));</code></pre></div>
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: {
-        &quot;id&quot;: 41,
+        &quot;id&quot;: 74,
         &quot;name&quot;: &quot;consequatur aut&quot;,
         &quot;description&quot;: &quot;Non facere tempora ex voluptatem laboriosam praesentium.&quot;,
         &quot;status&quot;: &quot;inactive&quot;,
         &quot;created_by&quot;: &quot;N/A&quot;,
         &quot;updated_by&quot;: &quot;N/A&quot;,
-        &quot;created_at&quot;: &quot;09:22:01 28/02/2026&quot;,
-        &quot;updated_at&quot;: &quot;09:22:01 28/02/2026&quot;
+        &quot;created_at&quot;: &quot;10:56:48 28/02/2026&quot;,
+        &quot;updated_at&quot;: &quot;10:56:48 28/02/2026&quot;
     },
     &quot;success&quot;: &quot;true&quot;,
     &quot;message&quot;: &quot;Tạo loại văn bản th&agrave;nh c&ocirc;ng!&quot;
@@ -24801,14 +25095,14 @@ print_r(json_decode((string) $body));</code></pre></div>
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: {
-        &quot;id&quot;: 42,
+        &quot;id&quot;: 75,
         &quot;name&quot;: &quot;voluptatem laboriosam&quot;,
         &quot;description&quot;: &quot;Adipisci molestias fugit deleniti distinctio eum doloremque id.&quot;,
         &quot;status&quot;: &quot;active&quot;,
         &quot;created_by&quot;: &quot;N/A&quot;,
         &quot;updated_by&quot;: &quot;N/A&quot;,
-        &quot;created_at&quot;: &quot;09:22:01 28/02/2026&quot;,
-        &quot;updated_at&quot;: &quot;09:22:01 28/02/2026&quot;
+        &quot;created_at&quot;: &quot;10:56:48 28/02/2026&quot;,
+        &quot;updated_at&quot;: &quot;10:56:48 28/02/2026&quot;
     },
     &quot;success&quot;: &quot;true&quot;,
     &quot;message&quot;: &quot;Cập nhật loại văn bản th&agrave;nh c&ocirc;ng!&quot;
@@ -25043,14 +25337,14 @@ print_r(json_decode((string) $body));</code></pre></div>
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: {
-        &quot;id&quot;: 43,
+        &quot;id&quot;: 76,
         &quot;name&quot;: &quot;praesentium quis&quot;,
         &quot;description&quot;: &quot;Fugit deleniti distinctio eum doloremque id aut libero.&quot;,
         &quot;status&quot;: &quot;inactive&quot;,
         &quot;created_by&quot;: &quot;N/A&quot;,
         &quot;updated_by&quot;: &quot;N/A&quot;,
-        &quot;created_at&quot;: &quot;09:22:01 28/02/2026&quot;,
-        &quot;updated_at&quot;: &quot;09:22:01 28/02/2026&quot;
+        &quot;created_at&quot;: &quot;10:56:48 28/02/2026&quot;,
+        &quot;updated_at&quot;: &quot;10:56:48 28/02/2026&quot;
     },
     &quot;success&quot;: &quot;true&quot;,
     &quot;message&quot;: &quot;Cập nhật loại văn bản th&agrave;nh c&ocirc;ng!&quot;
@@ -25456,14 +25750,14 @@ print_r(json_decode((string) $body));</code></pre></div>
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: {
-        &quot;id&quot;: 44,
+        &quot;id&quot;: 77,
         &quot;name&quot;: &quot;odit et&quot;,
         &quot;description&quot;: &quot;Ipsum nostrum omnis autem et consequatur aut dolores enim.&quot;,
         &quot;status&quot;: &quot;inactive&quot;,
         &quot;created_by&quot;: &quot;N/A&quot;,
         &quot;updated_by&quot;: &quot;N/A&quot;,
-        &quot;created_at&quot;: &quot;09:22:01 28/02/2026&quot;,
-        &quot;updated_at&quot;: &quot;09:22:01 28/02/2026&quot;
+        &quot;created_at&quot;: &quot;10:56:48 28/02/2026&quot;,
+        &quot;updated_at&quot;: &quot;10:56:48 28/02/2026&quot;
     },
     &quot;success&quot;: &quot;true&quot;,
     &quot;message&quot;: &quot;Đổi trạng th&aacute;i th&agrave;nh c&ocirc;ng!&quot;
@@ -25678,24 +25972,24 @@ print_r(json_decode((string) $body));</code></pre></div>
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: [
         {
-            &quot;id&quot;: 34,
+            &quot;id&quot;: 67,
             &quot;name&quot;: &quot;eius et&quot;,
             &quot;description&quot;: null,
             &quot;status&quot;: &quot;active&quot;,
             &quot;created_by&quot;: &quot;N/A&quot;,
             &quot;updated_by&quot;: &quot;N/A&quot;,
-            &quot;created_at&quot;: &quot;09:21:58 28/02/2026&quot;,
-            &quot;updated_at&quot;: &quot;09:21:58 28/02/2026&quot;
+            &quot;created_at&quot;: &quot;10:56:46 28/02/2026&quot;,
+            &quot;updated_at&quot;: &quot;10:56:46 28/02/2026&quot;
         },
         {
-            &quot;id&quot;: 35,
+            &quot;id&quot;: 68,
             &quot;name&quot;: &quot;velit et&quot;,
             &quot;description&quot;: &quot;Nihil accusantium harum mollitia modi deserunt.&quot;,
             &quot;status&quot;: &quot;active&quot;,
             &quot;created_by&quot;: &quot;N/A&quot;,
             &quot;updated_by&quot;: &quot;N/A&quot;,
-            &quot;created_at&quot;: &quot;09:21:58 28/02/2026&quot;,
-            &quot;updated_at&quot;: &quot;09:21:58 28/02/2026&quot;
+            &quot;created_at&quot;: &quot;10:56:46 28/02/2026&quot;,
+            &quot;updated_at&quot;: &quot;10:56:46 28/02/2026&quot;
         }
     ],
     &quot;success&quot;: &quot;true&quot;
@@ -25941,12 +26235,12 @@ print_r(json_decode((string) $body));</code></pre></div>
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: [
         {
-            &quot;id&quot;: 36,
+            &quot;id&quot;: 69,
             &quot;name&quot;: &quot;animi quos&quot;,
             &quot;description&quot;: null
         },
         {
-            &quot;id&quot;: 37,
+            &quot;id&quot;: 70,
             &quot;name&quot;: &quot;fugiat sunt&quot;,
             &quot;description&quot;: &quot;Harum mollitia modi deserunt aut ab provident perspiciatis quo.&quot;
         }
@@ -26397,7 +26691,7 @@ Must be one of:
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "Content-Type: multipart/form-data" \
     --header "Accept: application/json" \
-    --form "file=@/tmp/php3fkjhitvvn0m1rBgAXU" </code></pre></div>
+    --form "file=@/tmp/php56t61aq7pg2g4miCs51" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -26435,7 +26729,7 @@ $response = $client-&gt;post(
         'multipart' =&gt; [
             [
                 'name' =&gt; 'file',
-                'contents' =&gt; fopen('/tmp/php3fkjhitvvn0m1rBgAXU', 'r')
+                'contents' =&gt; fopen('/tmp/php56t61aq7pg2g4miCs51', 'r')
             ],
         ],
     ]
@@ -26551,7 +26845,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>File Excel (xlsx, xls, csv). Example: <code>/tmp/php3fkjhitvvn0m1rBgAXU</code></p>
+<p>File Excel (xlsx, xls, csv). Example: <code>/tmp/php56t61aq7pg2g4miCs51</code></p>
         </div>
         </form>
 
@@ -27299,24 +27593,24 @@ print_r(json_decode((string) $body));</code></pre></div>
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: [
         {
-            &quot;id&quot;: 38,
+            &quot;id&quot;: 71,
             &quot;name&quot;: &quot;aliquam veniam&quot;,
             &quot;description&quot;: &quot;Mollitia deleniti nemo odit quia officia.&quot;,
             &quot;status&quot;: &quot;inactive&quot;,
             &quot;created_by&quot;: &quot;N/A&quot;,
             &quot;updated_by&quot;: &quot;N/A&quot;,
-            &quot;created_at&quot;: &quot;09:22:01 28/02/2026&quot;,
-            &quot;updated_at&quot;: &quot;09:22:01 28/02/2026&quot;
+            &quot;created_at&quot;: &quot;10:56:49 28/02/2026&quot;,
+            &quot;updated_at&quot;: &quot;10:56:49 28/02/2026&quot;
         },
         {
-            &quot;id&quot;: 39,
+            &quot;id&quot;: 72,
             &quot;name&quot;: &quot;dignissimos neque&quot;,
             &quot;description&quot;: null,
             &quot;status&quot;: &quot;inactive&quot;,
             &quot;created_by&quot;: &quot;N/A&quot;,
             &quot;updated_by&quot;: &quot;N/A&quot;,
-            &quot;created_at&quot;: &quot;09:22:01 28/02/2026&quot;,
-            &quot;updated_at&quot;: &quot;09:22:01 28/02/2026&quot;
+            &quot;created_at&quot;: &quot;10:56:49 28/02/2026&quot;,
+            &quot;updated_at&quot;: &quot;10:56:49 28/02/2026&quot;
         }
     ],
     &quot;links&quot;: {
@@ -27591,14 +27885,14 @@ print_r(json_decode((string) $body));</code></pre></div>
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: {
-        &quot;id&quot;: 40,
+        &quot;id&quot;: 73,
         &quot;name&quot;: &quot;omnis autem&quot;,
         &quot;description&quot;: null,
         &quot;status&quot;: &quot;inactive&quot;,
         &quot;created_by&quot;: &quot;N/A&quot;,
         &quot;updated_by&quot;: &quot;N/A&quot;,
-        &quot;created_at&quot;: &quot;09:22:01 28/02/2026&quot;,
-        &quot;updated_at&quot;: &quot;09:22:01 28/02/2026&quot;
+        &quot;created_at&quot;: &quot;10:56:49 28/02/2026&quot;,
+        &quot;updated_at&quot;: &quot;10:56:49 28/02/2026&quot;
     },
     &quot;success&quot;: &quot;true&quot;
 }</code>
@@ -27795,14 +28089,14 @@ print_r(json_decode((string) $body));</code></pre></div>
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: {
-        &quot;id&quot;: 41,
+        &quot;id&quot;: 74,
         &quot;name&quot;: &quot;corporis dolorem&quot;,
         &quot;description&quot;: null,
         &quot;status&quot;: &quot;inactive&quot;,
         &quot;created_by&quot;: &quot;N/A&quot;,
         &quot;updated_by&quot;: &quot;N/A&quot;,
-        &quot;created_at&quot;: &quot;09:22:01 28/02/2026&quot;,
-        &quot;updated_at&quot;: &quot;09:22:01 28/02/2026&quot;
+        &quot;created_at&quot;: &quot;10:56:49 28/02/2026&quot;,
+        &quot;updated_at&quot;: &quot;10:56:49 28/02/2026&quot;
     },
     &quot;success&quot;: &quot;true&quot;,
     &quot;message&quot;: &quot;Tạo lĩnh vực th&agrave;nh c&ocirc;ng!&quot;
@@ -28012,14 +28306,14 @@ print_r(json_decode((string) $body));</code></pre></div>
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: {
-        &quot;id&quot;: 42,
+        &quot;id&quot;: 75,
         &quot;name&quot;: &quot;nemo odit&quot;,
         &quot;description&quot;: null,
         &quot;status&quot;: &quot;inactive&quot;,
         &quot;created_by&quot;: &quot;N/A&quot;,
         &quot;updated_by&quot;: &quot;N/A&quot;,
-        &quot;created_at&quot;: &quot;09:22:01 28/02/2026&quot;,
-        &quot;updated_at&quot;: &quot;09:22:01 28/02/2026&quot;
+        &quot;created_at&quot;: &quot;10:56:49 28/02/2026&quot;,
+        &quot;updated_at&quot;: &quot;10:56:49 28/02/2026&quot;
     },
     &quot;success&quot;: &quot;true&quot;,
     &quot;message&quot;: &quot;Cập nhật lĩnh vực th&agrave;nh c&ocirc;ng!&quot;
@@ -28254,14 +28548,14 @@ print_r(json_decode((string) $body));</code></pre></div>
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: {
-        &quot;id&quot;: 43,
+        &quot;id&quot;: 76,
         &quot;name&quot;: &quot;quia officia&quot;,
         &quot;description&quot;: &quot;Neque blanditiis odio veritatis excepturi doloribus delectus.&quot;,
         &quot;status&quot;: &quot;inactive&quot;,
         &quot;created_by&quot;: &quot;N/A&quot;,
         &quot;updated_by&quot;: &quot;N/A&quot;,
-        &quot;created_at&quot;: &quot;09:22:01 28/02/2026&quot;,
-        &quot;updated_at&quot;: &quot;09:22:01 28/02/2026&quot;
+        &quot;created_at&quot;: &quot;10:56:49 28/02/2026&quot;,
+        &quot;updated_at&quot;: &quot;10:56:49 28/02/2026&quot;
     },
     &quot;success&quot;: &quot;true&quot;,
     &quot;message&quot;: &quot;Cập nhật lĩnh vực th&agrave;nh c&ocirc;ng!&quot;
@@ -28667,14 +28961,14 @@ print_r(json_decode((string) $body));</code></pre></div>
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: {
-        &quot;id&quot;: 44,
+        &quot;id&quot;: 77,
         &quot;name&quot;: &quot;aut dolores&quot;,
         &quot;description&quot;: &quot;Facere tempora ex voluptatem laboriosam.&quot;,
         &quot;status&quot;: &quot;active&quot;,
         &quot;created_by&quot;: &quot;N/A&quot;,
         &quot;updated_by&quot;: &quot;N/A&quot;,
-        &quot;created_at&quot;: &quot;09:22:01 28/02/2026&quot;,
-        &quot;updated_at&quot;: &quot;09:22:01 28/02/2026&quot;
+        &quot;created_at&quot;: &quot;10:56:49 28/02/2026&quot;,
+        &quot;updated_at&quot;: &quot;10:56:49 28/02/2026&quot;
     },
     &quot;success&quot;: &quot;true&quot;,
     &quot;message&quot;: &quot;Đổi trạng th&aacute;i th&agrave;nh c&ocirc;ng!&quot;
@@ -28889,24 +29183,24 @@ print_r(json_decode((string) $body));</code></pre></div>
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: [
         {
-            &quot;id&quot;: 34,
+            &quot;id&quot;: 67,
             &quot;name&quot;: &quot;Ms. Elisabeth Okuneva&quot;,
             &quot;description&quot;: null,
             &quot;status&quot;: &quot;active&quot;,
             &quot;created_by&quot;: &quot;N/A&quot;,
             &quot;updated_by&quot;: &quot;N/A&quot;,
-            &quot;created_at&quot;: &quot;09:21:58 28/02/2026&quot;,
-            &quot;updated_at&quot;: &quot;09:21:58 28/02/2026&quot;
+            &quot;created_at&quot;: &quot;10:56:46 28/02/2026&quot;,
+            &quot;updated_at&quot;: &quot;10:56:46 28/02/2026&quot;
         },
         {
-            &quot;id&quot;: 35,
+            &quot;id&quot;: 68,
             &quot;name&quot;: &quot;Mrs. Justina Gaylord&quot;,
             &quot;description&quot;: &quot;Modi deserunt aut ab provident perspiciatis.&quot;,
             &quot;status&quot;: &quot;active&quot;,
             &quot;created_by&quot;: &quot;N/A&quot;,
             &quot;updated_by&quot;: &quot;N/A&quot;,
-            &quot;created_at&quot;: &quot;09:21:58 28/02/2026&quot;,
-            &quot;updated_at&quot;: &quot;09:21:58 28/02/2026&quot;
+            &quot;created_at&quot;: &quot;10:56:46 28/02/2026&quot;,
+            &quot;updated_at&quot;: &quot;10:56:46 28/02/2026&quot;
         }
     ],
     &quot;success&quot;: &quot;true&quot;
@@ -29152,12 +29446,12 @@ print_r(json_decode((string) $body));</code></pre></div>
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: [
         {
-            &quot;id&quot;: 36,
+            &quot;id&quot;: 69,
             &quot;name&quot;: &quot;Ms. Elisabeth Okuneva&quot;,
             &quot;description&quot;: null
         },
         {
-            &quot;id&quot;: 37,
+            &quot;id&quot;: 70,
             &quot;name&quot;: &quot;Mrs. Justina Gaylord&quot;,
             &quot;description&quot;: &quot;Modi deserunt aut ab provident perspiciatis.&quot;
         }
@@ -29608,7 +29902,7 @@ Must be one of:
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "Content-Type: multipart/form-data" \
     --header "Accept: application/json" \
-    --form "file=@/tmp/php1jmudn37942e06JiWG8" </code></pre></div>
+    --form "file=@/tmp/phpncfpjaaatulm03Oq1Xg" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -29646,7 +29940,7 @@ $response = $client-&gt;post(
         'multipart' =&gt; [
             [
                 'name' =&gt; 'file',
-                'contents' =&gt; fopen('/tmp/php1jmudn37942e06JiWG8', 'r')
+                'contents' =&gt; fopen('/tmp/phpncfpjaaatulm03Oq1Xg', 'r')
             ],
         ],
     ]
@@ -29762,7 +30056,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>File Excel (xlsx, xls, csv). Example: <code>/tmp/php1jmudn37942e06JiWG8</code></p>
+<p>File Excel (xlsx, xls, csv). Example: <code>/tmp/phpncfpjaaatulm03Oq1Xg</code></p>
         </div>
         </form>
 
@@ -30510,24 +30804,24 @@ print_r(json_decode((string) $body));</code></pre></div>
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: [
         {
-            &quot;id&quot;: 38,
+            &quot;id&quot;: 71,
             &quot;name&quot;: &quot;Ms. Elisabeth Okuneva&quot;,
             &quot;description&quot;: null,
             &quot;status&quot;: &quot;active&quot;,
             &quot;created_by&quot;: &quot;N/A&quot;,
             &quot;updated_by&quot;: &quot;N/A&quot;,
-            &quot;created_at&quot;: &quot;09:22:01 28/02/2026&quot;,
-            &quot;updated_at&quot;: &quot;09:22:01 28/02/2026&quot;
+            &quot;created_at&quot;: &quot;10:56:49 28/02/2026&quot;,
+            &quot;updated_at&quot;: &quot;10:56:49 28/02/2026&quot;
         },
         {
-            &quot;id&quot;: 39,
+            &quot;id&quot;: 72,
             &quot;name&quot;: &quot;Mrs. Justina Gaylord&quot;,
             &quot;description&quot;: &quot;Modi deserunt aut ab provident perspiciatis.&quot;,
             &quot;status&quot;: &quot;active&quot;,
             &quot;created_by&quot;: &quot;N/A&quot;,
             &quot;updated_by&quot;: &quot;N/A&quot;,
-            &quot;created_at&quot;: &quot;09:22:01 28/02/2026&quot;,
-            &quot;updated_at&quot;: &quot;09:22:01 28/02/2026&quot;
+            &quot;created_at&quot;: &quot;10:56:49 28/02/2026&quot;,
+            &quot;updated_at&quot;: &quot;10:56:49 28/02/2026&quot;
         }
     ],
     &quot;links&quot;: {
@@ -30802,14 +31096,14 @@ print_r(json_decode((string) $body));</code></pre></div>
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: {
-        &quot;id&quot;: 40,
+        &quot;id&quot;: 73,
         &quot;name&quot;: &quot;Morgan Hirthe&quot;,
         &quot;description&quot;: &quot;Commodi incidunt iure odit.&quot;,
         &quot;status&quot;: &quot;active&quot;,
         &quot;created_by&quot;: &quot;N/A&quot;,
         &quot;updated_by&quot;: &quot;N/A&quot;,
-        &quot;created_at&quot;: &quot;09:22:01 28/02/2026&quot;,
-        &quot;updated_at&quot;: &quot;09:22:01 28/02/2026&quot;
+        &quot;created_at&quot;: &quot;10:56:49 28/02/2026&quot;,
+        &quot;updated_at&quot;: &quot;10:56:49 28/02/2026&quot;
     },
     &quot;success&quot;: &quot;true&quot;
 }</code>
@@ -31006,14 +31300,14 @@ print_r(json_decode((string) $body));</code></pre></div>
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: {
-        &quot;id&quot;: 41,
+        &quot;id&quot;: 74,
         &quot;name&quot;: &quot;Mrs. Justina Gaylord&quot;,
         &quot;description&quot;: &quot;Modi deserunt aut ab provident perspiciatis.&quot;,
         &quot;status&quot;: &quot;active&quot;,
         &quot;created_by&quot;: &quot;N/A&quot;,
         &quot;updated_by&quot;: &quot;N/A&quot;,
-        &quot;created_at&quot;: &quot;09:22:01 28/02/2026&quot;,
-        &quot;updated_at&quot;: &quot;09:22:01 28/02/2026&quot;
+        &quot;created_at&quot;: &quot;10:56:49 28/02/2026&quot;,
+        &quot;updated_at&quot;: &quot;10:56:49 28/02/2026&quot;
     },
     &quot;success&quot;: &quot;true&quot;,
     &quot;message&quot;: &quot;Tạo người k&yacute; th&agrave;nh c&ocirc;ng!&quot;
@@ -31223,14 +31517,14 @@ print_r(json_decode((string) $body));</code></pre></div>
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: {
-        &quot;id&quot;: 42,
-        &quot;name&quot;: &quot;Shea Crooks&quot;,
+        &quot;id&quot;: 75,
+        &quot;name&quot;: &quot;Prof. Madelyn Feeney II&quot;,
         &quot;description&quot;: null,
-        &quot;status&quot;: &quot;inactive&quot;,
+        &quot;status&quot;: &quot;active&quot;,
         &quot;created_by&quot;: &quot;N/A&quot;,
         &quot;updated_by&quot;: &quot;N/A&quot;,
-        &quot;created_at&quot;: &quot;09:22:01 28/02/2026&quot;,
-        &quot;updated_at&quot;: &quot;09:22:01 28/02/2026&quot;
+        &quot;created_at&quot;: &quot;10:56:49 28/02/2026&quot;,
+        &quot;updated_at&quot;: &quot;10:56:49 28/02/2026&quot;
     },
     &quot;success&quot;: &quot;true&quot;,
     &quot;message&quot;: &quot;Cập nhật người k&yacute; th&agrave;nh c&ocirc;ng!&quot;
@@ -31465,14 +31759,14 @@ print_r(json_decode((string) $body));</code></pre></div>
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: {
-        &quot;id&quot;: 43,
+        &quot;id&quot;: 76,
         &quot;name&quot;: &quot;Ms. Elisabeth Okuneva&quot;,
         &quot;description&quot;: null,
         &quot;status&quot;: &quot;active&quot;,
         &quot;created_by&quot;: &quot;N/A&quot;,
         &quot;updated_by&quot;: &quot;N/A&quot;,
-        &quot;created_at&quot;: &quot;09:22:01 28/02/2026&quot;,
-        &quot;updated_at&quot;: &quot;09:22:01 28/02/2026&quot;
+        &quot;created_at&quot;: &quot;10:56:49 28/02/2026&quot;,
+        &quot;updated_at&quot;: &quot;10:56:49 28/02/2026&quot;
     },
     &quot;success&quot;: &quot;true&quot;,
     &quot;message&quot;: &quot;Cập nhật người k&yacute; th&agrave;nh c&ocirc;ng!&quot;
@@ -31878,14 +32172,14 @@ print_r(json_decode((string) $body));</code></pre></div>
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: {
-        &quot;id&quot;: 44,
+        &quot;id&quot;: 77,
         &quot;name&quot;: &quot;Morgan Hirthe&quot;,
         &quot;description&quot;: &quot;Commodi incidunt iure odit.&quot;,
         &quot;status&quot;: &quot;active&quot;,
         &quot;created_by&quot;: &quot;N/A&quot;,
         &quot;updated_by&quot;: &quot;N/A&quot;,
-        &quot;created_at&quot;: &quot;09:22:01 28/02/2026&quot;,
-        &quot;updated_at&quot;: &quot;09:22:01 28/02/2026&quot;
+        &quot;created_at&quot;: &quot;10:56:49 28/02/2026&quot;,
+        &quot;updated_at&quot;: &quot;10:56:49 28/02/2026&quot;
     },
     &quot;success&quot;: &quot;true&quot;,
     &quot;message&quot;: &quot;Đổi trạng th&aacute;i th&agrave;nh c&ocirc;ng!&quot;
@@ -32373,7 +32667,7 @@ Must be one of:
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "Content-Type: multipart/form-data" \
     --header "Accept: application/json" \
-    --form "file=@/tmp/php5akdr57gapdbeYo2mZT" </code></pre></div>
+    --form "file=@/tmp/phphinfaorsnc3ebrjbBIS" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -32411,7 +32705,7 @@ $response = $client-&gt;post(
         'multipart' =&gt; [
             [
                 'name' =&gt; 'file',
-                'contents' =&gt; fopen('/tmp/php5akdr57gapdbeYo2mZT', 'r')
+                'contents' =&gt; fopen('/tmp/phphinfaorsnc3ebrjbBIS', 'r')
             ],
         ],
     ]
@@ -32527,7 +32821,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>File Excel (xlsx, xls, csv). Example: <code>/tmp/php5akdr57gapdbeYo2mZT</code></p>
+<p>File Excel (xlsx, xls, csv). Example: <code>/tmp/phphinfaorsnc3ebrjbBIS</code></p>
         </div>
         </form>
 
@@ -33357,7 +33651,7 @@ print_r(json_decode((string) $body));</code></pre></div>
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: [
         {
-            &quot;id&quot;: 7,
+            &quot;id&quot;: 13,
             &quot;so_ky_hieu&quot;: &quot;VB-9171/GZ&quot;,
             &quot;ten_van_ban&quot;: &quot;Velit et fugiat sunt.&quot;,
             &quot;noi_dung&quot;: &quot;Mollitia modi deserunt aut ab provident perspiciatis quo. Nostrum aut adipisci quidem nostrum. Commodi incidunt iure odit. Et modi ipsum nostrum omnis autem et consequatur. Dolores enim non facere tempora.\n\nLaboriosam praesentium quis adipisci molestias fugit deleniti distinctio. Doloremque id aut libero aliquam veniam corporis. Mollitia deleniti nemo odit quia officia.&quot;,
@@ -33368,11 +33662,11 @@ print_r(json_decode((string) $body));</code></pre></div>
             &quot;ngay_het_hieu_luc&quot;: null,
             &quot;created_by&quot;: &quot;N/A&quot;,
             &quot;updated_by&quot;: &quot;N/A&quot;,
-            &quot;created_at&quot;: &quot;09:22:01 28/02/2026&quot;,
-            &quot;updated_at&quot;: &quot;09:22:01 28/02/2026&quot;
+            &quot;created_at&quot;: &quot;10:56:48 28/02/2026&quot;,
+            &quot;updated_at&quot;: &quot;10:56:48 28/02/2026&quot;
         },
         {
-            &quot;id&quot;: 8,
+            &quot;id&quot;: 14,
             &quot;so_ky_hieu&quot;: &quot;VB-1084/VI&quot;,
             &quot;ten_van_ban&quot;: &quot;Qui repudiandae laboriosam est.&quot;,
             &quot;noi_dung&quot;: null,
@@ -33383,8 +33677,8 @@ print_r(json_decode((string) $body));</code></pre></div>
             &quot;ngay_het_hieu_luc&quot;: &quot;04/06/1986&quot;,
             &quot;created_by&quot;: &quot;N/A&quot;,
             &quot;updated_by&quot;: &quot;N/A&quot;,
-            &quot;created_at&quot;: &quot;09:22:01 28/02/2026&quot;,
-            &quot;updated_at&quot;: &quot;09:22:01 28/02/2026&quot;
+            &quot;created_at&quot;: &quot;10:56:48 28/02/2026&quot;,
+            &quot;updated_at&quot;: &quot;10:56:48 28/02/2026&quot;
         }
     ],
     &quot;links&quot;: {
@@ -33878,8 +34172,8 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --form "ngay_hieu_luc=architecto"\
     --form "ngay_het_hieu_luc=architecto"\
     --form "status=architecto"\
-    --form "attachments[]=@/tmp/phpgnfl76r783tneKp5BWv" \
-    --form "attachments[]=@/tmp/phplg7paqbbkpft1dTk2sB" </code></pre></div>
+    --form "attachments[]=@/tmp/phpklh6di62t6eadxHFqzB" \
+    --form "attachments[]=@/tmp/phpc7fa2ddgtifs5JMpS1S" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -33983,11 +34277,11 @@ $response = $client-&gt;post(
             ],
             [
                 'name' =&gt; 'attachments[]',
-                'contents' =&gt; fopen('/tmp/phpgnfl76r783tneKp5BWv', 'r')
+                'contents' =&gt; fopen('/tmp/phpklh6di62t6eadxHFqzB', 'r')
             ],
             [
                 'name' =&gt; 'attachments[]',
-                'contents' =&gt; fopen('/tmp/phplg7paqbbkpft1dTk2sB', 'r')
+                'contents' =&gt; fopen('/tmp/phpc7fa2ddgtifs5JMpS1S', 'r')
             ],
         ],
     ]
@@ -34292,7 +34586,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>Nhiều file đính kèm. Example: <code>/tmp/phplg7paqbbkpft1dTk2sB</code></p>
+<p>Nhiều file đính kèm. Example: <code>/tmp/phpc7fa2ddgtifs5JMpS1S</code></p>
         </div>
         </form>
 
@@ -34328,8 +34622,8 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --form "ngay_het_hieu_luc=architecto"\
     --form "status=architecto"\
     --form "remove_attachment_ids[]=architecto"\
-    --form "attachments[]=@/tmp/phpvakblicei393ftzF5kX" \
-    --form "attachments[]=@/tmp/phpgh4tgd20uutjeEGffFX" </code></pre></div>
+    --form "attachments[]=@/tmp/phplqosqufiteqv1664kyI" \
+    --form "attachments[]=@/tmp/php32kvt2629r2q5CZG56Q" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -34438,11 +34732,11 @@ $response = $client-&gt;put(
             ],
             [
                 'name' =&gt; 'attachments[]',
-                'contents' =&gt; fopen('/tmp/phpvakblicei393ftzF5kX', 'r')
+                'contents' =&gt; fopen('/tmp/phplqosqufiteqv1664kyI', 'r')
             ],
             [
                 'name' =&gt; 'attachments[]',
-                'contents' =&gt; fopen('/tmp/phpgh4tgd20uutjeEGffFX', 'r')
+                'contents' =&gt; fopen('/tmp/php32kvt2629r2q5CZG56Q', 'r')
             ],
         ],
     ]
@@ -34786,7 +35080,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>Nhiều file đính kèm (append). Example: <code>/tmp/phpgh4tgd20uutjeEGffFX</code></p>
+<p>Nhiều file đính kèm (append). Example: <code>/tmp/php32kvt2629r2q5CZG56Q</code></p>
         </div>
         </form>
 
@@ -34822,8 +35116,8 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --form "ngay_het_hieu_luc=architecto"\
     --form "status=architecto"\
     --form "remove_attachment_ids[]=architecto"\
-    --form "attachments[]=@/tmp/php8r918oaqdmi0dOXW0EQ" \
-    --form "attachments[]=@/tmp/phpenv57s59gcrvf0OlIWt" </code></pre></div>
+    --form "attachments[]=@/tmp/phpi7l8utu45pjs6BLdVvP" \
+    --form "attachments[]=@/tmp/php90qvbd2gm6ed2f7ud70" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -34932,11 +35226,11 @@ $response = $client-&gt;patch(
             ],
             [
                 'name' =&gt; 'attachments[]',
-                'contents' =&gt; fopen('/tmp/php8r918oaqdmi0dOXW0EQ', 'r')
+                'contents' =&gt; fopen('/tmp/phpi7l8utu45pjs6BLdVvP', 'r')
             ],
             [
                 'name' =&gt; 'attachments[]',
-                'contents' =&gt; fopen('/tmp/phpenv57s59gcrvf0OlIWt', 'r')
+                'contents' =&gt; fopen('/tmp/php90qvbd2gm6ed2f7ud70', 'r')
             ],
         ],
     ]
@@ -35280,7 +35574,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>Nhiều file đính kèm (append). Example: <code>/tmp/phpenv57s59gcrvf0OlIWt</code></p>
+<p>Nhiều file đính kèm (append). Example: <code>/tmp/php90qvbd2gm6ed2f7ud70</code></p>
         </div>
         </form>
 
@@ -35925,7 +36219,7 @@ print_r(json_decode((string) $body));</code></pre></div>
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: [
         {
-            &quot;id&quot;: 142,
+            &quot;id&quot;: 199,
             &quot;name&quot;: &quot;Architecto Eius&quot;,
             &quot;slug&quot;: &quot;architecto-eius&quot;,
             &quot;description&quot;: &quot;Quos velit et fugiat sunt nihil accusantium harum.&quot;,
@@ -35935,11 +36229,11 @@ print_r(json_decode((string) $body));</code></pre></div>
             &quot;depth&quot;: 0,
             &quot;created_by&quot;: &quot;N/A&quot;,
             &quot;updated_by&quot;: &quot;N/A&quot;,
-            &quot;created_at&quot;: &quot;28/02/2026 09:21:59&quot;,
-            &quot;updated_at&quot;: &quot;28/02/2026 09:21:59&quot;
+            &quot;created_at&quot;: &quot;28/02/2026 10:56:46&quot;,
+            &quot;updated_at&quot;: &quot;28/02/2026 10:56:46&quot;
         },
         {
-            &quot;id&quot;: 143,
+            &quot;id&quot;: 200,
             &quot;name&quot;: &quot;Deserunt Aut&quot;,
             &quot;slug&quot;: &quot;deserunt-aut&quot;,
             &quot;description&quot;: null,
@@ -35949,8 +36243,8 @@ print_r(json_decode((string) $body));</code></pre></div>
             &quot;depth&quot;: 0,
             &quot;created_by&quot;: &quot;N/A&quot;,
             &quot;updated_by&quot;: &quot;N/A&quot;,
-            &quot;created_at&quot;: &quot;28/02/2026 09:21:59&quot;,
-            &quot;updated_at&quot;: &quot;28/02/2026 09:21:59&quot;
+            &quot;created_at&quot;: &quot;28/02/2026 10:56:46&quot;,
+            &quot;updated_at&quot;: &quot;28/02/2026 10:56:46&quot;
         }
     ],
     &quot;success&quot;: &quot;true&quot;
@@ -36198,12 +36492,12 @@ print_r(json_decode((string) $body));</code></pre></div>
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: [
         {
-            &quot;id&quot;: 144,
+            &quot;id&quot;: 201,
             &quot;name&quot;: &quot;Et Animi&quot;,
             &quot;description&quot;: &quot;Et fugiat sunt nihil accusantium.&quot;
         },
         {
-            &quot;id&quot;: 145,
+            &quot;id&quot;: 202,
             &quot;name&quot;: &quot;Quo Omnis&quot;,
             &quot;description&quot;: &quot;Adipisci quidem nostrum qui commodi incidunt iure.&quot;
         }
@@ -36654,7 +36948,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "Content-Type: multipart/form-data" \
     --header "Accept: application/json" \
-    --form "file=@/tmp/phpjp11fidad0lb0lunqHG" </code></pre></div>
+    --form "file=@/tmp/phpv0rtnuebeq2i97lDKC2" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -36692,7 +36986,7 @@ $response = $client-&gt;post(
         'multipart' =&gt; [
             [
                 'name' =&gt; 'file',
-                'contents' =&gt; fopen('/tmp/phpjp11fidad0lb0lunqHG', 'r')
+                'contents' =&gt; fopen('/tmp/phpv0rtnuebeq2i97lDKC2', 'r')
             ],
         ],
     ]
@@ -36808,7 +37102,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>File Excel (xlsx, xls, csv). Cột: name, slug, description, status, sort_order, parent_slug. Example: <code>/tmp/phpjp11fidad0lb0lunqHG</code></p>
+<p>File Excel (xlsx, xls, csv). Cột: name, slug, description, status, sort_order, parent_slug. Example: <code>/tmp/phpv0rtnuebeq2i97lDKC2</code></p>
         </div>
         </form>
 
@@ -37741,7 +38035,7 @@ print_r(json_decode((string) $body));</code></pre></div>
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: [
         {
-            &quot;id&quot;: 146,
+            &quot;id&quot;: 203,
             &quot;name&quot;: &quot;Adipisci Quidem&quot;,
             &quot;slug&quot;: &quot;adipisci-quidem&quot;,
             &quot;description&quot;: &quot;Commodi incidunt iure odit.&quot;,
@@ -37751,11 +38045,11 @@ print_r(json_decode((string) $body));</code></pre></div>
             &quot;depth&quot;: 0,
             &quot;created_by&quot;: &quot;N/A&quot;,
             &quot;updated_by&quot;: &quot;N/A&quot;,
-            &quot;created_at&quot;: &quot;28/02/2026 09:22:00&quot;,
-            &quot;updated_at&quot;: &quot;28/02/2026 09:22:00&quot;
+            &quot;created_at&quot;: &quot;28/02/2026 10:56:47&quot;,
+            &quot;updated_at&quot;: &quot;28/02/2026 10:56:47&quot;
         },
         {
-            &quot;id&quot;: 147,
+            &quot;id&quot;: 204,
             &quot;name&quot;: &quot;Modi Ipsum&quot;,
             &quot;slug&quot;: &quot;modi-ipsum&quot;,
             &quot;description&quot;: &quot;Autem et consequatur aut dolores enim non facere tempora.&quot;,
@@ -37765,8 +38059,8 @@ print_r(json_decode((string) $body));</code></pre></div>
             &quot;depth&quot;: 0,
             &quot;created_by&quot;: &quot;N/A&quot;,
             &quot;updated_by&quot;: &quot;N/A&quot;,
-            &quot;created_at&quot;: &quot;28/02/2026 09:22:00&quot;,
-            &quot;updated_at&quot;: &quot;28/02/2026 09:22:00&quot;
+            &quot;created_at&quot;: &quot;28/02/2026 10:56:47&quot;,
+            &quot;updated_at&quot;: &quot;28/02/2026 10:56:47&quot;
         }
     ],
     &quot;links&quot;: {
@@ -38041,20 +38335,20 @@ print_r(json_decode((string) $body));</code></pre></div>
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: {
-        &quot;id&quot;: 149,
+        &quot;id&quot;: 206,
         &quot;name&quot;: &quot;Aut Adipisci&quot;,
         &quot;slug&quot;: &quot;aut-adipisci&quot;,
         &quot;description&quot;: &quot;Qui commodi incidunt iure odit.&quot;,
         &quot;status&quot;: &quot;active&quot;,
         &quot;sort_order&quot;: 20,
-        &quot;parent_id&quot;: 148,
+        &quot;parent_id&quot;: 205,
         &quot;depth&quot;: 1,
         &quot;created_by&quot;: &quot;N/A&quot;,
         &quot;updated_by&quot;: &quot;N/A&quot;,
-        &quot;created_at&quot;: &quot;28/02/2026 09:22:00&quot;,
-        &quot;updated_at&quot;: &quot;28/02/2026 09:22:00&quot;,
+        &quot;created_at&quot;: &quot;28/02/2026 10:56:47&quot;,
+        &quot;updated_at&quot;: &quot;28/02/2026 10:56:47&quot;,
         &quot;parent&quot;: {
-            &quot;id&quot;: 148,
+            &quot;id&quot;: 205,
             &quot;name&quot;: &quot;Nostrum Omnis&quot;,
             &quot;slug&quot;: &quot;nostrum-omnis&quot;,
             &quot;description&quot;: &quot;Consequatur aut dolores enim non facere tempora.&quot;,
@@ -38064,23 +38358,23 @@ print_r(json_decode((string) $body));</code></pre></div>
             &quot;depth&quot;: 0,
             &quot;created_by&quot;: &quot;N/A&quot;,
             &quot;updated_by&quot;: &quot;N/A&quot;,
-            &quot;created_at&quot;: &quot;28/02/2026 09:22:00&quot;,
-            &quot;updated_at&quot;: &quot;28/02/2026 09:22:00&quot;
+            &quot;created_at&quot;: &quot;28/02/2026 10:56:47&quot;,
+            &quot;updated_at&quot;: &quot;28/02/2026 10:56:47&quot;
         },
         &quot;children&quot;: [
             {
-                &quot;id&quot;: 150,
+                &quot;id&quot;: 207,
                 &quot;name&quot;: &quot;Laboriosam Praesentium&quot;,
                 &quot;slug&quot;: &quot;laboriosam-praesentium&quot;,
                 &quot;description&quot;: &quot;Molestias fugit deleniti distinctio eum doloremque id.&quot;,
                 &quot;status&quot;: &quot;active&quot;,
                 &quot;sort_order&quot;: 61,
-                &quot;parent_id&quot;: 149,
+                &quot;parent_id&quot;: 206,
                 &quot;depth&quot;: 2,
                 &quot;created_by&quot;: &quot;N/A&quot;,
                 &quot;updated_by&quot;: &quot;N/A&quot;,
-                &quot;created_at&quot;: &quot;28/02/2026 09:22:00&quot;,
-                &quot;updated_at&quot;: &quot;28/02/2026 09:22:00&quot;
+                &quot;created_at&quot;: &quot;28/02/2026 10:56:47&quot;,
+                &quot;updated_at&quot;: &quot;28/02/2026 10:56:47&quot;
             }
         ]
     },
@@ -38288,7 +38582,7 @@ print_r(json_decode((string) $body));</code></pre></div>
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: {
-        &quot;id&quot;: 151,
+        &quot;id&quot;: 208,
         &quot;name&quot;: &quot;Nostrum Qui&quot;,
         &quot;slug&quot;: &quot;nostrum-qui&quot;,
         &quot;description&quot;: &quot;Iure odit et et modi ipsum nostrum omnis.&quot;,
@@ -38298,8 +38592,8 @@ print_r(json_decode((string) $body));</code></pre></div>
         &quot;depth&quot;: 0,
         &quot;created_by&quot;: &quot;N/A&quot;,
         &quot;updated_by&quot;: &quot;N/A&quot;,
-        &quot;created_at&quot;: &quot;28/02/2026 09:22:00&quot;,
-        &quot;updated_at&quot;: &quot;28/02/2026 09:22:00&quot;
+        &quot;created_at&quot;: &quot;28/02/2026 10:56:47&quot;,
+        &quot;updated_at&quot;: &quot;28/02/2026 10:56:47&quot;
     },
     &quot;success&quot;: &quot;true&quot;,
     &quot;message&quot;: &quot;Danh mục đ&atilde; được tạo th&agrave;nh c&ocirc;ng!&quot;
@@ -38554,20 +38848,20 @@ print_r(json_decode((string) $body));</code></pre></div>
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: {
-        &quot;id&quot;: 153,
+        &quot;id&quot;: 210,
         &quot;name&quot;: &quot;Commodi Incidunt&quot;,
         &quot;slug&quot;: &quot;commodi-incidunt&quot;,
         &quot;description&quot;: &quot;Et et modi ipsum nostrum.&quot;,
         &quot;status&quot;: &quot;active&quot;,
         &quot;sort_order&quot;: 41,
-        &quot;parent_id&quot;: 152,
+        &quot;parent_id&quot;: 209,
         &quot;depth&quot;: 1,
         &quot;created_by&quot;: &quot;N/A&quot;,
         &quot;updated_by&quot;: &quot;N/A&quot;,
-        &quot;created_at&quot;: &quot;28/02/2026 09:22:00&quot;,
-        &quot;updated_at&quot;: &quot;28/02/2026 09:22:00&quot;,
+        &quot;created_at&quot;: &quot;28/02/2026 10:56:47&quot;,
+        &quot;updated_at&quot;: &quot;28/02/2026 10:56:47&quot;,
         &quot;parent&quot;: {
-            &quot;id&quot;: 152,
+            &quot;id&quot;: 209,
             &quot;name&quot;: &quot;Et Consequatur&quot;,
             &quot;slug&quot;: &quot;et-consequatur&quot;,
             &quot;description&quot;: &quot;Enim non facere tempora ex voluptatem laboriosam praesentium.&quot;,
@@ -38577,23 +38871,23 @@ print_r(json_decode((string) $body));</code></pre></div>
             &quot;depth&quot;: 0,
             &quot;created_by&quot;: &quot;N/A&quot;,
             &quot;updated_by&quot;: &quot;N/A&quot;,
-            &quot;created_at&quot;: &quot;28/02/2026 09:22:00&quot;,
-            &quot;updated_at&quot;: &quot;28/02/2026 09:22:00&quot;
+            &quot;created_at&quot;: &quot;28/02/2026 10:56:47&quot;,
+            &quot;updated_at&quot;: &quot;28/02/2026 10:56:47&quot;
         },
         &quot;children&quot;: [
             {
-                &quot;id&quot;: 154,
+                &quot;id&quot;: 211,
                 &quot;name&quot;: &quot;Molestias Fugit&quot;,
                 &quot;slug&quot;: &quot;molestias-fugit&quot;,
                 &quot;description&quot;: null,
                 &quot;status&quot;: &quot;inactive&quot;,
                 &quot;sort_order&quot;: 7,
-                &quot;parent_id&quot;: 153,
+                &quot;parent_id&quot;: 210,
                 &quot;depth&quot;: 2,
                 &quot;created_by&quot;: &quot;N/A&quot;,
                 &quot;updated_by&quot;: &quot;N/A&quot;,
-                &quot;created_at&quot;: &quot;28/02/2026 09:22:00&quot;,
-                &quot;updated_at&quot;: &quot;28/02/2026 09:22:00&quot;
+                &quot;created_at&quot;: &quot;28/02/2026 10:56:47&quot;,
+                &quot;updated_at&quot;: &quot;28/02/2026 10:56:47&quot;
             }
         ]
     },
@@ -38875,20 +39169,20 @@ print_r(json_decode((string) $body));</code></pre></div>
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: {
-        &quot;id&quot;: 156,
+        &quot;id&quot;: 213,
         &quot;name&quot;: &quot;Iure Odit&quot;,
         &quot;slug&quot;: &quot;iure-odit&quot;,
         &quot;description&quot;: &quot;Modi ipsum nostrum omnis autem et.&quot;,
         &quot;status&quot;: &quot;inactive&quot;,
         &quot;sort_order&quot;: 84,
-        &quot;parent_id&quot;: 155,
+        &quot;parent_id&quot;: 212,
         &quot;depth&quot;: 1,
         &quot;created_by&quot;: &quot;N/A&quot;,
         &quot;updated_by&quot;: &quot;N/A&quot;,
-        &quot;created_at&quot;: &quot;28/02/2026 09:22:00&quot;,
-        &quot;updated_at&quot;: &quot;28/02/2026 09:22:00&quot;,
+        &quot;created_at&quot;: &quot;28/02/2026 10:56:47&quot;,
+        &quot;updated_at&quot;: &quot;28/02/2026 10:56:47&quot;,
         &quot;parent&quot;: {
-            &quot;id&quot;: 155,
+            &quot;id&quot;: 212,
             &quot;name&quot;: &quot;Dolores Enim&quot;,
             &quot;slug&quot;: &quot;dolores-enim&quot;,
             &quot;description&quot;: &quot;Tempora ex voluptatem laboriosam praesentium quis.&quot;,
@@ -38898,23 +39192,23 @@ print_r(json_decode((string) $body));</code></pre></div>
             &quot;depth&quot;: 0,
             &quot;created_by&quot;: &quot;N/A&quot;,
             &quot;updated_by&quot;: &quot;N/A&quot;,
-            &quot;created_at&quot;: &quot;28/02/2026 09:22:00&quot;,
-            &quot;updated_at&quot;: &quot;28/02/2026 09:22:00&quot;
+            &quot;created_at&quot;: &quot;28/02/2026 10:56:47&quot;,
+            &quot;updated_at&quot;: &quot;28/02/2026 10:56:47&quot;
         },
         &quot;children&quot;: [
             {
-                &quot;id&quot;: 157,
+                &quot;id&quot;: 214,
                 &quot;name&quot;: &quot;Fugit Deleniti&quot;,
                 &quot;slug&quot;: &quot;fugit-deleniti&quot;,
                 &quot;description&quot;: null,
                 &quot;status&quot;: &quot;active&quot;,
                 &quot;sort_order&quot;: 35,
-                &quot;parent_id&quot;: 156,
+                &quot;parent_id&quot;: 213,
                 &quot;depth&quot;: 2,
                 &quot;created_by&quot;: &quot;N/A&quot;,
                 &quot;updated_by&quot;: &quot;N/A&quot;,
-                &quot;created_at&quot;: &quot;28/02/2026 09:22:00&quot;,
-                &quot;updated_at&quot;: &quot;28/02/2026 09:22:00&quot;
+                &quot;created_at&quot;: &quot;28/02/2026 10:56:47&quot;,
+                &quot;updated_at&quot;: &quot;28/02/2026 10:56:47&quot;
             }
         ]
     },
@@ -39358,20 +39652,20 @@ print_r(json_decode((string) $body));</code></pre></div>
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: {
-        &quot;id&quot;: 159,
+        &quot;id&quot;: 216,
         &quot;name&quot;: &quot;Quidem Nostrum&quot;,
         &quot;slug&quot;: &quot;quidem-nostrum&quot;,
         &quot;description&quot;: null,
         &quot;status&quot;: &quot;inactive&quot;,
         &quot;sort_order&quot;: 0,
-        &quot;parent_id&quot;: 158,
+        &quot;parent_id&quot;: 215,
         &quot;depth&quot;: 1,
         &quot;created_by&quot;: &quot;N/A&quot;,
         &quot;updated_by&quot;: &quot;N/A&quot;,
-        &quot;created_at&quot;: &quot;28/02/2026 09:22:00&quot;,
-        &quot;updated_at&quot;: &quot;28/02/2026 09:22:00&quot;,
+        &quot;created_at&quot;: &quot;28/02/2026 10:56:47&quot;,
+        &quot;updated_at&quot;: &quot;28/02/2026 10:56:47&quot;,
         &quot;parent&quot;: {
-            &quot;id&quot;: 158,
+            &quot;id&quot;: 215,
             &quot;name&quot;: &quot;Et Et&quot;,
             &quot;slug&quot;: &quot;et-et&quot;,
             &quot;description&quot;: &quot;Nostrum omnis autem et consequatur aut.&quot;,
@@ -39381,23 +39675,23 @@ print_r(json_decode((string) $body));</code></pre></div>
             &quot;depth&quot;: 0,
             &quot;created_by&quot;: &quot;N/A&quot;,
             &quot;updated_by&quot;: &quot;N/A&quot;,
-            &quot;created_at&quot;: &quot;28/02/2026 09:22:00&quot;,
-            &quot;updated_at&quot;: &quot;28/02/2026 09:22:00&quot;
+            &quot;created_at&quot;: &quot;28/02/2026 10:56:47&quot;,
+            &quot;updated_at&quot;: &quot;28/02/2026 10:56:47&quot;
         },
         &quot;children&quot;: [
             {
-                &quot;id&quot;: 160,
+                &quot;id&quot;: 217,
                 &quot;name&quot;: &quot;Non Facere&quot;,
                 &quot;slug&quot;: &quot;non-facere&quot;,
                 &quot;description&quot;: &quot;Voluptatem laboriosam praesentium quis adipisci.&quot;,
                 &quot;status&quot;: &quot;inactive&quot;,
                 &quot;sort_order&quot;: 10,
-                &quot;parent_id&quot;: 159,
+                &quot;parent_id&quot;: 216,
                 &quot;depth&quot;: 2,
                 &quot;created_by&quot;: &quot;N/A&quot;,
                 &quot;updated_by&quot;: &quot;N/A&quot;,
-                &quot;created_at&quot;: &quot;28/02/2026 09:22:00&quot;,
-                &quot;updated_at&quot;: &quot;28/02/2026 09:22:00&quot;
+                &quot;created_at&quot;: &quot;28/02/2026 10:56:47&quot;,
+                &quot;updated_at&quot;: &quot;28/02/2026 10:56:47&quot;
             }
         ]
     },
@@ -39829,7 +40123,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "Content-Type: multipart/form-data" \
     --header "Accept: application/json" \
-    --form "file=@/tmp/phpua92tsha3rfmdjlFtCn" </code></pre></div>
+    --form "file=@/tmp/phphv1cnjfea1br8awNVWf" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -39867,7 +40161,7 @@ $response = $client-&gt;post(
         'multipart' =&gt; [
             [
                 'name' =&gt; 'file',
-                'contents' =&gt; fopen('/tmp/phpua92tsha3rfmdjlFtCn', 'r')
+                'contents' =&gt; fopen('/tmp/phphv1cnjfea1br8awNVWf', 'r')
             ],
         ],
     ]
@@ -39983,7 +40277,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>File Excel (xlsx, xls, csv). Cột theo chuẩn export. Example: <code>/tmp/phpua92tsha3rfmdjlFtCn</code></p>
+<p>File Excel (xlsx, xls, csv). Cột theo chuẩn export. Example: <code>/tmp/phphv1cnjfea1br8awNVWf</code></p>
         </div>
         </form>
 
@@ -40747,7 +41041,7 @@ print_r(json_decode((string) $body));</code></pre></div>
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: [
         {
-            &quot;id&quot;: 35,
+            &quot;id&quot;: 41,
             &quot;title&quot;: &quot;Et animi quos velit et fugiat.&quot;,
             &quot;slug&quot;: &quot;et-animi-quos-velit-et-fugiat&quot;,
             &quot;content&quot;: &quot;Accusantium harum mollitia modi deserunt aut ab. Perspiciatis quo omnis nostrum aut adipisci quidem nostrum qui. Incidunt iure odit et et modi ipsum.\n\nAutem et consequatur aut dolores enim non facere tempora. Voluptatem laboriosam praesentium quis adipisci.\n\nDeleniti distinctio eum doloremque id aut. Aliquam veniam corporis dolorem mollitia deleniti nemo. Quia officia est dignissimos neque. Odio veritatis excepturi doloribus delectus fugit qui repudiandae.&quot;,
@@ -40755,11 +41049,11 @@ print_r(json_decode((string) $body));</code></pre></div>
             &quot;view_count&quot;: 0,
             &quot;created_by&quot;: &quot;N/A&quot;,
             &quot;updated_by&quot;: &quot;N/A&quot;,
-            &quot;created_at&quot;: &quot;28/02/2026 09:22:11&quot;,
-            &quot;updated_at&quot;: &quot;28/02/2026 09:22:11&quot;
+            &quot;created_at&quot;: &quot;28/02/2026 10:56:47&quot;,
+            &quot;updated_at&quot;: &quot;28/02/2026 10:56:47&quot;
         },
         {
-            &quot;id&quot;: 36,
+            &quot;id&quot;: 42,
             &quot;title&quot;: &quot;Alias tenetur ratione nemo voluptate accusamus ut et.&quot;,
             &quot;slug&quot;: &quot;alias-tenetur-ratione-nemo-voluptate-accusamus-ut-et&quot;,
             &quot;content&quot;: &quot;Rerum ex repellendus assumenda et. Ab reiciendis quia perspiciatis deserunt ducimus corrupti. Dolores quia maiores assumenda odit doloribus repellat officiis. Nesciunt ut ratione iure impedit molestiae ut rem.\n\nSint aut molestiae sunt suscipit. Fugiat ut aut deserunt et error neque recusandae. Ipsam dolorem et ut dicta vitae assumenda consequatur. Et sunt quisquam sit repellendus ut.\n\nRatione dolores sed rem ea ut. Deserunt sint quis in quod. Aspernatur consectetur id a consectetur assumenda eaque neque.&quot;,
@@ -40767,8 +41061,8 @@ print_r(json_decode((string) $body));</code></pre></div>
             &quot;view_count&quot;: 0,
             &quot;created_by&quot;: &quot;N/A&quot;,
             &quot;updated_by&quot;: &quot;N/A&quot;,
-            &quot;created_at&quot;: &quot;28/02/2026 09:22:11&quot;,
-            &quot;updated_at&quot;: &quot;28/02/2026 09:22:11&quot;
+            &quot;created_at&quot;: &quot;28/02/2026 10:56:47&quot;,
+            &quot;updated_at&quot;: &quot;28/02/2026 10:56:47&quot;
         }
     ],
     &quot;links&quot;: {
@@ -41399,8 +41693,8 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --form "content=Nội dung bài viết..."\
     --form "status=draft"\
     --form "category_ids[]=1"\
-    --form "images[]=@/tmp/php43qmnsqs9iqif7Fk1lc" \
-    --form "images[]=@/tmp/php5f6pna3ggg4j5fwny8X" </code></pre></div>
+    --form "images[]=@/tmp/php8kqmfln47dif6TYDYRP" \
+    --form "images[]=@/tmp/phpvgqsp0f4g638e6htHXh" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -41459,11 +41753,11 @@ $response = $client-&gt;post(
             ],
             [
                 'name' =&gt; 'images[]',
-                'contents' =&gt; fopen('/tmp/php43qmnsqs9iqif7Fk1lc', 'r')
+                'contents' =&gt; fopen('/tmp/php8kqmfln47dif6TYDYRP', 'r')
             ],
             [
                 'name' =&gt; 'images[]',
-                'contents' =&gt; fopen('/tmp/php5f6pna3ggg4j5fwny8X', 'r')
+                'contents' =&gt; fopen('/tmp/phpvgqsp0f4g638e6htHXh', 'r')
             ],
         ],
     ]
@@ -41672,7 +41966,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>Ảnh đính kèm (jpeg/png/gif/webp, tối đa 10 ảnh, mỗi ảnh ≤ 5MB). Example: <code>/tmp/php5f6pna3ggg4j5fwny8X</code></p>
+<p>Ảnh đính kèm (jpeg/png/gif/webp, tối đa 10 ảnh, mỗi ảnh ≤ 5MB). Example: <code>/tmp/phpvgqsp0f4g638e6htHXh</code></p>
         </div>
         </form>
 
@@ -41699,8 +41993,8 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --form "status=architecto"\
     --form "category_ids[]=architecto"\
     --form "remove_attachment_ids[]=architecto"\
-    --form "images[]=@/tmp/php0nc3po03sqjt7CaaIWj" \
-    --form "images[]=@/tmp/phpvukjsvl8ucbj71zPBeZ" </code></pre></div>
+    --form "images[]=@/tmp/php4kcfpg17fvsa9l4BJc1" \
+    --form "images[]=@/tmp/phpidp7du6a83247COo8D5" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -41764,11 +42058,11 @@ $response = $client-&gt;put(
             ],
             [
                 'name' =&gt; 'images[]',
-                'contents' =&gt; fopen('/tmp/php0nc3po03sqjt7CaaIWj', 'r')
+                'contents' =&gt; fopen('/tmp/php4kcfpg17fvsa9l4BJc1', 'r')
             ],
             [
                 'name' =&gt; 'images[]',
-                'contents' =&gt; fopen('/tmp/phpvukjsvl8ucbj71zPBeZ', 'r')
+                'contents' =&gt; fopen('/tmp/phpidp7du6a83247COo8D5', 'r')
             ],
         ],
     ]
@@ -42016,7 +42310,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>Ảnh mới (append). Example: <code>/tmp/phpvukjsvl8ucbj71zPBeZ</code></p>
+<p>Ảnh mới (append). Example: <code>/tmp/phpidp7du6a83247COo8D5</code></p>
         </div>
         </form>
 
@@ -42043,8 +42337,8 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --form "status=architecto"\
     --form "category_ids[]=architecto"\
     --form "remove_attachment_ids[]=architecto"\
-    --form "images[]=@/tmp/phpp5n8s2conrladPelFwt" \
-    --form "images[]=@/tmp/phpdn13enenut6e0WyJI4r" </code></pre></div>
+    --form "images[]=@/tmp/phpkjedc8n966i151xsUQR" \
+    --form "images[]=@/tmp/phpitq466tai42sb77yboH" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -42108,11 +42402,11 @@ $response = $client-&gt;patch(
             ],
             [
                 'name' =&gt; 'images[]',
-                'contents' =&gt; fopen('/tmp/phpp5n8s2conrladPelFwt', 'r')
+                'contents' =&gt; fopen('/tmp/phpkjedc8n966i151xsUQR', 'r')
             ],
             [
                 'name' =&gt; 'images[]',
-                'contents' =&gt; fopen('/tmp/phpdn13enenut6e0WyJI4r', 'r')
+                'contents' =&gt; fopen('/tmp/phpitq466tai42sb77yboH', 'r')
             ],
         ],
     ]
@@ -42360,7 +42654,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>Ảnh mới (append). Example: <code>/tmp/phpdn13enenut6e0WyJI4r</code></p>
+<p>Ảnh mới (append). Example: <code>/tmp/phpitq466tai42sb77yboH</code></p>
         </div>
         </form>
 
