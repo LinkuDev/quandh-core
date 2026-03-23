@@ -27,13 +27,13 @@
             </style>
 
     <script>
-        var tryItOutBaseUrl = "http://localhost";
+        var tryItOutBaseUrl = "http://localhost:8000";
         var useCsrf = Boolean();
         var csrfUrl = "/sanctum/csrf-cookie";
     </script>
-    <script src="{{ asset("/vendor/scribe/js/tryitout-5.7.0.js") }}"></script>
+    <script src="{{ asset("/vendor/scribe/js/tryitout-5.8.0.js") }}"></script>
 
-    <script src="{{ asset("/vendor/scribe/js/theme-default-5.7.0.js") }}"></script>
+    <script src="{{ asset("/vendor/scribe/js/theme-default-5.8.0.js") }}"></script>
 
 </head>
 
@@ -710,7 +710,7 @@
     </ul>
 
     <ul class="toc-footer" id="last-updated">
-        <li>Last updated: March 5, 2026</li>
+        <li>Last updated: March 23, 2026</li>
     </ul>
 </div>
 
@@ -720,7 +720,7 @@
         <h1 id="introduction">Introduction</h1>
 <p>Quandh Core API - RESTful API cho quản lý xác thực (Auth), người dùng (User) và bài viết (Post). Sử dụng Laravel Sanctum để xác thực Bearer token.</p>
 <aside>
-    <strong>Base URL</strong>: <code>http://localhost</code>
+    <strong>Base URL</strong>: <code>http://localhost:8000</code>
 </aside>
 <pre><code>Tài liệu này cung cấp thông tin chi tiết để tích hợp và sử dụng Quandh Core API.
 
@@ -748,7 +748,7 @@
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost/api/auth/login" \
+    "http://localhost:8000/api/auth/login" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -760,7 +760,7 @@
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/auth/login"
+    "http://localhost:8000/api/auth/login"
 );
 
 const headers = {
@@ -782,7 +782,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/auth/login';
+$url = 'http://localhost:8000/api/auth/login';
 $response = $client-&gt;post(
     $url,
     [
@@ -956,7 +956,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost/api/auth/forgot-password" \
+    "http://localhost:8000/api/auth/forgot-password" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -967,7 +967,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/auth/forgot-password"
+    "http://localhost:8000/api/auth/forgot-password"
 );
 
 const headers = {
@@ -988,7 +988,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/auth/forgot-password';
+$url = 'http://localhost:8000/api/auth/forgot-password';
 $response = $client-&gt;post(
     $url,
     [
@@ -1117,7 +1117,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost/api/auth/reset-password" \
+    "http://localhost:8000/api/auth/reset-password" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -1131,7 +1131,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/auth/reset-password"
+    "http://localhost:8000/api/auth/reset-password"
 );
 
 const headers = {
@@ -1155,7 +1155,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/auth/reset-password';
+$url = 'http://localhost:8000/api/auth/reset-password';
 $response = $client-&gt;post(
     $url,
     [
@@ -1324,7 +1324,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost/api/auth/logout" \
+    "http://localhost:8000/api/auth/logout" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -1332,7 +1332,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/auth/logout"
+    "http://localhost:8000/api/auth/logout"
 );
 
 const headers = {
@@ -1340,6 +1340,7 @@ const headers = {
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
+
 
 fetch(url, {
     method: "POST",
@@ -1349,7 +1350,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/auth/logout';
+$url = 'http://localhost:8000/api/auth/logout';
 $response = $client-&gt;post(
     $url,
     [
@@ -1476,7 +1477,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost/api/auth/switch-organization" \
+    "http://localhost:8000/api/auth/switch-organization" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
@@ -1488,7 +1489,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/auth/switch-organization"
+    "http://localhost:8000/api/auth/switch-organization"
 );
 
 const headers = {
@@ -1510,7 +1511,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/auth/switch-organization';
+$url = 'http://localhost:8000/api/auth/switch-organization';
 $response = $client-&gt;post(
     $url,
     [
@@ -1677,7 +1678,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/user" \
+    --get "http://localhost:8000/api/user" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -1685,7 +1686,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/user"
+    "http://localhost:8000/api/user"
 );
 
 const headers = {
@@ -1693,6 +1694,7 @@ const headers = {
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
+
 
 fetch(url, {
     method: "GET",
@@ -1702,7 +1704,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/user';
+$url = 'http://localhost:8000/api/user';
 $response = $client-&gt;get(
     $url,
     [
@@ -1855,7 +1857,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/log-activities/export?search=architecto&amp;status=active&amp;from_date=2026-01-01&amp;to_date=2026-12-31&amp;sort_by=architecto&amp;sort_order=desc&amp;limit=10&amp;method_type=GET&amp;status_code=200" \
+    --get "http://localhost:8000/api/log-activities/export?search=architecto&amp;status=active&amp;from_date=2026-01-01&amp;to_date=2026-12-31&amp;sort_by=architecto&amp;sort_order=desc%0A%0AXu%E1%BA%A5t+ra+c%C3%A1c+tr%C6%B0%E1%BB%9Dng%3A+id%2C+description%2C+user_type%2C+user_id%2C+user_name%2C+organization_id%2C+route%2C+method_type%2C+status_code%2C+ip_address%2C+country%2C+user_agent%2C+request_data%2C+created_at%2C+updated_at.&amp;limit=10&amp;method_type=GET&amp;status_code=200" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
@@ -1864,7 +1866,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/log-activities/export"
+    "http://localhost:8000/api/log-activities/export"
 );
 
 const params = {
@@ -1873,7 +1875,9 @@ const params = {
     "from_date": "2026-01-01",
     "to_date": "2026-12-31",
     "sort_by": "architecto",
-    "sort_order": "desc",
+    "sort_order": "desc
+
+Xuất ra các trường: id, description, user_type, user_id, user_name, organization_id, route, method_type, status_code, ip_address, country, user_agent, request_data, created_at, updated_at.",
     "limit": "10",
     "method_type": "GET",
     "status_code": "200",
@@ -1888,6 +1892,7 @@ const headers = {
     "Accept": "application/json",
 };
 
+
 fetch(url, {
     method: "GET",
     headers,
@@ -1896,7 +1901,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/log-activities/export';
+$url = 'http://localhost:8000/api/log-activities/export';
 $response = $client-&gt;get(
     $url,
     [
@@ -1912,7 +1917,9 @@ $response = $client-&gt;get(
             'from_date' =&gt; '2026-01-01',
             'to_date' =&gt; '2026-12-31',
             'sort_by' =&gt; 'architecto',
-            'sort_order' =&gt; 'desc',
+            'sort_order' =&gt; 'desc
+
+Xuất ra các trường: id, description, user_type, user_id, user_name, organization_id, route, method_type, status_code, ip_address, country, user_agent, request_data, created_at, updated_at.',
             'limit' =&gt; '10',
             'method_type' =&gt; 'GET',
             'status_code' =&gt; '200',
@@ -2105,10 +2112,13 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="sort_order"                data-endpoint="GETapi-log-activities-export"
-               value="desc"
+               value="desc
+
+Xuất ra các trường: id, description, user_type, user_id, user_name, organization_id, route, method_type, status_code, ip_address, country, user_agent, request_data, created_at, updated_at."
                data-component="query">
     <br>
-<p>asc, desc. Example: <code>desc</code></p>
+<p>asc, desc. Example: `desc</p>
+<p>Xuất ra các trường: id, description, user_type, user_id, user_name, organization_id, route, method_type, status_code, ip_address, country, user_agent, request_data, created_at, updated_at.`</p>
             </div>
                                     <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>limit</code></b>&nbsp;&nbsp;
@@ -2162,7 +2172,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/log-activities/stats?search=127.0.0.1&amp;status=active&amp;from_date=2026-01-01&amp;to_date=2026-12-31&amp;sort_by=created_at&amp;sort_order=desc&amp;limit=10&amp;method_type=GET&amp;status_code=200" \
+    --get "http://localhost:8000/api/log-activities/stats?search=127.0.0.1&amp;status=active&amp;from_date=2026-01-01&amp;to_date=2026-12-31&amp;sort_by=created_at&amp;sort_order=desc&amp;limit=10&amp;method_type=GET&amp;status_code=200" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
@@ -2171,7 +2181,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/log-activities/stats"
+    "http://localhost:8000/api/log-activities/stats"
 );
 
 const params = {
@@ -2195,6 +2205,7 @@ const headers = {
     "Accept": "application/json",
 };
 
+
 fetch(url, {
     method: "GET",
     headers,
@@ -2203,7 +2214,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/log-activities/stats';
+$url = 'http://localhost:8000/api/log-activities/stats';
 $response = $client-&gt;get(
     $url,
     [
@@ -2465,7 +2476,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost/api/log-activities/delete-by-date" \
+    "http://localhost:8000/api/log-activities/delete-by-date" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
@@ -2479,7 +2490,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/log-activities/delete-by-date"
+    "http://localhost:8000/api/log-activities/delete-by-date"
 );
 
 const headers = {
@@ -2503,7 +2514,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/log-activities/delete-by-date';
+$url = 'http://localhost:8000/api/log-activities/delete-by-date';
 $response = $client-&gt;post(
     $url,
     [
@@ -2672,7 +2683,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost/api/log-activities/clear" \
+    "http://localhost:8000/api/log-activities/clear" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
@@ -2681,7 +2692,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/log-activities/clear"
+    "http://localhost:8000/api/log-activities/clear"
 );
 
 const headers = {
@@ -2691,6 +2702,7 @@ const headers = {
     "Accept": "application/json",
 };
 
+
 fetch(url, {
     method: "POST",
     headers,
@@ -2699,7 +2711,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/log-activities/clear';
+$url = 'http://localhost:8000/api/log-activities/clear';
 $response = $client-&gt;post(
     $url,
     [
@@ -2839,7 +2851,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost/api/log-activities/bulk-delete" \
+    "http://localhost:8000/api/log-activities/bulk-delete" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
@@ -2856,7 +2868,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/log-activities/bulk-delete"
+    "http://localhost:8000/api/log-activities/bulk-delete"
 );
 
 const headers = {
@@ -2883,7 +2895,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/log-activities/bulk-delete';
+$url = 'http://localhost:8000/api/log-activities/bulk-delete';
 $response = $client-&gt;post(
     $url,
     [
@@ -3045,7 +3057,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/log-activities?search=login&amp;status=active&amp;from_date=2026-01-01&amp;to_date=2026-12-31&amp;sort_by=created_at&amp;sort_order=desc&amp;limit=10&amp;method_type=architecto&amp;status_code=16" \
+    --get "http://localhost:8000/api/log-activities?search=login&amp;status=active&amp;from_date=2026-01-01&amp;to_date=2026-12-31&amp;sort_by=created_at&amp;sort_order=desc&amp;limit=10&amp;method_type=architecto&amp;status_code=16" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
@@ -3054,7 +3066,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/log-activities"
+    "http://localhost:8000/api/log-activities"
 );
 
 const params = {
@@ -3078,6 +3090,7 @@ const headers = {
     "Accept": "application/json",
 };
 
+
 fetch(url, {
     method: "GET",
     headers,
@@ -3086,7 +3099,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/log-activities';
+$url = 'http://localhost:8000/api/log-activities';
 $response = $client-&gt;get(
     $url,
     [
@@ -3123,7 +3136,7 @@ print_r(json_decode((string) $body));</code></pre></div>
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: [
         {
-            &quot;id&quot;: 38,
+            &quot;id&quot;: 4,
             &quot;description&quot;: &quot;Et animi quos velit et fugiat.&quot;,
             &quot;user_type&quot;: &quot;User&quot;,
             &quot;user_id&quot;: null,
@@ -3134,31 +3147,31 @@ print_r(json_decode((string) $body));</code></pre></div>
             &quot;status_code&quot;: 404,
             &quot;ip_address&quot;: &quot;125.161.29.220&quot;,
             &quot;country&quot;: &quot;Pakistan&quot;,
-            &quot;user_agent&quot;: &quot;Mozilla/5.0 (Windows NT 5.0; en-US; rv:1.9.2.20) Gecko/20260217 Firefox/35.0&quot;,
+            &quot;user_agent&quot;: &quot;Mozilla/5.0 (Windows NT 5.0; en-US; rv:1.9.2.20) Gecko/20251120 Firefox/35.0&quot;,
             &quot;request_data&quot;: {
                 &quot;sample&quot;: &quot;et&quot;
             },
-            &quot;created_at&quot;: &quot;09:32:25 05/03/2026&quot;,
-            &quot;updated_at&quot;: &quot;09:32:25 05/03/2026&quot;
+            &quot;created_at&quot;: &quot;03:08:03 23/03/2026&quot;,
+            &quot;updated_at&quot;: &quot;03:08:03 23/03/2026&quot;
         },
         {
-            &quot;id&quot;: 39,
-            &quot;description&quot;: &quot;Aut dolores enim non facere tempora ex voluptatem.&quot;,
+            &quot;id&quot;: 5,
+            &quot;description&quot;: &quot;Nobis rerum quia aliquid rerum velit odio ad.&quot;,
             &quot;user_type&quot;: &quot;User&quot;,
             &quot;user_id&quot;: null,
             &quot;user_name&quot;: &quot;Guest&quot;,
             &quot;organization_id&quot;: null,
-            &quot;route&quot;: &quot;http://raynor.org/molestias-fugit-deleniti-distinctio-eum-doloremque-id&quot;,
-            &quot;method_type&quot;: &quot;PATCH&quot;,
-            &quot;status_code&quot;: 201,
-            &quot;ip_address&quot;: &quot;239.169.15.174&quot;,
-            &quot;country&quot;: &quot;Turkmenistan&quot;,
-            &quot;user_agent&quot;: &quot;Mozilla/5.0 (Windows 98; Win 9x 4.90) AppleWebKit/533.2 (KHTML, like Gecko) Chrome/86.0.4047.69 Safari/533.2 Edg/86.01025.45&quot;,
+            &quot;route&quot;: &quot;http://bogan.com/expedita-in-repellat-sit-modi&quot;,
+            &quot;method_type&quot;: &quot;POST&quot;,
+            &quot;status_code&quot;: 204,
+            &quot;ip_address&quot;: &quot;251.106.74.125&quot;,
+            &quot;country&quot;: &quot;Fiji&quot;,
+            &quot;user_agent&quot;: &quot;Mozilla/5.0 (Windows CE) AppleWebKit/5350 (KHTML, like Gecko) Chrome/38.0.870.0 Mobile Safari/5350&quot;,
             &quot;request_data&quot;: {
-                &quot;sample&quot;: &quot;accusamus&quot;
+                &quot;sample&quot;: &quot;qui&quot;
             },
-            &quot;created_at&quot;: &quot;09:32:25 05/03/2026&quot;,
-            &quot;updated_at&quot;: &quot;09:32:25 05/03/2026&quot;
+            &quot;created_at&quot;: &quot;03:08:03 23/03/2026&quot;,
+            &quot;updated_at&quot;: &quot;03:08:03 23/03/2026&quot;
         }
     ],
     &quot;links&quot;: {
@@ -3420,7 +3433,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/log-activities/4" \
+    --get "http://localhost:8000/api/log-activities/16" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
@@ -3429,7 +3442,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/log-activities/4"
+    "http://localhost:8000/api/log-activities/16"
 );
 
 const headers = {
@@ -3439,6 +3452,7 @@ const headers = {
     "Accept": "application/json",
 };
 
+
 fetch(url, {
     method: "GET",
     headers,
@@ -3447,7 +3461,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/log-activities/4';
+$url = 'http://localhost:8000/api/log-activities/16';
 $response = $client-&gt;get(
     $url,
     [
@@ -3472,12 +3486,12 @@ print_r(json_decode((string) $body));</code></pre></div>
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: {
-        &quot;id&quot;: 40,
+        &quot;id&quot;: 6,
         &quot;description&quot;: &quot;Adipisci quidem nostrum qui commodi incidunt iure.&quot;,
         &quot;user_type&quot;: &quot;User&quot;,
-        &quot;user_id&quot;: 84,
+        &quot;user_id&quot;: 28,
         &quot;user_name&quot;: &quot;Bridget Schaden&quot;,
-        &quot;organization_id&quot;: 191,
+        &quot;organization_id&quot;: 43,
         &quot;route&quot;: &quot;https://mclaughlin.com/ipsum-nostrum-omnis-autem-et-consequatur-aut-dolores-enim.html&quot;,
         &quot;method_type&quot;: &quot;POST&quot;,
         &quot;status_code&quot;: 401,
@@ -3487,8 +3501,8 @@ print_r(json_decode((string) $body));</code></pre></div>
         &quot;request_data&quot;: {
             &quot;sample&quot;: &quot;veniam&quot;
         },
-        &quot;created_at&quot;: &quot;09:32:25 05/03/2026&quot;,
-        &quot;updated_at&quot;: &quot;09:32:25 05/03/2026&quot;
+        &quot;created_at&quot;: &quot;03:08:03 23/03/2026&quot;,
+        &quot;updated_at&quot;: &quot;03:08:03 23/03/2026&quot;
     },
     &quot;success&quot;: &quot;true&quot;
 }</code>
@@ -3597,10 +3611,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="logActivity_id"                data-endpoint="GETapi-log-activities--logActivity_id-"
-               value="4"
+               value="16"
                data-component="url">
     <br>
-<p>The ID of the logActivity. Example: <code>4</code></p>
+<p>The ID of the logActivity. Example: <code>16</code></p>
             </div>
                     <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>logActivity</code></b>&nbsp;&nbsp;
@@ -3630,7 +3644,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request DELETE \
-    "http://localhost/api/log-activities/4" \
+    "http://localhost:8000/api/log-activities/16" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
@@ -3639,7 +3653,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/log-activities/4"
+    "http://localhost:8000/api/log-activities/16"
 );
 
 const headers = {
@@ -3649,6 +3663,7 @@ const headers = {
     "Accept": "application/json",
 };
 
+
 fetch(url, {
     method: "DELETE",
     headers,
@@ -3657,7 +3672,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/log-activities/4';
+$url = 'http://localhost:8000/api/log-activities/16';
 $response = $client-&gt;delete(
     $url,
     [
@@ -3789,10 +3804,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="logActivity_id"                data-endpoint="DELETEapi-log-activities--logActivity_id-"
-               value="4"
+               value="16"
                data-component="url">
     <br>
-<p>The ID of the logActivity. Example: <code>4</code></p>
+<p>The ID of the logActivity. Example: <code>16</code></p>
             </div>
                     <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>logActivity</code></b>&nbsp;&nbsp;
@@ -3825,7 +3840,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/organizations/public?search=cong-ty&amp;status=active&amp;from_date=2026-01-01&amp;to_date=2026-12-31&amp;sort_by=created_at&amp;sort_order=desc&amp;limit=10" \
+    --get "http://localhost:8000/api/organizations/public?search=cong-ty&amp;status=active&amp;from_date=2026-01-01&amp;to_date=2026-12-31&amp;sort_by=created_at&amp;sort_order=desc&amp;limit=10" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -3833,7 +3848,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/organizations/public"
+    "http://localhost:8000/api/organizations/public"
 );
 
 const params = {
@@ -3854,6 +3869,7 @@ const headers = {
     "Accept": "application/json",
 };
 
+
 fetch(url, {
     method: "GET",
     headers,
@@ -3862,7 +3878,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/organizations/public';
+$url = 'http://localhost:8000/api/organizations/public';
 $response = $client-&gt;get(
     $url,
     [
@@ -3896,7 +3912,7 @@ print_r(json_decode((string) $body));</code></pre></div>
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: [
         {
-            &quot;id&quot;: 171,
+            &quot;id&quot;: 23,
             &quot;name&quot;: &quot;Bailey Inc&quot;,
             &quot;slug&quot;: &quot;quos-velit-et-fugiat-sunt-nihil-accusantium-harum&quot;,
             &quot;description&quot;: null,
@@ -3906,11 +3922,11 @@ print_r(json_decode((string) $body));</code></pre></div>
             &quot;depth&quot;: 0,
             &quot;created_by&quot;: &quot;N/A&quot;,
             &quot;updated_by&quot;: &quot;N/A&quot;,
-            &quot;created_at&quot;: &quot;09:32:23 05/03/2026&quot;,
-            &quot;updated_at&quot;: &quot;09:32:23 05/03/2026&quot;
+            &quot;created_at&quot;: &quot;03:08:02 23/03/2026&quot;,
+            &quot;updated_at&quot;: &quot;03:08:02 23/03/2026&quot;
         },
         {
-            &quot;id&quot;: 172,
+            &quot;id&quot;: 24,
             &quot;name&quot;: &quot;DuBuque Inc&quot;,
             &quot;slug&quot;: &quot;quo-omnis-nostrum-aut-adipisci&quot;,
             &quot;description&quot;: &quot;Qui commodi incidunt iure odit.&quot;,
@@ -3920,8 +3936,8 @@ print_r(json_decode((string) $body));</code></pre></div>
             &quot;depth&quot;: 0,
             &quot;created_by&quot;: &quot;N/A&quot;,
             &quot;updated_by&quot;: &quot;N/A&quot;,
-            &quot;created_at&quot;: &quot;09:32:23 05/03/2026&quot;,
-            &quot;updated_at&quot;: &quot;09:32:23 05/03/2026&quot;
+            &quot;created_at&quot;: &quot;03:08:02 23/03/2026&quot;,
+            &quot;updated_at&quot;: &quot;03:08:02 23/03/2026&quot;
         }
     ],
     &quot;success&quot;: &quot;true&quot;
@@ -4113,7 +4129,7 @@ Must be one of:
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/organizations/public-options?search=cong-ty&amp;status=active&amp;from_date=2026-01-01&amp;to_date=2026-12-31&amp;sort_by=created_at&amp;sort_order=desc&amp;limit=10" \
+    --get "http://localhost:8000/api/organizations/public-options?search=cong-ty&amp;status=active&amp;from_date=2026-01-01&amp;to_date=2026-12-31&amp;sort_by=created_at&amp;sort_order=desc&amp;limit=10" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -4121,7 +4137,7 @@ Must be one of:
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/organizations/public-options"
+    "http://localhost:8000/api/organizations/public-options"
 );
 
 const params = {
@@ -4142,6 +4158,7 @@ const headers = {
     "Accept": "application/json",
 };
 
+
 fetch(url, {
     method: "GET",
     headers,
@@ -4150,7 +4167,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/organizations/public-options';
+$url = 'http://localhost:8000/api/organizations/public-options';
 $response = $client-&gt;get(
     $url,
     [
@@ -4184,12 +4201,12 @@ print_r(json_decode((string) $body));</code></pre></div>
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: [
         {
-            &quot;id&quot;: 173,
+            &quot;id&quot;: 25,
             &quot;name&quot;: &quot;Okuneva, Rempel and Gulgowski&quot;,
             &quot;description&quot;: null
         },
         {
-            &quot;id&quot;: 174,
+            &quot;id&quot;: 26,
             &quot;name&quot;: &quot;Cormier Inc&quot;,
             &quot;description&quot;: &quot;Odit et et modi.&quot;
         }
@@ -4384,7 +4401,7 @@ Must be one of:
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/organizations/export?search=architecto&amp;status=architecto&amp;from_date=architecto&amp;to_date=architecto&amp;sort_by=architecto&amp;sort_order=architecto&amp;limit=10" \
+    --get "http://localhost:8000/api/organizations/export?search=architecto&amp;status=architecto&amp;from_date=architecto&amp;to_date=architecto&amp;sort_by=architecto&amp;sort_order=architecto&amp;limit=10" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
@@ -4393,7 +4410,7 @@ Must be one of:
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/organizations/export"
+    "http://localhost:8000/api/organizations/export"
 );
 
 const params = {
@@ -4415,6 +4432,7 @@ const headers = {
     "Accept": "application/json",
 };
 
+
 fetch(url, {
     method: "GET",
     headers,
@@ -4423,7 +4441,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/organizations/export';
+$url = 'http://localhost:8000/api/organizations/export';
 $response = $client-&gt;get(
     $url,
     [
@@ -4655,7 +4673,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <small class="badge badge-darkred">requires authentication</small>
 </p>
 
-<p>Cột bắt buộc: name. Cột không bắt buộc: slug, description, status (mặc định &quot;active&quot;), parent_id.</p>
+<p>Cột bắt buộc: name. Cột không bắt buộc: slug, description, status (mặc định "active"), parent_id.</p>
 
 <span id="example-requests-POSTapi-organizations-import">
 <blockquote>Example request:</blockquote>
@@ -4663,17 +4681,17 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost/api/organizations/import" \
+    "http://localhost:8000/api/organizations/import" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: multipart/form-data" \
     --header "Accept: application/json" \
-    --form "file=@/tmp/phpgb8dlento42ldbNGYa5" </code></pre></div>
+    --form "file=@/tmp/php20jd8ctavup22Zh1IA5" </code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/organizations/import"
+    "http://localhost:8000/api/organizations/import"
 );
 
 const headers = {
@@ -4695,7 +4713,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/organizations/import';
+$url = 'http://localhost:8000/api/organizations/import';
 $response = $client-&gt;post(
     $url,
     [
@@ -4708,7 +4726,7 @@ $response = $client-&gt;post(
         'multipart' =&gt; [
             [
                 'name' =&gt; 'file',
-                'contents' =&gt; fopen('/tmp/phpgb8dlento42ldbNGYa5', 'r')
+                'contents' =&gt; fopen('/tmp/php20jd8ctavup22Zh1IA5', 'r')
             ],
         ],
     ]
@@ -4836,7 +4854,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>File Excel (xlsx, xls, csv). Cột theo chuẩn export. Example: <code>/tmp/phpgb8dlento42ldbNGYa5</code></p>
+<p>File Excel (xlsx, xls, csv). Cột theo chuẩn export. Example: <code>/tmp/php20jd8ctavup22Zh1IA5</code></p>
         </div>
         </form>
 
@@ -4854,7 +4872,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost/api/organizations/bulk-delete" \
+    "http://localhost:8000/api/organizations/bulk-delete" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
@@ -4871,7 +4889,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/organizations/bulk-delete"
+    "http://localhost:8000/api/organizations/bulk-delete"
 );
 
 const headers = {
@@ -4898,7 +4916,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/organizations/bulk-delete';
+$url = 'http://localhost:8000/api/organizations/bulk-delete';
 $response = $client-&gt;post(
     $url,
     [
@@ -5060,7 +5078,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PATCH \
-    "http://localhost/api/organizations/bulk-status" \
+    "http://localhost:8000/api/organizations/bulk-status" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
@@ -5078,7 +5096,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/organizations/bulk-status"
+    "http://localhost:8000/api/organizations/bulk-status"
 );
 
 const headers = {
@@ -5106,7 +5124,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/organizations/bulk-status';
+$url = 'http://localhost:8000/api/organizations/bulk-status';
 $response = $client-&gt;patch(
     $url,
     [
@@ -5281,7 +5299,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/organizations/stats?search=cong-ty&amp;status=architecto&amp;from_date=2026-02-01&amp;to_date=2026-02-17&amp;sort_by=created_at&amp;sort_order=desc&amp;limit=10" \
+    --get "http://localhost:8000/api/organizations/stats?search=cong-ty&amp;status=architecto&amp;from_date=2026-02-01&amp;to_date=2026-02-17&amp;sort_by=created_at&amp;sort_order=desc&amp;limit=10" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
@@ -5290,7 +5308,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/organizations/stats"
+    "http://localhost:8000/api/organizations/stats"
 );
 
 const params = {
@@ -5312,6 +5330,7 @@ const headers = {
     "Accept": "application/json",
 };
 
+
 fetch(url, {
     method: "GET",
     headers,
@@ -5320,7 +5339,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/organizations/stats';
+$url = 'http://localhost:8000/api/organizations/stats';
 $response = $client-&gt;get(
     $url,
     [
@@ -5558,7 +5577,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/organizations/tree?status=architecto" \
+    --get "http://localhost:8000/api/organizations/tree?status=architecto" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
@@ -5567,7 +5586,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/organizations/tree"
+    "http://localhost:8000/api/organizations/tree"
 );
 
 const params = {
@@ -5583,6 +5602,7 @@ const headers = {
     "Accept": "application/json",
 };
 
+
 fetch(url, {
     method: "GET",
     headers,
@@ -5591,7 +5611,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/organizations/tree';
+$url = 'http://localhost:8000/api/organizations/tree';
 $response = $client-&gt;get(
     $url,
     [
@@ -5756,7 +5776,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/organizations?search=cong-ty&amp;status=architecto&amp;from_date=2026-02-01&amp;to_date=2026-02-17&amp;sort_by=id&amp;sort_order=desc&amp;limit=10" \
+    --get "http://localhost:8000/api/organizations?search=cong-ty&amp;status=architecto&amp;from_date=2026-02-01&amp;to_date=2026-02-17&amp;sort_by=id&amp;sort_order=desc&amp;limit=10" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
@@ -5765,7 +5785,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/organizations"
+    "http://localhost:8000/api/organizations"
 );
 
 const params = {
@@ -5787,6 +5807,7 @@ const headers = {
     "Accept": "application/json",
 };
 
+
 fetch(url, {
     method: "GET",
     headers,
@@ -5795,7 +5816,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/organizations';
+$url = 'http://localhost:8000/api/organizations';
 $response = $client-&gt;get(
     $url,
     [
@@ -5830,7 +5851,7 @@ print_r(json_decode((string) $body));</code></pre></div>
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: [
         {
-            &quot;id&quot;: 176,
+            &quot;id&quot;: 28,
             &quot;name&quot;: &quot;Bailey Ltd&quot;,
             &quot;slug&quot;: &quot;velit-et-fugiat-sunt-nihil-accusantium&quot;,
             &quot;description&quot;: &quot;Modi deserunt aut ab provident perspiciatis.&quot;,
@@ -5840,11 +5861,11 @@ print_r(json_decode((string) $body));</code></pre></div>
             &quot;depth&quot;: 0,
             &quot;created_by&quot;: &quot;N/A&quot;,
             &quot;updated_by&quot;: &quot;N/A&quot;,
-            &quot;created_at&quot;: &quot;09:32:25 05/03/2026&quot;,
-            &quot;updated_at&quot;: &quot;09:32:25 05/03/2026&quot;
+            &quot;created_at&quot;: &quot;03:08:03 23/03/2026&quot;,
+            &quot;updated_at&quot;: &quot;03:08:03 23/03/2026&quot;
         },
         {
-            &quot;id&quot;: 177,
+            &quot;id&quot;: 29,
             &quot;name&quot;: &quot;Marquardt Inc&quot;,
             &quot;slug&quot;: &quot;nostrum-qui-commodi-incidunt-iure&quot;,
             &quot;description&quot;: null,
@@ -5854,8 +5875,8 @@ print_r(json_decode((string) $body));</code></pre></div>
             &quot;depth&quot;: 0,
             &quot;created_by&quot;: &quot;N/A&quot;,
             &quot;updated_by&quot;: &quot;N/A&quot;,
-            &quot;created_at&quot;: &quot;09:32:25 05/03/2026&quot;,
-            &quot;updated_at&quot;: &quot;09:32:25 05/03/2026&quot;
+            &quot;created_at&quot;: &quot;03:08:03 23/03/2026&quot;,
+            &quot;updated_at&quot;: &quot;03:08:03 23/03/2026&quot;
         }
     ],
     &quot;links&quot;: {
@@ -6093,7 +6114,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/organizations/1" \
+    --get "http://localhost:8000/api/organizations/1" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
@@ -6102,7 +6123,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/organizations/1"
+    "http://localhost:8000/api/organizations/1"
 );
 
 const headers = {
@@ -6112,6 +6133,7 @@ const headers = {
     "Accept": "application/json",
 };
 
+
 fetch(url, {
     method: "GET",
     headers,
@@ -6120,7 +6142,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/organizations/1';
+$url = 'http://localhost:8000/api/organizations/1';
 $response = $client-&gt;get(
     $url,
     [
@@ -6145,20 +6167,20 @@ print_r(json_decode((string) $body));</code></pre></div>
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: {
-        &quot;id&quot;: 179,
+        &quot;id&quot;: 31,
         &quot;name&quot;: &quot;Price Ltd&quot;,
         &quot;slug&quot;: &quot;qui-commodi-incidunt-iure-odit&quot;,
         &quot;description&quot;: &quot;Modi ipsum nostrum omnis autem et.&quot;,
         &quot;status&quot;: &quot;inactive&quot;,
-        &quot;parent_id&quot;: 178,
+        &quot;parent_id&quot;: 30,
         &quot;sort_order&quot;: 84,
         &quot;depth&quot;: 1,
         &quot;created_by&quot;: &quot;N/A&quot;,
         &quot;updated_by&quot;: &quot;N/A&quot;,
-        &quot;created_at&quot;: &quot;09:32:25 05/03/2026&quot;,
-        &quot;updated_at&quot;: &quot;09:32:25 05/03/2026&quot;,
+        &quot;created_at&quot;: &quot;03:08:03 23/03/2026&quot;,
+        &quot;updated_at&quot;: &quot;03:08:03 23/03/2026&quot;,
         &quot;parent&quot;: {
-            &quot;id&quot;: 178,
+            &quot;id&quot;: 30,
             &quot;name&quot;: &quot;Stokes and Sons&quot;,
             &quot;slug&quot;: &quot;tempora-ex-voluptatem-laboriosam-praesentium-quis&quot;,
             &quot;description&quot;: &quot;Fugit deleniti distinctio eum doloremque id aut libero.&quot;,
@@ -6168,23 +6190,23 @@ print_r(json_decode((string) $body));</code></pre></div>
             &quot;depth&quot;: 0,
             &quot;created_by&quot;: &quot;N/A&quot;,
             &quot;updated_by&quot;: &quot;N/A&quot;,
-            &quot;created_at&quot;: &quot;09:32:25 05/03/2026&quot;,
-            &quot;updated_at&quot;: &quot;09:32:25 05/03/2026&quot;
+            &quot;created_at&quot;: &quot;03:08:03 23/03/2026&quot;,
+            &quot;updated_at&quot;: &quot;03:08:03 23/03/2026&quot;
         },
         &quot;children&quot;: [
             {
-                &quot;id&quot;: 180,
+                &quot;id&quot;: 32,
                 &quot;name&quot;: &quot;Kutch and Sons&quot;,
                 &quot;slug&quot;: &quot;nemo-odit-quia-officia-est-dignissimos&quot;,
                 &quot;description&quot;: null,
                 &quot;status&quot;: &quot;inactive&quot;,
-                &quot;parent_id&quot;: 179,
+                &quot;parent_id&quot;: 31,
                 &quot;sort_order&quot;: 6,
                 &quot;depth&quot;: 2,
                 &quot;created_by&quot;: &quot;N/A&quot;,
                 &quot;updated_by&quot;: &quot;N/A&quot;,
-                &quot;created_at&quot;: &quot;09:32:25 05/03/2026&quot;,
-                &quot;updated_at&quot;: &quot;09:32:25 05/03/2026&quot;
+                &quot;created_at&quot;: &quot;03:08:03 23/03/2026&quot;,
+                &quot;updated_at&quot;: &quot;03:08:03 23/03/2026&quot;
             }
         ]
     },
@@ -6328,7 +6350,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost/api/organizations" \
+    "http://localhost:8000/api/organizations" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
@@ -6346,7 +6368,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/organizations"
+    "http://localhost:8000/api/organizations"
 );
 
 const headers = {
@@ -6374,7 +6396,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/organizations';
+$url = 'http://localhost:8000/api/organizations';
 $response = $client-&gt;post(
     $url,
     [
@@ -6407,7 +6429,7 @@ print_r(json_decode((string) $body));</code></pre></div>
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: {
-        &quot;id&quot;: 181,
+        &quot;id&quot;: 33,
         &quot;name&quot;: &quot;Dach-Gaylord&quot;,
         &quot;slug&quot;: &quot;mollitia-modi-deserunt-aut-ab-provident-perspiciatis-quo&quot;,
         &quot;description&quot;: null,
@@ -6417,8 +6439,8 @@ print_r(json_decode((string) $body));</code></pre></div>
         &quot;depth&quot;: 0,
         &quot;created_by&quot;: &quot;N/A&quot;,
         &quot;updated_by&quot;: &quot;N/A&quot;,
-        &quot;created_at&quot;: &quot;09:32:25 05/03/2026&quot;,
-        &quot;updated_at&quot;: &quot;09:32:25 05/03/2026&quot;
+        &quot;created_at&quot;: &quot;03:08:03 23/03/2026&quot;,
+        &quot;updated_at&quot;: &quot;03:08:03 23/03/2026&quot;
     },
     &quot;success&quot;: &quot;true&quot;,
     &quot;message&quot;: &quot;Organization đ&atilde; được tạo th&agrave;nh c&ocirc;ng!&quot;
@@ -6609,7 +6631,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://localhost/api/organizations/1" \
+    "http://localhost:8000/api/organizations/1" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
@@ -6627,7 +6649,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/organizations/1"
+    "http://localhost:8000/api/organizations/1"
 );
 
 const headers = {
@@ -6655,7 +6677,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/organizations/1';
+$url = 'http://localhost:8000/api/organizations/1';
 $response = $client-&gt;put(
     $url,
     [
@@ -6688,20 +6710,20 @@ print_r(json_decode((string) $body));</code></pre></div>
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: {
-        &quot;id&quot;: 183,
+        &quot;id&quot;: 35,
         &quot;name&quot;: &quot;Tillman-Runte&quot;,
         &quot;slug&quot;: &quot;aut-ab-provident-perspiciatis-quo-omnis-nostrum-aut&quot;,
         &quot;description&quot;: &quot;Nostrum qui commodi incidunt iure.&quot;,
         &quot;status&quot;: &quot;inactive&quot;,
-        &quot;parent_id&quot;: 182,
+        &quot;parent_id&quot;: 34,
         &quot;sort_order&quot;: 45,
         &quot;depth&quot;: 1,
         &quot;created_by&quot;: &quot;N/A&quot;,
         &quot;updated_by&quot;: &quot;N/A&quot;,
-        &quot;created_at&quot;: &quot;09:32:25 05/03/2026&quot;,
-        &quot;updated_at&quot;: &quot;09:32:25 05/03/2026&quot;,
+        &quot;created_at&quot;: &quot;03:08:03 23/03/2026&quot;,
+        &quot;updated_at&quot;: &quot;03:08:03 23/03/2026&quot;,
         &quot;parent&quot;: {
-            &quot;id&quot;: 182,
+            &quot;id&quot;: 34,
             &quot;name&quot;: &quot;Bauch, Fritsch and O&#039;Keefe&quot;,
             &quot;slug&quot;: &quot;autem-et-consequatur-aut-dolores-enim-non-facere-tempora&quot;,
             &quot;description&quot;: &quot;Laboriosam praesentium quis adipisci molestias fugit deleniti distinctio.&quot;,
@@ -6711,23 +6733,23 @@ print_r(json_decode((string) $body));</code></pre></div>
             &quot;depth&quot;: 0,
             &quot;created_by&quot;: &quot;N/A&quot;,
             &quot;updated_by&quot;: &quot;N/A&quot;,
-            &quot;created_at&quot;: &quot;09:32:25 05/03/2026&quot;,
-            &quot;updated_at&quot;: &quot;09:32:25 05/03/2026&quot;
+            &quot;created_at&quot;: &quot;03:08:03 23/03/2026&quot;,
+            &quot;updated_at&quot;: &quot;03:08:03 23/03/2026&quot;
         },
         &quot;children&quot;: [
             {
-                &quot;id&quot;: 184,
+                &quot;id&quot;: 36,
                 &quot;name&quot;: &quot;Ankunding PLC&quot;,
                 &quot;slug&quot;: &quot;veniam-corporis-dolorem-mollitia&quot;,
                 &quot;description&quot;: &quot;Odit quia officia est dignissimos neque blanditiis odio.&quot;,
                 &quot;status&quot;: &quot;inactive&quot;,
-                &quot;parent_id&quot;: 183,
+                &quot;parent_id&quot;: 35,
                 &quot;sort_order&quot;: 16,
                 &quot;depth&quot;: 2,
                 &quot;created_by&quot;: &quot;N/A&quot;,
                 &quot;updated_by&quot;: &quot;N/A&quot;,
-                &quot;created_at&quot;: &quot;09:32:25 05/03/2026&quot;,
-                &quot;updated_at&quot;: &quot;09:32:25 05/03/2026&quot;
+                &quot;created_at&quot;: &quot;03:08:03 23/03/2026&quot;,
+                &quot;updated_at&quot;: &quot;03:08:03 23/03/2026&quot;
             }
         ]
     },
@@ -6945,7 +6967,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PATCH \
-    "http://localhost/api/organizations/1" \
+    "http://localhost:8000/api/organizations/1" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
@@ -6963,7 +6985,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/organizations/1"
+    "http://localhost:8000/api/organizations/1"
 );
 
 const headers = {
@@ -6991,7 +7013,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/organizations/1';
+$url = 'http://localhost:8000/api/organizations/1';
 $response = $client-&gt;patch(
     $url,
     [
@@ -7024,20 +7046,20 @@ print_r(json_decode((string) $body));</code></pre></div>
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: {
-        &quot;id&quot;: 186,
+        &quot;id&quot;: 38,
         &quot;name&quot;: &quot;Schuster Inc&quot;,
         &quot;slug&quot;: &quot;perspiciatis-quo-omnis-nostrum-aut-adipisci-quidem-nostrum-qui&quot;,
         &quot;description&quot;: &quot;Iure odit et et modi ipsum nostrum omnis.&quot;,
         &quot;status&quot;: &quot;active&quot;,
-        &quot;parent_id&quot;: 185,
+        &quot;parent_id&quot;: 37,
         &quot;sort_order&quot;: 54,
         &quot;depth&quot;: 1,
         &quot;created_by&quot;: &quot;N/A&quot;,
         &quot;updated_by&quot;: &quot;N/A&quot;,
-        &quot;created_at&quot;: &quot;09:32:25 05/03/2026&quot;,
-        &quot;updated_at&quot;: &quot;09:32:25 05/03/2026&quot;,
+        &quot;created_at&quot;: &quot;03:08:03 23/03/2026&quot;,
+        &quot;updated_at&quot;: &quot;03:08:03 23/03/2026&quot;,
         &quot;parent&quot;: {
-            &quot;id&quot;: 185,
+            &quot;id&quot;: 37,
             &quot;name&quot;: &quot;Tromp-Leffler&quot;,
             &quot;slug&quot;: &quot;non-facere-tempora-ex-voluptatem-laboriosam-praesentium&quot;,
             &quot;description&quot;: &quot;Molestias fugit deleniti distinctio eum doloremque id.&quot;,
@@ -7047,23 +7069,23 @@ print_r(json_decode((string) $body));</code></pre></div>
             &quot;depth&quot;: 0,
             &quot;created_by&quot;: &quot;N/A&quot;,
             &quot;updated_by&quot;: &quot;N/A&quot;,
-            &quot;created_at&quot;: &quot;09:32:25 05/03/2026&quot;,
-            &quot;updated_at&quot;: &quot;09:32:25 05/03/2026&quot;
+            &quot;created_at&quot;: &quot;03:08:03 23/03/2026&quot;,
+            &quot;updated_at&quot;: &quot;03:08:03 23/03/2026&quot;
         },
         &quot;children&quot;: [
             {
-                &quot;id&quot;: 187,
+                &quot;id&quot;: 39,
                 &quot;name&quot;: &quot;Batz Inc&quot;,
                 &quot;slug&quot;: &quot;mollitia-deleniti-nemo-odit-quia-officia&quot;,
                 &quot;description&quot;: &quot;Neque blanditiis odio veritatis excepturi doloribus delectus.&quot;,
                 &quot;status&quot;: &quot;inactive&quot;,
-                &quot;parent_id&quot;: 186,
+                &quot;parent_id&quot;: 38,
                 &quot;sort_order&quot;: 22,
                 &quot;depth&quot;: 2,
                 &quot;created_by&quot;: &quot;N/A&quot;,
                 &quot;updated_by&quot;: &quot;N/A&quot;,
-                &quot;created_at&quot;: &quot;09:32:25 05/03/2026&quot;,
-                &quot;updated_at&quot;: &quot;09:32:25 05/03/2026&quot;
+                &quot;created_at&quot;: &quot;03:08:03 23/03/2026&quot;,
+                &quot;updated_at&quot;: &quot;03:08:03 23/03/2026&quot;
             }
         ]
     },
@@ -7281,7 +7303,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request DELETE \
-    "http://localhost/api/organizations/1" \
+    "http://localhost:8000/api/organizations/1" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
@@ -7290,7 +7312,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/organizations/1"
+    "http://localhost:8000/api/organizations/1"
 );
 
 const headers = {
@@ -7300,6 +7322,7 @@ const headers = {
     "Accept": "application/json",
 };
 
+
 fetch(url, {
     method: "DELETE",
     headers,
@@ -7308,7 +7331,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/organizations/1';
+$url = 'http://localhost:8000/api/organizations/1';
 $response = $client-&gt;delete(
     $url,
     [
@@ -7473,7 +7496,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PATCH \
-    "http://localhost/api/organizations/1/status" \
+    "http://localhost:8000/api/organizations/1/status" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
@@ -7486,7 +7509,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/organizations/1/status"
+    "http://localhost:8000/api/organizations/1/status"
 );
 
 const headers = {
@@ -7509,7 +7532,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/organizations/1/status';
+$url = 'http://localhost:8000/api/organizations/1/status';
 $response = $client-&gt;patch(
     $url,
     [
@@ -7537,20 +7560,20 @@ print_r(json_decode((string) $body));</code></pre></div>
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: {
-        &quot;id&quot;: 189,
+        &quot;id&quot;: 41,
         &quot;name&quot;: &quot;Baumbach Ltd&quot;,
         &quot;slug&quot;: &quot;et-modi-ipsum-nostrum-omnis-autem-et-consequatur&quot;,
         &quot;description&quot;: null,
         &quot;status&quot;: &quot;inactive&quot;,
-        &quot;parent_id&quot;: 188,
+        &quot;parent_id&quot;: 40,
         &quot;sort_order&quot;: 62,
         &quot;depth&quot;: 1,
         &quot;created_by&quot;: &quot;N/A&quot;,
         &quot;updated_by&quot;: &quot;N/A&quot;,
-        &quot;created_at&quot;: &quot;09:32:25 05/03/2026&quot;,
-        &quot;updated_at&quot;: &quot;09:32:25 05/03/2026&quot;,
+        &quot;created_at&quot;: &quot;03:08:03 23/03/2026&quot;,
+        &quot;updated_at&quot;: &quot;03:08:03 23/03/2026&quot;,
         &quot;parent&quot;: {
-            &quot;id&quot;: 188,
+            &quot;id&quot;: 40,
             &quot;name&quot;: &quot;VonRueden-Leuschke&quot;,
             &quot;slug&quot;: &quot;voluptatem-laboriosam-praesentium-quis-adipisci&quot;,
             &quot;description&quot;: null,
@@ -7560,23 +7583,23 @@ print_r(json_decode((string) $body));</code></pre></div>
             &quot;depth&quot;: 0,
             &quot;created_by&quot;: &quot;N/A&quot;,
             &quot;updated_by&quot;: &quot;N/A&quot;,
-            &quot;created_at&quot;: &quot;09:32:25 05/03/2026&quot;,
-            &quot;updated_at&quot;: &quot;09:32:25 05/03/2026&quot;
+            &quot;created_at&quot;: &quot;03:08:03 23/03/2026&quot;,
+            &quot;updated_at&quot;: &quot;03:08:03 23/03/2026&quot;
         },
         &quot;children&quot;: [
             {
-                &quot;id&quot;: 190,
+                &quot;id&quot;: 42,
                 &quot;name&quot;: &quot;Gaylord, Hettinger and Nitzsche&quot;,
                 &quot;slug&quot;: &quot;libero-aliquam-veniam-corporis-dolorem-mollitia-deleniti&quot;,
                 &quot;description&quot;: &quot;Quia officia est dignissimos neque.&quot;,
                 &quot;status&quot;: &quot;inactive&quot;,
-                &quot;parent_id&quot;: 189,
+                &quot;parent_id&quot;: 41,
                 &quot;sort_order&quot;: 6,
                 &quot;depth&quot;: 2,
                 &quot;created_by&quot;: &quot;N/A&quot;,
                 &quot;updated_by&quot;: &quot;N/A&quot;,
-                &quot;created_at&quot;: &quot;09:32:25 05/03/2026&quot;,
-                &quot;updated_at&quot;: &quot;09:32:25 05/03/2026&quot;
+                &quot;created_at&quot;: &quot;03:08:03 23/03/2026&quot;,
+                &quot;updated_at&quot;: &quot;03:08:03 23/03/2026&quot;
             }
         ]
     },
@@ -7738,7 +7761,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/permissions/export?search=architecto&amp;status=active&amp;from_date=architecto&amp;to_date=architecto&amp;sort_by=architecto&amp;sort_order=architecto&amp;limit=10" \
+    --get "http://localhost:8000/api/permissions/export?search=architecto&amp;status=active&amp;from_date=architecto&amp;to_date=architecto&amp;sort_by=architecto&amp;sort_order=architecto&amp;limit=10" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
@@ -7747,7 +7770,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/permissions/export"
+    "http://localhost:8000/api/permissions/export"
 );
 
 const params = {
@@ -7769,6 +7792,7 @@ const headers = {
     "Accept": "application/json",
 };
 
+
 fetch(url, {
     method: "GET",
     headers,
@@ -7777,7 +7801,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/permissions/export';
+$url = 'http://localhost:8000/api/permissions/export';
 $response = $client-&gt;get(
     $url,
     [
@@ -8009,7 +8033,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <small class="badge badge-darkred">requires authentication</small>
 </p>
 
-<p>Cột bắt buộc: name. Cột không bắt buộc: guard_name (mặc định &quot;web&quot;), description, sort_order, parent_id.</p>
+<p>Cột bắt buộc: name. Cột không bắt buộc: guard_name (mặc định "web"), description, sort_order, parent_id.</p>
 
 <span id="example-requests-POSTapi-permissions-import">
 <blockquote>Example request:</blockquote>
@@ -8017,17 +8041,17 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost/api/permissions/import" \
+    "http://localhost:8000/api/permissions/import" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: multipart/form-data" \
     --header "Accept: application/json" \
-    --form "file=@/tmp/phpfqtqkggvlflt6DZ9JRQ" </code></pre></div>
+    --form "file=@/tmp/php7tbq7cf3vn6qbLNRkfA" </code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/permissions/import"
+    "http://localhost:8000/api/permissions/import"
 );
 
 const headers = {
@@ -8049,7 +8073,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/permissions/import';
+$url = 'http://localhost:8000/api/permissions/import';
 $response = $client-&gt;post(
     $url,
     [
@@ -8062,7 +8086,7 @@ $response = $client-&gt;post(
         'multipart' =&gt; [
             [
                 'name' =&gt; 'file',
-                'contents' =&gt; fopen('/tmp/phpfqtqkggvlflt6DZ9JRQ', 'r')
+                'contents' =&gt; fopen('/tmp/php7tbq7cf3vn6qbLNRkfA', 'r')
             ],
         ],
     ]
@@ -8190,7 +8214,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>File Excel (xlsx, xls, csv). Cột theo chuẩn export. Example: <code>/tmp/phpfqtqkggvlflt6DZ9JRQ</code></p>
+<p>File Excel (xlsx, xls, csv). Cột theo chuẩn export. Example: <code>/tmp/php7tbq7cf3vn6qbLNRkfA</code></p>
         </div>
         </form>
 
@@ -8208,7 +8232,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost/api/permissions/bulk-delete" \
+    "http://localhost:8000/api/permissions/bulk-delete" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
@@ -8225,7 +8249,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/permissions/bulk-delete"
+    "http://localhost:8000/api/permissions/bulk-delete"
 );
 
 const headers = {
@@ -8252,7 +8276,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/permissions/bulk-delete';
+$url = 'http://localhost:8000/api/permissions/bulk-delete';
 $response = $client-&gt;post(
     $url,
     [
@@ -8414,7 +8438,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/permissions/stats?search=posts&amp;status=active&amp;from_date=2026-02-01&amp;to_date=2026-02-17&amp;sort_by=created_at&amp;sort_order=desc&amp;limit=10" \
+    --get "http://localhost:8000/api/permissions/stats?search=posts&amp;status=active&amp;from_date=2026-02-01&amp;to_date=2026-02-17&amp;sort_by=created_at&amp;sort_order=desc&amp;limit=10" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
@@ -8423,7 +8447,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/permissions/stats"
+    "http://localhost:8000/api/permissions/stats"
 );
 
 const params = {
@@ -8445,6 +8469,7 @@ const headers = {
     "Accept": "application/json",
 };
 
+
 fetch(url, {
     method: "GET",
     headers,
@@ -8453,7 +8478,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/permissions/stats';
+$url = 'http://localhost:8000/api/permissions/stats';
 $response = $client-&gt;get(
     $url,
     [
@@ -8689,7 +8714,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/permissions/tree?parent_id=" \
+    --get "http://localhost:8000/api/permissions/tree?parent_id=" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
@@ -8698,7 +8723,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/permissions/tree"
+    "http://localhost:8000/api/permissions/tree"
 );
 
 const params = {
@@ -8714,6 +8739,7 @@ const headers = {
     "Accept": "application/json",
 };
 
+
 fetch(url, {
     method: "GET",
     headers,
@@ -8722,7 +8748,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/permissions/tree';
+$url = 'http://localhost:8000/api/permissions/tree';
 $response = $client-&gt;get(
     $url,
     [
@@ -8888,7 +8914,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/permissions?search=posts&amp;status=active&amp;from_date=2026-02-01&amp;to_date=2026-02-17&amp;sort_by=sort_order&amp;sort_order=asc&amp;limit=10" \
+    --get "http://localhost:8000/api/permissions?search=posts&amp;status=active&amp;from_date=2026-02-01&amp;to_date=2026-02-17&amp;sort_by=sort_order&amp;sort_order=asc&amp;limit=10" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
@@ -8897,7 +8923,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/permissions"
+    "http://localhost:8000/api/permissions"
 );
 
 const params = {
@@ -8919,6 +8945,7 @@ const headers = {
     "Accept": "application/json",
 };
 
+
 fetch(url, {
     method: "GET",
     headers,
@@ -8927,7 +8954,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/permissions';
+$url = 'http://localhost:8000/api/permissions';
 $response = $client-&gt;get(
     $url,
     [
@@ -8962,24 +8989,24 @@ print_r(json_decode((string) $body));</code></pre></div>
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: [
         {
-            &quot;id&quot;: 254,
+            &quot;id&quot;: 170,
             &quot;name&quot;: &quot;users.update.4027&quot;,
             &quot;guard_name&quot;: &quot;web&quot;,
             &quot;description&quot;: null,
             &quot;sort_order&quot;: 95,
             &quot;parent_id&quot;: null,
-            &quot;created_at&quot;: &quot;09:32:24 05/03/2026&quot;,
-            &quot;updated_at&quot;: &quot;09:32:24 05/03/2026&quot;
+            &quot;created_at&quot;: &quot;03:08:02 23/03/2026&quot;,
+            &quot;updated_at&quot;: &quot;03:08:02 23/03/2026&quot;
         },
         {
-            &quot;id&quot;: 255,
+            &quot;id&quot;: 171,
             &quot;name&quot;: &quot;documents.index.6955&quot;,
             &quot;guard_name&quot;: &quot;web&quot;,
             &quot;description&quot;: null,
             &quot;sort_order&quot;: 39,
             &quot;parent_id&quot;: null,
-            &quot;created_at&quot;: &quot;09:32:24 05/03/2026&quot;,
-            &quot;updated_at&quot;: &quot;09:32:24 05/03/2026&quot;
+            &quot;created_at&quot;: &quot;03:08:02 23/03/2026&quot;,
+            &quot;updated_at&quot;: &quot;03:08:02 23/03/2026&quot;
         }
     ],
     &quot;links&quot;: {
@@ -9217,7 +9244,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/permissions/1" \
+    --get "http://localhost:8000/api/permissions/1" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
@@ -9226,7 +9253,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/permissions/1"
+    "http://localhost:8000/api/permissions/1"
 );
 
 const headers = {
@@ -9236,6 +9263,7 @@ const headers = {
     "Accept": "application/json",
 };
 
+
 fetch(url, {
     method: "GET",
     headers,
@@ -9244,7 +9272,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/permissions/1';
+$url = 'http://localhost:8000/api/permissions/1';
 $response = $client-&gt;get(
     $url,
     [
@@ -9269,30 +9297,30 @@ print_r(json_decode((string) $body));</code></pre></div>
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: {
-        &quot;id&quot;: 257,
+        &quot;id&quot;: 173,
         &quot;name&quot;: &quot;users.index.4524&quot;,
         &quot;guard_name&quot;: &quot;web&quot;,
         &quot;description&quot;: &quot;Commodi incidunt iure odit.&quot;,
         &quot;sort_order&quot;: 45,
-        &quot;parent_id&quot;: 256,
+        &quot;parent_id&quot;: 172,
         &quot;parent&quot;: {
-            &quot;id&quot;: 256,
+            &quot;id&quot;: 172,
             &quot;name&quot;: &quot;documents.show.967&quot;
         },
         &quot;children&quot;: [
             {
-                &quot;id&quot;: 258,
+                &quot;id&quot;: 174,
                 &quot;name&quot;: &quot;roles.destroy.1904&quot;,
                 &quot;guard_name&quot;: &quot;web&quot;,
                 &quot;description&quot;: null,
                 &quot;sort_order&quot;: 93,
-                &quot;parent_id&quot;: 257,
-                &quot;created_at&quot;: &quot;09:32:24 05/03/2026&quot;,
-                &quot;updated_at&quot;: &quot;09:32:24 05/03/2026&quot;
+                &quot;parent_id&quot;: 173,
+                &quot;created_at&quot;: &quot;03:08:02 23/03/2026&quot;,
+                &quot;updated_at&quot;: &quot;03:08:02 23/03/2026&quot;
             }
         ],
-        &quot;created_at&quot;: &quot;09:32:24 05/03/2026&quot;,
-        &quot;updated_at&quot;: &quot;09:32:24 05/03/2026&quot;
+        &quot;created_at&quot;: &quot;03:08:02 23/03/2026&quot;,
+        &quot;updated_at&quot;: &quot;03:08:02 23/03/2026&quot;
     },
     &quot;success&quot;: &quot;true&quot;
 }</code>
@@ -9434,7 +9462,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost/api/permissions" \
+    "http://localhost:8000/api/permissions" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
@@ -9451,7 +9479,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/permissions"
+    "http://localhost:8000/api/permissions"
 );
 
 const headers = {
@@ -9478,7 +9506,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/permissions';
+$url = 'http://localhost:8000/api/permissions';
 $response = $client-&gt;post(
     $url,
     [
@@ -9510,14 +9538,14 @@ print_r(json_decode((string) $body));</code></pre></div>
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: {
-        &quot;id&quot;: 259,
+        &quot;id&quot;: 175,
         &quot;name&quot;: &quot;roles.index.660&quot;,
         &quot;guard_name&quot;: &quot;web&quot;,
         &quot;description&quot;: &quot;Et fugiat sunt nihil accusantium.&quot;,
         &quot;sort_order&quot;: 91,
         &quot;parent_id&quot;: null,
-        &quot;created_at&quot;: &quot;09:32:24 05/03/2026&quot;,
-        &quot;updated_at&quot;: &quot;09:32:24 05/03/2026&quot;
+        &quot;created_at&quot;: &quot;03:08:02 23/03/2026&quot;,
+        &quot;updated_at&quot;: &quot;03:08:02 23/03/2026&quot;
     },
     &quot;success&quot;: &quot;true&quot;,
     &quot;message&quot;: &quot;Quyền đ&atilde; được tạo th&agrave;nh c&ocirc;ng!&quot;
@@ -9696,7 +9724,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://localhost/api/permissions/1" \
+    "http://localhost:8000/api/permissions/1" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
@@ -9713,7 +9741,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/permissions/1"
+    "http://localhost:8000/api/permissions/1"
 );
 
 const headers = {
@@ -9740,7 +9768,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/permissions/1';
+$url = 'http://localhost:8000/api/permissions/1';
 $response = $client-&gt;put(
     $url,
     [
@@ -9772,14 +9800,14 @@ print_r(json_decode((string) $body));</code></pre></div>
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: {
-        &quot;id&quot;: 260,
+        &quot;id&quot;: 176,
         &quot;name&quot;: &quot;roles.index.4338&quot;,
         &quot;guard_name&quot;: &quot;web&quot;,
         &quot;description&quot;: null,
         &quot;sort_order&quot;: 7,
         &quot;parent_id&quot;: null,
-        &quot;created_at&quot;: &quot;09:32:24 05/03/2026&quot;,
-        &quot;updated_at&quot;: &quot;09:32:24 05/03/2026&quot;
+        &quot;created_at&quot;: &quot;03:08:03 23/03/2026&quot;,
+        &quot;updated_at&quot;: &quot;03:08:03 23/03/2026&quot;
     },
     &quot;success&quot;: &quot;true&quot;,
     &quot;message&quot;: &quot;Quyền đ&atilde; được cập nhật!&quot;
@@ -9983,7 +10011,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PATCH \
-    "http://localhost/api/permissions/1" \
+    "http://localhost:8000/api/permissions/1" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
@@ -10000,7 +10028,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/permissions/1"
+    "http://localhost:8000/api/permissions/1"
 );
 
 const headers = {
@@ -10027,7 +10055,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/permissions/1';
+$url = 'http://localhost:8000/api/permissions/1';
 $response = $client-&gt;patch(
     $url,
     [
@@ -10059,14 +10087,14 @@ print_r(json_decode((string) $body));</code></pre></div>
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: {
-        &quot;id&quot;: 261,
+        &quot;id&quot;: 177,
         &quot;name&quot;: &quot;roles.index.3491&quot;,
         &quot;guard_name&quot;: &quot;web&quot;,
         &quot;description&quot;: &quot;Sunt nihil accusantium harum mollitia.&quot;,
         &quot;sort_order&quot;: 86,
         &quot;parent_id&quot;: null,
-        &quot;created_at&quot;: &quot;09:32:24 05/03/2026&quot;,
-        &quot;updated_at&quot;: &quot;09:32:24 05/03/2026&quot;
+        &quot;created_at&quot;: &quot;03:08:03 23/03/2026&quot;,
+        &quot;updated_at&quot;: &quot;03:08:03 23/03/2026&quot;
     },
     &quot;success&quot;: &quot;true&quot;,
     &quot;message&quot;: &quot;Quyền đ&atilde; được cập nhật!&quot;
@@ -10270,7 +10298,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request DELETE \
-    "http://localhost/api/permissions/1" \
+    "http://localhost:8000/api/permissions/1" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
@@ -10279,7 +10307,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/permissions/1"
+    "http://localhost:8000/api/permissions/1"
 );
 
 const headers = {
@@ -10289,6 +10317,7 @@ const headers = {
     "Accept": "application/json",
 };
 
+
 fetch(url, {
     method: "DELETE",
     headers,
@@ -10297,7 +10326,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/permissions/1';
+$url = 'http://localhost:8000/api/permissions/1';
 $response = $client-&gt;delete(
     $url,
     [
@@ -10466,7 +10495,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/roles/export?search=architecto&amp;status=active&amp;from_date=architecto&amp;to_date=architecto&amp;sort_by=architecto&amp;sort_order=architecto&amp;limit=10" \
+    --get "http://localhost:8000/api/roles/export?search=architecto&amp;status=active&amp;from_date=architecto&amp;to_date=architecto&amp;sort_by=architecto&amp;sort_order=architecto&amp;limit=10" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
@@ -10475,7 +10504,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/roles/export"
+    "http://localhost:8000/api/roles/export"
 );
 
 const params = {
@@ -10497,6 +10526,7 @@ const headers = {
     "Accept": "application/json",
 };
 
+
 fetch(url, {
     method: "GET",
     headers,
@@ -10505,7 +10535,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/roles/export';
+$url = 'http://localhost:8000/api/roles/export';
 $response = $client-&gt;get(
     $url,
     [
@@ -10737,7 +10767,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <small class="badge badge-darkred">requires authentication</small>
 </p>
 
-<p>Cột bắt buộc: name. Cột không bắt buộc: guard_name (mặc định &quot;web&quot;), organization_id.</p>
+<p>Cột bắt buộc: name. Cột không bắt buộc: guard_name (mặc định "web"), organization_id.</p>
 
 <span id="example-requests-POSTapi-roles-import">
 <blockquote>Example request:</blockquote>
@@ -10745,17 +10775,17 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost/api/roles/import" \
+    "http://localhost:8000/api/roles/import" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: multipart/form-data" \
     --header "Accept: application/json" \
-    --form "file=@/tmp/phpsck7a86dlhrm25jSlJb" </code></pre></div>
+    --form "file=@/tmp/php5afo6910ddeb0hyc92n" </code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/roles/import"
+    "http://localhost:8000/api/roles/import"
 );
 
 const headers = {
@@ -10777,7 +10807,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/roles/import';
+$url = 'http://localhost:8000/api/roles/import';
 $response = $client-&gt;post(
     $url,
     [
@@ -10790,7 +10820,7 @@ $response = $client-&gt;post(
         'multipart' =&gt; [
             [
                 'name' =&gt; 'file',
-                'contents' =&gt; fopen('/tmp/phpsck7a86dlhrm25jSlJb', 'r')
+                'contents' =&gt; fopen('/tmp/php5afo6910ddeb0hyc92n', 'r')
             ],
         ],
     ]
@@ -10918,7 +10948,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>File Excel (xlsx, xls, csv). Cột theo chuẩn export. Example: <code>/tmp/phpsck7a86dlhrm25jSlJb</code></p>
+<p>File Excel (xlsx, xls, csv). Cột theo chuẩn export. Example: <code>/tmp/php5afo6910ddeb0hyc92n</code></p>
         </div>
         </form>
 
@@ -10936,7 +10966,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost/api/roles/bulk-delete" \
+    "http://localhost:8000/api/roles/bulk-delete" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
@@ -10953,7 +10983,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/roles/bulk-delete"
+    "http://localhost:8000/api/roles/bulk-delete"
 );
 
 const headers = {
@@ -10980,7 +11010,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/roles/bulk-delete';
+$url = 'http://localhost:8000/api/roles/bulk-delete';
 $response = $client-&gt;post(
     $url,
     [
@@ -11142,7 +11172,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/roles/stats?search=admin&amp;status=active&amp;from_date=2026-02-01&amp;to_date=2026-02-17&amp;sort_by=created_at&amp;sort_order=desc&amp;limit=10" \
+    --get "http://localhost:8000/api/roles/stats?search=admin&amp;status=active&amp;from_date=2026-02-01&amp;to_date=2026-02-17&amp;sort_by=created_at&amp;sort_order=desc&amp;limit=10" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
@@ -11151,7 +11181,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/roles/stats"
+    "http://localhost:8000/api/roles/stats"
 );
 
 const params = {
@@ -11173,6 +11203,7 @@ const headers = {
     "Accept": "application/json",
 };
 
+
 fetch(url, {
     method: "GET",
     headers,
@@ -11181,7 +11212,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/roles/stats';
+$url = 'http://localhost:8000/api/roles/stats';
 $response = $client-&gt;get(
     $url,
     [
@@ -11417,7 +11448,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/roles?search=admin&amp;status=active&amp;from_date=2026-02-01&amp;to_date=2026-02-17&amp;sort_by=id&amp;sort_order=desc&amp;limit=10" \
+    --get "http://localhost:8000/api/roles?search=admin&amp;status=active&amp;from_date=2026-02-01&amp;to_date=2026-02-17&amp;sort_by=id&amp;sort_order=desc&amp;limit=10" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
@@ -11426,7 +11457,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/roles"
+    "http://localhost:8000/api/roles"
 );
 
 const params = {
@@ -11448,6 +11479,7 @@ const headers = {
     "Accept": "application/json",
 };
 
+
 fetch(url, {
     method: "GET",
     headers,
@@ -11456,7 +11488,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/roles';
+$url = 'http://localhost:8000/api/roles';
 $response = $client-&gt;get(
     $url,
     [
@@ -11491,20 +11523,20 @@ print_r(json_decode((string) $body));</code></pre></div>
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: [
         {
-            &quot;id&quot;: 53,
+            &quot;id&quot;: 11,
             &quot;name&quot;: &quot;role_ng775&quot;,
             &quot;guard_name&quot;: &quot;web&quot;,
             &quot;organization_id&quot;: null,
-            &quot;created_at&quot;: &quot;09:32:24 05/03/2026&quot;,
-            &quot;updated_at&quot;: &quot;09:32:24 05/03/2026&quot;
+            &quot;created_at&quot;: &quot;03:08:03 23/03/2026&quot;,
+            &quot;updated_at&quot;: &quot;03:08:03 23/03/2026&quot;
         },
         {
-            &quot;id&quot;: 54,
+            &quot;id&quot;: 12,
             &quot;name&quot;: &quot;role_mi365&quot;,
             &quot;guard_name&quot;: &quot;web&quot;,
             &quot;organization_id&quot;: null,
-            &quot;created_at&quot;: &quot;09:32:24 05/03/2026&quot;,
-            &quot;updated_at&quot;: &quot;09:32:24 05/03/2026&quot;
+            &quot;created_at&quot;: &quot;03:08:03 23/03/2026&quot;,
+            &quot;updated_at&quot;: &quot;03:08:03 23/03/2026&quot;
         }
     ],
     &quot;links&quot;: {
@@ -11742,7 +11774,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/roles/1" \
+    --get "http://localhost:8000/api/roles/1" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
@@ -11751,7 +11783,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/roles/1"
+    "http://localhost:8000/api/roles/1"
 );
 
 const headers = {
@@ -11761,6 +11793,7 @@ const headers = {
     "Accept": "application/json",
 };
 
+
 fetch(url, {
     method: "GET",
     headers,
@@ -11769,7 +11802,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/roles/1';
+$url = 'http://localhost:8000/api/roles/1';
 $response = $client-&gt;get(
     $url,
     [
@@ -11794,19 +11827,19 @@ print_r(json_decode((string) $body));</code></pre></div>
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: {
-        &quot;id&quot;: 55,
+        &quot;id&quot;: 13,
         &quot;name&quot;: &quot;role_wp680&quot;,
         &quot;guard_name&quot;: &quot;web&quot;,
-        &quot;organization_id&quot;: 175,
+        &quot;organization_id&quot;: 27,
         &quot;organization&quot;: {
-            &quot;id&quot;: 175,
+            &quot;id&quot;: 27,
             &quot;name&quot;: &quot;Dare Group&quot;
         },
         &quot;permissions&quot;: [
             &quot;organizations.index.7602&quot;
         ],
-        &quot;created_at&quot;: &quot;09:32:24 05/03/2026&quot;,
-        &quot;updated_at&quot;: &quot;09:32:24 05/03/2026&quot;
+        &quot;created_at&quot;: &quot;03:08:03 23/03/2026&quot;,
+        &quot;updated_at&quot;: &quot;03:08:03 23/03/2026&quot;
     },
     &quot;success&quot;: &quot;true&quot;
 }</code>
@@ -11948,7 +11981,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost/api/roles" \
+    "http://localhost:8000/api/roles" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
@@ -11967,7 +12000,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/roles"
+    "http://localhost:8000/api/roles"
 );
 
 const headers = {
@@ -11996,7 +12029,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/roles';
+$url = 'http://localhost:8000/api/roles';
 $response = $client-&gt;post(
     $url,
     [
@@ -12030,15 +12063,15 @@ print_r(json_decode((string) $body));</code></pre></div>
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: {
-        &quot;id&quot;: 56,
+        &quot;id&quot;: 14,
         &quot;name&quot;: &quot;role_zm806&quot;,
         &quot;guard_name&quot;: &quot;web&quot;,
         &quot;organization_id&quot;: null,
         &quot;permissions&quot;: [
             &quot;documents.index.5606&quot;
         ],
-        &quot;created_at&quot;: &quot;09:32:25 05/03/2026&quot;,
-        &quot;updated_at&quot;: &quot;09:32:25 05/03/2026&quot;
+        &quot;created_at&quot;: &quot;03:08:03 23/03/2026&quot;,
+        &quot;updated_at&quot;: &quot;03:08:03 23/03/2026&quot;
     },
     &quot;success&quot;: &quot;true&quot;,
     &quot;message&quot;: &quot;Vai tr&ograve; đ&atilde; được tạo th&agrave;nh c&ocirc;ng!&quot;
@@ -12195,7 +12228,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://localhost/api/roles/1" \
+    "http://localhost:8000/api/roles/1" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
@@ -12213,7 +12246,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/roles/1"
+    "http://localhost:8000/api/roles/1"
 );
 
 const headers = {
@@ -12241,7 +12274,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/roles/1';
+$url = 'http://localhost:8000/api/roles/1';
 $response = $client-&gt;put(
     $url,
     [
@@ -12274,15 +12307,15 @@ print_r(json_decode((string) $body));</code></pre></div>
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: {
-        &quot;id&quot;: 57,
+        &quot;id&quot;: 15,
         &quot;name&quot;: &quot;role_yv564&quot;,
         &quot;guard_name&quot;: &quot;web&quot;,
         &quot;organization_id&quot;: null,
         &quot;permissions&quot;: [
             &quot;users.update.3433&quot;
         ],
-        &quot;created_at&quot;: &quot;09:32:25 05/03/2026&quot;,
-        &quot;updated_at&quot;: &quot;09:32:25 05/03/2026&quot;
+        &quot;created_at&quot;: &quot;03:08:03 23/03/2026&quot;,
+        &quot;updated_at&quot;: &quot;03:08:03 23/03/2026&quot;
     },
     &quot;success&quot;: &quot;true&quot;,
     &quot;message&quot;: &quot;Vai tr&ograve; đ&atilde; được cập nhật!&quot;
@@ -12464,7 +12497,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PATCH \
-    "http://localhost/api/roles/1" \
+    "http://localhost:8000/api/roles/1" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
@@ -12482,7 +12515,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/roles/1"
+    "http://localhost:8000/api/roles/1"
 );
 
 const headers = {
@@ -12510,7 +12543,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/roles/1';
+$url = 'http://localhost:8000/api/roles/1';
 $response = $client-&gt;patch(
     $url,
     [
@@ -12543,15 +12576,15 @@ print_r(json_decode((string) $body));</code></pre></div>
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: {
-        &quot;id&quot;: 58,
+        &quot;id&quot;: 16,
         &quot;name&quot;: &quot;role_lj575&quot;,
         &quot;guard_name&quot;: &quot;web&quot;,
         &quot;organization_id&quot;: null,
         &quot;permissions&quot;: [
             &quot;roles.destroy.6854&quot;
         ],
-        &quot;created_at&quot;: &quot;09:32:25 05/03/2026&quot;,
-        &quot;updated_at&quot;: &quot;09:32:25 05/03/2026&quot;
+        &quot;created_at&quot;: &quot;03:08:03 23/03/2026&quot;,
+        &quot;updated_at&quot;: &quot;03:08:03 23/03/2026&quot;
     },
     &quot;success&quot;: &quot;true&quot;,
     &quot;message&quot;: &quot;Vai tr&ograve; đ&atilde; được cập nhật!&quot;
@@ -12733,7 +12766,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request DELETE \
-    "http://localhost/api/roles/1" \
+    "http://localhost:8000/api/roles/1" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
@@ -12742,7 +12775,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/roles/1"
+    "http://localhost:8000/api/roles/1"
 );
 
 const headers = {
@@ -12752,6 +12785,7 @@ const headers = {
     "Accept": "application/json",
 };
 
+
 fetch(url, {
     method: "DELETE",
     headers,
@@ -12760,7 +12794,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/roles/1';
+$url = 'http://localhost:8000/api/roles/1';
 $response = $client-&gt;delete(
     $url,
     [
@@ -12928,7 +12962,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/settings/public" \
+    --get "http://localhost:8000/api/settings/public" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -12936,7 +12970,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/settings/public"
+    "http://localhost:8000/api/settings/public"
 );
 
 const headers = {
@@ -12944,6 +12978,7 @@ const headers = {
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
+
 
 fetch(url, {
     method: "GET",
@@ -12953,7 +12988,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/settings/public';
+$url = 'http://localhost:8000/api/settings/public';
 $response = $client-&gt;get(
     $url,
     [
@@ -13077,7 +13112,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/settings" \
+    --get "http://localhost:8000/api/settings" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
@@ -13086,7 +13121,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/settings"
+    "http://localhost:8000/api/settings"
 );
 
 const headers = {
@@ -13096,6 +13131,7 @@ const headers = {
     "Accept": "application/json",
 };
 
+
 fetch(url, {
     method: "GET",
     headers,
@@ -13104,7 +13140,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/settings';
+$url = 'http://localhost:8000/api/settings';
 $response = $client-&gt;get(
     $url,
     [
@@ -13241,7 +13277,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/settings/copyright" \
+    --get "http://localhost:8000/api/settings/copyright" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
@@ -13250,7 +13286,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/settings/copyright"
+    "http://localhost:8000/api/settings/copyright"
 );
 
 const headers = {
@@ -13260,6 +13296,7 @@ const headers = {
     "Accept": "application/json",
 };
 
+
 fetch(url, {
     method: "GET",
     headers,
@@ -13268,7 +13305,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/settings/copyright';
+$url = 'http://localhost:8000/api/settings/copyright';
 $response = $client-&gt;get(
     $url,
     [
@@ -13425,7 +13462,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://localhost/api/settings" \
+    "http://localhost:8000/api/settings" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
@@ -13440,7 +13477,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/settings"
+    "http://localhost:8000/api/settings"
 );
 
 const headers = {
@@ -13465,7 +13502,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/settings';
+$url = 'http://localhost:8000/api/settings';
 $response = $client-&gt;put(
     $url,
     [
@@ -13652,7 +13689,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/users/export?search=architecto&amp;status=architecto&amp;from_date=2026-01-01&amp;to_date=2026-12-31&amp;sort_by=architecto&amp;sort_order=architecto&amp;limit=16" \
+    --get "http://localhost:8000/api/users/export?search=architecto&amp;status=architecto&amp;from_date=2026-01-01&amp;to_date=2026-12-31&amp;sort_by=architecto&amp;sort_order=architecto&amp;limit=16" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
@@ -13661,7 +13698,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/users/export"
+    "http://localhost:8000/api/users/export"
 );
 
 const params = {
@@ -13683,6 +13720,7 @@ const headers = {
     "Accept": "application/json",
 };
 
+
 fetch(url, {
     method: "GET",
     headers,
@@ -13691,7 +13729,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/users/export';
+$url = 'http://localhost:8000/api/users/export';
 $response = $client-&gt;get(
     $url,
     [
@@ -13923,7 +13961,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <small class="badge badge-darkred">requires authentication</small>
 </p>
 
-<p>Cột bắt buộc: name, email. Cột không bắt buộc: user_name, password (mặc định &quot;password&quot;), status (mặc định &quot;active&quot;).</p>
+<p>Cột bắt buộc: name, email. Cột không bắt buộc: user_name, password (mặc định "password"), status (mặc định "active").</p>
 
 <span id="example-requests-POSTapi-users-import">
 <blockquote>Example request:</blockquote>
@@ -13931,17 +13969,17 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost/api/users/import" \
+    "http://localhost:8000/api/users/import" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: multipart/form-data" \
     --header "Accept: application/json" \
-    --form "file=@/tmp/phpjm982lun46rq9jKpk6x" </code></pre></div>
+    --form "file=@/tmp/phpc40drlp1o1k60cd3qfm" </code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/users/import"
+    "http://localhost:8000/api/users/import"
 );
 
 const headers = {
@@ -13963,7 +14001,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/users/import';
+$url = 'http://localhost:8000/api/users/import';
 $response = $client-&gt;post(
     $url,
     [
@@ -13976,7 +14014,7 @@ $response = $client-&gt;post(
         'multipart' =&gt; [
             [
                 'name' =&gt; 'file',
-                'contents' =&gt; fopen('/tmp/phpjm982lun46rq9jKpk6x', 'r')
+                'contents' =&gt; fopen('/tmp/phpc40drlp1o1k60cd3qfm', 'r')
             ],
         ],
     ]
@@ -14104,7 +14142,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>File Excel (xlsx, xls, csv). Cột theo chuẩn export. Example: <code>/tmp/phpjm982lun46rq9jKpk6x</code></p>
+<p>File Excel (xlsx, xls, csv). Cột theo chuẩn export. Example: <code>/tmp/phpc40drlp1o1k60cd3qfm</code></p>
         </div>
         </form>
 
@@ -14122,7 +14160,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost/api/users/bulk-delete" \
+    "http://localhost:8000/api/users/bulk-delete" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
@@ -14139,7 +14177,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/users/bulk-delete"
+    "http://localhost:8000/api/users/bulk-delete"
 );
 
 const headers = {
@@ -14166,7 +14204,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/users/bulk-delete';
+$url = 'http://localhost:8000/api/users/bulk-delete';
 $response = $client-&gt;post(
     $url,
     [
@@ -14328,7 +14366,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PATCH \
-    "http://localhost/api/users/bulk-status" \
+    "http://localhost:8000/api/users/bulk-status" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
@@ -14346,7 +14384,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/users/bulk-status"
+    "http://localhost:8000/api/users/bulk-status"
 );
 
 const headers = {
@@ -14374,7 +14412,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/users/bulk-status';
+$url = 'http://localhost:8000/api/users/bulk-status';
 $response = $client-&gt;patch(
     $url,
     [
@@ -14549,7 +14587,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/users/stats?search=john&amp;status=architecto&amp;from_date=2026-01-01&amp;to_date=2026-12-31&amp;sort_by=created_at&amp;sort_order=desc&amp;limit=10" \
+    --get "http://localhost:8000/api/users/stats?search=john&amp;status=architecto&amp;from_date=2026-01-01&amp;to_date=2026-12-31&amp;sort_by=created_at&amp;sort_order=desc&amp;limit=10" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
@@ -14558,7 +14596,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/users/stats"
+    "http://localhost:8000/api/users/stats"
 );
 
 const params = {
@@ -14580,6 +14618,7 @@ const headers = {
     "Accept": "application/json",
 };
 
+
 fetch(url, {
     method: "GET",
     headers,
@@ -14588,7 +14627,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/users/stats';
+$url = 'http://localhost:8000/api/users/stats';
 $response = $client-&gt;get(
     $url,
     [
@@ -14826,7 +14865,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/users?search=john&amp;status=architecto&amp;from_date=2026-01-01&amp;to_date=2026-12-31&amp;sort_by=created_at&amp;sort_order=desc&amp;limit=10" \
+    --get "http://localhost:8000/api/users?search=john&amp;status=architecto&amp;from_date=2026-01-01&amp;to_date=2026-12-31&amp;sort_by=created_at&amp;sort_order=desc&amp;limit=10" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
@@ -14835,7 +14874,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/users"
+    "http://localhost:8000/api/users"
 );
 
 const params = {
@@ -14857,6 +14896,7 @@ const headers = {
     "Accept": "application/json",
 };
 
+
 fetch(url, {
     method: "GET",
     headers,
@@ -14865,7 +14905,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/users';
+$url = 'http://localhost:8000/api/users';
 $response = $client-&gt;get(
     $url,
     [
@@ -14900,7 +14940,7 @@ print_r(json_decode((string) $body));</code></pre></div>
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: [
         {
-            &quot;id&quot;: 77,
+            &quot;id&quot;: 21,
             &quot;name&quot;: &quot;Ms. Elisabeth Okuneva&quot;,
             &quot;email&quot;: &quot;gulgowski.asia@example.com&quot;,
             &quot;user_name&quot;: &quot;idickens&quot;,
@@ -14908,11 +14948,11 @@ print_r(json_decode((string) $body));</code></pre></div>
             &quot;created_by&quot;: &quot;N/A&quot;,
             &quot;updated_by&quot;: &quot;N/A&quot;,
             &quot;assignments&quot;: [],
-            &quot;created_at&quot;: &quot;05/03/2026 09:32:23&quot;,
-            &quot;updated_at&quot;: &quot;05/03/2026 09:32:23&quot;
+            &quot;created_at&quot;: &quot;23/03/2026 03:08:02&quot;,
+            &quot;updated_at&quot;: &quot;23/03/2026 03:08:02&quot;
         },
         {
-            &quot;id&quot;: 78,
+            &quot;id&quot;: 22,
             &quot;name&quot;: &quot;Mya DuBuque&quot;,
             &quot;email&quot;: &quot;breitenberg.gilbert@example.com&quot;,
             &quot;user_name&quot;: &quot;price.amber&quot;,
@@ -14920,8 +14960,8 @@ print_r(json_decode((string) $body));</code></pre></div>
             &quot;created_by&quot;: &quot;N/A&quot;,
             &quot;updated_by&quot;: &quot;N/A&quot;,
             &quot;assignments&quot;: [],
-            &quot;created_at&quot;: &quot;05/03/2026 09:32:23&quot;,
-            &quot;updated_at&quot;: &quot;05/03/2026 09:32:23&quot;
+            &quot;created_at&quot;: &quot;23/03/2026 03:08:02&quot;,
+            &quot;updated_at&quot;: &quot;23/03/2026 03:08:02&quot;
         }
     ],
     &quot;links&quot;: {
@@ -15159,7 +15199,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/users/1" \
+    --get "http://localhost:8000/api/users/1" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
@@ -15168,7 +15208,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/users/1"
+    "http://localhost:8000/api/users/1"
 );
 
 const headers = {
@@ -15178,6 +15218,7 @@ const headers = {
     "Accept": "application/json",
 };
 
+
 fetch(url, {
     method: "GET",
     headers,
@@ -15186,7 +15227,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/users/1';
+$url = 'http://localhost:8000/api/users/1';
 $response = $client-&gt;get(
     $url,
     [
@@ -15211,7 +15252,7 @@ print_r(json_decode((string) $body));</code></pre></div>
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: {
-        &quot;id&quot;: 79,
+        &quot;id&quot;: 23,
         &quot;name&quot;: &quot;Morgan Hirthe&quot;,
         &quot;email&quot;: &quot;dare.emelie@example.com&quot;,
         &quot;user_name&quot;: &quot;imclaughlin&quot;,
@@ -15219,8 +15260,8 @@ print_r(json_decode((string) $body));</code></pre></div>
         &quot;created_by&quot;: &quot;N/A&quot;,
         &quot;updated_by&quot;: &quot;N/A&quot;,
         &quot;assignments&quot;: [],
-        &quot;created_at&quot;: &quot;05/03/2026 09:32:23&quot;,
-        &quot;updated_at&quot;: &quot;05/03/2026 09:32:23&quot;
+        &quot;created_at&quot;: &quot;23/03/2026 03:08:02&quot;,
+        &quot;updated_at&quot;: &quot;23/03/2026 03:08:02&quot;
     },
     &quot;success&quot;: &quot;true&quot;
 }</code>
@@ -15362,7 +15403,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost/api/users" \
+    "http://localhost:8000/api/users" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
@@ -15383,7 +15424,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/users"
+    "http://localhost:8000/api/users"
 );
 
 const headers = {
@@ -15414,7 +15455,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/users';
+$url = 'http://localhost:8000/api/users';
 $response = $client-&gt;post(
     $url,
     [
@@ -15450,7 +15491,7 @@ print_r(json_decode((string) $body));</code></pre></div>
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: {
-        &quot;id&quot;: 80,
+        &quot;id&quot;: 24,
         &quot;name&quot;: &quot;Ms. Elisabeth Okuneva&quot;,
         &quot;email&quot;: &quot;idickens@example.org&quot;,
         &quot;user_name&quot;: &quot;aschuster&quot;,
@@ -15458,8 +15499,8 @@ print_r(json_decode((string) $body));</code></pre></div>
         &quot;created_by&quot;: &quot;N/A&quot;,
         &quot;updated_by&quot;: &quot;N/A&quot;,
         &quot;assignments&quot;: [],
-        &quot;created_at&quot;: &quot;05/03/2026 09:32:23&quot;,
-        &quot;updated_at&quot;: &quot;05/03/2026 09:32:23&quot;
+        &quot;created_at&quot;: &quot;23/03/2026 03:08:02&quot;,
+        &quot;updated_at&quot;: &quot;23/03/2026 03:08:02&quot;
     },
     &quot;success&quot;: &quot;true&quot;,
     &quot;message&quot;: &quot;T&agrave;i khoản đ&atilde; được tạo th&agrave;nh c&ocirc;ng!&quot;
@@ -15630,7 +15671,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
  &nbsp;
 <br>
-<p>Danh sách gán vai trò theo tổ chức. Ví dụ: [{&quot;role_id&quot;:1,&quot;organization_ids&quot;:[2,3]},{&quot;role_id&quot;:5,&quot;organization_ids&quot;:[9]}]</p>
+<p>Danh sách gán vai trò theo tổ chức. Ví dụ: [{"role_id":1,"organization_ids":[2,3]},{"role_id":5,"organization_ids":[9]}]</p>
             </summary>
                                                 <div style="margin-left: 14px; clear: unset;">
                         <b style="line-height: 2;"><code>role_id</code></b>&nbsp;&nbsp;
@@ -15688,7 +15729,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://localhost/api/users/1" \
+    "http://localhost:8000/api/users/1" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
@@ -15709,7 +15750,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/users/1"
+    "http://localhost:8000/api/users/1"
 );
 
 const headers = {
@@ -15740,7 +15781,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/users/1';
+$url = 'http://localhost:8000/api/users/1';
 $response = $client-&gt;put(
     $url,
     [
@@ -15776,7 +15817,7 @@ print_r(json_decode((string) $body));</code></pre></div>
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: {
-        &quot;id&quot;: 81,
+        &quot;id&quot;: 25,
         &quot;name&quot;: &quot;Ms. Elisabeth Okuneva&quot;,
         &quot;email&quot;: &quot;aschuster@example.com&quot;,
         &quot;user_name&quot;: &quot;gilbert32&quot;,
@@ -15784,8 +15825,8 @@ print_r(json_decode((string) $body));</code></pre></div>
         &quot;created_by&quot;: &quot;N/A&quot;,
         &quot;updated_by&quot;: &quot;N/A&quot;,
         &quot;assignments&quot;: [],
-        &quot;created_at&quot;: &quot;05/03/2026 09:32:23&quot;,
-        &quot;updated_at&quot;: &quot;05/03/2026 09:32:23&quot;
+        &quot;created_at&quot;: &quot;23/03/2026 03:08:02&quot;,
+        &quot;updated_at&quot;: &quot;23/03/2026 03:08:02&quot;
     },
     &quot;success&quot;: &quot;true&quot;,
     &quot;message&quot;: &quot;T&agrave;i khoản đ&atilde; được cập nhật!&quot;
@@ -16039,7 +16080,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PATCH \
-    "http://localhost/api/users/1" \
+    "http://localhost:8000/api/users/1" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
@@ -16060,7 +16101,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/users/1"
+    "http://localhost:8000/api/users/1"
 );
 
 const headers = {
@@ -16091,7 +16132,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/users/1';
+$url = 'http://localhost:8000/api/users/1';
 $response = $client-&gt;patch(
     $url,
     [
@@ -16127,7 +16168,7 @@ print_r(json_decode((string) $body));</code></pre></div>
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: {
-        &quot;id&quot;: 82,
+        &quot;id&quot;: 26,
         &quot;name&quot;: &quot;Ms. Elisabeth Okuneva&quot;,
         &quot;email&quot;: &quot;gilbert32@example.com&quot;,
         &quot;user_name&quot;: &quot;hirthe.theo&quot;,
@@ -16135,8 +16176,8 @@ print_r(json_decode((string) $body));</code></pre></div>
         &quot;created_by&quot;: &quot;N/A&quot;,
         &quot;updated_by&quot;: &quot;N/A&quot;,
         &quot;assignments&quot;: [],
-        &quot;created_at&quot;: &quot;05/03/2026 09:32:23&quot;,
-        &quot;updated_at&quot;: &quot;05/03/2026 09:32:23&quot;
+        &quot;created_at&quot;: &quot;23/03/2026 03:08:02&quot;,
+        &quot;updated_at&quot;: &quot;23/03/2026 03:08:02&quot;
     },
     &quot;success&quot;: &quot;true&quot;,
     &quot;message&quot;: &quot;T&agrave;i khoản đ&atilde; được cập nhật!&quot;
@@ -16390,7 +16431,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request DELETE \
-    "http://localhost/api/users/1" \
+    "http://localhost:8000/api/users/1" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
@@ -16399,7 +16440,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/users/1"
+    "http://localhost:8000/api/users/1"
 );
 
 const headers = {
@@ -16409,6 +16450,7 @@ const headers = {
     "Accept": "application/json",
 };
 
+
 fetch(url, {
     method: "DELETE",
     headers,
@@ -16417,7 +16459,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/users/1';
+$url = 'http://localhost:8000/api/users/1';
 $response = $client-&gt;delete(
     $url,
     [
@@ -16582,7 +16624,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PATCH \
-    "http://localhost/api/users/1/status" \
+    "http://localhost:8000/api/users/1/status" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
@@ -16595,7 +16637,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/users/1/status"
+    "http://localhost:8000/api/users/1/status"
 );
 
 const headers = {
@@ -16618,7 +16660,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/users/1/status';
+$url = 'http://localhost:8000/api/users/1/status';
 $response = $client-&gt;patch(
     $url,
     [
@@ -16646,7 +16688,7 @@ print_r(json_decode((string) $body));</code></pre></div>
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: {
-        &quot;id&quot;: 83,
+        &quot;id&quot;: 27,
         &quot;name&quot;: &quot;Morgan Hirthe&quot;,
         &quot;email&quot;: &quot;imclaughlin@example.org&quot;,
         &quot;user_name&quot;: &quot;okeefe.isidro&quot;,
@@ -16654,8 +16696,8 @@ print_r(json_decode((string) $body));</code></pre></div>
         &quot;created_by&quot;: &quot;N/A&quot;,
         &quot;updated_by&quot;: &quot;N/A&quot;,
         &quot;assignments&quot;: [],
-        &quot;created_at&quot;: &quot;05/03/2026 09:32:24&quot;,
-        &quot;updated_at&quot;: &quot;05/03/2026 09:32:24&quot;
+        &quot;created_at&quot;: &quot;23/03/2026 03:08:02&quot;,
+        &quot;updated_at&quot;: &quot;23/03/2026 03:08:02&quot;
     },
     &quot;success&quot;: &quot;true&quot;,
     &quot;message&quot;: &quot;Cập nhật trạng th&aacute;i th&agrave;nh c&ocirc;ng!&quot;
@@ -16814,7 +16856,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/issuing-agencies/public?search=architecto&amp;status=active&amp;from_date=2026-01-01&amp;to_date=2026-12-31&amp;sort_by=name&amp;sort_order=asc&amp;limit=10" \
+    --get "http://localhost:8000/api/issuing-agencies/public?search=architecto&amp;status=active&amp;from_date=2026-01-01&amp;to_date=2026-12-31&amp;sort_by=name&amp;sort_order=asc&amp;limit=10" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -16822,7 +16864,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/issuing-agencies/public"
+    "http://localhost:8000/api/issuing-agencies/public"
 );
 
 const params = {
@@ -16843,6 +16885,7 @@ const headers = {
     "Accept": "application/json",
 };
 
+
 fetch(url, {
     method: "GET",
     headers,
@@ -16851,7 +16894,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/issuing-agencies/public';
+$url = 'http://localhost:8000/api/issuing-agencies/public';
 $response = $client-&gt;get(
     $url,
     [
@@ -16885,24 +16928,24 @@ print_r(json_decode((string) $body));</code></pre></div>
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: [
         {
-            &quot;id&quot;: 129,
+            &quot;id&quot;: 17,
             &quot;name&quot;: &quot;Bailey Ltd&quot;,
             &quot;description&quot;: &quot;Et fugiat sunt nihil accusantium.&quot;,
             &quot;status&quot;: &quot;inactive&quot;,
             &quot;created_by&quot;: &quot;N/A&quot;,
             &quot;updated_by&quot;: &quot;N/A&quot;,
-            &quot;created_at&quot;: &quot;09:32:22 05/03/2026&quot;,
-            &quot;updated_at&quot;: &quot;09:32:22 05/03/2026&quot;
+            &quot;created_at&quot;: &quot;03:08:02 23/03/2026&quot;,
+            &quot;updated_at&quot;: &quot;03:08:02 23/03/2026&quot;
         },
         {
-            &quot;id&quot;: 130,
+            &quot;id&quot;: 18,
             &quot;name&quot;: &quot;Runte-Considine&quot;,
             &quot;description&quot;: &quot;Provident perspiciatis quo omnis nostrum aut adipisci quidem.&quot;,
             &quot;status&quot;: &quot;active&quot;,
             &quot;created_by&quot;: &quot;N/A&quot;,
             &quot;updated_by&quot;: &quot;N/A&quot;,
-            &quot;created_at&quot;: &quot;09:32:22 05/03/2026&quot;,
-            &quot;updated_at&quot;: &quot;09:32:22 05/03/2026&quot;
+            &quot;created_at&quot;: &quot;03:08:02 23/03/2026&quot;,
+            &quot;updated_at&quot;: &quot;03:08:02 23/03/2026&quot;
         }
     ],
     &quot;success&quot;: &quot;true&quot;
@@ -17092,7 +17135,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/issuing-agencies/public-options?search=architecto&amp;status=active&amp;from_date=2026-01-01&amp;to_date=2026-12-31&amp;sort_by=name&amp;sort_order=asc&amp;limit=10" \
+    --get "http://localhost:8000/api/issuing-agencies/public-options?search=architecto&amp;status=active&amp;from_date=2026-01-01&amp;to_date=2026-12-31&amp;sort_by=name&amp;sort_order=asc&amp;limit=10" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -17100,7 +17143,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/issuing-agencies/public-options"
+    "http://localhost:8000/api/issuing-agencies/public-options"
 );
 
 const params = {
@@ -17121,6 +17164,7 @@ const headers = {
     "Accept": "application/json",
 };
 
+
 fetch(url, {
     method: "GET",
     headers,
@@ -17129,7 +17173,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/issuing-agencies/public-options';
+$url = 'http://localhost:8000/api/issuing-agencies/public-options';
 $response = $client-&gt;get(
     $url,
     [
@@ -17163,12 +17207,12 @@ print_r(json_decode((string) $body));</code></pre></div>
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: [
         {
-            &quot;id&quot;: 131,
+            &quot;id&quot;: 19,
             &quot;name&quot;: &quot;Bailey Ltd&quot;,
             &quot;description&quot;: &quot;Et fugiat sunt nihil accusantium.&quot;
         },
         {
-            &quot;id&quot;: 132,
+            &quot;id&quot;: 20,
             &quot;name&quot;: &quot;Runte-Considine&quot;,
             &quot;description&quot;: &quot;Provident perspiciatis quo omnis nostrum aut adipisci quidem.&quot;
         }
@@ -17361,7 +17405,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/issuing-agencies/export?search=architecto&amp;status=architecto&amp;from_date=2026-01-01&amp;to_date=2026-12-31&amp;sort_by=created_at&amp;sort_order=desc&amp;limit=10" \
+    --get "http://localhost:8000/api/issuing-agencies/export?search=architecto&amp;status=architecto&amp;from_date=2026-01-01&amp;to_date=2026-12-31&amp;sort_by=created_at&amp;sort_order=desc&amp;limit=10" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
@@ -17370,7 +17414,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/issuing-agencies/export"
+    "http://localhost:8000/api/issuing-agencies/export"
 );
 
 const params = {
@@ -17392,6 +17436,7 @@ const headers = {
     "Accept": "application/json",
 };
 
+
 fetch(url, {
     method: "GET",
     headers,
@@ -17400,7 +17445,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/issuing-agencies/export';
+$url = 'http://localhost:8000/api/issuing-agencies/export';
 $response = $client-&gt;get(
     $url,
     [
@@ -17634,7 +17679,7 @@ Must be one of:
 <small class="badge badge-darkred">requires authentication</small>
 </p>
 
-<p>Cột bắt buộc: name. Cột không bắt buộc: description, status (mặc định &quot;active&quot;).</p>
+<p>Cột bắt buộc: name. Cột không bắt buộc: description, status (mặc định "active").</p>
 
 <span id="example-requests-POSTapi-issuing-agencies-import">
 <blockquote>Example request:</blockquote>
@@ -17642,17 +17687,17 @@ Must be one of:
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost/api/issuing-agencies/import" \
+    "http://localhost:8000/api/issuing-agencies/import" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: multipart/form-data" \
     --header "Accept: application/json" \
-    --form "file=@/tmp/phpb0b2vff1l4au4d33II3" </code></pre></div>
+    --form "file=@/tmp/phpd1f1a0urj1a7dCJjjpJ" </code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/issuing-agencies/import"
+    "http://localhost:8000/api/issuing-agencies/import"
 );
 
 const headers = {
@@ -17674,7 +17719,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/issuing-agencies/import';
+$url = 'http://localhost:8000/api/issuing-agencies/import';
 $response = $client-&gt;post(
     $url,
     [
@@ -17687,7 +17732,7 @@ $response = $client-&gt;post(
         'multipart' =&gt; [
             [
                 'name' =&gt; 'file',
-                'contents' =&gt; fopen('/tmp/phpb0b2vff1l4au4d33II3', 'r')
+                'contents' =&gt; fopen('/tmp/phpd1f1a0urj1a7dCJjjpJ', 'r')
             ],
         ],
     ]
@@ -17815,7 +17860,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>File Excel (xlsx, xls, csv). Cột theo chuẩn export. Example: <code>/tmp/phpb0b2vff1l4au4d33II3</code></p>
+<p>File Excel (xlsx, xls, csv). Cột theo chuẩn export. Example: <code>/tmp/phpd1f1a0urj1a7dCJjjpJ</code></p>
         </div>
         </form>
 
@@ -17833,7 +17878,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost/api/issuing-agencies/bulk-delete" \
+    "http://localhost:8000/api/issuing-agencies/bulk-delete" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
@@ -17850,7 +17895,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/issuing-agencies/bulk-delete"
+    "http://localhost:8000/api/issuing-agencies/bulk-delete"
 );
 
 const headers = {
@@ -17877,7 +17922,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/issuing-agencies/bulk-delete';
+$url = 'http://localhost:8000/api/issuing-agencies/bulk-delete';
 $response = $client-&gt;post(
     $url,
     [
@@ -18039,7 +18084,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PATCH \
-    "http://localhost/api/issuing-agencies/bulk-status" \
+    "http://localhost:8000/api/issuing-agencies/bulk-status" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
@@ -18057,7 +18102,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/issuing-agencies/bulk-status"
+    "http://localhost:8000/api/issuing-agencies/bulk-status"
 );
 
 const headers = {
@@ -18085,7 +18130,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/issuing-agencies/bulk-status';
+$url = 'http://localhost:8000/api/issuing-agencies/bulk-status';
 $response = $client-&gt;patch(
     $url,
     [
@@ -18260,7 +18305,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/issuing-agencies/stats?search=architecto&amp;status=architecto&amp;from_date=2026-01-01&amp;to_date=2026-12-31&amp;sort_by=created_at&amp;sort_order=desc&amp;limit=10" \
+    --get "http://localhost:8000/api/issuing-agencies/stats?search=architecto&amp;status=architecto&amp;from_date=2026-01-01&amp;to_date=2026-12-31&amp;sort_by=created_at&amp;sort_order=desc&amp;limit=10" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
@@ -18269,7 +18314,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/issuing-agencies/stats"
+    "http://localhost:8000/api/issuing-agencies/stats"
 );
 
 const params = {
@@ -18291,6 +18336,7 @@ const headers = {
     "Accept": "application/json",
 };
 
+
 fetch(url, {
     method: "GET",
     headers,
@@ -18299,7 +18345,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/issuing-agencies/stats';
+$url = 'http://localhost:8000/api/issuing-agencies/stats';
 $response = $client-&gt;get(
     $url,
     [
@@ -18537,7 +18583,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/issuing-agencies?search=architecto&amp;status=architecto&amp;from_date=2026-01-01&amp;to_date=2026-12-31&amp;sort_by=created_at&amp;sort_order=desc&amp;limit=10" \
+    --get "http://localhost:8000/api/issuing-agencies?search=architecto&amp;status=architecto&amp;from_date=2026-01-01&amp;to_date=2026-12-31&amp;sort_by=created_at&amp;sort_order=desc&amp;limit=10" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
@@ -18546,7 +18592,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/issuing-agencies"
+    "http://localhost:8000/api/issuing-agencies"
 );
 
 const params = {
@@ -18568,6 +18614,7 @@ const headers = {
     "Accept": "application/json",
 };
 
+
 fetch(url, {
     method: "GET",
     headers,
@@ -18576,7 +18623,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/issuing-agencies';
+$url = 'http://localhost:8000/api/issuing-agencies';
 $response = $client-&gt;get(
     $url,
     [
@@ -18611,24 +18658,24 @@ print_r(json_decode((string) $body));</code></pre></div>
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: [
         {
-            &quot;id&quot;: 138,
+            &quot;id&quot;: 26,
             &quot;name&quot;: &quot;Bailey Ltd&quot;,
             &quot;description&quot;: &quot;Et fugiat sunt nihil accusantium.&quot;,
             &quot;status&quot;: &quot;inactive&quot;,
             &quot;created_by&quot;: &quot;N/A&quot;,
             &quot;updated_by&quot;: &quot;N/A&quot;,
-            &quot;created_at&quot;: &quot;09:32:26 05/03/2026&quot;,
-            &quot;updated_at&quot;: &quot;09:32:26 05/03/2026&quot;
+            &quot;created_at&quot;: &quot;03:08:03 23/03/2026&quot;,
+            &quot;updated_at&quot;: &quot;03:08:03 23/03/2026&quot;
         },
         {
-            &quot;id&quot;: 139,
+            &quot;id&quot;: 27,
             &quot;name&quot;: &quot;Runte-Considine&quot;,
             &quot;description&quot;: &quot;Provident perspiciatis quo omnis nostrum aut adipisci quidem.&quot;,
             &quot;status&quot;: &quot;active&quot;,
             &quot;created_by&quot;: &quot;N/A&quot;,
             &quot;updated_by&quot;: &quot;N/A&quot;,
-            &quot;created_at&quot;: &quot;09:32:26 05/03/2026&quot;,
-            &quot;updated_at&quot;: &quot;09:32:26 05/03/2026&quot;
+            &quot;created_at&quot;: &quot;03:08:03 23/03/2026&quot;,
+            &quot;updated_at&quot;: &quot;03:08:03 23/03/2026&quot;
         }
     ],
     &quot;links&quot;: {
@@ -18866,7 +18913,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/issuing-agencies/16" \
+    --get "http://localhost:8000/api/issuing-agencies/16" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
@@ -18875,7 +18922,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/issuing-agencies/16"
+    "http://localhost:8000/api/issuing-agencies/16"
 );
 
 const headers = {
@@ -18885,6 +18932,7 @@ const headers = {
     "Accept": "application/json",
 };
 
+
 fetch(url, {
     method: "GET",
     headers,
@@ -18893,7 +18941,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/issuing-agencies/16';
+$url = 'http://localhost:8000/api/issuing-agencies/16';
 $response = $client-&gt;get(
     $url,
     [
@@ -18918,14 +18966,14 @@ print_r(json_decode((string) $body));</code></pre></div>
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: {
-        &quot;id&quot;: 140,
+        &quot;id&quot;: 28,
         &quot;name&quot;: &quot;Price Ltd&quot;,
         &quot;description&quot;: &quot;Commodi incidunt iure odit.&quot;,
         &quot;status&quot;: &quot;active&quot;,
         &quot;created_by&quot;: &quot;N/A&quot;,
         &quot;updated_by&quot;: &quot;N/A&quot;,
-        &quot;created_at&quot;: &quot;09:32:26 05/03/2026&quot;,
-        &quot;updated_at&quot;: &quot;09:32:26 05/03/2026&quot;
+        &quot;created_at&quot;: &quot;03:08:03 23/03/2026&quot;,
+        &quot;updated_at&quot;: &quot;03:08:03 23/03/2026&quot;
     },
     &quot;success&quot;: &quot;true&quot;
 }</code>
@@ -19067,7 +19115,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost/api/issuing-agencies" \
+    "http://localhost:8000/api/issuing-agencies" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
@@ -19082,7 +19130,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/issuing-agencies"
+    "http://localhost:8000/api/issuing-agencies"
 );
 
 const headers = {
@@ -19107,7 +19155,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/issuing-agencies';
+$url = 'http://localhost:8000/api/issuing-agencies';
 $response = $client-&gt;post(
     $url,
     [
@@ -19137,14 +19185,14 @@ print_r(json_decode((string) $body));</code></pre></div>
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: {
-        &quot;id&quot;: 141,
+        &quot;id&quot;: 29,
         &quot;name&quot;: &quot;Ernser Group&quot;,
         &quot;description&quot;: &quot;Mollitia modi deserunt aut ab provident perspiciatis quo.&quot;,
         &quot;status&quot;: &quot;active&quot;,
         &quot;created_by&quot;: &quot;N/A&quot;,
         &quot;updated_by&quot;: &quot;N/A&quot;,
-        &quot;created_at&quot;: &quot;09:32:26 05/03/2026&quot;,
-        &quot;updated_at&quot;: &quot;09:32:26 05/03/2026&quot;
+        &quot;created_at&quot;: &quot;03:08:03 23/03/2026&quot;,
+        &quot;updated_at&quot;: &quot;03:08:03 23/03/2026&quot;
     },
     &quot;success&quot;: &quot;true&quot;,
     &quot;message&quot;: &quot;Tạo cơ quan ban h&agrave;nh th&agrave;nh c&ocirc;ng!&quot;
@@ -19299,7 +19347,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://localhost/api/issuing-agencies/16" \
+    "http://localhost:8000/api/issuing-agencies/16" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
@@ -19314,7 +19362,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/issuing-agencies/16"
+    "http://localhost:8000/api/issuing-agencies/16"
 );
 
 const headers = {
@@ -19339,7 +19387,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/issuing-agencies/16';
+$url = 'http://localhost:8000/api/issuing-agencies/16';
 $response = $client-&gt;put(
     $url,
     [
@@ -19369,14 +19417,14 @@ print_r(json_decode((string) $body));</code></pre></div>
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: {
-        &quot;id&quot;: 142,
+        &quot;id&quot;: 30,
         &quot;name&quot;: &quot;Bailey Ltd&quot;,
         &quot;description&quot;: &quot;Et fugiat sunt nihil accusantium.&quot;,
         &quot;status&quot;: &quot;inactive&quot;,
         &quot;created_by&quot;: &quot;N/A&quot;,
         &quot;updated_by&quot;: &quot;N/A&quot;,
-        &quot;created_at&quot;: &quot;09:32:26 05/03/2026&quot;,
-        &quot;updated_at&quot;: &quot;09:32:26 05/03/2026&quot;
+        &quot;created_at&quot;: &quot;03:08:03 23/03/2026&quot;,
+        &quot;updated_at&quot;: &quot;03:08:03 23/03/2026&quot;
     },
     &quot;success&quot;: &quot;true&quot;,
     &quot;message&quot;: &quot;Cập nhật cơ quan ban h&agrave;nh th&agrave;nh c&ocirc;ng!&quot;
@@ -19556,7 +19604,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PATCH \
-    "http://localhost/api/issuing-agencies/16" \
+    "http://localhost:8000/api/issuing-agencies/16" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
@@ -19571,7 +19619,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/issuing-agencies/16"
+    "http://localhost:8000/api/issuing-agencies/16"
 );
 
 const headers = {
@@ -19596,7 +19644,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/issuing-agencies/16';
+$url = 'http://localhost:8000/api/issuing-agencies/16';
 $response = $client-&gt;patch(
     $url,
     [
@@ -19626,14 +19674,14 @@ print_r(json_decode((string) $body));</code></pre></div>
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: {
-        &quot;id&quot;: 143,
+        &quot;id&quot;: 31,
         &quot;name&quot;: &quot;Bailey Ltd&quot;,
         &quot;description&quot;: &quot;Et fugiat sunt nihil accusantium.&quot;,
         &quot;status&quot;: &quot;inactive&quot;,
         &quot;created_by&quot;: &quot;N/A&quot;,
         &quot;updated_by&quot;: &quot;N/A&quot;,
-        &quot;created_at&quot;: &quot;09:32:26 05/03/2026&quot;,
-        &quot;updated_at&quot;: &quot;09:32:26 05/03/2026&quot;
+        &quot;created_at&quot;: &quot;03:08:03 23/03/2026&quot;,
+        &quot;updated_at&quot;: &quot;03:08:03 23/03/2026&quot;
     },
     &quot;success&quot;: &quot;true&quot;,
     &quot;message&quot;: &quot;Cập nhật cơ quan ban h&agrave;nh th&agrave;nh c&ocirc;ng!&quot;
@@ -19813,7 +19861,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request DELETE \
-    "http://localhost/api/issuing-agencies/16" \
+    "http://localhost:8000/api/issuing-agencies/16" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
@@ -19822,7 +19870,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/issuing-agencies/16"
+    "http://localhost:8000/api/issuing-agencies/16"
 );
 
 const headers = {
@@ -19832,6 +19880,7 @@ const headers = {
     "Accept": "application/json",
 };
 
+
 fetch(url, {
     method: "DELETE",
     headers,
@@ -19840,7 +19889,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/issuing-agencies/16';
+$url = 'http://localhost:8000/api/issuing-agencies/16';
 $response = $client-&gt;delete(
     $url,
     [
@@ -20005,7 +20054,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PATCH \
-    "http://localhost/api/issuing-agencies/16/status" \
+    "http://localhost:8000/api/issuing-agencies/16/status" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
@@ -20018,7 +20067,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/issuing-agencies/16/status"
+    "http://localhost:8000/api/issuing-agencies/16/status"
 );
 
 const headers = {
@@ -20041,7 +20090,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/issuing-agencies/16/status';
+$url = 'http://localhost:8000/api/issuing-agencies/16/status';
 $response = $client-&gt;patch(
     $url,
     [
@@ -20069,14 +20118,14 @@ print_r(json_decode((string) $body));</code></pre></div>
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: {
-        &quot;id&quot;: 144,
+        &quot;id&quot;: 32,
         &quot;name&quot;: &quot;Price Ltd&quot;,
         &quot;description&quot;: &quot;Commodi incidunt iure odit.&quot;,
         &quot;status&quot;: &quot;active&quot;,
         &quot;created_by&quot;: &quot;N/A&quot;,
         &quot;updated_by&quot;: &quot;N/A&quot;,
-        &quot;created_at&quot;: &quot;09:32:26 05/03/2026&quot;,
-        &quot;updated_at&quot;: &quot;09:32:26 05/03/2026&quot;
+        &quot;created_at&quot;: &quot;03:08:03 23/03/2026&quot;,
+        &quot;updated_at&quot;: &quot;03:08:03 23/03/2026&quot;
     },
     &quot;success&quot;: &quot;true&quot;,
     &quot;message&quot;: &quot;Đổi trạng th&aacute;i th&agrave;nh c&ocirc;ng!&quot;
@@ -20235,7 +20284,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/issuing-levels/public?search=architecto&amp;status=active&amp;from_date=2026-01-01&amp;to_date=2026-12-31&amp;sort_by=name&amp;sort_order=asc&amp;limit=10" \
+    --get "http://localhost:8000/api/issuing-levels/public?search=architecto&amp;status=active&amp;from_date=2026-01-01&amp;to_date=2026-12-31&amp;sort_by=name&amp;sort_order=asc&amp;limit=10" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -20243,7 +20292,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/issuing-levels/public"
+    "http://localhost:8000/api/issuing-levels/public"
 );
 
 const params = {
@@ -20264,6 +20313,7 @@ const headers = {
     "Accept": "application/json",
 };
 
+
 fetch(url, {
     method: "GET",
     headers,
@@ -20272,7 +20322,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/issuing-levels/public';
+$url = 'http://localhost:8000/api/issuing-levels/public';
 $response = $client-&gt;get(
     $url,
     [
@@ -20306,24 +20356,24 @@ print_r(json_decode((string) $body));</code></pre></div>
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: [
         {
-            &quot;id&quot;: 129,
+            &quot;id&quot;: 17,
             &quot;name&quot;: &quot;modi deserunt&quot;,
             &quot;description&quot;: &quot;Provident perspiciatis quo omnis nostrum aut adipisci quidem.&quot;,
             &quot;status&quot;: &quot;active&quot;,
             &quot;created_by&quot;: &quot;N/A&quot;,
             &quot;updated_by&quot;: &quot;N/A&quot;,
-            &quot;created_at&quot;: &quot;09:32:22 05/03/2026&quot;,
-            &quot;updated_at&quot;: &quot;09:32:22 05/03/2026&quot;
+            &quot;created_at&quot;: &quot;03:08:01 23/03/2026&quot;,
+            &quot;updated_at&quot;: &quot;03:08:01 23/03/2026&quot;
         },
         {
-            &quot;id&quot;: 130,
+            &quot;id&quot;: 18,
             &quot;name&quot;: &quot;qui commodi&quot;,
             &quot;description&quot;: &quot;Odit et et modi.&quot;,
             &quot;status&quot;: &quot;active&quot;,
             &quot;created_by&quot;: &quot;N/A&quot;,
             &quot;updated_by&quot;: &quot;N/A&quot;,
-            &quot;created_at&quot;: &quot;09:32:22 05/03/2026&quot;,
-            &quot;updated_at&quot;: &quot;09:32:22 05/03/2026&quot;
+            &quot;created_at&quot;: &quot;03:08:01 23/03/2026&quot;,
+            &quot;updated_at&quot;: &quot;03:08:01 23/03/2026&quot;
         }
     ],
     &quot;success&quot;: &quot;true&quot;
@@ -20513,7 +20563,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/issuing-levels/public-options?search=architecto&amp;status=active&amp;from_date=2026-01-01&amp;to_date=2026-12-31&amp;sort_by=name&amp;sort_order=asc&amp;limit=10" \
+    --get "http://localhost:8000/api/issuing-levels/public-options?search=architecto&amp;status=active&amp;from_date=2026-01-01&amp;to_date=2026-12-31&amp;sort_by=name&amp;sort_order=asc&amp;limit=10" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -20521,7 +20571,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/issuing-levels/public-options"
+    "http://localhost:8000/api/issuing-levels/public-options"
 );
 
 const params = {
@@ -20542,6 +20592,7 @@ const headers = {
     "Accept": "application/json",
 };
 
+
 fetch(url, {
     method: "GET",
     headers,
@@ -20550,7 +20601,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/issuing-levels/public-options';
+$url = 'http://localhost:8000/api/issuing-levels/public-options';
 $response = $client-&gt;get(
     $url,
     [
@@ -20584,12 +20635,12 @@ print_r(json_decode((string) $body));</code></pre></div>
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: [
         {
-            &quot;id&quot;: 131,
+            &quot;id&quot;: 19,
             &quot;name&quot;: &quot;provident perspiciatis&quot;,
             &quot;description&quot;: null
         },
         {
-            &quot;id&quot;: 132,
+            &quot;id&quot;: 20,
             &quot;name&quot;: &quot;nostrum aut&quot;,
             &quot;description&quot;: &quot;Nostrum qui commodi incidunt iure.&quot;
         }
@@ -20782,7 +20833,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/issuing-levels/export?search=architecto&amp;status=architecto&amp;from_date=2026-01-01&amp;to_date=2026-12-31&amp;sort_by=created_at&amp;sort_order=desc&amp;limit=10" \
+    --get "http://localhost:8000/api/issuing-levels/export?search=architecto&amp;status=architecto&amp;from_date=2026-01-01&amp;to_date=2026-12-31&amp;sort_by=created_at&amp;sort_order=desc&amp;limit=10" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
@@ -20791,7 +20842,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/issuing-levels/export"
+    "http://localhost:8000/api/issuing-levels/export"
 );
 
 const params = {
@@ -20813,6 +20864,7 @@ const headers = {
     "Accept": "application/json",
 };
 
+
 fetch(url, {
     method: "GET",
     headers,
@@ -20821,7 +20873,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/issuing-levels/export';
+$url = 'http://localhost:8000/api/issuing-levels/export';
 $response = $client-&gt;get(
     $url,
     [
@@ -21055,7 +21107,7 @@ Must be one of:
 <small class="badge badge-darkred">requires authentication</small>
 </p>
 
-<p>Cột bắt buộc: name. Cột không bắt buộc: description, status (mặc định &quot;active&quot;).</p>
+<p>Cột bắt buộc: name. Cột không bắt buộc: description, status (mặc định "active").</p>
 
 <span id="example-requests-POSTapi-issuing-levels-import">
 <blockquote>Example request:</blockquote>
@@ -21063,17 +21115,17 @@ Must be one of:
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost/api/issuing-levels/import" \
+    "http://localhost:8000/api/issuing-levels/import" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: multipart/form-data" \
     --header "Accept: application/json" \
-    --form "file=@/tmp/phpci6gih1j79svdRJCXym" </code></pre></div>
+    --form "file=@/tmp/php3ep09fbplm6h8oSxwx6" </code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/issuing-levels/import"
+    "http://localhost:8000/api/issuing-levels/import"
 );
 
 const headers = {
@@ -21095,7 +21147,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/issuing-levels/import';
+$url = 'http://localhost:8000/api/issuing-levels/import';
 $response = $client-&gt;post(
     $url,
     [
@@ -21108,7 +21160,7 @@ $response = $client-&gt;post(
         'multipart' =&gt; [
             [
                 'name' =&gt; 'file',
-                'contents' =&gt; fopen('/tmp/phpci6gih1j79svdRJCXym', 'r')
+                'contents' =&gt; fopen('/tmp/php3ep09fbplm6h8oSxwx6', 'r')
             ],
         ],
     ]
@@ -21236,7 +21288,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>File Excel (xlsx, xls, csv). Cột theo chuẩn export. Example: <code>/tmp/phpci6gih1j79svdRJCXym</code></p>
+<p>File Excel (xlsx, xls, csv). Cột theo chuẩn export. Example: <code>/tmp/php3ep09fbplm6h8oSxwx6</code></p>
         </div>
         </form>
 
@@ -21254,7 +21306,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost/api/issuing-levels/bulk-delete" \
+    "http://localhost:8000/api/issuing-levels/bulk-delete" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
@@ -21271,7 +21323,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/issuing-levels/bulk-delete"
+    "http://localhost:8000/api/issuing-levels/bulk-delete"
 );
 
 const headers = {
@@ -21298,7 +21350,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/issuing-levels/bulk-delete';
+$url = 'http://localhost:8000/api/issuing-levels/bulk-delete';
 $response = $client-&gt;post(
     $url,
     [
@@ -21460,7 +21512,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PATCH \
-    "http://localhost/api/issuing-levels/bulk-status" \
+    "http://localhost:8000/api/issuing-levels/bulk-status" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
@@ -21478,7 +21530,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/issuing-levels/bulk-status"
+    "http://localhost:8000/api/issuing-levels/bulk-status"
 );
 
 const headers = {
@@ -21506,7 +21558,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/issuing-levels/bulk-status';
+$url = 'http://localhost:8000/api/issuing-levels/bulk-status';
 $response = $client-&gt;patch(
     $url,
     [
@@ -21681,7 +21733,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/issuing-levels/stats?search=architecto&amp;status=architecto&amp;from_date=2026-01-01&amp;to_date=2026-12-31&amp;sort_by=created_at&amp;sort_order=desc&amp;limit=10" \
+    --get "http://localhost:8000/api/issuing-levels/stats?search=architecto&amp;status=architecto&amp;from_date=2026-01-01&amp;to_date=2026-12-31&amp;sort_by=created_at&amp;sort_order=desc&amp;limit=10" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
@@ -21690,7 +21742,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/issuing-levels/stats"
+    "http://localhost:8000/api/issuing-levels/stats"
 );
 
 const params = {
@@ -21712,6 +21764,7 @@ const headers = {
     "Accept": "application/json",
 };
 
+
 fetch(url, {
     method: "GET",
     headers,
@@ -21720,7 +21773,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/issuing-levels/stats';
+$url = 'http://localhost:8000/api/issuing-levels/stats';
 $response = $client-&gt;get(
     $url,
     [
@@ -21958,7 +22011,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/issuing-levels?search=architecto&amp;status=architecto&amp;from_date=2026-01-01&amp;to_date=2026-12-31&amp;sort_by=created_at&amp;sort_order=desc&amp;limit=10" \
+    --get "http://localhost:8000/api/issuing-levels?search=architecto&amp;status=architecto&amp;from_date=2026-01-01&amp;to_date=2026-12-31&amp;sort_by=created_at&amp;sort_order=desc&amp;limit=10" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
@@ -21967,7 +22020,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/issuing-levels"
+    "http://localhost:8000/api/issuing-levels"
 );
 
 const params = {
@@ -21989,6 +22042,7 @@ const headers = {
     "Accept": "application/json",
 };
 
+
 fetch(url, {
     method: "GET",
     headers,
@@ -21997,7 +22051,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/issuing-levels';
+$url = 'http://localhost:8000/api/issuing-levels';
 $response = $client-&gt;get(
     $url,
     [
@@ -22032,24 +22086,24 @@ print_r(json_decode((string) $body));</code></pre></div>
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: [
         {
-            &quot;id&quot;: 138,
+            &quot;id&quot;: 26,
             &quot;name&quot;: &quot;doloremque id&quot;,
             &quot;description&quot;: null,
             &quot;status&quot;: &quot;active&quot;,
             &quot;created_by&quot;: &quot;N/A&quot;,
             &quot;updated_by&quot;: &quot;N/A&quot;,
-            &quot;created_at&quot;: &quot;09:32:26 05/03/2026&quot;,
-            &quot;updated_at&quot;: &quot;09:32:26 05/03/2026&quot;
+            &quot;created_at&quot;: &quot;03:08:03 23/03/2026&quot;,
+            &quot;updated_at&quot;: &quot;03:08:03 23/03/2026&quot;
         },
         {
-            &quot;id&quot;: 139,
+            &quot;id&quot;: 27,
             &quot;name&quot;: &quot;aliquam veniam&quot;,
             &quot;description&quot;: &quot;Mollitia deleniti nemo odit quia officia.&quot;,
             &quot;status&quot;: &quot;inactive&quot;,
             &quot;created_by&quot;: &quot;N/A&quot;,
             &quot;updated_by&quot;: &quot;N/A&quot;,
-            &quot;created_at&quot;: &quot;09:32:26 05/03/2026&quot;,
-            &quot;updated_at&quot;: &quot;09:32:26 05/03/2026&quot;
+            &quot;created_at&quot;: &quot;03:08:03 23/03/2026&quot;,
+            &quot;updated_at&quot;: &quot;03:08:03 23/03/2026&quot;
         }
     ],
     &quot;links&quot;: {
@@ -22287,7 +22341,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/issuing-levels/16" \
+    --get "http://localhost:8000/api/issuing-levels/16" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
@@ -22296,7 +22350,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/issuing-levels/16"
+    "http://localhost:8000/api/issuing-levels/16"
 );
 
 const headers = {
@@ -22306,6 +22360,7 @@ const headers = {
     "Accept": "application/json",
 };
 
+
 fetch(url, {
     method: "GET",
     headers,
@@ -22314,7 +22369,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/issuing-levels/16';
+$url = 'http://localhost:8000/api/issuing-levels/16';
 $response = $client-&gt;get(
     $url,
     [
@@ -22339,14 +22394,14 @@ print_r(json_decode((string) $body));</code></pre></div>
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: {
-        &quot;id&quot;: 140,
+        &quot;id&quot;: 28,
         &quot;name&quot;: &quot;et modi&quot;,
         &quot;description&quot;: null,
         &quot;status&quot;: &quot;inactive&quot;,
         &quot;created_by&quot;: &quot;N/A&quot;,
         &quot;updated_by&quot;: &quot;N/A&quot;,
-        &quot;created_at&quot;: &quot;09:32:26 05/03/2026&quot;,
-        &quot;updated_at&quot;: &quot;09:32:26 05/03/2026&quot;
+        &quot;created_at&quot;: &quot;03:08:04 23/03/2026&quot;,
+        &quot;updated_at&quot;: &quot;03:08:04 23/03/2026&quot;
     },
     &quot;success&quot;: &quot;true&quot;
 }</code>
@@ -22488,7 +22543,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost/api/issuing-levels" \
+    "http://localhost:8000/api/issuing-levels" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
@@ -22503,7 +22558,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/issuing-levels"
+    "http://localhost:8000/api/issuing-levels"
 );
 
 const headers = {
@@ -22528,7 +22583,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/issuing-levels';
+$url = 'http://localhost:8000/api/issuing-levels';
 $response = $client-&gt;post(
     $url,
     [
@@ -22558,14 +22613,14 @@ print_r(json_decode((string) $body));</code></pre></div>
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: {
-        &quot;id&quot;: 141,
+        &quot;id&quot;: 29,
         &quot;name&quot;: &quot;aut libero&quot;,
         &quot;description&quot;: &quot;Corporis dolorem mollitia deleniti nemo odit quia officia.&quot;,
         &quot;status&quot;: &quot;inactive&quot;,
         &quot;created_by&quot;: &quot;N/A&quot;,
         &quot;updated_by&quot;: &quot;N/A&quot;,
-        &quot;created_at&quot;: &quot;09:32:26 05/03/2026&quot;,
-        &quot;updated_at&quot;: &quot;09:32:26 05/03/2026&quot;
+        &quot;created_at&quot;: &quot;03:08:04 23/03/2026&quot;,
+        &quot;updated_at&quot;: &quot;03:08:04 23/03/2026&quot;
     },
     &quot;success&quot;: &quot;true&quot;,
     &quot;message&quot;: &quot;Tạo cấp ban h&agrave;nh th&agrave;nh c&ocirc;ng!&quot;
@@ -22720,7 +22775,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://localhost/api/issuing-levels/16" \
+    "http://localhost:8000/api/issuing-levels/16" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
@@ -22735,7 +22790,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/issuing-levels/16"
+    "http://localhost:8000/api/issuing-levels/16"
 );
 
 const headers = {
@@ -22760,7 +22815,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/issuing-levels/16';
+$url = 'http://localhost:8000/api/issuing-levels/16';
 $response = $client-&gt;put(
     $url,
     [
@@ -22790,14 +22845,14 @@ print_r(json_decode((string) $body));</code></pre></div>
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: {
-        &quot;id&quot;: 142,
+        &quot;id&quot;: 30,
         &quot;name&quot;: &quot;corporis dolorem&quot;,
         &quot;description&quot;: null,
         &quot;status&quot;: &quot;inactive&quot;,
         &quot;created_by&quot;: &quot;N/A&quot;,
         &quot;updated_by&quot;: &quot;N/A&quot;,
-        &quot;created_at&quot;: &quot;09:32:26 05/03/2026&quot;,
-        &quot;updated_at&quot;: &quot;09:32:26 05/03/2026&quot;
+        &quot;created_at&quot;: &quot;03:08:04 23/03/2026&quot;,
+        &quot;updated_at&quot;: &quot;03:08:04 23/03/2026&quot;
     },
     &quot;success&quot;: &quot;true&quot;,
     &quot;message&quot;: &quot;Cập nhật cấp ban h&agrave;nh th&agrave;nh c&ocirc;ng!&quot;
@@ -22977,7 +23032,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PATCH \
-    "http://localhost/api/issuing-levels/16" \
+    "http://localhost:8000/api/issuing-levels/16" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
@@ -22992,7 +23047,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/issuing-levels/16"
+    "http://localhost:8000/api/issuing-levels/16"
 );
 
 const headers = {
@@ -23017,7 +23072,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/issuing-levels/16';
+$url = 'http://localhost:8000/api/issuing-levels/16';
 $response = $client-&gt;patch(
     $url,
     [
@@ -23047,14 +23102,14 @@ print_r(json_decode((string) $body));</code></pre></div>
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: {
-        &quot;id&quot;: 143,
+        &quot;id&quot;: 31,
         &quot;name&quot;: &quot;mollitia deleniti&quot;,
         &quot;description&quot;: &quot;Quia officia est dignissimos neque.&quot;,
         &quot;status&quot;: &quot;inactive&quot;,
         &quot;created_by&quot;: &quot;N/A&quot;,
         &quot;updated_by&quot;: &quot;N/A&quot;,
-        &quot;created_at&quot;: &quot;09:32:26 05/03/2026&quot;,
-        &quot;updated_at&quot;: &quot;09:32:26 05/03/2026&quot;
+        &quot;created_at&quot;: &quot;03:08:04 23/03/2026&quot;,
+        &quot;updated_at&quot;: &quot;03:08:04 23/03/2026&quot;
     },
     &quot;success&quot;: &quot;true&quot;,
     &quot;message&quot;: &quot;Cập nhật cấp ban h&agrave;nh th&agrave;nh c&ocirc;ng!&quot;
@@ -23234,7 +23289,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request DELETE \
-    "http://localhost/api/issuing-levels/16" \
+    "http://localhost:8000/api/issuing-levels/16" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
@@ -23243,7 +23298,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/issuing-levels/16"
+    "http://localhost:8000/api/issuing-levels/16"
 );
 
 const headers = {
@@ -23253,6 +23308,7 @@ const headers = {
     "Accept": "application/json",
 };
 
+
 fetch(url, {
     method: "DELETE",
     headers,
@@ -23261,7 +23317,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/issuing-levels/16';
+$url = 'http://localhost:8000/api/issuing-levels/16';
 $response = $client-&gt;delete(
     $url,
     [
@@ -23426,7 +23482,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PATCH \
-    "http://localhost/api/issuing-levels/16/status" \
+    "http://localhost:8000/api/issuing-levels/16/status" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
@@ -23439,7 +23495,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/issuing-levels/16/status"
+    "http://localhost:8000/api/issuing-levels/16/status"
 );
 
 const headers = {
@@ -23462,7 +23518,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/issuing-levels/16/status';
+$url = 'http://localhost:8000/api/issuing-levels/16/status';
 $response = $client-&gt;patch(
     $url,
     [
@@ -23490,14 +23546,14 @@ print_r(json_decode((string) $body));</code></pre></div>
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: {
-        &quot;id&quot;: 144,
+        &quot;id&quot;: 32,
         &quot;name&quot;: &quot;ipsum nostrum&quot;,
         &quot;description&quot;: null,
         &quot;status&quot;: &quot;active&quot;,
         &quot;created_by&quot;: &quot;N/A&quot;,
         &quot;updated_by&quot;: &quot;N/A&quot;,
-        &quot;created_at&quot;: &quot;09:32:26 05/03/2026&quot;,
-        &quot;updated_at&quot;: &quot;09:32:26 05/03/2026&quot;
+        &quot;created_at&quot;: &quot;03:08:04 23/03/2026&quot;,
+        &quot;updated_at&quot;: &quot;03:08:04 23/03/2026&quot;
     },
     &quot;success&quot;: &quot;true&quot;,
     &quot;message&quot;: &quot;Đổi trạng th&aacute;i th&agrave;nh c&ocirc;ng!&quot;
@@ -23656,7 +23712,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/document-types/public?search=architecto&amp;status=active&amp;from_date=2026-01-01&amp;to_date=2026-12-31&amp;sort_by=name&amp;sort_order=asc&amp;limit=10" \
+    --get "http://localhost:8000/api/document-types/public?search=architecto&amp;status=active&amp;from_date=2026-01-01&amp;to_date=2026-12-31&amp;sort_by=name&amp;sort_order=asc&amp;limit=10" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -23664,7 +23720,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/document-types/public"
+    "http://localhost:8000/api/document-types/public"
 );
 
 const params = {
@@ -23685,6 +23741,7 @@ const headers = {
     "Accept": "application/json",
 };
 
+
 fetch(url, {
     method: "GET",
     headers,
@@ -23693,7 +23750,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/document-types/public';
+$url = 'http://localhost:8000/api/document-types/public';
 $response = $client-&gt;get(
     $url,
     [
@@ -23727,24 +23784,24 @@ print_r(json_decode((string) $body));</code></pre></div>
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: [
         {
-            &quot;id&quot;: 129,
+            &quot;id&quot;: 17,
             &quot;name&quot;: &quot;nihil accusantium&quot;,
             &quot;description&quot;: &quot;Modi deserunt aut ab provident perspiciatis.&quot;,
             &quot;status&quot;: &quot;active&quot;,
             &quot;created_by&quot;: &quot;N/A&quot;,
             &quot;updated_by&quot;: &quot;N/A&quot;,
-            &quot;created_at&quot;: &quot;09:32:22 05/03/2026&quot;,
-            &quot;updated_at&quot;: &quot;09:32:22 05/03/2026&quot;
+            &quot;created_at&quot;: &quot;03:08:01 23/03/2026&quot;,
+            &quot;updated_at&quot;: &quot;03:08:01 23/03/2026&quot;
         },
         {
-            &quot;id&quot;: 130,
+            &quot;id&quot;: 18,
             &quot;name&quot;: &quot;omnis nostrum&quot;,
             &quot;description&quot;: null,
             &quot;status&quot;: &quot;active&quot;,
             &quot;created_by&quot;: &quot;N/A&quot;,
             &quot;updated_by&quot;: &quot;N/A&quot;,
-            &quot;created_at&quot;: &quot;09:32:22 05/03/2026&quot;,
-            &quot;updated_at&quot;: &quot;09:32:22 05/03/2026&quot;
+            &quot;created_at&quot;: &quot;03:08:01 23/03/2026&quot;,
+            &quot;updated_at&quot;: &quot;03:08:01 23/03/2026&quot;
         }
     ],
     &quot;success&quot;: &quot;true&quot;
@@ -23934,7 +23991,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/document-types/public-options?search=architecto&amp;status=active&amp;from_date=2026-01-01&amp;to_date=2026-12-31&amp;sort_by=name&amp;sort_order=asc&amp;limit=10" \
+    --get "http://localhost:8000/api/document-types/public-options?search=architecto&amp;status=active&amp;from_date=2026-01-01&amp;to_date=2026-12-31&amp;sort_by=name&amp;sort_order=asc&amp;limit=10" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -23942,7 +23999,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/document-types/public-options"
+    "http://localhost:8000/api/document-types/public-options"
 );
 
 const params = {
@@ -23963,6 +24020,7 @@ const headers = {
     "Accept": "application/json",
 };
 
+
 fetch(url, {
     method: "GET",
     headers,
@@ -23971,7 +24029,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/document-types/public-options';
+$url = 'http://localhost:8000/api/document-types/public-options';
 $response = $client-&gt;get(
     $url,
     [
@@ -24005,12 +24063,12 @@ print_r(json_decode((string) $body));</code></pre></div>
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: [
         {
-            &quot;id&quot;: 131,
+            &quot;id&quot;: 19,
             &quot;name&quot;: &quot;harum mollitia&quot;,
             &quot;description&quot;: null
         },
         {
-            &quot;id&quot;: 132,
+            &quot;id&quot;: 20,
             &quot;name&quot;: &quot;aut ab&quot;,
             &quot;description&quot;: &quot;Quo omnis nostrum aut adipisci.&quot;
         }
@@ -24203,7 +24261,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/document-types/export?search=architecto&amp;status=architecto&amp;from_date=2026-01-01&amp;to_date=2026-12-31&amp;sort_by=created_at&amp;sort_order=desc&amp;limit=10" \
+    --get "http://localhost:8000/api/document-types/export?search=architecto&amp;status=architecto&amp;from_date=2026-01-01&amp;to_date=2026-12-31&amp;sort_by=created_at&amp;sort_order=desc&amp;limit=10" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
@@ -24212,7 +24270,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/document-types/export"
+    "http://localhost:8000/api/document-types/export"
 );
 
 const params = {
@@ -24234,6 +24292,7 @@ const headers = {
     "Accept": "application/json",
 };
 
+
 fetch(url, {
     method: "GET",
     headers,
@@ -24242,7 +24301,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/document-types/export';
+$url = 'http://localhost:8000/api/document-types/export';
 $response = $client-&gt;get(
     $url,
     [
@@ -24476,7 +24535,7 @@ Must be one of:
 <small class="badge badge-darkred">requires authentication</small>
 </p>
 
-<p>Cột bắt buộc: name. Cột không bắt buộc: description, status (mặc định &quot;active&quot;).</p>
+<p>Cột bắt buộc: name. Cột không bắt buộc: description, status (mặc định "active").</p>
 
 <span id="example-requests-POSTapi-document-types-import">
 <blockquote>Example request:</blockquote>
@@ -24484,17 +24543,17 @@ Must be one of:
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost/api/document-types/import" \
+    "http://localhost:8000/api/document-types/import" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: multipart/form-data" \
     --header "Accept: application/json" \
-    --form "file=@/tmp/phpgven0eb8f2hqceERggh" </code></pre></div>
+    --form "file=@/tmp/php08ksq87uhhvt8XpwWT7" </code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/document-types/import"
+    "http://localhost:8000/api/document-types/import"
 );
 
 const headers = {
@@ -24516,7 +24575,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/document-types/import';
+$url = 'http://localhost:8000/api/document-types/import';
 $response = $client-&gt;post(
     $url,
     [
@@ -24529,7 +24588,7 @@ $response = $client-&gt;post(
         'multipart' =&gt; [
             [
                 'name' =&gt; 'file',
-                'contents' =&gt; fopen('/tmp/phpgven0eb8f2hqceERggh', 'r')
+                'contents' =&gt; fopen('/tmp/php08ksq87uhhvt8XpwWT7', 'r')
             ],
         ],
     ]
@@ -24657,7 +24716,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>File Excel (xlsx, xls, csv). Cột theo chuẩn export. Example: <code>/tmp/phpgven0eb8f2hqceERggh</code></p>
+<p>File Excel (xlsx, xls, csv). Cột theo chuẩn export. Example: <code>/tmp/php08ksq87uhhvt8XpwWT7</code></p>
         </div>
         </form>
 
@@ -24675,7 +24734,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost/api/document-types/bulk-delete" \
+    "http://localhost:8000/api/document-types/bulk-delete" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
@@ -24692,7 +24751,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/document-types/bulk-delete"
+    "http://localhost:8000/api/document-types/bulk-delete"
 );
 
 const headers = {
@@ -24719,7 +24778,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/document-types/bulk-delete';
+$url = 'http://localhost:8000/api/document-types/bulk-delete';
 $response = $client-&gt;post(
     $url,
     [
@@ -24881,7 +24940,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PATCH \
-    "http://localhost/api/document-types/bulk-status" \
+    "http://localhost:8000/api/document-types/bulk-status" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
@@ -24899,7 +24958,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/document-types/bulk-status"
+    "http://localhost:8000/api/document-types/bulk-status"
 );
 
 const headers = {
@@ -24927,7 +24986,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/document-types/bulk-status';
+$url = 'http://localhost:8000/api/document-types/bulk-status';
 $response = $client-&gt;patch(
     $url,
     [
@@ -25102,7 +25161,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/document-types/stats?search=architecto&amp;status=architecto&amp;from_date=2026-01-01&amp;to_date=2026-12-31&amp;sort_by=created_at&amp;sort_order=desc&amp;limit=10" \
+    --get "http://localhost:8000/api/document-types/stats?search=architecto&amp;status=architecto&amp;from_date=2026-01-01&amp;to_date=2026-12-31&amp;sort_by=created_at&amp;sort_order=desc&amp;limit=10" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
@@ -25111,7 +25170,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/document-types/stats"
+    "http://localhost:8000/api/document-types/stats"
 );
 
 const params = {
@@ -25133,6 +25192,7 @@ const headers = {
     "Accept": "application/json",
 };
 
+
 fetch(url, {
     method: "GET",
     headers,
@@ -25141,7 +25201,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/document-types/stats';
+$url = 'http://localhost:8000/api/document-types/stats';
 $response = $client-&gt;get(
     $url,
     [
@@ -25379,7 +25439,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/document-types?search=architecto&amp;status=architecto&amp;from_date=2026-01-01&amp;to_date=2026-12-31&amp;sort_by=created_at&amp;sort_order=desc&amp;limit=10" \
+    --get "http://localhost:8000/api/document-types?search=architecto&amp;status=architecto&amp;from_date=2026-01-01&amp;to_date=2026-12-31&amp;sort_by=created_at&amp;sort_order=desc&amp;limit=10" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
@@ -25388,7 +25448,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/document-types"
+    "http://localhost:8000/api/document-types"
 );
 
 const params = {
@@ -25410,6 +25470,7 @@ const headers = {
     "Accept": "application/json",
 };
 
+
 fetch(url, {
     method: "GET",
     headers,
@@ -25418,7 +25479,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/document-types';
+$url = 'http://localhost:8000/api/document-types';
 $response = $client-&gt;get(
     $url,
     [
@@ -25453,24 +25514,24 @@ print_r(json_decode((string) $body));</code></pre></div>
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: [
         {
-            &quot;id&quot;: 138,
+            &quot;id&quot;: 26,
             &quot;name&quot;: &quot;autem et&quot;,
             &quot;description&quot;: null,
             &quot;status&quot;: &quot;inactive&quot;,
             &quot;created_by&quot;: &quot;N/A&quot;,
             &quot;updated_by&quot;: &quot;N/A&quot;,
-            &quot;created_at&quot;: &quot;09:32:25 05/03/2026&quot;,
-            &quot;updated_at&quot;: &quot;09:32:25 05/03/2026&quot;
+            &quot;created_at&quot;: &quot;03:08:03 23/03/2026&quot;,
+            &quot;updated_at&quot;: &quot;03:08:03 23/03/2026&quot;
         },
         {
-            &quot;id&quot;: 139,
+            &quot;id&quot;: 27,
             &quot;name&quot;: &quot;tempora ex&quot;,
             &quot;description&quot;: null,
             &quot;status&quot;: &quot;inactive&quot;,
             &quot;created_by&quot;: &quot;N/A&quot;,
             &quot;updated_by&quot;: &quot;N/A&quot;,
-            &quot;created_at&quot;: &quot;09:32:25 05/03/2026&quot;,
-            &quot;updated_at&quot;: &quot;09:32:25 05/03/2026&quot;
+            &quot;created_at&quot;: &quot;03:08:03 23/03/2026&quot;,
+            &quot;updated_at&quot;: &quot;03:08:03 23/03/2026&quot;
         }
     ],
     &quot;links&quot;: {
@@ -25708,7 +25769,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/document-types/16" \
+    --get "http://localhost:8000/api/document-types/16" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
@@ -25717,7 +25778,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/document-types/16"
+    "http://localhost:8000/api/document-types/16"
 );
 
 const headers = {
@@ -25727,6 +25788,7 @@ const headers = {
     "Accept": "application/json",
 };
 
+
 fetch(url, {
     method: "GET",
     headers,
@@ -25735,7 +25797,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/document-types/16';
+$url = 'http://localhost:8000/api/document-types/16';
 $response = $client-&gt;get(
     $url,
     [
@@ -25760,14 +25822,14 @@ print_r(json_decode((string) $body));</code></pre></div>
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: {
-        &quot;id&quot;: 140,
+        &quot;id&quot;: 28,
         &quot;name&quot;: &quot;incidunt iure&quot;,
         &quot;description&quot;: null,
         &quot;status&quot;: &quot;active&quot;,
         &quot;created_by&quot;: &quot;N/A&quot;,
         &quot;updated_by&quot;: &quot;N/A&quot;,
-        &quot;created_at&quot;: &quot;09:32:25 05/03/2026&quot;,
-        &quot;updated_at&quot;: &quot;09:32:25 05/03/2026&quot;
+        &quot;created_at&quot;: &quot;03:08:03 23/03/2026&quot;,
+        &quot;updated_at&quot;: &quot;03:08:03 23/03/2026&quot;
     },
     &quot;success&quot;: &quot;true&quot;
 }</code>
@@ -25909,7 +25971,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost/api/document-types" \
+    "http://localhost:8000/api/document-types" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
@@ -25924,7 +25986,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/document-types"
+    "http://localhost:8000/api/document-types"
 );
 
 const headers = {
@@ -25949,7 +26011,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/document-types';
+$url = 'http://localhost:8000/api/document-types';
 $response = $client-&gt;post(
     $url,
     [
@@ -25979,14 +26041,14 @@ print_r(json_decode((string) $body));</code></pre></div>
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: {
-        &quot;id&quot;: 141,
+        &quot;id&quot;: 29,
         &quot;name&quot;: &quot;consequatur aut&quot;,
         &quot;description&quot;: &quot;Non facere tempora ex voluptatem laboriosam praesentium.&quot;,
         &quot;status&quot;: &quot;inactive&quot;,
         &quot;created_by&quot;: &quot;N/A&quot;,
         &quot;updated_by&quot;: &quot;N/A&quot;,
-        &quot;created_at&quot;: &quot;09:32:26 05/03/2026&quot;,
-        &quot;updated_at&quot;: &quot;09:32:26 05/03/2026&quot;
+        &quot;created_at&quot;: &quot;03:08:03 23/03/2026&quot;,
+        &quot;updated_at&quot;: &quot;03:08:03 23/03/2026&quot;
     },
     &quot;success&quot;: &quot;true&quot;,
     &quot;message&quot;: &quot;Tạo loại văn bản th&agrave;nh c&ocirc;ng!&quot;
@@ -26141,7 +26203,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://localhost/api/document-types/16" \
+    "http://localhost:8000/api/document-types/16" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
@@ -26156,7 +26218,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/document-types/16"
+    "http://localhost:8000/api/document-types/16"
 );
 
 const headers = {
@@ -26181,7 +26243,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/document-types/16';
+$url = 'http://localhost:8000/api/document-types/16';
 $response = $client-&gt;put(
     $url,
     [
@@ -26211,14 +26273,14 @@ print_r(json_decode((string) $body));</code></pre></div>
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: {
-        &quot;id&quot;: 142,
+        &quot;id&quot;: 30,
         &quot;name&quot;: &quot;voluptatem laboriosam&quot;,
         &quot;description&quot;: &quot;Adipisci molestias fugit deleniti distinctio eum doloremque id.&quot;,
         &quot;status&quot;: &quot;active&quot;,
         &quot;created_by&quot;: &quot;N/A&quot;,
         &quot;updated_by&quot;: &quot;N/A&quot;,
-        &quot;created_at&quot;: &quot;09:32:26 05/03/2026&quot;,
-        &quot;updated_at&quot;: &quot;09:32:26 05/03/2026&quot;
+        &quot;created_at&quot;: &quot;03:08:03 23/03/2026&quot;,
+        &quot;updated_at&quot;: &quot;03:08:03 23/03/2026&quot;
     },
     &quot;success&quot;: &quot;true&quot;,
     &quot;message&quot;: &quot;Cập nhật loại văn bản th&agrave;nh c&ocirc;ng!&quot;
@@ -26398,7 +26460,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PATCH \
-    "http://localhost/api/document-types/16" \
+    "http://localhost:8000/api/document-types/16" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
@@ -26413,7 +26475,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/document-types/16"
+    "http://localhost:8000/api/document-types/16"
 );
 
 const headers = {
@@ -26438,7 +26500,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/document-types/16';
+$url = 'http://localhost:8000/api/document-types/16';
 $response = $client-&gt;patch(
     $url,
     [
@@ -26468,14 +26530,14 @@ print_r(json_decode((string) $body));</code></pre></div>
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: {
-        &quot;id&quot;: 143,
+        &quot;id&quot;: 31,
         &quot;name&quot;: &quot;praesentium quis&quot;,
         &quot;description&quot;: &quot;Fugit deleniti distinctio eum doloremque id aut libero.&quot;,
         &quot;status&quot;: &quot;inactive&quot;,
         &quot;created_by&quot;: &quot;N/A&quot;,
         &quot;updated_by&quot;: &quot;N/A&quot;,
-        &quot;created_at&quot;: &quot;09:32:26 05/03/2026&quot;,
-        &quot;updated_at&quot;: &quot;09:32:26 05/03/2026&quot;
+        &quot;created_at&quot;: &quot;03:08:03 23/03/2026&quot;,
+        &quot;updated_at&quot;: &quot;03:08:03 23/03/2026&quot;
     },
     &quot;success&quot;: &quot;true&quot;,
     &quot;message&quot;: &quot;Cập nhật loại văn bản th&agrave;nh c&ocirc;ng!&quot;
@@ -26655,7 +26717,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request DELETE \
-    "http://localhost/api/document-types/16" \
+    "http://localhost:8000/api/document-types/16" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
@@ -26664,7 +26726,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/document-types/16"
+    "http://localhost:8000/api/document-types/16"
 );
 
 const headers = {
@@ -26674,6 +26736,7 @@ const headers = {
     "Accept": "application/json",
 };
 
+
 fetch(url, {
     method: "DELETE",
     headers,
@@ -26682,7 +26745,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/document-types/16';
+$url = 'http://localhost:8000/api/document-types/16';
 $response = $client-&gt;delete(
     $url,
     [
@@ -26847,7 +26910,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PATCH \
-    "http://localhost/api/document-types/16/status" \
+    "http://localhost:8000/api/document-types/16/status" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
@@ -26860,7 +26923,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/document-types/16/status"
+    "http://localhost:8000/api/document-types/16/status"
 );
 
 const headers = {
@@ -26883,7 +26946,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/document-types/16/status';
+$url = 'http://localhost:8000/api/document-types/16/status';
 $response = $client-&gt;patch(
     $url,
     [
@@ -26911,14 +26974,14 @@ print_r(json_decode((string) $body));</code></pre></div>
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: {
-        &quot;id&quot;: 144,
+        &quot;id&quot;: 32,
         &quot;name&quot;: &quot;odit et&quot;,
         &quot;description&quot;: &quot;Ipsum nostrum omnis autem et consequatur aut dolores enim.&quot;,
         &quot;status&quot;: &quot;inactive&quot;,
         &quot;created_by&quot;: &quot;N/A&quot;,
         &quot;updated_by&quot;: &quot;N/A&quot;,
-        &quot;created_at&quot;: &quot;09:32:26 05/03/2026&quot;,
-        &quot;updated_at&quot;: &quot;09:32:26 05/03/2026&quot;
+        &quot;created_at&quot;: &quot;03:08:03 23/03/2026&quot;,
+        &quot;updated_at&quot;: &quot;03:08:03 23/03/2026&quot;
     },
     &quot;success&quot;: &quot;true&quot;,
     &quot;message&quot;: &quot;Đổi trạng th&aacute;i th&agrave;nh c&ocirc;ng!&quot;
@@ -27077,7 +27140,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/document-fields/public?search=architecto&amp;status=active&amp;from_date=2026-01-01&amp;to_date=2026-12-31&amp;sort_by=name&amp;sort_order=asc&amp;limit=10" \
+    --get "http://localhost:8000/api/document-fields/public?search=architecto&amp;status=active&amp;from_date=2026-01-01&amp;to_date=2026-12-31&amp;sort_by=name&amp;sort_order=asc&amp;limit=10" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -27085,7 +27148,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/document-fields/public"
+    "http://localhost:8000/api/document-fields/public"
 );
 
 const params = {
@@ -27106,6 +27169,7 @@ const headers = {
     "Accept": "application/json",
 };
 
+
 fetch(url, {
     method: "GET",
     headers,
@@ -27114,7 +27178,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/document-fields/public';
+$url = 'http://localhost:8000/api/document-fields/public';
 $response = $client-&gt;get(
     $url,
     [
@@ -27148,24 +27212,24 @@ print_r(json_decode((string) $body));</code></pre></div>
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: [
         {
-            &quot;id&quot;: 129,
+            &quot;id&quot;: 17,
             &quot;name&quot;: &quot;eius et&quot;,
             &quot;description&quot;: null,
             &quot;status&quot;: &quot;active&quot;,
             &quot;created_by&quot;: &quot;N/A&quot;,
             &quot;updated_by&quot;: &quot;N/A&quot;,
-            &quot;created_at&quot;: &quot;09:32:22 05/03/2026&quot;,
-            &quot;updated_at&quot;: &quot;09:32:22 05/03/2026&quot;
+            &quot;created_at&quot;: &quot;03:08:01 23/03/2026&quot;,
+            &quot;updated_at&quot;: &quot;03:08:01 23/03/2026&quot;
         },
         {
-            &quot;id&quot;: 130,
+            &quot;id&quot;: 18,
             &quot;name&quot;: &quot;velit et&quot;,
             &quot;description&quot;: &quot;Nihil accusantium harum mollitia modi deserunt.&quot;,
             &quot;status&quot;: &quot;active&quot;,
             &quot;created_by&quot;: &quot;N/A&quot;,
             &quot;updated_by&quot;: &quot;N/A&quot;,
-            &quot;created_at&quot;: &quot;09:32:22 05/03/2026&quot;,
-            &quot;updated_at&quot;: &quot;09:32:22 05/03/2026&quot;
+            &quot;created_at&quot;: &quot;03:08:01 23/03/2026&quot;,
+            &quot;updated_at&quot;: &quot;03:08:01 23/03/2026&quot;
         }
     ],
     &quot;success&quot;: &quot;true&quot;
@@ -27355,7 +27419,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/document-fields/public-options?search=architecto&amp;status=active&amp;from_date=2026-01-01&amp;to_date=2026-12-31&amp;sort_by=name&amp;sort_order=asc&amp;limit=10" \
+    --get "http://localhost:8000/api/document-fields/public-options?search=architecto&amp;status=active&amp;from_date=2026-01-01&amp;to_date=2026-12-31&amp;sort_by=name&amp;sort_order=asc&amp;limit=10" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -27363,7 +27427,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/document-fields/public-options"
+    "http://localhost:8000/api/document-fields/public-options"
 );
 
 const params = {
@@ -27384,6 +27448,7 @@ const headers = {
     "Accept": "application/json",
 };
 
+
 fetch(url, {
     method: "GET",
     headers,
@@ -27392,7 +27457,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/document-fields/public-options';
+$url = 'http://localhost:8000/api/document-fields/public-options';
 $response = $client-&gt;get(
     $url,
     [
@@ -27426,12 +27491,12 @@ print_r(json_decode((string) $body));</code></pre></div>
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: [
         {
-            &quot;id&quot;: 131,
+            &quot;id&quot;: 19,
             &quot;name&quot;: &quot;animi quos&quot;,
             &quot;description&quot;: null
         },
         {
-            &quot;id&quot;: 132,
+            &quot;id&quot;: 20,
             &quot;name&quot;: &quot;fugiat sunt&quot;,
             &quot;description&quot;: &quot;Harum mollitia modi deserunt aut ab provident perspiciatis quo.&quot;
         }
@@ -27624,7 +27689,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/document-fields/export?search=architecto&amp;status=architecto&amp;from_date=2026-01-01&amp;to_date=2026-12-31&amp;sort_by=created_at&amp;sort_order=desc&amp;limit=10" \
+    --get "http://localhost:8000/api/document-fields/export?search=architecto&amp;status=architecto&amp;from_date=2026-01-01&amp;to_date=2026-12-31&amp;sort_by=created_at&amp;sort_order=desc&amp;limit=10" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
@@ -27633,7 +27698,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/document-fields/export"
+    "http://localhost:8000/api/document-fields/export"
 );
 
 const params = {
@@ -27655,6 +27720,7 @@ const headers = {
     "Accept": "application/json",
 };
 
+
 fetch(url, {
     method: "GET",
     headers,
@@ -27663,7 +27729,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/document-fields/export';
+$url = 'http://localhost:8000/api/document-fields/export';
 $response = $client-&gt;get(
     $url,
     [
@@ -27897,7 +27963,7 @@ Must be one of:
 <small class="badge badge-darkred">requires authentication</small>
 </p>
 
-<p>Cột bắt buộc: name. Cột không bắt buộc: description, status (mặc định &quot;active&quot;).</p>
+<p>Cột bắt buộc: name. Cột không bắt buộc: description, status (mặc định "active").</p>
 
 <span id="example-requests-POSTapi-document-fields-import">
 <blockquote>Example request:</blockquote>
@@ -27905,17 +27971,17 @@ Must be one of:
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost/api/document-fields/import" \
+    "http://localhost:8000/api/document-fields/import" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: multipart/form-data" \
     --header "Accept: application/json" \
-    --form "file=@/tmp/phpqovenbdao2gs8aGCffJ" </code></pre></div>
+    --form "file=@/tmp/phpglrbrsas4nch8jkwO0H" </code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/document-fields/import"
+    "http://localhost:8000/api/document-fields/import"
 );
 
 const headers = {
@@ -27937,7 +28003,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/document-fields/import';
+$url = 'http://localhost:8000/api/document-fields/import';
 $response = $client-&gt;post(
     $url,
     [
@@ -27950,7 +28016,7 @@ $response = $client-&gt;post(
         'multipart' =&gt; [
             [
                 'name' =&gt; 'file',
-                'contents' =&gt; fopen('/tmp/phpqovenbdao2gs8aGCffJ', 'r')
+                'contents' =&gt; fopen('/tmp/phpglrbrsas4nch8jkwO0H', 'r')
             ],
         ],
     ]
@@ -28078,7 +28144,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>File Excel (xlsx, xls, csv). Cột theo chuẩn export. Example: <code>/tmp/phpqovenbdao2gs8aGCffJ</code></p>
+<p>File Excel (xlsx, xls, csv). Cột theo chuẩn export. Example: <code>/tmp/phpglrbrsas4nch8jkwO0H</code></p>
         </div>
         </form>
 
@@ -28096,7 +28162,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost/api/document-fields/bulk-delete" \
+    "http://localhost:8000/api/document-fields/bulk-delete" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
@@ -28113,7 +28179,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/document-fields/bulk-delete"
+    "http://localhost:8000/api/document-fields/bulk-delete"
 );
 
 const headers = {
@@ -28140,7 +28206,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/document-fields/bulk-delete';
+$url = 'http://localhost:8000/api/document-fields/bulk-delete';
 $response = $client-&gt;post(
     $url,
     [
@@ -28302,7 +28368,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PATCH \
-    "http://localhost/api/document-fields/bulk-status" \
+    "http://localhost:8000/api/document-fields/bulk-status" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
@@ -28320,7 +28386,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/document-fields/bulk-status"
+    "http://localhost:8000/api/document-fields/bulk-status"
 );
 
 const headers = {
@@ -28348,7 +28414,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/document-fields/bulk-status';
+$url = 'http://localhost:8000/api/document-fields/bulk-status';
 $response = $client-&gt;patch(
     $url,
     [
@@ -28523,7 +28589,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/document-fields/stats?search=architecto&amp;status=architecto&amp;from_date=2026-01-01&amp;to_date=2026-12-31&amp;sort_by=created_at&amp;sort_order=desc&amp;limit=10" \
+    --get "http://localhost:8000/api/document-fields/stats?search=architecto&amp;status=architecto&amp;from_date=2026-01-01&amp;to_date=2026-12-31&amp;sort_by=created_at&amp;sort_order=desc&amp;limit=10" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
@@ -28532,7 +28598,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/document-fields/stats"
+    "http://localhost:8000/api/document-fields/stats"
 );
 
 const params = {
@@ -28554,6 +28620,7 @@ const headers = {
     "Accept": "application/json",
 };
 
+
 fetch(url, {
     method: "GET",
     headers,
@@ -28562,7 +28629,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/document-fields/stats';
+$url = 'http://localhost:8000/api/document-fields/stats';
 $response = $client-&gt;get(
     $url,
     [
@@ -28800,7 +28867,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/document-fields?search=architecto&amp;status=architecto&amp;from_date=2026-01-01&amp;to_date=2026-12-31&amp;sort_by=created_at&amp;sort_order=desc&amp;limit=10" \
+    --get "http://localhost:8000/api/document-fields?search=architecto&amp;status=architecto&amp;from_date=2026-01-01&amp;to_date=2026-12-31&amp;sort_by=created_at&amp;sort_order=desc&amp;limit=10" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
@@ -28809,7 +28876,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/document-fields"
+    "http://localhost:8000/api/document-fields"
 );
 
 const params = {
@@ -28831,6 +28898,7 @@ const headers = {
     "Accept": "application/json",
 };
 
+
 fetch(url, {
     method: "GET",
     headers,
@@ -28839,7 +28907,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/document-fields';
+$url = 'http://localhost:8000/api/document-fields';
 $response = $client-&gt;get(
     $url,
     [
@@ -28874,24 +28942,24 @@ print_r(json_decode((string) $body));</code></pre></div>
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: [
         {
-            &quot;id&quot;: 138,
+            &quot;id&quot;: 26,
             &quot;name&quot;: &quot;nemo odit&quot;,
             &quot;description&quot;: null,
             &quot;status&quot;: &quot;inactive&quot;,
             &quot;created_by&quot;: &quot;N/A&quot;,
             &quot;updated_by&quot;: &quot;N/A&quot;,
-            &quot;created_at&quot;: &quot;09:32:26 05/03/2026&quot;,
-            &quot;updated_at&quot;: &quot;09:32:26 05/03/2026&quot;
+            &quot;created_at&quot;: &quot;03:08:04 23/03/2026&quot;,
+            &quot;updated_at&quot;: &quot;03:08:04 23/03/2026&quot;
         },
         {
-            &quot;id&quot;: 139,
+            &quot;id&quot;: 27,
             &quot;name&quot;: &quot;est dignissimos&quot;,
             &quot;description&quot;: null,
             &quot;status&quot;: &quot;inactive&quot;,
             &quot;created_by&quot;: &quot;N/A&quot;,
             &quot;updated_by&quot;: &quot;N/A&quot;,
-            &quot;created_at&quot;: &quot;09:32:26 05/03/2026&quot;,
-            &quot;updated_at&quot;: &quot;09:32:26 05/03/2026&quot;
+            &quot;created_at&quot;: &quot;03:08:04 23/03/2026&quot;,
+            &quot;updated_at&quot;: &quot;03:08:04 23/03/2026&quot;
         }
     ],
     &quot;links&quot;: {
@@ -29129,7 +29197,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/document-fields/16" \
+    --get "http://localhost:8000/api/document-fields/16" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
@@ -29138,7 +29206,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/document-fields/16"
+    "http://localhost:8000/api/document-fields/16"
 );
 
 const headers = {
@@ -29148,6 +29216,7 @@ const headers = {
     "Accept": "application/json",
 };
 
+
 fetch(url, {
     method: "GET",
     headers,
@@ -29156,7 +29225,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/document-fields/16';
+$url = 'http://localhost:8000/api/document-fields/16';
 $response = $client-&gt;get(
     $url,
     [
@@ -29181,14 +29250,14 @@ print_r(json_decode((string) $body));</code></pre></div>
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: {
-        &quot;id&quot;: 140,
+        &quot;id&quot;: 28,
         &quot;name&quot;: &quot;omnis autem&quot;,
         &quot;description&quot;: null,
         &quot;status&quot;: &quot;inactive&quot;,
         &quot;created_by&quot;: &quot;N/A&quot;,
         &quot;updated_by&quot;: &quot;N/A&quot;,
-        &quot;created_at&quot;: &quot;09:32:26 05/03/2026&quot;,
-        &quot;updated_at&quot;: &quot;09:32:26 05/03/2026&quot;
+        &quot;created_at&quot;: &quot;03:08:04 23/03/2026&quot;,
+        &quot;updated_at&quot;: &quot;03:08:04 23/03/2026&quot;
     },
     &quot;success&quot;: &quot;true&quot;
 }</code>
@@ -29330,7 +29399,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost/api/document-fields" \
+    "http://localhost:8000/api/document-fields" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
@@ -29345,7 +29414,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/document-fields"
+    "http://localhost:8000/api/document-fields"
 );
 
 const headers = {
@@ -29370,7 +29439,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/document-fields';
+$url = 'http://localhost:8000/api/document-fields';
 $response = $client-&gt;post(
     $url,
     [
@@ -29400,14 +29469,14 @@ print_r(json_decode((string) $body));</code></pre></div>
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: {
-        &quot;id&quot;: 141,
+        &quot;id&quot;: 29,
         &quot;name&quot;: &quot;quia officia&quot;,
         &quot;description&quot;: &quot;Neque blanditiis odio veritatis excepturi doloribus delectus.&quot;,
         &quot;status&quot;: &quot;inactive&quot;,
         &quot;created_by&quot;: &quot;N/A&quot;,
         &quot;updated_by&quot;: &quot;N/A&quot;,
-        &quot;created_at&quot;: &quot;09:32:26 05/03/2026&quot;,
-        &quot;updated_at&quot;: &quot;09:32:26 05/03/2026&quot;
+        &quot;created_at&quot;: &quot;03:08:04 23/03/2026&quot;,
+        &quot;updated_at&quot;: &quot;03:08:04 23/03/2026&quot;
     },
     &quot;success&quot;: &quot;true&quot;,
     &quot;message&quot;: &quot;Tạo lĩnh vực th&agrave;nh c&ocirc;ng!&quot;
@@ -29562,7 +29631,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://localhost/api/document-fields/16" \
+    "http://localhost:8000/api/document-fields/16" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
@@ -29577,7 +29646,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/document-fields/16"
+    "http://localhost:8000/api/document-fields/16"
 );
 
 const headers = {
@@ -29602,7 +29671,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/document-fields/16';
+$url = 'http://localhost:8000/api/document-fields/16';
 $response = $client-&gt;put(
     $url,
     [
@@ -29632,14 +29701,14 @@ print_r(json_decode((string) $body));</code></pre></div>
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: {
-        &quot;id&quot;: 142,
+        &quot;id&quot;: 30,
         &quot;name&quot;: &quot;neque blanditiis&quot;,
         &quot;description&quot;: null,
         &quot;status&quot;: &quot;inactive&quot;,
         &quot;created_by&quot;: &quot;N/A&quot;,
         &quot;updated_by&quot;: &quot;N/A&quot;,
-        &quot;created_at&quot;: &quot;09:32:26 05/03/2026&quot;,
-        &quot;updated_at&quot;: &quot;09:32:26 05/03/2026&quot;
+        &quot;created_at&quot;: &quot;03:08:04 23/03/2026&quot;,
+        &quot;updated_at&quot;: &quot;03:08:04 23/03/2026&quot;
     },
     &quot;success&quot;: &quot;true&quot;,
     &quot;message&quot;: &quot;Cập nhật lĩnh vực th&agrave;nh c&ocirc;ng!&quot;
@@ -29819,7 +29888,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PATCH \
-    "http://localhost/api/document-fields/16" \
+    "http://localhost:8000/api/document-fields/16" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
@@ -29834,7 +29903,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/document-fields/16"
+    "http://localhost:8000/api/document-fields/16"
 );
 
 const headers = {
@@ -29859,7 +29928,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/document-fields/16';
+$url = 'http://localhost:8000/api/document-fields/16';
 $response = $client-&gt;patch(
     $url,
     [
@@ -29889,14 +29958,14 @@ print_r(json_decode((string) $body));</code></pre></div>
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: {
-        &quot;id&quot;: 143,
+        &quot;id&quot;: 31,
         &quot;name&quot;: &quot;odio veritatis&quot;,
         &quot;description&quot;: null,
         &quot;status&quot;: &quot;inactive&quot;,
         &quot;created_by&quot;: &quot;N/A&quot;,
         &quot;updated_by&quot;: &quot;N/A&quot;,
-        &quot;created_at&quot;: &quot;09:32:26 05/03/2026&quot;,
-        &quot;updated_at&quot;: &quot;09:32:26 05/03/2026&quot;
+        &quot;created_at&quot;: &quot;03:08:04 23/03/2026&quot;,
+        &quot;updated_at&quot;: &quot;03:08:04 23/03/2026&quot;
     },
     &quot;success&quot;: &quot;true&quot;,
     &quot;message&quot;: &quot;Cập nhật lĩnh vực th&agrave;nh c&ocirc;ng!&quot;
@@ -30076,7 +30145,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request DELETE \
-    "http://localhost/api/document-fields/16" \
+    "http://localhost:8000/api/document-fields/16" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
@@ -30085,7 +30154,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/document-fields/16"
+    "http://localhost:8000/api/document-fields/16"
 );
 
 const headers = {
@@ -30095,6 +30164,7 @@ const headers = {
     "Accept": "application/json",
 };
 
+
 fetch(url, {
     method: "DELETE",
     headers,
@@ -30103,7 +30173,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/document-fields/16';
+$url = 'http://localhost:8000/api/document-fields/16';
 $response = $client-&gt;delete(
     $url,
     [
@@ -30268,7 +30338,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PATCH \
-    "http://localhost/api/document-fields/16/status" \
+    "http://localhost:8000/api/document-fields/16/status" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
@@ -30281,7 +30351,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/document-fields/16/status"
+    "http://localhost:8000/api/document-fields/16/status"
 );
 
 const headers = {
@@ -30304,7 +30374,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/document-fields/16/status';
+$url = 'http://localhost:8000/api/document-fields/16/status';
 $response = $client-&gt;patch(
     $url,
     [
@@ -30332,14 +30402,14 @@ print_r(json_decode((string) $body));</code></pre></div>
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: {
-        &quot;id&quot;: 144,
+        &quot;id&quot;: 32,
         &quot;name&quot;: &quot;aut dolores&quot;,
         &quot;description&quot;: &quot;Facere tempora ex voluptatem laboriosam.&quot;,
         &quot;status&quot;: &quot;active&quot;,
         &quot;created_by&quot;: &quot;N/A&quot;,
         &quot;updated_by&quot;: &quot;N/A&quot;,
-        &quot;created_at&quot;: &quot;09:32:26 05/03/2026&quot;,
-        &quot;updated_at&quot;: &quot;09:32:26 05/03/2026&quot;
+        &quot;created_at&quot;: &quot;03:08:04 23/03/2026&quot;,
+        &quot;updated_at&quot;: &quot;03:08:04 23/03/2026&quot;
     },
     &quot;success&quot;: &quot;true&quot;,
     &quot;message&quot;: &quot;Đổi trạng th&aacute;i th&agrave;nh c&ocirc;ng!&quot;
@@ -30498,7 +30568,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/document-signers/public?search=architecto&amp;status=active&amp;from_date=2026-01-01&amp;to_date=2026-12-31&amp;sort_by=name&amp;sort_order=asc&amp;limit=10" \
+    --get "http://localhost:8000/api/document-signers/public?search=architecto&amp;status=active&amp;from_date=2026-01-01&amp;to_date=2026-12-31&amp;sort_by=name&amp;sort_order=asc&amp;limit=10" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -30506,7 +30576,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/document-signers/public"
+    "http://localhost:8000/api/document-signers/public"
 );
 
 const params = {
@@ -30527,6 +30597,7 @@ const headers = {
     "Accept": "application/json",
 };
 
+
 fetch(url, {
     method: "GET",
     headers,
@@ -30535,7 +30606,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/document-signers/public';
+$url = 'http://localhost:8000/api/document-signers/public';
 $response = $client-&gt;get(
     $url,
     [
@@ -30569,24 +30640,24 @@ print_r(json_decode((string) $body));</code></pre></div>
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: [
         {
-            &quot;id&quot;: 129,
+            &quot;id&quot;: 17,
             &quot;name&quot;: &quot;Ms. Elisabeth Okuneva&quot;,
             &quot;description&quot;: null,
             &quot;status&quot;: &quot;active&quot;,
             &quot;created_by&quot;: &quot;N/A&quot;,
             &quot;updated_by&quot;: &quot;N/A&quot;,
-            &quot;created_at&quot;: &quot;09:32:22 05/03/2026&quot;,
-            &quot;updated_at&quot;: &quot;09:32:22 05/03/2026&quot;
+            &quot;created_at&quot;: &quot;03:08:01 23/03/2026&quot;,
+            &quot;updated_at&quot;: &quot;03:08:01 23/03/2026&quot;
         },
         {
-            &quot;id&quot;: 130,
+            &quot;id&quot;: 18,
             &quot;name&quot;: &quot;Mrs. Justina Gaylord&quot;,
             &quot;description&quot;: &quot;Modi deserunt aut ab provident perspiciatis.&quot;,
             &quot;status&quot;: &quot;active&quot;,
             &quot;created_by&quot;: &quot;N/A&quot;,
             &quot;updated_by&quot;: &quot;N/A&quot;,
-            &quot;created_at&quot;: &quot;09:32:22 05/03/2026&quot;,
-            &quot;updated_at&quot;: &quot;09:32:22 05/03/2026&quot;
+            &quot;created_at&quot;: &quot;03:08:01 23/03/2026&quot;,
+            &quot;updated_at&quot;: &quot;03:08:01 23/03/2026&quot;
         }
     ],
     &quot;success&quot;: &quot;true&quot;
@@ -30776,7 +30847,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/document-signers/public-options?search=architecto&amp;status=active&amp;from_date=2026-01-01&amp;to_date=2026-12-31&amp;sort_by=name&amp;sort_order=asc&amp;limit=10" \
+    --get "http://localhost:8000/api/document-signers/public-options?search=architecto&amp;status=active&amp;from_date=2026-01-01&amp;to_date=2026-12-31&amp;sort_by=name&amp;sort_order=asc&amp;limit=10" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -30784,7 +30855,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/document-signers/public-options"
+    "http://localhost:8000/api/document-signers/public-options"
 );
 
 const params = {
@@ -30805,6 +30876,7 @@ const headers = {
     "Accept": "application/json",
 };
 
+
 fetch(url, {
     method: "GET",
     headers,
@@ -30813,7 +30885,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/document-signers/public-options';
+$url = 'http://localhost:8000/api/document-signers/public-options';
 $response = $client-&gt;get(
     $url,
     [
@@ -30847,12 +30919,12 @@ print_r(json_decode((string) $body));</code></pre></div>
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: [
         {
-            &quot;id&quot;: 131,
+            &quot;id&quot;: 19,
             &quot;name&quot;: &quot;Ms. Elisabeth Okuneva&quot;,
             &quot;description&quot;: null
         },
         {
-            &quot;id&quot;: 132,
+            &quot;id&quot;: 20,
             &quot;name&quot;: &quot;Mrs. Justina Gaylord&quot;,
             &quot;description&quot;: &quot;Modi deserunt aut ab provident perspiciatis.&quot;
         }
@@ -31045,7 +31117,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/document-signers/export?search=architecto&amp;status=architecto&amp;from_date=2026-01-01&amp;to_date=2026-12-31&amp;sort_by=created_at&amp;sort_order=desc&amp;limit=10" \
+    --get "http://localhost:8000/api/document-signers/export?search=architecto&amp;status=architecto&amp;from_date=2026-01-01&amp;to_date=2026-12-31&amp;sort_by=created_at&amp;sort_order=desc&amp;limit=10" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
@@ -31054,7 +31126,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/document-signers/export"
+    "http://localhost:8000/api/document-signers/export"
 );
 
 const params = {
@@ -31076,6 +31148,7 @@ const headers = {
     "Accept": "application/json",
 };
 
+
 fetch(url, {
     method: "GET",
     headers,
@@ -31084,7 +31157,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/document-signers/export';
+$url = 'http://localhost:8000/api/document-signers/export';
 $response = $client-&gt;get(
     $url,
     [
@@ -31318,7 +31391,7 @@ Must be one of:
 <small class="badge badge-darkred">requires authentication</small>
 </p>
 
-<p>Cột bắt buộc: name. Cột không bắt buộc: description, status (mặc định &quot;active&quot;).</p>
+<p>Cột bắt buộc: name. Cột không bắt buộc: description, status (mặc định "active").</p>
 
 <span id="example-requests-POSTapi-document-signers-import">
 <blockquote>Example request:</blockquote>
@@ -31326,17 +31399,17 @@ Must be one of:
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost/api/document-signers/import" \
+    "http://localhost:8000/api/document-signers/import" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: multipart/form-data" \
     --header "Accept: application/json" \
-    --form "file=@/tmp/phpvc9pgrodf5kk3TF5031" </code></pre></div>
+    --form "file=@/tmp/php718tds5svpc39nSnWLf" </code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/document-signers/import"
+    "http://localhost:8000/api/document-signers/import"
 );
 
 const headers = {
@@ -31358,7 +31431,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/document-signers/import';
+$url = 'http://localhost:8000/api/document-signers/import';
 $response = $client-&gt;post(
     $url,
     [
@@ -31371,7 +31444,7 @@ $response = $client-&gt;post(
         'multipart' =&gt; [
             [
                 'name' =&gt; 'file',
-                'contents' =&gt; fopen('/tmp/phpvc9pgrodf5kk3TF5031', 'r')
+                'contents' =&gt; fopen('/tmp/php718tds5svpc39nSnWLf', 'r')
             ],
         ],
     ]
@@ -31499,7 +31572,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>File Excel (xlsx, xls, csv). Cột theo chuẩn export. Example: <code>/tmp/phpvc9pgrodf5kk3TF5031</code></p>
+<p>File Excel (xlsx, xls, csv). Cột theo chuẩn export. Example: <code>/tmp/php718tds5svpc39nSnWLf</code></p>
         </div>
         </form>
 
@@ -31517,7 +31590,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost/api/document-signers/bulk-delete" \
+    "http://localhost:8000/api/document-signers/bulk-delete" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
@@ -31534,7 +31607,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/document-signers/bulk-delete"
+    "http://localhost:8000/api/document-signers/bulk-delete"
 );
 
 const headers = {
@@ -31561,7 +31634,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/document-signers/bulk-delete';
+$url = 'http://localhost:8000/api/document-signers/bulk-delete';
 $response = $client-&gt;post(
     $url,
     [
@@ -31723,7 +31796,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PATCH \
-    "http://localhost/api/document-signers/bulk-status" \
+    "http://localhost:8000/api/document-signers/bulk-status" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
@@ -31741,7 +31814,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/document-signers/bulk-status"
+    "http://localhost:8000/api/document-signers/bulk-status"
 );
 
 const headers = {
@@ -31769,7 +31842,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/document-signers/bulk-status';
+$url = 'http://localhost:8000/api/document-signers/bulk-status';
 $response = $client-&gt;patch(
     $url,
     [
@@ -31944,7 +32017,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/document-signers/stats?search=architecto&amp;status=architecto&amp;from_date=2026-01-01&amp;to_date=2026-12-31&amp;sort_by=created_at&amp;sort_order=desc&amp;limit=10" \
+    --get "http://localhost:8000/api/document-signers/stats?search=architecto&amp;status=architecto&amp;from_date=2026-01-01&amp;to_date=2026-12-31&amp;sort_by=created_at&amp;sort_order=desc&amp;limit=10" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
@@ -31953,7 +32026,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/document-signers/stats"
+    "http://localhost:8000/api/document-signers/stats"
 );
 
 const params = {
@@ -31975,6 +32048,7 @@ const headers = {
     "Accept": "application/json",
 };
 
+
 fetch(url, {
     method: "GET",
     headers,
@@ -31983,7 +32057,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/document-signers/stats';
+$url = 'http://localhost:8000/api/document-signers/stats';
 $response = $client-&gt;get(
     $url,
     [
@@ -32221,7 +32295,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/document-signers?search=architecto&amp;status=architecto&amp;from_date=2026-01-01&amp;to_date=2026-12-31&amp;sort_by=created_at&amp;sort_order=desc&amp;limit=10" \
+    --get "http://localhost:8000/api/document-signers?search=architecto&amp;status=architecto&amp;from_date=2026-01-01&amp;to_date=2026-12-31&amp;sort_by=created_at&amp;sort_order=desc&amp;limit=10" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
@@ -32230,7 +32304,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/document-signers"
+    "http://localhost:8000/api/document-signers"
 );
 
 const params = {
@@ -32252,6 +32326,7 @@ const headers = {
     "Accept": "application/json",
 };
 
+
 fetch(url, {
     method: "GET",
     headers,
@@ -32260,7 +32335,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/document-signers';
+$url = 'http://localhost:8000/api/document-signers';
 $response = $client-&gt;get(
     $url,
     [
@@ -32295,24 +32370,24 @@ print_r(json_decode((string) $body));</code></pre></div>
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: [
         {
-            &quot;id&quot;: 138,
+            &quot;id&quot;: 26,
             &quot;name&quot;: &quot;Ms. Elisabeth Okuneva&quot;,
             &quot;description&quot;: null,
             &quot;status&quot;: &quot;active&quot;,
             &quot;created_by&quot;: &quot;N/A&quot;,
             &quot;updated_by&quot;: &quot;N/A&quot;,
-            &quot;created_at&quot;: &quot;09:32:26 05/03/2026&quot;,
-            &quot;updated_at&quot;: &quot;09:32:26 05/03/2026&quot;
+            &quot;created_at&quot;: &quot;03:08:04 23/03/2026&quot;,
+            &quot;updated_at&quot;: &quot;03:08:04 23/03/2026&quot;
         },
         {
-            &quot;id&quot;: 139,
+            &quot;id&quot;: 27,
             &quot;name&quot;: &quot;Mrs. Justina Gaylord&quot;,
             &quot;description&quot;: &quot;Modi deserunt aut ab provident perspiciatis.&quot;,
             &quot;status&quot;: &quot;active&quot;,
             &quot;created_by&quot;: &quot;N/A&quot;,
             &quot;updated_by&quot;: &quot;N/A&quot;,
-            &quot;created_at&quot;: &quot;09:32:26 05/03/2026&quot;,
-            &quot;updated_at&quot;: &quot;09:32:26 05/03/2026&quot;
+            &quot;created_at&quot;: &quot;03:08:04 23/03/2026&quot;,
+            &quot;updated_at&quot;: &quot;03:08:04 23/03/2026&quot;
         }
     ],
     &quot;links&quot;: {
@@ -32550,7 +32625,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/document-signers/16" \
+    --get "http://localhost:8000/api/document-signers/16" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
@@ -32559,7 +32634,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/document-signers/16"
+    "http://localhost:8000/api/document-signers/16"
 );
 
 const headers = {
@@ -32569,6 +32644,7 @@ const headers = {
     "Accept": "application/json",
 };
 
+
 fetch(url, {
     method: "GET",
     headers,
@@ -32577,7 +32653,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/document-signers/16';
+$url = 'http://localhost:8000/api/document-signers/16';
 $response = $client-&gt;get(
     $url,
     [
@@ -32602,14 +32678,14 @@ print_r(json_decode((string) $body));</code></pre></div>
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: {
-        &quot;id&quot;: 140,
+        &quot;id&quot;: 28,
         &quot;name&quot;: &quot;Morgan Hirthe&quot;,
         &quot;description&quot;: &quot;Commodi incidunt iure odit.&quot;,
         &quot;status&quot;: &quot;active&quot;,
         &quot;created_by&quot;: &quot;N/A&quot;,
         &quot;updated_by&quot;: &quot;N/A&quot;,
-        &quot;created_at&quot;: &quot;09:32:26 05/03/2026&quot;,
-        &quot;updated_at&quot;: &quot;09:32:26 05/03/2026&quot;
+        &quot;created_at&quot;: &quot;03:08:04 23/03/2026&quot;,
+        &quot;updated_at&quot;: &quot;03:08:04 23/03/2026&quot;
     },
     &quot;success&quot;: &quot;true&quot;
 }</code>
@@ -32751,7 +32827,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost/api/document-signers" \
+    "http://localhost:8000/api/document-signers" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
@@ -32766,7 +32842,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/document-signers"
+    "http://localhost:8000/api/document-signers"
 );
 
 const headers = {
@@ -32791,7 +32867,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/document-signers';
+$url = 'http://localhost:8000/api/document-signers';
 $response = $client-&gt;post(
     $url,
     [
@@ -32821,14 +32897,14 @@ print_r(json_decode((string) $body));</code></pre></div>
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: {
-        &quot;id&quot;: 141,
+        &quot;id&quot;: 29,
         &quot;name&quot;: &quot;Mrs. Justina Gaylord&quot;,
         &quot;description&quot;: &quot;Modi deserunt aut ab provident perspiciatis.&quot;,
         &quot;status&quot;: &quot;active&quot;,
         &quot;created_by&quot;: &quot;N/A&quot;,
         &quot;updated_by&quot;: &quot;N/A&quot;,
-        &quot;created_at&quot;: &quot;09:32:26 05/03/2026&quot;,
-        &quot;updated_at&quot;: &quot;09:32:26 05/03/2026&quot;
+        &quot;created_at&quot;: &quot;03:08:04 23/03/2026&quot;,
+        &quot;updated_at&quot;: &quot;03:08:04 23/03/2026&quot;
     },
     &quot;success&quot;: &quot;true&quot;,
     &quot;message&quot;: &quot;Tạo người k&yacute; th&agrave;nh c&ocirc;ng!&quot;
@@ -32983,7 +33059,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://localhost/api/document-signers/16" \
+    "http://localhost:8000/api/document-signers/16" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
@@ -32998,7 +33074,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/document-signers/16"
+    "http://localhost:8000/api/document-signers/16"
 );
 
 const headers = {
@@ -33023,7 +33099,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/document-signers/16';
+$url = 'http://localhost:8000/api/document-signers/16';
 $response = $client-&gt;put(
     $url,
     [
@@ -33053,14 +33129,14 @@ print_r(json_decode((string) $body));</code></pre></div>
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: {
-        &quot;id&quot;: 142,
+        &quot;id&quot;: 30,
         &quot;name&quot;: &quot;Ms. Elisabeth Okuneva&quot;,
         &quot;description&quot;: null,
         &quot;status&quot;: &quot;active&quot;,
         &quot;created_by&quot;: &quot;N/A&quot;,
         &quot;updated_by&quot;: &quot;N/A&quot;,
-        &quot;created_at&quot;: &quot;09:32:26 05/03/2026&quot;,
-        &quot;updated_at&quot;: &quot;09:32:26 05/03/2026&quot;
+        &quot;created_at&quot;: &quot;03:08:04 23/03/2026&quot;,
+        &quot;updated_at&quot;: &quot;03:08:04 23/03/2026&quot;
     },
     &quot;success&quot;: &quot;true&quot;,
     &quot;message&quot;: &quot;Cập nhật người k&yacute; th&agrave;nh c&ocirc;ng!&quot;
@@ -33240,7 +33316,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PATCH \
-    "http://localhost/api/document-signers/16" \
+    "http://localhost:8000/api/document-signers/16" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
@@ -33255,7 +33331,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/document-signers/16"
+    "http://localhost:8000/api/document-signers/16"
 );
 
 const headers = {
@@ -33280,7 +33356,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/document-signers/16';
+$url = 'http://localhost:8000/api/document-signers/16';
 $response = $client-&gt;patch(
     $url,
     [
@@ -33310,14 +33386,14 @@ print_r(json_decode((string) $body));</code></pre></div>
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: {
-        &quot;id&quot;: 143,
+        &quot;id&quot;: 31,
         &quot;name&quot;: &quot;Ms. Elisabeth Okuneva&quot;,
         &quot;description&quot;: null,
         &quot;status&quot;: &quot;active&quot;,
         &quot;created_by&quot;: &quot;N/A&quot;,
         &quot;updated_by&quot;: &quot;N/A&quot;,
-        &quot;created_at&quot;: &quot;09:32:26 05/03/2026&quot;,
-        &quot;updated_at&quot;: &quot;09:32:26 05/03/2026&quot;
+        &quot;created_at&quot;: &quot;03:08:04 23/03/2026&quot;,
+        &quot;updated_at&quot;: &quot;03:08:04 23/03/2026&quot;
     },
     &quot;success&quot;: &quot;true&quot;,
     &quot;message&quot;: &quot;Cập nhật người k&yacute; th&agrave;nh c&ocirc;ng!&quot;
@@ -33497,7 +33573,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request DELETE \
-    "http://localhost/api/document-signers/16" \
+    "http://localhost:8000/api/document-signers/16" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
@@ -33506,7 +33582,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/document-signers/16"
+    "http://localhost:8000/api/document-signers/16"
 );
 
 const headers = {
@@ -33516,6 +33592,7 @@ const headers = {
     "Accept": "application/json",
 };
 
+
 fetch(url, {
     method: "DELETE",
     headers,
@@ -33524,7 +33601,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/document-signers/16';
+$url = 'http://localhost:8000/api/document-signers/16';
 $response = $client-&gt;delete(
     $url,
     [
@@ -33689,7 +33766,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PATCH \
-    "http://localhost/api/document-signers/16/status" \
+    "http://localhost:8000/api/document-signers/16/status" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
@@ -33702,7 +33779,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/document-signers/16/status"
+    "http://localhost:8000/api/document-signers/16/status"
 );
 
 const headers = {
@@ -33725,7 +33802,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/document-signers/16/status';
+$url = 'http://localhost:8000/api/document-signers/16/status';
 $response = $client-&gt;patch(
     $url,
     [
@@ -33753,14 +33830,14 @@ print_r(json_decode((string) $body));</code></pre></div>
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: {
-        &quot;id&quot;: 144,
+        &quot;id&quot;: 32,
         &quot;name&quot;: &quot;Morgan Hirthe&quot;,
         &quot;description&quot;: &quot;Commodi incidunt iure odit.&quot;,
         &quot;status&quot;: &quot;active&quot;,
         &quot;created_by&quot;: &quot;N/A&quot;,
         &quot;updated_by&quot;: &quot;N/A&quot;,
-        &quot;created_at&quot;: &quot;09:32:26 05/03/2026&quot;,
-        &quot;updated_at&quot;: &quot;09:32:26 05/03/2026&quot;
+        &quot;created_at&quot;: &quot;03:08:04 23/03/2026&quot;,
+        &quot;updated_at&quot;: &quot;03:08:04 23/03/2026&quot;
     },
     &quot;success&quot;: &quot;true&quot;,
     &quot;message&quot;: &quot;Đổi trạng th&aacute;i th&agrave;nh c&ocirc;ng!&quot;
@@ -33920,7 +33997,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/documents/export?search=architecto&amp;status=architecto&amp;from_date=2026-01-01&amp;to_date=2026-12-31&amp;sort_by=created_at&amp;sort_order=desc&amp;limit=10&amp;document_type_id=16&amp;document_field_id=16&amp;issuing_agency_id=16&amp;issuing_level_id=16&amp;signer_id=16" \
+    --get "http://localhost:8000/api/documents/export?search=architecto&amp;status=architecto&amp;from_date=2026-01-01&amp;to_date=2026-12-31&amp;sort_by=created_at&amp;sort_order=desc&amp;limit=10&amp;document_type_id=16&amp;document_field_id=16&amp;issuing_agency_id=16&amp;issuing_level_id=16&amp;signer_id=16" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
@@ -33929,7 +34006,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/documents/export"
+    "http://localhost:8000/api/documents/export"
 );
 
 const params = {
@@ -33956,6 +34033,7 @@ const headers = {
     "Accept": "application/json",
 };
 
+
 fetch(url, {
     method: "GET",
     headers,
@@ -33964,7 +34042,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/documents/export';
+$url = 'http://localhost:8000/api/documents/export';
 $response = $client-&gt;get(
     $url,
     [
@@ -34263,7 +34341,7 @@ Must be one of:
 <small class="badge badge-darkred">requires authentication</small>
 </p>
 
-<p>Cột không bắt buộc: so_ky_hieu, ten_van_ban, noi_dung, status (mặc định &quot;active&quot;). Quan hệ loại/lĩnh vực/cơ quan/cấp/người ký cần cấu hình riêng.</p>
+<p>Cột không bắt buộc: so_ky_hieu, ten_van_ban, noi_dung, status (mặc định "active"). Quan hệ loại/lĩnh vực/cơ quan/cấp/người ký cần cấu hình riêng.</p>
 
 <span id="example-requests-POSTapi-documents-import">
 <blockquote>Example request:</blockquote>
@@ -34271,17 +34349,17 @@ Must be one of:
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost/api/documents/import" \
+    "http://localhost:8000/api/documents/import" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: multipart/form-data" \
     --header "Accept: application/json" \
-    --form "file=@/tmp/phpf7bvplhfp68u7F23Th2" </code></pre></div>
+    --form "file=@/tmp/php4komhik0b3702MtMQzA" </code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/documents/import"
+    "http://localhost:8000/api/documents/import"
 );
 
 const headers = {
@@ -34303,7 +34381,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/documents/import';
+$url = 'http://localhost:8000/api/documents/import';
 $response = $client-&gt;post(
     $url,
     [
@@ -34316,7 +34394,7 @@ $response = $client-&gt;post(
         'multipart' =&gt; [
             [
                 'name' =&gt; 'file',
-                'contents' =&gt; fopen('/tmp/phpf7bvplhfp68u7F23Th2', 'r')
+                'contents' =&gt; fopen('/tmp/php4komhik0b3702MtMQzA', 'r')
             ],
         ],
     ]
@@ -34444,7 +34522,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>File Excel (xlsx, xls, csv). Cột theo chuẩn export. Example: <code>/tmp/phpf7bvplhfp68u7F23Th2</code></p>
+<p>File Excel (xlsx, xls, csv). Cột theo chuẩn export. Example: <code>/tmp/php4komhik0b3702MtMQzA</code></p>
         </div>
         </form>
 
@@ -34462,7 +34540,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost/api/documents/bulk-delete" \
+    "http://localhost:8000/api/documents/bulk-delete" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
@@ -34479,7 +34557,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/documents/bulk-delete"
+    "http://localhost:8000/api/documents/bulk-delete"
 );
 
 const headers = {
@@ -34506,7 +34584,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/documents/bulk-delete';
+$url = 'http://localhost:8000/api/documents/bulk-delete';
 $response = $client-&gt;post(
     $url,
     [
@@ -34668,7 +34746,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PATCH \
-    "http://localhost/api/documents/bulk-status" \
+    "http://localhost:8000/api/documents/bulk-status" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
@@ -34686,7 +34764,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/documents/bulk-status"
+    "http://localhost:8000/api/documents/bulk-status"
 );
 
 const headers = {
@@ -34714,7 +34792,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/documents/bulk-status';
+$url = 'http://localhost:8000/api/documents/bulk-status';
 $response = $client-&gt;patch(
     $url,
     [
@@ -34889,7 +34967,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/documents/stats?search=VB-01&amp;status=active&amp;from_date=2026-01-01&amp;to_date=2026-12-31&amp;sort_by=created_at&amp;sort_order=desc&amp;limit=10&amp;document_type_id=1&amp;document_field_id=2&amp;issuing_agency_id=1&amp;issuing_level_id=1&amp;signer_id=1" \
+    --get "http://localhost:8000/api/documents/stats?search=VB-01&amp;status=active&amp;from_date=2026-01-01&amp;to_date=2026-12-31&amp;sort_by=created_at&amp;sort_order=desc&amp;limit=10&amp;document_type_id=1&amp;document_field_id=2&amp;issuing_agency_id=1&amp;issuing_level_id=1&amp;signer_id=1" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
@@ -34898,7 +34976,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/documents/stats"
+    "http://localhost:8000/api/documents/stats"
 );
 
 const params = {
@@ -34925,6 +35003,7 @@ const headers = {
     "Accept": "application/json",
 };
 
+
 fetch(url, {
     method: "GET",
     headers,
@@ -34933,7 +35012,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/documents/stats';
+$url = 'http://localhost:8000/api/documents/stats';
 $response = $client-&gt;get(
     $url,
     [
@@ -35238,7 +35317,7 @@ Must be one of:
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/documents?search=architecto&amp;status=architecto&amp;from_date=2026-01-01&amp;to_date=2026-12-31&amp;sort_by=architecto&amp;sort_order=architecto&amp;limit=16&amp;document_type_id=16&amp;document_field_id=16&amp;issuing_agency_id=16&amp;issuing_level_id=16&amp;signer_id=16" \
+    --get "http://localhost:8000/api/documents?search=architecto&amp;status=architecto&amp;from_date=2026-01-01&amp;to_date=2026-12-31&amp;sort_by=architecto&amp;sort_order=architecto&amp;limit=16&amp;document_type_id=16&amp;document_field_id=16&amp;issuing_agency_id=16&amp;issuing_level_id=16&amp;signer_id=16" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
@@ -35247,7 +35326,7 @@ Must be one of:
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/documents"
+    "http://localhost:8000/api/documents"
 );
 
 const params = {
@@ -35274,6 +35353,7 @@ const headers = {
     "Accept": "application/json",
 };
 
+
 fetch(url, {
     method: "GET",
     headers,
@@ -35282,7 +35362,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/documents';
+$url = 'http://localhost:8000/api/documents';
 $response = $client-&gt;get(
     $url,
     [
@@ -35322,7 +35402,7 @@ print_r(json_decode((string) $body));</code></pre></div>
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: [
         {
-            &quot;id&quot;: 57,
+            &quot;id&quot;: 8,
             &quot;so_ky_hieu&quot;: &quot;VB-9171/GZ&quot;,
             &quot;ten_van_ban&quot;: &quot;Velit et fugiat sunt.&quot;,
             &quot;noi_dung&quot;: &quot;Mollitia modi deserunt aut ab provident perspiciatis quo. Nostrum aut adipisci quidem nostrum. Commodi incidunt iure odit. Et modi ipsum nostrum omnis autem et consequatur. Dolores enim non facere tempora.\n\nLaboriosam praesentium quis adipisci molestias fugit deleniti distinctio. Doloremque id aut libero aliquam veniam corporis. Mollitia deleniti nemo odit quia officia.&quot;,
@@ -35333,11 +35413,11 @@ print_r(json_decode((string) $body));</code></pre></div>
             &quot;ngay_het_hieu_luc&quot;: null,
             &quot;created_by&quot;: &quot;N/A&quot;,
             &quot;updated_by&quot;: &quot;N/A&quot;,
-            &quot;created_at&quot;: &quot;09:32:25 05/03/2026&quot;,
-            &quot;updated_at&quot;: &quot;09:32:25 05/03/2026&quot;
+            &quot;created_at&quot;: &quot;03:08:03 23/03/2026&quot;,
+            &quot;updated_at&quot;: &quot;03:08:03 23/03/2026&quot;
         },
         {
-            &quot;id&quot;: 58,
+            &quot;id&quot;: 9,
             &quot;so_ky_hieu&quot;: &quot;VB-1084/VI&quot;,
             &quot;ten_van_ban&quot;: &quot;Qui repudiandae laboriosam est.&quot;,
             &quot;noi_dung&quot;: null,
@@ -35345,11 +35425,11 @@ print_r(json_decode((string) $body));</code></pre></div>
             &quot;ngay_ban_hanh&quot;: null,
             &quot;ngay_xuat_ban&quot;: null,
             &quot;ngay_hieu_luc&quot;: null,
-            &quot;ngay_het_hieu_luc&quot;: &quot;30/05/1986&quot;,
+            &quot;ngay_het_hieu_luc&quot;: &quot;12/05/1986&quot;,
             &quot;created_by&quot;: &quot;N/A&quot;,
             &quot;updated_by&quot;: &quot;N/A&quot;,
-            &quot;created_at&quot;: &quot;09:32:25 05/03/2026&quot;,
-            &quot;updated_at&quot;: &quot;09:32:25 05/03/2026&quot;
+            &quot;created_at&quot;: &quot;03:08:03 23/03/2026&quot;,
+            &quot;updated_at&quot;: &quot;03:08:03 23/03/2026&quot;
         }
     ],
     &quot;links&quot;: {
@@ -35647,7 +35727,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/documents/16" \
+    --get "http://localhost:8000/api/documents/16" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
@@ -35656,7 +35736,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/documents/16"
+    "http://localhost:8000/api/documents/16"
 );
 
 const headers = {
@@ -35666,6 +35746,7 @@ const headers = {
     "Accept": "application/json",
 };
 
+
 fetch(url, {
     method: "GET",
     headers,
@@ -35674,7 +35755,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/documents/16';
+$url = 'http://localhost:8000/api/documents/16';
 $response = $client-&gt;get(
     $url,
     [
@@ -35699,43 +35780,43 @@ print_r(json_decode((string) $body));</code></pre></div>
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: {
-        &quot;id&quot;: 59,
+        &quot;id&quot;: 10,
         &quot;so_ky_hieu&quot;: &quot;VB-7680/WP&quot;,
         &quot;ten_van_ban&quot;: &quot;Qui commodi incidunt iure.&quot;,
         &quot;noi_dung&quot;: null,
         &quot;status&quot;: &quot;active&quot;,
-        &quot;ngay_ban_hanh&quot;: &quot;19/04/1982&quot;,
+        &quot;ngay_ban_hanh&quot;: &quot;01/04/1982&quot;,
         &quot;ngay_xuat_ban&quot;: &quot;16/11/1971&quot;,
         &quot;ngay_hieu_luc&quot;: null,
         &quot;ngay_het_hieu_luc&quot;: null,
         &quot;issuing_agency&quot;: {
-            &quot;id&quot;: 133,
+            &quot;id&quot;: 21,
             &quot;name&quot;: &quot;Smitham-Tromp&quot;
         },
         &quot;issuing_level&quot;: {
-            &quot;id&quot;: 133,
+            &quot;id&quot;: 21,
             &quot;name&quot;: &quot;adipisci molestias&quot;
         },
         &quot;signer&quot;: {
-            &quot;id&quot;: 133,
+            &quot;id&quot;: 21,
             &quot;name&quot;: &quot;Cynthia Fahey&quot;
         },
         &quot;types&quot;: [
             {
-                &quot;id&quot;: 133,
+                &quot;id&quot;: 21,
                 &quot;name&quot;: &quot;delectus fugit&quot;
             }
         ],
         &quot;fields&quot;: [
             {
-                &quot;id&quot;: 133,
+                &quot;id&quot;: 21,
                 &quot;name&quot;: &quot;voluptate accusamus&quot;
             }
         ],
         &quot;created_by&quot;: &quot;N/A&quot;,
         &quot;updated_by&quot;: &quot;N/A&quot;,
-        &quot;created_at&quot;: &quot;09:32:25 05/03/2026&quot;,
-        &quot;updated_at&quot;: &quot;09:32:25 05/03/2026&quot;
+        &quot;created_at&quot;: &quot;03:08:03 23/03/2026&quot;,
+        &quot;updated_at&quot;: &quot;03:08:03 23/03/2026&quot;
     },
     &quot;success&quot;: &quot;true&quot;
 }</code>
@@ -35877,7 +35958,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost/api/documents" \
+    "http://localhost:8000/api/documents" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: multipart/form-data" \
@@ -35895,13 +35976,13 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --form "ngay_hieu_luc=architecto"\
     --form "ngay_het_hieu_luc=architecto"\
     --form "status=architecto"\
-    --form "attachments[]=@/tmp/phps6r8k1ickhp10NRl8f4" \
-    --form "attachments[]=@/tmp/phpv5ijgbmhc7sd0c4CoyK" </code></pre></div>
+    --form "attachments[]=@/tmp/phpnnh42a9s6arn9Sm6MgN" \
+    --form "attachments[]=@/tmp/php1b846n84ujlmcDaeyXB" </code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/documents"
+    "http://localhost:8000/api/documents"
 );
 
 const headers = {
@@ -35937,7 +36018,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/documents';
+$url = 'http://localhost:8000/api/documents';
 $response = $client-&gt;post(
     $url,
     [
@@ -36002,11 +36083,11 @@ $response = $client-&gt;post(
             ],
             [
                 'name' =&gt; 'attachments[]',
-                'contents' =&gt; fopen('/tmp/phps6r8k1ickhp10NRl8f4', 'r')
+                'contents' =&gt; fopen('/tmp/phpnnh42a9s6arn9Sm6MgN', 'r')
             ],
             [
                 'name' =&gt; 'attachments[]',
-                'contents' =&gt; fopen('/tmp/phpv5ijgbmhc7sd0c4CoyK', 'r')
+                'contents' =&gt; fopen('/tmp/php1b846n84ujlmcDaeyXB', 'r')
             ],
         ],
     ]
@@ -36024,43 +36105,43 @@ print_r(json_decode((string) $body));</code></pre></div>
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: {
-        &quot;id&quot;: 60,
+        &quot;id&quot;: 11,
         &quot;so_ky_hieu&quot;: &quot;VB-9775/NG&quot;,
         &quot;ten_van_ban&quot;: &quot;Quos velit et fugiat sunt nihil.&quot;,
         &quot;noi_dung&quot;: &quot;Modi deserunt aut ab provident perspiciatis. Omnis nostrum aut adipisci quidem nostrum qui commodi. Iure odit et et modi ipsum nostrum omnis. Et consequatur aut dolores enim.\n\nTempora ex voluptatem laboriosam praesentium quis. Molestias fugit deleniti distinctio eum doloremque id. Libero aliquam veniam corporis dolorem mollitia deleniti.&quot;,
         &quot;status&quot;: &quot;inactive&quot;,
-        &quot;ngay_ban_hanh&quot;: &quot;04/09/2009&quot;,
+        &quot;ngay_ban_hanh&quot;: &quot;17/08/2009&quot;,
         &quot;ngay_xuat_ban&quot;: null,
         &quot;ngay_hieu_luc&quot;: null,
         &quot;ngay_het_hieu_luc&quot;: &quot;12/10/1999&quot;,
         &quot;issuing_agency&quot;: {
-            &quot;id&quot;: 134,
+            &quot;id&quot;: 22,
             &quot;name&quot;: &quot;O&#039;Connell, Beier and Bradtke&quot;
         },
         &quot;issuing_level&quot;: {
-            &quot;id&quot;: 134,
+            &quot;id&quot;: 22,
             &quot;name&quot;: &quot;ratione nemo&quot;
         },
         &quot;signer&quot;: {
-            &quot;id&quot;: 134,
+            &quot;id&quot;: 22,
             &quot;name&quot;: &quot;Michelle Cassin&quot;
         },
         &quot;types&quot;: [
             {
-                &quot;id&quot;: 134,
+                &quot;id&quot;: 22,
                 &quot;name&quot;: &quot;ducimus corrupti&quot;
             }
         ],
         &quot;fields&quot;: [
             {
-                &quot;id&quot;: 134,
+                &quot;id&quot;: 22,
                 &quot;name&quot;: &quot;quia maiores&quot;
             }
         ],
         &quot;created_by&quot;: &quot;N/A&quot;,
         &quot;updated_by&quot;: &quot;N/A&quot;,
-        &quot;created_at&quot;: &quot;09:32:25 05/03/2026&quot;,
-        &quot;updated_at&quot;: &quot;09:32:25 05/03/2026&quot;
+        &quot;created_at&quot;: &quot;03:08:03 23/03/2026&quot;,
+        &quot;updated_at&quot;: &quot;03:08:03 23/03/2026&quot;
     },
     &quot;success&quot;: &quot;true&quot;,
     &quot;message&quot;: &quot;Tạo văn bản th&agrave;nh c&ocirc;ng!&quot;
@@ -36347,7 +36428,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>Nhiều file đính kèm. Example: <code>/tmp/phpv5ijgbmhc7sd0c4CoyK</code></p>
+<p>Nhiều file đính kèm. Example: <code>/tmp/php1b846n84ujlmcDaeyXB</code></p>
         </div>
         </form>
 
@@ -36365,7 +36446,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://localhost/api/documents/16" \
+    "http://localhost:8000/api/documents/16" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: multipart/form-data" \
@@ -36384,13 +36465,13 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --form "ngay_het_hieu_luc=architecto"\
     --form "status=architecto"\
     --form "remove_attachment_ids[]=architecto"\
-    --form "attachments[]=@/tmp/php54haceak8fr93BYsfKS" \
-    --form "attachments[]=@/tmp/phpl40sihac42ii6sVsK59" </code></pre></div>
+    --form "attachments[]=@/tmp/phpi83ft4ecvopi6PdHZ9l" \
+    --form "attachments[]=@/tmp/phpt7hkckm2qb9icHWSl3q" </code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/documents/16"
+    "http://localhost:8000/api/documents/16"
 );
 
 const headers = {
@@ -36427,7 +36508,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/documents/16';
+$url = 'http://localhost:8000/api/documents/16';
 $response = $client-&gt;put(
     $url,
     [
@@ -36496,11 +36577,11 @@ $response = $client-&gt;put(
             ],
             [
                 'name' =&gt; 'attachments[]',
-                'contents' =&gt; fopen('/tmp/php54haceak8fr93BYsfKS', 'r')
+                'contents' =&gt; fopen('/tmp/phpi83ft4ecvopi6PdHZ9l', 'r')
             ],
             [
                 'name' =&gt; 'attachments[]',
-                'contents' =&gt; fopen('/tmp/phpl40sihac42ii6sVsK59', 'r')
+                'contents' =&gt; fopen('/tmp/phpt7hkckm2qb9icHWSl3q', 'r')
             ],
         ],
     ]
@@ -36518,7 +36599,7 @@ print_r(json_decode((string) $body));</code></pre></div>
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: {
-        &quot;id&quot;: 61,
+        &quot;id&quot;: 12,
         &quot;so_ky_hieu&quot;: &quot;VB-9171/GZ&quot;,
         &quot;ten_van_ban&quot;: &quot;Velit et fugiat sunt.&quot;,
         &quot;noi_dung&quot;: &quot;Mollitia modi deserunt aut ab provident perspiciatis quo. Nostrum aut adipisci quidem nostrum. Commodi incidunt iure odit. Et modi ipsum nostrum omnis autem et consequatur. Dolores enim non facere tempora.\n\nLaboriosam praesentium quis adipisci molestias fugit deleniti distinctio. Doloremque id aut libero aliquam veniam corporis. Mollitia deleniti nemo odit quia officia.&quot;,
@@ -36528,33 +36609,33 @@ print_r(json_decode((string) $body));</code></pre></div>
         &quot;ngay_hieu_luc&quot;: null,
         &quot;ngay_het_hieu_luc&quot;: null,
         &quot;issuing_agency&quot;: {
-            &quot;id&quot;: 135,
+            &quot;id&quot;: 23,
             &quot;name&quot;: &quot;Pagac-Emmerich&quot;
         },
         &quot;issuing_level&quot;: {
-            &quot;id&quot;: 135,
+            &quot;id&quot;: 23,
             &quot;name&quot;: &quot;ut et&quot;
         },
         &quot;signer&quot;: {
-            &quot;id&quot;: 135,
+            &quot;id&quot;: 23,
             &quot;name&quot;: &quot;Graham Crist V&quot;
         },
         &quot;types&quot;: [
             {
-                &quot;id&quot;: 135,
+                &quot;id&quot;: 23,
                 &quot;name&quot;: &quot;dolores quia&quot;
             }
         ],
         &quot;fields&quot;: [
             {
-                &quot;id&quot;: 135,
+                &quot;id&quot;: 23,
                 &quot;name&quot;: &quot;odit doloribus&quot;
             }
         ],
         &quot;created_by&quot;: &quot;N/A&quot;,
         &quot;updated_by&quot;: &quot;N/A&quot;,
-        &quot;created_at&quot;: &quot;09:32:25 05/03/2026&quot;,
-        &quot;updated_at&quot;: &quot;09:32:25 05/03/2026&quot;
+        &quot;created_at&quot;: &quot;03:08:03 23/03/2026&quot;,
+        &quot;updated_at&quot;: &quot;03:08:03 23/03/2026&quot;
     },
     &quot;success&quot;: &quot;true&quot;,
     &quot;message&quot;: &quot;Cập nhật văn bản th&agrave;nh c&ocirc;ng!&quot;
@@ -36880,7 +36961,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>Nhiều file đính kèm (append). Example: <code>/tmp/phpl40sihac42ii6sVsK59</code></p>
+<p>Nhiều file đính kèm (append). Example: <code>/tmp/phpt7hkckm2qb9icHWSl3q</code></p>
         </div>
         </form>
 
@@ -36898,7 +36979,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PATCH \
-    "http://localhost/api/documents/16" \
+    "http://localhost:8000/api/documents/16" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: multipart/form-data" \
@@ -36917,13 +36998,13 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --form "ngay_het_hieu_luc=architecto"\
     --form "status=architecto"\
     --form "remove_attachment_ids[]=architecto"\
-    --form "attachments[]=@/tmp/php15qs3e2ikad205VaagU" \
-    --form "attachments[]=@/tmp/php65lbjktbulcjduUYfzz" </code></pre></div>
+    --form "attachments[]=@/tmp/phph3fqouf8otbr7bFzxsC" \
+    --form "attachments[]=@/tmp/php1khdge0ok6j9bDyUlJA" </code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/documents/16"
+    "http://localhost:8000/api/documents/16"
 );
 
 const headers = {
@@ -36960,7 +37041,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/documents/16';
+$url = 'http://localhost:8000/api/documents/16';
 $response = $client-&gt;patch(
     $url,
     [
@@ -37029,11 +37110,11 @@ $response = $client-&gt;patch(
             ],
             [
                 'name' =&gt; 'attachments[]',
-                'contents' =&gt; fopen('/tmp/php15qs3e2ikad205VaagU', 'r')
+                'contents' =&gt; fopen('/tmp/phph3fqouf8otbr7bFzxsC', 'r')
             ],
             [
                 'name' =&gt; 'attachments[]',
-                'contents' =&gt; fopen('/tmp/php65lbjktbulcjduUYfzz', 'r')
+                'contents' =&gt; fopen('/tmp/php1khdge0ok6j9bDyUlJA', 'r')
             ],
         ],
     ]
@@ -37051,7 +37132,7 @@ print_r(json_decode((string) $body));</code></pre></div>
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: {
-        &quot;id&quot;: 62,
+        &quot;id&quot;: 13,
         &quot;so_ky_hieu&quot;: &quot;VB-9171/GZ&quot;,
         &quot;ten_van_ban&quot;: &quot;Velit et fugiat sunt.&quot;,
         &quot;noi_dung&quot;: &quot;Mollitia modi deserunt aut ab provident perspiciatis quo. Nostrum aut adipisci quidem nostrum. Commodi incidunt iure odit. Et modi ipsum nostrum omnis autem et consequatur. Dolores enim non facere tempora.\n\nLaboriosam praesentium quis adipisci molestias fugit deleniti distinctio. Doloremque id aut libero aliquam veniam corporis. Mollitia deleniti nemo odit quia officia.&quot;,
@@ -37061,33 +37142,33 @@ print_r(json_decode((string) $body));</code></pre></div>
         &quot;ngay_hieu_luc&quot;: null,
         &quot;ngay_het_hieu_luc&quot;: null,
         &quot;issuing_agency&quot;: {
-            &quot;id&quot;: 136,
+            &quot;id&quot;: 24,
             &quot;name&quot;: &quot;Pagac-Emmerich&quot;
         },
         &quot;issuing_level&quot;: {
-            &quot;id&quot;: 136,
+            &quot;id&quot;: 24,
             &quot;name&quot;: &quot;recusandae modi&quot;
         },
         &quot;signer&quot;: {
-            &quot;id&quot;: 136,
+            &quot;id&quot;: 24,
             &quot;name&quot;: &quot;Mona Lemke&quot;
         },
         &quot;types&quot;: [
             {
-                &quot;id&quot;: 136,
+                &quot;id&quot;: 24,
                 &quot;name&quot;: &quot;maiores assumenda&quot;
             }
         ],
         &quot;fields&quot;: [
             {
-                &quot;id&quot;: 136,
+                &quot;id&quot;: 24,
                 &quot;name&quot;: &quot;iure impedit&quot;
             }
         ],
         &quot;created_by&quot;: &quot;N/A&quot;,
         &quot;updated_by&quot;: &quot;N/A&quot;,
-        &quot;created_at&quot;: &quot;09:32:25 05/03/2026&quot;,
-        &quot;updated_at&quot;: &quot;09:32:25 05/03/2026&quot;
+        &quot;created_at&quot;: &quot;03:08:03 23/03/2026&quot;,
+        &quot;updated_at&quot;: &quot;03:08:03 23/03/2026&quot;
     },
     &quot;success&quot;: &quot;true&quot;,
     &quot;message&quot;: &quot;Cập nhật văn bản th&agrave;nh c&ocirc;ng!&quot;
@@ -37413,7 +37494,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>Nhiều file đính kèm (append). Example: <code>/tmp/php65lbjktbulcjduUYfzz</code></p>
+<p>Nhiều file đính kèm (append). Example: <code>/tmp/php1khdge0ok6j9bDyUlJA</code></p>
         </div>
         </form>
 
@@ -37431,7 +37512,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request DELETE \
-    "http://localhost/api/documents/16" \
+    "http://localhost:8000/api/documents/16" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
@@ -37440,7 +37521,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/documents/16"
+    "http://localhost:8000/api/documents/16"
 );
 
 const headers = {
@@ -37450,6 +37531,7 @@ const headers = {
     "Accept": "application/json",
 };
 
+
 fetch(url, {
     method: "DELETE",
     headers,
@@ -37458,7 +37540,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/documents/16';
+$url = 'http://localhost:8000/api/documents/16';
 $response = $client-&gt;delete(
     $url,
     [
@@ -37623,7 +37705,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PATCH \
-    "http://localhost/api/documents/16/status" \
+    "http://localhost:8000/api/documents/16/status" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
@@ -37636,7 +37718,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/documents/16/status"
+    "http://localhost:8000/api/documents/16/status"
 );
 
 const headers = {
@@ -37659,7 +37741,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/documents/16/status';
+$url = 'http://localhost:8000/api/documents/16/status';
 $response = $client-&gt;patch(
     $url,
     [
@@ -37687,43 +37769,43 @@ print_r(json_decode((string) $body));</code></pre></div>
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: {
-        &quot;id&quot;: 63,
+        &quot;id&quot;: 14,
         &quot;so_ky_hieu&quot;: &quot;VB-7680/WP&quot;,
         &quot;ten_van_ban&quot;: &quot;Qui commodi incidunt iure.&quot;,
         &quot;noi_dung&quot;: null,
         &quot;status&quot;: &quot;active&quot;,
-        &quot;ngay_ban_hanh&quot;: &quot;19/04/1982&quot;,
+        &quot;ngay_ban_hanh&quot;: &quot;01/04/1982&quot;,
         &quot;ngay_xuat_ban&quot;: &quot;16/11/1971&quot;,
         &quot;ngay_hieu_luc&quot;: null,
         &quot;ngay_het_hieu_luc&quot;: null,
         &quot;issuing_agency&quot;: {
-            &quot;id&quot;: 137,
+            &quot;id&quot;: 25,
             &quot;name&quot;: &quot;Smitham-Tromp&quot;
         },
         &quot;issuing_level&quot;: {
-            &quot;id&quot;: 137,
+            &quot;id&quot;: 25,
             &quot;name&quot;: &quot;distinctio eum&quot;
         },
         &quot;signer&quot;: {
-            &quot;id&quot;: 137,
+            &quot;id&quot;: 25,
             &quot;name&quot;: &quot;Mathew Klocko&quot;
         },
         &quot;types&quot;: [
             {
-                &quot;id&quot;: 137,
+                &quot;id&quot;: 25,
                 &quot;name&quot;: &quot;dolorem mollitia&quot;
             }
         ],
         &quot;fields&quot;: [
             {
-                &quot;id&quot;: 137,
+                &quot;id&quot;: 25,
                 &quot;name&quot;: &quot;excepturi doloribus&quot;
             }
         ],
         &quot;created_by&quot;: &quot;N/A&quot;,
         &quot;updated_by&quot;: &quot;N/A&quot;,
-        &quot;created_at&quot;: &quot;09:32:25 05/03/2026&quot;,
-        &quot;updated_at&quot;: &quot;09:32:25 05/03/2026&quot;
+        &quot;created_at&quot;: &quot;03:08:03 23/03/2026&quot;,
+        &quot;updated_at&quot;: &quot;03:08:03 23/03/2026&quot;
     },
     &quot;success&quot;: &quot;true&quot;,
     &quot;message&quot;: &quot;Đổi trạng th&aacute;i văn bản th&agrave;nh c&ocirc;ng!&quot;
@@ -37882,7 +37964,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/post-categories/public?search=tin-tuc&amp;status=active&amp;from_date=2026-01-01&amp;to_date=2026-12-31&amp;sort_by=created_at&amp;sort_order=desc&amp;limit=10" \
+    --get "http://localhost:8000/api/post-categories/public?search=tin-tuc&amp;status=active&amp;from_date=2026-01-01&amp;to_date=2026-12-31&amp;sort_by=created_at&amp;sort_order=desc&amp;limit=10" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -37890,7 +37972,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/post-categories/public"
+    "http://localhost:8000/api/post-categories/public"
 );
 
 const params = {
@@ -37911,6 +37993,7 @@ const headers = {
     "Accept": "application/json",
 };
 
+
 fetch(url, {
     method: "GET",
     headers,
@@ -37919,7 +38002,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/post-categories/public';
+$url = 'http://localhost:8000/api/post-categories/public';
 $response = $client-&gt;get(
     $url,
     [
@@ -37953,7 +38036,7 @@ print_r(json_decode((string) $body));</code></pre></div>
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: [
         {
-            &quot;id&quot;: 210,
+            &quot;id&quot;: 44,
             &quot;name&quot;: &quot;Architecto Eius&quot;,
             &quot;slug&quot;: &quot;architecto-eius&quot;,
             &quot;description&quot;: &quot;Quos velit et fugiat sunt nihil accusantium harum.&quot;,
@@ -37963,11 +38046,11 @@ print_r(json_decode((string) $body));</code></pre></div>
             &quot;depth&quot;: 0,
             &quot;created_by&quot;: &quot;N/A&quot;,
             &quot;updated_by&quot;: &quot;N/A&quot;,
-            &quot;created_at&quot;: &quot;05/03/2026 09:32:23&quot;,
-            &quot;updated_at&quot;: &quot;05/03/2026 09:32:23&quot;
+            &quot;created_at&quot;: &quot;23/03/2026 03:08:02&quot;,
+            &quot;updated_at&quot;: &quot;23/03/2026 03:08:02&quot;
         },
         {
-            &quot;id&quot;: 211,
+            &quot;id&quot;: 45,
             &quot;name&quot;: &quot;Deserunt Aut&quot;,
             &quot;slug&quot;: &quot;deserunt-aut&quot;,
             &quot;description&quot;: null,
@@ -37977,8 +38060,8 @@ print_r(json_decode((string) $body));</code></pre></div>
             &quot;depth&quot;: 0,
             &quot;created_by&quot;: &quot;N/A&quot;,
             &quot;updated_by&quot;: &quot;N/A&quot;,
-            &quot;created_at&quot;: &quot;05/03/2026 09:32:23&quot;,
-            &quot;updated_at&quot;: &quot;05/03/2026 09:32:23&quot;
+            &quot;created_at&quot;: &quot;23/03/2026 03:08:02&quot;,
+            &quot;updated_at&quot;: &quot;23/03/2026 03:08:02&quot;
         }
     ],
     &quot;success&quot;: &quot;true&quot;
@@ -38170,7 +38253,7 @@ Must be one of:
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/post-categories/public-options?search=tin-tuc&amp;status=active&amp;from_date=2026-01-01&amp;to_date=2026-12-31&amp;sort_by=created_at&amp;sort_order=desc&amp;limit=10" \
+    --get "http://localhost:8000/api/post-categories/public-options?search=tin-tuc&amp;status=active&amp;from_date=2026-01-01&amp;to_date=2026-12-31&amp;sort_by=created_at&amp;sort_order=desc&amp;limit=10" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -38178,7 +38261,7 @@ Must be one of:
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/post-categories/public-options"
+    "http://localhost:8000/api/post-categories/public-options"
 );
 
 const params = {
@@ -38199,6 +38282,7 @@ const headers = {
     "Accept": "application/json",
 };
 
+
 fetch(url, {
     method: "GET",
     headers,
@@ -38207,7 +38291,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/post-categories/public-options';
+$url = 'http://localhost:8000/api/post-categories/public-options';
 $response = $client-&gt;get(
     $url,
     [
@@ -38241,12 +38325,12 @@ print_r(json_decode((string) $body));</code></pre></div>
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: [
         {
-            &quot;id&quot;: 212,
+            &quot;id&quot;: 46,
             &quot;name&quot;: &quot;Et Animi&quot;,
             &quot;description&quot;: &quot;Et fugiat sunt nihil accusantium.&quot;
         },
         {
-            &quot;id&quot;: 213,
+            &quot;id&quot;: 47,
             &quot;name&quot;: &quot;Quo Omnis&quot;,
             &quot;description&quot;: &quot;Adipisci quidem nostrum qui commodi incidunt iure.&quot;
         }
@@ -38441,7 +38525,7 @@ Must be one of:
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/post-categories/export?search=architecto&amp;status=architecto&amp;from_date=architecto&amp;to_date=architecto&amp;sort_by=architecto&amp;sort_order=architecto&amp;limit=10" \
+    --get "http://localhost:8000/api/post-categories/export?search=architecto&amp;status=architecto&amp;from_date=architecto&amp;to_date=architecto&amp;sort_by=architecto&amp;sort_order=architecto&amp;limit=10" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
@@ -38450,7 +38534,7 @@ Must be one of:
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/post-categories/export"
+    "http://localhost:8000/api/post-categories/export"
 );
 
 const params = {
@@ -38472,6 +38556,7 @@ const headers = {
     "Accept": "application/json",
 };
 
+
 fetch(url, {
     method: "GET",
     headers,
@@ -38480,7 +38565,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/post-categories/export';
+$url = 'http://localhost:8000/api/post-categories/export';
 $response = $client-&gt;get(
     $url,
     [
@@ -38712,7 +38797,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <small class="badge badge-darkred">requires authentication</small>
 </p>
 
-<p>Cột bắt buộc: name. Cột không bắt buộc: slug (tự sinh từ name), description, status (mặc định &quot;active&quot;), sort_order (mặc định 0), parent_slug (slug của danh mục cha).</p>
+<p>Cột bắt buộc: name. Cột không bắt buộc: slug (tự sinh từ name), description, status (mặc định "active"), sort_order (mặc định 0), parent_slug (slug của danh mục cha).</p>
 
 <span id="example-requests-POSTapi-post-categories-import">
 <blockquote>Example request:</blockquote>
@@ -38720,17 +38805,17 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost/api/post-categories/import" \
+    "http://localhost:8000/api/post-categories/import" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: multipart/form-data" \
     --header "Accept: application/json" \
-    --form "file=@/tmp/phpeb7d6t9rua4n4mvQMWL" </code></pre></div>
+    --form "file=@/tmp/php06epjkumvoqjfBIFKef" </code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/post-categories/import"
+    "http://localhost:8000/api/post-categories/import"
 );
 
 const headers = {
@@ -38752,7 +38837,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/post-categories/import';
+$url = 'http://localhost:8000/api/post-categories/import';
 $response = $client-&gt;post(
     $url,
     [
@@ -38765,7 +38850,7 @@ $response = $client-&gt;post(
         'multipart' =&gt; [
             [
                 'name' =&gt; 'file',
-                'contents' =&gt; fopen('/tmp/phpeb7d6t9rua4n4mvQMWL', 'r')
+                'contents' =&gt; fopen('/tmp/php06epjkumvoqjfBIFKef', 'r')
             ],
         ],
     ]
@@ -38893,7 +38978,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>File Excel (xlsx, xls, csv). Cột theo chuẩn export. Example: <code>/tmp/phpeb7d6t9rua4n4mvQMWL</code></p>
+<p>File Excel (xlsx, xls, csv). Cột theo chuẩn export. Example: <code>/tmp/php06epjkumvoqjfBIFKef</code></p>
         </div>
         </form>
 
@@ -38911,7 +38996,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost/api/post-categories/bulk-delete" \
+    "http://localhost:8000/api/post-categories/bulk-delete" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
@@ -38928,7 +39013,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/post-categories/bulk-delete"
+    "http://localhost:8000/api/post-categories/bulk-delete"
 );
 
 const headers = {
@@ -38955,7 +39040,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/post-categories/bulk-delete';
+$url = 'http://localhost:8000/api/post-categories/bulk-delete';
 $response = $client-&gt;post(
     $url,
     [
@@ -39117,7 +39202,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PATCH \
-    "http://localhost/api/post-categories/bulk-status" \
+    "http://localhost:8000/api/post-categories/bulk-status" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
@@ -39135,7 +39220,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/post-categories/bulk-status"
+    "http://localhost:8000/api/post-categories/bulk-status"
 );
 
 const headers = {
@@ -39163,7 +39248,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/post-categories/bulk-status';
+$url = 'http://localhost:8000/api/post-categories/bulk-status';
 $response = $client-&gt;patch(
     $url,
     [
@@ -39338,7 +39423,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/post-categories/stats?search=tin-tuc&amp;status=architecto&amp;from_date=2026-02-01&amp;to_date=2026-02-17&amp;sort_by=sort_order&amp;sort_order=asc&amp;limit=10" \
+    --get "http://localhost:8000/api/post-categories/stats?search=tin-tuc&amp;status=architecto&amp;from_date=2026-02-01&amp;to_date=2026-02-17&amp;sort_by=sort_order&amp;sort_order=asc&amp;limit=10" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
@@ -39347,7 +39432,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/post-categories/stats"
+    "http://localhost:8000/api/post-categories/stats"
 );
 
 const params = {
@@ -39369,6 +39454,7 @@ const headers = {
     "Accept": "application/json",
 };
 
+
 fetch(url, {
     method: "GET",
     headers,
@@ -39377,7 +39463,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/post-categories/stats';
+$url = 'http://localhost:8000/api/post-categories/stats';
 $response = $client-&gt;get(
     $url,
     [
@@ -39615,7 +39701,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/post-categories/tree?status=architecto" \
+    --get "http://localhost:8000/api/post-categories/tree?status=architecto" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
@@ -39624,7 +39710,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/post-categories/tree"
+    "http://localhost:8000/api/post-categories/tree"
 );
 
 const params = {
@@ -39640,6 +39726,7 @@ const headers = {
     "Accept": "application/json",
 };
 
+
 fetch(url, {
     method: "GET",
     headers,
@@ -39648,7 +39735,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/post-categories/tree';
+$url = 'http://localhost:8000/api/post-categories/tree';
 $response = $client-&gt;get(
     $url,
     [
@@ -39815,7 +39902,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/post-categories?search=tin-tuc&amp;status=architecto&amp;from_date=2026-02-01&amp;to_date=2026-02-17&amp;sort_by=sort_order&amp;sort_order=asc&amp;limit=10" \
+    --get "http://localhost:8000/api/post-categories?search=tin-tuc&amp;status=architecto&amp;from_date=2026-02-01&amp;to_date=2026-02-17&amp;sort_by=sort_order&amp;sort_order=asc&amp;limit=10" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
@@ -39824,7 +39911,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/post-categories"
+    "http://localhost:8000/api/post-categories"
 );
 
 const params = {
@@ -39846,6 +39933,7 @@ const headers = {
     "Accept": "application/json",
 };
 
+
 fetch(url, {
     method: "GET",
     headers,
@@ -39854,7 +39942,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/post-categories';
+$url = 'http://localhost:8000/api/post-categories';
 $response = $client-&gt;get(
     $url,
     [
@@ -39889,7 +39977,7 @@ print_r(json_decode((string) $body));</code></pre></div>
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: [
         {
-            &quot;id&quot;: 219,
+            &quot;id&quot;: 53,
             &quot;name&quot;: &quot;Adipisci Quidem&quot;,
             &quot;slug&quot;: &quot;adipisci-quidem&quot;,
             &quot;description&quot;: &quot;Commodi incidunt iure odit.&quot;,
@@ -39899,11 +39987,11 @@ print_r(json_decode((string) $body));</code></pre></div>
             &quot;depth&quot;: 0,
             &quot;created_by&quot;: &quot;N/A&quot;,
             &quot;updated_by&quot;: &quot;N/A&quot;,
-            &quot;created_at&quot;: &quot;05/03/2026 09:32:24&quot;,
-            &quot;updated_at&quot;: &quot;05/03/2026 09:32:24&quot;
+            &quot;created_at&quot;: &quot;23/03/2026 03:08:02&quot;,
+            &quot;updated_at&quot;: &quot;23/03/2026 03:08:02&quot;
         },
         {
-            &quot;id&quot;: 220,
+            &quot;id&quot;: 54,
             &quot;name&quot;: &quot;Modi Ipsum&quot;,
             &quot;slug&quot;: &quot;modi-ipsum&quot;,
             &quot;description&quot;: &quot;Autem et consequatur aut dolores enim non facere tempora.&quot;,
@@ -39913,8 +40001,8 @@ print_r(json_decode((string) $body));</code></pre></div>
             &quot;depth&quot;: 0,
             &quot;created_by&quot;: &quot;N/A&quot;,
             &quot;updated_by&quot;: &quot;N/A&quot;,
-            &quot;created_at&quot;: &quot;05/03/2026 09:32:24&quot;,
-            &quot;updated_at&quot;: &quot;05/03/2026 09:32:24&quot;
+            &quot;created_at&quot;: &quot;23/03/2026 03:08:02&quot;,
+            &quot;updated_at&quot;: &quot;23/03/2026 03:08:02&quot;
         }
     ],
     &quot;links&quot;: {
@@ -40152,7 +40240,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/post-categories/1" \
+    --get "http://localhost:8000/api/post-categories/1" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
@@ -40161,7 +40249,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/post-categories/1"
+    "http://localhost:8000/api/post-categories/1"
 );
 
 const headers = {
@@ -40171,6 +40259,7 @@ const headers = {
     "Accept": "application/json",
 };
 
+
 fetch(url, {
     method: "GET",
     headers,
@@ -40179,7 +40268,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/post-categories/1';
+$url = 'http://localhost:8000/api/post-categories/1';
 $response = $client-&gt;get(
     $url,
     [
@@ -40204,20 +40293,20 @@ print_r(json_decode((string) $body));</code></pre></div>
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: {
-        &quot;id&quot;: 222,
+        &quot;id&quot;: 56,
         &quot;name&quot;: &quot;Aut Adipisci&quot;,
         &quot;slug&quot;: &quot;aut-adipisci&quot;,
         &quot;description&quot;: &quot;Qui commodi incidunt iure odit.&quot;,
         &quot;status&quot;: &quot;active&quot;,
         &quot;sort_order&quot;: 20,
-        &quot;parent_id&quot;: 221,
+        &quot;parent_id&quot;: 55,
         &quot;depth&quot;: 1,
         &quot;created_by&quot;: &quot;N/A&quot;,
         &quot;updated_by&quot;: &quot;N/A&quot;,
-        &quot;created_at&quot;: &quot;05/03/2026 09:32:24&quot;,
-        &quot;updated_at&quot;: &quot;05/03/2026 09:32:24&quot;,
+        &quot;created_at&quot;: &quot;23/03/2026 03:08:02&quot;,
+        &quot;updated_at&quot;: &quot;23/03/2026 03:08:02&quot;,
         &quot;parent&quot;: {
-            &quot;id&quot;: 221,
+            &quot;id&quot;: 55,
             &quot;name&quot;: &quot;Nostrum Omnis&quot;,
             &quot;slug&quot;: &quot;nostrum-omnis&quot;,
             &quot;description&quot;: &quot;Consequatur aut dolores enim non facere tempora.&quot;,
@@ -40227,23 +40316,23 @@ print_r(json_decode((string) $body));</code></pre></div>
             &quot;depth&quot;: 0,
             &quot;created_by&quot;: &quot;N/A&quot;,
             &quot;updated_by&quot;: &quot;N/A&quot;,
-            &quot;created_at&quot;: &quot;05/03/2026 09:32:24&quot;,
-            &quot;updated_at&quot;: &quot;05/03/2026 09:32:24&quot;
+            &quot;created_at&quot;: &quot;23/03/2026 03:08:02&quot;,
+            &quot;updated_at&quot;: &quot;23/03/2026 03:08:02&quot;
         },
         &quot;children&quot;: [
             {
-                &quot;id&quot;: 223,
+                &quot;id&quot;: 57,
                 &quot;name&quot;: &quot;Laboriosam Praesentium&quot;,
                 &quot;slug&quot;: &quot;laboriosam-praesentium&quot;,
                 &quot;description&quot;: &quot;Molestias fugit deleniti distinctio eum doloremque id.&quot;,
                 &quot;status&quot;: &quot;active&quot;,
                 &quot;sort_order&quot;: 61,
-                &quot;parent_id&quot;: 222,
+                &quot;parent_id&quot;: 56,
                 &quot;depth&quot;: 2,
                 &quot;created_by&quot;: &quot;N/A&quot;,
                 &quot;updated_by&quot;: &quot;N/A&quot;,
-                &quot;created_at&quot;: &quot;05/03/2026 09:32:24&quot;,
-                &quot;updated_at&quot;: &quot;05/03/2026 09:32:24&quot;
+                &quot;created_at&quot;: &quot;23/03/2026 03:08:02&quot;,
+                &quot;updated_at&quot;: &quot;23/03/2026 03:08:02&quot;
             }
         ]
     },
@@ -40387,7 +40476,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost/api/post-categories" \
+    "http://localhost:8000/api/post-categories" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
@@ -40405,7 +40494,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/post-categories"
+    "http://localhost:8000/api/post-categories"
 );
 
 const headers = {
@@ -40433,7 +40522,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/post-categories';
+$url = 'http://localhost:8000/api/post-categories';
 $response = $client-&gt;post(
     $url,
     [
@@ -40466,7 +40555,7 @@ print_r(json_decode((string) $body));</code></pre></div>
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: {
-        &quot;id&quot;: 224,
+        &quot;id&quot;: 58,
         &quot;name&quot;: &quot;Nostrum Qui&quot;,
         &quot;slug&quot;: &quot;nostrum-qui&quot;,
         &quot;description&quot;: &quot;Iure odit et et modi ipsum nostrum omnis.&quot;,
@@ -40476,8 +40565,8 @@ print_r(json_decode((string) $body));</code></pre></div>
         &quot;depth&quot;: 0,
         &quot;created_by&quot;: &quot;N/A&quot;,
         &quot;updated_by&quot;: &quot;N/A&quot;,
-        &quot;created_at&quot;: &quot;05/03/2026 09:32:24&quot;,
-        &quot;updated_at&quot;: &quot;05/03/2026 09:32:24&quot;
+        &quot;created_at&quot;: &quot;23/03/2026 03:08:02&quot;,
+        &quot;updated_at&quot;: &quot;23/03/2026 03:08:02&quot;
     },
     &quot;success&quot;: &quot;true&quot;,
     &quot;message&quot;: &quot;Danh mục đ&atilde; được tạo th&agrave;nh c&ocirc;ng!&quot;
@@ -40668,7 +40757,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://localhost/api/post-categories/1" \
+    "http://localhost:8000/api/post-categories/1" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
@@ -40686,7 +40775,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/post-categories/1"
+    "http://localhost:8000/api/post-categories/1"
 );
 
 const headers = {
@@ -40714,7 +40803,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/post-categories/1';
+$url = 'http://localhost:8000/api/post-categories/1';
 $response = $client-&gt;put(
     $url,
     [
@@ -40747,20 +40836,20 @@ print_r(json_decode((string) $body));</code></pre></div>
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: {
-        &quot;id&quot;: 226,
+        &quot;id&quot;: 60,
         &quot;name&quot;: &quot;Commodi Incidunt&quot;,
         &quot;slug&quot;: &quot;commodi-incidunt&quot;,
         &quot;description&quot;: &quot;Et et modi ipsum nostrum.&quot;,
         &quot;status&quot;: &quot;active&quot;,
         &quot;sort_order&quot;: 41,
-        &quot;parent_id&quot;: 225,
+        &quot;parent_id&quot;: 59,
         &quot;depth&quot;: 1,
         &quot;created_by&quot;: &quot;N/A&quot;,
         &quot;updated_by&quot;: &quot;N/A&quot;,
-        &quot;created_at&quot;: &quot;05/03/2026 09:32:24&quot;,
-        &quot;updated_at&quot;: &quot;05/03/2026 09:32:24&quot;,
+        &quot;created_at&quot;: &quot;23/03/2026 03:08:02&quot;,
+        &quot;updated_at&quot;: &quot;23/03/2026 03:08:02&quot;,
         &quot;parent&quot;: {
-            &quot;id&quot;: 225,
+            &quot;id&quot;: 59,
             &quot;name&quot;: &quot;Et Consequatur&quot;,
             &quot;slug&quot;: &quot;et-consequatur&quot;,
             &quot;description&quot;: &quot;Enim non facere tempora ex voluptatem laboriosam praesentium.&quot;,
@@ -40770,23 +40859,23 @@ print_r(json_decode((string) $body));</code></pre></div>
             &quot;depth&quot;: 0,
             &quot;created_by&quot;: &quot;N/A&quot;,
             &quot;updated_by&quot;: &quot;N/A&quot;,
-            &quot;created_at&quot;: &quot;05/03/2026 09:32:24&quot;,
-            &quot;updated_at&quot;: &quot;05/03/2026 09:32:24&quot;
+            &quot;created_at&quot;: &quot;23/03/2026 03:08:02&quot;,
+            &quot;updated_at&quot;: &quot;23/03/2026 03:08:02&quot;
         },
         &quot;children&quot;: [
             {
-                &quot;id&quot;: 227,
+                &quot;id&quot;: 61,
                 &quot;name&quot;: &quot;Molestias Fugit&quot;,
                 &quot;slug&quot;: &quot;molestias-fugit&quot;,
                 &quot;description&quot;: null,
                 &quot;status&quot;: &quot;inactive&quot;,
                 &quot;sort_order&quot;: 7,
-                &quot;parent_id&quot;: 226,
+                &quot;parent_id&quot;: 60,
                 &quot;depth&quot;: 2,
                 &quot;created_by&quot;: &quot;N/A&quot;,
                 &quot;updated_by&quot;: &quot;N/A&quot;,
-                &quot;created_at&quot;: &quot;05/03/2026 09:32:24&quot;,
-                &quot;updated_at&quot;: &quot;05/03/2026 09:32:24&quot;
+                &quot;created_at&quot;: &quot;23/03/2026 03:08:02&quot;,
+                &quot;updated_at&quot;: &quot;23/03/2026 03:08:02&quot;
             }
         ]
     },
@@ -41004,7 +41093,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PATCH \
-    "http://localhost/api/post-categories/1" \
+    "http://localhost:8000/api/post-categories/1" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
@@ -41022,7 +41111,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/post-categories/1"
+    "http://localhost:8000/api/post-categories/1"
 );
 
 const headers = {
@@ -41050,7 +41139,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/post-categories/1';
+$url = 'http://localhost:8000/api/post-categories/1';
 $response = $client-&gt;patch(
     $url,
     [
@@ -41083,20 +41172,20 @@ print_r(json_decode((string) $body));</code></pre></div>
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: {
-        &quot;id&quot;: 229,
+        &quot;id&quot;: 63,
         &quot;name&quot;: &quot;Iure Odit&quot;,
         &quot;slug&quot;: &quot;iure-odit&quot;,
         &quot;description&quot;: &quot;Modi ipsum nostrum omnis autem et.&quot;,
         &quot;status&quot;: &quot;inactive&quot;,
         &quot;sort_order&quot;: 84,
-        &quot;parent_id&quot;: 228,
+        &quot;parent_id&quot;: 62,
         &quot;depth&quot;: 1,
         &quot;created_by&quot;: &quot;N/A&quot;,
         &quot;updated_by&quot;: &quot;N/A&quot;,
-        &quot;created_at&quot;: &quot;05/03/2026 09:32:24&quot;,
-        &quot;updated_at&quot;: &quot;05/03/2026 09:32:24&quot;,
+        &quot;created_at&quot;: &quot;23/03/2026 03:08:02&quot;,
+        &quot;updated_at&quot;: &quot;23/03/2026 03:08:02&quot;,
         &quot;parent&quot;: {
-            &quot;id&quot;: 228,
+            &quot;id&quot;: 62,
             &quot;name&quot;: &quot;Dolores Enim&quot;,
             &quot;slug&quot;: &quot;dolores-enim&quot;,
             &quot;description&quot;: &quot;Tempora ex voluptatem laboriosam praesentium quis.&quot;,
@@ -41106,23 +41195,23 @@ print_r(json_decode((string) $body));</code></pre></div>
             &quot;depth&quot;: 0,
             &quot;created_by&quot;: &quot;N/A&quot;,
             &quot;updated_by&quot;: &quot;N/A&quot;,
-            &quot;created_at&quot;: &quot;05/03/2026 09:32:24&quot;,
-            &quot;updated_at&quot;: &quot;05/03/2026 09:32:24&quot;
+            &quot;created_at&quot;: &quot;23/03/2026 03:08:02&quot;,
+            &quot;updated_at&quot;: &quot;23/03/2026 03:08:02&quot;
         },
         &quot;children&quot;: [
             {
-                &quot;id&quot;: 230,
+                &quot;id&quot;: 64,
                 &quot;name&quot;: &quot;Fugit Deleniti&quot;,
                 &quot;slug&quot;: &quot;fugit-deleniti&quot;,
                 &quot;description&quot;: null,
                 &quot;status&quot;: &quot;active&quot;,
                 &quot;sort_order&quot;: 35,
-                &quot;parent_id&quot;: 229,
+                &quot;parent_id&quot;: 63,
                 &quot;depth&quot;: 2,
                 &quot;created_by&quot;: &quot;N/A&quot;,
                 &quot;updated_by&quot;: &quot;N/A&quot;,
-                &quot;created_at&quot;: &quot;05/03/2026 09:32:24&quot;,
-                &quot;updated_at&quot;: &quot;05/03/2026 09:32:24&quot;
+                &quot;created_at&quot;: &quot;23/03/2026 03:08:02&quot;,
+                &quot;updated_at&quot;: &quot;23/03/2026 03:08:02&quot;
             }
         ]
     },
@@ -41340,7 +41429,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request DELETE \
-    "http://localhost/api/post-categories/1" \
+    "http://localhost:8000/api/post-categories/1" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
@@ -41349,7 +41438,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/post-categories/1"
+    "http://localhost:8000/api/post-categories/1"
 );
 
 const headers = {
@@ -41359,6 +41448,7 @@ const headers = {
     "Accept": "application/json",
 };
 
+
 fetch(url, {
     method: "DELETE",
     headers,
@@ -41367,7 +41457,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/post-categories/1';
+$url = 'http://localhost:8000/api/post-categories/1';
 $response = $client-&gt;delete(
     $url,
     [
@@ -41532,7 +41622,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PATCH \
-    "http://localhost/api/post-categories/1/status" \
+    "http://localhost:8000/api/post-categories/1/status" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
@@ -41545,7 +41635,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/post-categories/1/status"
+    "http://localhost:8000/api/post-categories/1/status"
 );
 
 const headers = {
@@ -41568,7 +41658,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/post-categories/1/status';
+$url = 'http://localhost:8000/api/post-categories/1/status';
 $response = $client-&gt;patch(
     $url,
     [
@@ -41596,20 +41686,20 @@ print_r(json_decode((string) $body));</code></pre></div>
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: {
-        &quot;id&quot;: 232,
+        &quot;id&quot;: 66,
         &quot;name&quot;: &quot;Quidem Nostrum&quot;,
         &quot;slug&quot;: &quot;quidem-nostrum&quot;,
         &quot;description&quot;: null,
         &quot;status&quot;: &quot;inactive&quot;,
         &quot;sort_order&quot;: 0,
-        &quot;parent_id&quot;: 231,
+        &quot;parent_id&quot;: 65,
         &quot;depth&quot;: 1,
         &quot;created_by&quot;: &quot;N/A&quot;,
         &quot;updated_by&quot;: &quot;N/A&quot;,
-        &quot;created_at&quot;: &quot;05/03/2026 09:32:24&quot;,
-        &quot;updated_at&quot;: &quot;05/03/2026 09:32:24&quot;,
+        &quot;created_at&quot;: &quot;23/03/2026 03:08:02&quot;,
+        &quot;updated_at&quot;: &quot;23/03/2026 03:08:02&quot;,
         &quot;parent&quot;: {
-            &quot;id&quot;: 231,
+            &quot;id&quot;: 65,
             &quot;name&quot;: &quot;Et Et&quot;,
             &quot;slug&quot;: &quot;et-et&quot;,
             &quot;description&quot;: &quot;Nostrum omnis autem et consequatur aut.&quot;,
@@ -41619,23 +41709,23 @@ print_r(json_decode((string) $body));</code></pre></div>
             &quot;depth&quot;: 0,
             &quot;created_by&quot;: &quot;N/A&quot;,
             &quot;updated_by&quot;: &quot;N/A&quot;,
-            &quot;created_at&quot;: &quot;05/03/2026 09:32:24&quot;,
-            &quot;updated_at&quot;: &quot;05/03/2026 09:32:24&quot;
+            &quot;created_at&quot;: &quot;23/03/2026 03:08:02&quot;,
+            &quot;updated_at&quot;: &quot;23/03/2026 03:08:02&quot;
         },
         &quot;children&quot;: [
             {
-                &quot;id&quot;: 233,
+                &quot;id&quot;: 67,
                 &quot;name&quot;: &quot;Non Facere&quot;,
                 &quot;slug&quot;: &quot;non-facere&quot;,
                 &quot;description&quot;: &quot;Voluptatem laboriosam praesentium quis adipisci.&quot;,
                 &quot;status&quot;: &quot;inactive&quot;,
                 &quot;sort_order&quot;: 10,
-                &quot;parent_id&quot;: 232,
+                &quot;parent_id&quot;: 66,
                 &quot;depth&quot;: 2,
                 &quot;created_by&quot;: &quot;N/A&quot;,
                 &quot;updated_by&quot;: &quot;N/A&quot;,
-                &quot;created_at&quot;: &quot;05/03/2026 09:32:24&quot;,
-                &quot;updated_at&quot;: &quot;05/03/2026 09:32:24&quot;
+                &quot;created_at&quot;: &quot;23/03/2026 03:08:02&quot;,
+                &quot;updated_at&quot;: &quot;23/03/2026 03:08:02&quot;
             }
         ]
     },
@@ -41797,7 +41887,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/posts/export?search=architecto&amp;status=architecto&amp;from_date=2026-01-01&amp;to_date=2026-12-31&amp;sort_by=architecto&amp;sort_order=architecto&amp;limit=10&amp;category_id=16" \
+    --get "http://localhost:8000/api/posts/export?search=architecto&amp;status=architecto&amp;from_date=2026-01-01&amp;to_date=2026-12-31&amp;sort_by=architecto&amp;sort_order=architecto&amp;limit=10&amp;category_id=16" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
@@ -41806,7 +41896,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/posts/export"
+    "http://localhost:8000/api/posts/export"
 );
 
 const params = {
@@ -41829,6 +41919,7 @@ const headers = {
     "Accept": "application/json",
 };
 
+
 fetch(url, {
     method: "GET",
     headers,
@@ -41837,7 +41928,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/posts/export';
+$url = 'http://localhost:8000/api/posts/export';
 $response = $client-&gt;get(
     $url,
     [
@@ -42082,7 +42173,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <small class="badge badge-darkred">requires authentication</small>
 </p>
 
-<p>Cột bắt buộc: title, content. Cột không bắt buộc: status (mặc định &quot;published&quot;), categories (tên nối phẩy).</p>
+<p>Cột bắt buộc: title, content. Cột không bắt buộc: status (mặc định "published"), categories (tên nối phẩy).</p>
 
 <span id="example-requests-POSTapi-posts-import">
 <blockquote>Example request:</blockquote>
@@ -42090,17 +42181,17 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost/api/posts/import" \
+    "http://localhost:8000/api/posts/import" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: multipart/form-data" \
     --header "Accept: application/json" \
-    --form "file=@/tmp/phpfi8ptaqvg8vnbGTvAfu" </code></pre></div>
+    --form "file=@/tmp/phph8jdp7h8d88993lRUy2" </code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/posts/import"
+    "http://localhost:8000/api/posts/import"
 );
 
 const headers = {
@@ -42122,7 +42213,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/posts/import';
+$url = 'http://localhost:8000/api/posts/import';
 $response = $client-&gt;post(
     $url,
     [
@@ -42135,7 +42226,7 @@ $response = $client-&gt;post(
         'multipart' =&gt; [
             [
                 'name' =&gt; 'file',
-                'contents' =&gt; fopen('/tmp/phpfi8ptaqvg8vnbGTvAfu', 'r')
+                'contents' =&gt; fopen('/tmp/phph8jdp7h8d88993lRUy2', 'r')
             ],
         ],
     ]
@@ -42263,7 +42354,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>File Excel (xlsx, xls, csv). Cột theo chuẩn export. Example: <code>/tmp/phpfi8ptaqvg8vnbGTvAfu</code></p>
+<p>File Excel (xlsx, xls, csv). Cột theo chuẩn export. Example: <code>/tmp/phph8jdp7h8d88993lRUy2</code></p>
         </div>
         </form>
 
@@ -42281,7 +42372,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost/api/posts/bulk-delete" \
+    "http://localhost:8000/api/posts/bulk-delete" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
@@ -42298,7 +42389,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/posts/bulk-delete"
+    "http://localhost:8000/api/posts/bulk-delete"
 );
 
 const headers = {
@@ -42325,7 +42416,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/posts/bulk-delete';
+$url = 'http://localhost:8000/api/posts/bulk-delete';
 $response = $client-&gt;post(
     $url,
     [
@@ -42487,7 +42578,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PATCH \
-    "http://localhost/api/posts/bulk-status" \
+    "http://localhost:8000/api/posts/bulk-status" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
@@ -42505,7 +42596,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/posts/bulk-status"
+    "http://localhost:8000/api/posts/bulk-status"
 );
 
 const headers = {
@@ -42533,7 +42624,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/posts/bulk-status';
+$url = 'http://localhost:8000/api/posts/bulk-status';
 $response = $client-&gt;patch(
     $url,
     [
@@ -42708,7 +42799,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/posts/stats?search=hello&amp;status=architecto&amp;from_date=2026-01-01&amp;to_date=2026-12-31&amp;sort_by=created_at&amp;sort_order=desc&amp;limit=10&amp;category_id=1" \
+    --get "http://localhost:8000/api/posts/stats?search=hello&amp;status=architecto&amp;from_date=2026-01-01&amp;to_date=2026-12-31&amp;sort_by=created_at&amp;sort_order=desc&amp;limit=10&amp;category_id=1" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
@@ -42717,7 +42808,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/posts/stats"
+    "http://localhost:8000/api/posts/stats"
 );
 
 const params = {
@@ -42740,6 +42831,7 @@ const headers = {
     "Accept": "application/json",
 };
 
+
 fetch(url, {
     method: "GET",
     headers,
@@ -42748,7 +42840,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/posts/stats';
+$url = 'http://localhost:8000/api/posts/stats';
 $response = $client-&gt;get(
     $url,
     [
@@ -42999,7 +43091,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/posts?search=hello&amp;status=architecto&amp;from_date=2026-01-01&amp;to_date=2026-12-31&amp;sort_by=created_at&amp;sort_order=desc&amp;limit=10&amp;category_id=1" \
+    --get "http://localhost:8000/api/posts?search=hello&amp;status=architecto&amp;from_date=2026-01-01&amp;to_date=2026-12-31&amp;sort_by=created_at&amp;sort_order=desc&amp;limit=10&amp;category_id=1" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
@@ -43008,7 +43100,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/posts"
+    "http://localhost:8000/api/posts"
 );
 
 const params = {
@@ -43031,6 +43123,7 @@ const headers = {
     "Accept": "application/json",
 };
 
+
 fetch(url, {
     method: "GET",
     headers,
@@ -43039,7 +43132,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/posts';
+$url = 'http://localhost:8000/api/posts';
 $response = $client-&gt;get(
     $url,
     [
@@ -43075,7 +43168,7 @@ print_r(json_decode((string) $body));</code></pre></div>
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: [
         {
-            &quot;id&quot;: 77,
+            &quot;id&quot;: 28,
             &quot;title&quot;: &quot;Et animi quos velit et fugiat.&quot;,
             &quot;slug&quot;: &quot;et-animi-quos-velit-et-fugiat&quot;,
             &quot;content&quot;: &quot;Accusantium harum mollitia modi deserunt aut ab. Perspiciatis quo omnis nostrum aut adipisci quidem nostrum qui. Incidunt iure odit et et modi ipsum.\n\nAutem et consequatur aut dolores enim non facere tempora. Voluptatem laboriosam praesentium quis adipisci.\n\nDeleniti distinctio eum doloremque id aut. Aliquam veniam corporis dolorem mollitia deleniti nemo. Quia officia est dignissimos neque. Odio veritatis excepturi doloribus delectus fugit qui repudiandae.&quot;,
@@ -43083,11 +43176,11 @@ print_r(json_decode((string) $body));</code></pre></div>
             &quot;view_count&quot;: 0,
             &quot;created_by&quot;: &quot;N/A&quot;,
             &quot;updated_by&quot;: &quot;N/A&quot;,
-            &quot;created_at&quot;: &quot;05/03/2026 09:32:24&quot;,
-            &quot;updated_at&quot;: &quot;05/03/2026 09:32:24&quot;
+            &quot;created_at&quot;: &quot;23/03/2026 03:08:02&quot;,
+            &quot;updated_at&quot;: &quot;23/03/2026 03:08:02&quot;
         },
         {
-            &quot;id&quot;: 78,
+            &quot;id&quot;: 29,
             &quot;title&quot;: &quot;Alias tenetur ratione nemo voluptate accusamus ut et.&quot;,
             &quot;slug&quot;: &quot;alias-tenetur-ratione-nemo-voluptate-accusamus-ut-et&quot;,
             &quot;content&quot;: &quot;Rerum ex repellendus assumenda et. Ab reiciendis quia perspiciatis deserunt ducimus corrupti. Dolores quia maiores assumenda odit doloribus repellat officiis. Nesciunt ut ratione iure impedit molestiae ut rem.\n\nSint aut molestiae sunt suscipit. Fugiat ut aut deserunt et error neque recusandae. Ipsam dolorem et ut dicta vitae assumenda consequatur. Et sunt quisquam sit repellendus ut.\n\nRatione dolores sed rem ea ut. Deserunt sint quis in quod. Aspernatur consectetur id a consectetur assumenda eaque neque.&quot;,
@@ -43095,8 +43188,8 @@ print_r(json_decode((string) $body));</code></pre></div>
             &quot;view_count&quot;: 0,
             &quot;created_by&quot;: &quot;N/A&quot;,
             &quot;updated_by&quot;: &quot;N/A&quot;,
-            &quot;created_at&quot;: &quot;05/03/2026 09:32:24&quot;,
-            &quot;updated_at&quot;: &quot;05/03/2026 09:32:24&quot;
+            &quot;created_at&quot;: &quot;23/03/2026 03:08:02&quot;,
+            &quot;updated_at&quot;: &quot;23/03/2026 03:08:02&quot;
         }
     ],
     &quot;links&quot;: {
@@ -43346,7 +43439,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/posts/1" \
+    --get "http://localhost:8000/api/posts/1" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
@@ -43355,7 +43448,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/posts/1"
+    "http://localhost:8000/api/posts/1"
 );
 
 const headers = {
@@ -43365,6 +43458,7 @@ const headers = {
     "Accept": "application/json",
 };
 
+
 fetch(url, {
     method: "GET",
     headers,
@@ -43373,7 +43467,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/posts/1';
+$url = 'http://localhost:8000/api/posts/1';
 $response = $client-&gt;get(
     $url,
     [
@@ -43398,7 +43492,7 @@ print_r(json_decode((string) $body));</code></pre></div>
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: {
-        &quot;id&quot;: 79,
+        &quot;id&quot;: 30,
         &quot;title&quot;: &quot;Adipisci quidem nostrum qui commodi incidunt iure.&quot;,
         &quot;slug&quot;: &quot;adipisci-quidem-nostrum-qui-commodi-incidunt-iure&quot;,
         &quot;content&quot;: &quot;Et modi ipsum nostrum omnis autem et consequatur. Dolores enim non facere tempora. Voluptatem laboriosam praesentium quis adipisci.\n\nDeleniti distinctio eum doloremque id aut. Aliquam veniam corporis dolorem mollitia deleniti nemo. Quia officia est dignissimos neque. Odio veritatis excepturi doloribus delectus fugit qui repudiandae.\n\nAlias tenetur ratione nemo voluptate accusamus ut et. Modi rerum ex repellendus assumenda et tenetur.&quot;,
@@ -43406,7 +43500,7 @@ print_r(json_decode((string) $body));</code></pre></div>
         &quot;view_count&quot;: 0,
         &quot;categories&quot;: [
             {
-                &quot;id&quot;: 214,
+                &quot;id&quot;: 48,
                 &quot;name&quot;: &quot;Reiciendis Quia&quot;,
                 &quot;slug&quot;: &quot;reiciendis-quia&quot;,
                 &quot;description&quot;: &quot;Ducimus corrupti et dolores quia maiores assumenda.&quot;,
@@ -43416,14 +43510,14 @@ print_r(json_decode((string) $body));</code></pre></div>
                 &quot;depth&quot;: 0,
                 &quot;created_by&quot;: &quot;N/A&quot;,
                 &quot;updated_by&quot;: &quot;N/A&quot;,
-                &quot;created_at&quot;: &quot;05/03/2026 09:32:24&quot;,
-                &quot;updated_at&quot;: &quot;05/03/2026 09:32:24&quot;
+                &quot;created_at&quot;: &quot;23/03/2026 03:08:02&quot;,
+                &quot;updated_at&quot;: &quot;23/03/2026 03:08:02&quot;
             }
         ],
         &quot;created_by&quot;: &quot;N/A&quot;,
         &quot;updated_by&quot;: &quot;N/A&quot;,
-        &quot;created_at&quot;: &quot;05/03/2026 09:32:24&quot;,
-        &quot;updated_at&quot;: &quot;05/03/2026 09:32:24&quot;
+        &quot;created_at&quot;: &quot;23/03/2026 03:08:02&quot;,
+        &quot;updated_at&quot;: &quot;23/03/2026 03:08:02&quot;
     },
     &quot;success&quot;: &quot;true&quot;
 }</code>
@@ -43565,7 +43659,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost/api/posts/1/view" \
+    "http://localhost:8000/api/posts/1/view" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
@@ -43574,7 +43668,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/posts/1/view"
+    "http://localhost:8000/api/posts/1/view"
 );
 
 const headers = {
@@ -43584,6 +43678,7 @@ const headers = {
     "Accept": "application/json",
 };
 
+
 fetch(url, {
     method: "POST",
     headers,
@@ -43592,7 +43687,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/posts/1/view';
+$url = 'http://localhost:8000/api/posts/1/view';
 $response = $client-&gt;post(
     $url,
     [
@@ -43760,7 +43855,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost/api/posts" \
+    "http://localhost:8000/api/posts" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: multipart/form-data" \
@@ -43769,13 +43864,13 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --form "content=Nội dung bài viết..."\
     --form "status=draft"\
     --form "category_ids[]=1"\
-    --form "images[]=@/tmp/phpnej16h80hd7sewuogez" \
-    --form "images[]=@/tmp/phpm1mdmsnks1l1764vdTp" </code></pre></div>
+    --form "images[]=@/tmp/phpkd53vng8g76c1hp6eXY" \
+    --form "images[]=@/tmp/phpht75e326sq277m2eGc1" </code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/posts"
+    "http://localhost:8000/api/posts"
 );
 
 const headers = {
@@ -43802,7 +43897,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/posts';
+$url = 'http://localhost:8000/api/posts';
 $response = $client-&gt;post(
     $url,
     [
@@ -43831,11 +43926,11 @@ $response = $client-&gt;post(
             ],
             [
                 'name' =&gt; 'images[]',
-                'contents' =&gt; fopen('/tmp/phpnej16h80hd7sewuogez', 'r')
+                'contents' =&gt; fopen('/tmp/phpkd53vng8g76c1hp6eXY', 'r')
             ],
             [
                 'name' =&gt; 'images[]',
-                'contents' =&gt; fopen('/tmp/phpm1mdmsnks1l1764vdTp', 'r')
+                'contents' =&gt; fopen('/tmp/phpht75e326sq277m2eGc1', 'r')
             ],
         ],
     ]
@@ -43853,7 +43948,7 @@ print_r(json_decode((string) $body));</code></pre></div>
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: {
-        &quot;id&quot;: 80,
+        &quot;id&quot;: 31,
         &quot;title&quot;: &quot;Eius et animi quos velit et.&quot;,
         &quot;slug&quot;: &quot;eius-et-animi-quos-velit-et&quot;,
         &quot;content&quot;: &quot;Nihil accusantium harum mollitia modi deserunt. Ab provident perspiciatis quo omnis nostrum aut adipisci. Nostrum qui commodi incidunt iure.\n\nEt modi ipsum nostrum omnis autem et consequatur. Dolores enim non facere tempora. Voluptatem laboriosam praesentium quis adipisci.\n\nDeleniti distinctio eum doloremque id aut. Aliquam veniam corporis dolorem mollitia deleniti nemo. Quia officia est dignissimos neque. Odio veritatis excepturi doloribus delectus fugit qui repudiandae.&quot;,
@@ -43861,7 +43956,7 @@ print_r(json_decode((string) $body));</code></pre></div>
         &quot;view_count&quot;: 0,
         &quot;categories&quot;: [
             {
-                &quot;id&quot;: 215,
+                &quot;id&quot;: 49,
                 &quot;name&quot;: &quot;Est Alias&quot;,
                 &quot;slug&quot;: &quot;est-alias&quot;,
                 &quot;description&quot;: &quot;Nemo voluptate accusamus ut et.&quot;,
@@ -43871,14 +43966,14 @@ print_r(json_decode((string) $body));</code></pre></div>
                 &quot;depth&quot;: 0,
                 &quot;created_by&quot;: &quot;N/A&quot;,
                 &quot;updated_by&quot;: &quot;N/A&quot;,
-                &quot;created_at&quot;: &quot;05/03/2026 09:32:24&quot;,
-                &quot;updated_at&quot;: &quot;05/03/2026 09:32:24&quot;
+                &quot;created_at&quot;: &quot;23/03/2026 03:08:02&quot;,
+                &quot;updated_at&quot;: &quot;23/03/2026 03:08:02&quot;
             }
         ],
         &quot;created_by&quot;: &quot;N/A&quot;,
         &quot;updated_by&quot;: &quot;N/A&quot;,
-        &quot;created_at&quot;: &quot;05/03/2026 09:32:24&quot;,
-        &quot;updated_at&quot;: &quot;05/03/2026 09:32:24&quot;
+        &quot;created_at&quot;: &quot;23/03/2026 03:08:02&quot;,
+        &quot;updated_at&quot;: &quot;23/03/2026 03:08:02&quot;
     },
     &quot;success&quot;: &quot;true&quot;,
     &quot;message&quot;: &quot;B&agrave;i viết đ&atilde; được tạo th&agrave;nh c&ocirc;ng!&quot;
@@ -44055,7 +44150,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>Ảnh đính kèm (jpeg/png/gif/webp, tối đa 10 ảnh, mỗi ảnh ≤ 5MB). Example: <code>/tmp/phpm1mdmsnks1l1764vdTp</code></p>
+<p>Ảnh đính kèm (jpeg/png/gif/webp, tối đa 10 ảnh, mỗi ảnh ≤ 5MB). Example: <code>/tmp/phpht75e326sq277m2eGc1</code></p>
         </div>
         </form>
 
@@ -44073,7 +44168,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://localhost/api/posts/1" \
+    "http://localhost:8000/api/posts/1" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: multipart/form-data" \
@@ -44083,13 +44178,13 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --form "status=architecto"\
     --form "category_ids[]=architecto"\
     --form "remove_attachment_ids[]=architecto"\
-    --form "images[]=@/tmp/phpr7p89qshonpj6VumloN" \
-    --form "images[]=@/tmp/phpb2n3croj5k4aew9EbOZ" </code></pre></div>
+    --form "images[]=@/tmp/phphhc9o3vh9gn0d5067s2" \
+    --form "images[]=@/tmp/phpkdgmo0shp06kbxmHj00" </code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/posts/1"
+    "http://localhost:8000/api/posts/1"
 );
 
 const headers = {
@@ -44117,7 +44212,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/posts/1';
+$url = 'http://localhost:8000/api/posts/1';
 $response = $client-&gt;put(
     $url,
     [
@@ -44150,11 +44245,11 @@ $response = $client-&gt;put(
             ],
             [
                 'name' =&gt; 'images[]',
-                'contents' =&gt; fopen('/tmp/phpr7p89qshonpj6VumloN', 'r')
+                'contents' =&gt; fopen('/tmp/phphhc9o3vh9gn0d5067s2', 'r')
             ],
             [
                 'name' =&gt; 'images[]',
-                'contents' =&gt; fopen('/tmp/phpb2n3croj5k4aew9EbOZ', 'r')
+                'contents' =&gt; fopen('/tmp/phpkdgmo0shp06kbxmHj00', 'r')
             ],
         ],
     ]
@@ -44172,7 +44267,7 @@ print_r(json_decode((string) $body));</code></pre></div>
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: {
-        &quot;id&quot;: 81,
+        &quot;id&quot;: 32,
         &quot;title&quot;: &quot;Et animi quos velit et fugiat.&quot;,
         &quot;slug&quot;: &quot;et-animi-quos-velit-et-fugiat&quot;,
         &quot;content&quot;: &quot;Accusantium harum mollitia modi deserunt aut ab. Perspiciatis quo omnis nostrum aut adipisci quidem nostrum qui. Incidunt iure odit et et modi ipsum.\n\nAutem et consequatur aut dolores enim non facere tempora. Voluptatem laboriosam praesentium quis adipisci.\n\nDeleniti distinctio eum doloremque id aut. Aliquam veniam corporis dolorem mollitia deleniti nemo. Quia officia est dignissimos neque. Odio veritatis excepturi doloribus delectus fugit qui repudiandae.&quot;,
@@ -44180,7 +44275,7 @@ print_r(json_decode((string) $body));</code></pre></div>
         &quot;view_count&quot;: 0,
         &quot;categories&quot;: [
             {
-                &quot;id&quot;: 216,
+                &quot;id&quot;: 50,
                 &quot;name&quot;: &quot;Tenetur Ratione&quot;,
                 &quot;slug&quot;: &quot;tenetur-ratione&quot;,
                 &quot;description&quot;: null,
@@ -44190,14 +44285,14 @@ print_r(json_decode((string) $body));</code></pre></div>
                 &quot;depth&quot;: 0,
                 &quot;created_by&quot;: &quot;N/A&quot;,
                 &quot;updated_by&quot;: &quot;N/A&quot;,
-                &quot;created_at&quot;: &quot;05/03/2026 09:32:24&quot;,
-                &quot;updated_at&quot;: &quot;05/03/2026 09:32:24&quot;
+                &quot;created_at&quot;: &quot;23/03/2026 03:08:02&quot;,
+                &quot;updated_at&quot;: &quot;23/03/2026 03:08:02&quot;
             }
         ],
         &quot;created_by&quot;: &quot;N/A&quot;,
         &quot;updated_by&quot;: &quot;N/A&quot;,
-        &quot;created_at&quot;: &quot;05/03/2026 09:32:24&quot;,
-        &quot;updated_at&quot;: &quot;05/03/2026 09:32:24&quot;
+        &quot;created_at&quot;: &quot;23/03/2026 03:08:02&quot;,
+        &quot;updated_at&quot;: &quot;23/03/2026 03:08:02&quot;
     },
     &quot;success&quot;: &quot;true&quot;,
     &quot;message&quot;: &quot;B&agrave;i viết đ&atilde; được cập nhật!&quot;
@@ -44413,7 +44508,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>Ảnh mới (append). Example: <code>/tmp/phpb2n3croj5k4aew9EbOZ</code></p>
+<p>Ảnh mới (append). Example: <code>/tmp/phpkdgmo0shp06kbxmHj00</code></p>
         </div>
         </form>
 
@@ -44431,7 +44526,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PATCH \
-    "http://localhost/api/posts/1" \
+    "http://localhost:8000/api/posts/1" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: multipart/form-data" \
@@ -44441,13 +44536,13 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --form "status=architecto"\
     --form "category_ids[]=architecto"\
     --form "remove_attachment_ids[]=architecto"\
-    --form "images[]=@/tmp/phpm3plc7b4dick29CznD2" \
-    --form "images[]=@/tmp/phphuci7nieaf3gaITfctM" </code></pre></div>
+    --form "images[]=@/tmp/phpg2fhc96d2dhl77R0cFQ" \
+    --form "images[]=@/tmp/phpjm2idqpit2d8b3Naad1" </code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/posts/1"
+    "http://localhost:8000/api/posts/1"
 );
 
 const headers = {
@@ -44475,7 +44570,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/posts/1';
+$url = 'http://localhost:8000/api/posts/1';
 $response = $client-&gt;patch(
     $url,
     [
@@ -44508,11 +44603,11 @@ $response = $client-&gt;patch(
             ],
             [
                 'name' =&gt; 'images[]',
-                'contents' =&gt; fopen('/tmp/phpm3plc7b4dick29CznD2', 'r')
+                'contents' =&gt; fopen('/tmp/phpg2fhc96d2dhl77R0cFQ', 'r')
             ],
             [
                 'name' =&gt; 'images[]',
-                'contents' =&gt; fopen('/tmp/phphuci7nieaf3gaITfctM', 'r')
+                'contents' =&gt; fopen('/tmp/phpjm2idqpit2d8b3Naad1', 'r')
             ],
         ],
     ]
@@ -44530,7 +44625,7 @@ print_r(json_decode((string) $body));</code></pre></div>
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: {
-        &quot;id&quot;: 82,
+        &quot;id&quot;: 33,
         &quot;title&quot;: &quot;Et animi quos velit et fugiat.&quot;,
         &quot;slug&quot;: &quot;et-animi-quos-velit-et-fugiat&quot;,
         &quot;content&quot;: &quot;Accusantium harum mollitia modi deserunt aut ab. Perspiciatis quo omnis nostrum aut adipisci quidem nostrum qui. Incidunt iure odit et et modi ipsum.\n\nAutem et consequatur aut dolores enim non facere tempora. Voluptatem laboriosam praesentium quis adipisci.\n\nDeleniti distinctio eum doloremque id aut. Aliquam veniam corporis dolorem mollitia deleniti nemo. Quia officia est dignissimos neque. Odio veritatis excepturi doloribus delectus fugit qui repudiandae.&quot;,
@@ -44538,7 +44633,7 @@ print_r(json_decode((string) $body));</code></pre></div>
         &quot;view_count&quot;: 0,
         &quot;categories&quot;: [
             {
-                &quot;id&quot;: 217,
+                &quot;id&quot;: 51,
                 &quot;name&quot;: &quot;Nemo Voluptate&quot;,
                 &quot;slug&quot;: &quot;nemo-voluptate&quot;,
                 &quot;description&quot;: &quot;Et recusandae modi rerum ex repellendus assumenda et.&quot;,
@@ -44548,14 +44643,14 @@ print_r(json_decode((string) $body));</code></pre></div>
                 &quot;depth&quot;: 0,
                 &quot;created_by&quot;: &quot;N/A&quot;,
                 &quot;updated_by&quot;: &quot;N/A&quot;,
-                &quot;created_at&quot;: &quot;05/03/2026 09:32:24&quot;,
-                &quot;updated_at&quot;: &quot;05/03/2026 09:32:24&quot;
+                &quot;created_at&quot;: &quot;23/03/2026 03:08:02&quot;,
+                &quot;updated_at&quot;: &quot;23/03/2026 03:08:02&quot;
             }
         ],
         &quot;created_by&quot;: &quot;N/A&quot;,
         &quot;updated_by&quot;: &quot;N/A&quot;,
-        &quot;created_at&quot;: &quot;05/03/2026 09:32:24&quot;,
-        &quot;updated_at&quot;: &quot;05/03/2026 09:32:24&quot;
+        &quot;created_at&quot;: &quot;23/03/2026 03:08:02&quot;,
+        &quot;updated_at&quot;: &quot;23/03/2026 03:08:02&quot;
     },
     &quot;success&quot;: &quot;true&quot;,
     &quot;message&quot;: &quot;B&agrave;i viết đ&atilde; được cập nhật!&quot;
@@ -44771,7 +44866,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>Ảnh mới (append). Example: <code>/tmp/phphuci7nieaf3gaITfctM</code></p>
+<p>Ảnh mới (append). Example: <code>/tmp/phpjm2idqpit2d8b3Naad1</code></p>
         </div>
         </form>
 
@@ -44789,7 +44884,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request DELETE \
-    "http://localhost/api/posts/1" \
+    "http://localhost:8000/api/posts/1" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
@@ -44798,7 +44893,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/posts/1"
+    "http://localhost:8000/api/posts/1"
 );
 
 const headers = {
@@ -44808,6 +44903,7 @@ const headers = {
     "Accept": "application/json",
 };
 
+
 fetch(url, {
     method: "DELETE",
     headers,
@@ -44816,7 +44912,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/posts/1';
+$url = 'http://localhost:8000/api/posts/1';
 $response = $client-&gt;delete(
     $url,
     [
@@ -44981,7 +45077,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PATCH \
-    "http://localhost/api/posts/1/status" \
+    "http://localhost:8000/api/posts/1/status" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
@@ -44994,7 +45090,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/posts/1/status"
+    "http://localhost:8000/api/posts/1/status"
 );
 
 const headers = {
@@ -45017,7 +45113,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/posts/1/status';
+$url = 'http://localhost:8000/api/posts/1/status';
 $response = $client-&gt;patch(
     $url,
     [
@@ -45045,7 +45141,7 @@ print_r(json_decode((string) $body));</code></pre></div>
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: {
-        &quot;id&quot;: 83,
+        &quot;id&quot;: 34,
         &quot;title&quot;: &quot;Adipisci quidem nostrum qui commodi incidunt iure.&quot;,
         &quot;slug&quot;: &quot;adipisci-quidem-nostrum-qui-commodi-incidunt-iure&quot;,
         &quot;content&quot;: &quot;Et modi ipsum nostrum omnis autem et consequatur. Dolores enim non facere tempora. Voluptatem laboriosam praesentium quis adipisci.\n\nDeleniti distinctio eum doloremque id aut. Aliquam veniam corporis dolorem mollitia deleniti nemo. Quia officia est dignissimos neque. Odio veritatis excepturi doloribus delectus fugit qui repudiandae.\n\nAlias tenetur ratione nemo voluptate accusamus ut et. Modi rerum ex repellendus assumenda et tenetur.&quot;,
@@ -45053,7 +45149,7 @@ print_r(json_decode((string) $body));</code></pre></div>
         &quot;view_count&quot;: 0,
         &quot;categories&quot;: [
             {
-                &quot;id&quot;: 218,
+                &quot;id&quot;: 52,
                 &quot;name&quot;: &quot;Perspiciatis Deserunt&quot;,
                 &quot;slug&quot;: &quot;perspiciatis-deserunt&quot;,
                 &quot;description&quot;: &quot;Et dolores quia maiores.&quot;,
@@ -45063,14 +45159,14 @@ print_r(json_decode((string) $body));</code></pre></div>
                 &quot;depth&quot;: 0,
                 &quot;created_by&quot;: &quot;N/A&quot;,
                 &quot;updated_by&quot;: &quot;N/A&quot;,
-                &quot;created_at&quot;: &quot;05/03/2026 09:32:24&quot;,
-                &quot;updated_at&quot;: &quot;05/03/2026 09:32:24&quot;
+                &quot;created_at&quot;: &quot;23/03/2026 03:08:02&quot;,
+                &quot;updated_at&quot;: &quot;23/03/2026 03:08:02&quot;
             }
         ],
         &quot;created_by&quot;: &quot;N/A&quot;,
         &quot;updated_by&quot;: &quot;N/A&quot;,
-        &quot;created_at&quot;: &quot;05/03/2026 09:32:24&quot;,
-        &quot;updated_at&quot;: &quot;05/03/2026 09:32:24&quot;
+        &quot;created_at&quot;: &quot;23/03/2026 03:08:02&quot;,
+        &quot;updated_at&quot;: &quot;23/03/2026 03:08:02&quot;
     },
     &quot;success&quot;: &quot;true&quot;,
     &quot;message&quot;: &quot;Cập nhật trạng th&aacute;i th&agrave;nh c&ocirc;ng!&quot;
