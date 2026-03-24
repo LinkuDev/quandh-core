@@ -1,0 +1,75 @@
+PHỤ LỤC HỢP ĐỒNG
+QUY ĐỊNH KỸ THUẬT & HƯỚNG DẪN THỬ VIỆC
+(Đính kèm Hợp đồng thuê khoán số: 101/HĐSX-DANATEC)
+1. THÔNG TIN HỆ THỐNG PHÁT TRIỂN
+Bên B có trách nhiệm nghiên cứu và tuân thủ các tài liệu/nguồn mã nguồn sau:
+    • Mã nguồn Backend (Core): https://github.com/hongquant8a/quandh-core
+        ◦ Yêu cầu: Kế thừa toàn bộ logic Quản lý tài khoản, Phân quyền, MediaService và cấu trúc Modular.
+    • Tài liệu hướng dẫn API (Scribe): https://quandh-core.theworkpc.com/docs
+        ◦ Yêu cầu: Đối chiếu chuẩn Response, chuẩn Param và cách viết PHPDoc tiếng Việt.
+    • Giao diện Admin Template (Frontend): Vuexy Vuejs Admin Template (Demo 1)
+        ◦ Yêu cầu: Tùy biến các Components, Layout và Tables từ Template này để xây dựng các chức năng theo yêu cầu thực tế.
+2. QUY TẮC PHÁT TRIỂN BẮT BUỘC (BACKEND)
+    • Môi trường: Sử dụng Laravel Sail (Docker) để đồng bộ môi trường phát triển.
+    • Framework: Laravel (phiên bản mới nhất hoặc theo chỉ định dự án)
+    • Database: MySQL, tối ưu hoá Index và Query
+    • Thư viện kỹ thuật trong tâm bắt buộc nắm vững:
+        ◦ Sử dụng thư viện spatie/laravel-permission có teams để quản lý Teams,  Role và Permission
+        ◦ Sử dụng thư viện maatwebsite/excel để thực hiện các chức năng import/export excel từ dữ liệu phần mềm
+        ◦ Sử dụng thư viện knuckleswtf/scribe để cập nhập tài liệu API cho frontend. Nội dung tài liệu sử dụng ngôn ngữ tiếng việt
+        ◦ Sử dụng thư viện spatie/laravel-medialibrary để quản lý tập tin đa phương tiện
+    • Cấu trúc Modular: Làm việc duy nhất tại thư mục /app/Modules/.
+    • Chức năng luôn có của Modular (trừ vài trường hợp đặc biệt): 
+        ◦ Một module mới mặc định phải bao gồm các hàm: `stats`, `index`, `show`, `store`, `update`, `destroy`, `bulk delete`, `bulk update status`, `change status`, `export`, `import`.
+        ◦ Bộ lọc `index` phải có tìm kiếm theo tên (hoặc trường chính), trạng thái (`status`), khoảng ngày tạo (`created_at` từ ngày - đến ngày), và sắp xếp theo `id`, `created_at`, `updated_at` cùng các trường phù hợp (ví dụ: `title`, `sort_order`, `view_count`).
+        ◦ Khi export Excel, luôn xuất đầy đủ các trường thông tin giống danh sách index (Resource).
+        ◦ Các trường quan hệ (created_by, created_at, updated_by, updated_at, status, categories, ...) phải có trong export tương ứng index.
+    • Logic Nghiệp vụ: * Controller chỉ nhận Request và trả Response qua Trait RespondsWithJson.
+        ◦ Mọi xử lý logic, tính toán, truy vấn phức tạp phải nằm trong thư mục Services/ của từng Module.
+        ◦ Sử dụng DB::transaction() cho các luồng ghi dữ liệu có từ 2 bước trở lên.
+    • Định dạng dữ liệu: * Dữ liệu thời gian trả về API: Ngày (d/m/Y), Ngày giờ (H:i:s d/m/Y).
+        ◦ Toàn bộ Comment code, tài liệu hướng dẫn phải bằng tiếng Việt.
+    • Các quy tắc bổ sung: Luôn sử dụng AI (khuyến nghị dùng cursor) theo quy tắc bắt buộc tại thư mục gốc dự án backend tập tin .cursorrules
+4. QUY TRÌNH THỬ VIỆC (01 TUẦN)
+Trong tuần thử việc (23/03/2026 – 29/03/2026), Bên B cần hoàn thành các nội dung sau:
+Giai đoạn 1: Thiết lập & Nghiên cứu (Ngày 1-2)
+    • Clone mã nguồn quandh-core, thiết lập môi trường bằng Docker/Sail.
+    • Nghiên cứu cấu trúc một Module mẫu trong Core (ví dụ: Module Post).
+    • Đọc hiểu luồng Phân quyền (PermissionSeeder) và LogActivity Middleware.
+Giai đoạn 2: Thực thi Task thử việc (Ngày 3-6)
+    • Xây dựng 01 Module chức năng cơ bản (theo mô tả cụ thể từ Bên A) bao gồm đủ các hàm: index, show, store, update, destroy, bulk actions, import/export.
+    • Thiết kế giao diện Frontend dựa trên các Component của Vuexy Template, kết nối API với Backend đã viết.
+    • Cập nhật đầy đủ tài liệu API qua Scribe (sail artisan scribe:generate).
+Giai đoạn 3: Đánh giá (Ngày 7)
+    • Bên A kiểm tra lịch sử Commit Git (hàng ngày).
+    • Xem xét Video Screen Recording để đánh giá thái độ và năng suất làm việc.
+    • Nghiệm thu chất lượng code theo tiêu chuẩn Modular Rules.
+3. QUY TẮC PHÁT TRIỂN FRONTEND (VUEJS 3 & VUEXY)
+Bên B phải tuân thủ nghiêm ngặt cấu trúc và phong cách lập trình sau để đảm bảo tính đồng bộ với Vuexy Template và quandh-core:
+A. Cấu trúc Thư mục & Component
+    • Tổ chức Modular: Frontend cũng phải đi theo cấu trúc Module tương ứng với Backend tại /src/views/modules/<ModuleName>/.
+    • Sử dụng Component: * Tận dụng tối đa các Components sẵn có của Vuexy (Buttons, Cards, Modals, Forms).
+        ◦ Các Component dùng chung cho nhiều module phải đặt tại /src/@core/components/ hoặc /src/components/.
+    • Đặt tên: Sử dụng PascalCase cho tên file Component (Ví dụ: VoterList.vue, VoterModalAdd.vue).
+B. Quản lý State & API Call
+    • Pinia Store: Mỗi module chức năng phải có một Store riêng tại /src/store/modules/<ModuleName>.js để quản lý trạng thái dữ liệu (state, getters, actions).
+    • Axios Interceptor: Tất cả các lệnh gọi API phải thông qua Instance Axios đã cấu hình sẵn trong Core để tự động xử lý Token, Error Handling và Response Format (success, data, message).
+    • Composition API: Bắt buộc sử dụng Script Setup (<script setup>) và Composition API cho toàn bộ các file .vue mới.
+C. Router & Permissions
+    • Phân quyền (ACL): Sử dụng hệ thống ACL tích hợp sẵn của Vuexy. Mỗi Route mới phải định nghĩa thuộc tính action và subject tương ứng với quyền từ Backend (Ví dụ: action: 'read', subject: 'voters').
+    • Navigation: Cập nhật menu tại /src/navigation/vertical/ theo đúng phân cấp và icon của hệ thống.
+D. Form & Validation
+    • Vee-Validate / Yup: Sử dụng thư viện Validation tích hợp sẵn trong Template để kiểm tra dữ liệu phía Client trước khi gửi lên Server.
+    • Thông báo (Toast): Sử dụng vue-toastification hoặc Component Toast của Vuexy để hiển thị thông báo success hoặc error dựa trên kết quả trả về từ RespondsWithJson của Backend.
+E. UI/UX & Localization
+    • Ngôn ngữ: Giao diện hiển thị, nhãn (label), thông báo lỗi và placeholder phải sử dụng tiếng Việt.
+    • Định dạng hiển thị: * Sử dụng thư viện dayjs hoặc moment để hiển thị thời gian theo chuẩn Việt Nam (DD/MM/YYYY hoặc HH:mm DD/MM/YYYY) đồng bộ với Resource từ Backend.
+        ◦ Định dạng tiền tệ: Sử dụng Intl.NumberFormat cho các trường liên quan đến thù lao/chi phí.
+    • Responsive: Đảm bảo giao diện hiển thị tốt trên mọi độ phân giải màn hình, tuân thủ hệ thống Grid của Bootstrap/Tailwind có trong Template.
+F. Quy trình bàn giao Frontend
+    • Clean Code: Tuân thủ ESLint và Prettier đã cấu hình trong dự án.
+    • Build Test: Trước khi Push Git, phải chạy lệnh npm run build (hoặc yarn build) để đảm bảo không có lỗi Compile.
+4. QUY ĐỊNH VỀ TƯƠNG TÁC & GIÁM SÁT
+    • Báo cáo: Cuối ngày bàn giao code (Push Git) và gửi link Video quay màn hình làm việc qua Zalo nhóm hoặc Cloud do bên A cung cấp.
+    • Camera: Duy trì kết nối Camera Imoud trong suốt khung giờ làm việc đã đăng ký để đảm bảo tính sẵn sàng phối hợp.
+    • Công cụ AI: Khuyến khích sử dụng CURSOR AI để tối ưu hóa tốc độ, nhưng Bên B phải chịu hoàn toàn trách nhiệm về tính đúng đắn của logic code.

@@ -1,0 +1,70 @@
+QUY TRÌNH LẬP LỊCH
+
+THƯỜNG TRỰC THÀNH ỦY
+- Thư ký lập lịch cho Lãnh đạo
+- Thư ký nào lập lịch thì có quyền sửa, xóa lịch đó
+- Thứ tự ưu tiên: Bí thư trước, Phó bí thư sau
+- Có thể lựa chọn màu sắc theo lịch để hiển thị
+- Kênh thông báo: lựa chọn danh sách thành phần và thời gian nhận thông báo tại mỗi lịch đăng ký qua sms, zalo, website hoặc app mobile
+- Xuất dữ liệu: xuất tổng hợp lịch ra excel hoặc pdf
+- Các trường thông tin: Thứ ngày tháng; Buổi, Thời gian, Nội dung, Chủ trì, Thành phần, Địa điểm, Đơn vị chuẩn bị, Số người tham gia, Loại cuộc họp, Tính chất, Tập tin đính kèm, Lái xe
+- Bộ lọc thông minh: lọc theo chức danh, lọc theo thành phần và nội dung
+
+VĂN PHÒNG THÀNH ỦY
+- Cán bộ công chức đăng ký lịch
+- Cán bộ công chức nào lập lịch thì có quyền sửa, xóa lịch đó
+- Công chức tổng hợp có thể điều chỉnh lịch của tất cả
+- Có thể lựa chọn màu sắc theo lịch để hiển thị
+- Kênh thông báo: lựa chọn danh sách thành phần và thời gian nhận thông báo tại mỗi lịch đăng ký qua sms, zalo, website hoặc app mobile
+- Xuất dữ liệu: xuất tổng hợp lịch ra excel hoặc pdf
+- Các trường thông tin: Thứ ngày tháng; Buổi, Thời gian, Nội dung, Chủ trì, Thành phần, Địa điểm, Đơn vị chuẩn bị, Số người tham gia, Loại cuộc họp, Tính chất, Tập tin đính kèm, Lái xe
+- Bộ lọc thông minh: lọc theo chức danh, lọc theo thành phần và nội dung
+
+Dựa trên quy trình nghiệp vụ của Thường trực và Văn phòng Thành ủy, cùng với các tính năng đặc thù như điều chỉnh thứ tự (lên, xuống, thêm trên/dưới) và lọc thông minh, dưới đây là phân tích chi tiết mô hình ERD (Entity Relationship Diagram) để bạn triển khai hệ thống:
+1. Sơ đồ thực thể mối quan hệ (ERD Overview)
+Hệ thống xoay quanh thực thể trung tâm là Schedules (Lịch công tác). Các thực thể khác bao quanh để phục vụ việc phân quyền, thông báo và quản lý tệp tin.
+2. Chi tiết các bảng và Thuộc tính quan trọng
+A. Bảng Người dùng & Phân quyền (Users, Roles, Departments)
+Để đáp ứng yêu cầu "Thư ký lập lịch cho Lãnh đạo" và "Công chức tổng hợp điều chỉnh tất cả":
+    • Users: Lưu id, full_name, position (Chức danh - dùng để lọc), phone, zalo_id.
+    • Departments: Phân loại User thuộc khối "Thường trực" hay "Văn phòng".
+    • Roles: Gán quyền (Thư ký, Công chức tổng hợp, Lãnh đạo).
+B. Bảng Lịch công tác (Schedules) - Trung tâm dữ liệu
+Bảng này chứa toàn bộ các trường thông tin bạn đã liệt kê:
+    • Nhóm Hiển thị & Thứ tự:
+        ◦ sort_order (Integer): Trường quan trọng nhất để thực hiện chức năng lên, xuống, thêm trên, thêm dưới.
+        ◦ color_code (Varchar): Lưu mã màu để hiển thị trên giao diện theo lựa chọn.
+    • Nhóm Nội dung:
+        ◦ content (Text), location (String), prep_unit (String), driver_info (String).
+        ◦ meeting_type & nature: Nên để dạng Enum hoặc FK đến bảng danh mục để phục vụ bộ lọc.
+    • Nhóm Thời gian:
+        ◦ event_date (Date), session (Enum: Sáng, Chiều, Tối), start_time (Time).
+    • Nhóm Quản lý:
+        ◦ created_by (FK): Lưu ID người lập để xác định quyền sửa/xóa (Thư ký/Công chức).
+        ◦ group_type: Phân loại lịch thuộc khối Thường trực hay Văn phòng.
+C. Bảng Thành phần tham dự (Schedule_Participants)
+Đây là bảng trung gian (Many-to-Many) giữa Schedules và Users:
+    • Giúp thực hiện Bộ lọc theo thành phần: Tìm tất cả lịch mà một cá nhân tham gia (dù không phải chủ trì).
+    • Lưu thêm external_name cho các thành phần tham dự bên ngoài không có trong hệ thống.
+D. Bảng Thông báo & Nhắc lịch (Notifications)
+Phục vụ yêu cầu lựa chọn danh sách thành phần và thời gian nhận thông báo:
+    • schedule_id (FK).
+    • user_id (FK): Người nhận.
+    • channel (Enum): SMS, Zalo, Website, App.
+    • remind_at (DateTime): Thời gian cụ thể hệ thống sẽ gửi tin.
+    • status: Trạng thái (Chờ gửi, Đã gửi).
+E. Bảng Tệp tin đính kèm (Attachments)
+    • Lưu thông tin các file đính kèm (như các file .signed.pdf trong giao diện mẫu).
+
+3. Phân tích Logic xử lý đặc thù qua ERD
+    • Logic "Bí thư trước, Phó bí thư sau": Khi truy vấn (Query), hệ thống sẽ Join bảng Schedules với Users (Chủ trì), sắp xếp theo priority của chức vụ, sau đó mới đến sort_order và start_time.
+    • Logic "Thêm trên / Thêm dưới": Khi người dùng bấm nút chức năng, backend sẽ lấy sort_order hiện tại, cộng/trừ một khoảng bù và cập nhật lại toàn bộ sort_order của các bản ghi cùng buổi đó.
+    • Bộ lọc thông minh: * Theo chức danh: Filter dựa trên trường position trong bảng Users.
+        ◦ Theo nội dung: Full-text search trên trường content của Schedules.
+
+4. Ưu điểm của mô hình này
+    1. Tính nhất quán: Dùng chung cấu trúc cho cả Thường trực và Văn phòng giúp việc Xuất tổng hợp (Excel/PDF) trở nên đơn giản hơn (chỉ cần thay đổi tham số lọc).
+    2. Hiệu năng: Việc tách bảng Participants và Notifications giúp bảng chính Schedules nhẹ hơn, truy vấn nhanh hơn khi dữ liệu lớn dần theo năm tháng.
+
+
+Tham khảo cách hiển thị(giao diện FE) lịch công tác và các trường thông tin tại: https://hoakhanh.danang.gov.vn/lich-cong-tac-ubnd/ 
