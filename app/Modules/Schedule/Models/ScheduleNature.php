@@ -13,6 +13,11 @@ class ScheduleNature extends Model
 {
     use HasFactory;
 
+    protected static function newFactory()
+    {
+        return \Database\Factories\Modules\Schedule\Models\ScheduleNatureFactory::new();
+    }
+
     protected $fillable = [
         'name',
         'description',

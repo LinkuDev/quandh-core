@@ -3,6 +3,7 @@
 namespace App\Modules\Schedule\Models;
 
 use App\Modules\Core\Models\User;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -10,6 +11,13 @@ use Illuminate\Database\Eloquent\Model;
  */
 class ScheduleNotification extends Model
 {
+    use HasFactory;
+
+    protected static function newFactory()
+    {
+        return \Database\Factories\Modules\Schedule\Models\ScheduleNotificationFactory::new();
+    }
+
     protected $fillable = [
         'schedule_id',
         'user_id',

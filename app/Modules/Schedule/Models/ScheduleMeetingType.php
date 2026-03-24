@@ -13,6 +13,11 @@ class ScheduleMeetingType extends Model
 {
     use HasFactory;
 
+    protected static function newFactory()
+    {
+        return \Database\Factories\Modules\Schedule\Models\ScheduleMeetingTypeFactory::new();
+    }
+
     protected $fillable = [
         'name',
         'description',

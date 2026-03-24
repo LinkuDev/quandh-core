@@ -17,6 +17,11 @@ class Schedule extends Model implements HasMedia
     use HasFactory;
     use InteractsWithMedia;
 
+    protected static function newFactory()
+    {
+        return \Database\Factories\Modules\Schedule\Models\ScheduleFactory::new();
+    }
+
     protected $fillable = [
         'event_date',
         'session',

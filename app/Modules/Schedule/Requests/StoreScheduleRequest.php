@@ -5,7 +5,6 @@ namespace App\Modules\Schedule\Requests;
 use App\Modules\Schedule\Enums\NotificationChannelEnum;
 use App\Modules\Schedule\Enums\ScheduleSessionEnum;
 use App\Modules\Schedule\Enums\ScheduleStatusEnum;
-use App\Modules\Schedule\Enums\ScheduleStatusEnum;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StoreScheduleRequest extends FormRequest
