@@ -1001,7 +1001,7 @@ endpoints:
       -
         custom: []
         status: 200
-        content: '{"data":[{"id":15,"event_date":"12\/04\/2026","session":"sang","start_time":"19:18:00","content":"Velit et fugiat sunt nihil accusantium.","location":"78142 Nick Field\nWest Noahmouth, WV 59021-4902","prep_unit":null,"driver_info":null,"color_code":"#ca0f71","sort_order":51,"organization_id":null,"status":"active","created_by":"N\/A","updated_by":"N\/A","created_at":"03:58:04 24\/03\/2026","updated_at":"03:58:04 24\/03\/2026"},{"id":16,"event_date":"13\/04\/2026","session":"sang","start_time":"04:40:00","content":"Consequatur aut dolores enim non facere tempora.","location":"47809 Considine Landing Suite 782\nNitzschetown, CA 87335-0574","prep_unit":"Schaden, King and Fahey","driver_info":"Prof. Carson Emard","color_code":null,"sort_order":30,"organization_id":null,"status":"inactive","created_by":"N\/A","updated_by":"N\/A","created_at":"03:58:04 24\/03\/2026","updated_at":"03:58:04 24\/03\/2026"}],"links":{"first":"\/?page=1","last":"\/?page=1","prev":null,"next":null},"meta":{"current_page":1,"from":1,"last_page":1,"links":[{"url":null,"label":"&laquo; Previous","page":null,"active":false},{"url":"\/?page=1","label":"1","page":1,"active":true},{"url":null,"label":"Next &raquo;","page":null,"active":false}],"path":"\/","per_page":20,"to":2,"total":2},"success":"true"}'
+        content: '{"data":[{"id":23,"event_date":"12\/04\/2026","session":"sang","start_time":"19:11:00","content":"Velit et fugiat sunt nihil accusantium.","location":"78142 Nick Field\nWest Noahmouth, WV 59021-4902","prep_unit":null,"driver_info":null,"color_code":"#ca0f71","sort_order":51,"organization_id":null,"status":"active","created_by":"N\/A","updated_by":"N\/A","created_at":"04:04:30 24\/03\/2026","updated_at":"04:04:30 24\/03\/2026"},{"id":24,"event_date":"13\/04\/2026","session":"sang","start_time":"04:40:00","content":"Consequatur aut dolores enim non facere tempora.","location":"47809 Considine Landing Suite 782\nNitzschetown, CA 87335-0574","prep_unit":"Schaden, King and Fahey","driver_info":"Prof. Carson Emard","color_code":null,"sort_order":30,"organization_id":null,"status":"inactive","created_by":"N\/A","updated_by":"N\/A","created_at":"04:04:30 24\/03\/2026","updated_at":"04:04:30 24\/03\/2026"}],"links":{"first":"\/?page=1","last":"\/?page=1","prev":null,"next":null},"meta":{"current_page":1,"from":1,"last_page":1,"links":[{"url":null,"label":"&laquo; Previous","page":null,"active":false},{"url":"\/?page=1","label":"1","page":1,"active":true},{"url":null,"label":"Next &raquo;","page":null,"active":false}],"path":"\/","per_page":20,"to":2,"total":2},"success":"true"}'
         headers: []
         description: ''
     responseFields: []
@@ -1067,7 +1067,7 @@ endpoints:
       -
         custom: []
         status: 200
-        content: '{"data":{"id":17,"event_date":"28\/03\/2026","session":"sang","start_time":"23:04:00","content":"Qui commodi incidunt iure odit.","location":"77365 Christian Turnpike Suite 432\nNorth Roderick, SD 69128-2316","prep_unit":"Haag and Sons","driver_info":null,"color_code":null,"sort_order":7,"organization_id":null,"status":"inactive","created_by":"N\/A","updated_by":"N\/A","created_at":"03:58:04 24\/03\/2026","updated_at":"03:58:04 24\/03\/2026"},"success":"true"}'
+        content: '{"data":{"id":25,"event_date":"28\/03\/2026","session":"sang","start_time":"22:57:00","content":"Qui commodi incidunt iure odit.","location":"77365 Christian Turnpike Suite 432\nNorth Roderick, SD 69128-2316","prep_unit":"Haag and Sons","driver_info":null,"color_code":null,"sort_order":7,"organization_id":null,"status":"inactive","created_by":"N\/A","updated_by":"N\/A","created_at":"04:04:30 24\/03\/2026","updated_at":"04:04:30 24\/03\/2026"},"success":"true"}'
         headers: []
         description: ''
     responseFields: []
@@ -1276,7 +1276,7 @@ endpoints:
         name: notification.channel
         description: 'This field is required when <code>notification</code> is present.'
         required: false
-        example: website
+        example: zalo
         type: string
         enumValues:
           - sms
@@ -1291,7 +1291,7 @@ endpoints:
         name: notification.remind_at
         description: 'This field is required when <code>notification</code> is present. Must be a valid date.'
         required: false
-        example: '2026-03-24T03:58:04'
+        example: '2026-03-24T04:04:30'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -1415,8 +1415,8 @@ endpoints:
       participants:
         - architecto
       notification:
-        channel: website
-        remind_at: '2026-03-24T03:58:04'
+        channel: zalo
+        remind_at: '2026-03-24T04:04:30'
       notifications:
         - architecto
     fileParameters:
@@ -1426,7 +1426,7 @@ endpoints:
       -
         custom: []
         status: 201
-        content: '{"data":{"id":18,"event_date":"03\/04\/2026","session":"sang","start_time":"00:42:00","content":"Quos velit et fugiat sunt nihil accusantium harum.","location":null,"prep_unit":null,"driver_info":null,"color_code":"#489fe2","sort_order":16,"organization_id":null,"status":"active","created_by":"N\/A","updated_by":"N\/A","created_at":"03:58:04 24\/03\/2026","updated_at":"03:58:04 24\/03\/2026"},"success":"true","message":"T\u1ea1o l\u1ecbch c\u00f4ng t\u00e1c th\u00e0nh c\u00f4ng!"}'
+        content: '{"data":{"id":26,"event_date":"03\/04\/2026","session":"sang","start_time":"00:35:00","content":"Quos velit et fugiat sunt nihil accusantium harum.","location":null,"prep_unit":null,"driver_info":null,"color_code":"#489fe2","sort_order":16,"organization_id":null,"status":"active","created_by":"N\/A","updated_by":"N\/A","created_at":"04:04:30 24\/03\/2026","updated_at":"04:04:30 24\/03\/2026"},"success":"true","message":"T\u1ea1o l\u1ecbch c\u00f4ng t\u00e1c th\u00e0nh c\u00f4ng!"}'
         headers: []
         description: ''
     responseFields: []
@@ -1659,7 +1659,7 @@ endpoints:
         name: notification.channel
         description: 'This field is required when <code>notification</code> is present.'
         required: false
-        example: website
+        example: zalo
         type: string
         enumValues:
           - sms
@@ -1674,7 +1674,7 @@ endpoints:
         name: notification.remind_at
         description: 'This field is required when <code>notification</code> is present. Must be a valid date.'
         required: false
-        example: '2026-03-24T03:58:04'
+        example: '2026-03-24T04:04:30'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -1755,8 +1755,8 @@ endpoints:
       participants:
         - architecto
       notification:
-        channel: website
-        remind_at: '2026-03-24T03:58:04'
+        channel: zalo
+        remind_at: '2026-03-24T04:04:30'
       remove_attachment_ids:
         - architecto
       notifications:
@@ -1768,7 +1768,7 @@ endpoints:
       -
         custom: []
         status: 200
-        content: '{"data":{"id":19,"event_date":"03\/04\/2026","session":"sang","start_time":"00:42:00","content":"Quos velit et fugiat sunt nihil accusantium harum.","location":null,"prep_unit":null,"driver_info":null,"color_code":"#489fe2","sort_order":16,"organization_id":null,"status":"active","created_by":"N\/A","updated_by":"N\/A","created_at":"03:58:04 24\/03\/2026","updated_at":"03:58:04 24\/03\/2026"},"success":"true","message":"C\u1eadp nh\u1eadt l\u1ecbch c\u00f4ng t\u00e1c th\u00e0nh c\u00f4ng!"}'
+        content: '{"data":{"id":27,"event_date":"03\/04\/2026","session":"sang","start_time":"00:35:00","content":"Quos velit et fugiat sunt nihil accusantium harum.","location":null,"prep_unit":null,"driver_info":null,"color_code":"#489fe2","sort_order":16,"organization_id":null,"status":"active","created_by":"N\/A","updated_by":"N\/A","created_at":"04:04:30 24\/03\/2026","updated_at":"04:04:30 24\/03\/2026"},"success":"true","message":"C\u1eadp nh\u1eadt l\u1ecbch c\u00f4ng t\u00e1c th\u00e0nh c\u00f4ng!"}'
         headers: []
         description: ''
     responseFields: []
@@ -1965,7 +1965,7 @@ endpoints:
         name: status
         description: ''
         required: false
-        example: active
+        example: inactive
         type: string
         enumValues:
           - active
@@ -2001,7 +2001,7 @@ endpoints:
         name: notification.channel
         description: 'This field is required when <code>notification</code> is present.'
         required: false
-        example: zalo
+        example: app
         type: string
         enumValues:
           - sms
@@ -2016,7 +2016,7 @@ endpoints:
         name: notification.remind_at
         description: 'This field is required when <code>notification</code> is present. Must be a valid date.'
         required: false
-        example: '2026-03-24T03:58:04'
+        example: '2026-03-24T04:04:30'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -2093,12 +2093,12 @@ endpoints:
       meeting_type_id: 16
       nature_id: 16
       color_code: architecto
-      status: active
+      status: inactive
       participants:
         - architecto
       notification:
-        channel: zalo
-        remind_at: '2026-03-24T03:58:04'
+        channel: app
+        remind_at: '2026-03-24T04:04:30'
       remove_attachment_ids:
         - architecto
       notifications:
@@ -2110,7 +2110,7 @@ endpoints:
       -
         custom: []
         status: 200
-        content: '{"data":{"id":20,"event_date":"03\/04\/2026","session":"sang","start_time":"00:42:00","content":"Quos velit et fugiat sunt nihil accusantium harum.","location":null,"prep_unit":null,"driver_info":null,"color_code":"#489fe2","sort_order":16,"organization_id":null,"status":"active","created_by":"N\/A","updated_by":"N\/A","created_at":"03:58:04 24\/03\/2026","updated_at":"03:58:04 24\/03\/2026"},"success":"true","message":"C\u1eadp nh\u1eadt l\u1ecbch c\u00f4ng t\u00e1c th\u00e0nh c\u00f4ng!"}'
+        content: '{"data":{"id":28,"event_date":"03\/04\/2026","session":"sang","start_time":"00:35:00","content":"Quos velit et fugiat sunt nihil accusantium harum.","location":null,"prep_unit":null,"driver_info":null,"color_code":"#489fe2","sort_order":16,"organization_id":null,"status":"active","created_by":"N\/A","updated_by":"N\/A","created_at":"04:04:30 24\/03\/2026","updated_at":"04:04:30 24\/03\/2026"},"success":"true","message":"C\u1eadp nh\u1eadt l\u1ecbch c\u00f4ng t\u00e1c th\u00e0nh c\u00f4ng!"}'
         headers: []
         description: ''
     responseFields: []
