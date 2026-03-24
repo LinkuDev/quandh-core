@@ -26,6 +26,9 @@ class User extends Authenticatable
         'user_name',
         'password',
         'status',
+        'position',
+        'phone',
+        'zalo_id',
         'created_by',
         'updated_by',
     ];

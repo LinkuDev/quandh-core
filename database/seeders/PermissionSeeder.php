@@ -96,6 +96,23 @@ class PermissionSeeder extends Seeder
         'settings' => [
             'index', 'show', 'update',
         ],
+        // Schedule - Lịch công tác
+        'schedules' => [
+            'stats', 'index', 'show', 'store', 'update', 'destroy',
+            'bulkDestroy', 'bulkUpdateStatus', 'changeStatus',
+            'export', 'exportPdf', 'import', 'reorder',
+            'updateAll', 'destroyAll',
+        ],
+        // Schedule - Loại cuộc họp
+        'schedule-meeting-types' => [
+            'stats', 'index', 'show', 'store', 'update', 'destroy',
+            'bulkDestroy', 'bulkUpdateStatus', 'changeStatus', 'export', 'import',
+        ],
+        // Schedule - Tính chất
+        'schedule-natures' => [
+            'stats', 'index', 'show', 'store', 'update', 'destroy',
+            'bulkDestroy', 'bulkUpdateStatus', 'changeStatus', 'export', 'import',
+        ],
     ];
 
     public function run(): void

@@ -171,6 +171,17 @@ class LogActivity
             'destroyByDate' => 'Xóa theo khoảng thời gian',
             'destroyAll' => 'Xóa toàn bộ',
             'public' => 'Xem dữ liệu công khai',
+            'publicIndex' => 'Xem lịch công khai',
+            'publicOptions' => 'Xem dropdown công khai',
+            'exportPdf' => 'Xuất PDF',
+            'reorder' => 'Sắp xếp thứ tự',
+            'moveUp' => 'Di chuyển lên',
+            'moveDown' => 'Di chuyển xuống',
+            'insertAbove' => 'Chèn phía trên',
+            'insertBelow' => 'Chèn phía dưới',
+            'unreadCount' => 'Xem số thông báo chưa đọc',
+            'markRead' => 'Đánh dấu đã đọc',
+            'markAllRead' => 'Đánh dấu tất cả đã đọc',
         ];
 
         $actionLabel = $actionLabels[$action] ?? $action;
@@ -189,6 +200,10 @@ class LogActivity
             ?? $params['issuingLevel']
             ?? $params['documentSigner']
             ?? $params['documentField']
+            ?? $params['schedule']
+            ?? $params['scheduleMeetingType']
+            ?? $params['scheduleNature']
+            ?? $params['scheduleNotification']
             ?? $params['id']
             ?? null;
         $suffix = $id ? ' #'.(is_object($id) ? $id->getKey() : $id) : '';
@@ -215,6 +230,10 @@ class LogActivity
             'document-signers' => 'người ký',
             'document-fields' => 'lĩnh vực',
             'settings' => 'cấu hình hệ thống',
+            'schedules' => 'lịch công tác',
+            'schedule-meeting-types' => 'loại cuộc họp',
+            'schedule-natures' => 'tính chất',
+            'schedule-notifications' => 'thông báo lịch',
         ];
 
         return $labels[$resource] ?? str_replace('-', ' ', $resource);

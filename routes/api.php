@@ -24,6 +24,11 @@ Route::get('/post-categories/public', [\App\Modules\Post\PostCategoryController:
 Route::get('/post-categories/public-options', [\App\Modules\Post\PostCategoryController::class, 'publicOptions'])->middleware('log.activity');
 Route::get('/organizations/public', [\App\Modules\Core\OrganizationController::class, 'public'])->middleware('log.activity');
 Route::get('/organizations/public-options', [\App\Modules\Core\OrganizationController::class, 'publicOptions'])->middleware('log.activity');
+Route::get('/schedules/public', [\App\Modules\Schedule\ScheduleController::class, 'publicIndex'])->middleware('log.activity');
+Route::get('/schedule-meeting-types/public', [\App\Modules\Schedule\ScheduleMeetingTypeController::class, 'public'])->middleware('log.activity');
+Route::get('/schedule-meeting-types/public-options', [\App\Modules\Schedule\ScheduleMeetingTypeController::class, 'publicOptions'])->middleware('log.activity');
+Route::get('/schedule-natures/public', [\App\Modules\Schedule\ScheduleNatureController::class, 'public'])->middleware('log.activity');
+Route::get('/schedule-natures/public-options', [\App\Modules\Schedule\ScheduleNatureController::class, 'publicOptions'])->middleware('log.activity');
 
 // Route yêu cầu đăng nhập (Bearer token) và đặt ngữ cảnh team cho Spatie Permission
 Route::middleware(['auth:sanctum', 'set.permissions.team', 'log.activity'])->group(function () {
@@ -70,5 +75,17 @@ Route::middleware(['auth:sanctum', 'set.permissions.team', 'log.activity'])->gro
     });
     Route::prefix('settings')->group(function () {
         require base_path('app/Modules/Core/Routes/setting.php');
+    });
+    Route::prefix('schedules')->group(function () {
+        require base_path('app/Modules/Schedule/Routes/schedule.php');
+    });
+    Route::prefix('schedule-meeting-types')->group(function () {
+        require base_path('app/Modules/Schedule/Routes/schedule_meeting_type.php');
+    });
+    Route::prefix('schedule-natures')->group(function () {
+        require base_path('app/Modules/Schedule/Routes/schedule_nature.php');
+    });
+    Route::prefix('schedule-notifications')->group(function () {
+        require base_path('app/Modules/Schedule/Routes/schedule_notification.php');
     });
 });
