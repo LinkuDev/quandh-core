@@ -189,17 +189,9 @@ class LogActivity
 
         $params = $request->route()?->parameters() ?? [];
         $id = $params['user']
-            ?? $params['post']
             ?? $params['organization']
-            ?? $params['category']
             ?? $params['role']
             ?? $params['logActivity']
-            ?? $params['document']
-            ?? $params['documentType']
-            ?? $params['issuingAgency']
-            ?? $params['issuingLevel']
-            ?? $params['documentSigner']
-            ?? $params['documentField']
             ?? $params['schedule']
             ?? $params['scheduleMeetingType']
             ?? $params['scheduleNature']
@@ -216,19 +208,11 @@ class LogActivity
         $resource = str_replace('_', '-', $resource);
         $labels = [
             'users' => 'người dùng',
-            'posts' => 'bài viết',
-            'post-categories' => 'danh mục bài viết',
             'permissions' => 'quyền',
             'roles' => 'vai trò',
             'organizations' => 'tổ chức',
             'auth' => 'xác thực',
             'log-activities' => 'nhật ký truy cập',
-            'documents' => 'văn bản',
-            'document-types' => 'loại văn bản',
-            'issuing-agencies' => 'cơ quan ban hành',
-            'issuing-levels' => 'cấp ban hành',
-            'document-signers' => 'người ký',
-            'document-fields' => 'lĩnh vực',
             'settings' => 'cấu hình hệ thống',
             'schedules' => 'lịch công tác',
             'schedule-meeting-types' => 'loại cuộc họp',

@@ -22,7 +22,7 @@ class PermissionSeeder extends Seeder
 
     /**
      * Danh sách đầy đủ permission theo module và resource.
-     * Định dạng: 'resource.action' — resource trùng prefix API (users, permissions, roles, organizations, posts, post-categories).
+     * Định dạng: 'resource.action' — resource trùng prefix API.
      * Khi thêm module/chức năng: bổ sung vào đúng nhóm và chạy sail artisan db:seed --class=PermissionSeeder.
      */
     protected static array $PERMISSIONS = [
@@ -46,51 +46,10 @@ class PermissionSeeder extends Seeder
             'stats', 'index', 'tree', 'show', 'store', 'update', 'destroy',
             'bulkDestroy', 'bulkUpdateStatus', 'changeStatus', 'export', 'import',
         ],
-        // Post - Bài viết
-        'posts' => [
-            'stats', 'index', 'show', 'store', 'update', 'destroy',
-            'bulkDestroy', 'bulkUpdateStatus', 'changeStatus', 'export', 'import',
-            'incrementView',
-        ],
-        // Post - Danh mục bài viết
-        'post-categories' => [
-            'stats', 'index', 'tree', 'show', 'store', 'update', 'destroy',
-            'bulkDestroy', 'bulkUpdateStatus', 'changeStatus', 'export', 'import',
-        ],
         // Core - Nhật ký truy cập
         'log-activities' => [
             'stats', 'index', 'show', 'export', 'destroy', 'bulkDestroy',
             'destroyByDate', 'destroyAll',
-        ],
-        // Document - Văn bản
-        'documents' => [
-            'stats', 'index', 'show', 'store', 'update', 'destroy',
-            'bulkDestroy', 'bulkUpdateStatus', 'changeStatus', 'export', 'import',
-        ],
-        // Document - Loại văn bản
-        'document-types' => [
-            'stats', 'index', 'show', 'store', 'update', 'destroy',
-            'bulkDestroy', 'bulkUpdateStatus', 'changeStatus', 'export', 'import',
-        ],
-        // Document - Cơ quan ban hành
-        'issuing-agencies' => [
-            'stats', 'index', 'show', 'store', 'update', 'destroy',
-            'bulkDestroy', 'bulkUpdateStatus', 'changeStatus', 'export', 'import',
-        ],
-        // Document - Cấp ban hành
-        'issuing-levels' => [
-            'stats', 'index', 'show', 'store', 'update', 'destroy',
-            'bulkDestroy', 'bulkUpdateStatus', 'changeStatus', 'export', 'import',
-        ],
-        // Document - Người ký
-        'document-signers' => [
-            'stats', 'index', 'show', 'store', 'update', 'destroy',
-            'bulkDestroy', 'bulkUpdateStatus', 'changeStatus', 'export', 'import',
-        ],
-        // Document - Lĩnh vực
-        'document-fields' => [
-            'stats', 'index', 'show', 'store', 'update', 'destroy',
-            'bulkDestroy', 'bulkUpdateStatus', 'changeStatus', 'export', 'import',
         ],
         // Core - Cấu hình hệ thống
         'settings' => [
@@ -152,16 +111,11 @@ class PermissionSeeder extends Seeder
         'permissions' => 'Quyền',
         'roles' => 'Vai trò',
         'organizations' => 'Tổ chức',
-        'posts' => 'Bài viết',
-        'post-categories' => 'Danh mục bài viết',
         'log-activities' => 'Nhật ký truy cập',
-        'documents' => 'Văn bản',
-        'document-types' => 'Loại văn bản',
-        'issuing-agencies' => 'Cơ quan ban hành',
-        'issuing-levels' => 'Cấp ban hành',
-        'document-signers' => 'Người ký',
-        'document-fields' => 'Lĩnh vực',
         'settings' => 'Cấu hình hệ thống',
+        'schedules' => 'Lịch công tác',
+        'schedule-meeting-types' => 'Loại cuộc họp',
+        'schedule-natures' => 'Tính chất',
     ];
 
     /** Nhãn action (để description). */
@@ -178,9 +132,11 @@ class PermissionSeeder extends Seeder
         'changeStatus' => 'Đổi trạng thái',
         'export' => 'Xuất Excel',
         'import' => 'Nhập Excel',
-        'incrementView' => 'Tăng lượt xem',
         'destroyByDate' => 'Xóa theo khoảng thời gian',
         'destroyAll' => 'Xóa toàn bộ',
+        'exportPdf' => 'Xuất PDF',
+        'reorder' => 'Sắp xếp thứ tự',
+        'updateAll' => 'Cập nhật tất cả',
     ];
 
     /** Tạo đầy đủ permission từ danh sách PERMISSIONS (kèm description, sort_order, parent_id). */
@@ -332,31 +288,34 @@ class PermissionSeeder extends Seeder
         return $names;
     }
 
-    /** Permission cho role Editor: chỉ posts và post-categories. */
+    /** Permission cho role Editor: quản lý lịch công tác + danh mục. */
     protected function getEditorPermissionNames(): array
     {
         $names = [];
-        foreach (['posts' => self::$PERMISSIONS['posts'], 'post-categories' => self::$PERMISSIONS['post-categories']] as $resource => $actions) {
-            foreach ($actions as $action) {
-                $names[] = "{$resource}.{$action}";
+        foreach (['schedules', 'schedule-meeting-types', 'schedule-natures'] as $resource) {
+            if (isset(self::$PERMISSIONS[$resource])) {
+                foreach (self::$PERMISSIONS[$resource] as $action) {
+                    $names[] = "{$resource}.{$action}";
+                }
             }
         }
 
         return $names;
     }
 
-    /** Permission cho Vai trò mẫu: chỉ xem bài viết và danh mục (index, show, tree, stats, incrementView). */
+    /** Permission cho Vai trò mẫu: chỉ xem lịch công tác. */
     protected function getSamplePermissionNames(): array
     {
         return [
-            'posts.stats',
-            'posts.index',
-            'posts.show',
-            'posts.incrementView',
-            'post-categories.stats',
-            'post-categories.index',
-            'post-categories.tree',
-            'post-categories.show',
+            'schedules.stats',
+            'schedules.index',
+            'schedules.show',
+            'schedule-meeting-types.stats',
+            'schedule-meeting-types.index',
+            'schedule-meeting-types.show',
+            'schedule-natures.stats',
+            'schedule-natures.index',
+            'schedule-natures.show',
         ];
     }
 }

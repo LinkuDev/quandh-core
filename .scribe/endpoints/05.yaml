@@ -1,19 +1,19 @@
-name: 'Document - Cấp ban hành'
+name: 'Schedule - Tính chất'
 description: ''
 endpoints:
   -
     custom: []
     httpMethods:
       - GET
-    uri: api/issuing-levels/public
+    uri: api/schedule-natures/public
     metadata:
       custom: []
-      groupName: 'Document - Cấp ban hành'
+      groupName: 'Schedule - Tính chất'
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
-      title: 'Danh sách cấp ban hành công khai'
-      description: 'Trả về danh sách cấp ban hành đang hoạt động để hiển thị cho các chức năng công khai.'
+      title: 'Danh sách tính chất công khai'
+      description: ''
       authenticated: false
       deprecated: false
     headers:
@@ -26,9 +26,9 @@ endpoints:
       search:
         custom: []
         name: search
-        description: 'Từ khóa tìm kiếm theo tên.'
+        description: 'Từ khóa tìm kiếm theo tên hoặc trường chính. Must not be greater than 100 characters.'
         required: false
-        example: architecto
+        example: van-ban
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -70,23 +70,25 @@ endpoints:
       sort_by:
         custom: []
         name: sort_by
-        description: 'Sắp xếp theo: id, name, created_at, updated_at.'
+        description: 'Trường dùng để sắp xếp. Must not be greater than 50 characters.'
         required: false
-        example: name
+        example: created_at
         type: string
         enumValues: []
-        exampleWasSpecified: true
+        exampleWasSpecified: false
         nullable: true
         deprecated: false
       sort_order:
         custom: []
         name: sort_order
-        description: 'Thứ tự: asc, desc.'
+        description: 'Thứ tự sắp xếp.'
         required: false
-        example: asc
+        example: desc
         type: string
-        enumValues: []
-        exampleWasSpecified: true
+        enumValues:
+          - asc
+          - desc
+        exampleWasSpecified: false
         nullable: true
         deprecated: false
       limit:
@@ -101,12 +103,12 @@ endpoints:
         nullable: true
         deprecated: false
     cleanQueryParameters:
-      search: architecto
+      search: van-ban
       status: active
       from_date: '2026-01-01'
       to_date: '2026-12-31'
-      sort_by: name
-      sort_order: asc
+      sort_by: created_at
+      sort_order: desc
       limit: 10
     bodyParameters: []
     cleanBodyParameters: []
@@ -115,9 +117,12 @@ endpoints:
       -
         custom: []
         status: 200
-        content: '{"data":[{"id":65,"name":"modi deserunt","description":"Provident perspiciatis quo omnis nostrum aut adipisci quidem.","status":"active","created_by":"N\/A","updated_by":"N\/A","created_at":"03:47:32 24\/03\/2026","updated_at":"03:47:32 24\/03\/2026"},{"id":66,"name":"qui commodi","description":"Odit et et modi.","status":"active","created_by":"N\/A","updated_by":"N\/A","created_at":"03:47:32 24\/03\/2026","updated_at":"03:47:32 24\/03\/2026"}],"success":"true"}'
-        headers: []
-        description: ''
+        content: '{"data":[],"success":true}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
     responseFields: []
     auth: []
     controller: null
@@ -127,15 +132,15 @@ endpoints:
     custom: []
     httpMethods:
       - GET
-    uri: api/issuing-levels/public-options
+    uri: api/schedule-natures/public-options
     metadata:
       custom: []
-      groupName: 'Document - Cấp ban hành'
+      groupName: 'Schedule - Tính chất'
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
-      title: 'Danh sách cấp ban hành công khai cho dropdown'
-      description: 'Trả về dữ liệu tối giản chỉ gồm id, name, description để tối ưu payload cho dropdown.'
+      title: 'Danh sách tính chất công khai cho dropdown'
+      description: ''
       authenticated: false
       deprecated: false
     headers:
@@ -148,9 +153,9 @@ endpoints:
       search:
         custom: []
         name: search
-        description: 'Từ khóa tìm kiếm theo tên.'
+        description: 'Từ khóa tìm kiếm theo tên hoặc trường chính. Must not be greater than 100 characters.'
         required: false
-        example: architecto
+        example: van-ban
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -192,23 +197,25 @@ endpoints:
       sort_by:
         custom: []
         name: sort_by
-        description: 'Sắp xếp theo: id, name, created_at, updated_at.'
+        description: 'Trường dùng để sắp xếp. Must not be greater than 50 characters.'
         required: false
-        example: name
+        example: created_at
         type: string
         enumValues: []
-        exampleWasSpecified: true
+        exampleWasSpecified: false
         nullable: true
         deprecated: false
       sort_order:
         custom: []
         name: sort_order
-        description: 'Thứ tự: asc, desc.'
+        description: 'Thứ tự sắp xếp.'
         required: false
-        example: asc
+        example: desc
         type: string
-        enumValues: []
-        exampleWasSpecified: true
+        enumValues:
+          - asc
+          - desc
+        exampleWasSpecified: false
         nullable: true
         deprecated: false
       limit:
@@ -223,12 +230,12 @@ endpoints:
         nullable: true
         deprecated: false
     cleanQueryParameters:
-      search: architecto
+      search: van-ban
       status: active
       from_date: '2026-01-01'
       to_date: '2026-12-31'
-      sort_by: name
-      sort_order: asc
+      sort_by: created_at
+      sort_order: desc
       limit: 10
     bodyParameters: []
     cleanBodyParameters: []
@@ -237,9 +244,12 @@ endpoints:
       -
         custom: []
         status: 200
-        content: '{"data":[{"id":67,"name":"provident perspiciatis","description":null},{"id":68,"name":"nostrum aut","description":"Nostrum qui commodi incidunt iure."}],"success":"true"}'
-        headers: []
-        description: ''
+        content: '{"data":[],"success":true}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
     responseFields: []
     auth: []
     controller: null
@@ -249,15 +259,448 @@ endpoints:
     custom: []
     httpMethods:
       - GET
-    uri: api/issuing-levels/export
+    uri: api/schedule-natures/export
     metadata:
       custom: []
-      groupName: 'Document - Cấp ban hành'
+      groupName: 'Schedule - Tính chất'
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
-      title: 'Xuất Excel cấp ban hành'
+      title: 'Xuất Excel tính chất'
       description: 'Xuất ra các trường: id, name, description, status, created_by, updated_by, created_at, updated_at.'
+      authenticated: true
+      deprecated: false
+    headers:
+      Authorization: 'Bearer Bearer {YOUR_ACCESS_TOKEN}'
+      X-Organization-Id: 'ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters:
+      search:
+        custom: []
+        name: search
+        description: 'Từ khóa tìm kiếm theo tên hoặc trường chính. Must not be greater than 100 characters.'
+        required: false
+        example: van-ban
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      status:
+        custom: []
+        name: status
+        description: 'Lọc theo trạng thái.'
+        required: false
+        example: active
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      from_date:
+        custom: []
+        name: from_date
+        description: 'Lọc từ ngày tạo (Y-m-d). Must be a valid date.'
+        required: false
+        example: '2026-01-01'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      to_date:
+        custom: []
+        name: to_date
+        description: 'Lọc đến ngày tạo (Y-m-d). Must be a valid date. Must be a date after or equal to <code>from_date</code>.'
+        required: false
+        example: '2026-12-31'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      sort_by:
+        custom: []
+        name: sort_by
+        description: 'Trường dùng để sắp xếp. Must not be greater than 50 characters.'
+        required: false
+        example: created_at
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      sort_order:
+        custom: []
+        name: sort_order
+        description: 'Thứ tự sắp xếp.'
+        required: false
+        example: desc
+        type: string
+        enumValues:
+          - asc
+          - desc
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      limit:
+        custom: []
+        name: limit
+        description: 'Số bản ghi mỗi trang (1-100). Must be at least 1. Must not be greater than 100.'
+        required: false
+        example: 10
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+    cleanQueryParameters:
+      search: van-ban
+      status: active
+      from_date: '2026-01-01'
+      to_date: '2026-12-31'
+      sort_by: created_at
+      sort_order: desc
+      limit: 10
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        custom: []
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - POST
+    uri: api/schedule-natures/import
+    metadata:
+      custom: []
+      groupName: 'Schedule - Tính chất'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Import tính chất'
+      description: 'Cột bắt buộc: name. Cột không bắt buộc: description, status (mặc định "active").'
+      authenticated: true
+      deprecated: false
+    headers:
+      Authorization: 'Bearer Bearer {YOUR_ACCESS_TOKEN}'
+      X-Organization-Id: 'ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
+      Content-Type: multipart/form-data
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      file:
+        custom: []
+        name: file
+        description: 'File Excel (xlsx, xls, csv).'
+        required: true
+        example: null
+        type: file
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+    cleanBodyParameters: []
+    fileParameters:
+      file: null
+    responses:
+      -
+        custom: []
+        status: 200
+        content: '{"success": true, "message": "Import tính chất thành công."}'
+        headers: []
+        description: ''
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - POST
+    uri: api/schedule-natures/bulk-delete
+    metadata:
+      custom: []
+      groupName: 'Schedule - Tính chất'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Xóa hàng loạt tính chất'
+      description: ''
+      authenticated: true
+      deprecated: false
+    headers:
+      Authorization: 'Bearer Bearer {YOUR_ACCESS_TOKEN}'
+      X-Organization-Id: 'ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      ids:
+        custom: []
+        name: ids
+        description: 'Danh sách ID.'
+        required: true
+        example:
+          - 1
+          - 2
+          - 3
+        type: 'string[]'
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+    cleanBodyParameters:
+      ids:
+        - 1
+        - 2
+        - 3
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - PATCH
+    uri: api/schedule-natures/bulk-status
+    metadata:
+      custom: []
+      groupName: 'Schedule - Tính chất'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Cập nhật trạng thái hàng loạt tính chất'
+      description: ''
+      authenticated: true
+      deprecated: false
+    headers:
+      Authorization: 'Bearer Bearer {YOUR_ACCESS_TOKEN}'
+      X-Organization-Id: 'ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      ids:
+        custom: []
+        name: ids
+        description: 'Danh sách ID.'
+        required: true
+        example:
+          - 1
+          - 2
+          - 3
+        type: 'string[]'
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+      status:
+        custom: []
+        name: status
+        description: 'Trạng thái mới.'
+        required: true
+        example: inactive
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+    cleanBodyParameters:
+      ids:
+        - 1
+        - 2
+        - 3
+      status: inactive
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - GET
+    uri: api/schedule-natures/stats
+    metadata:
+      custom: []
+      groupName: 'Schedule - Tính chất'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Thống kê tính chất'
+      description: ''
+      authenticated: true
+      deprecated: false
+    headers:
+      Authorization: 'Bearer Bearer {YOUR_ACCESS_TOKEN}'
+      X-Organization-Id: 'ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters:
+      search:
+        custom: []
+        name: search
+        description: 'Từ khóa tìm kiếm theo tên hoặc trường chính. Must not be greater than 100 characters.'
+        required: false
+        example: van-ban
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      status:
+        custom: []
+        name: status
+        description: 'Lọc theo trạng thái.'
+        required: false
+        example: active
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      from_date:
+        custom: []
+        name: from_date
+        description: 'Lọc từ ngày tạo (Y-m-d). Must be a valid date.'
+        required: false
+        example: '2026-01-01'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      to_date:
+        custom: []
+        name: to_date
+        description: 'Lọc đến ngày tạo (Y-m-d). Must be a valid date. Must be a date after or equal to <code>from_date</code>.'
+        required: false
+        example: '2026-12-31'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      sort_by:
+        custom: []
+        name: sort_by
+        description: 'Trường dùng để sắp xếp. Must not be greater than 50 characters.'
+        required: false
+        example: created_at
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      sort_order:
+        custom: []
+        name: sort_order
+        description: 'Thứ tự sắp xếp.'
+        required: false
+        example: desc
+        type: string
+        enumValues:
+          - asc
+          - desc
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      limit:
+        custom: []
+        name: limit
+        description: 'Số bản ghi mỗi trang (1-100). Must be at least 1. Must not be greater than 100.'
+        required: false
+        example: 10
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+    cleanQueryParameters:
+      search: van-ban
+      status: active
+      from_date: '2026-01-01'
+      to_date: '2026-12-31'
+      sort_by: created_at
+      sort_order: desc
+      limit: 10
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        custom: []
+        status: 200
+        content: '{"success": true, "data": {"total": 5, "active": 4, "inactive": 1}}'
+        headers: []
+        description: ''
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - GET
+    uri: api/schedule-natures
+    metadata:
+      custom: []
+      groupName: 'Schedule - Tính chất'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Danh sách tính chất'
+      description: ''
       authenticated: true
       deprecated: false
     headers:
@@ -339,12 +782,12 @@ endpoints:
       limit:
         custom: []
         name: limit
-        description: 'Số bản ghi mỗi trang (1-100). Must be at least 1. Must not be greater than 100.'
+        description: 'Số bản ghi mỗi trang (1-100).'
         required: false
         example: 10
         type: integer
         enumValues: []
-        exampleWasSpecified: false
+        exampleWasSpecified: true
         nullable: true
         deprecated: false
     cleanQueryParameters:
@@ -379,453 +822,15 @@ endpoints:
   -
     custom: []
     httpMethods:
-      - POST
-    uri: api/issuing-levels/import
-    metadata:
-      custom: []
-      groupName: 'Document - Cấp ban hành'
-      groupDescription: ''
-      subgroup: ''
-      subgroupDescription: ''
-      title: 'Import cấp ban hành'
-      description: 'Cột bắt buộc: name. Cột không bắt buộc: description, status (mặc định "active").'
-      authenticated: true
-      deprecated: false
-    headers:
-      Authorization: 'Bearer Bearer {YOUR_ACCESS_TOKEN}'
-      X-Organization-Id: 'ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
-      Content-Type: multipart/form-data
-      Accept: application/json
-    urlParameters: []
-    cleanUrlParameters: []
-    queryParameters: []
-    cleanQueryParameters: []
-    bodyParameters:
-      file:
-        custom: []
-        name: file
-        description: 'File Excel (xlsx, xls, csv). Cột theo chuẩn export.'
-        required: true
-        example: null
-        type: file
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        deprecated: false
-    cleanBodyParameters: []
-    fileParameters:
-      file: null
-    responses:
-      -
-        custom: []
-        status: 200
-        content: '{"success": true, "message": "Import cấp ban hành thành công."}'
-        headers: []
-        description: ''
-    responseFields: []
-    auth:
-      - headers
-      - Authorization
-      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
-    controller: null
-    method: null
-    route: null
-  -
-    custom: []
-    httpMethods:
-      - POST
-    uri: api/issuing-levels/bulk-delete
-    metadata:
-      custom: []
-      groupName: 'Document - Cấp ban hành'
-      groupDescription: ''
-      subgroup: ''
-      subgroupDescription: ''
-      title: 'Xóa hàng loạt cấp ban hành'
-      description: ''
-      authenticated: true
-      deprecated: false
-    headers:
-      Authorization: 'Bearer Bearer {YOUR_ACCESS_TOKEN}'
-      X-Organization-Id: 'ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters: []
-    cleanUrlParameters: []
-    queryParameters: []
-    cleanQueryParameters: []
-    bodyParameters:
-      ids:
-        custom: []
-        name: ids
-        description: 'Danh sách ID.'
-        required: true
-        example:
-          - 1
-          - 2
-          - 3
-        type: 'string[]'
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        deprecated: false
-    cleanBodyParameters:
-      ids:
-        - 1
-        - 2
-        - 3
-    fileParameters: []
-    responses:
-      -
-        custom: []
-        status: 200
-        content: '{"success": true, "message": "Xóa hàng loạt thành công!"}'
-        headers: []
-        description: ''
-    responseFields: []
-    auth:
-      - headers
-      - Authorization
-      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
-    controller: null
-    method: null
-    route: null
-  -
-    custom: []
-    httpMethods:
-      - PATCH
-    uri: api/issuing-levels/bulk-status
-    metadata:
-      custom: []
-      groupName: 'Document - Cấp ban hành'
-      groupDescription: ''
-      subgroup: ''
-      subgroupDescription: ''
-      title: 'Cập nhật trạng thái hàng loạt cấp ban hành'
-      description: ''
-      authenticated: true
-      deprecated: false
-    headers:
-      Authorization: 'Bearer Bearer {YOUR_ACCESS_TOKEN}'
-      X-Organization-Id: 'ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters: []
-    cleanUrlParameters: []
-    queryParameters: []
-    cleanQueryParameters: []
-    bodyParameters:
-      ids:
-        custom: []
-        name: ids
-        description: 'Danh sách ID.'
-        required: true
-        example:
-          - 1
-          - 2
-          - 3
-        type: 'string[]'
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        deprecated: false
-      status:
-        custom: []
-        name: status
-        description: 'Trạng thái mới: active, inactive.'
-        required: true
-        example: inactive
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        deprecated: false
-    cleanBodyParameters:
-      ids:
-        - 1
-        - 2
-        - 3
-      status: inactive
-    fileParameters: []
-    responses:
-      -
-        custom: []
-        status: 200
-        content: '{"success": true, "message": "Cập nhật trạng thái hàng loạt thành công!"}'
-        headers: []
-        description: ''
-    responseFields: []
-    auth:
-      - headers
-      - Authorization
-      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
-    controller: null
-    method: null
-    route: null
-  -
-    custom: []
-    httpMethods:
       - GET
-    uri: api/issuing-levels/stats
+    uri: 'api/schedule-natures/{scheduleNature_id}'
     metadata:
       custom: []
-      groupName: 'Document - Cấp ban hành'
+      groupName: 'Schedule - Tính chất'
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
-      title: 'Thống kê cấp ban hành'
-      description: ''
-      authenticated: true
-      deprecated: false
-    headers:
-      Authorization: 'Bearer Bearer {YOUR_ACCESS_TOKEN}'
-      X-Organization-Id: 'ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters: []
-    cleanUrlParameters: []
-    queryParameters:
-      search:
-        custom: []
-        name: search
-        description: 'Từ khóa tìm kiếm theo tên.'
-        required: false
-        example: architecto
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: true
-        deprecated: false
-      status:
-        custom: []
-        name: status
-        description: 'Lọc theo trạng thái: active, inactive.'
-        required: false
-        example: architecto
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: true
-        deprecated: false
-      from_date:
-        custom: []
-        name: from_date
-        description: 'date Lọc từ ngày tạo (Y-m-d).'
-        required: false
-        example: '2026-01-01'
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: true
-        deprecated: false
-      to_date:
-        custom: []
-        name: to_date
-        description: 'date Lọc đến ngày tạo (Y-m-d).'
-        required: false
-        example: '2026-12-31'
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: true
-        deprecated: false
-      sort_by:
-        custom: []
-        name: sort_by
-        description: 'Sắp xếp theo: id, name, created_at, updated_at.'
-        required: false
-        example: created_at
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: true
-        deprecated: false
-      sort_order:
-        custom: []
-        name: sort_order
-        description: 'Thứ tự: asc, desc.'
-        required: false
-        example: desc
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: true
-        deprecated: false
-      limit:
-        custom: []
-        name: limit
-        description: 'Số bản ghi mỗi trang (1-100).'
-        required: false
-        example: 10
-        type: integer
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: true
-        deprecated: false
-    cleanQueryParameters:
-      search: architecto
-      status: architecto
-      from_date: '2026-01-01'
-      to_date: '2026-12-31'
-      sort_by: created_at
-      sort_order: desc
-      limit: 10
-    bodyParameters: []
-    cleanBodyParameters: []
-    fileParameters: []
-    responses:
-      -
-        custom: []
-        status: 200
-        content: '{"success": true, "data": {"total": 10, "active": 8, "inactive": 2}}'
-        headers: []
-        description: ''
-    responseFields: []
-    auth:
-      - headers
-      - Authorization
-      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
-    controller: null
-    method: null
-    route: null
-  -
-    custom: []
-    httpMethods:
-      - GET
-    uri: api/issuing-levels
-    metadata:
-      custom: []
-      groupName: 'Document - Cấp ban hành'
-      groupDescription: ''
-      subgroup: ''
-      subgroupDescription: ''
-      title: 'Danh sách cấp ban hành'
-      description: ''
-      authenticated: true
-      deprecated: false
-    headers:
-      Authorization: 'Bearer Bearer {YOUR_ACCESS_TOKEN}'
-      X-Organization-Id: 'ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters: []
-    cleanUrlParameters: []
-    queryParameters:
-      search:
-        custom: []
-        name: search
-        description: 'Từ khóa tìm kiếm theo tên.'
-        required: false
-        example: architecto
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: true
-        deprecated: false
-      status:
-        custom: []
-        name: status
-        description: 'Lọc theo trạng thái: active, inactive.'
-        required: false
-        example: architecto
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: true
-        deprecated: false
-      from_date:
-        custom: []
-        name: from_date
-        description: 'date Lọc từ ngày tạo (Y-m-d).'
-        required: false
-        example: '2026-01-01'
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: true
-        deprecated: false
-      to_date:
-        custom: []
-        name: to_date
-        description: 'date Lọc đến ngày tạo (Y-m-d).'
-        required: false
-        example: '2026-12-31'
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: true
-        deprecated: false
-      sort_by:
-        custom: []
-        name: sort_by
-        description: 'Sắp xếp theo: id, name, created_at, updated_at.'
-        required: false
-        example: created_at
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: true
-        deprecated: false
-      sort_order:
-        custom: []
-        name: sort_order
-        description: 'Thứ tự: asc, desc.'
-        required: false
-        example: desc
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: true
-        deprecated: false
-      limit:
-        custom: []
-        name: limit
-        description: 'Số bản ghi mỗi trang (1-100).'
-        required: false
-        example: 10
-        type: integer
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: true
-        deprecated: false
-    cleanQueryParameters:
-      search: architecto
-      status: architecto
-      from_date: '2026-01-01'
-      to_date: '2026-12-31'
-      sort_by: created_at
-      sort_order: desc
-      limit: 10
-    bodyParameters: []
-    cleanBodyParameters: []
-    fileParameters: []
-    responses:
-      -
-        custom: []
-        status: 200
-        content: '{"data":[{"id":74,"name":"doloremque id","description":null,"status":"active","created_by":"N\/A","updated_by":"N\/A","created_at":"03:47:33 24\/03\/2026","updated_at":"03:47:33 24\/03\/2026"},{"id":75,"name":"aliquam veniam","description":"Mollitia deleniti nemo odit quia officia.","status":"inactive","created_by":"N\/A","updated_by":"N\/A","created_at":"03:47:33 24\/03\/2026","updated_at":"03:47:33 24\/03\/2026"}],"links":{"first":"\/?page=1","last":"\/?page=1","prev":null,"next":null},"meta":{"current_page":1,"from":1,"last_page":1,"links":[{"url":null,"label":"&laquo; Previous","page":null,"active":false},{"url":"\/?page=1","label":"1","page":1,"active":true},{"url":null,"label":"Next &raquo;","page":null,"active":false}],"path":"\/","per_page":10,"to":2,"total":2},"success":"true"}'
-        headers: []
-        description: ''
-    responseFields: []
-    auth:
-      - headers
-      - Authorization
-      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
-    controller: null
-    method: null
-    route: null
-  -
-    custom: []
-    httpMethods:
-      - GET
-    uri: 'api/issuing-levels/{issuingLevel_id}'
-    metadata:
-      custom: []
-      groupName: 'Document - Cấp ban hành'
-      groupDescription: ''
-      subgroup: ''
-      subgroupDescription: ''
-      title: 'Chi tiết cấp ban hành'
+      title: 'Chi tiết tính chất'
       description: ''
       authenticated: true
       deprecated: false
@@ -835,10 +840,10 @@ endpoints:
       Content-Type: application/json
       Accept: application/json
     urlParameters:
-      issuingLevel_id:
+      scheduleNature_id:
         custom: []
-        name: issuingLevel_id
-        description: 'The ID of the issuingLevel.'
+        name: scheduleNature_id
+        description: 'The ID of the scheduleNature.'
         required: true
         example: 16
         type: integer
@@ -846,10 +851,10 @@ endpoints:
         exampleWasSpecified: false
         nullable: false
         deprecated: false
-      issuingLevel:
+      scheduleNature:
         custom: []
-        name: issuingLevel
-        description: 'ID cấp ban hành.'
+        name: scheduleNature
+        description: 'ID tính chất.'
         required: true
         example: 1
         type: integer
@@ -858,8 +863,8 @@ endpoints:
         nullable: false
         deprecated: false
     cleanUrlParameters:
-      issuingLevel_id: 16
-      issuingLevel: 1
+      scheduleNature_id: 16
+      scheduleNature: 1
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -868,10 +873,13 @@ endpoints:
     responses:
       -
         custom: []
-        status: 200
-        content: '{"data":{"id":76,"name":"et modi","description":null,"status":"inactive","created_by":"N\/A","updated_by":"N\/A","created_at":"03:47:33 24\/03\/2026","updated_at":"03:47:33 24\/03\/2026"},"success":"true"}'
-        headers: []
-        description: ''
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
     responseFields: []
     auth:
       - headers
@@ -884,14 +892,14 @@ endpoints:
     custom: []
     httpMethods:
       - POST
-    uri: api/issuing-levels
+    uri: api/schedule-natures
     metadata:
       custom: []
-      groupName: 'Document - Cấp ban hành'
+      groupName: 'Schedule - Tính chất'
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
-      title: 'Tạo cấp ban hành'
+      title: 'Tạo tính chất'
       description: ''
       authenticated: true
       deprecated: false
@@ -908,9 +916,9 @@ endpoints:
       name:
         custom: []
         name: name
-        description: 'Tên cấp ban hành.'
+        description: 'Tên tính chất.'
         required: true
-        example: 'Cấp Trung ương'
+        example: 'Họp mật'
         type: string
         enumValues: []
         exampleWasSpecified: true
@@ -939,17 +947,11 @@ endpoints:
         nullable: false
         deprecated: false
     cleanBodyParameters:
-      name: 'Cấp Trung ương'
+      name: 'Họp mật'
       description: 'Eius et animi quos velit et.'
       status: active
     fileParameters: []
-    responses:
-      -
-        custom: []
-        status: 201
-        content: '{"data":{"id":77,"name":"aut libero","description":"Corporis dolorem mollitia deleniti nemo odit quia officia.","status":"inactive","created_by":"N\/A","updated_by":"N\/A","created_at":"03:47:33 24\/03\/2026","updated_at":"03:47:33 24\/03\/2026"},"success":"true","message":"T\u1ea1o c\u1ea5p ban h\u00e0nh th\u00e0nh c\u00f4ng!"}'
-        headers: []
-        description: ''
+    responses: []
     responseFields: []
     auth:
       - headers
@@ -962,14 +964,14 @@ endpoints:
     custom: []
     httpMethods:
       - PUT
-    uri: 'api/issuing-levels/{issuingLevel_id}'
+    uri: 'api/schedule-natures/{scheduleNature_id}'
     metadata:
       custom: []
-      groupName: 'Document - Cấp ban hành'
+      groupName: 'Schedule - Tính chất'
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
-      title: 'Cập nhật cấp ban hành'
+      title: 'Cập nhật tính chất'
       description: ''
       authenticated: true
       deprecated: false
@@ -979,10 +981,10 @@ endpoints:
       Content-Type: application/json
       Accept: application/json
     urlParameters:
-      issuingLevel_id:
+      scheduleNature_id:
         custom: []
-        name: issuingLevel_id
-        description: 'The ID of the issuingLevel.'
+        name: scheduleNature_id
+        description: 'The ID of the scheduleNature.'
         required: true
         example: 16
         type: integer
@@ -990,10 +992,10 @@ endpoints:
         exampleWasSpecified: false
         nullable: false
         deprecated: false
-      issuingLevel:
+      scheduleNature:
         custom: []
-        name: issuingLevel
-        description: 'ID cấp ban hành.'
+        name: scheduleNature
+        description: ID.
         required: true
         example: 1
         type: integer
@@ -1002,17 +1004,17 @@ endpoints:
         nullable: false
         deprecated: false
     cleanUrlParameters:
-      issuingLevel_id: 16
-      issuingLevel: 1
+      scheduleNature_id: 16
+      scheduleNature: 1
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
       name:
         custom: []
         name: name
-        description: 'Tên cấp ban hành.'
+        description: 'Tên danh mục. Must not be greater than 255 characters.'
         required: false
-        example: architecto
+        example: b
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -1021,9 +1023,9 @@ endpoints:
       description:
         custom: []
         name: description
-        description: 'Mô tả.'
+        description: 'Mô tả danh mục. Must not be greater than 65535 characters.'
         required: false
-        example: 'Eius et animi quos velit et.'
+        example: 'Et animi quos velit et fugiat.'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -1034,24 +1036,20 @@ endpoints:
         name: status
         description: 'Trạng thái: active, inactive.'
         required: false
-        example: architecto
+        example: active
         type: string
-        enumValues: []
+        enumValues:
+          - active
+          - inactive
         exampleWasSpecified: false
         nullable: false
         deprecated: false
     cleanBodyParameters:
-      name: architecto
-      description: 'Eius et animi quos velit et.'
-      status: architecto
+      name: b
+      description: 'Et animi quos velit et fugiat.'
+      status: active
     fileParameters: []
-    responses:
-      -
-        custom: []
-        status: 200
-        content: '{"data":{"id":78,"name":"corporis dolorem","description":null,"status":"inactive","created_by":"N\/A","updated_by":"N\/A","created_at":"03:47:33 24\/03\/2026","updated_at":"03:47:33 24\/03\/2026"},"success":"true","message":"C\u1eadp nh\u1eadt c\u1ea5p ban h\u00e0nh th\u00e0nh c\u00f4ng!"}'
-        headers: []
-        description: ''
+    responses: []
     responseFields: []
     auth:
       - headers
@@ -1064,14 +1062,14 @@ endpoints:
     custom: []
     httpMethods:
       - PATCH
-    uri: 'api/issuing-levels/{issuingLevel_id}'
+    uri: 'api/schedule-natures/{scheduleNature_id}'
     metadata:
       custom: []
-      groupName: 'Document - Cấp ban hành'
+      groupName: 'Schedule - Tính chất'
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
-      title: 'Cập nhật cấp ban hành'
+      title: 'Cập nhật tính chất'
       description: ''
       authenticated: true
       deprecated: false
@@ -1081,10 +1079,10 @@ endpoints:
       Content-Type: application/json
       Accept: application/json
     urlParameters:
-      issuingLevel_id:
+      scheduleNature_id:
         custom: []
-        name: issuingLevel_id
-        description: 'The ID of the issuingLevel.'
+        name: scheduleNature_id
+        description: 'The ID of the scheduleNature.'
         required: true
         example: 16
         type: integer
@@ -1092,10 +1090,10 @@ endpoints:
         exampleWasSpecified: false
         nullable: false
         deprecated: false
-      issuingLevel:
+      scheduleNature:
         custom: []
-        name: issuingLevel
-        description: 'ID cấp ban hành.'
+        name: scheduleNature
+        description: ID.
         required: true
         example: 1
         type: integer
@@ -1104,17 +1102,17 @@ endpoints:
         nullable: false
         deprecated: false
     cleanUrlParameters:
-      issuingLevel_id: 16
-      issuingLevel: 1
+      scheduleNature_id: 16
+      scheduleNature: 1
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
       name:
         custom: []
         name: name
-        description: 'Tên cấp ban hành.'
+        description: 'Tên danh mục. Must not be greater than 255 characters.'
         required: false
-        example: architecto
+        example: b
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -1123,9 +1121,9 @@ endpoints:
       description:
         custom: []
         name: description
-        description: 'Mô tả.'
+        description: 'Mô tả danh mục. Must not be greater than 65535 characters.'
         required: false
-        example: 'Eius et animi quos velit et.'
+        example: 'Et animi quos velit et fugiat.'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -1136,24 +1134,20 @@ endpoints:
         name: status
         description: 'Trạng thái: active, inactive.'
         required: false
-        example: architecto
+        example: active
         type: string
-        enumValues: []
+        enumValues:
+          - active
+          - inactive
         exampleWasSpecified: false
         nullable: false
         deprecated: false
     cleanBodyParameters:
-      name: architecto
-      description: 'Eius et animi quos velit et.'
-      status: architecto
+      name: b
+      description: 'Et animi quos velit et fugiat.'
+      status: active
     fileParameters: []
-    responses:
-      -
-        custom: []
-        status: 200
-        content: '{"data":{"id":79,"name":"mollitia deleniti","description":"Quia officia est dignissimos neque.","status":"inactive","created_by":"N\/A","updated_by":"N\/A","created_at":"03:47:33 24\/03\/2026","updated_at":"03:47:33 24\/03\/2026"},"success":"true","message":"C\u1eadp nh\u1eadt c\u1ea5p ban h\u00e0nh th\u00e0nh c\u00f4ng!"}'
-        headers: []
-        description: ''
+    responses: []
     responseFields: []
     auth:
       - headers
@@ -1166,14 +1160,14 @@ endpoints:
     custom: []
     httpMethods:
       - DELETE
-    uri: 'api/issuing-levels/{issuingLevel_id}'
+    uri: 'api/schedule-natures/{scheduleNature_id}'
     metadata:
       custom: []
-      groupName: 'Document - Cấp ban hành'
+      groupName: 'Schedule - Tính chất'
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
-      title: 'Xóa cấp ban hành'
+      title: 'Xóa tính chất'
       description: ''
       authenticated: true
       deprecated: false
@@ -1183,10 +1177,10 @@ endpoints:
       Content-Type: application/json
       Accept: application/json
     urlParameters:
-      issuingLevel_id:
+      scheduleNature_id:
         custom: []
-        name: issuingLevel_id
-        description: 'The ID of the issuingLevel.'
+        name: scheduleNature_id
+        description: 'The ID of the scheduleNature.'
         required: true
         example: 16
         type: integer
@@ -1194,10 +1188,10 @@ endpoints:
         exampleWasSpecified: false
         nullable: false
         deprecated: false
-      issuingLevel:
+      scheduleNature:
         custom: []
-        name: issuingLevel
-        description: 'ID cấp ban hành.'
+        name: scheduleNature
+        description: ID.
         required: true
         example: 1
         type: integer
@@ -1206,8 +1200,8 @@ endpoints:
         nullable: false
         deprecated: false
     cleanUrlParameters:
-      issuingLevel_id: 16
-      issuingLevel: 1
+      scheduleNature_id: 16
+      scheduleNature: 1
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -1217,7 +1211,7 @@ endpoints:
       -
         custom: []
         status: 200
-        content: '{"success": true, "message": "Xóa cấp ban hành thành công!"}'
+        content: '{"success": true, "message": "Xóa tính chất thành công!"}'
         headers: []
         description: ''
     responseFields: []
@@ -1232,14 +1226,14 @@ endpoints:
     custom: []
     httpMethods:
       - PATCH
-    uri: 'api/issuing-levels/{issuingLevel_id}/status'
+    uri: 'api/schedule-natures/{scheduleNature_id}/status'
     metadata:
       custom: []
-      groupName: 'Document - Cấp ban hành'
+      groupName: 'Schedule - Tính chất'
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
-      title: 'Đổi trạng thái cấp ban hành'
+      title: 'Đổi trạng thái tính chất'
       description: ''
       authenticated: true
       deprecated: false
@@ -1249,10 +1243,10 @@ endpoints:
       Content-Type: application/json
       Accept: application/json
     urlParameters:
-      issuingLevel_id:
+      scheduleNature_id:
         custom: []
-        name: issuingLevel_id
-        description: 'The ID of the issuingLevel.'
+        name: scheduleNature_id
+        description: 'The ID of the scheduleNature.'
         required: true
         example: 16
         type: integer
@@ -1260,10 +1254,10 @@ endpoints:
         exampleWasSpecified: false
         nullable: false
         deprecated: false
-      issuingLevel:
+      scheduleNature:
         custom: []
-        name: issuingLevel
-        description: 'ID cấp ban hành.'
+        name: scheduleNature
+        description: ID.
         required: true
         example: 1
         type: integer
@@ -1272,15 +1266,15 @@ endpoints:
         nullable: false
         deprecated: false
     cleanUrlParameters:
-      issuingLevel_id: 16
-      issuingLevel: 1
+      scheduleNature_id: 16
+      scheduleNature: 1
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
       status:
         custom: []
         name: status
-        description: 'Trạng thái mới: active, inactive.'
+        description: 'Trạng thái mới.'
         required: true
         example: active
         type: string
@@ -1291,13 +1285,7 @@ endpoints:
     cleanBodyParameters:
       status: active
     fileParameters: []
-    responses:
-      -
-        custom: []
-        status: 200
-        content: '{"data":{"id":80,"name":"ipsum nostrum","description":null,"status":"active","created_by":"N\/A","updated_by":"N\/A","created_at":"03:47:33 24\/03\/2026","updated_at":"03:47:33 24\/03\/2026"},"success":"true","message":"\u0110\u1ed5i tr\u1ea1ng th\u00e1i th\u00e0nh c\u00f4ng!"}'
-        headers: []
-        description: ''
+    responses: []
     responseFields: []
     auth:
       - headers

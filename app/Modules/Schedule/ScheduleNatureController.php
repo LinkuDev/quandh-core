@@ -5,16 +5,16 @@ namespace App\Modules\Schedule;
 use App\Http\Controllers\Controller;
 use App\Modules\Core\Requests\FilterRequest;
 use App\Modules\Core\Resources\PublicOptionResource;
-use App\Modules\Document\Requests\BulkDestroyCatalogRequest;
-use App\Modules\Document\Requests\BulkUpdateStatusCatalogRequest;
-use App\Modules\Document\Requests\ChangeStatusCatalogRequest;
-use App\Modules\Document\Requests\ImportCatalogRequest;
-use App\Modules\Document\Requests\StoreCatalogRequest;
-use App\Modules\Document\Requests\UpdateCatalogRequest;
-use App\Modules\Document\Resources\CatalogCollection;
-use App\Modules\Document\Resources\CatalogResource;
-use App\Modules\Document\Services\CatalogService;
 use App\Modules\Schedule\Models\ScheduleNature;
+use App\Modules\Schedule\Requests\BulkDestroyCatalogRequest;
+use App\Modules\Schedule\Requests\BulkUpdateStatusCatalogRequest;
+use App\Modules\Schedule\Requests\ChangeStatusCatalogRequest;
+use App\Modules\Schedule\Requests\ImportCatalogRequest;
+use App\Modules\Schedule\Requests\StoreCatalogRequest;
+use App\Modules\Schedule\Requests\UpdateCatalogRequest;
+use App\Modules\Schedule\Resources\CatalogCollection;
+use App\Modules\Schedule\Resources\CatalogResource;
+use App\Modules\Schedule\Services\CatalogService;
 
 /**
  * @group Schedule - Tính chất
