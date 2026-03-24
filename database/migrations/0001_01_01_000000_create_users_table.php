@@ -20,6 +20,9 @@ return new class extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->string('status')->default('active');
+            $table->string('position')->nullable();
+            $table->string('phone', 20)->nullable();
+            $table->string('zalo_id', 100)->nullable();
             $table->unsignedBigInteger('created_by')->nullable();
             $table->unsignedBigInteger('updated_by')->nullable();
             $table->timestamps();
