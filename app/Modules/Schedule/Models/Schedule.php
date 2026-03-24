@@ -117,21 +117,21 @@ class Schedule extends Model implements HasMedia
     public function scopeFilter($query, array $filters)
     {
         $query->when($filters['search'] ?? null, function ($q, $search) {
-            $q->where('content', 'like', '%'.$search.'%');
-        })->when($filters['status'] ?? null, fn ($q, $status) => $q->where('status', $status))
-            ->when($filters['event_date'] ?? null, fn ($q, $date) => $q->whereDate('event_date', $date))
-            ->when($filters['from_date'] ?? null, fn ($q, $date) => $q->whereDate('event_date', '>=', $date))
-            ->when($filters['to_date'] ?? null, fn ($q, $date) => $q->whereDate('event_date', '<=', $date))
-            ->when($filters['session'] ?? null, fn ($q, $session) => $q->where('session', $session))
-            ->when($filters['organization_id'] ?? null, fn ($q, $orgId) => $q->where('organization_id', $orgId))
-            ->when($filters['chairperson_id'] ?? null, fn ($q, $id) => $q->where('chairperson_id', $id))
-            ->when($filters['meeting_type_id'] ?? null, fn ($q, $id) => $q->where('meeting_type_id', $id))
-            ->when($filters['nature_id'] ?? null, fn ($q, $id) => $q->where('nature_id', $id))
+            $q->where('schedules.content', 'like', '%'.$search.'%');
+        })->when($filters['status'] ?? null, fn ($q, $status) => $q->where('schedules.status', $status))
+            ->when($filters['event_date'] ?? null, fn ($q, $date) => $q->whereDate('schedules.event_date', $date))
+            ->when($filters['from_date'] ?? null, fn ($q, $date) => $q->whereDate('schedules.event_date', '>=', $date))
+            ->when($filters['to_date'] ?? null, fn ($q, $date) => $q->whereDate('schedules.event_date', '<=', $date))
+            ->when($filters['session'] ?? null, fn ($q, $session) => $q->where('schedules.session', $session))
+            ->when($filters['organization_id'] ?? null, fn ($q, $orgId) => $q->where('schedules.organization_id', $orgId))
+            ->when($filters['chairperson_id'] ?? null, fn ($q, $id) => $q->where('schedules.chairperson_id', $id))
+            ->when($filters['meeting_type_id'] ?? null, fn ($q, $id) => $q->where('schedules.meeting_type_id', $id))
+            ->when($filters['nature_id'] ?? null, fn ($q, $id) => $q->where('schedules.nature_id', $id))
             ->when($filters['position'] ?? null, function ($q, $position) {
-                $q->whereHas('chairperson', fn ($sub) => $sub->where('position', 'like', '%'.$position.'%'));
+                $q->whereHas('chairperson', fn ($sub) => $sub->where('users.position', 'like', '%'.$position.'%'));
             })
             ->when($filters['participant_user_id'] ?? null, function ($q, $userId) {
-                $q->whereHas('participants', fn ($sub) => $sub->where('user_id', $userId));
+                $q->whereHas('participants', fn ($sub) => $sub->where('schedule_participants.user_id', $userId));
             })
             ->when($filters['sort_by'] ?? 'sort_order', function ($q, $sortBy) use ($filters) {
                 $allowed = ['id', 'event_date', 'start_time', 'sort_order', 'created_at', 'updated_at'];
@@ -145,7 +145,7 @@ class Schedule extends Model implements HasMedia
                         ->orderBy('schedules.start_time', 'asc')
                         ->select('schedules.*');
                 } else {
-                    $q->orderBy($column, $filters['sort_dir'] ?? 'asc');
+                    $q->orderBy("schedules.{$column}", $filters['sort_dir'] ?? 'asc');
                 }
             });
     }

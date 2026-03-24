@@ -33,8 +33,8 @@ class ScheduleService
 
         return [
             'total' => (clone $base)->count(),
-            'active' => (clone $base)->where('status', ScheduleStatusEnum::Active->value)->count(),
-            'inactive' => (clone $base)->where('status', ScheduleStatusEnum::Inactive->value)->count(),
+            'active' => (clone $base)->where('schedules.status', ScheduleStatusEnum::Active->value)->count(),
+            'inactive' => (clone $base)->where('schedules.status', ScheduleStatusEnum::Inactive->value)->count(),
         ];
     }
 
@@ -278,7 +278,7 @@ class ScheduleService
     public function publicIndex(array $filters, int $limit)
     {
         return Schedule::with(['organization', 'chairperson', 'meetingType', 'nature', 'participants', 'participants.user'])
-            ->where('status', ScheduleStatusEnum::Active->value)
+            ->where('schedules.status', ScheduleStatusEnum::Active->value)
             ->filter($filters)
             ->paginate($limit);
     }
