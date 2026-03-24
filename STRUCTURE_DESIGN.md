@@ -28,39 +28,124 @@ quandh-core/
 ```text
 app/Modules/
 ├── Auth/
+│   ├── AuthController.php
 │   ├── Requests/
+│   │   ├── ForgotPasswordRequest.php
+│   │   ├── LoginRequest.php
+│   │   ├── ResetPasswordRequest.php
+│   │   └── SwitchOrganizationRequest.php
 │   ├── Routes/
+│   │   └── auth.php
 │   └── Services/
+│       ├── AuthService.php
+│       └── CaslAbilityConverter.php
 ├── Core/
 │   ├── Enums/
+│   │   ├── SettingGroupEnum.php
+│   │   ├── StatusEnum.php
+│   │   └── UserStatusEnum.php
 │   ├── Exports/
+│   │   ├── LogActivitiesExport.php
+│   │   ├── OrganizationsExport.php
+│   │   ├── PermissionsExport.php
+│   │   ├── RolesExport.php
+│   │   └── UsersExport.php
 │   ├── Imports/
+│   │   ├── OrganizationsImport.php
+│   │   ├── PermissionsImport.php
+│   │   ├── RolesImport.php
+│   │   └── UsersImport.php
 │   ├── Middleware/
+│   │   ├── LogActivity.php
+│   │   └── SetPermissionsTeamId.php
 │   ├── Models/
+│   │   ├── LogActivity.php
+│   │   ├── Organization.php
+│   │   ├── Permission.php
+│   │   ├── Role.php
+│   │   ├── Setting.php
+│   │   └── User.php
 │   ├── Requests/
+│   │   └── ... (Store, Update, BulkDestroy, Filter, Import, ChangeStatus...)
 │   ├── Resources/
+│   │   └── ... (Resource, Collection, TreeResource, PublicOptionResource)
 │   ├── Routes/
+│   │   ├── log_activity.php
+│   │   ├── organization.php
+│   │   ├── permission.php
+│   │   ├── role.php
+│   │   ├── setting.php
+│   │   └── user.php
 │   ├── Services/
-│   └── Traits/
-├── Post/
-│   ├── Enums/
-│   ├── Exports/
-│   ├── Imports/
-│   ├── Models/
-│   ├── Requests/
-│   ├── Resources/
-│   ├── Routes/
-│   └── Services/
-└── Document/
-    ├── Controllers/
+│   │   ├── LogActivityService.php
+│   │   ├── MediaService.php
+│   │   ├── OrganizationService.php
+│   │   ├── PermissionService.php
+│   │   ├── RoleService.php
+│   │   └── SettingService.php
+│   ├── Traits/
+│   │   └── RespondsWithJson.php
+│   ├── LogActivityController.php
+│   ├── OrganizationController.php
+│   ├── PermissionController.php
+│   ├── RoleController.php
+│   └── SettingController.php
+└── Schedule/
     ├── Enums/
+    │   ├── NotificationChannelEnum.php
+    │   ├── NotificationStatusEnum.php
+    │   ├── ScheduleSessionEnum.php
+    │   └── ScheduleStatusEnum.php
     ├── Exports/
+    │   ├── CatalogExport.php
+    │   └── SchedulesExport.php
     ├── Imports/
+    │   ├── CatalogImport.php
+    │   └── SchedulesImport.php
+    ├── Jobs/
+    │   └── ProcessScheduleNotifications.php
     ├── Models/
+    │   ├── Schedule.php
+    │   ├── ScheduleMeetingType.php
+    │   ├── ScheduleNature.php
+    │   ├── ScheduleNotification.php
+    │   └── ScheduleParticipant.php
+    ├── Policies/
+    │   └── SchedulePolicy.php
     ├── Requests/
+    │   ├── BulkDestroyCatalogRequest.php
+    │   ├── BulkDestroyScheduleRequest.php
+    │   ├── BulkUpdateStatusCatalogRequest.php
+    │   ├── BulkUpdateStatusScheduleRequest.php
+    │   ├── ChangeStatusCatalogRequest.php
+    │   ├── ChangeStatusScheduleRequest.php
+    │   ├── ImportCatalogRequest.php
+    │   ├── ImportScheduleRequest.php
+    │   ├── SortOrderScheduleRequest.php
+    │   ├── StoreCatalogRequest.php
+    │   ├── StoreScheduleRequest.php
+    │   ├── UpdateCatalogRequest.php
+    │   └── UpdateScheduleRequest.php
     ├── Resources/
+    │   ├── CatalogCollection.php
+    │   ├── CatalogResource.php
+    │   ├── ScheduleCollection.php
+    │   ├── ScheduleNotificationCollection.php
+    │   ├── ScheduleNotificationResource.php
+    │   └── ScheduleResource.php
     ├── Routes/
-    └── Services/
+    │   ├── schedule.php
+    │   ├── schedule_meeting_type.php
+    │   ├── schedule_nature.php
+    │   └── schedule_notification.php
+    ├── Services/
+    │   ├── CatalogService.php
+    │   ├── ScheduleNotificationService.php
+    │   └── ScheduleService.php
+    ├── ScheduleController.php
+    ├── ScheduleMeetingTypeController.php
+    ├── ScheduleNatureController.php
+    └── ScheduleNotificationController.php
 ```
 
 ## 3) Quy ước luồng xử lý
@@ -70,6 +155,7 @@ app/Modules/
 - `Model`: định nghĩa quan hệ + scope filter/sort.
 - `Resource`: chuẩn hóa output API.
 - `Routes`: tách riêng theo module và resource.
+- `Policy`: phân quyền theo bản ghi (owner permission).
 
 ## 4) Vị trí tài liệu liên quan
 
