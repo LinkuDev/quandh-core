@@ -16,7 +16,7 @@ use Symfony\Component\HttpFoundation\BinaryFileResponse;
 class ScheduleService
 {
     private array $eagerLoads = [
-        'department', 'chairperson', 'meetingType', 'nature',
+        'department', 'chairperson',
         'participants', 'participants.user',
         'notifications', 'notifications.user',
         'media', 'creator', 'editor',
@@ -40,7 +40,7 @@ class ScheduleService
 
     public function index(array $filters, int $limit)
     {
-        return Schedule::with(['department', 'chairperson', 'meetingType', 'nature', 'participants', 'participants.user', 'creator'])
+        return Schedule::with(['department', 'chairperson', 'participants', 'participants.user', 'creator'])
             ->filter($filters)
             ->paginate($limit);
     }
@@ -165,7 +165,7 @@ class ScheduleService
      */
     public function exportPdf(array $filters)
     {
-        $schedules = Schedule::with(['chairperson', 'meetingType', 'nature', 'participants', 'participants.user'])
+        $schedules = Schedule::with(['chairperson', 'participants', 'participants.user'])
             ->filter($filters)
             ->get();
 
@@ -277,7 +277,7 @@ class ScheduleService
 
     public function publicIndex(array $filters, int $limit)
     {
-        return Schedule::with(['department', 'chairperson', 'meetingType', 'nature', 'participants', 'participants.user'])
+        return Schedule::with(['department', 'chairperson', 'participants', 'participants.user'])
             ->where('schedules.status', ScheduleStatusEnum::Active->value)
             ->filter($filters)
             ->paginate($limit);

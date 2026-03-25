@@ -62,14 +62,6 @@ class PermissionSeeder extends Seeder
             'export', 'exportPdf', 'import', 'reorder',
             'updateAll', 'destroyAll',
         ],
-        // Schedule - Loại cuộc họp (danh mục đơn giản)
-        'schedule-meeting-types' => [
-            'index', 'store', 'update', 'destroy',
-        ],
-        // Schedule - Tính chất (danh mục đơn giản)
-        'schedule-natures' => [
-            'index', 'store', 'update', 'destroy',
-        ],
     ];
 
     public function run(): void
@@ -121,8 +113,6 @@ class PermissionSeeder extends Seeder
         'log-activities' => 'Nhật ký truy cập',
         'settings' => 'Cấu hình hệ thống',
         'schedules' => 'Lịch công tác',
-        'schedule-meeting-types' => 'Loại cuộc họp',
-        'schedule-natures' => 'Tính chất',
     ];
 
     /** Nhãn action (để description). */
@@ -341,17 +331,15 @@ class PermissionSeeder extends Seeder
         return $names;
     }
 
-    /** Permission cho Lãnh đạo: chỉ xem lịch công tác + danh mục. */
+    /** Permission cho Lãnh đạo: chỉ xem lịch công tác. */
     protected function getViewOnlyPermissionNames(): array
     {
         return [
             'schedules.stats', 'schedules.index', 'schedules.show',
-            'schedule-meeting-types.index',
-            'schedule-natures.index',
         ];
     }
 
-    /** Permission cho Thư ký: CRUD lịch + xem danh mục. */
+    /** Permission cho Thư ký: CRUD lịch cho Lãnh đạo. */
     protected function getSecretaryPermissionNames(): array
     {
         return [
@@ -359,35 +347,29 @@ class PermissionSeeder extends Seeder
             'schedules.store', 'schedules.update', 'schedules.destroy',
             'schedules.changeStatus', 'schedules.export', 'schedules.exportPdf',
             'schedules.reorder',
-            'schedule-meeting-types.index',
-            'schedule-natures.index',
         ];
     }
 
-    /** Permission cho Công chức tổng hợp: toàn quyền lịch + quản lý danh mục. */
+    /** Permission cho Công chức tổng hợp: toàn quyền lịch. */
     protected function getCoordinatorPermissionNames(): array
     {
         $names = [];
-        foreach (['schedules', 'schedule-meeting-types', 'schedule-natures'] as $resource) {
-            if (isset(self::$PERMISSIONS[$resource])) {
-                foreach (self::$PERMISSIONS[$resource] as $action) {
-                    $names[] = "{$resource}.{$action}";
-                }
+        if (isset(self::$PERMISSIONS['schedules'])) {
+            foreach (self::$PERMISSIONS['schedules'] as $action) {
+                $names[] = "schedules.{$action}";
             }
         }
 
         return $names;
     }
 
-    /** Permission cho Cán bộ công chức: CRUD lịch của mình + xem danh mục. */
+    /** Permission cho Cán bộ công chức: CRUD lịch của mình. */
     protected function getOfficerPermissionNames(): array
     {
         return [
             'schedules.stats', 'schedules.index', 'schedules.show',
             'schedules.store', 'schedules.update', 'schedules.destroy',
             'schedules.changeStatus', 'schedules.export',
-            'schedule-meeting-types.index',
-            'schedule-natures.index',
         ];
     }
 }

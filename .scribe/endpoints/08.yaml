@@ -1,239 +1,38 @@
-name: 'Core - Role'
+name: 'Schedule - Thông báo'
 description: ''
 endpoints:
   -
     custom: []
     httpMethods:
       - GET
-    uri: api/roles/export
+    uri: api/schedule-notifications/unread-count
     metadata:
       custom: []
-      groupName: 'Core - Role'
+      groupName: 'Schedule - Thông báo'
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
-      title: 'Xuất danh sách role'
-      description: 'Áp dụng cùng bộ lọc với index. Xuất ra các trường: id, name, guard_name, department_id, department_name, created_at, updated_at.'
+      title: 'Số thông báo chưa đọc (badge)'
+      description: 'Trả về số lượng thông báo chưa đọc của user hiện tại để hiển thị badge.'
       authenticated: true
       deprecated: false
     headers:
       Authorization: 'Bearer Bearer {YOUR_ACCESS_TOKEN}'
-      X-Department-Id: 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
+      X-Department-Id: 'ID đơn vị cần làm việc. Example: 1'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
     cleanUrlParameters: []
-    queryParameters:
-      search:
-        custom: []
-        name: search
-        description: 'Từ khóa tìm kiếm (name, guard_name).'
-        required: false
-        example: architecto
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: true
-        deprecated: false
-      status:
-        custom: []
-        name: status
-        description: 'Lọc theo trạng thái.'
-        required: false
-        example: active
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: true
-        deprecated: false
-      from_date:
-        custom: []
-        name: from_date
-        description: 'date Lọc từ ngày tạo (created_at) (Y-m-d).'
-        required: false
-        example: architecto
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: true
-        deprecated: false
-      to_date:
-        custom: []
-        name: to_date
-        description: 'date Lọc đến ngày tạo (created_at) (Y-m-d).'
-        required: false
-        example: architecto
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: true
-        deprecated: false
-      sort_by:
-        custom: []
-        name: sort_by
-        description: 'Sắp xếp theo: id, name, guard_name, created_at, updated_at.'
-        required: false
-        example: architecto
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: true
-        deprecated: false
-      sort_order:
-        custom: []
-        name: sort_order
-        description: 'Thứ tự: asc, desc.'
-        required: false
-        example: architecto
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: true
-        deprecated: false
-      limit:
-        custom: []
-        name: limit
-        description: 'Số bản ghi mỗi trang (1-100). Must be at least 1. Must not be greater than 100.'
-        required: false
-        example: 10
-        type: integer
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: true
-        deprecated: false
-    cleanQueryParameters:
-      search: architecto
-      status: active
-      from_date: architecto
-      to_date: architecto
-      sort_by: architecto
-      sort_order: architecto
-      limit: 10
+    queryParameters: []
+    cleanQueryParameters: []
     bodyParameters: []
     cleanBodyParameters: []
     fileParameters: []
     responses:
       -
         custom: []
-        status: 401
-        content: '{"message":"Unauthenticated."}'
-        headers:
-          cache-control: 'no-cache, private'
-          content-type: application/json
-          access-control-allow-origin: '*'
-        description: null
-    responseFields: []
-    auth:
-      - headers
-      - Authorization
-      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
-    controller: null
-    method: null
-    route: null
-  -
-    custom: []
-    httpMethods:
-      - POST
-    uri: api/roles/import
-    metadata:
-      custom: []
-      groupName: 'Core - Role'
-      groupDescription: ''
-      subgroup: ''
-      subgroupDescription: ''
-      title: 'Nhập danh sách role'
-      description: 'Cột bắt buộc: name. Cột không bắt buộc: guard_name (mặc định "web"), department_id.'
-      authenticated: true
-      deprecated: false
-    headers:
-      Authorization: 'Bearer Bearer {YOUR_ACCESS_TOKEN}'
-      X-Department-Id: 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
-      Content-Type: multipart/form-data
-      Accept: application/json
-    urlParameters: []
-    cleanUrlParameters: []
-    queryParameters: []
-    cleanQueryParameters: []
-    bodyParameters:
-      file:
-        custom: []
-        name: file
-        description: 'File Excel (xlsx, xls, csv). Cột theo chuẩn export.'
-        required: true
-        example: null
-        type: file
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        deprecated: false
-    cleanBodyParameters: []
-    fileParameters:
-      file: null
-    responses:
-      -
-        custom: []
         status: 200
-        content: '{"success": true, "message": "Import vai trò thành công."}'
-        headers: []
-        description: ''
-    responseFields: []
-    auth:
-      - headers
-      - Authorization
-      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
-    controller: null
-    method: null
-    route: null
-  -
-    custom: []
-    httpMethods:
-      - POST
-    uri: api/roles/bulk-delete
-    metadata:
-      custom: []
-      groupName: 'Core - Role'
-      groupDescription: ''
-      subgroup: ''
-      subgroupDescription: ''
-      title: 'Xóa hàng loạt role'
-      description: ''
-      authenticated: true
-      deprecated: false
-    headers:
-      Authorization: 'Bearer Bearer {YOUR_ACCESS_TOKEN}'
-      X-Department-Id: 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters: []
-    cleanUrlParameters: []
-    queryParameters: []
-    cleanQueryParameters: []
-    bodyParameters:
-      ids:
-        custom: []
-        name: ids
-        description: 'Danh sách ID.'
-        required: true
-        example:
-          - 1
-          - 2
-          - 3
-        type: 'string[]'
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        deprecated: false
-    cleanBodyParameters:
-      ids:
-        - 1
-        - 2
-        - 3
-    fileParameters: []
-    responses:
-      -
-        custom: []
-        status: 200
-        content: '{"success": true, "message": "Đã xóa thành công các vai trò được chọn!"}'
+        content: '{"success": true, "data": {"unread_count": 5}}'
         headers: []
         description: ''
     responseFields: []
@@ -248,110 +47,38 @@ endpoints:
     custom: []
     httpMethods:
       - GET
-    uri: api/roles/stats
+    uri: api/schedule-notifications
     metadata:
       custom: []
-      groupName: 'Core - Role'
+      groupName: 'Schedule - Thông báo'
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
-      title: 'Thống kê role'
-      description: 'Tổng số bản ghi (áp dụng cùng bộ lọc với index). Role không có cột status (chuẩn Spatie).'
+      title: 'Danh sách thông báo'
+      description: 'Danh sách thông báo của user hiện tại, mới nhất trước.'
       authenticated: true
       deprecated: false
     headers:
       Authorization: 'Bearer Bearer {YOUR_ACCESS_TOKEN}'
-      X-Department-Id: 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
+      X-Department-Id: 'ID đơn vị cần làm việc. Example: 1'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
     cleanUrlParameters: []
     queryParameters:
-      search:
-        custom: []
-        name: search
-        description: 'Từ khóa tìm kiếm (name, guard_name).'
-        required: false
-        example: admin
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: true
-        deprecated: false
-      status:
-        custom: []
-        name: status
-        description: 'Lọc theo trạng thái.'
-        required: false
-        example: active
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: true
-        deprecated: false
-      from_date:
-        custom: []
-        name: from_date
-        description: 'date Lọc từ ngày tạo (created_at) (Y-m-d).'
-        required: false
-        example: '2026-02-01'
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: true
-        deprecated: false
-      to_date:
-        custom: []
-        name: to_date
-        description: 'date Lọc đến ngày tạo (created_at) (Y-m-d).'
-        required: false
-        example: '2026-02-17'
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: true
-        deprecated: false
-      sort_by:
-        custom: []
-        name: sort_by
-        description: 'Sắp xếp theo: id, name, guard_name, created_at, updated_at.'
-        required: false
-        example: created_at
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: true
-        deprecated: false
-      sort_order:
-        custom: []
-        name: sort_order
-        description: 'Thứ tự: asc, desc.'
-        required: false
-        example: desc
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: true
-        deprecated: false
       limit:
         custom: []
         name: limit
         description: 'Số bản ghi mỗi trang (1-100).'
         required: false
-        example: 10
+        example: 20
         type: integer
         enumValues: []
         exampleWasSpecified: true
-        nullable: true
+        nullable: false
         deprecated: false
     cleanQueryParameters:
-      search: admin
-      status: active
-      from_date: '2026-02-01'
-      to_date: '2026-02-17'
-      sort_by: created_at
-      sort_order: desc
-      limit: 10
+      limit: 20
     bodyParameters: []
     cleanBodyParameters: []
     fileParameters: []
@@ -359,389 +86,7 @@ endpoints:
       -
         custom: []
         status: 200
-        content: '{"success": true, "data": {"total": 5}}'
-        headers: []
-        description: ''
-    responseFields: []
-    auth:
-      - headers
-      - Authorization
-      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
-    controller: null
-    method: null
-    route: null
-  -
-    custom: []
-    httpMethods:
-      - GET
-    uri: api/roles
-    metadata:
-      custom: []
-      groupName: 'Core - Role'
-      groupDescription: ''
-      subgroup: ''
-      subgroupDescription: ''
-      title: 'Danh sách role'
-      description: 'Lấy danh sách có phân trang, lọc và sắp xếp. Có kèm department và permissions.'
-      authenticated: true
-      deprecated: false
-    headers:
-      Authorization: 'Bearer Bearer {YOUR_ACCESS_TOKEN}'
-      X-Department-Id: 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters: []
-    cleanUrlParameters: []
-    queryParameters:
-      search:
-        custom: []
-        name: search
-        description: 'Từ khóa tìm kiếm (name, guard_name).'
-        required: false
-        example: admin
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: true
-        deprecated: false
-      status:
-        custom: []
-        name: status
-        description: 'Lọc theo trạng thái.'
-        required: false
-        example: active
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: true
-        deprecated: false
-      from_date:
-        custom: []
-        name: from_date
-        description: 'date Lọc từ ngày tạo (created_at) (Y-m-d).'
-        required: false
-        example: '2026-02-01'
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: true
-        deprecated: false
-      to_date:
-        custom: []
-        name: to_date
-        description: 'date Lọc đến ngày tạo (created_at) (Y-m-d).'
-        required: false
-        example: '2026-02-17'
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: true
-        deprecated: false
-      sort_by:
-        custom: []
-        name: sort_by
-        description: 'Sắp xếp theo: id, name, guard_name, created_at, updated_at.'
-        required: false
-        example: id
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: true
-        deprecated: false
-      sort_order:
-        custom: []
-        name: sort_order
-        description: 'Thứ tự: asc, desc.'
-        required: false
-        example: desc
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: true
-        deprecated: false
-      limit:
-        custom: []
-        name: limit
-        description: 'Số bản ghi mỗi trang (1-100).'
-        required: false
-        example: 10
-        type: integer
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: true
-        deprecated: false
-    cleanQueryParameters:
-      search: admin
-      status: active
-      from_date: '2026-02-01'
-      to_date: '2026-02-17'
-      sort_by: id
-      sort_order: desc
-      limit: 10
-    bodyParameters: []
-    cleanBodyParameters: []
-    fileParameters: []
-    responses:
-      -
-        custom: []
-        status: 200
-        content: '{"data":[{"id":12,"name":"role_ng775","guard_name":"web","department_id":null,"created_at":"02:34:49 25\/03\/2026","updated_at":"02:34:49 25\/03\/2026"},{"id":13,"name":"role_mi365","guard_name":"web","department_id":null,"created_at":"02:34:49 25\/03\/2026","updated_at":"02:34:49 25\/03\/2026"}],"links":{"first":"\/?page=1","last":"\/?page=1","prev":null,"next":null},"meta":{"current_page":1,"from":1,"last_page":1,"links":[{"url":null,"label":"&laquo; Previous","page":null,"active":false},{"url":"\/?page=1","label":"1","page":1,"active":true},{"url":null,"label":"Next &raquo;","page":null,"active":false}],"path":"\/","per_page":10,"to":2,"total":2},"success":"true"}'
-        headers: []
-        description: ''
-    responseFields: []
-    auth:
-      - headers
-      - Authorization
-      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
-    controller: null
-    method: null
-    route: null
-  -
-    custom: []
-    httpMethods:
-      - GET
-    uri: 'api/roles/{role_id}'
-    metadata:
-      custom: []
-      groupName: 'Core - Role'
-      groupDescription: ''
-      subgroup: ''
-      subgroupDescription: ''
-      title: 'Chi tiết role'
-      description: ''
-      authenticated: true
-      deprecated: false
-    headers:
-      Authorization: 'Bearer Bearer {YOUR_ACCESS_TOKEN}'
-      X-Department-Id: 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters:
-      role_id:
-        custom: []
-        name: role_id
-        description: 'The ID of the role.'
-        required: true
-        example: 1
-        type: integer
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        deprecated: false
-      role:
-        custom: []
-        name: role
-        description: 'ID role.'
-        required: true
-        example: 1
-        type: integer
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        deprecated: false
-    cleanUrlParameters:
-      role_id: 1
-      role: 1
-    queryParameters: []
-    cleanQueryParameters: []
-    bodyParameters: []
-    cleanBodyParameters: []
-    fileParameters: []
-    responses:
-      -
-        custom: []
-        status: 200
-        content: '{"data":{"id":14,"name":"role_wp680","guard_name":"web","department_id":28,"department":{"id":28,"name":"Dare Group"},"permissions":["departments.index.7602"],"created_at":"02:34:49 25\/03\/2026","updated_at":"02:34:49 25\/03\/2026"},"success":"true"}'
-        headers: []
-        description: ''
-    responseFields: []
-    auth:
-      - headers
-      - Authorization
-      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
-    controller: null
-    method: null
-    route: null
-  -
-    custom: []
-    httpMethods:
-      - POST
-    uri: api/roles
-    metadata:
-      custom: []
-      groupName: 'Core - Role'
-      groupDescription: ''
-      subgroup: ''
-      subgroupDescription: ''
-      title: 'Tạo role mới'
-      description: ''
-      authenticated: true
-      deprecated: false
-    headers:
-      Authorization: 'Bearer Bearer {YOUR_ACCESS_TOKEN}'
-      X-Department-Id: 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters: []
-    cleanUrlParameters: []
-    queryParameters: []
-    cleanQueryParameters: []
-    bodyParameters:
-      name:
-        custom: []
-        name: name
-        description: 'Tên role.'
-        required: true
-        example: admin
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        deprecated: false
-      guard_name:
-        custom: []
-        name: guard_name
-        description: 'Guard name (mặc định web).'
-        required: false
-        example: web
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: true
-        deprecated: false
-      permission_ids:
-        custom: []
-        name: permission_ids
-        description: 'Danh sách ID permission để sync.'
-        required: false
-        example:
-          - 1
-          - 2
-          - 3
-        type: 'string[]'
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        deprecated: false
-    cleanBodyParameters:
-      name: admin
-      guard_name: web
-      permission_ids:
-        - 1
-        - 2
-        - 3
-    fileParameters: []
-    responses:
-      -
-        custom: []
-        status: 201
-        content: '{"data":{"id":15,"name":"role_zm806","guard_name":"web","department_id":null,"permissions":["documents.index.5606"],"created_at":"02:34:49 25\/03\/2026","updated_at":"02:34:49 25\/03\/2026"},"success":"true","message":"Vai tr\u00f2 \u0111\u00e3 \u0111\u01b0\u1ee3c t\u1ea1o th\u00e0nh c\u00f4ng!"}'
-        headers: []
-        description: ''
-    responseFields: []
-    auth:
-      - headers
-      - Authorization
-      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
-    controller: null
-    method: null
-    route: null
-  -
-    custom: []
-    httpMethods:
-      - PUT
-    uri: 'api/roles/{role_id}'
-    metadata:
-      custom: []
-      groupName: 'Core - Role'
-      groupDescription: ''
-      subgroup: ''
-      subgroupDescription: ''
-      title: 'Cập nhật role'
-      description: ''
-      authenticated: true
-      deprecated: false
-    headers:
-      Authorization: 'Bearer Bearer {YOUR_ACCESS_TOKEN}'
-      X-Department-Id: 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters:
-      role_id:
-        custom: []
-        name: role_id
-        description: 'The ID of the role.'
-        required: true
-        example: 1
-        type: integer
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        deprecated: false
-      role:
-        custom: []
-        name: role
-        description: 'ID role.'
-        required: true
-        example: 1
-        type: integer
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        deprecated: false
-    cleanUrlParameters:
-      role_id: 1
-      role: 1
-    queryParameters: []
-    cleanQueryParameters: []
-    bodyParameters:
-      name:
-        custom: []
-        name: name
-        description: 'Tên role.'
-        required: false
-        example: editor
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        deprecated: false
-      guard_name:
-        custom: []
-        name: guard_name
-        description: 'Guard name.'
-        required: false
-        example: web
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: true
-        deprecated: false
-      permission_ids:
-        custom: []
-        name: permission_ids
-        description: 'Danh sách ID permission để sync (gửi mảng rỗng để bỏ hết).'
-        required: false
-        example:
-          - 1
-          - 2
-        type: 'string[]'
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        deprecated: false
-    cleanBodyParameters:
-      name: editor
-      guard_name: web
-      permission_ids:
-        - 1
-        - 2
-    fileParameters: []
-    responses:
-      -
-        custom: []
-        status: 200
-        content: '{"data":{"id":16,"name":"role_yv564","guard_name":"web","department_id":null,"permissions":["users.update.3433"],"created_at":"02:34:49 25\/03\/2026","updated_at":"02:34:49 25\/03\/2026"},"success":"true","message":"Vai tr\u00f2 \u0111\u00e3 \u0111\u01b0\u1ee3c c\u1eadp nh\u1eadt!"}'
+        content: '{"data":[{"id":1,"schedule_id":1,"channel":"website","status":"pending","remind_at":"12:00:00 15\/03\/2026","sent_at":null,"read_at":null,"is_read":false,"created_at":"02:14:46 25\/03\/2026"},{"id":1,"schedule_id":1,"channel":"website","status":"pending","remind_at":"12:00:00 15\/03\/2026","sent_at":null,"read_at":null,"is_read":false,"created_at":"02:14:46 25\/03\/2026"}],"links":{"first":"\/?page=1","last":"\/?page=1","prev":null,"next":null},"meta":{"current_page":1,"from":1,"last_page":1,"links":[{"url":null,"label":"&laquo; Previous","page":null,"active":false},{"url":"\/?page=1","label":"1","page":1,"active":true},{"url":null,"label":"Next &raquo;","page":null,"active":false}],"path":"\/","per_page":20,"to":2,"total":2},"success":"true"}'
         headers: []
         description: ''
     responseFields: []
@@ -756,27 +101,27 @@ endpoints:
     custom: []
     httpMethods:
       - PATCH
-    uri: 'api/roles/{role_id}'
+    uri: 'api/schedule-notifications/{scheduleNotification_id}/read'
     metadata:
       custom: []
-      groupName: 'Core - Role'
+      groupName: 'Schedule - Thông báo'
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
-      title: 'Cập nhật role'
+      title: 'Đánh dấu đã đọc'
       description: ''
       authenticated: true
       deprecated: false
     headers:
       Authorization: 'Bearer Bearer {YOUR_ACCESS_TOKEN}'
-      X-Department-Id: 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
+      X-Department-Id: 'ID đơn vị cần làm việc. Example: 1'
       Content-Type: application/json
       Accept: application/json
     urlParameters:
-      role_id:
+      scheduleNotification_id:
         custom: []
-        name: role_id
-        description: 'The ID of the role.'
+        name: scheduleNotification_id
+        description: 'The ID of the scheduleNotification.'
         required: true
         example: 1
         type: integer
@@ -784,10 +129,10 @@ endpoints:
         exampleWasSpecified: false
         nullable: false
         deprecated: false
-      role:
+      scheduleNotification:
         custom: []
-        name: role
-        description: 'ID role.'
+        name: scheduleNotification
+        description: 'ID thông báo.'
         required: true
         example: 1
         type: integer
@@ -796,58 +141,18 @@ endpoints:
         nullable: false
         deprecated: false
     cleanUrlParameters:
-      role_id: 1
-      role: 1
+      scheduleNotification_id: 1
+      scheduleNotification: 1
     queryParameters: []
     cleanQueryParameters: []
-    bodyParameters:
-      name:
-        custom: []
-        name: name
-        description: 'Tên role.'
-        required: false
-        example: editor
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        deprecated: false
-      guard_name:
-        custom: []
-        name: guard_name
-        description: 'Guard name.'
-        required: false
-        example: web
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: true
-        deprecated: false
-      permission_ids:
-        custom: []
-        name: permission_ids
-        description: 'Danh sách ID permission để sync (gửi mảng rỗng để bỏ hết).'
-        required: false
-        example:
-          - 1
-          - 2
-        type: 'string[]'
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        deprecated: false
-    cleanBodyParameters:
-      name: editor
-      guard_name: web
-      permission_ids:
-        - 1
-        - 2
+    bodyParameters: []
+    cleanBodyParameters: []
     fileParameters: []
     responses:
       -
         custom: []
         status: 200
-        content: '{"data":{"id":17,"name":"role_lj575","guard_name":"web","department_id":null,"permissions":["roles.destroy.6854"],"created_at":"02:34:49 25\/03\/2026","updated_at":"02:34:49 25\/03\/2026"},"success":"true","message":"Vai tr\u00f2 \u0111\u00e3 \u0111\u01b0\u1ee3c c\u1eadp nh\u1eadt!"}'
+        content: '{"success": true, "message": "Đã đánh dấu đã đọc."}'
         headers: []
         description: ''
     responseFields: []
@@ -861,49 +166,25 @@ endpoints:
   -
     custom: []
     httpMethods:
-      - DELETE
-    uri: 'api/roles/{role_id}'
+      - PATCH
+    uri: api/schedule-notifications/read-all
     metadata:
       custom: []
-      groupName: 'Core - Role'
+      groupName: 'Schedule - Thông báo'
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
-      title: 'Xóa role'
-      description: ''
+      title: 'Đánh dấu tất cả đã đọc'
+      description: 'Đánh dấu tất cả thông báo chưa đọc của user hiện tại là đã đọc.'
       authenticated: true
       deprecated: false
     headers:
       Authorization: 'Bearer Bearer {YOUR_ACCESS_TOKEN}'
-      X-Department-Id: 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
+      X-Department-Id: 'ID đơn vị cần làm việc. Example: 1'
       Content-Type: application/json
       Accept: application/json
-    urlParameters:
-      role_id:
-        custom: []
-        name: role_id
-        description: 'The ID of the role.'
-        required: true
-        example: 1
-        type: integer
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        deprecated: false
-      role:
-        custom: []
-        name: role
-        description: 'ID role.'
-        required: true
-        example: 1
-        type: integer
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        deprecated: false
-    cleanUrlParameters:
-      role_id: 1
-      role: 1
+    urlParameters: []
+    cleanUrlParameters: []
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -913,7 +194,7 @@ endpoints:
       -
         custom: []
         status: 200
-        content: '{"success": true, "message": "Vai trò đã được xóa!"}'
+        content: '{"success": true, "message": "Đã đánh dấu tất cả đã đọc."}'
         headers: []
         description: ''
     responseFields: []

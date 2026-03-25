@@ -8,32 +8,6 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('schedule_meeting_types', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->text('description')->nullable();
-            $table->string('status')->default('active');
-            $table->unsignedBigInteger('created_by')->nullable();
-            $table->unsignedBigInteger('updated_by')->nullable();
-            $table->timestamps();
-
-            $table->foreign('created_by')->references('id')->on('users')->nullOnDelete();
-            $table->foreign('updated_by')->references('id')->on('users')->nullOnDelete();
-        });
-
-        Schema::create('schedule_natures', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->text('description')->nullable();
-            $table->string('status')->default('active');
-            $table->unsignedBigInteger('created_by')->nullable();
-            $table->unsignedBigInteger('updated_by')->nullable();
-            $table->timestamps();
-
-            $table->foreign('created_by')->references('id')->on('users')->nullOnDelete();
-            $table->foreign('updated_by')->references('id')->on('users')->nullOnDelete();
-        });
-
         Schema::create('schedules', function (Blueprint $table) {
             $table->id();
             $table->date('event_date');
@@ -44,8 +18,8 @@ return new class extends Migration
             $table->string('location')->nullable();
             $table->string('prep_unit')->nullable();
             $table->string('driver_info')->nullable();
-            $table->foreignId('meeting_type_id')->nullable()->constrained('schedule_meeting_types')->nullOnDelete();
-            $table->foreignId('nature_id')->nullable()->constrained('schedule_natures')->nullOnDelete();
+            $table->string('meeting_type', 50)->nullable();
+            $table->string('nature', 50)->nullable();
             $table->string('color_code', 20)->nullable();
             $table->unsignedInteger('sort_order')->default(0);
             $table->foreignId('department_id')->nullable()->constrained('departments')->nullOnDelete();
@@ -97,7 +71,5 @@ return new class extends Migration
         Schema::dropIfExists('schedule_notifications');
         Schema::dropIfExists('schedule_participants');
         Schema::dropIfExists('schedules');
-        Schema::dropIfExists('schedule_natures');
-        Schema::dropIfExists('schedule_meeting_types');
     }
 };

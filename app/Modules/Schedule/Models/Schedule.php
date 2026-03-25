@@ -4,6 +4,8 @@ namespace App\Modules\Schedule\Models;
 
 use App\Modules\Core\Models\Department;
 use App\Modules\Core\Models\User;
+use App\Modules\Schedule\Enums\MeetingTypeEnum;
+use App\Modules\Schedule\Enums\ScheduleNatureEnum;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\MediaLibrary\HasMedia;
@@ -32,8 +34,8 @@ class Schedule extends Model implements HasMedia
         'prep_unit',
         'driver_info',
 
-        'meeting_type_id',
-        'nature_id',
+        'meeting_type',
+        'nature',
         'color_code',
         'sort_order',
         'department_id',
@@ -44,7 +46,8 @@ class Schedule extends Model implements HasMedia
 
     protected $casts = [
         'event_date' => 'date',
-
+        'meeting_type' => MeetingTypeEnum::class,
+        'nature' => ScheduleNatureEnum::class,
         'sort_order' => 'integer',
     ];
 
@@ -82,16 +85,6 @@ class Schedule extends Model implements HasMedia
         return $this->belongsTo(User::class, 'updated_by');
     }
 
-    public function meetingType()
-    {
-        return $this->belongsTo(ScheduleMeetingType::class, 'meeting_type_id');
-    }
-
-    public function nature()
-    {
-        return $this->belongsTo(ScheduleNature::class, 'nature_id');
-    }
-
     public function participants()
     {
         return $this->hasMany(ScheduleParticipant::class);
@@ -125,8 +118,8 @@ class Schedule extends Model implements HasMedia
             ->when($filters['session'] ?? null, fn ($q, $session) => $q->where('schedules.session', $session))
             ->when($filters['department_id'] ?? null, fn ($q, $orgId) => $q->where('schedules.department_id', $orgId))
             ->when($filters['chairperson_id'] ?? null, fn ($q, $id) => $q->where('schedules.chairperson_id', $id))
-            ->when($filters['meeting_type_id'] ?? null, fn ($q, $id) => $q->where('schedules.meeting_type_id', $id))
-            ->when($filters['nature_id'] ?? null, fn ($q, $id) => $q->where('schedules.nature_id', $id))
+            ->when($filters['meeting_type'] ?? null, fn ($q, $val) => $q->where('schedules.meeting_type', $val))
+            ->when($filters['nature'] ?? null, fn ($q, $val) => $q->where('schedules.nature', $val))
             ->when($filters['position'] ?? null, function ($q, $position) {
                 $q->whereHas('chairperson', fn ($sub) => $sub->where('users.position', 'like', '%'.$position.'%'));
             })

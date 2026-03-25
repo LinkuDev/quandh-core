@@ -193,8 +193,6 @@ class LogActivity
             ?? $params['role']
             ?? $params['logActivity']
             ?? $params['schedule']
-            ?? $params['scheduleMeetingType']
-            ?? $params['scheduleNature']
             ?? $params['scheduleNotification']
             ?? $params['id']
             ?? null;
@@ -215,8 +213,6 @@ class LogActivity
             'log-activities' => 'nhật ký truy cập',
             'settings' => 'cấu hình hệ thống',
             'schedules' => 'lịch công tác',
-            'schedule-meeting-types' => 'loại cuộc họp',
-            'schedule-natures' => 'tính chất',
             'schedule-notifications' => 'thông báo lịch',
         ];
 

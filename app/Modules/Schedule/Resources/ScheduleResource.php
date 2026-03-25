@@ -32,14 +32,10 @@ class ScheduleResource extends JsonResource
                 'name' => $this->chairperson->name,
                 'position' => $this->chairperson->position,
             ] : null),
-            'meeting_type' => $this->whenLoaded('meetingType', fn () => $this->meetingType ? [
-                'id' => $this->meetingType->id,
-                'name' => $this->meetingType->name,
-            ] : null),
-            'nature' => $this->whenLoaded('nature', fn () => $this->nature ? [
-                'id' => $this->nature->id,
-                'name' => $this->nature->name,
-            ] : null),
+            'meeting_type' => $this->meeting_type?->value,
+            'meeting_type_label' => $this->meeting_type?->label(),
+            'nature' => $this->nature?->value,
+            'nature_label' => $this->nature?->label(),
             'participants' => $this->whenLoaded('participants', fn () => $this->participants->map(fn ($p) => [
                 'id' => $p->id,
                 'user_id' => $p->user_id,

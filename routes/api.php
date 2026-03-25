@@ -13,8 +13,6 @@ Route::get('/settings/public', [\App\Modules\Core\SettingController::class, 'pub
 Route::get('/departments/public', [\App\Modules\Core\DepartmentController::class, 'public'])->middleware('log.activity');
 Route::get('/departments/public-options', [\App\Modules\Core\DepartmentController::class, 'publicOptions'])->middleware('log.activity');
 Route::get('/schedules/public', [\App\Modules\Schedule\ScheduleController::class, 'publicIndex'])->middleware('log.activity');
-Route::get('/schedule-meeting-types/public-options', [\App\Modules\Schedule\ScheduleMeetingTypeController::class, 'publicOptions'])->middleware('log.activity');
-Route::get('/schedule-natures/public-options', [\App\Modules\Schedule\ScheduleNatureController::class, 'publicOptions'])->middleware('log.activity');
 
 // Route yêu cầu đăng nhập (Bearer token) và đặt ngữ cảnh team cho Spatie Permission
 Route::middleware(['auth:sanctum', 'set.permissions.team', 'log.activity'])->group(function () {
@@ -40,12 +38,6 @@ Route::middleware(['auth:sanctum', 'set.permissions.team', 'log.activity'])->gro
     });
     Route::prefix('schedules')->group(function () {
         require base_path('app/Modules/Schedule/Routes/schedule.php');
-    });
-    Route::prefix('schedule-meeting-types')->group(function () {
-        require base_path('app/Modules/Schedule/Routes/schedule_meeting_type.php');
-    });
-    Route::prefix('schedule-natures')->group(function () {
-        require base_path('app/Modules/Schedule/Routes/schedule_nature.php');
     });
     Route::prefix('schedule-notifications')->group(function () {
         require base_path('app/Modules/Schedule/Routes/schedule_notification.php');

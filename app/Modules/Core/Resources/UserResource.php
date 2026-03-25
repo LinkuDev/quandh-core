@@ -17,12 +17,15 @@ class UserResource extends JsonResource
             'name' => $this->name,
             'email' => $this->email,
             'user_name' => $this->user_name,
+            'position' => $this->position,
+            'phone' => $this->phone,
+            'zalo_id' => $this->zalo_id,
             'status' => $this->status,
             'created_by' => $this->creator?->name ?? 'N/A',
             'updated_by' => $this->editor?->name ?? 'N/A',
             'assignments' => $this->roleAssignments(),
-            'created_at' => $this->created_at?->format('d/m/Y H:i:s'),
-            'updated_at' => $this->updated_at?->format('d/m/Y H:i:s'),
+            'created_at' => $this->created_at?->format('H:i:s d/m/Y'),
+            'updated_at' => $this->updated_at?->format('H:i:s d/m/Y'),
         ];
     }
 

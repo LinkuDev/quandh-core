@@ -77,8 +77,8 @@ class ScheduleController extends Controller
      * @queryParam session string Buổi: sang, chieu, toi.
      * @queryParam department_id integer ID đơn vị.
      * @queryParam chairperson_id integer Lọc theo chủ trì.
-     * @queryParam meeting_type_id integer Lọc theo loại cuộc họp.
-     * @queryParam nature_id integer Lọc theo tính chất.
+     * @queryParam meeting_type string Lọc theo loại cuộc họp: hop_thuong_ky, hop_dot_xuat, hop_chuyen_de, hoi_nghi, tiep_khach, di_cong_tac, khac.
+     * @queryParam nature string Lọc theo tính chất: thuong, quan_trong, mat.
      * @queryParam position string Lọc theo chức danh chủ trì.
      * @queryParam participant_user_id integer Lọc theo thành phần tham dự.
      * @queryParam sort_by string Sắp xếp theo: id, event_date, start_time, sort_order, created_at, updated_at. Example: sort_order
@@ -129,8 +129,8 @@ class ScheduleController extends Controller
      * @bodyParam prep_unit string Đơn vị chuẩn bị. Example: Văn phòng
      * @bodyParam driver_info string Thông tin lái xe. Example: Nguyễn Văn A
 
-     * @bodyParam meeting_type_id integer ID loại cuộc họp. Example: 1
-     * @bodyParam nature_id integer ID tính chất. Example: 1
+     * @bodyParam meeting_type string Loại cuộc họp: hop_thuong_ky, hop_dot_xuat, hop_chuyen_de, hoi_nghi, tiep_khach, di_cong_tac, khac. Example: hop_thuong_ky
+     * @bodyParam nature string Tính chất: thuong, quan_trong, mat. Example: thuong
      * @bodyParam color_code string Mã màu. Example: #FF5733
      * @bodyParam participants array Danh sách thành phần tham dự.
      * @bodyParam participants.*.user_id integer ID user tham dự.
@@ -172,8 +172,8 @@ class ScheduleController extends Controller
      * @bodyParam prep_unit string Đơn vị chuẩn bị.
      * @bodyParam driver_info string Thông tin lái xe.
 
-     * @bodyParam meeting_type_id integer ID loại cuộc họp.
-     * @bodyParam nature_id integer ID tính chất.
+     * @bodyParam meeting_type string Loại cuộc họp: hop_thuong_ky, hop_dot_xuat, hop_chuyen_de, hoi_nghi, tiep_khach, di_cong_tac, khac.
+     * @bodyParam nature string Tính chất: thuong, quan_trong, mat.
      * @bodyParam color_code string Mã màu.
      * @bodyParam participants array Danh sách thành phần tham dự (ghi đè toàn bộ).
      * @bodyParam notifications array Danh sách thông báo (ghi đè toàn bộ).

@@ -2,7 +2,9 @@
 
 namespace App\Modules\Schedule\Requests;
 
+use App\Modules\Schedule\Enums\MeetingTypeEnum;
 use App\Modules\Schedule\Enums\NotificationChannelEnum;
+use App\Modules\Schedule\Enums\ScheduleNatureEnum;
 use App\Modules\Schedule\Enums\ScheduleSessionEnum;
 use App\Modules\Schedule\Enums\ScheduleStatusEnum;
 use Illuminate\Foundation\Http\FormRequest;
@@ -27,8 +29,8 @@ class StoreScheduleRequest extends FormRequest
             'prep_unit' => 'nullable|string|max:255',
             'driver_info' => 'nullable|string|max:255',
 
-            'meeting_type_id' => 'nullable|integer|exists:schedule_meeting_types,id',
-            'nature_id' => 'nullable|integer|exists:schedule_natures,id',
+            'meeting_type' => ['nullable', MeetingTypeEnum::rule()],
+            'nature' => ['nullable', ScheduleNatureEnum::rule()],
             'color_code' => 'nullable|string|max:20',
             'status' => ['nullable', ScheduleStatusEnum::rule()],
             'participants' => 'nullable|array',
@@ -53,8 +55,8 @@ class StoreScheduleRequest extends FormRequest
             'department_id.exists' => 'Tổ chức không tồn tại.',
             'start_time.date_format' => 'Thời gian bắt đầu phải theo định dạng HH:mm.',
             'chairperson_id.exists' => 'Chủ trì không tồn tại trong hệ thống.',
-            'meeting_type_id.exists' => 'Loại cuộc họp không tồn tại.',
-            'nature_id.exists' => 'Tính chất không tồn tại.',
+            'meeting_type.in' => 'Loại cuộc họp không hợp lệ.',
+            'nature.in' => 'Tính chất không hợp lệ.',
             'participants.*.user_id.exists' => 'Thành phần tham dự không tồn tại trong hệ thống.',
             'notification.channel.required_with' => 'Kênh thông báo không được để trống.',
             'notification.remind_at.required_with' => 'Thời gian nhắc không được để trống.',
@@ -74,8 +76,8 @@ class StoreScheduleRequest extends FormRequest
             'prep_unit' => ['description' => 'Đơn vị chuẩn bị', 'example' => 'Văn phòng'],
             'driver_info' => ['description' => 'Thông tin lái xe', 'example' => 'Nguyễn Văn A - 30A-12345'],
 
-            'meeting_type_id' => ['description' => 'ID loại cuộc họp', 'example' => 1],
-            'nature_id' => ['description' => 'ID tính chất', 'example' => 1],
+            'meeting_type' => ['description' => 'Loại cuộc họp: hop_thuong_ky, hop_dot_xuat, hop_chuyen_de, hoi_nghi, tiep_khach, di_cong_tac, khac', 'example' => 'hop_thuong_ky'],
+            'nature' => ['description' => 'Tính chất: thuong, quan_trong, mat', 'example' => 'thuong'],
             'color_code' => ['description' => 'Mã màu hiển thị', 'example' => '#FF5733'],
         ];
     }

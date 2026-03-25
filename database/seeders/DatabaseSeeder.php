@@ -4,9 +4,9 @@ namespace Database\Seeders;
 
 use App\Modules\Core\Models\Department;
 use App\Modules\Core\Models\User;
+use App\Modules\Schedule\Enums\MeetingTypeEnum;
+use App\Modules\Schedule\Enums\ScheduleNatureEnum;
 use App\Modules\Schedule\Models\Schedule;
-use App\Modules\Schedule\Models\ScheduleMeetingType;
-use App\Modules\Schedule\Models\ScheduleNature;
 use App\Modules\Schedule\Models\ScheduleParticipant;
 use App\Modules\Schedule\Models\ScheduleNotification;
 use Illuminate\Database\Seeder;
@@ -56,26 +56,8 @@ class DatabaseSeeder extends Seeder
             return;
         }
 
-        /* Danh mục loại cuộc họp */
-        $meetingTypes = collect([
-            'Họp thường kỳ', 'Họp đột xuất', 'Họp chuyên đề',
-            'Hội nghị', 'Tiếp công dân', 'Làm việc với đoàn',
-        ])->map(fn ($name) => ScheduleMeetingType::create([
-            'name' => $name,
-            'status' => 'active',
-            'created_by' => 1,
-            'updated_by' => 1,
-        ]));
-
-        /* Danh mục tính chất */
-        $natures = collect([
-            'Thường', 'Quan trọng', 'Mật', 'Tối mật',
-        ])->map(fn ($name) => ScheduleNature::create([
-            'name' => $name,
-            'status' => 'active',
-            'created_by' => 1,
-            'updated_by' => 1,
-        ]));
+        $meetingTypes = MeetingTypeEnum::values();
+        $natures = ScheduleNatureEnum::values();
 
         /* Tạo lịch công tác mẫu */
         $sessions = ['sang', 'chieu', 'toi'];
@@ -134,8 +116,8 @@ class DatabaseSeeder extends Seeder
                         'location' => fake()->randomElement($locations),
                         'prep_unit' => fake()->randomElement(['Văn phòng', 'Ban Tổ chức', 'Ban Tuyên giáo', 'Ủy ban Kiểm tra']),
                         'driver_info' => fake()->optional(0.7)->name(),
-                        'meeting_type_id' => $meetingTypes->random()->id,
-                        'nature_id' => $natures->random()->id,
+                        'meeting_type' => fake()->randomElement($meetingTypes),
+                        'nature' => fake()->randomElement($natures),
                         'color_code' => fake()->optional(0.5)->hexColor(),
                         'sort_order' => $sortOrder[$scopeKey],
                         'department_id' => $org->id,
