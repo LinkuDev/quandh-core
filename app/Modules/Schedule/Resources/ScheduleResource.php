@@ -27,6 +27,7 @@ class ScheduleResource extends JsonResource
                 'name' => $this->department->name,
             ] : null),
             'status' => $this->status,
+            'chairperson_id' => $this->chairperson_id,
             'chairperson' => $this->whenLoaded('chairperson', fn () => $this->chairperson ? [
                 'id' => $this->chairperson->id,
                 'name' => $this->chairperson->name,
