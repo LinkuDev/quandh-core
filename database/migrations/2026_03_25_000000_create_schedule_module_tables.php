@@ -48,7 +48,7 @@ return new class extends Migration
             $table->foreignId('nature_id')->nullable()->constrained('schedule_natures')->nullOnDelete();
             $table->string('color_code', 20)->nullable();
             $table->unsignedInteger('sort_order')->default(0);
-            $table->foreignId('organization_id')->nullable()->constrained('organizations')->nullOnDelete();
+            $table->foreignId('department_id')->nullable()->constrained('departments')->nullOnDelete();
             $table->string('status')->default('active');
             $table->unsignedBigInteger('created_by')->nullable();
             $table->unsignedBigInteger('updated_by')->nullable();
@@ -57,8 +57,8 @@ return new class extends Migration
             $table->foreign('created_by')->references('id')->on('users')->nullOnDelete();
             $table->foreign('updated_by')->references('id')->on('users')->nullOnDelete();
 
-            $table->index(['event_date', 'organization_id']);
-            $table->index(['event_date', 'session', 'organization_id']);
+            $table->index(['event_date', 'department_id']);
+            $table->index(['event_date', 'session', 'department_id']);
             $table->fullText('content');
         });
 

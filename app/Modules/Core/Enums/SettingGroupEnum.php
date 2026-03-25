@@ -36,7 +36,7 @@ enum SettingGroupEnum: string
         return match ($this) {
             self::General => 'Thông tin chung',
             self::AdminPage => 'Trang quản trị',
-            self::OrgSelectPage => 'Trang chọn tổ chức',
+            self::OrgSelectPage => 'Trang chọn đơn vị',
             self::Social => 'Mạng xã hội',
             self::Api => 'Kết nối API',
             self::Email => 'Cấu hình Email',

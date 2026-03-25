@@ -6,7 +6,7 @@ use App\Modules\Core\Enums\StatusEnum;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
-class UpdateOrganizationRequest extends FormRequest
+class UpdateDepartmentRequest extends FormRequest
 {
     public function authorize(): bool
     {
@@ -15,18 +15,18 @@ class UpdateOrganizationRequest extends FormRequest
 
     public function rules(): array
     {
-        $organization = $this->route('organization');
-        $organizationId = is_object($organization) ? $organization->id : $organization;
+        $department = $this->route('department');
+        $departmentId = is_object($department) ? $department->id : $department;
 
         return [
             'name' => 'sometimes|string|max:255',
-            'slug' => ['nullable', 'string', 'max:255', Rule::unique('organizations', 'slug')->ignore($organizationId)],
+            'slug' => ['nullable', 'string', 'max:255', Rule::unique('departments', 'slug')->ignore($departmentId)],
             'description' => 'nullable|string',
             'status' => ['nullable', StatusEnum::rule()],
             'parent_id' => [
                 'nullable',
-                Rule::notIn([$organizationId]),
-                Rule::when($this->filled('parent_id') && (int) $this->input('parent_id') !== 0, ['exists:organizations,id']),
+                Rule::notIn([$departmentId]),
+                Rule::when($this->filled('parent_id') && (int) $this->input('parent_id') !== 0, ['exists:departments,id']),
             ],
             'sort_order' => 'nullable|integer|min:0',
         ];

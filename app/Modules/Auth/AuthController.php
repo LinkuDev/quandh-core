@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Modules\Auth\Requests\ForgotPasswordRequest;
 use App\Modules\Auth\Requests\LoginRequest;
 use App\Modules\Auth\Requests\ResetPasswordRequest;
-use App\Modules\Auth\Requests\SwitchOrganizationRequest;
+use App\Modules\Auth\Requests\SwitchDepartmentRequest;
 use App\Modules\Auth\Services\AuthService;
 use App\Modules\Auth\Services\CaslAbilityConverter;
 use App\Modules\Core\Resources\UserResource;
@@ -24,14 +24,14 @@ class AuthController extends Controller
     /**
      * Đăng nhập
      *
-     * Trả về access_token, thông tin user và danh sách organization user có thể truy cập.
+     * Trả về access_token, thông tin user và danh sách department user có thể truy cập.
      *
      * @unauthenticated
      *
      * @bodyParam email string required Email hoặc tên đăng nhập (user_name). Example: admin@example.com
      * @bodyParam password string required Mật khẩu. Example: password
      *
-     * @response 200 {"success": true, "message": "Đăng nhập thành công.", "data": {"access_token": "1|xxx...", "token_type": "Bearer", "user": {"id": 1, "name": "Admin"}, "available_organizations": [{"id": 2, "name": "Sở Nội vụ"}], "current_organization_id": 2, "roles": ["admin"], "permissions": ["users.index", "users.store"], "abilities": [{"action": "index", "subject": "User"}, {"action": "store", "subject": "User"}]}}
+     * @response 200 {"success": true, "message": "Đăng nhập thành công.", "data": {"access_token": "1|xxx...", "token_type": "Bearer", "user": {"id": 1, "name": "Admin"}, "available_departments": [{"id": 2, "name": "Sở Nội vụ"}], "current_department_id": 2, "roles": ["admin"], "permissions": ["users.index", "users.store"], "abilities": [{"action": "index", "subject": "User"}, {"action": "store", "subject": "User"}]}}
      */
     public function login(LoginRequest $request)
     {
@@ -49,9 +49,9 @@ class AuthController extends Controller
     }
 
     /**
-     * Lấy thông tin user đăng nhập hiện tại kèm roles và permissions của tổ chức đang chọn.
+     * Lấy thông tin user đăng nhập hiện tại kèm roles và permissions của đơn vị đang chọn.
      *
-     * Dùng để Vue Casl khởi tạo ability khi refresh trang. Cần header X-Organization-Id (middleware set.permissions.team đã đặt ngữ cảnh).
+     * Dùng để Vue Casl khởi tạo ability khi refresh trang. Cần header X-Department-Id (middleware set.permissions.team đã đặt ngữ cảnh).
      *
      * @response 200 {"success": true, "data": {"user": {"id": 1, "name": "Admin"}, "roles": ["admin"], "permissions": ["users.index", "users.store"], "abilities": [{"action": "index", "subject": "User"}, {"action": "store", "subject": "User"}]}}
      */
@@ -84,23 +84,23 @@ class AuthController extends Controller
     }
 
     /**
-     * Chuyển tổ chức làm việc
+     * Chuyển đơn vị làm việc
      *
-     * Chọn organization để frontend gắn vào header `X-Organization-Id` cho các request tiếp theo.
+     * Chọn department để frontend gắn vào header `X-Department-Id` cho các request tiếp theo.
      *
-     * @bodyParam organization_id integer required ID tổ chức muốn chuyển. Example: 2
+     * @bodyParam department_id integer required ID đơn vị muốn chuyển. Example: 2
      *
-     * @response 200 {"success": true, "message": "Đã chuyển tổ chức làm việc.", "data": {"current_organization_id": 2, "current_organization": {"id": 2, "name": "Sở Nội vụ"}, "roles": ["admin"], "permissions": ["users.index", "users.store"], "abilities": [{"action": "index", "subject": "User"}, {"action": "store", "subject": "User"}]}}
+     * @response 200 {"success": true, "message": "Đã chuyển đơn vị làm việc.", "data": {"current_department_id": 2, "current_department": {"id": 2, "name": "Sở Nội vụ"}, "roles": ["admin"], "permissions": ["users.index", "users.store"], "abilities": [{"action": "index", "subject": "User"}, {"action": "store", "subject": "User"}]}}
      */
-    public function switchOrganization(SwitchOrganizationRequest $request)
+    public function switchDepartment(SwitchDepartmentRequest $request)
     {
-        $result = $this->authService->switchOrganization($request->user(), (int) $request->organization_id);
+        $result = $this->authService->switchDepartment($request->user(), (int) $request->department_id);
 
         if (! $result['ok']) {
             return $this->forbidden($result['message']);
         }
 
-        return $this->success($result['data'], 'Đã chuyển tổ chức làm việc.');
+        return $this->success($result['data'], 'Đã chuyển đơn vị làm việc.');
     }
 
     /**

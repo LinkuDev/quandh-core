@@ -5,7 +5,7 @@ namespace App\Modules\Core\Requests;
 use App\Modules\Core\Enums\StatusEnum;
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreOrganizationRequest extends FormRequest
+class StoreDepartmentRequest extends FormRequest
 {
     public function authorize(): bool
     {
@@ -16,10 +16,10 @@ class StoreOrganizationRequest extends FormRequest
     {
         return [
             'name' => 'required|string|max:255',
-            'slug' => 'nullable|string|max:255|unique:organizations,slug',
+            'slug' => 'nullable|string|max:255|unique:departments,slug',
             'description' => 'nullable|string',
             'status' => ['required', StatusEnum::rule()],
-            'parent_id' => 'nullable|exists:organizations,id',
+            'parent_id' => 'nullable|exists:departments,id',
             'sort_order' => 'nullable|integer|min:0',
         ];
     }
@@ -27,8 +27,8 @@ class StoreOrganizationRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'name.required' => 'Tên organization không được để trống.',
-            'slug.unique' => 'Slug organization đã tồn tại.',
+            'name.required' => 'Tên department không được để trống.',
+            'slug.unique' => 'Slug department đã tồn tại.',
             'status.in' => 'Trạng thái chỉ chấp nhận active, inactive.',
         ];
     }

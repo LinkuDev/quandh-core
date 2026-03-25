@@ -18,7 +18,7 @@ use App\Modules\Schedule\Services\ScheduleService;
 
 /**
  * @group Schedule - Lịch công tác
- * @header X-Organization-Id ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1
+ * @header X-Department-Id ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1
  *
  * Quản lý lịch công tác Thường trực Thành ủy và Văn phòng Thành ủy: thống kê, danh sách, chi tiết, tạo, cập nhật, xóa, thao tác hàng loạt, sắp xếp thứ tự, xuất Excel/PDF, nhập Excel.
  */
@@ -35,7 +35,7 @@ class ScheduleController extends Controller
      *
      * @queryParam from_date date Lọc từ ngày (Y-m-d). Example: 2026-04-01
      * @queryParam to_date date Lọc đến ngày (Y-m-d). Example: 2026-04-30
-     * @queryParam organization_id integer ID tổ chức.
+     * @queryParam department_id integer ID đơn vị.
      * @queryParam session string Buổi: sang, chieu, toi.
      * @queryParam limit integer Số bản ghi mỗi trang (1-100). Example: 20
      */
@@ -53,7 +53,7 @@ class ScheduleController extends Controller
      *
      * @queryParam search string Từ khóa tìm kiếm theo nội dung.
      * @queryParam status string Trạng thái: active, inactive.
-     * @queryParam organization_id integer ID tổ chức.
+     * @queryParam department_id integer ID đơn vị.
      * @queryParam from_date date Lọc từ ngày (Y-m-d). Example: 2026-04-01
      * @queryParam to_date date Lọc đến ngày (Y-m-d). Example: 2026-04-30
      *
@@ -75,7 +75,7 @@ class ScheduleController extends Controller
      * @queryParam from_date date Lọc từ ngày (Y-m-d).
      * @queryParam to_date date Lọc đến ngày (Y-m-d).
      * @queryParam session string Buổi: sang, chieu, toi.
-     * @queryParam organization_id integer ID tổ chức.
+     * @queryParam department_id integer ID đơn vị.
      * @queryParam chairperson_id integer Lọc theo chủ trì.
      * @queryParam meeting_type_id integer Lọc theo loại cuộc họp.
      * @queryParam nature_id integer Lọc theo tính chất.
@@ -122,7 +122,7 @@ class ScheduleController extends Controller
      * @bodyParam content string required Nội dung lịch. Example: Họp Ban Thường vụ
      * @bodyParam event_date date required Ngày diễn ra (Y-m-d). Example: 2026-04-01
      * @bodyParam session string required Buổi: sang, chieu, toi. Example: sang
-     * @bodyParam organization_id integer required ID tổ chức. Example: 1
+     * @bodyParam department_id integer required ID đơn vị. Example: 1
      * @bodyParam start_time string Giờ bắt đầu (HH:mm). Example: 08:00
      * @bodyParam chairperson_id integer ID người chủ trì. Example: 1
      * @bodyParam location string Địa điểm. Example: Phòng họp A
@@ -165,7 +165,7 @@ class ScheduleController extends Controller
      * @bodyParam content string Nội dung lịch.
      * @bodyParam event_date date Ngày diễn ra (Y-m-d).
      * @bodyParam session string Buổi: sang, chieu, toi.
-     * @bodyParam organization_id integer ID tổ chức.
+     * @bodyParam department_id integer ID đơn vị.
      * @bodyParam start_time string Giờ bắt đầu (HH:mm).
      * @bodyParam chairperson_id integer ID người chủ trì.
      * @bodyParam location string Địa điểm.
@@ -265,7 +265,7 @@ class ScheduleController extends Controller
      *
      * @queryParam search string Tìm kiếm theo nội dung.
      * @queryParam status string Trạng thái: active, inactive.
-     * @queryParam organization_id integer ID tổ chức.
+     * @queryParam department_id integer ID đơn vị.
      * @queryParam from_date date Lọc từ ngày (Y-m-d).
      * @queryParam to_date date Lọc đến ngày (Y-m-d).
      */
@@ -295,7 +295,7 @@ class ScheduleController extends Controller
      *
      * Xuất lịch công tác ra file PDF theo bộ lọc.
      *
-     * @queryParam organization_id integer ID tổ chức.
+     * @queryParam department_id integer ID đơn vị.
      * @queryParam from_date date Lọc từ ngày (Y-m-d).
      * @queryParam to_date date Lọc đến ngày (Y-m-d).
      * @queryParam session string Buổi: sang, chieu, toi.

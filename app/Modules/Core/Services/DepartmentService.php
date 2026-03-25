@@ -3,14 +3,14 @@
 namespace App\Modules\Core\Services;
 
 use App\Modules\Core\Enums\StatusEnum;
-use App\Modules\Core\Exports\OrganizationsExport;
-use App\Modules\Core\Imports\OrganizationsImport;
-use App\Modules\Core\Models\Organization;
+use App\Modules\Core\Exports\DepartmentsExport;
+use App\Modules\Core\Imports\DepartmentsImport;
+use App\Modules\Core\Models\Department;
 use Illuminate\Support\Collection;
 use Maatwebsite\Excel\Facades\Excel;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
 
-class OrganizationService
+class DepartmentService
 {
     public function publicList(array $filters = []): Collection
     {
@@ -33,7 +33,7 @@ class OrganizationService
             'sort_order' => 'asc',
         ];
 
-        return Organization::query()
+        return Department::query()
             ->select(['id', 'name', 'description'])
             ->filter($publicFilters)
             ->treeOrder()
@@ -42,7 +42,7 @@ class OrganizationService
 
     public function stats(array $filters): array
     {
-        $base = Organization::filter($filters);
+        $base = Department::filter($filters);
 
         return [
             'total' => (clone $base)->count(),
@@ -53,7 +53,7 @@ class OrganizationService
 
     public function index(array $filters, int $limit)
     {
-        return Organization::with(['creator', 'editor', 'parent'])
+        return Department::with(['creator', 'editor', 'parent'])
             ->filter($filters)
             ->treeOrder()
             ->paginate($limit);
@@ -61,30 +61,30 @@ class OrganizationService
 
     public function tree(?string $status)
     {
-        $query = Organization::query()
+        $query = Department::query()
             ->when($status, fn ($q, $value) => $q->where('status', $value));
         $items = $query->orderBy('sort_order')->orderBy('id')->get();
 
         return $this->buildTree($items);
     }
 
-    public function show(Organization $organization): Organization
+    public function show(Department $department): Department
     {
-        return $organization->load(['creator', 'editor', 'parent', 'children' => fn ($q) => $q->orderBy('sort_order')]);
+        return $department->load(['creator', 'editor', 'parent', 'children' => fn ($q) => $q->orderBy('sort_order')]);
     }
 
-    public function store(array $data): Organization
+    public function store(array $data): Department
     {
-        return Organization::create($data);
+        return Department::create($data);
     }
 
-    public function update(Organization $organization, array $data): array
+    public function update(Department $department, array $data): array
     {
         if (isset($data['parent_id']) && (int) $data['parent_id'] !== 0) {
-            if ($this->isDescendantOf((int) $data['parent_id'], $organization->id)) {
+            if ($this->isDescendantOf((int) $data['parent_id'], $department->id)) {
                 return [
                     'ok' => false,
-                    'message' => 'Không thể chọn organization con làm organization cha.',
+                    'message' => 'Không thể chọn department con làm department cha.',
                     'code' => 422,
                     'error_code' => 'CONFLICT',
                 ];
@@ -95,49 +95,49 @@ class OrganizationService
             $data['parent_id'] = null;
         }
 
-        $organization->update($data);
+        $department->update($data);
 
         return [
             'ok' => true,
-            'organization' => $organization->fresh(['parent', 'children']),
+            'department' => $department->fresh(['parent', 'children']),
         ];
     }
 
-    public function destroy(Organization $organization): void
+    public function destroy(Department $department): void
     {
-        $organization->delete();
+        $department->delete();
     }
 
     public function bulkDestroy(array $ids): void
     {
-        Organization::whereIn('id', $ids)->delete();
+        Department::whereIn('id', $ids)->delete();
     }
 
     public function bulkUpdateStatus(array $ids, string $status): void
     {
-        Organization::whereIn('id', $ids)->update(['status' => $status]);
+        Department::whereIn('id', $ids)->update(['status' => $status]);
     }
 
-    public function changeStatus(Organization $organization, string $status): Organization
+    public function changeStatus(Department $department, string $status): Department
     {
-        $organization->update(['status' => $status]);
+        $department->update(['status' => $status]);
 
-        return $organization->load(['parent', 'children']);
+        return $department->load(['parent', 'children']);
     }
 
     public function export(array $filters): BinaryFileResponse
     {
-        return Excel::download(new OrganizationsExport($filters), 'organizations.xlsx');
+        return Excel::download(new DepartmentsExport($filters), 'departments.xlsx');
     }
 
     public function import($file): void
     {
-        Excel::import(new OrganizationsImport, $file);
+        Excel::import(new DepartmentsImport, $file);
     }
 
     public function getFlatTreeOrdered(array $filters = []): Collection
     {
-        $all = Organization::with(['creator', 'editor'])->filter($filters)->get();
+        $all = Department::with(['creator', 'editor'])->filter($filters)->get();
         $tree = $this->buildTree($all);
         $result = collect();
         $flatten = function ($nodes) use (&$flatten, &$result) {
@@ -151,11 +151,11 @@ class OrganizationService
         return $result;
     }
 
-    public function getDepth(Organization $organization): int
+    public function getDepth(Department $department): int
     {
         $depth = 0;
-        $parentId = $organization->parent_id;
-        $ids = [$organization->id];
+        $parentId = $department->parent_id;
+        $ids = [$department->id];
 
         while ($parentId) {
             if (in_array($parentId, $ids)) {
@@ -163,7 +163,7 @@ class OrganizationService
             }
 
             $ids[] = $parentId;
-            $parent = Organization::find($parentId);
+            $parent = Department::find($parentId);
             $parentId = $parent ? $parent->parent_id : null;
             $depth++;
         }
@@ -174,7 +174,7 @@ class OrganizationService
     public function generateUniqueSlug(string $base, ?int $excludeId = null): string
     {
         $slug = $base;
-        $query = Organization::where('slug', $slug);
+        $query = Department::where('slug', $slug);
         if ($excludeId !== null) {
             $query->where('id', '!=', $excludeId);
         }
@@ -182,7 +182,7 @@ class OrganizationService
         $index = 0;
         while ($query->exists()) {
             $slug = $base.'-'.(++$index);
-            $query = Organization::where('slug', $slug);
+            $query = Department::where('slug', $slug);
             if ($excludeId !== null) {
                 $query->where('id', '!=', $excludeId);
             }
@@ -209,14 +209,14 @@ class OrganizationService
 
     private function isDescendantOf(int $candidateId, int $id): bool
     {
-        $current = Organization::find($id);
+        $current = Department::find($id);
 
         while ($current && $current->parent_id) {
             if ($current->parent_id === $candidateId) {
                 return true;
             }
 
-            $current = Organization::find($current->parent_id);
+            $current = Department::find($current->parent_id);
         }
 
         return false;

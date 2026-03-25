@@ -12,7 +12,7 @@ class SchedulesExport implements FromCollection, WithHeadings
 
     public function collection()
     {
-        return Schedule::with(['organization', 'chairperson', 'meetingType', 'nature', 'participants', 'participants.user', 'creator', 'editor'])
+        return Schedule::with(['department', 'chairperson', 'meetingType', 'nature', 'participants', 'participants.user', 'creator', 'editor'])
             ->filter($this->filters)
             ->get()
             ->map(fn (Schedule $s) => [
@@ -30,7 +30,7 @@ class SchedulesExport implements FromCollection, WithHeadings
                 'nature' => $s->nature?->name,
                 'driver_info' => $s->driver_info,
                 'color_code' => $s->color_code,
-                'organization' => $s->organization?->name,
+                'department' => $s->department?->name,
                 'status' => $s->status,
                 'created_by' => $s->creator?->name,
                 'updated_by' => $s->editor?->name,

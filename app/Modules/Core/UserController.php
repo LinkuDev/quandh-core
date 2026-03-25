@@ -17,7 +17,7 @@ use App\Modules\Core\Services\UserService;
 
 /**
  * @group Core - User
- * @header X-Organization-Id ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1
+ * @header X-Department-Id ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1
  *
  * Quản lý người dùng: danh sách, chi tiết, tạo, cập nhật, xóa, thao tác hàng loạt, xuất/nhập Excel, đổi trạng thái.
  */
@@ -91,7 +91,7 @@ class UserController extends Controller
      * @bodyParam password string required Mật khẩu (tối thiểu 6 ký tự). Example: password123
      * @bodyParam password_confirmation string required Xác nhận mật khẩu.
      * @bodyParam status string Trạng thái: active, inactive, banned. Example: active
-     * @bodyParam assignments array Danh sách gán vai trò theo tổ chức. Ví dụ: [{"role_id":1,"organization_ids":[2,3]},{"role_id":5,"organization_ids":[9]}]
+     * @bodyParam assignments array Danh sách gán vai trò theo đơn vị. Ví dụ: [{"role_id":1,"department_ids":[2,3]},{"role_id":5,"department_ids":[9]}]
      *
      * @apiResource App\Modules\Core\Resources\UserResource status=201
      *
@@ -116,7 +116,7 @@ class UserController extends Controller
      * @bodyParam password string Mật khẩu mới (nếu muốn đổi).
      * @bodyParam password_confirmation string Xác nhận mật khẩu.
      * @bodyParam status string Trạng thái: active, inactive, banned.
-     * @bodyParam assignments array Danh sách gán vai trò theo tổ chức. Khi gửi field này, hệ thống sẽ đồng bộ lại toàn bộ phân quyền của user.
+     * @bodyParam assignments array Danh sách gán vai trò theo đơn vị. Khi gửi field này, hệ thống sẽ đồng bộ lại toàn bộ phân quyền của user.
      *
      * @apiResource App\Modules\Core\Resources\UserResource
      *

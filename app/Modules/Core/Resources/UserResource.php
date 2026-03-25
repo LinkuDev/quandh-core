@@ -2,7 +2,7 @@
 
 namespace App\Modules\Core\Resources;
 
-use App\Modules\Core\Models\Organization;
+use App\Modules\Core\Models\Department;
 use App\Modules\Core\Models\Role;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
@@ -33,12 +33,12 @@ class UserResource extends JsonResource
         $modelHasRolesTable = $tableNames['model_has_roles'] ?? 'model_has_roles';
         $rolePivotKey = $columnNames['role_pivot_key'] ?? 'role_id';
         $modelMorphKey = $columnNames['model_morph_key'] ?? 'model_id';
-        $teamForeignKey = $columnNames['team_foreign_key'] ?? 'organization_id';
+        $teamForeignKey = $columnNames['team_foreign_key'] ?? 'department_id';
 
         $rows = DB::table($modelHasRolesTable)
             ->where($modelMorphKey, $this->id)
             ->where('model_type', \App\Modules\Core\Models\User::class)
-            ->select([$teamForeignKey.' as organization_id', $rolePivotKey.' as role_id'])
+            ->select([$teamForeignKey.' as department_id', $rolePivotKey.' as role_id'])
             ->get();
 
         if ($rows->isEmpty()) {
@@ -46,38 +46,38 @@ class UserResource extends JsonResource
         }
 
         $roleIds = $rows->pluck('role_id')->unique()->values();
-        $organizationIds = $rows->pluck('organization_id')->unique()->values();
+        $departmentIds = $rows->pluck('department_id')->unique()->values();
 
         $roles = Role::whereIn('id', $roleIds)
             ->get(['id', 'name'])
             ->keyBy('id');
 
-        $organizations = Organization::whereIn('id', $organizationIds)
+        $departments = Department::whereIn('id', $departmentIds)
             ->get(['id', 'name'])
             ->keyBy('id');
 
         return $rows
             ->groupBy('role_id')
-            ->map(function ($items, $roleId) use ($roles, $organizations) {
+            ->map(function ($items, $roleId) use ($roles, $departments) {
                 $role = $roles->get((int) $roleId);
 
                 return [
                     'role_id' => (int) $roleId,
                     'role_name' => $role?->name,
-                    'organization_ids' => $items
-                        ->pluck('organization_id')
+                    'department_ids' => $items
+                        ->pluck('department_id')
                         ->map(fn ($id) => (int) $id)
                         ->unique()
                         ->values()
                         ->all(),
-                    'organizations' => $items
-                        ->pluck('organization_id')
+                    'departments' => $items
+                        ->pluck('department_id')
                         ->map(fn ($id) => (int) $id)
                         ->unique()
                         ->values()
                         ->map(fn ($id) => [
                             'id' => $id,
-                            'name' => $organizations->get($id)?->name,
+                            'name' => $departments->get($id)?->name,
                         ])
                         ->all(),
                 ];

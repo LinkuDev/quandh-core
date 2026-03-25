@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 
 /**
  * @group Core - Setting
- * @header X-Organization-Id ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1
+ * @header X-Department-Id ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1
  *
  * Quản lý cấu hình hệ thống: lấy công khai, lấy toàn bộ (auth), cập nhật.
  */

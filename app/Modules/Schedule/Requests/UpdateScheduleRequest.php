@@ -20,7 +20,7 @@ class UpdateScheduleRequest extends FormRequest
             'content' => 'sometimes|string',
             'event_date' => 'sometimes|date',
             'session' => ['sometimes', ScheduleSessionEnum::rule()],
-            'organization_id' => 'sometimes|integer|exists:organizations,id',
+            'department_id' => 'sometimes|integer|exists:departments,id',
             'start_time' => 'nullable|date_format:H:i',
             'chairperson_id' => 'nullable|integer|exists:users,id',
             'location' => 'nullable|string|max:255',

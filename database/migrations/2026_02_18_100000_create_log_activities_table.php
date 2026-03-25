@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('description'); // Mô tả hành động (vd: Created Product #10)
             $table->string('user_type')->default('Guest');
             $table->unsignedBigInteger('user_id')->nullable();
-            $table->unsignedBigInteger('organization_id')->nullable();
+            $table->unsignedBigInteger('department_id')->nullable();
             $table->string('route');       // URL đầy đủ
             $table->string('method_type'); // GET, POST, PUT...
             $table->integer('status_code'); // 200, 400, 500...
@@ -27,7 +27,7 @@ return new class extends Migration
             $table->timestamps();
 
             $table->index(['user_id', 'created_at']);
-            $table->index(['organization_id', 'created_at']);
+            $table->index(['department_id', 'created_at']);
             $table->index('created_at');
         });
     }

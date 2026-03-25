@@ -5,8 +5,7 @@ namespace App\Modules\Core\Resources;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-/** Resource cho API tree organization (cấu trúc cây parent_id). */
-class OrganizationTreeResource extends JsonResource
+class DepartmentResource extends JsonResource
 {
     public function toArray(Request $request): array
     {
@@ -19,11 +18,12 @@ class OrganizationTreeResource extends JsonResource
             'parent_id' => $this->parent_id,
             'sort_order' => $this->sort_order,
             'depth' => $this->depth,
-            'children' => $this->whenLoaded(
-                'children',
-                fn () => OrganizationTreeResource::collection($this->children),
-                []
-            ),
+            'created_by' => $this->creator?->name ?? 'N/A',
+            'updated_by' => $this->editor?->name ?? 'N/A',
+            'created_at' => $this->created_at?->format('H:i:s d/m/Y'),
+            'updated_at' => $this->updated_at?->format('H:i:s d/m/Y'),
+            'parent' => $this->whenLoaded('parent', fn () => new DepartmentResource($this->parent)),
+            'children' => $this->whenLoaded('children', fn () => DepartmentResource::collection($this->children)),
         ];
     }
 }

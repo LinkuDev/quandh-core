@@ -11,12 +11,12 @@ class RolesImport implements ToModel, WithHeadingRow
     public function model(array $row)
     {
         $guard = $row['guard_name'] ?? config('auth.defaults.guard', 'web');
-        $organizationId = isset($row['organization_id']) ? (int) $row['organization_id'] : null;
+        $departmentId = isset($row['department_id']) ? (int) $row['department_id'] : null;
 
         return new Role([
             'name' => $row['name'] ?? $row['name_'] ?? '',
             'guard_name' => $guard,
-            'organization_id' => $organizationId ?: null,
+            'department_id' => $departmentId ?: null,
         ]);
     }
 }

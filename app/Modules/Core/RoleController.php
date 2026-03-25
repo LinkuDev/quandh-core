@@ -15,7 +15,7 @@ use App\Modules\Core\Services\RoleService;
 
 /**
  * @group Core - Role
- * @header X-Organization-Id ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1
+ * @header X-Department-Id ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1
  *
  * Quản lý vai trò (role) theo Spatie: stats, index, show, store, update, destroy, bulk delete, export, import.
  */
@@ -45,7 +45,7 @@ class RoleController extends Controller
     /**
      * Danh sách role
      *
-     * Lấy danh sách có phân trang, lọc và sắp xếp. Có kèm organization và permissions.
+     * Lấy danh sách có phân trang, lọc và sắp xếp. Có kèm department và permissions.
      *
      * @queryParam search string Từ khóa tìm kiếm (name, guard_name). Example: admin
      * @queryParam from_date date Lọc từ ngày tạo (created_at) (Y-m-d). Example: 2026-02-01
@@ -74,7 +74,7 @@ class RoleController extends Controller
      *
      * @apiResource App\Modules\Core\Resources\RoleResource
      *
-     * @apiResourceModel App\Modules\Core\Models\Role with=organization,permissions
+     * @apiResourceModel App\Modules\Core\Models\Role with=department,permissions
      *
      * @apiResourceAdditional success=true
      */
@@ -158,7 +158,7 @@ class RoleController extends Controller
     /**
      * Xuất danh sách role
      *
-     * Áp dụng cùng bộ lọc với index. Xuất ra các trường: id, name, guard_name, organization_id, organization_name, created_at, updated_at.
+     * Áp dụng cùng bộ lọc với index. Xuất ra các trường: id, name, guard_name, department_id, department_name, created_at, updated_at.
      *
      * @queryParam search string Từ khóa tìm kiếm (name, guard_name).
      * @queryParam from_date date Lọc từ ngày tạo (created_at) (Y-m-d).
@@ -174,7 +174,7 @@ class RoleController extends Controller
     /**
      * Nhập danh sách role
      *
-     * Cột bắt buộc: name. Cột không bắt buộc: guard_name (mặc định "web"), organization_id.
+     * Cột bắt buộc: name. Cột không bắt buộc: guard_name (mặc định "web"), department_id.
      *
      * @bodyParam file file required File Excel (xlsx, xls, csv). Cột theo chuẩn export.
      *

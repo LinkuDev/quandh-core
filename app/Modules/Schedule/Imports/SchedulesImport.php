@@ -20,7 +20,7 @@ class SchedulesImport implements ToModel, WithHeadingRow
             'driver_info' => $row['lai_xe'] ?? null,
 
             'color_code' => $row['ma_mau'] ?? null,
-            'organization_id' => $row['to_chuc_id'] ?? null,
+            'department_id' => $row['to_chuc_id'] ?? null,
             'status' => $row['trang_thai'] ?? 'active',
         ]);
     }

@@ -2,12 +2,12 @@
 
 namespace App\Modules\Core\Exports;
 
-use App\Modules\Core\Models\Organization;
-use App\Modules\Core\Services\OrganizationService;
+use App\Modules\Core\Models\Department;
+use App\Modules\Core\Services\DepartmentService;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 
-class OrganizationsExport implements FromCollection, WithHeadings
+class DepartmentsExport implements FromCollection, WithHeadings
 {
     public function __construct(
         protected array $filters = []
@@ -15,7 +15,7 @@ class OrganizationsExport implements FromCollection, WithHeadings
 
     public function collection()
     {
-        $service = app(OrganizationService::class);
+        $service = app(DepartmentService::class);
         $items = $service->getFlatTreeOrdered($this->filters);
 
         return $items->map(fn ($o) => [
@@ -25,7 +25,7 @@ class OrganizationsExport implements FromCollection, WithHeadings
             'description' => $o->description,
             'status' => $o->status,
             'parent_id' => $o->parent_id,
-            'parent_slug' => $o->parent_id ? (Organization::find($o->parent_id)?->slug ?? '') : '',
+            'parent_slug' => $o->parent_id ? (Department::find($o->parent_id)?->slug ?? '') : '',
             'sort_order' => $o->sort_order,
             'depth' => $service->getDepth($o),
             'created_by' => $o->creator?->name ?? 'N/A',

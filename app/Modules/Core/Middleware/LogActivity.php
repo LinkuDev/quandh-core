@@ -59,13 +59,13 @@ class LogActivity
             $user = Auth::guard('sanctum')->user();
             $userType = $user ? class_basename($user) : 'Guest';
             $userId = $user?->id;
-            $organizationId = function_exists('getPermissionsTeamId') ? getPermissionsTeamId() : null;
+            $departmentId = function_exists('getPermissionsTeamId') ? getPermissionsTeamId() : null;
 
             LogActivityModel::create([
                 'description' => $this->buildDescription($request),
                 'user_type' => $userType,
                 'user_id' => $userId,
-                'organization_id' => $organizationId,
+                'department_id' => $departmentId,
                 'route' => $request->fullUrl(),
                 'method_type' => $request->method(),
                 'status_code' => $statusCode,
@@ -189,7 +189,7 @@ class LogActivity
 
         $params = $request->route()?->parameters() ?? [];
         $id = $params['user']
-            ?? $params['organization']
+            ?? $params['department']
             ?? $params['role']
             ?? $params['logActivity']
             ?? $params['schedule']
@@ -210,7 +210,7 @@ class LogActivity
             'users' => 'người dùng',
             'permissions' => 'quyền',
             'roles' => 'vai trò',
-            'organizations' => 'tổ chức',
+            'departments' => 'đơn vị',
             'auth' => 'xác thực',
             'log-activities' => 'nhật ký truy cập',
             'settings' => 'cấu hình hệ thống',

@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Modules\Core\Models\Organization;
+use App\Modules\Core\Models\Department;
 use App\Modules\Core\Models\User;
 use App\Modules\Schedule\Models\Schedule;
 use App\Modules\Schedule\Models\ScheduleMeetingType;
@@ -50,9 +50,9 @@ class DatabaseSeeder extends Seeder
     protected function seedScheduleData(): void
     {
         $users = User::all();
-        $organizations = Organization::where('status', 'active')->get();
+        $departments = Department::where('status', 'active')->get();
 
-        if ($users->isEmpty() || $organizations->isEmpty()) {
+        if ($users->isEmpty() || $departments->isEmpty()) {
             return;
         }
 
@@ -114,7 +114,7 @@ class DatabaseSeeder extends Seeder
             $schedulesPerDay = rand(2, 5);
 
             for ($i = 0; $i < $schedulesPerDay; $i++) {
-                $org = $organizations->random();
+                $org = $departments->random();
                 $session = fake()->randomElement($sessions);
                 $chairperson = $users->whereNotNull('position')->random();
 
@@ -138,7 +138,7 @@ class DatabaseSeeder extends Seeder
                         'nature_id' => $natures->random()->id,
                         'color_code' => fake()->optional(0.5)->hexColor(),
                         'sort_order' => $sortOrder[$scopeKey],
-                        'organization_id' => $org->id,
+                        'department_id' => $org->id,
                         'status' => 'active',
                         'created_by' => $users->random()->id,
                         'updated_by' => $users->random()->id,

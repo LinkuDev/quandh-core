@@ -96,7 +96,7 @@ class ScheduleNotificationService
      */
     public function listForUser(int $userId, int $limit = 20)
     {
-        return ScheduleNotification::with(['schedule', 'schedule.organization'])
+        return ScheduleNotification::with(['schedule', 'schedule.department'])
             ->where('user_id', $userId)
             ->where('status', 'sent')
             ->orderByDesc('sent_at')

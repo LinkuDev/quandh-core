@@ -27,7 +27,7 @@ class ScheduleFactory extends Factory
             'nature_id' => null,
             'color_code' => fake()->optional()->hexColor(),
             'sort_order' => fake()->numberBetween(0, 100),
-            'organization_id' => null,
+            'department_id' => null,
             'status' => fake()->randomElement(['active', 'inactive']),
             'created_by' => null,
             'updated_by' => null,

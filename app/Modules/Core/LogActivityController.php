@@ -13,7 +13,7 @@ use App\Modules\Core\Services\LogActivityService;
 
 /**
  * @group Core - LogActivity
- * @header X-Organization-Id ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1
+ * @header X-Department-Id ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1
  *
  * Quản lý nhật ký truy cập: thống kê, danh sách, chi tiết, xuất Excel, xóa, xóa hàng loạt, xóa theo thời gian, xóa toàn bộ.
  */
@@ -80,7 +80,7 @@ class LogActivityController extends Controller
      * @queryParam sort_by string id, description, route, method_type, status_code, ip_address, country, created_at.
      * @queryParam sort_order string asc, desc. Example: desc
      *
-     * Xuất ra các trường: id, description, user_type, user_id, user_name, organization_id, route, method_type, status_code, ip_address, country, user_agent, request_data, created_at, updated_at.
+     * Xuất ra các trường: id, description, user_type, user_id, user_name, department_id, route, method_type, status_code, ip_address, country, user_agent, request_data, created_at, updated_at.
      */
     public function export(FilterRequest $request)
     {
@@ -94,7 +94,7 @@ class LogActivityController extends Controller
      *
      * @apiResource App\Modules\Core\Resources\LogActivityResource
      *
-     * @apiResourceModel App\Modules\Core\Models\LogActivity with=user,organization
+     * @apiResourceModel App\Modules\Core\Models\LogActivity with=user,department
      *
      * @apiResourceAdditional success=true
      */

@@ -29,8 +29,8 @@ class UpdateUserRequest extends FormRequest
             'status' => ['sometimes', 'in:'.implode(',', UserStatusEnum::values())],
             'assignments' => 'sometimes|array',
             'assignments.*.role_id' => 'required|integer|distinct|exists:roles,id',
-            'assignments.*.organization_ids' => 'required|array|min:1',
-            'assignments.*.organization_ids.*' => 'integer|distinct|exists:organizations,id',
+            'assignments.*.department_ids' => 'required|array|min:1',
+            'assignments.*.department_ids.*' => 'integer|distinct|exists:departments,id',
         ];
     }
 
@@ -52,12 +52,12 @@ class UpdateUserRequest extends FormRequest
             'assignments.*.role_id.integer' => 'ID vai trò phải là số nguyên.',
             'assignments.*.role_id.distinct' => 'Vai trò bị trùng trong danh sách phân quyền.',
             'assignments.*.role_id.exists' => 'Vai trò không tồn tại.',
-            'assignments.*.organization_ids.required' => 'Tổ chức là bắt buộc trong từng phân quyền.',
-            'assignments.*.organization_ids.array' => 'Danh sách tổ chức phải là mảng.',
-            'assignments.*.organization_ids.min' => 'Mỗi vai trò phải có ít nhất một tổ chức.',
-            'assignments.*.organization_ids.*.integer' => 'ID tổ chức phải là số nguyên.',
-            'assignments.*.organization_ids.*.distinct' => 'Tổ chức bị trùng trong cùng một vai trò.',
-            'assignments.*.organization_ids.*.exists' => 'Tổ chức không tồn tại.',
+            'assignments.*.department_ids.required' => 'Tổ chức là bắt buộc trong từng phân quyền.',
+            'assignments.*.department_ids.array' => 'Danh sách đơn vị phải là mảng.',
+            'assignments.*.department_ids.min' => 'Mỗi vai trò phải có ít nhất một đơn vị.',
+            'assignments.*.department_ids.*.integer' => 'ID đơn vị phải là số nguyên.',
+            'assignments.*.department_ids.*.distinct' => 'Tổ chức bị trùng trong cùng một vai trò.',
+            'assignments.*.department_ids.*.exists' => 'Tổ chức không tồn tại.',
         ];
     }
 
@@ -89,10 +89,10 @@ class UpdateUserRequest extends FormRequest
                 'example' => UserStatusEnum::Active->value,
             ],
             'assignments' => [
-                'description' => 'Danh sách gán vai trò theo tổ chức. Khi gửi field này, hệ thống sẽ đồng bộ lại toàn bộ phân quyền theo dữ liệu mới.',
+                'description' => 'Danh sách gán vai trò theo đơn vị. Khi gửi field này, hệ thống sẽ đồng bộ lại toàn bộ phân quyền theo dữ liệu mới.',
                 'example' => [
-                    ['role_id' => 1, 'organization_ids' => [2, 3]],
-                    ['role_id' => 5, 'organization_ids' => [9]],
+                    ['role_id' => 1, 'department_ids' => [2, 3]],
+                    ['role_id' => 5, 'department_ids' => [9]],
                 ],
             ],
         ];

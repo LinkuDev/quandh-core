@@ -3,7 +3,7 @@
 namespace App\Modules\Auth\Services;
 
 use App\Modules\Core\Enums\UserStatusEnum;
-use App\Modules\Core\Models\Organization;
+use App\Modules\Core\Models\Department;
 use App\Modules\Core\Models\User;
 use App\Modules\Core\Resources\UserResource;
 use Illuminate\Support\Facades\DB;
@@ -35,10 +35,10 @@ class AuthService
         }
 
         $token = $user->createToken('auth_token')->plainTextToken;
-        $organizations = $this->getAccessibleOrganizations($user);
-        $currentOrganization = $organizations[0] ?? null;
-        $currentOrganizationId = $currentOrganization['id'] ?? null;
-        $rolesAndPermissions = $this->getRolesAndPermissionsForOrganization($user, $currentOrganizationId);
+        $departments = $this->getAccessibleDepartments($user);
+        $currentDepartment = $departments[0] ?? null;
+        $currentDepartmentId = $currentDepartment['id'] ?? null;
+        $rolesAndPermissions = $this->getRolesAndPermissionsForDepartment($user, $currentDepartmentId);
 
         return [
             'ok' => true,
@@ -46,8 +46,8 @@ class AuthService
                 'access_token' => $token,
                 'token_type' => 'Bearer',
                 'user' => (new UserResource($user))->resolve(),
-                'available_organizations' => $organizations,
-                'current_organization_id' => $currentOrganizationId,
+                'available_departments' => $departments,
+                'current_department_id' => $currentDepartmentId,
                 'roles' => $rolesAndPermissions['roles'],
                 'permissions' => $rolesAndPermissions['permissions'],
                 'abilities' => $rolesAndPermissions['abilities'],
@@ -77,14 +77,14 @@ class AuthService
         return $status === Password::PASSWORD_RESET;
     }
 
-    public function switchOrganization(User $user, int $organizationId): array
+    public function switchDepartment(User $user, int $departmentId): array
     {
-        $organization = Organization::query()
-            ->whereKey($organizationId)
+        $department = Department::query()
+            ->whereKey($departmentId)
             ->where('status', 'active')
             ->first();
 
-        if (! $organization) {
+        if (! $department) {
             return [
                 'ok' => false,
                 'type' => 'forbidden',
@@ -92,24 +92,24 @@ class AuthService
             ];
         }
 
-        if (! $this->hasOrganizationAccess((int) $user->id, (int) $organization->id)) {
+        if (! $this->hasDepartmentAccess((int) $user->id, (int) $department->id)) {
             return [
                 'ok' => false,
                 'type' => 'forbidden',
-                'message' => 'Bạn không có quyền truy cập tổ chức đã chọn.',
+                'message' => 'Bạn không có quyền truy cập đơn vị đã chọn.',
             ];
         }
 
-        $rolesAndPermissions = $this->getRolesAndPermissionsForOrganization($user, (int) $organization->id);
+        $rolesAndPermissions = $this->getRolesAndPermissionsForDepartment($user, (int) $department->id);
 
         return [
             'ok' => true,
             'data' => [
-                'current_organization_id' => (int) $organization->id,
-                'current_organization' => [
-                    'id' => (int) $organization->id,
-                    'name' => $organization->name,
-                    'description' => $organization->description,
+                'current_department_id' => (int) $department->id,
+                'current_department' => [
+                    'id' => (int) $department->id,
+                    'name' => $department->name,
+                    'description' => $department->description,
                 ],
                 'roles' => $rolesAndPermissions['roles'],
                 'permissions' => $rolesAndPermissions['permissions'],
@@ -118,33 +118,33 @@ class AuthService
         ];
     }
 
-    protected function getAccessibleOrganizations(User $user): array
+    protected function getAccessibleDepartments(User $user): array
     {
-        $organizationIds = $this->getAccessibleOrganizationIds((int) $user->id);
-        if (empty($organizationIds)) {
+        $departmentIds = $this->getAccessibleDepartmentIds((int) $user->id);
+        if (empty($departmentIds)) {
             return [];
         }
 
-        return Organization::query()
-            ->whereIn('id', $organizationIds)
+        return Department::query()
+            ->whereIn('id', $departmentIds)
             ->where('status', 'active')
             ->orderBy('name')
             ->get(['id', 'name', 'description'])
-            ->map(fn (Organization $organization) => [
-                'id' => (int) $organization->id,
-                'name' => $organization->name,
-                'description' => $organization->description,
+            ->map(fn (Department $department) => [
+                'id' => (int) $department->id,
+                'name' => $department->name,
+                'description' => $department->description,
             ])
             ->values()
             ->all();
     }
 
-    protected function getAccessibleOrganizationIds(int $userId): array
+    protected function getAccessibleDepartmentIds(int $userId): array
     {
         $tableNames = config('permission.table_names');
         $columnNames = config('permission.column_names');
         $modelMorphKey = $columnNames['model_morph_key'] ?? 'model_id';
-        $teamForeignKey = $columnNames['team_foreign_key'] ?? 'organization_id';
+        $teamForeignKey = $columnNames['team_foreign_key'] ?? 'department_id';
         $modelType = \App\Modules\Core\Models\User::class;
 
         $roleOrgIds = DB::table($tableNames['model_has_roles'] ?? 'model_has_roles')
@@ -166,21 +166,21 @@ class AuthService
         return array_values(array_unique(array_merge($roleOrgIds, $permissionOrgIds)));
     }
 
-    protected function hasOrganizationAccess(int $userId, int $organizationId): bool
+    protected function hasDepartmentAccess(int $userId, int $departmentId): bool
     {
-        return in_array($organizationId, $this->getAccessibleOrganizationIds($userId), true);
+        return in_array($departmentId, $this->getAccessibleDepartmentIds($userId), true);
     }
 
     /**
-     * Lấy danh sách vai trò và quyền hạn của user trong tổ chức, dùng cho Vue Casl.
+     * Lấy danh sách vai trò và quyền hạn của user trong đơn vị, dùng cho Vue Casl.
      */
-    protected function getRolesAndPermissionsForOrganization(User $user, ?int $organizationId): array
+    protected function getRolesAndPermissionsForDepartment(User $user, ?int $departmentId): array
     {
-        if ($organizationId === null) {
+        if ($departmentId === null) {
             return ['roles' => [], 'permissions' => [], 'abilities' => []];
         }
 
-        setPermissionsTeamId($organizationId);
+        setPermissionsTeamId($departmentId);
         $user->unsetRelation('roles');
         $user->unsetRelation('permissions');
 

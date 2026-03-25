@@ -51,8 +51,8 @@ Quản lý tài khoản người dùng: thống kê, danh sách, chi tiết, CRU
 **Mẫu assignments**
 ```json
 [
-  { "role_id": 1, "organization_ids": [2, 3] },
-  { "role_id": 5, "organization_ids": [9] }
+  { "role_id": 1, "department_ids": [2, 3] },
+  { "role_id": 5, "department_ids": [9] }
 ]
 ```
 

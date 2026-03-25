@@ -18,7 +18,7 @@ class LogActivityFactory extends Factory
             'description' => fake()->sentence(),
             'user_type' => 'User',
             'user_id' => null,
-            'organization_id' => null,
+            'department_id' => null,
             'route' => fake()->url(),
             'method_type' => fake()->randomElement(['GET', 'POST', 'PUT', 'PATCH', 'DELETE']),
             'status_code' => fake()->randomElement([200, 201, 204, 400, 401, 403, 404, 422, 500]),

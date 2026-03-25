@@ -19,13 +19,13 @@ return new class extends Migration
         $rolePivotKey = $columnNames['role_pivot_key'] ?? 'role_id';
         $permissionPivotKey = $columnNames['permission_pivot_key'] ?? 'permission_id';
         $modelMorphKey = $columnNames['model_morph_key'] ?? 'model_id';
-        $teamForeignKey = $columnNames['team_foreign_key'] ?? 'organization_id';
+        $teamForeignKey = $columnNames['team_foreign_key'] ?? 'department_id';
 
         if (! Schema::hasTable($rolesTable)) {
             return;
         }
 
-        // Gộp các role trùng tên/guard giữa nhiều organization về một role global.
+        // Gộp các role trùng tên/guard giữa nhiều department về một role global.
         $roles = DB::table($rolesTable)
             ->select('id', 'name', 'guard_name')
             ->orderBy('id')
@@ -126,7 +126,7 @@ return new class extends Migration
         }
 
         $rolesTable = $tableNames['roles'] ?? 'roles';
-        $teamForeignKey = $columnNames['team_foreign_key'] ?? 'organization_id';
+        $teamForeignKey = $columnNames['team_foreign_key'] ?? 'department_id';
 
         if (! Schema::hasTable($rolesTable)) {
             return;

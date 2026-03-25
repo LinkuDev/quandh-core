@@ -101,10 +101,10 @@ class UserService
     /**
      * Chuẩn hóa payload assignments:
      * [
-     *   ['role_id' => 1, 'organization_ids' => [2,3]],
-     *   ['role_id' => 5, 'organization_ids' => [9]],
+     *   ['role_id' => 1, 'department_ids' => [2,3]],
+     *   ['role_id' => 5, 'department_ids' => [9]],
      * ]
-     * => [organization_id => [role_id, ...]]
+     * => [department_id => [role_id, ...]]
      */
     protected function normalizeAssignments(array $assignments): array
     {
@@ -123,7 +123,7 @@ class UserService
 
         foreach ($assignments as $assignment) {
             $roleId = (int) ($assignment['role_id'] ?? 0);
-            $organizationIds = collect($assignment['organization_ids'] ?? [])
+            $departmentIds = collect($assignment['department_ids'] ?? [])
                 ->map(fn ($id) => (int) $id)
                 ->unique()
                 ->values();
@@ -135,21 +135,21 @@ class UserService
                 ]);
             }
 
-            foreach ($organizationIds as $organizationId) {
-                // Tương thích ngược: nếu role còn gắn organization_id thì phải khớp tổ chức được gán.
-                if (isset($role->organization_id) && $role->organization_id !== null && (int) $role->organization_id !== $organizationId) {
+            foreach ($departmentIds as $departmentId) {
+                // Tương thích ngược: nếu role còn gắn department_id thì phải khớp đơn vị được gán.
+                if (isset($role->department_id) && $role->department_id !== null && (int) $role->department_id !== $departmentId) {
                     throw ValidationException::withMessages([
-                        'assignments' => ["Vai trò '{$role->name}' chỉ áp dụng cho tổ chức #{$role->organization_id}, không thể gán cho tổ chức #{$organizationId}."],
+                        'assignments' => ["Vai trò '{$role->name}' chỉ áp dụng cho đơn vị #{$role->department_id}, không thể gán cho đơn vị #{$departmentId}."],
                     ]);
                 }
 
-                $map[$organizationId] ??= [];
-                $map[$organizationId][] = $roleId;
+                $map[$departmentId] ??= [];
+                $map[$departmentId][] = $roleId;
             }
         }
 
-        foreach ($map as $organizationId => $orgRoleIds) {
-            $map[$organizationId] = array_values(array_unique($orgRoleIds));
+        foreach ($map as $departmentId => $orgRoleIds) {
+            $map[$departmentId] = array_values(array_unique($orgRoleIds));
         }
 
         return $map;
@@ -162,7 +162,7 @@ class UserService
         $modelHasRolesTable = $tableNames['model_has_roles'] ?? 'model_has_roles';
         $rolePivotKey = $columnNames['role_pivot_key'] ?? 'role_id';
         $modelMorphKey = $columnNames['model_morph_key'] ?? 'model_id';
-        $teamForeignKey = $columnNames['team_foreign_key'] ?? 'organization_id';
+        $teamForeignKey = $columnNames['team_foreign_key'] ?? 'department_id';
 
         DB::table($modelHasRolesTable)
             ->where($modelMorphKey, $user->id)
@@ -174,10 +174,10 @@ class UserService
         }
 
         $rows = [];
-        foreach ($assignments as $organizationId => $roleIds) {
+        foreach ($assignments as $departmentId => $roleIds) {
             foreach ($roleIds as $roleId) {
                 $rows[] = [
-                    $teamForeignKey => (int) $organizationId,
+                    $teamForeignKey => (int) $departmentId,
                     $rolePivotKey => (int) $roleId,
                     'model_type' => User::class,
                     $modelMorphKey => $user->id,

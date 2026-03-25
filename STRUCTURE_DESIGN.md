@@ -33,7 +33,7 @@ app/Modules/
 │   │   ├── ForgotPasswordRequest.php
 │   │   ├── LoginRequest.php
 │   │   ├── ResetPasswordRequest.php
-│   │   └── SwitchOrganizationRequest.php
+│   │   └── SwitchDepartmentRequest.php
 │   ├── Routes/
 │   │   └── auth.php
 │   └── Services/
@@ -46,12 +46,12 @@ app/Modules/
 │   │   └── UserStatusEnum.php
 │   ├── Exports/
 │   │   ├── LogActivitiesExport.php
-│   │   ├── OrganizationsExport.php
+│   │   ├── DepartmentsExport.php
 │   │   ├── PermissionsExport.php
 │   │   ├── RolesExport.php
 │   │   └── UsersExport.php
 │   ├── Imports/
-│   │   ├── OrganizationsImport.php
+│   │   ├── DepartmentsImport.php
 │   │   ├── PermissionsImport.php
 │   │   ├── RolesImport.php
 │   │   └── UsersImport.php
@@ -60,7 +60,7 @@ app/Modules/
 │   │   └── SetPermissionsTeamId.php
 │   ├── Models/
 │   │   ├── LogActivity.php
-│   │   ├── Organization.php
+│   │   ├── Department.php
 │   │   ├── Permission.php
 │   │   ├── Role.php
 │   │   ├── Setting.php
@@ -71,7 +71,7 @@ app/Modules/
 │   │   └── ... (Resource, Collection, TreeResource, PublicOptionResource)
 │   ├── Routes/
 │   │   ├── log_activity.php
-│   │   ├── organization.php
+│   │   ├── department.php
 │   │   ├── permission.php
 │   │   ├── role.php
 │   │   ├── setting.php
@@ -79,14 +79,14 @@ app/Modules/
 │   ├── Services/
 │   │   ├── LogActivityService.php
 │   │   ├── MediaService.php
-│   │   ├── OrganizationService.php
+│   │   ├── DepartmentService.php
 │   │   ├── PermissionService.php
 │   │   ├── RoleService.php
 │   │   └── SettingService.php
 │   ├── Traits/
 │   │   └── RespondsWithJson.php
 │   ├── LogActivityController.php
-│   ├── OrganizationController.php
+│   ├── DepartmentController.php
 │   ├── PermissionController.php
 │   ├── RoleController.php
 │   └── SettingController.php

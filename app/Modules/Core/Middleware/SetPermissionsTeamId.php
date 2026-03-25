@@ -2,7 +2,7 @@
 
 namespace App\Modules\Core\Middleware;
 
-use App\Modules\Core\Models\Organization;
+use App\Modules\Core\Models\Department;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -12,7 +12,7 @@ use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Sau auth:sanctum: đồng bộ user sang guard web (Spatie dùng chung guard web cho API),
- * và đặt organization_id cho Spatie Permission (tính năng teams).
+ * và đặt department_id cho Spatie Permission (tính năng teams).
  */
 class SetPermissionsTeamId
 {
@@ -22,20 +22,20 @@ class SetPermissionsTeamId
         if ($user) {
             Auth::guard('web')->setUser($user);
 
-            $organizationId = $this->resolveRequestedOrganizationId($request);
+            $departmentId = $this->resolveRequestedDepartmentId($request);
 
-            if ($organizationId === null) {
+            if ($departmentId === null) {
                 throw ValidationException::withMessages([
-                    'organization_id' => ['Vui lòng gửi header X-Organization-Id để xác định tổ chức làm việc.'],
+                    'department_id' => ['Vui lòng gửi header X-Department-Id để xác định đơn vị làm việc.'],
                 ]);
             }
 
-            $organization = Organization::query()
-                ->whereKey($organizationId)
+            $department = Department::query()
+                ->whereKey($departmentId)
                 ->where('status', 'active')
                 ->first();
 
-            if (! $organization) {
+            if (! $department) {
                 return response()->json([
                     'success' => false,
                     'message' => 'Tổ chức không hợp lệ hoặc đã ngừng hoạt động.',
@@ -43,24 +43,24 @@ class SetPermissionsTeamId
                 ], 403);
             }
 
-            if (! $this->userHasOrganizationAccess((int) $user->id, (int) $organization->id)) {
+            if (! $this->userHasDepartmentAccess((int) $user->id, (int) $department->id)) {
                 return response()->json([
                     'success' => false,
-                    'message' => 'Bạn không có quyền truy cập tổ chức đã chọn.',
+                    'message' => 'Bạn không có quyền truy cập đơn vị đã chọn.',
                     'code' => 'FORBIDDEN',
                 ], 403);
             }
 
-            setPermissionsTeamId((int) $organization->id);
+            setPermissionsTeamId((int) $department->id);
         }
 
         return $next($request);
     }
 
-    protected function resolveRequestedOrganizationId(Request $request): ?int
+    protected function resolveRequestedDepartmentId(Request $request): ?int
     {
-        $value = $request->header('X-Organization-Id')
-            ?? $request->header('x-organization-id');
+        $value = $request->header('X-Department-Id')
+            ?? $request->header('x-department-id');
 
         if ($value === null || $value === '') {
             return null;
@@ -73,12 +73,12 @@ class SetPermissionsTeamId
         return (int) $value;
     }
 
-    protected function userHasOrganizationAccess(int $userId, int $organizationId): bool
+    protected function userHasDepartmentAccess(int $userId, int $departmentId): bool
     {
         $tableNames = config('permission.table_names');
         $columnNames = config('permission.column_names');
         $modelMorphKey = $columnNames['model_morph_key'] ?? 'model_id';
-        $teamForeignKey = $columnNames['team_foreign_key'] ?? 'organization_id';
+        $teamForeignKey = $columnNames['team_foreign_key'] ?? 'department_id';
         $modelHasRolesTable = $tableNames['model_has_roles'] ?? 'model_has_roles';
         $modelHasPermissionsTable = $tableNames['model_has_permissions'] ?? 'model_has_permissions';
         $modelType = \App\Modules\Core\Models\User::class;
@@ -86,7 +86,7 @@ class SetPermissionsTeamId
         $hasRole = DB::table($modelHasRolesTable)
             ->where($modelMorphKey, $userId)
             ->where('model_type', $modelType)
-            ->where($teamForeignKey, $organizationId)
+            ->where($teamForeignKey, $departmentId)
             ->exists();
 
         if ($hasRole) {
@@ -96,7 +96,7 @@ class SetPermissionsTeamId
         return DB::table($modelHasPermissionsTable)
             ->where($modelMorphKey, $userId)
             ->where('model_type', $modelType)
-            ->where($teamForeignKey, $organizationId)
+            ->where($teamForeignKey, $departmentId)
             ->exists();
     }
 }

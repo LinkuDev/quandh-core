@@ -16,7 +16,7 @@ use Symfony\Component\HttpFoundation\BinaryFileResponse;
 class ScheduleService
 {
     private array $eagerLoads = [
-        'organization', 'chairperson', 'meetingType', 'nature',
+        'department', 'chairperson', 'meetingType', 'nature',
         'participants', 'participants.user',
         'notifications', 'notifications.user',
         'media', 'creator', 'editor',
@@ -40,7 +40,7 @@ class ScheduleService
 
     public function index(array $filters, int $limit)
     {
-        return Schedule::with(['organization', 'chairperson', 'meetingType', 'nature', 'participants', 'participants.user', 'creator'])
+        return Schedule::with(['department', 'chairperson', 'meetingType', 'nature', 'participants', 'participants.user', 'creator'])
             ->filter($filters)
             ->paginate($limit);
     }
@@ -60,9 +60,9 @@ class ScheduleService
                     'participants', 'notification', 'attachments',
                 ])->all();
 
-                /* Tính sort_order tự động: max + 1 trong cùng scope (event_date, organization_id) */
+                /* Tính sort_order tự động: max + 1 trong cùng scope (event_date, department_id) */
                 $data['sort_order'] = Schedule::where('event_date', $data['event_date'])
-                    ->where('organization_id', $data['organization_id'])
+                    ->where('department_id', $data['department_id'])
                     ->max('sort_order') + 1;
 
                 $schedule = Schedule::create($data);
@@ -169,8 +169,8 @@ class ScheduleService
             ->filter($filters)
             ->get();
 
-        $orgId = $filters['organization_id'] ?? null;
-        $orgName = $orgId ? \App\Modules\Core\Models\Organization::find($orgId)?->name : null;
+        $orgId = $filters['department_id'] ?? null;
+        $orgName = $orgId ? \App\Modules\Core\Models\Department::find($orgId)?->name : null;
         $title = $orgName ? "Lịch công tác {$orgName}" : 'Tổng hợp lịch công tác';
 
         $pdf = Pdf::loadView('exports.schedules', compact('schedules', 'title'))
@@ -187,7 +187,7 @@ class ScheduleService
     public function moveUp(Schedule $schedule): Schedule
     {
         $prev = Schedule::where('event_date', $schedule->event_date)
-            ->where('organization_id', $schedule->organization_id)
+            ->where('department_id', $schedule->department_id)
             ->where('sort_order', '<', $schedule->sort_order)
             ->orderByDesc('sort_order')
             ->first();
@@ -209,7 +209,7 @@ class ScheduleService
     public function moveDown(Schedule $schedule): Schedule
     {
         $next = Schedule::where('event_date', $schedule->event_date)
-            ->where('organization_id', $schedule->organization_id)
+            ->where('department_id', $schedule->department_id)
             ->where('sort_order', '>', $schedule->sort_order)
             ->orderBy('sort_order')
             ->first();
@@ -235,14 +235,14 @@ class ScheduleService
 
         DB::transaction(function () use ($schedule, $target, $targetOrder) {
             Schedule::where('event_date', $target->event_date)
-                ->where('organization_id', $target->organization_id)
+                ->where('department_id', $target->department_id)
                 ->where('sort_order', '>=', $targetOrder)
                 ->increment('sort_order');
 
             $schedule->update([
                 'sort_order' => $targetOrder,
                 'event_date' => $target->event_date,
-                'organization_id' => $target->organization_id,
+                'department_id' => $target->department_id,
             ]);
         });
 
@@ -259,14 +259,14 @@ class ScheduleService
 
         DB::transaction(function () use ($schedule, $target, $targetOrder) {
             Schedule::where('event_date', $target->event_date)
-                ->where('organization_id', $target->organization_id)
+                ->where('department_id', $target->department_id)
                 ->where('sort_order', '>', $targetOrder)
                 ->increment('sort_order');
 
             $schedule->update([
                 'sort_order' => $targetOrder + 1,
                 'event_date' => $target->event_date,
-                'organization_id' => $target->organization_id,
+                'department_id' => $target->department_id,
             ]);
         });
 
@@ -277,7 +277,7 @@ class ScheduleService
 
     public function publicIndex(array $filters, int $limit)
     {
-        return Schedule::with(['organization', 'chairperson', 'meetingType', 'nature', 'participants', 'participants.user'])
+        return Schedule::with(['department', 'chairperson', 'meetingType', 'nature', 'participants', 'participants.user'])
             ->where('schedules.status', ScheduleStatusEnum::Active->value)
             ->filter($filters)
             ->paginate($limit);

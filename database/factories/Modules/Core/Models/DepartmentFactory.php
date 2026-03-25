@@ -2,15 +2,15 @@
 
 namespace Database\Factories\Modules\Core\Models;
 
-use App\Modules\Core\Models\Organization;
+use App\Modules\Core\Models\Department;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Modules\Core\Models\Organization>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Modules\Core\Models\Department>
  */
-class OrganizationFactory extends Factory
+class DepartmentFactory extends Factory
 {
-    protected $model = Organization::class;
+    protected $model = Department::class;
 
     public function definition(): array
     {

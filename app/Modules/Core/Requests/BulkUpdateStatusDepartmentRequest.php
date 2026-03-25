@@ -2,9 +2,10 @@
 
 namespace App\Modules\Core\Requests;
 
+use App\Modules\Core\Enums\StatusEnum;
 use Illuminate\Foundation\Http\FormRequest;
 
-class BulkDestroyOrganizationRequest extends FormRequest
+class BulkUpdateStatusDepartmentRequest extends FormRequest
 {
     public function authorize(): bool
     {
@@ -15,7 +16,8 @@ class BulkDestroyOrganizationRequest extends FormRequest
     {
         return [
             'ids' => 'required|array|min:1',
-            'ids.*' => 'exists:organizations,id',
+            'ids.*' => 'exists:departments,id',
+            'status' => ['required', StatusEnum::rule()],
         ];
     }
 

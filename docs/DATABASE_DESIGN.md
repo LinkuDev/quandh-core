@@ -87,9 +87,9 @@ Bảng queue chuẩn Laravel. Cấu trúc mặc định.
 
 ---
 
-## 3. Core – Permission, Role, Organization (Spatie Laravel Permission)
+## 3. Core – Permission, Role, Department (Spatie Laravel Permission)
 
-### `organizations`
+### `departments`
 Bảng tổ chức (dùng cho Spatie Permission teams mode). Ví dụ: "Thường trực Thành ủy", "Văn phòng Thành ủy".
 
 | Cột | Kiểu | Nullable | Mặc định | Ràng buộc / Ghi chú |
@@ -99,7 +99,7 @@ Bảng tổ chức (dùng cho Spatie Permission teams mode). Ví dụ: "Thườn
 | slug | varchar(255) | Yes | null | UNIQUE |
 | description | text | Yes | null | |
 | status | varchar(255) | No | 'active' | active, inactive |
-| parent_id | bigint unsigned | Yes | null | FK → organizations.id (cha) |
+| parent_id | bigint unsigned | Yes | null | FK → departments.id (cha) |
 | sort_order | int unsigned | No | 0 | |
 | created_by | bigint unsigned | Yes | null | FK → users.id |
 | updated_by | bigint unsigned | Yes | null | FK → users.id |
@@ -126,15 +126,15 @@ Vai trò (Spatie, teams mode).
 | Cột | Kiểu | Nullable | Mặc định | Ràng buộc / Ghi chú |
 |-----|------|----------|----------|---------------------|
 | id | bigint unsigned | No | — | PK, auto increment |
-| organization_id | bigint unsigned | Yes | null | FK → organizations.id |
-| name | varchar(255) | No | — | UNIQUE(organization_id, name, guard_name) |
+| department_id | bigint unsigned | Yes | null | FK → departments.id |
+| name | varchar(255) | No | — | UNIQUE(department_id, name, guard_name) |
 | guard_name | varchar(255) | No | — | |
 | created_at | timestamp | Yes | null | |
 | updated_at | timestamp | Yes | null | |
 
 ### Pivot tables (Spatie)
-- `model_has_permissions`: permission_id, model_type, model_id, organization_id
-- `model_has_roles`: role_id, model_type, model_id, organization_id
+- `model_has_permissions`: permission_id, model_type, model_id, department_id
+- `model_has_roles`: role_id, model_type, model_id, department_id
 - `role_has_permissions`: permission_id, role_id
 
 ### `log_activities`
@@ -146,7 +146,7 @@ Nhật ký truy cập.
 | description | varchar(255) | No | — | |
 | user_type | varchar(255) | No | 'Guest' | |
 | user_id | bigint unsigned | Yes | null | FK → users.id |
-| organization_id | bigint unsigned | Yes | null | FK → organizations.id |
+| department_id | bigint unsigned | Yes | null | FK → departments.id |
 | route | varchar(255) | No | — | |
 | method_type | varchar(255) | No | — | |
 | status_code | int | No | — | |
@@ -238,22 +238,22 @@ Bảng trung tâm — lịch công tác.
 | nature_id | bigint unsigned | Yes | null | FK → schedule_natures.id |
 | color_code | varchar(20) | Yes | null | Mã màu hiển thị (#FF5733) |
 | sort_order | int unsigned | No | 0 | Thứ tự trong cùng ngày+tổ chức |
-| organization_id | bigint unsigned | Yes | null | FK → organizations.id (Thường trực / Văn phòng) |
+| department_id | bigint unsigned | Yes | null | FK → departments.id (Thường trực / Văn phòng) |
 | status | varchar(255) | No | 'active' | active, inactive |
 | created_by | bigint unsigned | Yes | null | FK → users.id (người lập = chủ sở hữu) |
 | updated_by | bigint unsigned | Yes | null | FK → users.id |
 | created_at | timestamp | Yes | null | |
 | updated_at | timestamp | Yes | null | |
 
-**Index:** (event_date, organization_id), (event_date, session, organization_id), FULLTEXT(content)
+**Index:** (event_date, department_id), (event_date, session, department_id), FULLTEXT(content)
 
 **Quan hệ:**
-- belongsTo: organization, chairperson, meetingType, nature, creator, editor
+- belongsTo: department, chairperson, meetingType, nature, creator, editor
 - hasMany: participants, notifications
 - morphMany: media (collection `schedule-attachments`)
 
 **Logic đặc biệt:**
-- sort_order scoped theo (event_date, organization_id)
+- sort_order scoped theo (event_date, department_id)
 - Ưu tiên chức danh khi sort: Bí thư trước, Phó Bí thư sau (POSITION_PRIORITY)
 - Owner permission: chỉ created_by mới sửa/xóa (trừ role có schedules.updateAll/destroyAll)
 
@@ -297,7 +297,7 @@ Thông báo nhắc lịch.
 ## Sơ đồ quan hệ (Module Schedule)
 
 ```
-organizations ──── 1-n ──► schedules
+departments ──── 1-n ──► schedules
 users ──┬── chairperson_id ──► schedules
         ├── created_by ──► schedules
         ├── user_id ──► schedule_participants

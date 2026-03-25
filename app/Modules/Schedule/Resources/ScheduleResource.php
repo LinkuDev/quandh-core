@@ -21,10 +21,10 @@ class ScheduleResource extends JsonResource
             'participant_count' => $this->whenLoaded('participants', fn () => $this->participants->count()),
             'color_code' => $this->color_code,
             'sort_order' => $this->sort_order,
-            'organization_id' => $this->organization_id,
-            'organization' => $this->whenLoaded('organization', fn () => $this->organization ? [
-                'id' => $this->organization->id,
-                'name' => $this->organization->name,
+            'department_id' => $this->department_id,
+            'department' => $this->whenLoaded('department', fn () => $this->department ? [
+                'id' => $this->department->id,
+                'name' => $this->department->name,
             ] : null),
             'status' => $this->status,
             'chairperson' => $this->whenLoaded('chairperson', fn () => $this->chairperson ? [

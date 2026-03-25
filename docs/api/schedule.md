@@ -8,7 +8,7 @@
 |--------|------|-------|
 | GET | `/api/schedules/public` | Lịch công tác công khai |
 
-### Protected (cần Bearer token + X-Organization-Id)
+### Protected (cần Bearer token + X-Department-Id)
 
 | Method | Path | Permission | Mô tả |
 |--------|------|------------|-------|
@@ -39,7 +39,7 @@
 | from_date | date | Từ ngày |
 | to_date | date | Đến ngày |
 | session | string | sang, chieu, toi |
-| organization_id | integer | ID tổ chức |
+| department_id | integer | ID tổ chức |
 | chairperson_id | integer | ID chủ trì |
 | meeting_type_id | integer | ID loại cuộc họp |
 | nature_id | integer | ID tính chất |
@@ -56,7 +56,7 @@
   "content": "Họp Ban Thường vụ",
   "event_date": "2026-04-01",
   "session": "sang",
-  "organization_id": 1,
+  "department_id": 1,
   "start_time": "08:00",
   "chairperson_id": 1,
   "location": "Phòng họp A",
@@ -91,7 +91,7 @@
     "chairperson": { "id": 1, "name": "Admin", "position": "Bí thư" },
     "meeting_type": { "id": 1, "name": "Họp thường kỳ" },
     "nature": { "id": 1, "name": "Thường" },
-    "organization": { "id": 1, "name": "Thường trực Thành ủy" },
+    "department": { "id": 1, "name": "Thường trực Thành ủy" },
     "participant_count": 3,
     "participants": [
       { "id": 1, "user_id": 2, "user_name": "Trần Văn C", "external_name": null },

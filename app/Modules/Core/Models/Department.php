@@ -2,24 +2,24 @@
 
 namespace App\Modules\Core\Models;
 
-use App\Modules\Core\Services\OrganizationService;
+use App\Modules\Core\Services\DepartmentService;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 
 /**
- * Model Organization – tổ chức (thay thế teams, dùng cho Spatie Permission teams).
+ * Model Department – đơn vị (Thường trực Thành ủy, Văn phòng Thành ủy, ...). Dùng cho Spatie Permission teams.
  */
-class Organization extends Model
+class Department extends Model
 {
     use HasFactory;
 
     protected static function newFactory()
     {
-        return \Database\Factories\Modules\Core\Models\OrganizationFactory::new();
+        return \Database\Factories\Modules\Core\Models\DepartmentFactory::new();
     }
 
-    protected $table = 'organizations';
+    protected $table = 'departments';
 
     protected $fillable = [
         'name',
@@ -38,32 +38,32 @@ class Organization extends Model
 
     public function parent()
     {
-        return $this->belongsTo(Organization::class, 'parent_id');
+        return $this->belongsTo(Department::class, 'parent_id');
     }
 
     public function children()
     {
-        return $this->hasMany(Organization::class, 'parent_id')->orderBy('sort_order');
+        return $this->hasMany(Department::class, 'parent_id')->orderBy('sort_order');
     }
 
     protected static function booted()
     {
-        static::creating(function (Organization $organization) {
-            $organization->created_by = $organization->updated_by = auth()->id();
-            if (empty($organization->slug)) {
-                $organization->slug = app(OrganizationService::class)->generateUniqueSlug(Str::slug($organization->name));
+        static::creating(function (Department $department) {
+            $department->created_by = $department->updated_by = auth()->id();
+            if (empty($department->slug)) {
+                $department->slug = app(DepartmentService::class)->generateUniqueSlug(Str::slug($department->name));
             }
         });
 
-        static::updating(function (Organization $organization) {
-            $organization->updated_by = auth()->id();
-            if ($organization->isDirty('name') && ! $organization->isDirty('slug')) {
-                $organization->slug = app(OrganizationService::class)->generateUniqueSlug(Str::slug($organization->name), $organization->id);
+        static::updating(function (Department $department) {
+            $department->updated_by = auth()->id();
+            if ($department->isDirty('name') && ! $department->isDirty('slug')) {
+                $department->slug = app(DepartmentService::class)->generateUniqueSlug(Str::slug($department->name), $department->id);
             }
         });
 
-        static::deleting(function (Organization $organization) {
-            foreach ($organization->children as $child) {
+        static::deleting(function (Department $department) {
+            foreach ($department->children as $child) {
                 $child->delete();
             }
         });
@@ -112,6 +112,6 @@ class Organization extends Model
             return (int) $this->attributes['depth'];
         }
 
-        return app(OrganizationService::class)->getDepth($this);
+        return app(DepartmentService::class)->getDepth($this);
     }
 }

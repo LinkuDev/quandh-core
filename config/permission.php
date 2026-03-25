@@ -19,7 +19,7 @@ return [
         'role_pivot_key' => null,
         'permission_pivot_key' => null,
         'model_morph_key' => 'model_id',
-        'team_foreign_key' => 'organization_id',
+        'team_foreign_key' => 'department_id',
     ],
 
     'register_permission_check_method' => true,
@@ -27,8 +27,8 @@ return [
     'events_enabled' => false,
 
     /*
-     * Bật tính năng Teams (Spatie): roles và permissions gắn với organization_id.
-     * Cần có bảng organizations trước khi chạy migration permission.
+     * Bật tính năng Teams (Spatie): roles và permissions gắn với department_id.
+     * Cần có bảng departments trước khi chạy migration permission.
      */
     'teams' => true,
 

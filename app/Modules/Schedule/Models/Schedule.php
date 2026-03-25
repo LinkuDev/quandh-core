@@ -2,7 +2,7 @@
 
 namespace App\Modules\Schedule\Models;
 
-use App\Modules\Core\Models\Organization;
+use App\Modules\Core\Models\Department;
 use App\Modules\Core\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -36,7 +36,7 @@ class Schedule extends Model implements HasMedia
         'nature_id',
         'color_code',
         'sort_order',
-        'organization_id',
+        'department_id',
         'status',
         'created_by',
         'updated_by',
@@ -62,9 +62,9 @@ class Schedule extends Model implements HasMedia
 
     /* ── Quan hệ ── */
 
-    public function organization()
+    public function department()
     {
-        return $this->belongsTo(Organization::class);
+        return $this->belongsTo(Department::class);
     }
 
     public function chairperson()
@@ -123,7 +123,7 @@ class Schedule extends Model implements HasMedia
             ->when($filters['from_date'] ?? null, fn ($q, $date) => $q->whereDate('schedules.event_date', '>=', $date))
             ->when($filters['to_date'] ?? null, fn ($q, $date) => $q->whereDate('schedules.event_date', '<=', $date))
             ->when($filters['session'] ?? null, fn ($q, $session) => $q->where('schedules.session', $session))
-            ->when($filters['organization_id'] ?? null, fn ($q, $orgId) => $q->where('schedules.organization_id', $orgId))
+            ->when($filters['department_id'] ?? null, fn ($q, $orgId) => $q->where('schedules.department_id', $orgId))
             ->when($filters['chairperson_id'] ?? null, fn ($q, $id) => $q->where('schedules.chairperson_id', $id))
             ->when($filters['meeting_type_id'] ?? null, fn ($q, $id) => $q->where('schedules.meeting_type_id', $id))
             ->when($filters['nature_id'] ?? null, fn ($q, $id) => $q->where('schedules.nature_id', $id))

@@ -18,14 +18,14 @@ class LogActivityService
 
     public function index(array $filters, int $limit)
     {
-        return LogActivity::with('user', 'organization')
+        return LogActivity::with('user', 'department')
             ->filter($filters)
             ->paginate($limit);
     }
 
     public function show(LogActivity $logActivity): LogActivity
     {
-        return $logActivity->load('user', 'organization');
+        return $logActivity->load('user', 'department');
     }
 
     public function destroy(LogActivity $logActivity): void

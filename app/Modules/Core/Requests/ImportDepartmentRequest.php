@@ -4,7 +4,7 @@ namespace App\Modules\Core\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ImportOrganizationRequest extends FormRequest
+class ImportDepartmentRequest extends FormRequest
 {
     public function authorize(): bool
     {

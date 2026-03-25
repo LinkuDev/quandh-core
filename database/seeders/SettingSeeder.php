@@ -19,15 +19,15 @@ class SettingSeeder extends Seeder
         ['key' => 'icon', 'value' => null, 'group' => 'general', 'is_public' => true, 'type' => 'string', 'label' => 'Biểu tượng favicon', 'sort_order' => 5],
         ['key' => 'logo', 'value' => null, 'group' => 'general', 'is_public' => true, 'type' => 'string', 'label' => 'Logo trang', 'sort_order' => 6],
         // Admin page
-        ['key' => 'admin_app_name', 'value' => 'QuânDH Core', 'group' => 'admin_page', 'is_public' => true, 'type' => 'string', 'label' => 'Tên ứng dụng', 'sort_order' => 1],
-        ['key' => 'admin_logo_title', 'value' => 'Hệ thống quản trị', 'group' => 'admin_page', 'is_public' => true, 'type' => 'string', 'label' => 'Tiêu đề logo', 'sort_order' => 2],
-        ['key' => 'admin_welcome_title', 'value' => 'Chào mừng đến với hệ thống', 'group' => 'admin_page', 'is_public' => true, 'type' => 'string', 'label' => 'Tiêu đề chào mừng', 'sort_order' => 3],
-        ['key' => 'admin_app_description', 'value' => '', 'group' => 'admin_page', 'is_public' => true, 'type' => 'text', 'label' => 'Mô tả ứng dụng', 'sort_order' => 4],
+        ['key' => 'admin_app_name', 'value' => 'Lịch công tác Thành ủy', 'group' => 'admin_page', 'is_public' => true, 'type' => 'string', 'label' => 'Tên ứng dụng', 'sort_order' => 1],
+        ['key' => 'admin_logo_title', 'value' => 'Hệ thống quản lý lịch công tác', 'group' => 'admin_page', 'is_public' => true, 'type' => 'string', 'label' => 'Tiêu đề logo', 'sort_order' => 2],
+        ['key' => 'admin_welcome_title', 'value' => 'Chào mừng đến với Hệ thống lịch công tác Thành ủy', 'group' => 'admin_page', 'is_public' => true, 'type' => 'string', 'label' => 'Tiêu đề chào mừng', 'sort_order' => 3],
+        ['key' => 'admin_app_description', 'value' => 'Hệ thống quản lý lịch công tác Thường trực và Văn phòng Thành ủy', 'group' => 'admin_page', 'is_public' => true, 'type' => 'text', 'label' => 'Mô tả ứng dụng', 'sort_order' => 4],
         ['key' => 'admin_background_image', 'value' => null, 'group' => 'admin_page', 'is_public' => true, 'type' => 'string', 'label' => 'Ảnh nền', 'sort_order' => 5],
-        // Org select page
-        ['key' => 'org_select_title', 'value' => 'Chọn tổ chức', 'group' => 'org_select_page', 'is_public' => true, 'type' => 'string', 'label' => 'Tiêu đề trang chọn tổ chức', 'sort_order' => 1],
-        ['key' => 'org_select_description', 'value' => '', 'group' => 'org_select_page', 'is_public' => true, 'type' => 'text', 'label' => 'Mô tả trang chọn tổ chức', 'sort_order' => 2],
-        ['key' => 'org_select_background_image', 'value' => null, 'group' => 'org_select_page', 'is_public' => true, 'type' => 'string', 'label' => 'Ảnh nền', 'sort_order' => 3],
+        // Department select page
+        ['key' => 'dept_select_title', 'value' => 'Chọn đơn vị', 'group' => 'dept_select_page', 'is_public' => true, 'type' => 'string', 'label' => 'Tiêu đề trang chọn đơn vị', 'sort_order' => 1],
+        ['key' => 'dept_select_description', 'value' => '', 'group' => 'dept_select_page', 'is_public' => true, 'type' => 'text', 'label' => 'Mô tả trang chọn đơn vị', 'sort_order' => 2],
+        ['key' => 'dept_select_background_image', 'value' => null, 'group' => 'dept_select_page', 'is_public' => true, 'type' => 'string', 'label' => 'Ảnh nền', 'sort_order' => 3],
         // Social
         ['key' => 'social_facebook', 'value' => null, 'group' => 'social', 'is_public' => true, 'type' => 'string', 'label' => 'Facebook', 'sort_order' => 1],
         ['key' => 'social_twitter', 'value' => null, 'group' => 'social', 'is_public' => true, 'type' => 'string', 'label' => 'Twitter', 'sort_order' => 2],

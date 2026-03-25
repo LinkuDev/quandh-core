@@ -18,7 +18,7 @@ use App\Modules\Schedule\Services\CatalogService;
 
 /**
  * @group Schedule - Loại cuộc họp
- * @header X-Organization-Id ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1
+ * @header X-Department-Id ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1
  *
  * Quản lý danh mục loại cuộc họp: thống kê, danh sách, chi tiết, tạo, cập nhật, xóa, thao tác hàng loạt, xuất/nhập và đổi trạng thái.
  */

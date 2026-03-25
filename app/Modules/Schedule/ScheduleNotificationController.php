@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 
 /**
  * @group Schedule - Thông báo
- * @header X-Organization-Id ID tổ chức cần làm việc. Example: 1
+ * @header X-Department-Id ID đơn vị cần làm việc. Example: 1
  *
  * API thông báo lịch công tác cho user hiện tại: đếm chưa đọc (badge), danh sách, đánh dấu đã đọc.
  */
