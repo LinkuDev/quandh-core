@@ -18,7 +18,7 @@ endpoints:
       deprecated: false
     headers:
       Authorization: 'Bearer Bearer {YOUR_ACCESS_TOKEN}'
-      X-Organization-Id: 'ID tổ chức cần làm việc. Example: 1'
+      X-Department-Id: 'ID đơn vị cần làm việc. Example: 1'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
@@ -60,7 +60,7 @@ endpoints:
       deprecated: false
     headers:
       Authorization: 'Bearer Bearer {YOUR_ACCESS_TOKEN}'
-      X-Organization-Id: 'ID tổ chức cần làm việc. Example: 1'
+      X-Department-Id: 'ID đơn vị cần làm việc. Example: 1'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
@@ -86,7 +86,7 @@ endpoints:
       -
         custom: []
         status: 200
-        content: '{"data":[{"id":5,"schedule_id":29,"channel":"sms","status":"pending","remind_at":"18:02:17 25\/03\/2026","sent_at":null,"read_at":null,"is_read":false,"created_at":"04:04:30 24\/03\/2026"},{"id":6,"schedule_id":30,"channel":"sms","status":"pending","remind_at":"15:43:24 24\/03\/2026","sent_at":null,"read_at":null,"is_read":false,"created_at":"04:04:30 24\/03\/2026"}],"links":{"first":"\/?page=1","last":"\/?page=1","prev":null,"next":null},"meta":{"current_page":1,"from":1,"last_page":1,"links":[{"url":null,"label":"&laquo; Previous","page":null,"active":false},{"url":"\/?page=1","label":"1","page":1,"active":true},{"url":null,"label":"Next &raquo;","page":null,"active":false}],"path":"\/","per_page":20,"to":2,"total":2},"success":"true"}'
+        content: '{"data":[{"id":97,"schedule_id":66,"channel":"sms","status":"pending","remind_at":"16:32:37 26\/03\/2026","sent_at":null,"read_at":null,"is_read":false,"created_at":"02:34:50 25\/03\/2026"},{"id":98,"schedule_id":67,"channel":"sms","status":"pending","remind_at":"14:13:44 25\/03\/2026","sent_at":null,"read_at":null,"is_read":false,"created_at":"02:34:50 25\/03\/2026"}],"links":{"first":"\/?page=1","last":"\/?page=1","prev":null,"next":null},"meta":{"current_page":1,"from":1,"last_page":1,"links":[{"url":null,"label":"&laquo; Previous","page":null,"active":false},{"url":"\/?page=1","label":"1","page":1,"active":true},{"url":null,"label":"Next &raquo;","page":null,"active":false}],"path":"\/","per_page":20,"to":2,"total":2},"success":"true"}'
         headers: []
         description: ''
     responseFields: []
@@ -114,7 +114,7 @@ endpoints:
       deprecated: false
     headers:
       Authorization: 'Bearer Bearer {YOUR_ACCESS_TOKEN}'
-      X-Organization-Id: 'ID tổ chức cần làm việc. Example: 1'
+      X-Department-Id: 'ID đơn vị cần làm việc. Example: 1'
       Content-Type: application/json
       Accept: application/json
     urlParameters:
@@ -123,7 +123,7 @@ endpoints:
         name: scheduleNotification_id
         description: 'The ID of the scheduleNotification.'
         required: true
-        example: 16
+        example: 1
         type: integer
         enumValues: []
         exampleWasSpecified: false
@@ -141,7 +141,7 @@ endpoints:
         nullable: false
         deprecated: false
     cleanUrlParameters:
-      scheduleNotification_id: 16
+      scheduleNotification_id: 1
       scheduleNotification: 1
     queryParameters: []
     cleanQueryParameters: []
@@ -180,7 +180,7 @@ endpoints:
       deprecated: false
     headers:
       Authorization: 'Bearer Bearer {YOUR_ACCESS_TOKEN}'
-      X-Organization-Id: 'ID tổ chức cần làm việc. Example: 1'
+      X-Department-Id: 'ID đơn vị cần làm việc. Example: 1'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []

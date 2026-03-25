@@ -13,9 +13,7 @@ Route::get('/settings/public', [\App\Modules\Core\SettingController::class, 'pub
 Route::get('/departments/public', [\App\Modules\Core\DepartmentController::class, 'public'])->middleware('log.activity');
 Route::get('/departments/public-options', [\App\Modules\Core\DepartmentController::class, 'publicOptions'])->middleware('log.activity');
 Route::get('/schedules/public', [\App\Modules\Schedule\ScheduleController::class, 'publicIndex'])->middleware('log.activity');
-Route::get('/schedule-meeting-types/public', [\App\Modules\Schedule\ScheduleMeetingTypeController::class, 'public'])->middleware('log.activity');
 Route::get('/schedule-meeting-types/public-options', [\App\Modules\Schedule\ScheduleMeetingTypeController::class, 'publicOptions'])->middleware('log.activity');
-Route::get('/schedule-natures/public', [\App\Modules\Schedule\ScheduleNatureController::class, 'public'])->middleware('log.activity');
 Route::get('/schedule-natures/public-options', [\App\Modules\Schedule\ScheduleNatureController::class, 'publicOptions'])->middleware('log.activity');
 
 // Route yêu cầu đăng nhập (Bearer token) và đặt ngữ cảnh team cho Spatie Permission

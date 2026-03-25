@@ -18,7 +18,7 @@ endpoints:
       deprecated: false
     headers:
       Authorization: 'Bearer Bearer {YOUR_ACCESS_TOKEN}'
-      X-Organization-Id: 'ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
+      X-Department-Id: 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
@@ -147,7 +147,7 @@ endpoints:
       deprecated: false
     headers:
       Authorization: 'Bearer Bearer {YOUR_ACCESS_TOKEN}'
-      X-Organization-Id: 'ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
+      X-Department-Id: 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
       Content-Type: multipart/form-data
       Accept: application/json
     urlParameters: []
@@ -201,7 +201,7 @@ endpoints:
       deprecated: false
     headers:
       Authorization: 'Bearer Bearer {YOUR_ACCESS_TOKEN}'
-      X-Organization-Id: 'ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
+      X-Department-Id: 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
@@ -261,7 +261,7 @@ endpoints:
       deprecated: false
     headers:
       Authorization: 'Bearer Bearer {YOUR_ACCESS_TOKEN}'
-      X-Organization-Id: 'ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
+      X-Department-Id: 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
@@ -333,7 +333,7 @@ endpoints:
       deprecated: false
     headers:
       Authorization: 'Bearer Bearer {YOUR_ACCESS_TOKEN}'
-      X-Organization-Id: 'ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
+      X-Department-Id: 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
@@ -459,7 +459,7 @@ endpoints:
       deprecated: false
     headers:
       Authorization: 'Bearer Bearer {YOUR_ACCESS_TOKEN}'
-      X-Organization-Id: 'ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
+      X-Department-Id: 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
@@ -557,7 +557,7 @@ endpoints:
       -
         custom: []
         status: 200
-        content: '{"data":[{"id":65,"name":"Ms. Elisabeth Okuneva","email":"gulgowski.asia@example.com","user_name":"idickens","status":"inactive","created_by":"N\/A","updated_by":"N\/A","assignments":[],"created_at":"24\/03\/2026 04:04:29","updated_at":"24\/03\/2026 04:04:29"},{"id":66,"name":"Mya DuBuque","email":"breitenberg.gilbert@example.com","user_name":"price.amber","status":"inactive","created_by":"N\/A","updated_by":"N\/A","assignments":[],"created_at":"24\/03\/2026 04:04:29","updated_at":"24\/03\/2026 04:04:29"}],"links":{"first":"\/?page=1","last":"\/?page=1","prev":null,"next":null},"meta":{"current_page":1,"from":1,"last_page":1,"links":[{"url":null,"label":"&laquo; Previous","page":null,"active":false},{"url":"\/?page=1","label":"1","page":1,"active":true},{"url":null,"label":"Next &raquo;","page":null,"active":false}],"path":"\/","per_page":10,"to":2,"total":2},"success":"true"}'
+        content: '{"data":[{"id":25,"name":"Ms. Elisabeth Okuneva","email":"gulgowski.asia@example.com","user_name":"idickens","status":"inactive","created_by":"N\/A","updated_by":"N\/A","assignments":[],"created_at":"25\/03\/2026 02:34:48","updated_at":"25\/03\/2026 02:34:48"},{"id":26,"name":"Mya DuBuque","email":"breitenberg.gilbert@example.com","user_name":"price.amber","status":"inactive","created_by":"N\/A","updated_by":"N\/A","assignments":[],"created_at":"25\/03\/2026 02:34:48","updated_at":"25\/03\/2026 02:34:48"}],"links":{"first":"\/?page=1","last":"\/?page=1","prev":null,"next":null},"meta":{"current_page":1,"from":1,"last_page":1,"links":[{"url":null,"label":"&laquo; Previous","page":null,"active":false},{"url":"\/?page=1","label":"1","page":1,"active":true},{"url":null,"label":"Next &raquo;","page":null,"active":false}],"path":"\/","per_page":10,"to":2,"total":2},"success":"true"}'
         headers: []
         description: ''
     responseFields: []
@@ -585,7 +585,7 @@ endpoints:
       deprecated: false
     headers:
       Authorization: 'Bearer Bearer {YOUR_ACCESS_TOKEN}'
-      X-Organization-Id: 'ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
+      X-Department-Id: 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
       Content-Type: application/json
       Accept: application/json
     urlParameters:
@@ -623,7 +623,7 @@ endpoints:
       -
         custom: []
         status: 200
-        content: '{"data":{"id":67,"name":"Morgan Hirthe","email":"dare.emelie@example.com","user_name":"imclaughlin","status":"inactive","created_by":"N\/A","updated_by":"N\/A","assignments":[],"created_at":"24\/03\/2026 04:04:29","updated_at":"24\/03\/2026 04:04:29"},"success":"true"}'
+        content: '{"data":{"id":27,"name":"Morgan Hirthe","email":"dare.emelie@example.com","user_name":"imclaughlin","status":"inactive","created_by":"N\/A","updated_by":"N\/A","assignments":[],"created_at":"25\/03\/2026 02:34:48","updated_at":"25\/03\/2026 02:34:48"},"success":"true"}'
         headers: []
         description: ''
     responseFields: []
@@ -651,7 +651,7 @@ endpoints:
       deprecated: false
     headers:
       Authorization: 'Bearer Bearer {YOUR_ACCESS_TOKEN}'
-      X-Organization-Id: 'ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
+      X-Department-Id: 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
@@ -717,7 +717,7 @@ endpoints:
       assignments:
         custom: []
         name: assignments
-        description: 'Danh sách gán vai trò theo tổ chức. Ví dụ: [{"role_id":1,"organization_ids":[2,3]},{"role_id":5,"organization_ids":[9]}]'
+        description: 'Danh sách gán vai trò theo đơn vị. Ví dụ: [{"role_id":1,"department_ids":[2,3]},{"role_id":5,"department_ids":[9]}]'
         required: false
         example:
           - architecto
@@ -737,10 +737,10 @@ endpoints:
         exampleWasSpecified: false
         nullable: false
         deprecated: false
-      'assignments[].organization_ids':
+      'assignments[].department_ids':
         custom: []
-        name: 'assignments[].organization_ids'
-        description: 'The <code>id</code> of an existing record in the organizations table.'
+        name: 'assignments[].department_ids'
+        description: 'The <code>id</code> of an existing record in the departments table.'
         required: false
         example:
           - 16
@@ -774,7 +774,7 @@ endpoints:
       -
         custom: []
         status: 201
-        content: '{"data":{"id":68,"name":"Ms. Elisabeth Okuneva","email":"idickens@example.org","user_name":"aschuster","status":"active","created_by":"N\/A","updated_by":"N\/A","assignments":[],"created_at":"24\/03\/2026 04:04:29","updated_at":"24\/03\/2026 04:04:29"},"success":"true","message":"T\u00e0i kho\u1ea3n \u0111\u00e3 \u0111\u01b0\u1ee3c t\u1ea1o th\u00e0nh c\u00f4ng!"}'
+        content: '{"data":{"id":28,"name":"Ms. Elisabeth Okuneva","email":"idickens@example.org","user_name":"aschuster","status":"active","created_by":"N\/A","updated_by":"N\/A","assignments":[],"created_at":"25\/03\/2026 02:34:48","updated_at":"25\/03\/2026 02:34:48"},"success":"true","message":"T\u00e0i kho\u1ea3n \u0111\u00e3 \u0111\u01b0\u1ee3c t\u1ea1o th\u00e0nh c\u00f4ng!"}'
         headers: []
         description: ''
     responseFields: []
@@ -802,7 +802,7 @@ endpoints:
       deprecated: false
     headers:
       Authorization: 'Bearer Bearer {YOUR_ACCESS_TOKEN}'
-      X-Organization-Id: 'ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
+      X-Department-Id: 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
       Content-Type: application/json
       Accept: application/json
     urlParameters:
@@ -892,7 +892,7 @@ endpoints:
       assignments:
         custom: []
         name: assignments
-        description: 'Danh sách gán vai trò theo tổ chức. Khi gửi field này, hệ thống sẽ đồng bộ lại toàn bộ phân quyền của user.'
+        description: 'Danh sách gán vai trò theo đơn vị. Khi gửi field này, hệ thống sẽ đồng bộ lại toàn bộ phân quyền của user.'
         required: false
         example:
           - architecto
@@ -912,10 +912,10 @@ endpoints:
         exampleWasSpecified: false
         nullable: false
         deprecated: false
-      'assignments[].organization_ids':
+      'assignments[].department_ids':
         custom: []
-        name: 'assignments[].organization_ids'
-        description: 'The <code>id</code> of an existing record in the organizations table.'
+        name: 'assignments[].department_ids'
+        description: 'The <code>id</code> of an existing record in the departments table.'
         required: false
         example:
           - 16
@@ -949,7 +949,7 @@ endpoints:
       -
         custom: []
         status: 200
-        content: '{"data":{"id":69,"name":"Ms. Elisabeth Okuneva","email":"aschuster@example.com","user_name":"gilbert32","status":"active","created_by":"N\/A","updated_by":"N\/A","assignments":[],"created_at":"24\/03\/2026 04:04:29","updated_at":"24\/03\/2026 04:04:29"},"success":"true","message":"T\u00e0i kho\u1ea3n \u0111\u00e3 \u0111\u01b0\u1ee3c c\u1eadp nh\u1eadt!"}'
+        content: '{"data":{"id":29,"name":"Ms. Elisabeth Okuneva","email":"aschuster@example.com","user_name":"gilbert32","status":"active","created_by":"N\/A","updated_by":"N\/A","assignments":[],"created_at":"25\/03\/2026 02:34:48","updated_at":"25\/03\/2026 02:34:48"},"success":"true","message":"T\u00e0i kho\u1ea3n \u0111\u00e3 \u0111\u01b0\u1ee3c c\u1eadp nh\u1eadt!"}'
         headers: []
         description: ''
     responseFields: []
@@ -977,7 +977,7 @@ endpoints:
       deprecated: false
     headers:
       Authorization: 'Bearer Bearer {YOUR_ACCESS_TOKEN}'
-      X-Organization-Id: 'ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
+      X-Department-Id: 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
       Content-Type: application/json
       Accept: application/json
     urlParameters:
@@ -1067,7 +1067,7 @@ endpoints:
       assignments:
         custom: []
         name: assignments
-        description: 'Danh sách gán vai trò theo tổ chức. Khi gửi field này, hệ thống sẽ đồng bộ lại toàn bộ phân quyền của user.'
+        description: 'Danh sách gán vai trò theo đơn vị. Khi gửi field này, hệ thống sẽ đồng bộ lại toàn bộ phân quyền của user.'
         required: false
         example:
           - architecto
@@ -1087,10 +1087,10 @@ endpoints:
         exampleWasSpecified: false
         nullable: false
         deprecated: false
-      'assignments[].organization_ids':
+      'assignments[].department_ids':
         custom: []
-        name: 'assignments[].organization_ids'
-        description: 'The <code>id</code> of an existing record in the organizations table.'
+        name: 'assignments[].department_ids'
+        description: 'The <code>id</code> of an existing record in the departments table.'
         required: false
         example:
           - 16
@@ -1124,7 +1124,7 @@ endpoints:
       -
         custom: []
         status: 200
-        content: '{"data":{"id":70,"name":"Ms. Elisabeth Okuneva","email":"gilbert32@example.com","user_name":"hirthe.theo","status":"active","created_by":"N\/A","updated_by":"N\/A","assignments":[],"created_at":"24\/03\/2026 04:04:29","updated_at":"24\/03\/2026 04:04:29"},"success":"true","message":"T\u00e0i kho\u1ea3n \u0111\u00e3 \u0111\u01b0\u1ee3c c\u1eadp nh\u1eadt!"}'
+        content: '{"data":{"id":30,"name":"Ms. Elisabeth Okuneva","email":"gilbert32@example.com","user_name":"hirthe.theo","status":"active","created_by":"N\/A","updated_by":"N\/A","assignments":[],"created_at":"25\/03\/2026 02:34:48","updated_at":"25\/03\/2026 02:34:48"},"success":"true","message":"T\u00e0i kho\u1ea3n \u0111\u00e3 \u0111\u01b0\u1ee3c c\u1eadp nh\u1eadt!"}'
         headers: []
         description: ''
     responseFields: []
@@ -1152,7 +1152,7 @@ endpoints:
       deprecated: false
     headers:
       Authorization: 'Bearer Bearer {YOUR_ACCESS_TOKEN}'
-      X-Organization-Id: 'ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
+      X-Department-Id: 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
       Content-Type: application/json
       Accept: application/json
     urlParameters:
@@ -1218,7 +1218,7 @@ endpoints:
       deprecated: false
     headers:
       Authorization: 'Bearer Bearer {YOUR_ACCESS_TOKEN}'
-      X-Organization-Id: 'ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
+      X-Department-Id: 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
       Content-Type: application/json
       Accept: application/json
     urlParameters:
@@ -1268,7 +1268,7 @@ endpoints:
       -
         custom: []
         status: 200
-        content: '{"data":{"id":71,"name":"Morgan Hirthe","email":"imclaughlin@example.org","user_name":"okeefe.isidro","status":"inactive","created_by":"N\/A","updated_by":"N\/A","assignments":[],"created_at":"24\/03\/2026 04:04:29","updated_at":"24\/03\/2026 04:04:29"},"success":"true","message":"C\u1eadp nh\u1eadt tr\u1ea1ng th\u00e1i th\u00e0nh c\u00f4ng!"}'
+        content: '{"data":{"id":31,"name":"Morgan Hirthe","email":"imclaughlin@example.org","user_name":"okeefe.isidro","status":"inactive","created_by":"N\/A","updated_by":"N\/A","assignments":[],"created_at":"25\/03\/2026 02:34:48","updated_at":"25\/03\/2026 02:34:48"},"success":"true","message":"C\u1eadp nh\u1eadt tr\u1ea1ng th\u00e1i th\u00e0nh c\u00f4ng!"}'
         headers: []
         description: ''
     responseFields: []

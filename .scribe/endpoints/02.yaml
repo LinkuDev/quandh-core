@@ -1,23 +1,23 @@
-name: 'Core - Organization'
+name: 'Core - Department'
 description: ''
 endpoints:
   -
     custom: []
     httpMethods:
       - GET
-    uri: api/organizations/public
+    uri: api/departments/public
     metadata:
       custom: []
-      groupName: 'Core - Organization'
+      groupName: 'Core - Department'
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
-      title: 'Danh sách organization công khai'
-      description: 'Trả về danh sách organization đang hoạt động (active), thứ tự theo cây, dùng cho các chức năng công khai.'
+      title: 'Danh sách department công khai'
+      description: 'Trả về danh sách department đang hoạt động (active), thứ tự theo cây, dùng cho các chức năng công khai.'
       authenticated: false
       deprecated: false
     headers:
-      X-Organization-Id: 'ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
+      X-Department-Id: 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
@@ -117,7 +117,7 @@ endpoints:
       -
         custom: []
         status: 200
-        content: '{"data":[{"id":128,"name":"Bailey Inc","slug":"quos-velit-et-fugiat-sunt-nihil-accusantium-harum","description":null,"status":"active","parent_id":null,"sort_order":7,"depth":0,"created_by":"N\/A","updated_by":"N\/A","created_at":"04:04:28 24\/03\/2026","updated_at":"04:04:28 24\/03\/2026"},{"id":129,"name":"DuBuque Inc","slug":"quo-omnis-nostrum-aut-adipisci","description":"Qui commodi incidunt iure odit.","status":"active","parent_id":null,"sort_order":20,"depth":0,"created_by":"N\/A","updated_by":"N\/A","created_at":"04:04:28 24\/03\/2026","updated_at":"04:04:28 24\/03\/2026"}],"success":"true"}'
+        content: '{"data":[{"id":24,"name":"Bailey Inc","slug":"quos-velit-et-fugiat-sunt-nihil-accusantium-harum","description":null,"status":"active","parent_id":null,"sort_order":7,"depth":0,"created_by":"N\/A","updated_by":"N\/A","created_at":"02:34:48 25\/03\/2026","updated_at":"02:34:48 25\/03\/2026"},{"id":25,"name":"DuBuque Inc","slug":"quo-omnis-nostrum-aut-adipisci","description":"Qui commodi incidunt iure odit.","status":"active","parent_id":null,"sort_order":20,"depth":0,"created_by":"N\/A","updated_by":"N\/A","created_at":"02:34:48 25\/03\/2026","updated_at":"02:34:48 25\/03\/2026"}],"success":"true"}'
         headers: []
         description: ''
     responseFields: []
@@ -129,19 +129,19 @@ endpoints:
     custom: []
     httpMethods:
       - GET
-    uri: api/organizations/public-options
+    uri: api/departments/public-options
     metadata:
       custom: []
-      groupName: 'Core - Organization'
+      groupName: 'Core - Department'
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
-      title: 'Danh sách organization công khai cho dropdown'
+      title: 'Danh sách department công khai cho dropdown'
       description: 'Trả về dữ liệu tối giản chỉ gồm id, name, description để tối ưu payload cho dropdown.'
       authenticated: false
       deprecated: false
     headers:
-      X-Organization-Id: 'ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
+      X-Department-Id: 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
@@ -241,7 +241,7 @@ endpoints:
       -
         custom: []
         status: 200
-        content: '{"data":[{"id":130,"name":"Okuneva, Rempel and Gulgowski","description":null},{"id":131,"name":"Cormier Inc","description":"Odit et et modi."}],"success":"true"}'
+        content: '{"data":[{"id":26,"name":"Okuneva, Rempel and Gulgowski","description":null},{"id":27,"name":"Cormier Inc","description":"Odit et et modi."}],"success":"true"}'
         headers: []
         description: ''
     responseFields: []
@@ -253,20 +253,20 @@ endpoints:
     custom: []
     httpMethods:
       - GET
-    uri: api/organizations/export
+    uri: api/departments/export
     metadata:
       custom: []
-      groupName: 'Core - Organization'
+      groupName: 'Core - Department'
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
-      title: 'Xuất danh sách organization'
+      title: 'Xuất danh sách department'
       description: 'Áp dụng cùng bộ lọc với index. Xuất ra các trường: id, name, slug, description, status, parent_id, parent_slug, sort_order, depth, created_by, updated_by, created_at, updated_at.'
       authenticated: true
       deprecated: false
     headers:
       Authorization: 'Bearer Bearer {YOUR_ACCESS_TOKEN}'
-      X-Organization-Id: 'ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
+      X-Department-Id: 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
@@ -382,20 +382,20 @@ endpoints:
     custom: []
     httpMethods:
       - POST
-    uri: api/organizations/import
+    uri: api/departments/import
     metadata:
       custom: []
-      groupName: 'Core - Organization'
+      groupName: 'Core - Department'
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
-      title: 'Nhập danh sách organization'
+      title: 'Nhập danh sách department'
       description: 'Cột bắt buộc: name. Cột không bắt buộc: slug, description, status (mặc định "active"), parent_id.'
       authenticated: true
       deprecated: false
     headers:
       Authorization: 'Bearer Bearer {YOUR_ACCESS_TOKEN}'
-      X-Organization-Id: 'ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
+      X-Department-Id: 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
       Content-Type: multipart/form-data
       Accept: application/json
     urlParameters: []
@@ -421,7 +421,7 @@ endpoints:
       -
         custom: []
         status: 200
-        content: '{"success": true, "message": "Import organization thành công."}'
+        content: '{"success": true, "message": "Import department thành công."}'
         headers: []
         description: ''
     responseFields: []
@@ -436,20 +436,20 @@ endpoints:
     custom: []
     httpMethods:
       - POST
-    uri: api/organizations/bulk-delete
+    uri: api/departments/bulk-delete
     metadata:
       custom: []
-      groupName: 'Core - Organization'
+      groupName: 'Core - Department'
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
-      title: 'Xóa hàng loạt organization'
+      title: 'Xóa hàng loạt department'
       description: ''
       authenticated: true
       deprecated: false
     headers:
       Authorization: 'Bearer Bearer {YOUR_ACCESS_TOKEN}'
-      X-Organization-Id: 'ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
+      X-Department-Id: 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
@@ -481,7 +481,7 @@ endpoints:
       -
         custom: []
         status: 200
-        content: '{"success": true, "message": "Đã xóa thành công các organization được chọn!"}'
+        content: '{"success": true, "message": "Đã xóa thành công các department được chọn!"}'
         headers: []
         description: ''
     responseFields: []
@@ -496,20 +496,20 @@ endpoints:
     custom: []
     httpMethods:
       - PATCH
-    uri: api/organizations/bulk-status
+    uri: api/departments/bulk-status
     metadata:
       custom: []
-      groupName: 'Core - Organization'
+      groupName: 'Core - Department'
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
-      title: 'Cập nhật trạng thái organization hàng loạt'
+      title: 'Cập nhật trạng thái department hàng loạt'
       description: ''
       authenticated: true
       deprecated: false
     headers:
       Authorization: 'Bearer Bearer {YOUR_ACCESS_TOKEN}'
-      X-Organization-Id: 'ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
+      X-Department-Id: 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
@@ -553,7 +553,7 @@ endpoints:
       -
         custom: []
         status: 200
-        content: '{"success": true, "message": "Cập nhật trạng thái organization thành công."}'
+        content: '{"success": true, "message": "Cập nhật trạng thái department thành công."}'
         headers: []
         description: ''
     responseFields: []
@@ -568,20 +568,20 @@ endpoints:
     custom: []
     httpMethods:
       - GET
-    uri: api/organizations/stats
+    uri: api/departments/stats
     metadata:
       custom: []
-      groupName: 'Core - Organization'
+      groupName: 'Core - Department'
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
-      title: 'Thống kê organization'
+      title: 'Thống kê department'
       description: 'Tổng số, đang kích hoạt (active), không kích hoạt (inactive). Áp dụng cùng bộ lọc với index.'
       authenticated: true
       deprecated: false
     headers:
       Authorization: 'Bearer Bearer {YOUR_ACCESS_TOKEN}'
-      X-Organization-Id: 'ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
+      X-Department-Id: 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
@@ -694,20 +694,20 @@ endpoints:
     custom: []
     httpMethods:
       - GET
-    uri: api/organizations/tree
+    uri: api/departments/tree
     metadata:
       custom: []
-      groupName: 'Core - Organization'
+      groupName: 'Core - Department'
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
-      title: 'Cây organization (toàn bộ cây, không phân trang). Cấu trúc parent_id.'
+      title: 'Cây department (toàn bộ cây, không phân trang). Cấu trúc parent_id.'
       description: ''
       authenticated: true
       deprecated: false
     headers:
       Authorization: 'Bearer Bearer {YOUR_ACCESS_TOKEN}'
-      X-Organization-Id: 'ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
+      X-Department-Id: 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
@@ -748,20 +748,20 @@ endpoints:
     custom: []
     httpMethods:
       - GET
-    uri: api/organizations
+    uri: api/departments
     metadata:
       custom: []
-      groupName: 'Core - Organization'
+      groupName: 'Core - Department'
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
-      title: 'Danh sách organization'
+      title: 'Danh sách department'
       description: 'Lấy danh sách có phân trang, lọc và sắp xếp.'
       authenticated: true
       deprecated: false
     headers:
       Authorization: 'Bearer Bearer {YOUR_ACCESS_TOKEN}'
-      X-Organization-Id: 'ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
+      X-Department-Id: 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
@@ -859,7 +859,7 @@ endpoints:
       -
         custom: []
         status: 200
-        content: '{"data":[{"id":133,"name":"Bailey Ltd","slug":"velit-et-fugiat-sunt-nihil-accusantium","description":"Modi deserunt aut ab provident perspiciatis.","status":"active","parent_id":null,"sort_order":23,"depth":0,"created_by":"N\/A","updated_by":"N\/A","created_at":"04:04:29 24\/03\/2026","updated_at":"04:04:29 24\/03\/2026"},{"id":134,"name":"Marquardt Inc","slug":"nostrum-qui-commodi-incidunt-iure","description":null,"status":"active","parent_id":null,"sort_order":20,"depth":0,"created_by":"N\/A","updated_by":"N\/A","created_at":"04:04:29 24\/03\/2026","updated_at":"04:04:29 24\/03\/2026"}],"links":{"first":"\/?page=1","last":"\/?page=1","prev":null,"next":null},"meta":{"current_page":1,"from":1,"last_page":1,"links":[{"url":null,"label":"&laquo; Previous","page":null,"active":false},{"url":"\/?page=1","label":"1","page":1,"active":true},{"url":null,"label":"Next &raquo;","page":null,"active":false}],"path":"\/","per_page":10,"to":2,"total":2},"success":"true"}'
+        content: '{"data":[{"id":29,"name":"Bailey Ltd","slug":"velit-et-fugiat-sunt-nihil-accusantium","description":"Modi deserunt aut ab provident perspiciatis.","status":"active","parent_id":null,"sort_order":23,"depth":0,"created_by":"N\/A","updated_by":"N\/A","created_at":"02:34:49 25\/03\/2026","updated_at":"02:34:49 25\/03\/2026"},{"id":30,"name":"Marquardt Inc","slug":"nostrum-qui-commodi-incidunt-iure","description":null,"status":"active","parent_id":null,"sort_order":20,"depth":0,"created_by":"N\/A","updated_by":"N\/A","created_at":"02:34:49 25\/03\/2026","updated_at":"02:34:49 25\/03\/2026"}],"links":{"first":"\/?page=1","last":"\/?page=1","prev":null,"next":null},"meta":{"current_page":1,"from":1,"last_page":1,"links":[{"url":null,"label":"&laquo; Previous","page":null,"active":false},{"url":"\/?page=1","label":"1","page":1,"active":true},{"url":null,"label":"Next &raquo;","page":null,"active":false}],"path":"\/","per_page":10,"to":2,"total":2},"success":"true"}'
         headers: []
         description: ''
     responseFields: []
@@ -874,27 +874,27 @@ endpoints:
     custom: []
     httpMethods:
       - GET
-    uri: 'api/organizations/{organization_id}'
+    uri: 'api/departments/{department_id}'
     metadata:
       custom: []
-      groupName: 'Core - Organization'
+      groupName: 'Core - Department'
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
-      title: 'Chi tiết organization'
+      title: 'Chi tiết department'
       description: ''
       authenticated: true
       deprecated: false
     headers:
       Authorization: 'Bearer Bearer {YOUR_ACCESS_TOKEN}'
-      X-Organization-Id: 'ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
+      X-Department-Id: 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
       Content-Type: application/json
       Accept: application/json
     urlParameters:
-      organization_id:
+      department_id:
         custom: []
-        name: organization_id
-        description: 'The ID of the organization.'
+        name: department_id
+        description: 'The ID of the department.'
         required: true
         example: 1
         type: integer
@@ -902,10 +902,10 @@ endpoints:
         exampleWasSpecified: false
         nullable: false
         deprecated: false
-      organization:
+      department:
         custom: []
-        name: organization
-        description: 'ID organization.'
+        name: department
+        description: 'ID department.'
         required: true
         example: 1
         type: integer
@@ -914,8 +914,8 @@ endpoints:
         nullable: false
         deprecated: false
     cleanUrlParameters:
-      organization_id: 1
-      organization: 1
+      department_id: 1
+      department: 1
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -925,7 +925,7 @@ endpoints:
       -
         custom: []
         status: 200
-        content: '{"data":{"id":136,"name":"Price Ltd","slug":"qui-commodi-incidunt-iure-odit","description":"Modi ipsum nostrum omnis autem et.","status":"inactive","parent_id":135,"sort_order":84,"depth":1,"created_by":"N\/A","updated_by":"N\/A","created_at":"04:04:29 24\/03\/2026","updated_at":"04:04:29 24\/03\/2026","parent":{"id":135,"name":"Stokes and Sons","slug":"tempora-ex-voluptatem-laboriosam-praesentium-quis","description":"Fugit deleniti distinctio eum doloremque id aut libero.","status":"inactive","parent_id":null,"sort_order":49,"depth":0,"created_by":"N\/A","updated_by":"N\/A","created_at":"04:04:29 24\/03\/2026","updated_at":"04:04:29 24\/03\/2026"},"children":[{"id":137,"name":"Kutch and Sons","slug":"nemo-odit-quia-officia-est-dignissimos","description":null,"status":"inactive","parent_id":136,"sort_order":6,"depth":2,"created_by":"N\/A","updated_by":"N\/A","created_at":"04:04:29 24\/03\/2026","updated_at":"04:04:29 24\/03\/2026"}]},"success":"true"}'
+        content: '{"data":{"id":32,"name":"Price Ltd","slug":"qui-commodi-incidunt-iure-odit","description":"Modi ipsum nostrum omnis autem et.","status":"inactive","parent_id":31,"sort_order":84,"depth":1,"created_by":"N\/A","updated_by":"N\/A","created_at":"02:34:49 25\/03\/2026","updated_at":"02:34:49 25\/03\/2026","parent":{"id":31,"name":"Stokes and Sons","slug":"tempora-ex-voluptatem-laboriosam-praesentium-quis","description":"Fugit deleniti distinctio eum doloremque id aut libero.","status":"inactive","parent_id":null,"sort_order":49,"depth":0,"created_by":"N\/A","updated_by":"N\/A","created_at":"02:34:49 25\/03\/2026","updated_at":"02:34:49 25\/03\/2026"},"children":[{"id":33,"name":"Kutch and Sons","slug":"nemo-odit-quia-officia-est-dignissimos","description":null,"status":"inactive","parent_id":32,"sort_order":6,"depth":2,"created_by":"N\/A","updated_by":"N\/A","created_at":"02:34:49 25\/03\/2026","updated_at":"02:34:49 25\/03\/2026"}]},"success":"true"}'
         headers: []
         description: ''
     responseFields: []
@@ -940,20 +940,20 @@ endpoints:
     custom: []
     httpMethods:
       - POST
-    uri: api/organizations
+    uri: api/departments
     metadata:
       custom: []
-      groupName: 'Core - Organization'
+      groupName: 'Core - Department'
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
-      title: 'Tạo organization mới'
+      title: 'Tạo department mới'
       description: ''
       authenticated: true
       deprecated: false
     headers:
       Authorization: 'Bearer Bearer {YOUR_ACCESS_TOKEN}'
-      X-Organization-Id: 'ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
+      X-Department-Id: 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
@@ -964,7 +964,7 @@ endpoints:
       name:
         custom: []
         name: name
-        description: 'Tên organization.'
+        description: 'Tên department.'
         required: true
         example: 'Công ty A'
         type: string
@@ -1008,7 +1008,7 @@ endpoints:
       parent_id:
         custom: []
         name: parent_id
-        description: 'ID organization cha (null = gốc).'
+        description: 'ID department cha (null = gốc).'
         required: false
         example: null
         type: integer
@@ -1039,7 +1039,7 @@ endpoints:
       -
         custom: []
         status: 201
-        content: '{"data":{"id":138,"name":"Dach-Gaylord","slug":"mollitia-modi-deserunt-aut-ab-provident-perspiciatis-quo","description":null,"status":"active","parent_id":null,"sort_order":49,"depth":0,"created_by":"N\/A","updated_by":"N\/A","created_at":"04:04:29 24\/03\/2026","updated_at":"04:04:29 24\/03\/2026"},"success":"true","message":"Organization \u0111\u00e3 \u0111\u01b0\u1ee3c t\u1ea1o th\u00e0nh c\u00f4ng!"}'
+        content: '{"data":{"id":34,"name":"Dach-Gaylord","slug":"mollitia-modi-deserunt-aut-ab-provident-perspiciatis-quo","description":null,"status":"active","parent_id":null,"sort_order":49,"depth":0,"created_by":"N\/A","updated_by":"N\/A","created_at":"02:34:49 25\/03\/2026","updated_at":"02:34:49 25\/03\/2026"},"success":"true","message":"Department \u0111\u00e3 \u0111\u01b0\u1ee3c t\u1ea1o th\u00e0nh c\u00f4ng!"}'
         headers: []
         description: ''
     responseFields: []
@@ -1054,27 +1054,27 @@ endpoints:
     custom: []
     httpMethods:
       - PUT
-    uri: 'api/organizations/{organization_id}'
+    uri: 'api/departments/{department_id}'
     metadata:
       custom: []
-      groupName: 'Core - Organization'
+      groupName: 'Core - Department'
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
-      title: 'Cập nhật organization'
+      title: 'Cập nhật department'
       description: ''
       authenticated: true
       deprecated: false
     headers:
       Authorization: 'Bearer Bearer {YOUR_ACCESS_TOKEN}'
-      X-Organization-Id: 'ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
+      X-Department-Id: 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
       Content-Type: application/json
       Accept: application/json
     urlParameters:
-      organization_id:
+      department_id:
         custom: []
-        name: organization_id
-        description: 'The ID of the organization.'
+        name: department_id
+        description: 'The ID of the department.'
         required: true
         example: 1
         type: integer
@@ -1082,10 +1082,10 @@ endpoints:
         exampleWasSpecified: false
         nullable: false
         deprecated: false
-      organization:
+      department:
         custom: []
-        name: organization
-        description: 'ID organization.'
+        name: department
+        description: 'ID department.'
         required: true
         example: 1
         type: integer
@@ -1094,15 +1094,15 @@ endpoints:
         nullable: false
         deprecated: false
     cleanUrlParameters:
-      organization_id: 1
-      organization: 1
+      department_id: 1
+      department: 1
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
       name:
         custom: []
         name: name
-        description: 'Tên organization.'
+        description: 'Tên department.'
         required: false
         example: 'Công ty A'
         type: string
@@ -1146,7 +1146,7 @@ endpoints:
       parent_id:
         custom: []
         name: parent_id
-        description: 'ID organization cha (null = gốc).'
+        description: 'ID department cha (null = gốc).'
         required: false
         example: null
         type: integer
@@ -1177,7 +1177,7 @@ endpoints:
       -
         custom: []
         status: 200
-        content: '{"data":{"id":140,"name":"Tillman-Runte","slug":"aut-ab-provident-perspiciatis-quo-omnis-nostrum-aut","description":"Nostrum qui commodi incidunt iure.","status":"inactive","parent_id":139,"sort_order":45,"depth":1,"created_by":"N\/A","updated_by":"N\/A","created_at":"04:04:29 24\/03\/2026","updated_at":"04:04:29 24\/03\/2026","parent":{"id":139,"name":"Bauch, Fritsch and O''Keefe","slug":"autem-et-consequatur-aut-dolores-enim-non-facere-tempora","description":"Laboriosam praesentium quis adipisci molestias fugit deleniti distinctio.","status":"active","parent_id":null,"sort_order":35,"depth":0,"created_by":"N\/A","updated_by":"N\/A","created_at":"04:04:29 24\/03\/2026","updated_at":"04:04:29 24\/03\/2026"},"children":[{"id":141,"name":"Ankunding PLC","slug":"veniam-corporis-dolorem-mollitia","description":"Odit quia officia est dignissimos neque blanditiis odio.","status":"inactive","parent_id":140,"sort_order":16,"depth":2,"created_by":"N\/A","updated_by":"N\/A","created_at":"04:04:29 24\/03\/2026","updated_at":"04:04:29 24\/03\/2026"}]},"success":"true","message":"Organization \u0111\u00e3 \u0111\u01b0\u1ee3c c\u1eadp nh\u1eadt!"}'
+        content: '{"data":{"id":36,"name":"Tillman-Runte","slug":"aut-ab-provident-perspiciatis-quo-omnis-nostrum-aut","description":"Nostrum qui commodi incidunt iure.","status":"inactive","parent_id":35,"sort_order":45,"depth":1,"created_by":"N\/A","updated_by":"N\/A","created_at":"02:34:49 25\/03\/2026","updated_at":"02:34:49 25\/03\/2026","parent":{"id":35,"name":"Bauch, Fritsch and O''Keefe","slug":"autem-et-consequatur-aut-dolores-enim-non-facere-tempora","description":"Laboriosam praesentium quis adipisci molestias fugit deleniti distinctio.","status":"active","parent_id":null,"sort_order":35,"depth":0,"created_by":"N\/A","updated_by":"N\/A","created_at":"02:34:49 25\/03\/2026","updated_at":"02:34:49 25\/03\/2026"},"children":[{"id":37,"name":"Ankunding PLC","slug":"veniam-corporis-dolorem-mollitia","description":"Odit quia officia est dignissimos neque blanditiis odio.","status":"inactive","parent_id":36,"sort_order":16,"depth":2,"created_by":"N\/A","updated_by":"N\/A","created_at":"02:34:49 25\/03\/2026","updated_at":"02:34:49 25\/03\/2026"}]},"success":"true","message":"Department \u0111\u00e3 \u0111\u01b0\u1ee3c c\u1eadp nh\u1eadt!"}'
         headers: []
         description: ''
     responseFields: []
@@ -1192,27 +1192,27 @@ endpoints:
     custom: []
     httpMethods:
       - PATCH
-    uri: 'api/organizations/{organization_id}'
+    uri: 'api/departments/{department_id}'
     metadata:
       custom: []
-      groupName: 'Core - Organization'
+      groupName: 'Core - Department'
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
-      title: 'Cập nhật organization'
+      title: 'Cập nhật department'
       description: ''
       authenticated: true
       deprecated: false
     headers:
       Authorization: 'Bearer Bearer {YOUR_ACCESS_TOKEN}'
-      X-Organization-Id: 'ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
+      X-Department-Id: 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
       Content-Type: application/json
       Accept: application/json
     urlParameters:
-      organization_id:
+      department_id:
         custom: []
-        name: organization_id
-        description: 'The ID of the organization.'
+        name: department_id
+        description: 'The ID of the department.'
         required: true
         example: 1
         type: integer
@@ -1220,10 +1220,10 @@ endpoints:
         exampleWasSpecified: false
         nullable: false
         deprecated: false
-      organization:
+      department:
         custom: []
-        name: organization
-        description: 'ID organization.'
+        name: department
+        description: 'ID department.'
         required: true
         example: 1
         type: integer
@@ -1232,15 +1232,15 @@ endpoints:
         nullable: false
         deprecated: false
     cleanUrlParameters:
-      organization_id: 1
-      organization: 1
+      department_id: 1
+      department: 1
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
       name:
         custom: []
         name: name
-        description: 'Tên organization.'
+        description: 'Tên department.'
         required: false
         example: 'Công ty A'
         type: string
@@ -1284,7 +1284,7 @@ endpoints:
       parent_id:
         custom: []
         name: parent_id
-        description: 'ID organization cha (null = gốc).'
+        description: 'ID department cha (null = gốc).'
         required: false
         example: null
         type: integer
@@ -1315,7 +1315,7 @@ endpoints:
       -
         custom: []
         status: 200
-        content: '{"data":{"id":143,"name":"Schuster Inc","slug":"perspiciatis-quo-omnis-nostrum-aut-adipisci-quidem-nostrum-qui","description":"Iure odit et et modi ipsum nostrum omnis.","status":"active","parent_id":142,"sort_order":54,"depth":1,"created_by":"N\/A","updated_by":"N\/A","created_at":"04:04:29 24\/03\/2026","updated_at":"04:04:29 24\/03\/2026","parent":{"id":142,"name":"Tromp-Leffler","slug":"non-facere-tempora-ex-voluptatem-laboriosam-praesentium","description":"Molestias fugit deleniti distinctio eum doloremque id.","status":"active","parent_id":null,"sort_order":61,"depth":0,"created_by":"N\/A","updated_by":"N\/A","created_at":"04:04:29 24\/03\/2026","updated_at":"04:04:29 24\/03\/2026"},"children":[{"id":144,"name":"Batz Inc","slug":"mollitia-deleniti-nemo-odit-quia-officia","description":"Neque blanditiis odio veritatis excepturi doloribus delectus.","status":"inactive","parent_id":143,"sort_order":22,"depth":2,"created_by":"N\/A","updated_by":"N\/A","created_at":"04:04:29 24\/03\/2026","updated_at":"04:04:29 24\/03\/2026"}]},"success":"true","message":"Organization \u0111\u00e3 \u0111\u01b0\u1ee3c c\u1eadp nh\u1eadt!"}'
+        content: '{"data":{"id":39,"name":"Schuster Inc","slug":"perspiciatis-quo-omnis-nostrum-aut-adipisci-quidem-nostrum-qui","description":"Iure odit et et modi ipsum nostrum omnis.","status":"active","parent_id":38,"sort_order":54,"depth":1,"created_by":"N\/A","updated_by":"N\/A","created_at":"02:34:49 25\/03\/2026","updated_at":"02:34:49 25\/03\/2026","parent":{"id":38,"name":"Tromp-Leffler","slug":"non-facere-tempora-ex-voluptatem-laboriosam-praesentium","description":"Molestias fugit deleniti distinctio eum doloremque id.","status":"active","parent_id":null,"sort_order":61,"depth":0,"created_by":"N\/A","updated_by":"N\/A","created_at":"02:34:49 25\/03\/2026","updated_at":"02:34:49 25\/03\/2026"},"children":[{"id":40,"name":"Batz Inc","slug":"mollitia-deleniti-nemo-odit-quia-officia","description":"Neque blanditiis odio veritatis excepturi doloribus delectus.","status":"inactive","parent_id":39,"sort_order":22,"depth":2,"created_by":"N\/A","updated_by":"N\/A","created_at":"02:34:49 25\/03\/2026","updated_at":"02:34:49 25\/03\/2026"}]},"success":"true","message":"Department \u0111\u00e3 \u0111\u01b0\u1ee3c c\u1eadp nh\u1eadt!"}'
         headers: []
         description: ''
     responseFields: []
@@ -1330,27 +1330,27 @@ endpoints:
     custom: []
     httpMethods:
       - DELETE
-    uri: 'api/organizations/{organization_id}'
+    uri: 'api/departments/{department_id}'
     metadata:
       custom: []
-      groupName: 'Core - Organization'
+      groupName: 'Core - Department'
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
-      title: 'Xóa organization'
+      title: 'Xóa department'
       description: ''
       authenticated: true
       deprecated: false
     headers:
       Authorization: 'Bearer Bearer {YOUR_ACCESS_TOKEN}'
-      X-Organization-Id: 'ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
+      X-Department-Id: 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
       Content-Type: application/json
       Accept: application/json
     urlParameters:
-      organization_id:
+      department_id:
         custom: []
-        name: organization_id
-        description: 'The ID of the organization.'
+        name: department_id
+        description: 'The ID of the department.'
         required: true
         example: 1
         type: integer
@@ -1358,10 +1358,10 @@ endpoints:
         exampleWasSpecified: false
         nullable: false
         deprecated: false
-      organization:
+      department:
         custom: []
-        name: organization
-        description: 'ID organization.'
+        name: department
+        description: 'ID department.'
         required: true
         example: 1
         type: integer
@@ -1370,8 +1370,8 @@ endpoints:
         nullable: false
         deprecated: false
     cleanUrlParameters:
-      organization_id: 1
-      organization: 1
+      department_id: 1
+      department: 1
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -1381,7 +1381,7 @@ endpoints:
       -
         custom: []
         status: 200
-        content: '{"success": true, "message": "Organization đã được xóa!"}'
+        content: '{"success": true, "message": "Department đã được xóa!"}'
         headers: []
         description: ''
     responseFields: []
@@ -1396,27 +1396,27 @@ endpoints:
     custom: []
     httpMethods:
       - PATCH
-    uri: 'api/organizations/{organization_id}/status'
+    uri: 'api/departments/{department_id}/status'
     metadata:
       custom: []
-      groupName: 'Core - Organization'
+      groupName: 'Core - Department'
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
-      title: 'Thay đổi trạng thái organization'
+      title: 'Thay đổi trạng thái department'
       description: ''
       authenticated: true
       deprecated: false
     headers:
       Authorization: 'Bearer Bearer {YOUR_ACCESS_TOKEN}'
-      X-Organization-Id: 'ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
+      X-Department-Id: 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
       Content-Type: application/json
       Accept: application/json
     urlParameters:
-      organization_id:
+      department_id:
         custom: []
-        name: organization_id
-        description: 'The ID of the organization.'
+        name: department_id
+        description: 'The ID of the department.'
         required: true
         example: 1
         type: integer
@@ -1424,10 +1424,10 @@ endpoints:
         exampleWasSpecified: false
         nullable: false
         deprecated: false
-      organization:
+      department:
         custom: []
-        name: organization
-        description: 'ID organization.'
+        name: department
+        description: 'ID department.'
         required: true
         example: 1
         type: integer
@@ -1436,8 +1436,8 @@ endpoints:
         nullable: false
         deprecated: false
     cleanUrlParameters:
-      organization_id: 1
-      organization: 1
+      department_id: 1
+      department: 1
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
@@ -1459,7 +1459,7 @@ endpoints:
       -
         custom: []
         status: 200
-        content: '{"data":{"id":146,"name":"Baumbach Ltd","slug":"et-modi-ipsum-nostrum-omnis-autem-et-consequatur","description":null,"status":"inactive","parent_id":145,"sort_order":62,"depth":1,"created_by":"N\/A","updated_by":"N\/A","created_at":"04:04:29 24\/03\/2026","updated_at":"04:04:29 24\/03\/2026","parent":{"id":145,"name":"VonRueden-Leuschke","slug":"voluptatem-laboriosam-praesentium-quis-adipisci","description":null,"status":"inactive","parent_id":null,"sort_order":72,"depth":0,"created_by":"N\/A","updated_by":"N\/A","created_at":"04:04:29 24\/03\/2026","updated_at":"04:04:29 24\/03\/2026"},"children":[{"id":147,"name":"Gaylord, Hettinger and Nitzsche","slug":"libero-aliquam-veniam-corporis-dolorem-mollitia-deleniti","description":"Quia officia est dignissimos neque.","status":"inactive","parent_id":146,"sort_order":6,"depth":2,"created_by":"N\/A","updated_by":"N\/A","created_at":"04:04:29 24\/03\/2026","updated_at":"04:04:29 24\/03\/2026"}]},"success":"true","message":"C\u1eadp nh\u1eadt tr\u1ea1ng th\u00e1i th\u00e0nh c\u00f4ng!"}'
+        content: '{"data":{"id":42,"name":"Baumbach Ltd","slug":"et-modi-ipsum-nostrum-omnis-autem-et-consequatur","description":null,"status":"inactive","parent_id":41,"sort_order":62,"depth":1,"created_by":"N\/A","updated_by":"N\/A","created_at":"02:34:49 25\/03\/2026","updated_at":"02:34:49 25\/03\/2026","parent":{"id":41,"name":"VonRueden-Leuschke","slug":"voluptatem-laboriosam-praesentium-quis-adipisci","description":null,"status":"inactive","parent_id":null,"sort_order":72,"depth":0,"created_by":"N\/A","updated_by":"N\/A","created_at":"02:34:49 25\/03\/2026","updated_at":"02:34:49 25\/03\/2026"},"children":[{"id":43,"name":"Gaylord, Hettinger and Nitzsche","slug":"libero-aliquam-veniam-corporis-dolorem-mollitia-deleniti","description":"Quia officia est dignissimos neque.","status":"inactive","parent_id":42,"sort_order":6,"depth":2,"created_by":"N\/A","updated_by":"N\/A","created_at":"02:34:49 25\/03\/2026","updated_at":"02:34:49 25\/03\/2026"}]},"success":"true","message":"C\u1eadp nh\u1eadt tr\u1ea1ng th\u00e1i th\u00e0nh c\u00f4ng!"}'
         headers: []
         description: ''
     responseFields: []

@@ -62,15 +62,13 @@ class PermissionSeeder extends Seeder
             'export', 'exportPdf', 'import', 'reorder',
             'updateAll', 'destroyAll',
         ],
-        // Schedule - Loại cuộc họp
+        // Schedule - Loại cuộc họp (danh mục đơn giản)
         'schedule-meeting-types' => [
-            'stats', 'index', 'show', 'store', 'update', 'destroy',
-            'bulkDestroy', 'bulkUpdateStatus', 'changeStatus', 'export', 'import',
+            'index', 'store', 'update', 'destroy',
         ],
-        // Schedule - Tính chất
+        // Schedule - Tính chất (danh mục đơn giản)
         'schedule-natures' => [
-            'stats', 'index', 'show', 'store', 'update', 'destroy',
-            'bulkDestroy', 'bulkUpdateStatus', 'changeStatus', 'export', 'import',
+            'index', 'store', 'update', 'destroy',
         ],
     ];
 
@@ -348,8 +346,8 @@ class PermissionSeeder extends Seeder
     {
         return [
             'schedules.stats', 'schedules.index', 'schedules.show',
-            'schedule-meeting-types.stats', 'schedule-meeting-types.index', 'schedule-meeting-types.show',
-            'schedule-natures.stats', 'schedule-natures.index', 'schedule-natures.show',
+            'schedule-meeting-types.index',
+            'schedule-natures.index',
         ];
     }
 
@@ -361,8 +359,8 @@ class PermissionSeeder extends Seeder
             'schedules.store', 'schedules.update', 'schedules.destroy',
             'schedules.changeStatus', 'schedules.export', 'schedules.exportPdf',
             'schedules.reorder',
-            'schedule-meeting-types.stats', 'schedule-meeting-types.index', 'schedule-meeting-types.show',
-            'schedule-natures.stats', 'schedule-natures.index', 'schedule-natures.show',
+            'schedule-meeting-types.index',
+            'schedule-natures.index',
         ];
     }
 
@@ -388,8 +386,8 @@ class PermissionSeeder extends Seeder
             'schedules.stats', 'schedules.index', 'schedules.show',
             'schedules.store', 'schedules.update', 'schedules.destroy',
             'schedules.changeStatus', 'schedules.export',
-            'schedule-meeting-types.stats', 'schedule-meeting-types.index', 'schedule-meeting-types.show',
-            'schedule-natures.stats', 'schedule-natures.index', 'schedule-natures.show',
+            'schedule-meeting-types.index',
+            'schedule-natures.index',
         ];
     }
 }

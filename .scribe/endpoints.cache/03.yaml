@@ -19,7 +19,7 @@ endpoints:
       authenticated: false
       deprecated: false
     headers:
-      X-Organization-Id: 'ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
+      X-Department-Id: 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
@@ -104,10 +104,10 @@ endpoints:
         exampleWasSpecified: true
         nullable: true
         deprecated: false
-      organization_id:
+      department_id:
         custom: []
-        name: organization_id
-        description: 'ID tổ chức.'
+        name: department_id
+        description: 'ID đơn vị.'
         required: false
         example: 16
         type: integer
@@ -134,7 +134,7 @@ endpoints:
       sort_by: created_at
       sort_order: desc
       limit: 20
-      organization_id: 16
+      department_id: 16
       session: architecto
     bodyParameters: []
     cleanBodyParameters: []
@@ -171,7 +171,7 @@ endpoints:
       deprecated: false
     headers:
       Authorization: 'Bearer Bearer {YOUR_ACCESS_TOKEN}'
-      X-Organization-Id: 'ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
+      X-Department-Id: 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
@@ -256,10 +256,10 @@ endpoints:
         exampleWasSpecified: false
         nullable: true
         deprecated: false
-      organization_id:
+      department_id:
         custom: []
-        name: organization_id
-        description: 'ID tổ chức.'
+        name: department_id
+        description: 'ID đơn vị.'
         required: false
         example: 16
         type: integer
@@ -275,7 +275,7 @@ endpoints:
       sort_by: created_at
       sort_order: desc
       limit: 10
-      organization_id: 16
+      department_id: 16
     bodyParameters: []
     cleanBodyParameters: []
     fileParameters: []
@@ -314,7 +314,7 @@ endpoints:
       deprecated: false
     headers:
       Authorization: 'Bearer Bearer {YOUR_ACCESS_TOKEN}'
-      X-Organization-Id: 'ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
+      X-Department-Id: 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
@@ -399,10 +399,10 @@ endpoints:
         exampleWasSpecified: false
         nullable: true
         deprecated: false
-      organization_id:
+      department_id:
         custom: []
-        name: organization_id
-        description: 'ID tổ chức.'
+        name: department_id
+        description: 'ID đơn vị.'
         required: false
         example: 16
         type: integer
@@ -429,7 +429,7 @@ endpoints:
       sort_by: created_at
       sort_order: desc
       limit: 10
-      organization_id: 16
+      department_id: 16
       session: architecto
     bodyParameters: []
     cleanBodyParameters: []
@@ -469,7 +469,7 @@ endpoints:
       deprecated: false
     headers:
       Authorization: 'Bearer Bearer {YOUR_ACCESS_TOKEN}'
-      X-Organization-Id: 'ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
+      X-Department-Id: 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
       Content-Type: multipart/form-data
       Accept: application/json
     urlParameters: []
@@ -523,7 +523,7 @@ endpoints:
       deprecated: false
     headers:
       Authorization: 'Bearer Bearer {YOUR_ACCESS_TOKEN}'
-      X-Organization-Id: 'ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
+      X-Department-Id: 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
@@ -583,7 +583,7 @@ endpoints:
       deprecated: false
     headers:
       Authorization: 'Bearer Bearer {YOUR_ACCESS_TOKEN}'
-      X-Organization-Id: 'ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
+      X-Department-Id: 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
@@ -655,7 +655,7 @@ endpoints:
       deprecated: false
     headers:
       Authorization: 'Bearer Bearer {YOUR_ACCESS_TOKEN}'
-      X-Organization-Id: 'ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
+      X-Department-Id: 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
@@ -740,10 +740,10 @@ endpoints:
         exampleWasSpecified: false
         nullable: true
         deprecated: false
-      organization_id:
+      department_id:
         custom: []
-        name: organization_id
-        description: 'ID tổ chức.'
+        name: department_id
+        description: 'ID đơn vị.'
         required: false
         example: 16
         type: integer
@@ -759,7 +759,7 @@ endpoints:
       sort_by: created_at
       sort_order: desc
       limit: 10
-      organization_id: 16
+      department_id: 16
     bodyParameters: []
     cleanBodyParameters: []
     fileParameters: []
@@ -795,7 +795,7 @@ endpoints:
       deprecated: false
     headers:
       Authorization: 'Bearer Bearer {YOUR_ACCESS_TOKEN}'
-      X-Organization-Id: 'ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
+      X-Department-Id: 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
@@ -902,10 +902,10 @@ endpoints:
         exampleWasSpecified: false
         nullable: false
         deprecated: false
-      organization_id:
+      department_id:
         custom: []
-        name: organization_id
-        description: 'ID tổ chức.'
+        name: department_id
+        description: 'ID đơn vị.'
         required: false
         example: 16
         type: integer
@@ -989,7 +989,7 @@ endpoints:
       limit: 20
       event_date: architecto
       session: architecto
-      organization_id: 16
+      department_id: 16
       chairperson_id: 16
       meeting_type_id: 16
       nature_id: 16
@@ -1003,7 +1003,7 @@ endpoints:
       -
         custom: []
         status: 200
-        content: '{"data":[{"id":23,"event_date":"12\/04\/2026","session":"sang","start_time":"19:11:00","content":"Velit et fugiat sunt nihil accusantium.","location":"78142 Nick Field\nWest Noahmouth, WV 59021-4902","prep_unit":null,"driver_info":null,"color_code":"#ca0f71","sort_order":51,"organization_id":null,"status":"active","created_by":"N\/A","updated_by":"N\/A","created_at":"04:04:30 24\/03\/2026","updated_at":"04:04:30 24\/03\/2026"},{"id":24,"event_date":"13\/04\/2026","session":"sang","start_time":"04:40:00","content":"Consequatur aut dolores enim non facere tempora.","location":"47809 Considine Landing Suite 782\nNitzschetown, CA 87335-0574","prep_unit":"Schaden, King and Fahey","driver_info":"Prof. Carson Emard","color_code":null,"sort_order":30,"organization_id":null,"status":"inactive","created_by":"N\/A","updated_by":"N\/A","created_at":"04:04:30 24\/03\/2026","updated_at":"04:04:30 24\/03\/2026"}],"links":{"first":"\/?page=1","last":"\/?page=1","prev":null,"next":null},"meta":{"current_page":1,"from":1,"last_page":1,"links":[{"url":null,"label":"&laquo; Previous","page":null,"active":false},{"url":"\/?page=1","label":"1","page":1,"active":true},{"url":null,"label":"Next &raquo;","page":null,"active":false}],"path":"\/","per_page":20,"to":2,"total":2},"success":"true"}'
+        content: '{"data":[{"id":60,"event_date":"13\/04\/2026","session":"sang","start_time":"20:41:00","content":"Velit et fugiat sunt nihil accusantium.","location":"78142 Nick Field\nWest Noahmouth, WV 59021-4902","prep_unit":null,"driver_info":null,"color_code":"#ca0f71","sort_order":51,"department_id":null,"status":"active","created_by":"N\/A","updated_by":"N\/A","created_at":"02:34:49 25\/03\/2026","updated_at":"02:34:49 25\/03\/2026"},{"id":61,"event_date":"14\/04\/2026","session":"sang","start_time":"04:40:00","content":"Consequatur aut dolores enim non facere tempora.","location":"47809 Considine Landing Suite 782\nNitzschetown, CA 87335-0574","prep_unit":"Schaden, King and Fahey","driver_info":"Prof. Carson Emard","color_code":null,"sort_order":30,"department_id":null,"status":"inactive","created_by":"N\/A","updated_by":"N\/A","created_at":"02:34:49 25\/03\/2026","updated_at":"02:34:49 25\/03\/2026"}],"links":{"first":"\/?page=1","last":"\/?page=1","prev":null,"next":null},"meta":{"current_page":1,"from":1,"last_page":1,"links":[{"url":null,"label":"&laquo; Previous","page":null,"active":false},{"url":"\/?page=1","label":"1","page":1,"active":true},{"url":null,"label":"Next &raquo;","page":null,"active":false}],"path":"\/","per_page":20,"to":2,"total":2},"success":"true"}'
         headers: []
         description: ''
     responseFields: []
@@ -1031,7 +1031,7 @@ endpoints:
       deprecated: false
     headers:
       Authorization: 'Bearer Bearer {YOUR_ACCESS_TOKEN}'
-      X-Organization-Id: 'ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
+      X-Department-Id: 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
       Content-Type: application/json
       Accept: application/json
     urlParameters:
@@ -1040,7 +1040,7 @@ endpoints:
         name: schedule_id
         description: 'The ID of the schedule.'
         required: true
-        example: 16
+        example: 1
         type: integer
         enumValues: []
         exampleWasSpecified: false
@@ -1058,7 +1058,7 @@ endpoints:
         nullable: false
         deprecated: false
     cleanUrlParameters:
-      schedule_id: 16
+      schedule_id: 1
       schedule: 1
     queryParameters: []
     cleanQueryParameters: []
@@ -1069,7 +1069,7 @@ endpoints:
       -
         custom: []
         status: 200
-        content: '{"data":{"id":25,"event_date":"28\/03\/2026","session":"sang","start_time":"22:57:00","content":"Qui commodi incidunt iure odit.","location":"77365 Christian Turnpike Suite 432\nNorth Roderick, SD 69128-2316","prep_unit":"Haag and Sons","driver_info":null,"color_code":null,"sort_order":7,"organization_id":null,"status":"inactive","created_by":"N\/A","updated_by":"N\/A","created_at":"04:04:30 24\/03\/2026","updated_at":"04:04:30 24\/03\/2026"},"success":"true"}'
+        content: '{"data":{"id":62,"event_date":"29\/03\/2026","session":"sang","start_time":"00:27:00","content":"Qui commodi incidunt iure odit.","location":"77365 Christian Turnpike Suite 432\nNorth Roderick, SD 69128-2316","prep_unit":"Haag and Sons","driver_info":null,"color_code":null,"sort_order":7,"department_id":null,"status":"inactive","created_by":"N\/A","updated_by":"N\/A","created_at":"02:34:49 25\/03\/2026","updated_at":"02:34:49 25\/03\/2026"},"success":"true"}'
         headers: []
         description: ''
     responseFields: []
@@ -1097,7 +1097,7 @@ endpoints:
       deprecated: false
     headers:
       Authorization: 'Bearer Bearer {YOUR_ACCESS_TOKEN}'
-      X-Organization-Id: 'ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
+      X-Department-Id: 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
       Content-Type: multipart/form-data
       Accept: application/json
     urlParameters: []
@@ -1138,10 +1138,10 @@ endpoints:
         exampleWasSpecified: true
         nullable: false
         deprecated: false
-      organization_id:
+      department_id:
         custom: []
-        name: organization_id
-        description: 'ID tổ chức.'
+        name: department_id
+        description: 'ID đơn vị.'
         required: true
         example: 1
         type: integer
@@ -1278,7 +1278,7 @@ endpoints:
         name: notification.channel
         description: 'This field is required when <code>notification</code> is present.'
         required: false
-        example: zalo
+        example: app
         type: string
         enumValues:
           - sms
@@ -1293,7 +1293,7 @@ endpoints:
         name: notification.remind_at
         description: 'This field is required when <code>notification</code> is present. Must be a valid date.'
         required: false
-        example: '2026-03-24T04:04:30'
+        example: '2026-03-25T02:34:49'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -1404,7 +1404,7 @@ endpoints:
       content: 'Họp Ban Thường vụ'
       event_date: '2026-04-01'
       session: sang
-      organization_id: 1
+      department_id: 1
       start_time: '08:00'
       chairperson_id: 1
       location: 'Phòng họp A'
@@ -1417,8 +1417,8 @@ endpoints:
       participants:
         - architecto
       notification:
-        channel: zalo
-        remind_at: '2026-03-24T04:04:30'
+        channel: app
+        remind_at: '2026-03-25T02:34:49'
       notifications:
         - architecto
     fileParameters:
@@ -1428,7 +1428,7 @@ endpoints:
       -
         custom: []
         status: 201
-        content: '{"data":{"id":26,"event_date":"03\/04\/2026","session":"sang","start_time":"00:35:00","content":"Quos velit et fugiat sunt nihil accusantium harum.","location":null,"prep_unit":null,"driver_info":null,"color_code":"#489fe2","sort_order":16,"organization_id":null,"status":"active","created_by":"N\/A","updated_by":"N\/A","created_at":"04:04:30 24\/03\/2026","updated_at":"04:04:30 24\/03\/2026"},"success":"true","message":"T\u1ea1o l\u1ecbch c\u00f4ng t\u00e1c th\u00e0nh c\u00f4ng!"}'
+        content: '{"data":{"id":63,"event_date":"04\/04\/2026","session":"sang","start_time":"02:05:00","content":"Quos velit et fugiat sunt nihil accusantium harum.","location":null,"prep_unit":null,"driver_info":null,"color_code":"#489fe2","sort_order":16,"department_id":null,"status":"active","created_by":"N\/A","updated_by":"N\/A","created_at":"02:34:49 25\/03\/2026","updated_at":"02:34:49 25\/03\/2026"},"success":"true","message":"T\u1ea1o l\u1ecbch c\u00f4ng t\u00e1c th\u00e0nh c\u00f4ng!"}'
         headers: []
         description: ''
     responseFields: []
@@ -1456,7 +1456,7 @@ endpoints:
       deprecated: false
     headers:
       Authorization: 'Bearer Bearer {YOUR_ACCESS_TOKEN}'
-      X-Organization-Id: 'ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
+      X-Department-Id: 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
       Content-Type: multipart/form-data
       Accept: application/json
     urlParameters:
@@ -1465,7 +1465,7 @@ endpoints:
         name: schedule_id
         description: 'The ID of the schedule.'
         required: true
-        example: 16
+        example: 1
         type: integer
         enumValues: []
         exampleWasSpecified: false
@@ -1483,7 +1483,7 @@ endpoints:
         nullable: false
         deprecated: false
     cleanUrlParameters:
-      schedule_id: 16
+      schedule_id: 1
       schedule: 1
     queryParameters: []
     cleanQueryParameters: []
@@ -1521,10 +1521,10 @@ endpoints:
         exampleWasSpecified: false
         nullable: false
         deprecated: false
-      organization_id:
+      department_id:
         custom: []
-        name: organization_id
-        description: 'ID tổ chức.'
+        name: department_id
+        description: 'ID đơn vị.'
         required: false
         example: 16
         type: integer
@@ -1625,7 +1625,7 @@ endpoints:
         name: status
         description: ''
         required: false
-        example: inactive
+        example: active
         type: string
         enumValues:
           - active
@@ -1661,7 +1661,7 @@ endpoints:
         name: notification.channel
         description: 'This field is required when <code>notification</code> is present.'
         required: false
-        example: zalo
+        example: website
         type: string
         enumValues:
           - sms
@@ -1676,7 +1676,7 @@ endpoints:
         name: notification.remind_at
         description: 'This field is required when <code>notification</code> is present. Must be a valid date.'
         required: false
-        example: '2026-03-24T04:04:30'
+        example: '2026-03-25T02:34:49'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -1744,7 +1744,7 @@ endpoints:
       content: architecto
       event_date: architecto
       session: architecto
-      organization_id: 16
+      department_id: 16
       start_time: architecto
       chairperson_id: 16
       location: architecto
@@ -1753,12 +1753,12 @@ endpoints:
       meeting_type_id: 16
       nature_id: 16
       color_code: architecto
-      status: inactive
+      status: active
       participants:
         - architecto
       notification:
-        channel: zalo
-        remind_at: '2026-03-24T04:04:30'
+        channel: website
+        remind_at: '2026-03-25T02:34:49'
       remove_attachment_ids:
         - architecto
       notifications:
@@ -1770,7 +1770,7 @@ endpoints:
       -
         custom: []
         status: 200
-        content: '{"data":{"id":27,"event_date":"03\/04\/2026","session":"sang","start_time":"00:35:00","content":"Quos velit et fugiat sunt nihil accusantium harum.","location":null,"prep_unit":null,"driver_info":null,"color_code":"#489fe2","sort_order":16,"organization_id":null,"status":"active","created_by":"N\/A","updated_by":"N\/A","created_at":"04:04:30 24\/03\/2026","updated_at":"04:04:30 24\/03\/2026"},"success":"true","message":"C\u1eadp nh\u1eadt l\u1ecbch c\u00f4ng t\u00e1c th\u00e0nh c\u00f4ng!"}'
+        content: '{"data":{"id":64,"event_date":"04\/04\/2026","session":"sang","start_time":"02:05:00","content":"Quos velit et fugiat sunt nihil accusantium harum.","location":null,"prep_unit":null,"driver_info":null,"color_code":"#489fe2","sort_order":16,"department_id":null,"status":"active","created_by":"N\/A","updated_by":"N\/A","created_at":"02:34:49 25\/03\/2026","updated_at":"02:34:49 25\/03\/2026"},"success":"true","message":"C\u1eadp nh\u1eadt l\u1ecbch c\u00f4ng t\u00e1c th\u00e0nh c\u00f4ng!"}'
         headers: []
         description: ''
     responseFields: []
@@ -1798,7 +1798,7 @@ endpoints:
       deprecated: false
     headers:
       Authorization: 'Bearer Bearer {YOUR_ACCESS_TOKEN}'
-      X-Organization-Id: 'ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
+      X-Department-Id: 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
       Content-Type: multipart/form-data
       Accept: application/json
     urlParameters:
@@ -1807,7 +1807,7 @@ endpoints:
         name: schedule_id
         description: 'The ID of the schedule.'
         required: true
-        example: 16
+        example: 1
         type: integer
         enumValues: []
         exampleWasSpecified: false
@@ -1825,7 +1825,7 @@ endpoints:
         nullable: false
         deprecated: false
     cleanUrlParameters:
-      schedule_id: 16
+      schedule_id: 1
       schedule: 1
     queryParameters: []
     cleanQueryParameters: []
@@ -1863,10 +1863,10 @@ endpoints:
         exampleWasSpecified: false
         nullable: false
         deprecated: false
-      organization_id:
+      department_id:
         custom: []
-        name: organization_id
-        description: 'ID tổ chức.'
+        name: department_id
+        description: 'ID đơn vị.'
         required: false
         example: 16
         type: integer
@@ -2018,7 +2018,7 @@ endpoints:
         name: notification.remind_at
         description: 'This field is required when <code>notification</code> is present. Must be a valid date.'
         required: false
-        example: '2026-03-24T04:04:30'
+        example: '2026-03-25T02:34:49'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -2086,7 +2086,7 @@ endpoints:
       content: architecto
       event_date: architecto
       session: architecto
-      organization_id: 16
+      department_id: 16
       start_time: architecto
       chairperson_id: 16
       location: architecto
@@ -2100,7 +2100,7 @@ endpoints:
         - architecto
       notification:
         channel: app
-        remind_at: '2026-03-24T04:04:30'
+        remind_at: '2026-03-25T02:34:49'
       remove_attachment_ids:
         - architecto
       notifications:
@@ -2112,7 +2112,7 @@ endpoints:
       -
         custom: []
         status: 200
-        content: '{"data":{"id":28,"event_date":"03\/04\/2026","session":"sang","start_time":"00:35:00","content":"Quos velit et fugiat sunt nihil accusantium harum.","location":null,"prep_unit":null,"driver_info":null,"color_code":"#489fe2","sort_order":16,"organization_id":null,"status":"active","created_by":"N\/A","updated_by":"N\/A","created_at":"04:04:30 24\/03\/2026","updated_at":"04:04:30 24\/03\/2026"},"success":"true","message":"C\u1eadp nh\u1eadt l\u1ecbch c\u00f4ng t\u00e1c th\u00e0nh c\u00f4ng!"}'
+        content: '{"data":{"id":65,"event_date":"04\/04\/2026","session":"sang","start_time":"02:05:00","content":"Quos velit et fugiat sunt nihil accusantium harum.","location":null,"prep_unit":null,"driver_info":null,"color_code":"#489fe2","sort_order":16,"department_id":null,"status":"active","created_by":"N\/A","updated_by":"N\/A","created_at":"02:34:49 25\/03\/2026","updated_at":"02:34:49 25\/03\/2026"},"success":"true","message":"C\u1eadp nh\u1eadt l\u1ecbch c\u00f4ng t\u00e1c th\u00e0nh c\u00f4ng!"}'
         headers: []
         description: ''
     responseFields: []
@@ -2140,7 +2140,7 @@ endpoints:
       deprecated: false
     headers:
       Authorization: 'Bearer Bearer {YOUR_ACCESS_TOKEN}'
-      X-Organization-Id: 'ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
+      X-Department-Id: 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
       Content-Type: application/json
       Accept: application/json
     urlParameters:
@@ -2149,7 +2149,7 @@ endpoints:
         name: schedule_id
         description: 'The ID of the schedule.'
         required: true
-        example: 16
+        example: 1
         type: integer
         enumValues: []
         exampleWasSpecified: false
@@ -2167,7 +2167,7 @@ endpoints:
         nullable: false
         deprecated: false
     cleanUrlParameters:
-      schedule_id: 16
+      schedule_id: 1
       schedule: 1
     queryParameters: []
     cleanQueryParameters: []
@@ -2206,7 +2206,7 @@ endpoints:
       deprecated: false
     headers:
       Authorization: 'Bearer Bearer {YOUR_ACCESS_TOKEN}'
-      X-Organization-Id: 'ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
+      X-Department-Id: 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
       Content-Type: application/json
       Accept: application/json
     urlParameters:
@@ -2215,7 +2215,7 @@ endpoints:
         name: schedule_id
         description: 'The ID of the schedule.'
         required: true
-        example: 16
+        example: 1
         type: integer
         enumValues: []
         exampleWasSpecified: false
@@ -2233,7 +2233,7 @@ endpoints:
         nullable: false
         deprecated: false
     cleanUrlParameters:
-      schedule_id: 16
+      schedule_id: 1
       schedule: 1
     queryParameters: []
     cleanQueryParameters: []
@@ -2278,7 +2278,7 @@ endpoints:
       deprecated: false
     headers:
       Authorization: 'Bearer Bearer {YOUR_ACCESS_TOKEN}'
-      X-Organization-Id: 'ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
+      X-Department-Id: 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
       Content-Type: application/json
       Accept: application/json
     urlParameters:
@@ -2287,7 +2287,7 @@ endpoints:
         name: schedule_id
         description: 'The ID of the schedule.'
         required: true
-        example: 16
+        example: 1
         type: integer
         enumValues: []
         exampleWasSpecified: false
@@ -2305,7 +2305,7 @@ endpoints:
         nullable: false
         deprecated: false
     cleanUrlParameters:
-      schedule_id: 16
+      schedule_id: 1
       schedule: 1
     queryParameters: []
     cleanQueryParameters: []
@@ -2338,7 +2338,7 @@ endpoints:
       deprecated: false
     headers:
       Authorization: 'Bearer Bearer {YOUR_ACCESS_TOKEN}'
-      X-Organization-Id: 'ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
+      X-Department-Id: 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
       Content-Type: application/json
       Accept: application/json
     urlParameters:
@@ -2347,7 +2347,7 @@ endpoints:
         name: schedule_id
         description: 'The ID of the schedule.'
         required: true
-        example: 16
+        example: 1
         type: integer
         enumValues: []
         exampleWasSpecified: false
@@ -2365,7 +2365,7 @@ endpoints:
         nullable: false
         deprecated: false
     cleanUrlParameters:
-      schedule_id: 16
+      schedule_id: 1
       schedule: 1
     queryParameters: []
     cleanQueryParameters: []
@@ -2398,7 +2398,7 @@ endpoints:
       deprecated: false
     headers:
       Authorization: 'Bearer Bearer {YOUR_ACCESS_TOKEN}'
-      X-Organization-Id: 'ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
+      X-Department-Id: 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
       Content-Type: application/json
       Accept: application/json
     urlParameters:
@@ -2407,7 +2407,7 @@ endpoints:
         name: schedule_id
         description: 'The ID of the schedule.'
         required: true
-        example: 16
+        example: 1
         type: integer
         enumValues: []
         exampleWasSpecified: false
@@ -2425,7 +2425,7 @@ endpoints:
         nullable: false
         deprecated: false
     cleanUrlParameters:
-      schedule_id: 16
+      schedule_id: 1
       schedule: 1
     queryParameters: []
     cleanQueryParameters: []
@@ -2470,7 +2470,7 @@ endpoints:
       deprecated: false
     headers:
       Authorization: 'Bearer Bearer {YOUR_ACCESS_TOKEN}'
-      X-Organization-Id: 'ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
+      X-Department-Id: 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
       Content-Type: application/json
       Accept: application/json
     urlParameters:
@@ -2479,7 +2479,7 @@ endpoints:
         name: schedule_id
         description: 'The ID of the schedule.'
         required: true
-        example: 16
+        example: 1
         type: integer
         enumValues: []
         exampleWasSpecified: false
@@ -2497,7 +2497,7 @@ endpoints:
         nullable: false
         deprecated: false
     cleanUrlParameters:
-      schedule_id: 16
+      schedule_id: 1
       schedule: 1
     queryParameters: []
     cleanQueryParameters: []

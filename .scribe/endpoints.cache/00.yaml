@@ -19,7 +19,7 @@ endpoints:
       subgroup: ''
       subgroupDescription: ''
       title: 'Đăng nhập'
-      description: 'Trả về access_token, thông tin user và danh sách organization user có thể truy cập.'
+      description: 'Trả về access_token, thông tin user và danh sách department user có thể truy cập.'
       authenticated: false
       deprecated: false
     headers:
@@ -60,7 +60,7 @@ endpoints:
       -
         custom: []
         status: 200
-        content: '{"success": true, "message": "Đăng nhập thành công.", "data": {"access_token": "1|xxx...", "token_type": "Bearer", "user": {"id": 1, "name": "Admin"}, "available_organizations": [{"id": 2, "name": "Sở Nội vụ"}], "current_organization_id": 2, "roles": ["admin"], "permissions": ["users.index", "users.store"], "abilities": [{"action": "index", "subject": "User"}, {"action": "store", "subject": "User"}]}}'
+        content: '{"success": true, "message": "Đăng nhập thành công.", "data": {"access_token": "1|xxx...", "token_type": "Bearer", "user": {"id": 1, "name": "Admin"}, "available_departments": [{"id": 2, "name": "Sở Nội vụ"}], "current_department_id": 2, "roles": ["admin"], "permissions": ["users.index", "users.store"], "abilities": [{"action": "index", "subject": "User"}, {"action": "store", "subject": "User"}]}}'
         headers: []
         description: ''
     responseFields: []
@@ -253,7 +253,7 @@ endpoints:
     custom: []
     httpMethods:
       - POST
-    uri: api/auth/switch-organization
+    uri: api/auth/switch-department
     metadata:
       custom: []
       groupName: Auth
@@ -262,8 +262,8 @@ endpoints:
         Xác thực: đăng nhập, đăng xuất, quên mật khẩu, đặt lại mật khẩu
       subgroup: ''
       subgroupDescription: ''
-      title: 'Chuyển tổ chức làm việc'
-      description: 'Chọn organization để frontend gắn vào header `X-Organization-Id` cho các request tiếp theo.'
+      title: 'Chuyển đơn vị làm việc'
+      description: 'Chọn department để frontend gắn vào header `X-Department-Id` cho các request tiếp theo.'
       authenticated: true
       deprecated: false
     headers:
@@ -275,10 +275,10 @@ endpoints:
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
-      organization_id:
+      department_id:
         custom: []
-        name: organization_id
-        description: 'ID tổ chức muốn chuyển.'
+        name: department_id
+        description: 'ID đơn vị muốn chuyển.'
         required: true
         example: 2
         type: integer
@@ -287,13 +287,13 @@ endpoints:
         nullable: false
         deprecated: false
     cleanBodyParameters:
-      organization_id: 2
+      department_id: 2
     fileParameters: []
     responses:
       -
         custom: []
         status: 200
-        content: '{"success": true, "message": "Đã chuyển tổ chức làm việc.", "data": {"current_organization_id": 2, "current_organization": {"id": 2, "name": "Sở Nội vụ"}, "roles": ["admin"], "permissions": ["users.index", "users.store"], "abilities": [{"action": "index", "subject": "User"}, {"action": "store", "subject": "User"}]}}'
+        content: '{"success": true, "message": "Đã chuyển đơn vị làm việc.", "data": {"current_department_id": 2, "current_department": {"id": 2, "name": "Sở Nội vụ"}, "roles": ["admin"], "permissions": ["users.index", "users.store"], "abilities": [{"action": "index", "subject": "User"}, {"action": "store", "subject": "User"}]}}'
         headers: []
         description: ''
     responseFields: []
@@ -317,8 +317,8 @@ endpoints:
         Xác thực: đăng nhập, đăng xuất, quên mật khẩu, đặt lại mật khẩu
       subgroup: ''
       subgroupDescription: ''
-      title: 'Lấy thông tin user đăng nhập hiện tại kèm roles và permissions của tổ chức đang chọn.'
-      description: 'Dùng để Vue Casl khởi tạo ability khi refresh trang. Cần header X-Organization-Id (middleware set.permissions.team đã đặt ngữ cảnh).'
+      title: 'Lấy thông tin user đăng nhập hiện tại kèm roles và permissions của đơn vị đang chọn.'
+      description: 'Dùng để Vue Casl khởi tạo ability khi refresh trang. Cần header X-Department-Id (middleware set.permissions.team đã đặt ngữ cảnh).'
       authenticated: true
       deprecated: false
     headers:

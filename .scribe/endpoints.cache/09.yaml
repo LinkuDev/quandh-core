@@ -20,7 +20,7 @@ endpoints:
       deprecated: false
     headers:
       Authorization: 'Bearer Bearer {YOUR_ACCESS_TOKEN}'
-      X-Organization-Id: 'ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
+      X-Department-Id: 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
@@ -89,7 +89,7 @@ endpoints:
         example: |-
           desc
 
-          Xuất ra các trường: id, description, user_type, user_id, user_name, organization_id, route, method_type, status_code, ip_address, country, user_agent, request_data, created_at, updated_at.
+          Xuất ra các trường: id, description, user_type, user_id, user_name, department_id, route, method_type, status_code, ip_address, country, user_agent, request_data, created_at, updated_at.
         type: string
         enumValues: []
         exampleWasSpecified: true
@@ -137,7 +137,7 @@ endpoints:
       sort_order: |-
         desc
 
-        Xuất ra các trường: id, description, user_type, user_id, user_name, organization_id, route, method_type, status_code, ip_address, country, user_agent, request_data, created_at, updated_at.
+        Xuất ra các trường: id, description, user_type, user_id, user_name, department_id, route, method_type, status_code, ip_address, country, user_agent, request_data, created_at, updated_at.
       limit: 10
       method_type: GET
       status_code: 200
@@ -179,7 +179,7 @@ endpoints:
       deprecated: false
     headers:
       Authorization: 'Bearer Bearer {YOUR_ACCESS_TOKEN}'
-      X-Organization-Id: 'ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
+      X-Department-Id: 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
@@ -329,7 +329,7 @@ endpoints:
       deprecated: false
     headers:
       Authorization: 'Bearer Bearer {YOUR_ACCESS_TOKEN}'
-      X-Organization-Id: 'ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
+      X-Department-Id: 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
@@ -395,7 +395,7 @@ endpoints:
       deprecated: false
     headers:
       Authorization: 'Bearer Bearer {YOUR_ACCESS_TOKEN}'
-      X-Organization-Id: 'ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
+      X-Department-Id: 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
@@ -437,7 +437,7 @@ endpoints:
       deprecated: false
     headers:
       Authorization: 'Bearer Bearer {YOUR_ACCESS_TOKEN}'
-      X-Organization-Id: 'ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
+      X-Department-Id: 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
@@ -497,7 +497,7 @@ endpoints:
       deprecated: false
     headers:
       Authorization: 'Bearer Bearer {YOUR_ACCESS_TOKEN}'
-      X-Organization-Id: 'ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
+      X-Department-Id: 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
@@ -619,7 +619,7 @@ endpoints:
       -
         custom: []
         status: 200
-        content: '{"data":[{"id":54,"description":"Et animi quos velit et fugiat.","user_type":"User","user_id":null,"user_name":"Guest","organization_id":null,"route":"http:\/\/www.dach.com\/mollitia-modi-deserunt-aut-ab-provident-perspiciatis-quo.html","method_type":"PATCH","status_code":404,"ip_address":"125.161.29.220","country":"Pakistan","user_agent":"Mozilla\/5.0 (Windows NT 5.0; en-US; rv:1.9.2.20) Gecko\/20251115 Firefox\/35.0","request_data":{"sample":"et"},"created_at":"04:04:29 24\/03\/2026","updated_at":"04:04:29 24\/03\/2026"},{"id":55,"description":"Aut dolores enim non facere tempora ex voluptatem.","user_type":"User","user_id":null,"user_name":"Guest","organization_id":null,"route":"http:\/\/raynor.org\/molestias-fugit-deleniti-distinctio-eum-doloremque-id","method_type":"PATCH","status_code":201,"ip_address":"239.169.15.174","country":"Turkmenistan","user_agent":"Mozilla\/5.0 (Windows 98; Win 9x 4.90) AppleWebKit\/533.2 (KHTML, like Gecko) Chrome\/86.0.4047.69 Safari\/533.2 Edg\/86.01025.45","request_data":{"sample":"accusamus"},"created_at":"04:04:29 24\/03\/2026","updated_at":"04:04:29 24\/03\/2026"}],"links":{"first":"\/?page=1","last":"\/?page=1","prev":null,"next":null},"meta":{"current_page":1,"from":1,"last_page":1,"links":[{"url":null,"label":"&laquo; Previous","page":null,"active":false},{"url":"\/?page=1","label":"1","page":1,"active":true},{"url":null,"label":"Next &raquo;","page":null,"active":false}],"path":"\/","per_page":10,"to":2,"total":2},"success":"true"}'
+        content: '{"data":[{"id":12,"description":"Et animi quos velit et fugiat.","user_type":"User","user_id":null,"user_name":"Guest","department_id":null,"route":"http:\/\/www.dach.com\/mollitia-modi-deserunt-aut-ab-provident-perspiciatis-quo.html","method_type":"PATCH","status_code":404,"ip_address":"125.161.29.220","country":"Pakistan","user_agent":"Mozilla\/5.0 (Windows NT 5.0; en-US; rv:1.9.2.20) Gecko\/20251111 Firefox\/35.0","request_data":{"sample":"et"},"created_at":"02:34:49 25\/03\/2026","updated_at":"02:34:49 25\/03\/2026"},{"id":13,"description":"Aut dolores enim non facere tempora ex voluptatem.","user_type":"User","user_id":null,"user_name":"Guest","department_id":null,"route":"http:\/\/raynor.org\/molestias-fugit-deleniti-distinctio-eum-doloremque-id","method_type":"PATCH","status_code":201,"ip_address":"239.169.15.174","country":"Turkmenistan","user_agent":"Mozilla\/5.0 (Windows 98; Win 9x 4.90) AppleWebKit\/533.2 (KHTML, like Gecko) Chrome\/86.0.4047.69 Safari\/533.2 Edg\/86.01025.45","request_data":{"sample":"accusamus"},"created_at":"02:34:49 25\/03\/2026","updated_at":"02:34:49 25\/03\/2026"}],"links":{"first":"\/?page=1","last":"\/?page=1","prev":null,"next":null},"meta":{"current_page":1,"from":1,"last_page":1,"links":[{"url":null,"label":"&laquo; Previous","page":null,"active":false},{"url":"\/?page=1","label":"1","page":1,"active":true},{"url":null,"label":"Next &raquo;","page":null,"active":false}],"path":"\/","per_page":10,"to":2,"total":2},"success":"true"}'
         headers: []
         description: ''
     responseFields: []
@@ -647,7 +647,7 @@ endpoints:
       deprecated: false
     headers:
       Authorization: 'Bearer Bearer {YOUR_ACCESS_TOKEN}'
-      X-Organization-Id: 'ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
+      X-Department-Id: 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
       Content-Type: application/json
       Accept: application/json
     urlParameters:
@@ -685,7 +685,7 @@ endpoints:
       -
         custom: []
         status: 200
-        content: '{"data":{"id":56,"description":"Adipisci quidem nostrum qui commodi incidunt iure.","user_type":"User","user_id":72,"user_name":"Bridget Schaden","organization_id":148,"route":"https:\/\/mclaughlin.com\/ipsum-nostrum-omnis-autem-et-consequatur-aut-dolores-enim.html","method_type":"POST","status_code":401,"ip_address":"222.107.64.3","country":"Montserrat","user_agent":"Opera\/8.56 (Windows NT 6.0; nl-NL) Presto\/2.10.287 Version\/10.00","request_data":{"sample":"veniam"},"created_at":"04:04:29 24\/03\/2026","updated_at":"04:04:29 24\/03\/2026"},"success":"true"}'
+        content: '{"data":{"id":14,"description":"Adipisci quidem nostrum qui commodi incidunt iure.","user_type":"User","user_id":32,"user_name":"Bridget Schaden","department_id":44,"route":"https:\/\/mclaughlin.com\/ipsum-nostrum-omnis-autem-et-consequatur-aut-dolores-enim.html","method_type":"POST","status_code":401,"ip_address":"222.107.64.3","country":"Montserrat","user_agent":"Opera\/8.56 (Windows NT 6.0; nl-NL) Presto\/2.10.287 Version\/10.00","request_data":{"sample":"veniam"},"created_at":"02:34:49 25\/03\/2026","updated_at":"02:34:49 25\/03\/2026"},"success":"true"}'
         headers: []
         description: ''
     responseFields: []
@@ -713,7 +713,7 @@ endpoints:
       deprecated: false
     headers:
       Authorization: 'Bearer Bearer {YOUR_ACCESS_TOKEN}'
-      X-Organization-Id: 'ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
+      X-Department-Id: 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
       Content-Type: application/json
       Accept: application/json
     urlParameters:
