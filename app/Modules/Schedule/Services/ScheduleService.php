@@ -60,12 +60,10 @@ class ScheduleService
                     'participants', 'notification', 'attachments',
                 ])->all();
 
-                /* Tính sort_order tự động: max + 1 trong cùng scope (event_date, department_id) */
-                $data['sort_order'] = Schedule::where('event_date', $data['event_date'])
-                    ->where('department_id', $data['department_id'])
-                    ->max('sort_order') + 1;
-
                 $schedule = Schedule::create($data);
+
+                /* Gán sort_order dựa trên start_time trong cùng scope (event_date, department_id) */
+                $this->recalculateSortOrder($schedule->event_date->format('Y-m-d'), $schedule->department_id);
 
                 /* Thành phần tham dự */
                 $this->syncParticipants($schedule, $validated['participants'] ?? []);
@@ -186,7 +184,7 @@ class ScheduleService
      */
     private function scopeQuery(Schedule $schedule)
     {
-        return Schedule::where('event_date', $schedule->event_date)
+        return Schedule::where('event_date', $schedule->event_date->format('Y-m-d'))
             ->where('department_id', $schedule->department_id);
     }
 
@@ -212,43 +210,88 @@ class ScheduleService
     }
 
     /**
-     * Di chuyển lịch lên trên (swap sort_order với bản ghi liền trước cùng scope).
+     * Tính lại sort_order cho toàn bộ scope dựa trên start_time.
+     * Dùng khi tạo mới — chèn đúng vị trí theo giờ bắt đầu.
+     */
+    private function recalculateSortOrder(string $eventDate, ?int $departmentId): void
+    {
+        $schedules = Schedule::where('event_date', $eventDate)
+            ->where('department_id', $departmentId)
+            ->orderByRaw('start_time IS NULL, start_time ASC')
+            ->orderBy('id')
+            ->get();
+
+        foreach ($schedules as $index => $s) {
+            if ($s->sort_order !== $index + 1) {
+                $s->update(['sort_order' => $index + 1]);
+            }
+        }
+    }
+
+    /**
+     * Di chuyển lịch lên trên.
+     *
+     * Lấy danh sách đã sắp theo sort_order, tìm vị trí hiện tại,
+     * swap với item liền trước, rồi normalize lại toàn bộ sort_order.
      */
     public function moveUp(Schedule $schedule): Schedule
     {
-        $prev = $this->scopeQuery($schedule)
-            ->where('sort_order', '<', $schedule->sort_order)
-            ->orderByDesc('sort_order')
-            ->first();
+        DB::transaction(function () use ($schedule) {
+            $ordered = $this->scopeQuery($schedule)
+                ->orderBy('sort_order')
+                ->orderBy('id')
+                ->pluck('id')
+                ->values();
 
-        if ($prev) {
-            DB::transaction(function () use ($schedule, $prev) {
-                $tempOrder = $schedule->sort_order;
-                $schedule->update(['sort_order' => $prev->sort_order]);
-                $prev->update(['sort_order' => $tempOrder]);
-            });
-        }
+            $currentIdx = $ordered->search($schedule->id);
+
+            if ($currentIdx === false || $currentIdx === 0) {
+                return;
+            }
+
+            // Swap vị trí trong collection
+            $ordered[$currentIdx] = $ordered[$currentIdx - 1];
+            $ordered[$currentIdx - 1] = $schedule->id;
+
+            // Normalize sort_order
+            foreach ($ordered as $index => $id) {
+                Schedule::where('id', $id)->update(['sort_order' => $index + 1]);
+            }
+        });
 
         return $schedule->fresh($this->eagerLoads);
     }
 
     /**
-     * Di chuyển lịch xuống dưới (swap sort_order với bản ghi liền sau cùng scope).
+     * Di chuyển lịch xuống dưới.
+     *
+     * Lấy danh sách đã sắp theo sort_order, tìm vị trí hiện tại,
+     * swap với item liền sau, rồi normalize lại toàn bộ sort_order.
      */
     public function moveDown(Schedule $schedule): Schedule
     {
-        $next = $this->scopeQuery($schedule)
-            ->where('sort_order', '>', $schedule->sort_order)
-            ->orderBy('sort_order')
-            ->first();
+        DB::transaction(function () use ($schedule) {
+            $ordered = $this->scopeQuery($schedule)
+                ->orderBy('sort_order')
+                ->orderBy('id')
+                ->pluck('id')
+                ->values();
 
-        if ($next) {
-            DB::transaction(function () use ($schedule, $next) {
-                $tempOrder = $schedule->sort_order;
-                $schedule->update(['sort_order' => $next->sort_order]);
-                $next->update(['sort_order' => $tempOrder]);
-            });
-        }
+            $currentIdx = $ordered->search($schedule->id);
+
+            if ($currentIdx === false || $currentIdx >= $ordered->count() - 1) {
+                return;
+            }
+
+            // Swap vị trí trong collection
+            $ordered[$currentIdx] = $ordered[$currentIdx + 1];
+            $ordered[$currentIdx + 1] = $schedule->id;
+
+            // Normalize sort_order
+            foreach ($ordered as $index => $id) {
+                Schedule::where('id', $id)->update(['sort_order' => $index + 1]);
+            }
+        });
 
         return $schedule->fresh($this->eagerLoads);
     }

@@ -126,30 +126,6 @@ class Schedule extends Model implements HasMedia
             ->when($filters['participant_user_id'] ?? null, function ($q, $userId) {
                 $q->whereHas('participants', fn ($sub) => $sub->where('schedule_participants.user_id', $userId));
             })
-            ->when($filters['sort_by'] ?? 'sort_order', function ($q, $sortBy) use ($filters) {
-                $allowed = ['id', 'event_date', 'start_time', 'sort_order', 'created_at', 'updated_at'];
-                $column = in_array($sortBy, $allowed) ? $sortBy : 'sort_order';
-
-                /* Ưu tiên chức danh: Bí thư trước, Phó Bí thư sau, rồi mới đến sort_order */
-                if ($column === 'sort_order') {
-                    $q->leftJoin('users as chairperson_user', 'schedules.chairperson_id', '=', 'chairperson_user.id')
-                        ->orderByRaw('FIELD(chairperson_user.position, ' . collect(self::POSITION_PRIORITY)->map(fn ($p) => "'{$p}'")->implode(',') . ') ASC')
-                        ->orderBy('schedules.sort_order', 'asc')
-                        ->orderBy('schedules.start_time', 'asc')
-                        ->select('schedules.*');
-                } else {
-                    $q->orderBy("schedules.{$column}", $filters['sort_dir'] ?? 'asc');
-                }
-            });
+            ->orderBy('schedules.sort_order', 'asc');
     }
-
-    /**
-     * Thứ tự ưu tiên chức danh khi sắp xếp lịch.
-     * Bí thư xếp trước, Phó Bí thư sau, còn lại theo sort_order.
-     * Cập nhật danh sách này khi có thêm chức danh cần ưu tiên.
-     */
-    public const POSITION_PRIORITY = [
-        'Bí thư',
-        'Phó Bí thư',
-    ];
 }
