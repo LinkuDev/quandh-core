@@ -182,12 +182,41 @@ class ScheduleService
     /* ── Sort Order ── */
 
     /**
+     * Scope query: event_date + department_id.
+     */
+    private function scopeQuery(Schedule $schedule)
+    {
+        return Schedule::where('event_date', $schedule->event_date)
+            ->where('department_id', $schedule->department_id);
+    }
+
+    /**
+     * Dồn lại sort_order liên tục (1, 2, 3...) cho scope hiện tại, loại trừ 1 bản ghi.
+     */
+    private function reorderScope(string $eventDate, ?int $departmentId, ?int $excludeId = null): void
+    {
+        $query = Schedule::where('event_date', $eventDate)
+            ->where('department_id', $departmentId)
+            ->orderBy('sort_order');
+
+        if ($excludeId) {
+            $query->where('id', '!=', $excludeId);
+        }
+
+        $schedules = $query->get();
+        foreach ($schedules as $index => $s) {
+            if ($s->sort_order !== $index + 1) {
+                $s->update(['sort_order' => $index + 1]);
+            }
+        }
+    }
+
+    /**
      * Di chuyển lịch lên trên (swap sort_order với bản ghi liền trước cùng scope).
      */
     public function moveUp(Schedule $schedule): Schedule
     {
-        $prev = Schedule::where('event_date', $schedule->event_date)
-            ->where('department_id', $schedule->department_id)
+        $prev = $this->scopeQuery($schedule)
             ->where('sort_order', '<', $schedule->sort_order)
             ->orderByDesc('sort_order')
             ->first();
@@ -208,8 +237,7 @@ class ScheduleService
      */
     public function moveDown(Schedule $schedule): Schedule
     {
-        $next = Schedule::where('event_date', $schedule->event_date)
-            ->where('department_id', $schedule->department_id)
+        $next = $this->scopeQuery($schedule)
             ->where('sort_order', '>', $schedule->sort_order)
             ->orderBy('sort_order')
             ->first();
@@ -234,8 +262,13 @@ class ScheduleService
         $targetOrder = $target->sort_order;
 
         DB::transaction(function () use ($schedule, $target, $targetOrder) {
+            $oldDate = $schedule->event_date->format('Y-m-d');
+            $oldDeptId = $schedule->department_id;
+
+            /* Dồn sort_order tại scope đích, exclude bản ghi đang di chuyển */
             Schedule::where('event_date', $target->event_date)
                 ->where('department_id', $target->department_id)
+                ->where('id', '!=', $schedule->id)
                 ->where('sort_order', '>=', $targetOrder)
                 ->increment('sort_order');
 
@@ -244,6 +277,14 @@ class ScheduleService
                 'event_date' => $target->event_date,
                 'department_id' => $target->department_id,
             ]);
+
+            /* Dồn lại scope cũ nếu khác scope đích */
+            $isSameScope = $oldDate === $target->event_date->format('Y-m-d')
+                && $oldDeptId === $target->department_id;
+
+            if (! $isSameScope) {
+                $this->reorderScope($oldDate, $oldDeptId);
+            }
         });
 
         return $schedule->fresh($this->eagerLoads);
@@ -258,8 +299,13 @@ class ScheduleService
         $targetOrder = $target->sort_order;
 
         DB::transaction(function () use ($schedule, $target, $targetOrder) {
+            $oldDate = $schedule->event_date->format('Y-m-d');
+            $oldDeptId = $schedule->department_id;
+
+            /* Dồn sort_order tại scope đích, exclude bản ghi đang di chuyển */
             Schedule::where('event_date', $target->event_date)
                 ->where('department_id', $target->department_id)
+                ->where('id', '!=', $schedule->id)
                 ->where('sort_order', '>', $targetOrder)
                 ->increment('sort_order');
 
@@ -268,6 +314,14 @@ class ScheduleService
                 'event_date' => $target->event_date,
                 'department_id' => $target->department_id,
             ]);
+
+            /* Dồn lại scope cũ nếu khác scope đích */
+            $isSameScope = $oldDate === $target->event_date->format('Y-m-d')
+                && $oldDeptId === $target->department_id;
+
+            if (! $isSameScope) {
+                $this->reorderScope($oldDate, $oldDeptId);
+            }
         });
 
         return $schedule->fresh($this->eagerLoads);
