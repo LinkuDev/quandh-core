@@ -7,16 +7,12 @@ use App\Modules\Core\Models\User;
 use App\Modules\Schedule\Enums\MeetingTypeEnum;
 use App\Modules\Schedule\Enums\ScheduleNatureEnum;
 use App\Modules\Schedule\Models\Schedule;
-use App\Modules\Schedule\Models\ScheduleParticipant;
 use App\Modules\Schedule\Models\ScheduleNotification;
+use App\Modules\Schedule\Models\ScheduleParticipant;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
 {
-    /**
-     * Seed the application's database.
-     * Thứ tự: User → Permission/Role → Settings → Schedule data.
-     */
     public function run(): void
     {
         $this->seedUsers();
@@ -56,8 +52,6 @@ class DatabaseSeeder extends Seeder
         $meetingTypes = MeetingTypeEnum::values();
         $natures = ScheduleNatureEnum::values();
 
-        /* Tạo lịch công tác mẫu */
-        $sessions = ['sang', 'chieu', 'toi'];
         $locations = ['Phòng họp A', 'Phòng họp B', 'Hội trường lớn', 'Phòng tiếp dân', 'Phòng làm việc Bí thư'];
         $contents = [
             'Họp Ban Thường vụ Thành ủy',
@@ -76,6 +70,8 @@ class DatabaseSeeder extends Seeder
             'Họp triển khai kế hoạch bầu cử',
             'Làm việc với Ban Tổ chức Thành ủy',
         ];
+        $prepUnits = ['Văn phòng', 'Ban Tổ chức', 'Ban Tuyên giáo', 'Ủy ban Kiểm tra'];
+        $externalOrgs = ['Sở Nội vụ', 'Sở Tài chính', 'UBND quận', 'Ban Dân vận'];
 
         $sortOrder = [];
 
@@ -89,73 +85,89 @@ class DatabaseSeeder extends Seeder
         }
 
         foreach ($dates as $date) {
-
             $schedulesPerDay = rand(2, 5);
 
             for ($i = 0; $i < $schedulesPerDay; $i++) {
-                $org = $departments->random();
-                $session = fake()->randomElement($sessions);
-                $chairperson = $users->whereNotNull('position')->random();
+                $dept = $departments->random();
+                $startTime = fake()->randomElement(['07:30', '08:00', '08:30', '09:00', '13:30', '14:00', '14:30', '19:00', '19:30']);
+                $session = match (true) {
+                    (int) $startTime < 12 => 'sang',
+                    (int) $startTime < 18 => 'chieu',
+                    default => 'toi',
+                };
 
-                $scopeKey = "{$date}_{$org->id}";
+                /* Chủ trì */
+                $chairperson = $users->random();
+
+                /* Người tạo lịch = chairperson hoặc 1 user khác */
+                $creator = fake()->boolean(70) ? $chairperson : $users->random();
+
+                $scopeKey = "{$date}_{$dept->id}";
                 $sortOrder[$scopeKey] = ($sortOrder[$scopeKey] ?? 0) + 1;
 
                 $schedule = Schedule::withoutEvents(function () use (
-                    $date, $session, $org, $chairperson, $meetingTypes, $natures,
-                    $contents, $locations, $users, $sortOrder, $scopeKey
+                    $date, $session, $startTime, $dept, $chairperson, $creator,
+                    $meetingTypes, $natures, $contents, $locations, $prepUnits, $sortOrder, $scopeKey
                 ) {
                     return Schedule::create([
                         'event_date' => $date,
                         'session' => $session,
-                        'start_time' => fake()->randomElement(['07:30', '08:00', '08:30', '09:00', '13:30', '14:00', '14:30', '19:00', '19:30']),
+                        'start_time' => $startTime,
                         'content' => fake()->randomElement($contents),
                         'chairperson_id' => $chairperson->id,
                         'location' => fake()->randomElement($locations),
-                        'prep_unit' => fake()->randomElement(['Văn phòng', 'Ban Tổ chức', 'Ban Tuyên giáo', 'Ủy ban Kiểm tra']),
+                        'prep_unit' => fake()->randomElement($prepUnits),
                         'driver_info' => fake()->optional(0.7)->name(),
                         'meeting_type' => fake()->randomElement($meetingTypes),
                         'nature' => fake()->randomElement($natures),
-                        'color_code' => fake()->optional(0.5)->hexColor(),
+                        'color_code' => fake()->optional(0.3)->hexColor(),
                         'sort_order' => $sortOrder[$scopeKey],
-                        'department_id' => $org->id,
+                        'department_id' => $dept->id,
                         'status' => 'active',
-                        'created_by' => $users->random()->id,
-                        'updated_by' => $users->random()->id,
+                        'created_by' => $creator->id,
+                        'updated_by' => $creator->id,
                     ]);
                 });
 
-                /* Thêm participants */
-                $participantUsers = $users->random(rand(2, 5));
-                foreach ($participantUsers as $pu) {
+                /* Participants: chairperson + random users (không trùng) */
+                $otherUsers = $users->where('id', '!=', $chairperson->id)->random(rand(1, 4));
+                $participantUserIds = collect([$chairperson->id])
+                    ->merge($otherUsers->pluck('id'))
+                    ->unique()
+                    ->values();
+
+                foreach ($participantUserIds as $userId) {
                     ScheduleParticipant::create([
                         'schedule_id' => $schedule->id,
-                        'user_id' => $pu->id,
+                        'user_id' => $userId,
                     ]);
                 }
 
-                /* Thêm 1-2 external participants */
+                /* External participants (40% chance) */
                 if (fake()->boolean(40)) {
                     ScheduleParticipant::create([
                         'schedule_id' => $schedule->id,
-                        'external_name' => fake()->name() . ' (' . fake()->randomElement(['Sở Nội vụ', 'Sở Tài chính', 'UBND quận', 'Ban Dân vận']) . ')',
+                        'external_name' => fake()->name().' ('.fake()->randomElement($externalOrgs).')',
                     ]);
                 }
 
-                /* Thêm notifications cho participants */
+                /* Notifications: gửi cho TẤT CẢ participant có user_id, remind trước event */
                 if (fake()->boolean(60)) {
                     $channel = fake()->randomElement(['website', 'sms', 'zalo', 'app']);
-                    $remindAt = \Carbon\Carbon::parse($date)->subHours(rand(1, 24));
+                    $remindAt = \Carbon\Carbon::parse("{$date} {$startTime}")
+                        ->subMinutes(fake()->randomElement([30, 60, 120, 1440]));
 
-                    foreach ($participantUsers->take(3) as $pu) {
+                    foreach ($participantUserIds as $userId) {
+                        $sent = fake()->boolean(50);
                         ScheduleNotification::create([
                             'schedule_id' => $schedule->id,
-                            'user_id' => $pu->id,
+                            'user_id' => $userId,
                             'channel' => $channel,
                             'remind_at' => $remindAt,
-                            'status' => fake()->randomElement(['pending', 'sent']),
-                            'sent_at' => fake()->boolean(50) ? now() : null,
-                            'read_at' => fake()->boolean(30) ? now() : null,
-                            'created_by' => 1,
+                            'status' => $sent ? 'sent' : 'pending',
+                            'sent_at' => $sent ? $remindAt : null,
+                            'read_at' => $sent && fake()->boolean(30) ? $remindAt->copy()->addMinutes(rand(5, 60)) : null,
+                            'created_by' => $creator->id,
                         ]);
                     }
                 }
