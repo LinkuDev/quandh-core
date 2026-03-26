@@ -10,11 +10,9 @@ Route::prefix('auth')->middleware('log.activity')->group(function () {
 
 // Cấu hình công khai - không cần xác thực
 Route::get('/settings/public', [\App\Modules\Core\SettingController::class, 'public'])->middleware('log.activity');
-Route::get('/departments/public', [\App\Modules\Core\DepartmentController::class, 'public'])->middleware('log.activity');
-Route::get('/departments/public-options', [\App\Modules\Core\DepartmentController::class, 'publicOptions'])->middleware('log.activity');
 Route::get('/schedules/public', [\App\Modules\Schedule\ScheduleController::class, 'publicIndex'])->middleware('log.activity');
 
-// Route yêu cầu đăng nhập (Bearer token) và đặt ngữ cảnh team cho Spatie Permission
+// Route yêu cầu đăng nhập (Bearer token)
 Route::middleware(['auth:sanctum', 'set.permissions.team', 'log.activity'])->group(function () {
     Route::get('/user', [AuthController::class, 'me']);
 
@@ -26,9 +24,6 @@ Route::middleware(['auth:sanctum', 'set.permissions.team', 'log.activity'])->gro
     });
     Route::prefix('roles')->group(function () {
         require base_path('app/Modules/Core/Routes/role.php');
-    });
-    Route::prefix('departments')->group(function () {
-        require base_path('app/Modules/Core/Routes/department.php');
     });
     Route::prefix('log-activities')->group(function () {
         require base_path('app/Modules/Core/Routes/log_activity.php');

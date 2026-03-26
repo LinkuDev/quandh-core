@@ -1,170 +1,19 @@
-name: 'Schedule - Lịch công tác'
+name: 'Core - User'
 description: ''
 endpoints:
   -
     custom: []
     httpMethods:
       - GET
-    uri: api/schedules/public
+    uri: api/users/export
     metadata:
       custom: []
-      groupName: 'Schedule - Lịch công tác'
+      groupName: 'Core - User'
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
-      title: 'Lịch công tác công khai'
-      description: 'Trả về danh sách lịch công tác đang hoạt động cho hiển thị công khai.'
-      authenticated: false
-      deprecated: false
-    headers:
-      X-Department-Id: 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters: []
-    cleanUrlParameters: []
-    queryParameters:
-      search:
-        custom: []
-        name: search
-        description: 'Từ khóa tìm kiếm theo tên hoặc trường chính. Must not be greater than 100 characters.'
-        required: false
-        example: van-ban
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: true
-        deprecated: false
-      status:
-        custom: []
-        name: status
-        description: 'Lọc theo trạng thái.'
-        required: false
-        example: active
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: true
-        deprecated: false
-      from_date:
-        custom: []
-        name: from_date
-        description: 'date Lọc từ ngày (Y-m-d).'
-        required: false
-        example: '2026-04-01'
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: true
-        deprecated: false
-      to_date:
-        custom: []
-        name: to_date
-        description: 'date Lọc đến ngày (Y-m-d).'
-        required: false
-        example: '2026-04-30'
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: true
-        deprecated: false
-      sort_by:
-        custom: []
-        name: sort_by
-        description: 'Trường dùng để sắp xếp. Must not be greater than 50 characters.'
-        required: false
-        example: created_at
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: true
-        deprecated: false
-      sort_order:
-        custom: []
-        name: sort_order
-        description: 'Thứ tự sắp xếp.'
-        required: false
-        example: desc
-        type: string
-        enumValues:
-          - asc
-          - desc
-        exampleWasSpecified: false
-        nullable: true
-        deprecated: false
-      limit:
-        custom: []
-        name: limit
-        description: 'Số bản ghi mỗi trang (1-100).'
-        required: false
-        example: 20
-        type: integer
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: true
-        deprecated: false
-      department_id:
-        custom: []
-        name: department_id
-        description: 'ID đơn vị.'
-        required: false
-        example: 16
-        type: integer
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        deprecated: false
-      session:
-        custom: []
-        name: session
-        description: 'Buổi: sang, chieu, toi.'
-        required: false
-        example: architecto
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        deprecated: false
-    cleanQueryParameters:
-      search: van-ban
-      status: active
-      from_date: '2026-04-01'
-      to_date: '2026-04-30'
-      sort_by: created_at
-      sort_order: desc
-      limit: 20
-      department_id: 16
-      session: architecto
-    bodyParameters: []
-    cleanBodyParameters: []
-    fileParameters: []
-    responses:
-      -
-        custom: []
-        status: 200
-        content: '{"data":[],"links":{"first":"http:\/\/localhost:8000\/api\/schedules\/public?page=1","last":"http:\/\/localhost:8000\/api\/schedules\/public?page=1","prev":null,"next":null},"meta":{"current_page":1,"from":null,"last_page":1,"links":[{"url":null,"label":"&laquo; Previous","page":null,"active":false},{"url":"http:\/\/localhost:8000\/api\/schedules\/public?page=1","label":"1","page":1,"active":true},{"url":null,"label":"Next &raquo;","page":null,"active":false}],"path":"http:\/\/localhost:8000\/api\/schedules\/public","per_page":20,"to":null,"total":0},"success":true}'
-        headers:
-          cache-control: 'no-cache, private'
-          content-type: application/json
-          access-control-allow-origin: '*'
-        description: null
-    responseFields: []
-    auth: []
-    controller: null
-    method: null
-    route: null
-  -
-    custom: []
-    httpMethods:
-      - GET
-    uri: api/schedules/export
-    metadata:
-      custom: []
-      groupName: 'Schedule - Lịch công tác'
-      groupDescription: ''
-      subgroup: ''
-      subgroupDescription: ''
-      title: 'Xuất Excel lịch công tác'
-      description: 'Xuất ra các trường: id, ngày, buổi, thời gian, nội dung, chủ trì, thành phần, địa điểm, đơn vị chuẩn bị, số người, loại cuộc họp, tính chất, lái xe, mã màu, khối, trạng thái, người tạo, người sửa, ngày tạo, ngày cập nhật.'
+      title: 'Xuất danh sách người dùng'
+      description: 'Xuất ra các trường: id, name, email, user_name, position, phone, zalo_id, department, role, status, created_by, updated_by, created_at, updated_at.'
       authenticated: true
       deprecated: false
     headers:
@@ -178,7 +27,7 @@ endpoints:
       search:
         custom: []
         name: search
-        description: 'Tìm kiếm theo nội dung.'
+        description: 'Từ khóa tìm kiếm (name, email).'
         required: false
         example: architecto
         type: string
@@ -189,7 +38,7 @@ endpoints:
       status:
         custom: []
         name: status
-        description: 'Trạng thái: active, inactive.'
+        description: 'Lọc theo trạng thái: active, inactive, banned.'
         required: false
         example: architecto
         type: string
@@ -200,9 +49,9 @@ endpoints:
       from_date:
         custom: []
         name: from_date
-        description: 'date Lọc từ ngày (Y-m-d).'
+        description: 'Lọc từ ngày tạo (Y-m-d). Must be a valid date.'
         required: false
-        example: architecto
+        example: '2026-01-01'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -211,9 +60,9 @@ endpoints:
       to_date:
         custom: []
         name: to_date
-        description: 'date Lọc đến ngày (Y-m-d).'
+        description: 'Lọc đến ngày tạo (Y-m-d). Must be a valid date. Must be a date after or equal to <code>from_date</code>.'
         required: false
-        example: architecto
+        example: '2026-12-31'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -222,9 +71,9 @@ endpoints:
       sort_by:
         custom: []
         name: sort_by
-        description: 'Trường dùng để sắp xếp. Must not be greater than 50 characters.'
+        description: 'Sắp xếp theo: id, name, email, created_at.'
         required: false
-        example: created_at
+        example: architecto
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -233,202 +82,33 @@ endpoints:
       sort_order:
         custom: []
         name: sort_order
-        description: 'Thứ tự sắp xếp.'
+        description: 'Thứ tự: asc, desc.'
         required: false
-        example: desc
+        example: architecto
         type: string
-        enumValues:
-          - asc
-          - desc
+        enumValues: []
         exampleWasSpecified: false
         nullable: true
         deprecated: false
       limit:
         custom: []
         name: limit
-        description: 'Số bản ghi mỗi trang (1-100). Must be at least 1. Must not be greater than 100.'
-        required: false
-        example: 10
-        type: integer
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: true
-        deprecated: false
-      department_id:
-        custom: []
-        name: department_id
-        description: 'ID đơn vị.'
+        description: 'Số bản ghi (1-100).'
         required: false
         example: 16
         type: integer
         enumValues: []
         exampleWasSpecified: false
-        nullable: false
+        nullable: true
         deprecated: false
     cleanQueryParameters:
       search: architecto
       status: architecto
-      from_date: architecto
-      to_date: architecto
-      sort_by: created_at
-      sort_order: desc
-      limit: 10
-      department_id: 16
-    bodyParameters: []
-    cleanBodyParameters: []
-    fileParameters: []
-    responses:
-      -
-        custom: []
-        status: 401
-        content: '{"message":"Unauthenticated."}'
-        headers:
-          cache-control: 'no-cache, private'
-          content-type: application/json
-          access-control-allow-origin: '*'
-        description: null
-    responseFields: []
-    auth:
-      - headers
-      - Authorization
-      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
-    controller: null
-    method: null
-    route: null
-  -
-    custom: []
-    httpMethods:
-      - GET
-    uri: api/schedules/export-pdf
-    metadata:
-      custom: []
-      groupName: 'Schedule - Lịch công tác'
-      groupDescription: ''
-      subgroup: ''
-      subgroupDescription: ''
-      title: 'Xuất PDF lịch công tác'
-      description: 'Xuất lịch công tác ra file PDF theo bộ lọc.'
-      authenticated: true
-      deprecated: false
-    headers:
-      Authorization: 'Bearer Bearer {YOUR_ACCESS_TOKEN}'
-      X-Department-Id: 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters: []
-    cleanUrlParameters: []
-    queryParameters:
-      search:
-        custom: []
-        name: search
-        description: 'Từ khóa tìm kiếm theo tên hoặc trường chính. Must not be greater than 100 characters.'
-        required: false
-        example: van-ban
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: true
-        deprecated: false
-      status:
-        custom: []
-        name: status
-        description: 'Lọc theo trạng thái.'
-        required: false
-        example: active
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: true
-        deprecated: false
-      from_date:
-        custom: []
-        name: from_date
-        description: 'date Lọc từ ngày (Y-m-d).'
-        required: false
-        example: architecto
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: true
-        deprecated: false
-      to_date:
-        custom: []
-        name: to_date
-        description: 'date Lọc đến ngày (Y-m-d).'
-        required: false
-        example: architecto
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: true
-        deprecated: false
-      sort_by:
-        custom: []
-        name: sort_by
-        description: 'Trường dùng để sắp xếp. Must not be greater than 50 characters.'
-        required: false
-        example: created_at
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: true
-        deprecated: false
-      sort_order:
-        custom: []
-        name: sort_order
-        description: 'Thứ tự sắp xếp.'
-        required: false
-        example: desc
-        type: string
-        enumValues:
-          - asc
-          - desc
-        exampleWasSpecified: false
-        nullable: true
-        deprecated: false
-      limit:
-        custom: []
-        name: limit
-        description: 'Số bản ghi mỗi trang (1-100). Must be at least 1. Must not be greater than 100.'
-        required: false
-        example: 10
-        type: integer
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: true
-        deprecated: false
-      department_id:
-        custom: []
-        name: department_id
-        description: 'ID đơn vị.'
-        required: false
-        example: 16
-        type: integer
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        deprecated: false
-      session:
-        custom: []
-        name: session
-        description: 'Buổi: sang, chieu, toi.'
-        required: false
-        example: architecto
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        deprecated: false
-    cleanQueryParameters:
-      search: van-ban
-      status: active
-      from_date: architecto
-      to_date: architecto
-      sort_by: created_at
-      sort_order: desc
-      limit: 10
-      department_id: 16
-      session: architecto
+      from_date: '2026-01-01'
+      to_date: '2026-12-31'
+      sort_by: architecto
+      sort_order: architecto
+      limit: 16
     bodyParameters: []
     cleanBodyParameters: []
     fileParameters: []
@@ -454,15 +134,15 @@ endpoints:
     custom: []
     httpMethods:
       - POST
-    uri: api/schedules/import
+    uri: api/users/import
     metadata:
       custom: []
-      groupName: 'Schedule - Lịch công tác'
+      groupName: 'Core - User'
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
-      title: 'Nhập Excel lịch công tác'
-      description: 'Cột bắt buộc: noi_dung, ngay, buoi. Cột không bắt buộc: thoi_gian, dia_diem, don_vi_chuan_bi, lai_xe, so_nguoi, ma_mau, khoi (mặc định "thuong_trac"), trang_thai (mặc định "active").'
+      title: 'Nhập danh sách người dùng'
+      description: 'Cột bắt buộc: name, email. Cột không bắt buộc: user_name, password (mặc định "password"), status (mặc định "active").'
       authenticated: true
       deprecated: false
     headers:
@@ -478,7 +158,7 @@ endpoints:
       file:
         custom: []
         name: file
-        description: 'File Excel (xlsx, xls, csv).'
+        description: 'File Excel (xlsx, xls, csv). Cột theo chuẩn export.'
         required: true
         example: null
         type: file
@@ -493,7 +173,7 @@ endpoints:
       -
         custom: []
         status: 200
-        content: '{"success": true, "message": "Import lịch công tác thành công."}'
+        content: '{"success": true, "message": "Import người dùng thành công."}'
         headers: []
         description: ''
     responseFields: []
@@ -508,14 +188,14 @@ endpoints:
     custom: []
     httpMethods:
       - POST
-    uri: api/schedules/bulk-delete
+    uri: api/users/bulk-delete
     metadata:
       custom: []
-      groupName: 'Schedule - Lịch công tác'
+      groupName: 'Core - User'
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
-      title: 'Xóa hàng loạt lịch công tác'
+      title: 'Xóa hàng loạt người dùng'
       description: ''
       authenticated: true
       deprecated: false
@@ -553,7 +233,7 @@ endpoints:
       -
         custom: []
         status: 200
-        content: '{"success": true, "message": "Đã xóa thành công các lịch được chọn!"}'
+        content: '{"success": true, "message": "Đã xóa thành công các tài khoản được chọn!"}'
         headers: []
         description: ''
     responseFields: []
@@ -568,10 +248,10 @@ endpoints:
     custom: []
     httpMethods:
       - PATCH
-    uri: api/schedules/bulk-status
+    uri: api/users/bulk-status
     metadata:
       custom: []
-      groupName: 'Schedule - Lịch công tác'
+      groupName: 'Core - User'
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
@@ -606,7 +286,7 @@ endpoints:
       status:
         custom: []
         name: status
-        description: 'Trạng thái mới: active, inactive.'
+        description: 'Trạng thái: active, inactive, banned.'
         required: true
         example: active
         type: string
@@ -625,7 +305,7 @@ endpoints:
       -
         custom: []
         status: 200
-        content: '{"success": true, "message": "Cập nhật trạng thái hàng loạt thành công!"}'
+        content: '{"success": true, "message": "Cập nhật trạng thái thành công."}'
         headers: []
         description: ''
     responseFields: []
@@ -640,15 +320,15 @@ endpoints:
     custom: []
     httpMethods:
       - GET
-    uri: api/schedules/stats
+    uri: api/users/stats
     metadata:
       custom: []
-      groupName: 'Schedule - Lịch công tác'
+      groupName: 'Core - User'
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
-      title: 'Thống kê lịch công tác'
-      description: 'Tổng số lịch, số lịch đang hoạt động, không hoạt động (áp dụng bộ lọc).'
+      title: 'Thống kê người dùng'
+      description: 'Tổng số, đang kích hoạt (active), không kích hoạt (inactive, banned). Áp dụng cùng bộ lọc với index.'
       authenticated: true
       deprecated: false
     headers:
@@ -662,18 +342,18 @@ endpoints:
       search:
         custom: []
         name: search
-        description: 'Từ khóa tìm kiếm theo nội dung.'
+        description: 'Từ khóa tìm kiếm (name, email, user_name).'
         required: false
-        example: architecto
+        example: john
         type: string
         enumValues: []
-        exampleWasSpecified: false
+        exampleWasSpecified: true
         nullable: true
         deprecated: false
       status:
         custom: []
         name: status
-        description: 'Trạng thái: active, inactive.'
+        description: 'Lọc theo trạng thái: active, inactive, banned.'
         required: false
         example: architecto
         type: string
@@ -684,187 +364,45 @@ endpoints:
       from_date:
         custom: []
         name: from_date
-        description: 'date Lọc từ ngày (Y-m-d).'
+        description: 'Lọc từ ngày tạo (Y-m-d). Must be a valid date.'
         required: false
-        example: '2026-04-01'
+        example: '2026-01-01'
         type: string
         enumValues: []
-        exampleWasSpecified: true
+        exampleWasSpecified: false
         nullable: true
         deprecated: false
       to_date:
         custom: []
         name: to_date
-        description: 'date Lọc đến ngày (Y-m-d).'
+        description: 'Lọc đến ngày tạo (Y-m-d). Must be a valid date. Must be a date after or equal to <code>from_date</code>.'
         required: false
-        example: '2026-04-30'
+        example: '2026-12-31'
         type: string
         enumValues: []
-        exampleWasSpecified: true
+        exampleWasSpecified: false
         nullable: true
         deprecated: false
       sort_by:
         custom: []
         name: sort_by
-        description: 'Trường dùng để sắp xếp. Must not be greater than 50 characters.'
+        description: 'Sắp xếp theo: id, name, email, user_name, created_at.'
         required: false
         example: created_at
         type: string
         enumValues: []
-        exampleWasSpecified: false
-        nullable: true
-        deprecated: false
-      sort_order:
-        custom: []
-        name: sort_order
-        description: 'Thứ tự sắp xếp.'
-        required: false
-        example: desc
-        type: string
-        enumValues:
-          - asc
-          - desc
-        exampleWasSpecified: false
-        nullable: true
-        deprecated: false
-      limit:
-        custom: []
-        name: limit
-        description: 'Số bản ghi mỗi trang (1-100). Must be at least 1. Must not be greater than 100.'
-        required: false
-        example: 10
-        type: integer
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: true
-        deprecated: false
-      department_id:
-        custom: []
-        name: department_id
-        description: 'ID đơn vị.'
-        required: false
-        example: 16
-        type: integer
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        deprecated: false
-    cleanQueryParameters:
-      search: architecto
-      status: architecto
-      from_date: '2026-04-01'
-      to_date: '2026-04-30'
-      sort_by: created_at
-      sort_order: desc
-      limit: 10
-      department_id: 16
-    bodyParameters: []
-    cleanBodyParameters: []
-    fileParameters: []
-    responses:
-      -
-        custom: []
-        status: 200
-        content: '{"success": true, "data": {"total": 50, "active": 45, "inactive": 5}}'
-        headers: []
-        description: ''
-    responseFields: []
-    auth:
-      - headers
-      - Authorization
-      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
-    controller: null
-    method: null
-    route: null
-  -
-    custom: []
-    httpMethods:
-      - GET
-    uri: api/schedules
-    metadata:
-      custom: []
-      groupName: 'Schedule - Lịch công tác'
-      groupDescription: ''
-      subgroup: ''
-      subgroupDescription: ''
-      title: 'Danh sách lịch công tác'
-      description: 'Lấy danh sách có phân trang, lọc thông minh và sắp xếp.'
-      authenticated: true
-      deprecated: false
-    headers:
-      Authorization: 'Bearer Bearer {YOUR_ACCESS_TOKEN}'
-      X-Department-Id: 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters: []
-    cleanUrlParameters: []
-    queryParameters:
-      search:
-        custom: []
-        name: search
-        description: 'Tìm kiếm theo nội dung.'
-        required: false
-        example: architecto
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: true
-        deprecated: false
-      status:
-        custom: []
-        name: status
-        description: 'Trạng thái: active, inactive.'
-        required: false
-        example: architecto
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: true
-        deprecated: false
-      from_date:
-        custom: []
-        name: from_date
-        description: 'date Lọc từ ngày (Y-m-d).'
-        required: false
-        example: architecto
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: true
-        deprecated: false
-      to_date:
-        custom: []
-        name: to_date
-        description: 'date Lọc đến ngày (Y-m-d).'
-        required: false
-        example: architecto
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: true
-        deprecated: false
-      sort_by:
-        custom: []
-        name: sort_by
-        description: 'Sắp xếp theo: id, event_date, start_time, sort_order, created_at, updated_at.'
-        required: false
-        example: sort_order
-        type: string
-        enumValues: []
         exampleWasSpecified: true
         nullable: true
         deprecated: false
       sort_order:
         custom: []
         name: sort_order
-        description: 'Thứ tự sắp xếp.'
+        description: 'Thứ tự: asc, desc.'
         required: false
         example: desc
         type: string
-        enumValues:
-          - asc
-          - desc
-        exampleWasSpecified: false
+        enumValues: []
+        exampleWasSpecified: true
         nullable: true
         deprecated: false
       limit:
@@ -872,128 +410,20 @@ endpoints:
         name: limit
         description: 'Số bản ghi mỗi trang (1-100).'
         required: false
-        example: 20
+        example: 10
         type: integer
         enumValues: []
         exampleWasSpecified: true
         nullable: true
         deprecated: false
-      event_date:
-        custom: []
-        name: event_date
-        description: 'date Lọc theo ngày cụ thể (Y-m-d).'
-        required: false
-        example: architecto
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        deprecated: false
-      session:
-        custom: []
-        name: session
-        description: 'Buổi: sang, chieu, toi.'
-        required: false
-        example: architecto
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        deprecated: false
-      department_id:
-        custom: []
-        name: department_id
-        description: 'ID đơn vị.'
-        required: false
-        example: 16
-        type: integer
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        deprecated: false
-      chairperson_id:
-        custom: []
-        name: chairperson_id
-        description: 'Lọc theo chủ trì.'
-        required: false
-        example: 16
-        type: integer
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        deprecated: false
-      meeting_type:
-        custom: []
-        name: meeting_type
-        description: 'Lọc theo loại cuộc họp: hop_thuong_ky, hop_dot_xuat, hop_chuyen_de, hoi_nghi, tiep_khach, di_cong_tac, khac.'
-        required: false
-        example: architecto
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        deprecated: false
-      nature:
-        custom: []
-        name: nature
-        description: 'Lọc theo tính chất: thuong, quan_trong, mat.'
-        required: false
-        example: architecto
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        deprecated: false
-      position:
-        custom: []
-        name: position
-        description: 'Lọc theo chức danh chủ trì.'
-        required: false
-        example: architecto
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        deprecated: false
-      participant_user_id:
-        custom: []
-        name: participant_user_id
-        description: 'Lọc theo thành phần tham dự.'
-        required: false
-        example: 16
-        type: integer
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        deprecated: false
-      sort_dir:
-        custom: []
-        name: sort_dir
-        description: 'Thứ tự: asc, desc.'
-        required: false
-        example: asc
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        deprecated: false
     cleanQueryParameters:
-      search: architecto
+      search: john
       status: architecto
-      from_date: architecto
-      to_date: architecto
-      sort_by: sort_order
+      from_date: '2026-01-01'
+      to_date: '2026-12-31'
+      sort_by: created_at
       sort_order: desc
-      limit: 20
-      event_date: architecto
-      session: architecto
-      department_id: 16
-      chairperson_id: 16
-      meeting_type: architecto
-      nature: architecto
-      position: architecto
-      participant_user_id: 16
-      sort_dir: asc
+      limit: 10
     bodyParameters: []
     cleanBodyParameters: []
     fileParameters: []
@@ -1001,7 +431,133 @@ endpoints:
       -
         custom: []
         status: 200
-        content: '{"data":[{"id":50,"event_date":"14\/04\/2026","session":"sang","start_time":"15:37:00","content":"Velit et fugiat sunt nihil accusantium.","location":"78142 Nick Field\nWest Noahmouth, WV 59021-4902","prep_unit":null,"driver_info":null,"color_code":"#865450","sort_order":8,"department_id":null,"status":"active","chairperson_id":null,"meeting_type":"hop_dot_xuat","meeting_type_label":"H\u1ecdp \u0111\u1ed9t xu\u1ea5t","nature":"mat","nature_label":"M\u1eadt","created_by":"N\/A","updated_by":"N\/A","created_at":"07:38:34 26\/03\/2026","updated_at":"07:38:34 26\/03\/2026"},{"id":51,"event_date":"17\/04\/2026","session":"chieu","start_time":"08:01:00","content":"Dolores enim non facere tempora.","location":"47809 Considine Landing Suite 782\nNitzschetown, CA 87335-0574","prep_unit":"Schaden, King and Fahey","driver_info":"Prof. Carson Emard","color_code":null,"sort_order":6,"department_id":null,"status":"active","chairperson_id":null,"meeting_type":"hop_dot_xuat","meeting_type_label":"H\u1ecdp \u0111\u1ed9t xu\u1ea5t","nature":"mat","nature_label":"M\u1eadt","created_by":"N\/A","updated_by":"N\/A","created_at":"07:38:34 26\/03\/2026","updated_at":"07:38:34 26\/03\/2026"}],"links":{"first":"\/?page=1","last":"\/?page=1","prev":null,"next":null},"meta":{"current_page":1,"from":1,"last_page":1,"links":[{"url":null,"label":"&laquo; Previous","page":null,"active":false},{"url":"\/?page=1","label":"1","page":1,"active":true},{"url":null,"label":"Next &raquo;","page":null,"active":false}],"path":"\/","per_page":20,"to":2,"total":2},"success":"true"}'
+        content: '{"success": true, "data": {"total": 10, "active": 5, "inactive": 5}}'
+        headers: []
+        description: ''
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - GET
+    uri: api/users
+    metadata:
+      custom: []
+      groupName: 'Core - User'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Danh sách người dùng'
+      description: 'Lấy danh sách có phân trang, lọc và sắp xếp.'
+      authenticated: true
+      deprecated: false
+    headers:
+      Authorization: 'Bearer Bearer {YOUR_ACCESS_TOKEN}'
+      X-Department-Id: 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters:
+      search:
+        custom: []
+        name: search
+        description: 'Từ khóa tìm kiếm (name, email, user_name).'
+        required: false
+        example: john
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        deprecated: false
+      status:
+        custom: []
+        name: status
+        description: 'Lọc theo trạng thái: active, inactive, banned.'
+        required: false
+        example: architecto
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      from_date:
+        custom: []
+        name: from_date
+        description: 'Lọc từ ngày tạo (Y-m-d). Must be a valid date.'
+        required: false
+        example: '2026-01-01'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      to_date:
+        custom: []
+        name: to_date
+        description: 'Lọc đến ngày tạo (Y-m-d). Must be a valid date. Must be a date after or equal to <code>from_date</code>.'
+        required: false
+        example: '2026-12-31'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      sort_by:
+        custom: []
+        name: sort_by
+        description: 'Sắp xếp theo: id, name, email, user_name, created_at.'
+        required: false
+        example: created_at
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        deprecated: false
+      sort_order:
+        custom: []
+        name: sort_order
+        description: 'Thứ tự: asc, desc.'
+        required: false
+        example: desc
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        deprecated: false
+      limit:
+        custom: []
+        name: limit
+        description: 'Số bản ghi mỗi trang (1-100).'
+        required: false
+        example: 10
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        deprecated: false
+    cleanQueryParameters:
+      search: john
+      status: architecto
+      from_date: '2026-01-01'
+      to_date: '2026-12-31'
+      sort_by: created_at
+      sort_order: desc
+      limit: 10
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        custom: []
+        status: 200
+        content: '{"data":[{"id":15,"name":"Ms. Elisabeth Okuneva","email":"gulgowski.asia@example.com","user_name":"idickens","position":null,"phone":null,"zalo_id":null,"role":null,"status":"inactive","created_by":"N\/A","updated_by":"N\/A","created_at":"08:49:08 26\/03\/2026","updated_at":"08:49:08 26\/03\/2026"},{"id":16,"name":"Mya DuBuque","email":"breitenberg.gilbert@example.com","user_name":"price.amber","position":null,"phone":null,"zalo_id":null,"role":null,"status":"inactive","created_by":"N\/A","updated_by":"N\/A","created_at":"08:49:08 26\/03\/2026","updated_at":"08:49:08 26\/03\/2026"}],"links":{"first":"\/?page=1","last":"\/?page=1","prev":null,"next":null},"meta":{"current_page":1,"from":1,"last_page":1,"links":[{"url":null,"label":"&laquo; Previous","page":null,"active":false},{"url":"\/?page=1","label":"1","page":1,"active":true},{"url":null,"label":"Next &raquo;","page":null,"active":false}],"path":"\/","per_page":10,"to":2,"total":2},"success":"true"}'
         headers: []
         description: ''
     responseFields: []
@@ -1016,59 +572,114 @@ endpoints:
     custom: []
     httpMethods:
       - POST
-    uri: api/schedules
+    uri: api/users
     metadata:
       custom: []
-      groupName: 'Schedule - Lịch công tác'
+      groupName: 'Core - User'
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
-      title: 'Tạo lịch công tác'
+      title: 'Tạo người dùng mới'
       description: ''
       authenticated: true
       deprecated: false
     headers:
       Authorization: 'Bearer Bearer {YOUR_ACCESS_TOKEN}'
       X-Department-Id: 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
-      Content-Type: multipart/form-data
+      Content-Type: application/json
       Accept: application/json
     urlParameters: []
     cleanUrlParameters: []
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
-      content:
+      name:
         custom: []
-        name: content
-        description: 'Nội dung lịch.'
+        name: name
+        description: 'Tên người dùng.'
         required: true
-        example: 'Họp Ban Thường vụ'
+        example: 'Nguyễn Văn A'
         type: string
         enumValues: []
         exampleWasSpecified: true
         nullable: false
         deprecated: false
-      event_date:
+      email:
         custom: []
-        name: event_date
-        description: 'Ngày diễn ra (Y-m-d).'
+        name: email
+        description: 'Email (duy nhất).'
         required: true
-        example: '2026-04-01'
-        type: date
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        deprecated: false
-      session:
-        custom: []
-        name: session
-        description: 'Buổi: sang, chieu, toi.'
-        required: true
-        example: sang
+        example: user@example.com
         type: string
         enumValues: []
         exampleWasSpecified: true
         nullable: false
+        deprecated: false
+      user_name:
+        custom: []
+        name: user_name
+        description: Nickname.
+        required: false
+        example: nguyenvana
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        deprecated: false
+      password:
+        custom: []
+        name: password
+        description: 'Mật khẩu (tối thiểu 6 ký tự).'
+        required: true
+        example: password123
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+      status:
+        custom: []
+        name: status
+        description: 'Trạng thái: active, inactive, banned.'
+        required: false
+        example: active
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        deprecated: false
+      position:
+        custom: []
+        name: position
+        description: 'Chức vụ.'
+        required: false
+        example: 'Chuyên viên'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        deprecated: false
+      phone:
+        custom: []
+        name: phone
+        description: 'Số điện thoại.'
+        required: false
+        example: '0901234567'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        deprecated: false
+      zalo_id:
+        custom: []
+        name: zalo_id
+        description: 'Zalo ID.'
+        required: false
+        example: '0901234567'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
         deprecated: false
       department_id:
         custom: []
@@ -1081,286 +692,46 @@ endpoints:
         exampleWasSpecified: true
         nullable: false
         deprecated: false
-      start_time:
+      role_id:
         custom: []
-        name: start_time
-        description: 'Giờ bắt đầu (HH:mm).'
-        required: false
-        example: '08:00'
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: true
-        deprecated: false
-      chairperson_id:
-        custom: []
-        name: chairperson_id
-        description: 'ID người chủ trì.'
-        required: false
+        name: role_id
+        description: 'ID vai trò.'
+        required: true
         example: 1
         type: integer
         enumValues: []
         exampleWasSpecified: true
-        nullable: true
-        deprecated: false
-      location:
-        custom: []
-        name: location
-        description: 'Địa điểm.'
-        required: false
-        example: 'Phòng họp A'
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: true
-        deprecated: false
-      prep_unit:
-        custom: []
-        name: prep_unit
-        description: 'Đơn vị chuẩn bị.'
-        required: false
-        example: 'Văn phòng'
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: true
-        deprecated: false
-      driver_info:
-        custom: []
-        name: driver_info
-        description: 'Thông tin lái xe.'
-        required: false
-        example: 'Nguyễn Văn A'
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: true
-        deprecated: false
-      meeting_type:
-        custom: []
-        name: meeting_type
-        description: 'Loại cuộc họp: hop_thuong_ky, hop_dot_xuat, hop_chuyen_de, hoi_nghi, tiep_khach, di_cong_tac, khac.'
-        required: false
-        example: hop_thuong_ky
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: true
-        deprecated: false
-      nature:
-        custom: []
-        name: nature
-        description: 'Tính chất: thuong, quan_trong, mat.'
-        required: false
-        example: thuong
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: true
-        deprecated: false
-      color_code:
-        custom: []
-        name: color_code
-        description: 'Mã màu.'
-        required: false
-        example: '#FF5733'
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: true
-        deprecated: false
-      status:
-        custom: []
-        name: status
-        description: ''
-        required: false
-        example: inactive
-        type: string
-        enumValues:
-          - active
-          - inactive
-        exampleWasSpecified: false
-        nullable: true
-        deprecated: false
-      participants:
-        custom: []
-        name: participants
-        description: 'Danh sách thành phần tham dự.'
-        required: false
-        example:
-          - architecto
-        type: 'string[]'
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: true
-        deprecated: false
-      notification:
-        custom: []
-        name: notification
-        description: ''
-        required: false
-        example: null
-        type: object
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: true
-        deprecated: false
-      notification.channel:
-        custom: []
-        name: notification.channel
-        description: 'This field is required when <code>notification</code> is present.'
-        required: false
-        example: zalo
-        type: string
-        enumValues:
-          - sms
-          - zalo
-          - website
-          - app
-        exampleWasSpecified: false
         nullable: false
         deprecated: false
-      notification.remind_at:
+      password_confirmation:
         custom: []
-        name: notification.remind_at
-        description: 'This field is required when <code>notification</code> is present. Must be a valid date.'
-        required: false
-        example: '2026-03-26T07:38:34'
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        deprecated: false
-      attachments:
-        custom: []
-        name: attachments
-        description: 'Tập tin đính kèm (tối đa 20 file, mỗi file tối đa 10MB).'
-        required: false
-        example:
-          - null
-        type: 'file[]'
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        deprecated: false
-      'participants[].user_id':
-        custom: []
-        name: 'participants[].user_id'
-        description: 'The <code>id</code> of an existing record in the users table.'
-        required: false
-        example: 16
-        type: integer
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: true
-        deprecated: false
-      'participants[].external_name':
-        custom: []
-        name: 'participants[].external_name'
-        description: 'Must not be greater than 255 characters.'
-        required: false
-        example: 'n'
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: true
-        deprecated: false
-      'participants.*.user_id':
-        custom: []
-        name: 'participants.*.user_id'
-        description: 'ID user tham dự.'
-        required: false
-        example: 16
-        type: integer
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        deprecated: false
-      'participants.*.external_name':
-        custom: []
-        name: 'participants.*.external_name'
-        description: 'Tên thành phần bên ngoài.'
-        required: false
-        example: architecto
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        deprecated: false
-      notifications:
-        custom: []
-        name: notifications
-        description: 'Danh sách thông báo nhắc lịch.'
-        required: false
-        example:
-          - architecto
-        type: 'string[]'
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        deprecated: false
-      'notifications.*.user_id':
-        custom: []
-        name: 'notifications.*.user_id'
-        description: 'ID người nhận.'
+        name: password_confirmation
+        description: 'Xác nhận mật khẩu.'
         required: true
-        example: 16
-        type: integer
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        deprecated: false
-      'notifications.*.channel':
-        custom: []
-        name: 'notifications.*.channel'
-        description: 'Kênh: sms, zalo, website, app.'
-        required: true
-        example: architecto
+        example: password123
         type: string
         enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        deprecated: false
-      'notifications.*.remind_at':
-        custom: []
-        name: 'notifications.*.remind_at'
-        description: 'Thời gian nhắc.'
-        required: true
-        example: architecto
-        type: datetime
-        enumValues: []
-        exampleWasSpecified: false
+        exampleWasSpecified: true
         nullable: false
         deprecated: false
     cleanBodyParameters:
-      content: 'Họp Ban Thường vụ'
-      event_date: '2026-04-01'
-      session: sang
+      name: 'Nguyễn Văn A'
+      email: user@example.com
+      user_name: nguyenvana
+      password: password123
+      status: active
+      position: 'Chuyên viên'
+      phone: '0901234567'
+      zalo_id: '0901234567'
       department_id: 1
-      start_time: '08:00'
-      chairperson_id: 1
-      location: 'Phòng họp A'
-      prep_unit: 'Văn phòng'
-      driver_info: 'Nguyễn Văn A'
-      meeting_type: hop_thuong_ky
-      nature: thuong
-      color_code: '#FF5733'
-      status: inactive
-      participants:
-        - architecto
-      notification:
-        channel: zalo
-        remind_at: '2026-03-26T07:38:34'
-      notifications:
-        - architecto
-    fileParameters:
-      attachments:
-        - null
+      role_id: 1
+      password_confirmation: password123
+    fileParameters: []
     responses:
       -
         custom: []
         status: 201
-        content: '{"data":{"id":52,"event_date":"05\/04\/2026","session":"sang","start_time":"21:01:00","content":"Quos velit et fugiat sunt nihil accusantium harum.","location":null,"prep_unit":null,"driver_info":null,"color_code":"#3d1ffb","sort_order":88,"department_id":null,"status":"active","chairperson_id":null,"meeting_type":"hoi_nghi","meeting_type_label":"H\u1ed9i ngh\u1ecb","nature":"thuong","nature_label":"Th\u01b0\u1eddng","created_by":"N\/A","updated_by":"N\/A","created_at":"07:38:34 26\/03\/2026","updated_at":"07:38:34 26\/03\/2026"},"success":"true","message":"T\u1ea1o l\u1ecbch c\u00f4ng t\u00e1c th\u00e0nh c\u00f4ng!"}'
+        content: '{"data":{"id":17,"name":"Ms. Audra Crooks II","email":"idickens@example.org","user_name":"aschuster","position":null,"phone":null,"zalo_id":null,"role":null,"status":"active","created_by":"N\/A","updated_by":"N\/A","created_at":"08:49:08 26\/03\/2026","updated_at":"08:49:08 26\/03\/2026"},"success":"true","message":"T\u00e0i kho\u1ea3n \u0111\u00e3 \u0111\u01b0\u1ee3c t\u1ea1o th\u00e0nh c\u00f4ng!"}'
         headers: []
         description: ''
     responseFields: []
@@ -1375,134 +746,14 @@ endpoints:
     custom: []
     httpMethods:
       - PATCH
-    uri: 'api/schedules/{schedule_id}/move-up'
+    uri: 'api/users/{user_id}/status'
     metadata:
       custom: []
-      groupName: 'Schedule - Lịch công tác'
+      groupName: 'Core - User'
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
-      title: 'Di chuyển lịch lên trên'
-      description: 'Swap vị trí với lịch liền trước cùng ngày và khối.'
-      authenticated: true
-      deprecated: false
-    headers:
-      Authorization: 'Bearer Bearer {YOUR_ACCESS_TOKEN}'
-      X-Department-Id: 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters:
-      schedule_id:
-        custom: []
-        name: schedule_id
-        description: 'The ID of the schedule.'
-        required: true
-        example: 1
-        type: integer
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        deprecated: false
-      schedule:
-        custom: []
-        name: schedule
-        description: 'ID lịch.'
-        required: true
-        example: 1
-        type: integer
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        deprecated: false
-    cleanUrlParameters:
-      schedule_id: 1
-      schedule: 1
-    queryParameters: []
-    cleanQueryParameters: []
-    bodyParameters: []
-    cleanBodyParameters: []
-    fileParameters: []
-    responses: []
-    responseFields: []
-    auth:
-      - headers
-      - Authorization
-      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
-    controller: null
-    method: null
-    route: null
-  -
-    custom: []
-    httpMethods:
-      - PATCH
-    uri: 'api/schedules/{schedule_id}/move-down'
-    metadata:
-      custom: []
-      groupName: 'Schedule - Lịch công tác'
-      groupDescription: ''
-      subgroup: ''
-      subgroupDescription: ''
-      title: 'Di chuyển lịch xuống dưới'
-      description: 'Swap vị trí với lịch liền sau cùng ngày và khối.'
-      authenticated: true
-      deprecated: false
-    headers:
-      Authorization: 'Bearer Bearer {YOUR_ACCESS_TOKEN}'
-      X-Department-Id: 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters:
-      schedule_id:
-        custom: []
-        name: schedule_id
-        description: 'The ID of the schedule.'
-        required: true
-        example: 1
-        type: integer
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        deprecated: false
-      schedule:
-        custom: []
-        name: schedule
-        description: 'ID lịch.'
-        required: true
-        example: 1
-        type: integer
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        deprecated: false
-    cleanUrlParameters:
-      schedule_id: 1
-      schedule: 1
-    queryParameters: []
-    cleanQueryParameters: []
-    bodyParameters: []
-    cleanBodyParameters: []
-    fileParameters: []
-    responses: []
-    responseFields: []
-    auth:
-      - headers
-      - Authorization
-      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
-    controller: null
-    method: null
-    route: null
-  -
-    custom: []
-    httpMethods:
-      - PATCH
-    uri: 'api/schedules/{schedule_id}/insert-above'
-    metadata:
-      custom: []
-      groupName: 'Schedule - Lịch công tác'
-      groupDescription: ''
-      subgroup: ''
-      subgroupDescription: ''
-      title: 'Chèn lịch phía trên bản ghi đích'
+      title: 'Thay đổi trạng thái người dùng'
       description: ''
       authenticated: true
       deprecated: false
@@ -1512,10 +763,10 @@ endpoints:
       Content-Type: application/json
       Accept: application/json
     urlParameters:
-      schedule_id:
+      user_id:
         custom: []
-        name: schedule_id
-        description: 'The ID of the schedule.'
+        name: user_id
+        description: 'The ID of the user.'
         required: true
         example: 1
         type: integer
@@ -1523,10 +774,10 @@ endpoints:
         exampleWasSpecified: false
         nullable: false
         deprecated: false
-      schedule:
+      user:
         custom: []
-        name: schedule
-        description: 'ID lịch cần di chuyển.'
+        name: user
+        description: 'ID người dùng.'
         required: true
         example: 1
         type: integer
@@ -1535,159 +786,15 @@ endpoints:
         nullable: false
         deprecated: false
     cleanUrlParameters:
-      schedule_id: 1
-      schedule: 1
-    queryParameters: []
-    cleanQueryParameters: []
-    bodyParameters:
-      target_id:
-        custom: []
-        name: target_id
-        description: 'ID lịch đích.'
-        required: true
-        example: 5
-        type: integer
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        deprecated: false
-    cleanBodyParameters:
-      target_id: 5
-    fileParameters: []
-    responses: []
-    responseFields: []
-    auth:
-      - headers
-      - Authorization
-      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
-    controller: null
-    method: null
-    route: null
-  -
-    custom: []
-    httpMethods:
-      - PATCH
-    uri: 'api/schedules/{schedule_id}/insert-below'
-    metadata:
-      custom: []
-      groupName: 'Schedule - Lịch công tác'
-      groupDescription: ''
-      subgroup: ''
-      subgroupDescription: ''
-      title: 'Chèn lịch phía dưới bản ghi đích'
-      description: ''
-      authenticated: true
-      deprecated: false
-    headers:
-      Authorization: 'Bearer Bearer {YOUR_ACCESS_TOKEN}'
-      X-Department-Id: 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters:
-      schedule_id:
-        custom: []
-        name: schedule_id
-        description: 'The ID of the schedule.'
-        required: true
-        example: 1
-        type: integer
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        deprecated: false
-      schedule:
-        custom: []
-        name: schedule
-        description: 'ID lịch cần di chuyển.'
-        required: true
-        example: 1
-        type: integer
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        deprecated: false
-    cleanUrlParameters:
-      schedule_id: 1
-      schedule: 1
-    queryParameters: []
-    cleanQueryParameters: []
-    bodyParameters:
-      target_id:
-        custom: []
-        name: target_id
-        description: 'ID lịch đích.'
-        required: true
-        example: 5
-        type: integer
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        deprecated: false
-    cleanBodyParameters:
-      target_id: 5
-    fileParameters: []
-    responses: []
-    responseFields: []
-    auth:
-      - headers
-      - Authorization
-      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
-    controller: null
-    method: null
-    route: null
-  -
-    custom: []
-    httpMethods:
-      - PATCH
-    uri: 'api/schedules/{schedule_id}/status'
-    metadata:
-      custom: []
-      groupName: 'Schedule - Lịch công tác'
-      groupDescription: ''
-      subgroup: ''
-      subgroupDescription: ''
-      title: 'Đổi trạng thái lịch công tác'
-      description: ''
-      authenticated: true
-      deprecated: false
-    headers:
-      Authorization: 'Bearer Bearer {YOUR_ACCESS_TOKEN}'
-      X-Department-Id: 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters:
-      schedule_id:
-        custom: []
-        name: schedule_id
-        description: 'The ID of the schedule.'
-        required: true
-        example: 1
-        type: integer
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        deprecated: false
-      schedule:
-        custom: []
-        name: schedule
-        description: 'ID lịch.'
-        required: true
-        example: 1
-        type: integer
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        deprecated: false
-    cleanUrlParameters:
-      schedule_id: 1
-      schedule: 1
+      user_id: 1
+      user: 1
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
       status:
         custom: []
         name: status
-        description: 'Trạng thái mới: active, inactive.'
+        description: 'Trạng thái mới: active, inactive, banned.'
         required: true
         example: active
         type: string
@@ -1698,7 +805,13 @@ endpoints:
     cleanBodyParameters:
       status: active
     fileParameters: []
-    responses: []
+    responses:
+      -
+        custom: []
+        status: 200
+        content: '{"data":{"id":18,"name":"Morgan Hirthe","email":"dare.emelie@example.com","user_name":"imclaughlin","position":null,"phone":null,"zalo_id":null,"role":null,"status":"inactive","created_by":"N\/A","updated_by":"N\/A","created_at":"08:49:08 26\/03\/2026","updated_at":"08:49:08 26\/03\/2026"},"success":"true","message":"C\u1eadp nh\u1eadt tr\u1ea1ng th\u00e1i th\u00e0nh c\u00f4ng!"}'
+        headers: []
+        description: ''
     responseFields: []
     auth:
       - headers
@@ -1711,14 +824,14 @@ endpoints:
     custom: []
     httpMethods:
       - GET
-    uri: 'api/schedules/{schedule_id}'
+    uri: 'api/users/{user_id}'
     metadata:
       custom: []
-      groupName: 'Schedule - Lịch công tác'
+      groupName: 'Core - User'
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
-      title: 'Chi tiết lịch công tác'
+      title: 'Chi tiết người dùng'
       description: ''
       authenticated: true
       deprecated: false
@@ -1728,10 +841,10 @@ endpoints:
       Content-Type: application/json
       Accept: application/json
     urlParameters:
-      schedule_id:
+      user_id:
         custom: []
-        name: schedule_id
-        description: 'The ID of the schedule.'
+        name: user_id
+        description: 'The ID of the user.'
         required: true
         example: 1
         type: integer
@@ -1739,10 +852,10 @@ endpoints:
         exampleWasSpecified: false
         nullable: false
         deprecated: false
-      schedule:
+      user:
         custom: []
-        name: schedule
-        description: 'ID lịch.'
+        name: user
+        description: 'ID người dùng.'
         required: true
         example: 1
         type: integer
@@ -1751,8 +864,8 @@ endpoints:
         nullable: false
         deprecated: false
     cleanUrlParameters:
-      schedule_id: 1
-      schedule: 1
+      user_id: 1
+      user: 1
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -1762,7 +875,7 @@ endpoints:
       -
         custom: []
         status: 200
-        content: '{"data":{"id":53,"event_date":"30\/03\/2026","session":"sang","start_time":"19:23:00","content":"Qui commodi incidunt iure odit.","location":"77365 Christian Turnpike Suite 432\nNorth Roderick, SD 69128-2316","prep_unit":"Haag and Sons","driver_info":null,"color_code":null,"sort_order":57,"department_id":null,"status":"active","chairperson_id":null,"meeting_type":"hop_dot_xuat","meeting_type_label":"H\u1ecdp \u0111\u1ed9t xu\u1ea5t","nature":"mat","nature_label":"M\u1eadt","created_by":"N\/A","updated_by":"N\/A","created_at":"07:38:34 26\/03\/2026","updated_at":"07:38:34 26\/03\/2026"},"success":"true"}'
+        content: '{"data":{"id":19,"name":"Morgan Hirthe","email":"imclaughlin@example.org","user_name":"okeefe.isidro","position":null,"phone":null,"zalo_id":null,"role":null,"status":"inactive","created_by":"N\/A","updated_by":"N\/A","created_at":"08:49:08 26\/03\/2026","updated_at":"08:49:08 26\/03\/2026"},"success":"true"}'
         headers: []
         description: ''
     responseFields: []
@@ -1777,27 +890,27 @@ endpoints:
     custom: []
     httpMethods:
       - PUT
-    uri: 'api/schedules/{schedule_id}'
+    uri: 'api/users/{user_id}'
     metadata:
       custom: []
-      groupName: 'Schedule - Lịch công tác'
+      groupName: 'Core - User'
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
-      title: 'Cập nhật lịch công tác'
+      title: 'Cập nhật người dùng'
       description: ''
       authenticated: true
       deprecated: false
     headers:
       Authorization: 'Bearer Bearer {YOUR_ACCESS_TOKEN}'
       X-Department-Id: 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
-      Content-Type: multipart/form-data
+      Content-Type: application/json
       Accept: application/json
     urlParameters:
-      schedule_id:
+      user_id:
         custom: []
-        name: schedule_id
-        description: 'The ID of the schedule.'
+        name: user_id
+        description: 'The ID of the user.'
         required: true
         example: 1
         type: integer
@@ -1805,10 +918,10 @@ endpoints:
         exampleWasSpecified: false
         nullable: false
         deprecated: false
-      schedule:
+      user:
         custom: []
-        name: schedule
-        description: 'ID lịch.'
+        name: user
+        description: 'ID người dùng.'
         required: true
         example: 1
         type: integer
@@ -1817,294 +930,150 @@ endpoints:
         nullable: false
         deprecated: false
     cleanUrlParameters:
-      schedule_id: 1
-      schedule: 1
+      user_id: 1
+      user: 1
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
-      content:
+      name:
         custom: []
-        name: content
-        description: 'Nội dung lịch.'
+        name: name
+        description: 'Tên người dùng.'
         required: false
-        example: architecto
+        example: 'Nguyễn Văn B'
         type: string
         enumValues: []
-        exampleWasSpecified: false
+        exampleWasSpecified: true
         nullable: false
         deprecated: false
-      event_date:
+      email:
         custom: []
-        name: event_date
-        description: 'Ngày diễn ra (Y-m-d).'
+        name: email
+        description: 'Email (duy nhất).'
         required: false
-        example: architecto
-        type: date
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        deprecated: false
-      session:
-        custom: []
-        name: session
-        description: 'Buổi: sang, chieu, toi.'
-        required: false
-        example: architecto
+        example: user@example.com
         type: string
         enumValues: []
-        exampleWasSpecified: false
+        exampleWasSpecified: true
         nullable: false
+        deprecated: false
+      user_name:
+        custom: []
+        name: user_name
+        description: Nickname.
+        required: false
+        example: nguyenvanb
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        deprecated: false
+      password:
+        custom: []
+        name: password
+        description: 'Mật khẩu mới.'
+        required: false
+        example: newpassword123
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+      status:
+        custom: []
+        name: status
+        description: 'Trạng thái: active, inactive, banned.'
+        required: false
+        example: active
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+      position:
+        custom: []
+        name: position
+        description: 'Chức vụ.'
+        required: false
+        example: 'Chuyên viên'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        deprecated: false
+      phone:
+        custom: []
+        name: phone
+        description: 'Số điện thoại.'
+        required: false
+        example: '0901234567'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        deprecated: false
+      zalo_id:
+        custom: []
+        name: zalo_id
+        description: 'Zalo ID.'
+        required: false
+        example: '0901234567'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
         deprecated: false
       department_id:
         custom: []
         name: department_id
         description: 'ID đơn vị.'
         required: false
-        example: 16
+        example: 1
         type: integer
         enumValues: []
-        exampleWasSpecified: false
+        exampleWasSpecified: true
         nullable: false
         deprecated: false
-      start_time:
+      role_id:
         custom: []
-        name: start_time
-        description: 'Giờ bắt đầu (HH:mm).'
+        name: role_id
+        description: 'ID vai trò.'
         required: false
-        example: architecto
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: true
-        deprecated: false
-      chairperson_id:
-        custom: []
-        name: chairperson_id
-        description: 'ID người chủ trì.'
-        required: false
-        example: 16
+        example: 1
         type: integer
         enumValues: []
-        exampleWasSpecified: false
-        nullable: true
-        deprecated: false
-      location:
-        custom: []
-        name: location
-        description: 'Địa điểm.'
-        required: false
-        example: architecto
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: true
-        deprecated: false
-      prep_unit:
-        custom: []
-        name: prep_unit
-        description: 'Đơn vị chuẩn bị.'
-        required: false
-        example: architecto
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: true
-        deprecated: false
-      driver_info:
-        custom: []
-        name: driver_info
-        description: 'Thông tin lái xe.'
-        required: false
-        example: architecto
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: true
-        deprecated: false
-      meeting_type:
-        custom: []
-        name: meeting_type
-        description: 'Loại cuộc họp: hop_thuong_ky, hop_dot_xuat, hop_chuyen_de, hoi_nghi, tiep_khach, di_cong_tac, khac.'
-        required: false
-        example: architecto
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: true
-        deprecated: false
-      nature:
-        custom: []
-        name: nature
-        description: 'Tính chất: thuong, quan_trong, mat.'
-        required: false
-        example: architecto
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: true
-        deprecated: false
-      color_code:
-        custom: []
-        name: color_code
-        description: 'Mã màu.'
-        required: false
-        example: architecto
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: true
-        deprecated: false
-      status:
-        custom: []
-        name: status
-        description: ''
-        required: false
-        example: inactive
-        type: string
-        enumValues:
-          - active
-          - inactive
-        exampleWasSpecified: false
+        exampleWasSpecified: true
         nullable: false
         deprecated: false
-      participants:
+      password_confirmation:
         custom: []
-        name: participants
-        description: 'Danh sách thành phần tham dự (ghi đè toàn bộ).'
+        name: password_confirmation
+        description: 'Xác nhận mật khẩu.'
         required: false
-        example:
-          - architecto
-        type: 'string[]'
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: true
-        deprecated: false
-      notification:
-        custom: []
-        name: notification
-        description: ''
-        required: false
-        example: null
-        type: object
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: true
-        deprecated: false
-      notification.channel:
-        custom: []
-        name: notification.channel
-        description: 'This field is required when <code>notification</code> is present.'
-        required: false
-        example: sms
-        type: string
-        enumValues:
-          - sms
-          - zalo
-          - website
-          - app
-        exampleWasSpecified: false
-        nullable: false
-        deprecated: false
-      notification.remind_at:
-        custom: []
-        name: notification.remind_at
-        description: 'This field is required when <code>notification</code> is present. Must be a valid date.'
-        required: false
-        example: '2026-03-26T07:38:34'
+        example: newpassword123
         type: string
         enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        deprecated: false
-      remove_attachment_ids:
-        custom: []
-        name: remove_attachment_ids
-        description: 'Danh sách ID file cần xóa.'
-        required: false
-        example:
-          - architecto
-        type: 'string[]'
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        deprecated: false
-      attachments:
-        custom: []
-        name: attachments
-        description: 'Tập tin đính kèm mới.'
-        required: false
-        example:
-          - null
-        type: 'file[]'
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        deprecated: false
-      'participants[].user_id':
-        custom: []
-        name: 'participants[].user_id'
-        description: 'The <code>id</code> of an existing record in the users table.'
-        required: false
-        example: 16
-        type: integer
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: true
-        deprecated: false
-      'participants[].external_name':
-        custom: []
-        name: 'participants[].external_name'
-        description: 'Must not be greater than 255 characters.'
-        required: false
-        example: 'n'
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: true
-        deprecated: false
-      notifications:
-        custom: []
-        name: notifications
-        description: 'Danh sách thông báo (ghi đè toàn bộ).'
-        required: false
-        example:
-          - architecto
-        type: 'string[]'
-        enumValues: []
-        exampleWasSpecified: false
+        exampleWasSpecified: true
         nullable: false
         deprecated: false
     cleanBodyParameters:
-      content: architecto
-      event_date: architecto
-      session: architecto
-      department_id: 16
-      start_time: architecto
-      chairperson_id: 16
-      location: architecto
-      prep_unit: architecto
-      driver_info: architecto
-      meeting_type: architecto
-      nature: architecto
-      color_code: architecto
-      status: inactive
-      participants:
-        - architecto
-      notification:
-        channel: sms
-        remind_at: '2026-03-26T07:38:34'
-      remove_attachment_ids:
-        - architecto
-      notifications:
-        - architecto
-    fileParameters:
-      attachments:
-        - null
+      name: 'Nguyễn Văn B'
+      email: user@example.com
+      user_name: nguyenvanb
+      password: newpassword123
+      status: active
+      position: 'Chuyên viên'
+      phone: '0901234567'
+      zalo_id: '0901234567'
+      department_id: 1
+      role_id: 1
+      password_confirmation: newpassword123
+    fileParameters: []
     responses:
       -
         custom: []
         status: 200
-        content: '{"data":{"id":54,"event_date":"05\/04\/2026","session":"sang","start_time":"21:01:00","content":"Quos velit et fugiat sunt nihil accusantium harum.","location":null,"prep_unit":null,"driver_info":null,"color_code":"#3d1ffb","sort_order":88,"department_id":null,"status":"active","chairperson_id":null,"meeting_type":"hoi_nghi","meeting_type_label":"H\u1ed9i ngh\u1ecb","nature":"thuong","nature_label":"Th\u01b0\u1eddng","created_by":"N\/A","updated_by":"N\/A","created_at":"07:38:34 26\/03\/2026","updated_at":"07:38:34 26\/03\/2026"},"success":"true","message":"C\u1eadp nh\u1eadt l\u1ecbch c\u00f4ng t\u00e1c th\u00e0nh c\u00f4ng!"}'
+        content: '{"data":{"id":20,"name":"Ms. Audra Crooks II","email":"aschuster@example.com","user_name":"gilbert32","position":null,"phone":null,"zalo_id":null,"role":null,"status":"active","created_by":"N\/A","updated_by":"N\/A","created_at":"08:49:08 26\/03\/2026","updated_at":"08:49:08 26\/03\/2026"},"success":"true","message":"T\u00e0i kho\u1ea3n \u0111\u00e3 \u0111\u01b0\u1ee3c c\u1eadp nh\u1eadt!"}'
         headers: []
         description: ''
     responseFields: []
@@ -2119,27 +1088,27 @@ endpoints:
     custom: []
     httpMethods:
       - PATCH
-    uri: 'api/schedules/{schedule_id}'
+    uri: 'api/users/{user_id}'
     metadata:
       custom: []
-      groupName: 'Schedule - Lịch công tác'
+      groupName: 'Core - User'
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
-      title: 'Cập nhật lịch công tác'
+      title: 'Cập nhật người dùng'
       description: ''
       authenticated: true
       deprecated: false
     headers:
       Authorization: 'Bearer Bearer {YOUR_ACCESS_TOKEN}'
       X-Department-Id: 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
-      Content-Type: multipart/form-data
+      Content-Type: application/json
       Accept: application/json
     urlParameters:
-      schedule_id:
+      user_id:
         custom: []
-        name: schedule_id
-        description: 'The ID of the schedule.'
+        name: user_id
+        description: 'The ID of the user.'
         required: true
         example: 1
         type: integer
@@ -2147,10 +1116,10 @@ endpoints:
         exampleWasSpecified: false
         nullable: false
         deprecated: false
-      schedule:
+      user:
         custom: []
-        name: schedule
-        description: 'ID lịch.'
+        name: user
+        description: 'ID người dùng.'
         required: true
         example: 1
         type: integer
@@ -2159,294 +1128,150 @@ endpoints:
         nullable: false
         deprecated: false
     cleanUrlParameters:
-      schedule_id: 1
-      schedule: 1
+      user_id: 1
+      user: 1
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
-      content:
+      name:
         custom: []
-        name: content
-        description: 'Nội dung lịch.'
+        name: name
+        description: 'Tên người dùng.'
         required: false
-        example: architecto
+        example: 'Nguyễn Văn B'
         type: string
         enumValues: []
-        exampleWasSpecified: false
+        exampleWasSpecified: true
         nullable: false
         deprecated: false
-      event_date:
+      email:
         custom: []
-        name: event_date
-        description: 'Ngày diễn ra (Y-m-d).'
+        name: email
+        description: 'Email (duy nhất).'
         required: false
-        example: architecto
-        type: date
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        deprecated: false
-      session:
-        custom: []
-        name: session
-        description: 'Buổi: sang, chieu, toi.'
-        required: false
-        example: architecto
+        example: user@example.com
         type: string
         enumValues: []
-        exampleWasSpecified: false
+        exampleWasSpecified: true
         nullable: false
+        deprecated: false
+      user_name:
+        custom: []
+        name: user_name
+        description: Nickname.
+        required: false
+        example: nguyenvanb
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        deprecated: false
+      password:
+        custom: []
+        name: password
+        description: 'Mật khẩu mới.'
+        required: false
+        example: newpassword123
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+      status:
+        custom: []
+        name: status
+        description: 'Trạng thái: active, inactive, banned.'
+        required: false
+        example: active
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+      position:
+        custom: []
+        name: position
+        description: 'Chức vụ.'
+        required: false
+        example: 'Chuyên viên'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        deprecated: false
+      phone:
+        custom: []
+        name: phone
+        description: 'Số điện thoại.'
+        required: false
+        example: '0901234567'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        deprecated: false
+      zalo_id:
+        custom: []
+        name: zalo_id
+        description: 'Zalo ID.'
+        required: false
+        example: '0901234567'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
         deprecated: false
       department_id:
         custom: []
         name: department_id
         description: 'ID đơn vị.'
         required: false
-        example: 16
+        example: 1
         type: integer
         enumValues: []
-        exampleWasSpecified: false
+        exampleWasSpecified: true
         nullable: false
         deprecated: false
-      start_time:
+      role_id:
         custom: []
-        name: start_time
-        description: 'Giờ bắt đầu (HH:mm).'
+        name: role_id
+        description: 'ID vai trò.'
         required: false
-        example: architecto
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: true
-        deprecated: false
-      chairperson_id:
-        custom: []
-        name: chairperson_id
-        description: 'ID người chủ trì.'
-        required: false
-        example: 16
+        example: 1
         type: integer
         enumValues: []
-        exampleWasSpecified: false
-        nullable: true
-        deprecated: false
-      location:
-        custom: []
-        name: location
-        description: 'Địa điểm.'
-        required: false
-        example: architecto
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: true
-        deprecated: false
-      prep_unit:
-        custom: []
-        name: prep_unit
-        description: 'Đơn vị chuẩn bị.'
-        required: false
-        example: architecto
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: true
-        deprecated: false
-      driver_info:
-        custom: []
-        name: driver_info
-        description: 'Thông tin lái xe.'
-        required: false
-        example: architecto
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: true
-        deprecated: false
-      meeting_type:
-        custom: []
-        name: meeting_type
-        description: 'Loại cuộc họp: hop_thuong_ky, hop_dot_xuat, hop_chuyen_de, hoi_nghi, tiep_khach, di_cong_tac, khac.'
-        required: false
-        example: architecto
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: true
-        deprecated: false
-      nature:
-        custom: []
-        name: nature
-        description: 'Tính chất: thuong, quan_trong, mat.'
-        required: false
-        example: architecto
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: true
-        deprecated: false
-      color_code:
-        custom: []
-        name: color_code
-        description: 'Mã màu.'
-        required: false
-        example: architecto
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: true
-        deprecated: false
-      status:
-        custom: []
-        name: status
-        description: ''
-        required: false
-        example: active
-        type: string
-        enumValues:
-          - active
-          - inactive
-        exampleWasSpecified: false
+        exampleWasSpecified: true
         nullable: false
         deprecated: false
-      participants:
+      password_confirmation:
         custom: []
-        name: participants
-        description: 'Danh sách thành phần tham dự (ghi đè toàn bộ).'
+        name: password_confirmation
+        description: 'Xác nhận mật khẩu.'
         required: false
-        example:
-          - architecto
-        type: 'string[]'
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: true
-        deprecated: false
-      notification:
-        custom: []
-        name: notification
-        description: ''
-        required: false
-        example: null
-        type: object
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: true
-        deprecated: false
-      notification.channel:
-        custom: []
-        name: notification.channel
-        description: 'This field is required when <code>notification</code> is present.'
-        required: false
-        example: zalo
-        type: string
-        enumValues:
-          - sms
-          - zalo
-          - website
-          - app
-        exampleWasSpecified: false
-        nullable: false
-        deprecated: false
-      notification.remind_at:
-        custom: []
-        name: notification.remind_at
-        description: 'This field is required when <code>notification</code> is present. Must be a valid date.'
-        required: false
-        example: '2026-03-26T07:38:34'
+        example: newpassword123
         type: string
         enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        deprecated: false
-      remove_attachment_ids:
-        custom: []
-        name: remove_attachment_ids
-        description: 'Danh sách ID file cần xóa.'
-        required: false
-        example:
-          - architecto
-        type: 'string[]'
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        deprecated: false
-      attachments:
-        custom: []
-        name: attachments
-        description: 'Tập tin đính kèm mới.'
-        required: false
-        example:
-          - null
-        type: 'file[]'
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        deprecated: false
-      'participants[].user_id':
-        custom: []
-        name: 'participants[].user_id'
-        description: 'The <code>id</code> of an existing record in the users table.'
-        required: false
-        example: 16
-        type: integer
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: true
-        deprecated: false
-      'participants[].external_name':
-        custom: []
-        name: 'participants[].external_name'
-        description: 'Must not be greater than 255 characters.'
-        required: false
-        example: 'n'
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: true
-        deprecated: false
-      notifications:
-        custom: []
-        name: notifications
-        description: 'Danh sách thông báo (ghi đè toàn bộ).'
-        required: false
-        example:
-          - architecto
-        type: 'string[]'
-        enumValues: []
-        exampleWasSpecified: false
+        exampleWasSpecified: true
         nullable: false
         deprecated: false
     cleanBodyParameters:
-      content: architecto
-      event_date: architecto
-      session: architecto
-      department_id: 16
-      start_time: architecto
-      chairperson_id: 16
-      location: architecto
-      prep_unit: architecto
-      driver_info: architecto
-      meeting_type: architecto
-      nature: architecto
-      color_code: architecto
+      name: 'Nguyễn Văn B'
+      email: user@example.com
+      user_name: nguyenvanb
+      password: newpassword123
       status: active
-      participants:
-        - architecto
-      notification:
-        channel: zalo
-        remind_at: '2026-03-26T07:38:34'
-      remove_attachment_ids:
-        - architecto
-      notifications:
-        - architecto
-    fileParameters:
-      attachments:
-        - null
+      position: 'Chuyên viên'
+      phone: '0901234567'
+      zalo_id: '0901234567'
+      department_id: 1
+      role_id: 1
+      password_confirmation: newpassword123
+    fileParameters: []
     responses:
       -
         custom: []
         status: 200
-        content: '{"data":{"id":55,"event_date":"05\/04\/2026","session":"sang","start_time":"21:01:00","content":"Quos velit et fugiat sunt nihil accusantium harum.","location":null,"prep_unit":null,"driver_info":null,"color_code":"#3d1ffb","sort_order":88,"department_id":null,"status":"active","chairperson_id":null,"meeting_type":"hoi_nghi","meeting_type_label":"H\u1ed9i ngh\u1ecb","nature":"thuong","nature_label":"Th\u01b0\u1eddng","created_by":"N\/A","updated_by":"N\/A","created_at":"07:38:34 26\/03\/2026","updated_at":"07:38:34 26\/03\/2026"},"success":"true","message":"C\u1eadp nh\u1eadt l\u1ecbch c\u00f4ng t\u00e1c th\u00e0nh c\u00f4ng!"}'
+        content: '{"data":{"id":21,"name":"Ms. Audra Crooks II","email":"gilbert32@example.com","user_name":"hirthe.theo","position":null,"phone":null,"zalo_id":null,"role":null,"status":"active","created_by":"N\/A","updated_by":"N\/A","created_at":"08:49:08 26\/03\/2026","updated_at":"08:49:08 26\/03\/2026"},"success":"true","message":"T\u00e0i kho\u1ea3n \u0111\u00e3 \u0111\u01b0\u1ee3c c\u1eadp nh\u1eadt!"}'
         headers: []
         description: ''
     responseFields: []
@@ -2461,14 +1286,14 @@ endpoints:
     custom: []
     httpMethods:
       - DELETE
-    uri: 'api/schedules/{schedule_id}'
+    uri: 'api/users/{user_id}'
     metadata:
       custom: []
-      groupName: 'Schedule - Lịch công tác'
+      groupName: 'Core - User'
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
-      title: 'Xóa lịch công tác'
+      title: 'Xóa người dùng'
       description: ''
       authenticated: true
       deprecated: false
@@ -2478,10 +1303,10 @@ endpoints:
       Content-Type: application/json
       Accept: application/json
     urlParameters:
-      schedule_id:
+      user_id:
         custom: []
-        name: schedule_id
-        description: 'The ID of the schedule.'
+        name: user_id
+        description: 'The ID of the user.'
         required: true
         example: 1
         type: integer
@@ -2489,10 +1314,10 @@ endpoints:
         exampleWasSpecified: false
         nullable: false
         deprecated: false
-      schedule:
+      user:
         custom: []
-        name: schedule
-        description: 'ID lịch.'
+        name: user
+        description: 'ID người dùng.'
         required: true
         example: 1
         type: integer
@@ -2501,8 +1326,8 @@ endpoints:
         nullable: false
         deprecated: false
     cleanUrlParameters:
-      schedule_id: 1
-      schedule: 1
+      user_id: 1
+      user: 1
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -2512,7 +1337,7 @@ endpoints:
       -
         custom: []
         status: 200
-        content: '{"success": true, "message": "Xóa lịch công tác thành công!"}'
+        content: '{"success": true, "message": "Tài khoản đã được xóa thành công!"}'
         headers: []
         description: ''
     responseFields: []

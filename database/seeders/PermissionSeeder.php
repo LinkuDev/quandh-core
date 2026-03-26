@@ -37,11 +37,6 @@ class PermissionSeeder extends Seeder
             'stats', 'index', 'show', 'store', 'update', 'destroy',
             'bulkDestroy', 'export', 'import',
         ],
-        // Core - Departments
-        'departments' => [
-            'stats', 'index', 'tree', 'show', 'store', 'update', 'destroy',
-            'bulkDestroy', 'bulkUpdateStatus', 'changeStatus', 'export', 'import',
-        ],
         // Core - Nhật ký truy cập
         'log-activities' => [
             'stats', 'index', 'show', 'export', 'destroy', 'bulkDestroy',
@@ -111,7 +106,6 @@ class PermissionSeeder extends Seeder
         'users' => 'Người dùng',
         'permissions' => 'Quyền',
         'roles' => 'Vai trò',
-        'departments' => 'Đơn vị',
         'log-activities' => 'Nhật ký truy cập',
         'settings' => 'Cấu hình hệ thống',
         'thuong-truc-schedules' => 'Thường trực - Lịch công tác',

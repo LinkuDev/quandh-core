@@ -93,58 +93,6 @@
                             </li>
                                                                         </ul>
                             </ul>
-                    <ul id="tocify-header-core-department" class="tocify-header">
-                <li class="tocify-item level-1" data-unique="core-department">
-                    <a href="#core-department">Core - Department</a>
-                </li>
-                                    <ul id="tocify-subheader-core-department" class="tocify-subheader">
-                                                    <li class="tocify-item level-2" data-unique="core-department-GETapi-departments-public">
-                                <a href="#core-department-GETapi-departments-public">Danh sách department công khai</a>
-                            </li>
-                                                                                <li class="tocify-item level-2" data-unique="core-department-GETapi-departments-public-options">
-                                <a href="#core-department-GETapi-departments-public-options">Danh sách department công khai cho dropdown</a>
-                            </li>
-                                                                                <li class="tocify-item level-2" data-unique="core-department-GETapi-departments-export">
-                                <a href="#core-department-GETapi-departments-export">Xuất danh sách department</a>
-                            </li>
-                                                                                <li class="tocify-item level-2" data-unique="core-department-POSTapi-departments-import">
-                                <a href="#core-department-POSTapi-departments-import">Nhập danh sách department</a>
-                            </li>
-                                                                                <li class="tocify-item level-2" data-unique="core-department-POSTapi-departments-bulk-delete">
-                                <a href="#core-department-POSTapi-departments-bulk-delete">Xóa hàng loạt department</a>
-                            </li>
-                                                                                <li class="tocify-item level-2" data-unique="core-department-PATCHapi-departments-bulk-status">
-                                <a href="#core-department-PATCHapi-departments-bulk-status">Cập nhật trạng thái department hàng loạt</a>
-                            </li>
-                                                                                <li class="tocify-item level-2" data-unique="core-department-GETapi-departments-stats">
-                                <a href="#core-department-GETapi-departments-stats">Thống kê department</a>
-                            </li>
-                                                                                <li class="tocify-item level-2" data-unique="core-department-GETapi-departments-tree">
-                                <a href="#core-department-GETapi-departments-tree">Cây department (toàn bộ cây, không phân trang). Cấu trúc parent_id.</a>
-                            </li>
-                                                                                <li class="tocify-item level-2" data-unique="core-department-GETapi-departments">
-                                <a href="#core-department-GETapi-departments">Danh sách department</a>
-                            </li>
-                                                                                <li class="tocify-item level-2" data-unique="core-department-GETapi-departments--department_id-">
-                                <a href="#core-department-GETapi-departments--department_id-">Chi tiết department</a>
-                            </li>
-                                                                                <li class="tocify-item level-2" data-unique="core-department-POSTapi-departments">
-                                <a href="#core-department-POSTapi-departments">Tạo department mới</a>
-                            </li>
-                                                                                <li class="tocify-item level-2" data-unique="core-department-PUTapi-departments--department_id-">
-                                <a href="#core-department-PUTapi-departments--department_id-">Cập nhật department</a>
-                            </li>
-                                                                                <li class="tocify-item level-2" data-unique="core-department-PATCHapi-departments--department_id-">
-                                <a href="#core-department-PATCHapi-departments--department_id-">Cập nhật department</a>
-                            </li>
-                                                                                <li class="tocify-item level-2" data-unique="core-department-DELETEapi-departments--department_id-">
-                                <a href="#core-department-DELETEapi-departments--department_id-">Xóa department</a>
-                            </li>
-                                                                                <li class="tocify-item level-2" data-unique="core-department-PATCHapi-departments--department_id--status">
-                                <a href="#core-department-PATCHapi-departments--department_id--status">Thay đổi trạng thái department</a>
-                            </li>
-                                                                        </ul>
-                            </ul>
                     <ul id="tocify-header-core-logactivity" class="tocify-header">
                 <li class="tocify-item level-1" data-unique="core-logactivity">
                     <a href="#core-logactivity">Core - LogActivity</a>
@@ -1533,3926 +1481,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </div>
                         </form>
 
-                <h1 id="core-department">Core - Department</h1>
-
-    
-
-                                <h2 id="core-department-GETapi-departments-public">Danh sách department công khai</h2>
-
-<p>
-</p>
-
-<p>Trả về danh sách department đang hoạt động (active), thứ tự theo cây, dùng cho các chức năng công khai.</p>
-
-<span id="example-requests-GETapi-departments-public">
-<blockquote>Example request:</blockquote>
-
-
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:8000/api/departments/public?search=cong-ty&amp;status=active&amp;from_date=2026-01-01&amp;to_date=2026-12-31&amp;sort_by=created_at&amp;sort_order=desc&amp;limit=10" \
-    --header "X-Department-Id: ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
-    --header "Content-Type: application/json" \
-    --header "Accept: application/json"</code></pre></div>
-
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/departments/public"
-);
-
-const params = {
-    "search": "cong-ty",
-    "status": "active",
-    "from_date": "2026-01-01",
-    "to_date": "2026-12-31",
-    "sort_by": "created_at",
-    "sort_order": "desc",
-    "limit": "10",
-};
-Object.keys(params)
-    .forEach(key =&gt; url.searchParams.append(key, params[key]));
-
-const headers = {
-    "X-Department-Id": "ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1",
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-};
-
-
-fetch(url, {
-    method: "GET",
-    headers,
-}).then(response =&gt; response.json());</code></pre></div>
-
-
-<div class="php-example">
-    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost:8000/api/departments/public';
-$response = $client-&gt;get(
-    $url,
-    [
-        'headers' =&gt; [
-            'X-Department-Id' =&gt; 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1',
-            'Content-Type' =&gt; 'application/json',
-            'Accept' =&gt; 'application/json',
-        ],
-        'query' =&gt; [
-            'search' =&gt; 'cong-ty',
-            'status' =&gt; 'active',
-            'from_date' =&gt; '2026-01-01',
-            'to_date' =&gt; '2026-12-31',
-            'sort_by' =&gt; 'created_at',
-            'sort_order' =&gt; 'desc',
-            'limit' =&gt; '10',
-        ],
-    ]
-);
-$body = $response-&gt;getBody();
-print_r(json_decode((string) $body));</code></pre></div>
-
-</span>
-
-<span id="example-responses-GETapi-departments-public">
-            <blockquote>
-            <p>Example response (200):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;data&quot;: [
-        {
-            &quot;id&quot;: 3,
-            &quot;name&quot;: &quot;Bailey Inc&quot;,
-            &quot;slug&quot;: &quot;quos-velit-et-fugiat-sunt-nihil-accusantium-harum&quot;,
-            &quot;description&quot;: null,
-            &quot;status&quot;: &quot;active&quot;,
-            &quot;parent_id&quot;: null,
-            &quot;sort_order&quot;: 7,
-            &quot;depth&quot;: 0,
-            &quot;created_by&quot;: &quot;N/A&quot;,
-            &quot;updated_by&quot;: &quot;N/A&quot;,
-            &quot;created_at&quot;: &quot;07:38:32 26/03/2026&quot;,
-            &quot;updated_at&quot;: &quot;07:38:32 26/03/2026&quot;
-        },
-        {
-            &quot;id&quot;: 4,
-            &quot;name&quot;: &quot;DuBuque Inc&quot;,
-            &quot;slug&quot;: &quot;quo-omnis-nostrum-aut-adipisci&quot;,
-            &quot;description&quot;: &quot;Qui commodi incidunt iure odit.&quot;,
-            &quot;status&quot;: &quot;active&quot;,
-            &quot;parent_id&quot;: null,
-            &quot;sort_order&quot;: 20,
-            &quot;depth&quot;: 0,
-            &quot;created_by&quot;: &quot;N/A&quot;,
-            &quot;updated_by&quot;: &quot;N/A&quot;,
-            &quot;created_at&quot;: &quot;07:38:32 26/03/2026&quot;,
-            &quot;updated_at&quot;: &quot;07:38:32 26/03/2026&quot;
-        }
-    ],
-    &quot;success&quot;: &quot;true&quot;
-}</code>
- </pre>
-    </span>
-<span id="execution-results-GETapi-departments-public" hidden>
-    <blockquote>Received response<span
-                id="execution-response-status-GETapi-departments-public"></span>:
-    </blockquote>
-    <pre class="json"><code id="execution-response-content-GETapi-departments-public"
-      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
-</span>
-<span id="execution-error-GETapi-departments-public" hidden>
-    <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-GETapi-departments-public">
-
-Tip: Check that you&#039;re properly connected to the network.
-If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
-You can check the Dev Tools console for debugging information.</code></pre>
-</span>
-<form id="form-GETapi-departments-public" data-method="GET"
-      data-path="api/departments/public"
-      data-authed="0"
-      data-hasfiles="0"
-      data-isarraybody="0"
-      autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('GETapi-departments-public', this);">
-    <h3>
-        Request&nbsp;&nbsp;&nbsp;
-                    <button type="button"
-                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-GETapi-departments-public"
-                    onclick="tryItOut('GETapi-departments-public');">Try it out ⚡
-            </button>
-            <button type="button"
-                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-GETapi-departments-public"
-                    onclick="cancelTryOut('GETapi-departments-public');" hidden>Cancel 🛑
-            </button>&nbsp;&nbsp;
-            <button type="submit"
-                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-GETapi-departments-public"
-                    data-initial-text="Send Request 💥"
-                    data-loading-text="⏱ Sending..."
-                    hidden>Send Request 💥
-            </button>
-            </h3>
-            <p>
-            <small class="badge badge-green">GET</small>
-            <b><code>api/departments/public</code></b>
-        </p>
-                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>X-Department-Id</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="X-Department-Id"                data-endpoint="GETapi-departments-public"
-               value="ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1"
-               data-component="header">
-    <br>
-<p>Example: <code>ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Content-Type"                data-endpoint="GETapi-departments-public"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Accept"                data-endpoint="GETapi-departments-public"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                            <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
-                                    <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>search</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="search"                data-endpoint="GETapi-departments-public"
-               value="cong-ty"
-               data-component="query">
-    <br>
-<p>Từ khóa tìm kiếm (name, slug). Example: <code>cong-ty</code></p>
-            </div>
-                                    <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>status</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="status"                data-endpoint="GETapi-departments-public"
-               value="active"
-               data-component="query">
-    <br>
-<p>Lọc theo trạng thái. Example: <code>active</code></p>
-            </div>
-                                    <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>from_date</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="from_date"                data-endpoint="GETapi-departments-public"
-               value="2026-01-01"
-               data-component="query">
-    <br>
-<p>Lọc từ ngày tạo (Y-m-d). Must be a valid date. Example: <code>2026-01-01</code></p>
-            </div>
-                                    <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>to_date</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="to_date"                data-endpoint="GETapi-departments-public"
-               value="2026-12-31"
-               data-component="query">
-    <br>
-<p>Lọc đến ngày tạo (Y-m-d). Must be a valid date. Must be a date after or equal to <code>from_date</code>. Example: <code>2026-12-31</code></p>
-            </div>
-                                    <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>sort_by</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="sort_by"                data-endpoint="GETapi-departments-public"
-               value="created_at"
-               data-component="query">
-    <br>
-<p>Trường dùng để sắp xếp. Must not be greater than 50 characters. Example: <code>created_at</code></p>
-            </div>
-                                    <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>sort_order</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="sort_order"                data-endpoint="GETapi-departments-public"
-               value="desc"
-               data-component="query">
-    <br>
-<p>Thứ tự sắp xếp. Example: <code>desc</code></p>
-Must be one of:
-<ul style="list-style-type: square;"><li><code>asc</code></li> <li><code>desc</code></li></ul>
-            </div>
-                                    <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>limit</code></b>&nbsp;&nbsp;
-<small>integer</small>&nbsp;
-<i>optional</i> &nbsp;
- &nbsp;
-                <input type="number" style="display: none"
-               step="any"               name="limit"                data-endpoint="GETapi-departments-public"
-               value="10"
-               data-component="query">
-    <br>
-<p>Số bản ghi mỗi trang (1-100). Must be at least 1. Must not be greater than 100. Example: <code>10</code></p>
-            </div>
-                </form>
-
-                    <h2 id="core-department-GETapi-departments-public-options">Danh sách department công khai cho dropdown</h2>
-
-<p>
-</p>
-
-<p>Trả về dữ liệu tối giản chỉ gồm id, name, description để tối ưu payload cho dropdown.</p>
-
-<span id="example-requests-GETapi-departments-public-options">
-<blockquote>Example request:</blockquote>
-
-
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:8000/api/departments/public-options?search=cong-ty&amp;status=active&amp;from_date=2026-01-01&amp;to_date=2026-12-31&amp;sort_by=created_at&amp;sort_order=desc&amp;limit=10" \
-    --header "X-Department-Id: ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
-    --header "Content-Type: application/json" \
-    --header "Accept: application/json"</code></pre></div>
-
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/departments/public-options"
-);
-
-const params = {
-    "search": "cong-ty",
-    "status": "active",
-    "from_date": "2026-01-01",
-    "to_date": "2026-12-31",
-    "sort_by": "created_at",
-    "sort_order": "desc",
-    "limit": "10",
-};
-Object.keys(params)
-    .forEach(key =&gt; url.searchParams.append(key, params[key]));
-
-const headers = {
-    "X-Department-Id": "ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1",
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-};
-
-
-fetch(url, {
-    method: "GET",
-    headers,
-}).then(response =&gt; response.json());</code></pre></div>
-
-
-<div class="php-example">
-    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost:8000/api/departments/public-options';
-$response = $client-&gt;get(
-    $url,
-    [
-        'headers' =&gt; [
-            'X-Department-Id' =&gt; 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1',
-            'Content-Type' =&gt; 'application/json',
-            'Accept' =&gt; 'application/json',
-        ],
-        'query' =&gt; [
-            'search' =&gt; 'cong-ty',
-            'status' =&gt; 'active',
-            'from_date' =&gt; '2026-01-01',
-            'to_date' =&gt; '2026-12-31',
-            'sort_by' =&gt; 'created_at',
-            'sort_order' =&gt; 'desc',
-            'limit' =&gt; '10',
-        ],
-    ]
-);
-$body = $response-&gt;getBody();
-print_r(json_decode((string) $body));</code></pre></div>
-
-</span>
-
-<span id="example-responses-GETapi-departments-public-options">
-            <blockquote>
-            <p>Example response (200):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;data&quot;: [
-        {
-            &quot;id&quot;: 5,
-            &quot;name&quot;: &quot;Okuneva, Rempel and Gulgowski&quot;,
-            &quot;description&quot;: null
-        },
-        {
-            &quot;id&quot;: 6,
-            &quot;name&quot;: &quot;Cormier Inc&quot;,
-            &quot;description&quot;: &quot;Odit et et modi.&quot;
-        }
-    ],
-    &quot;success&quot;: &quot;true&quot;
-}</code>
- </pre>
-    </span>
-<span id="execution-results-GETapi-departments-public-options" hidden>
-    <blockquote>Received response<span
-                id="execution-response-status-GETapi-departments-public-options"></span>:
-    </blockquote>
-    <pre class="json"><code id="execution-response-content-GETapi-departments-public-options"
-      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
-</span>
-<span id="execution-error-GETapi-departments-public-options" hidden>
-    <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-GETapi-departments-public-options">
-
-Tip: Check that you&#039;re properly connected to the network.
-If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
-You can check the Dev Tools console for debugging information.</code></pre>
-</span>
-<form id="form-GETapi-departments-public-options" data-method="GET"
-      data-path="api/departments/public-options"
-      data-authed="0"
-      data-hasfiles="0"
-      data-isarraybody="0"
-      autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('GETapi-departments-public-options', this);">
-    <h3>
-        Request&nbsp;&nbsp;&nbsp;
-                    <button type="button"
-                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-GETapi-departments-public-options"
-                    onclick="tryItOut('GETapi-departments-public-options');">Try it out ⚡
-            </button>
-            <button type="button"
-                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-GETapi-departments-public-options"
-                    onclick="cancelTryOut('GETapi-departments-public-options');" hidden>Cancel 🛑
-            </button>&nbsp;&nbsp;
-            <button type="submit"
-                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-GETapi-departments-public-options"
-                    data-initial-text="Send Request 💥"
-                    data-loading-text="⏱ Sending..."
-                    hidden>Send Request 💥
-            </button>
-            </h3>
-            <p>
-            <small class="badge badge-green">GET</small>
-            <b><code>api/departments/public-options</code></b>
-        </p>
-                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>X-Department-Id</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="X-Department-Id"                data-endpoint="GETapi-departments-public-options"
-               value="ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1"
-               data-component="header">
-    <br>
-<p>Example: <code>ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Content-Type"                data-endpoint="GETapi-departments-public-options"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Accept"                data-endpoint="GETapi-departments-public-options"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                            <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
-                                    <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>search</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="search"                data-endpoint="GETapi-departments-public-options"
-               value="cong-ty"
-               data-component="query">
-    <br>
-<p>Từ khóa tìm kiếm (name, slug). Example: <code>cong-ty</code></p>
-            </div>
-                                    <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>status</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="status"                data-endpoint="GETapi-departments-public-options"
-               value="active"
-               data-component="query">
-    <br>
-<p>Lọc theo trạng thái. Example: <code>active</code></p>
-            </div>
-                                    <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>from_date</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="from_date"                data-endpoint="GETapi-departments-public-options"
-               value="2026-01-01"
-               data-component="query">
-    <br>
-<p>Lọc từ ngày tạo (Y-m-d). Must be a valid date. Example: <code>2026-01-01</code></p>
-            </div>
-                                    <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>to_date</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="to_date"                data-endpoint="GETapi-departments-public-options"
-               value="2026-12-31"
-               data-component="query">
-    <br>
-<p>Lọc đến ngày tạo (Y-m-d). Must be a valid date. Must be a date after or equal to <code>from_date</code>. Example: <code>2026-12-31</code></p>
-            </div>
-                                    <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>sort_by</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="sort_by"                data-endpoint="GETapi-departments-public-options"
-               value="created_at"
-               data-component="query">
-    <br>
-<p>Trường dùng để sắp xếp. Must not be greater than 50 characters. Example: <code>created_at</code></p>
-            </div>
-                                    <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>sort_order</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="sort_order"                data-endpoint="GETapi-departments-public-options"
-               value="desc"
-               data-component="query">
-    <br>
-<p>Thứ tự sắp xếp. Example: <code>desc</code></p>
-Must be one of:
-<ul style="list-style-type: square;"><li><code>asc</code></li> <li><code>desc</code></li></ul>
-            </div>
-                                    <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>limit</code></b>&nbsp;&nbsp;
-<small>integer</small>&nbsp;
-<i>optional</i> &nbsp;
- &nbsp;
-                <input type="number" style="display: none"
-               step="any"               name="limit"                data-endpoint="GETapi-departments-public-options"
-               value="10"
-               data-component="query">
-    <br>
-<p>Số bản ghi mỗi trang (1-100). Must be at least 1. Must not be greater than 100. Example: <code>10</code></p>
-            </div>
-                </form>
-
-                    <h2 id="core-department-GETapi-departments-export">Xuất danh sách department</h2>
-
-<p>
-<small class="badge badge-darkred">requires authentication</small>
-</p>
-
-<p>Áp dụng cùng bộ lọc với index. Xuất ra các trường: id, name, slug, description, status, parent_id, parent_slug, sort_order, depth, created_by, updated_by, created_at, updated_at.</p>
-
-<span id="example-requests-GETapi-departments-export">
-<blockquote>Example request:</blockquote>
-
-
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:8000/api/departments/export?search=architecto&amp;status=architecto&amp;from_date=architecto&amp;to_date=architecto&amp;sort_by=architecto&amp;sort_order=architecto&amp;limit=10" \
-    --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
-    --header "X-Department-Id: ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
-    --header "Content-Type: application/json" \
-    --header "Accept: application/json"</code></pre></div>
-
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/departments/export"
-);
-
-const params = {
-    "search": "architecto",
-    "status": "architecto",
-    "from_date": "architecto",
-    "to_date": "architecto",
-    "sort_by": "architecto",
-    "sort_order": "architecto",
-    "limit": "10",
-};
-Object.keys(params)
-    .forEach(key =&gt; url.searchParams.append(key, params[key]));
-
-const headers = {
-    "Authorization": "Bearer Bearer {YOUR_ACCESS_TOKEN}",
-    "X-Department-Id": "ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1",
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-};
-
-
-fetch(url, {
-    method: "GET",
-    headers,
-}).then(response =&gt; response.json());</code></pre></div>
-
-
-<div class="php-example">
-    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost:8000/api/departments/export';
-$response = $client-&gt;get(
-    $url,
-    [
-        'headers' =&gt; [
-            'Authorization' =&gt; 'Bearer Bearer {YOUR_ACCESS_TOKEN}',
-            'X-Department-Id' =&gt; 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1',
-            'Content-Type' =&gt; 'application/json',
-            'Accept' =&gt; 'application/json',
-        ],
-        'query' =&gt; [
-            'search' =&gt; 'architecto',
-            'status' =&gt; 'architecto',
-            'from_date' =&gt; 'architecto',
-            'to_date' =&gt; 'architecto',
-            'sort_by' =&gt; 'architecto',
-            'sort_order' =&gt; 'architecto',
-            'limit' =&gt; '10',
-        ],
-    ]
-);
-$body = $response-&gt;getBody();
-print_r(json_decode((string) $body));</code></pre></div>
-
-</span>
-
-<span id="example-responses-GETapi-departments-export">
-            <blockquote>
-            <p>Example response (401):</p>
-        </blockquote>
-                <details class="annotation">
-            <summary style="cursor: pointer;">
-                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
-            </summary>
-            <pre><code class="language-http">cache-control: no-cache, private
-content-type: application/json
-access-control-allow-origin: *
- </code></pre></details>         <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;Unauthenticated.&quot;
-}</code>
- </pre>
-    </span>
-<span id="execution-results-GETapi-departments-export" hidden>
-    <blockquote>Received response<span
-                id="execution-response-status-GETapi-departments-export"></span>:
-    </blockquote>
-    <pre class="json"><code id="execution-response-content-GETapi-departments-export"
-      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
-</span>
-<span id="execution-error-GETapi-departments-export" hidden>
-    <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-GETapi-departments-export">
-
-Tip: Check that you&#039;re properly connected to the network.
-If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
-You can check the Dev Tools console for debugging information.</code></pre>
-</span>
-<form id="form-GETapi-departments-export" data-method="GET"
-      data-path="api/departments/export"
-      data-authed="1"
-      data-hasfiles="0"
-      data-isarraybody="0"
-      autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('GETapi-departments-export', this);">
-    <h3>
-        Request&nbsp;&nbsp;&nbsp;
-                    <button type="button"
-                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-GETapi-departments-export"
-                    onclick="tryItOut('GETapi-departments-export');">Try it out ⚡
-            </button>
-            <button type="button"
-                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-GETapi-departments-export"
-                    onclick="cancelTryOut('GETapi-departments-export');" hidden>Cancel 🛑
-            </button>&nbsp;&nbsp;
-            <button type="submit"
-                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-GETapi-departments-export"
-                    data-initial-text="Send Request 💥"
-                    data-loading-text="⏱ Sending..."
-                    hidden>Send Request 💥
-            </button>
-            </h3>
-            <p>
-            <small class="badge badge-green">GET</small>
-            <b><code>api/departments/export</code></b>
-        </p>
-                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Authorization" class="auth-value"               data-endpoint="GETapi-departments-export"
-               value="Bearer Bearer {YOUR_ACCESS_TOKEN}"
-               data-component="header">
-    <br>
-<p>Example: <code>Bearer Bearer {YOUR_ACCESS_TOKEN}</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>X-Department-Id</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="X-Department-Id"                data-endpoint="GETapi-departments-export"
-               value="ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1"
-               data-component="header">
-    <br>
-<p>Example: <code>ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Content-Type"                data-endpoint="GETapi-departments-export"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Accept"                data-endpoint="GETapi-departments-export"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                            <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
-                                    <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>search</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="search"                data-endpoint="GETapi-departments-export"
-               value="architecto"
-               data-component="query">
-    <br>
-<p>Từ khóa tìm kiếm (name, slug). Example: <code>architecto</code></p>
-            </div>
-                                    <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>status</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="status"                data-endpoint="GETapi-departments-export"
-               value="architecto"
-               data-component="query">
-    <br>
-<p>Lọc theo trạng thái: active, inactive. Example: <code>architecto</code></p>
-            </div>
-                                    <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>from_date</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="from_date"                data-endpoint="GETapi-departments-export"
-               value="architecto"
-               data-component="query">
-    <br>
-<p>date Lọc từ ngày tạo (created_at) (Y-m-d). Example: <code>architecto</code></p>
-            </div>
-                                    <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>to_date</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="to_date"                data-endpoint="GETapi-departments-export"
-               value="architecto"
-               data-component="query">
-    <br>
-<p>date Lọc đến ngày tạo (created_at) (Y-m-d). Example: <code>architecto</code></p>
-            </div>
-                                    <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>sort_by</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="sort_by"                data-endpoint="GETapi-departments-export"
-               value="architecto"
-               data-component="query">
-    <br>
-<p>Sắp xếp theo: id, name, slug, status, created_at, updated_at. Example: <code>architecto</code></p>
-            </div>
-                                    <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>sort_order</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="sort_order"                data-endpoint="GETapi-departments-export"
-               value="architecto"
-               data-component="query">
-    <br>
-<p>Thứ tự: asc, desc. Example: <code>architecto</code></p>
-            </div>
-                                    <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>limit</code></b>&nbsp;&nbsp;
-<small>integer</small>&nbsp;
-<i>optional</i> &nbsp;
- &nbsp;
-                <input type="number" style="display: none"
-               step="any"               name="limit"                data-endpoint="GETapi-departments-export"
-               value="10"
-               data-component="query">
-    <br>
-<p>Số bản ghi mỗi trang (1-100). Must be at least 1. Must not be greater than 100. Example: <code>10</code></p>
-            </div>
-                </form>
-
-                    <h2 id="core-department-POSTapi-departments-import">Nhập danh sách department</h2>
-
-<p>
-<small class="badge badge-darkred">requires authentication</small>
-</p>
-
-<p>Cột bắt buộc: name. Cột không bắt buộc: slug, description, status (mặc định "active"), parent_id.</p>
-
-<span id="example-requests-POSTapi-departments-import">
-<blockquote>Example request:</blockquote>
-
-
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request POST \
-    "http://localhost:8000/api/departments/import" \
-    --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
-    --header "X-Department-Id: ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
-    --header "Content-Type: multipart/form-data" \
-    --header "Accept: application/json" \
-    --form "file=@/tmp/phpblc7faqcgci9cxkt4Nl" </code></pre></div>
-
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/departments/import"
-);
-
-const headers = {
-    "Authorization": "Bearer Bearer {YOUR_ACCESS_TOKEN}",
-    "X-Department-Id": "ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1",
-    "Content-Type": "multipart/form-data",
-    "Accept": "application/json",
-};
-
-const body = new FormData();
-body.append('file', document.querySelector('input[name="file"]').files[0]);
-
-fetch(url, {
-    method: "POST",
-    headers,
-    body,
-}).then(response =&gt; response.json());</code></pre></div>
-
-
-<div class="php-example">
-    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost:8000/api/departments/import';
-$response = $client-&gt;post(
-    $url,
-    [
-        'headers' =&gt; [
-            'Authorization' =&gt; 'Bearer Bearer {YOUR_ACCESS_TOKEN}',
-            'X-Department-Id' =&gt; 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1',
-            'Content-Type' =&gt; 'multipart/form-data',
-            'Accept' =&gt; 'application/json',
-        ],
-        'multipart' =&gt; [
-            [
-                'name' =&gt; 'file',
-                'contents' =&gt; fopen('/tmp/phpblc7faqcgci9cxkt4Nl', 'r')
-            ],
-        ],
-    ]
-);
-$body = $response-&gt;getBody();
-print_r(json_decode((string) $body));</code></pre></div>
-
-</span>
-
-<span id="example-responses-POSTapi-departments-import">
-            <blockquote>
-            <p>Example response (200):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;success&quot;: true,
-    &quot;message&quot;: &quot;Import department th&agrave;nh c&ocirc;ng.&quot;
-}</code>
- </pre>
-    </span>
-<span id="execution-results-POSTapi-departments-import" hidden>
-    <blockquote>Received response<span
-                id="execution-response-status-POSTapi-departments-import"></span>:
-    </blockquote>
-    <pre class="json"><code id="execution-response-content-POSTapi-departments-import"
-      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
-</span>
-<span id="execution-error-POSTapi-departments-import" hidden>
-    <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-POSTapi-departments-import">
-
-Tip: Check that you&#039;re properly connected to the network.
-If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
-You can check the Dev Tools console for debugging information.</code></pre>
-</span>
-<form id="form-POSTapi-departments-import" data-method="POST"
-      data-path="api/departments/import"
-      data-authed="1"
-      data-hasfiles="1"
-      data-isarraybody="0"
-      autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('POSTapi-departments-import', this);">
-    <h3>
-        Request&nbsp;&nbsp;&nbsp;
-                    <button type="button"
-                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-POSTapi-departments-import"
-                    onclick="tryItOut('POSTapi-departments-import');">Try it out ⚡
-            </button>
-            <button type="button"
-                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-POSTapi-departments-import"
-                    onclick="cancelTryOut('POSTapi-departments-import');" hidden>Cancel 🛑
-            </button>&nbsp;&nbsp;
-            <button type="submit"
-                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-POSTapi-departments-import"
-                    data-initial-text="Send Request 💥"
-                    data-loading-text="⏱ Sending..."
-                    hidden>Send Request 💥
-            </button>
-            </h3>
-            <p>
-            <small class="badge badge-black">POST</small>
-            <b><code>api/departments/import</code></b>
-        </p>
-                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Authorization" class="auth-value"               data-endpoint="POSTapi-departments-import"
-               value="Bearer Bearer {YOUR_ACCESS_TOKEN}"
-               data-component="header">
-    <br>
-<p>Example: <code>Bearer Bearer {YOUR_ACCESS_TOKEN}</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>X-Department-Id</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="X-Department-Id"                data-endpoint="POSTapi-departments-import"
-               value="ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1"
-               data-component="header">
-    <br>
-<p>Example: <code>ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Content-Type"                data-endpoint="POSTapi-departments-import"
-               value="multipart/form-data"
-               data-component="header">
-    <br>
-<p>Example: <code>multipart/form-data</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Accept"                data-endpoint="POSTapi-departments-import"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                                <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
-        <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>file</code></b>&nbsp;&nbsp;
-<small>file</small>&nbsp;
- &nbsp;
- &nbsp;
-                <input type="file" style="display: none"
-                              name="file"                data-endpoint="POSTapi-departments-import"
-               value=""
-               data-component="body">
-    <br>
-<p>File Excel (xlsx, xls, csv). Cột theo chuẩn export. Example: <code>/tmp/phpblc7faqcgci9cxkt4Nl</code></p>
-        </div>
-        </form>
-
-                    <h2 id="core-department-POSTapi-departments-bulk-delete">Xóa hàng loạt department</h2>
-
-<p>
-<small class="badge badge-darkred">requires authentication</small>
-</p>
-
-
-
-<span id="example-requests-POSTapi-departments-bulk-delete">
-<blockquote>Example request:</blockquote>
-
-
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request POST \
-    "http://localhost:8000/api/departments/bulk-delete" \
-    --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
-    --header "X-Department-Id: ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
-    --header "Content-Type: application/json" \
-    --header "Accept: application/json" \
-    --data "{
-    \"ids\": [
-        1,
-        2,
-        3
-    ]
-}"
-</code></pre></div>
-
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/departments/bulk-delete"
-);
-
-const headers = {
-    "Authorization": "Bearer Bearer {YOUR_ACCESS_TOKEN}",
-    "X-Department-Id": "ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1",
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-};
-
-let body = {
-    "ids": [
-        1,
-        2,
-        3
-    ]
-};
-
-fetch(url, {
-    method: "POST",
-    headers,
-    body: JSON.stringify(body),
-}).then(response =&gt; response.json());</code></pre></div>
-
-
-<div class="php-example">
-    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost:8000/api/departments/bulk-delete';
-$response = $client-&gt;post(
-    $url,
-    [
-        'headers' =&gt; [
-            'Authorization' =&gt; 'Bearer Bearer {YOUR_ACCESS_TOKEN}',
-            'X-Department-Id' =&gt; 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1',
-            'Content-Type' =&gt; 'application/json',
-            'Accept' =&gt; 'application/json',
-        ],
-        'json' =&gt; [
-            'ids' =&gt; [
-                1,
-                2,
-                3,
-            ],
-        ],
-    ]
-);
-$body = $response-&gt;getBody();
-print_r(json_decode((string) $body));</code></pre></div>
-
-</span>
-
-<span id="example-responses-POSTapi-departments-bulk-delete">
-            <blockquote>
-            <p>Example response (200):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;success&quot;: true,
-    &quot;message&quot;: &quot;Đ&atilde; x&oacute;a th&agrave;nh c&ocirc;ng c&aacute;c department được chọn!&quot;
-}</code>
- </pre>
-    </span>
-<span id="execution-results-POSTapi-departments-bulk-delete" hidden>
-    <blockquote>Received response<span
-                id="execution-response-status-POSTapi-departments-bulk-delete"></span>:
-    </blockquote>
-    <pre class="json"><code id="execution-response-content-POSTapi-departments-bulk-delete"
-      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
-</span>
-<span id="execution-error-POSTapi-departments-bulk-delete" hidden>
-    <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-POSTapi-departments-bulk-delete">
-
-Tip: Check that you&#039;re properly connected to the network.
-If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
-You can check the Dev Tools console for debugging information.</code></pre>
-</span>
-<form id="form-POSTapi-departments-bulk-delete" data-method="POST"
-      data-path="api/departments/bulk-delete"
-      data-authed="1"
-      data-hasfiles="0"
-      data-isarraybody="0"
-      autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('POSTapi-departments-bulk-delete', this);">
-    <h3>
-        Request&nbsp;&nbsp;&nbsp;
-                    <button type="button"
-                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-POSTapi-departments-bulk-delete"
-                    onclick="tryItOut('POSTapi-departments-bulk-delete');">Try it out ⚡
-            </button>
-            <button type="button"
-                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-POSTapi-departments-bulk-delete"
-                    onclick="cancelTryOut('POSTapi-departments-bulk-delete');" hidden>Cancel 🛑
-            </button>&nbsp;&nbsp;
-            <button type="submit"
-                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-POSTapi-departments-bulk-delete"
-                    data-initial-text="Send Request 💥"
-                    data-loading-text="⏱ Sending..."
-                    hidden>Send Request 💥
-            </button>
-            </h3>
-            <p>
-            <small class="badge badge-black">POST</small>
-            <b><code>api/departments/bulk-delete</code></b>
-        </p>
-                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Authorization" class="auth-value"               data-endpoint="POSTapi-departments-bulk-delete"
-               value="Bearer Bearer {YOUR_ACCESS_TOKEN}"
-               data-component="header">
-    <br>
-<p>Example: <code>Bearer Bearer {YOUR_ACCESS_TOKEN}</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>X-Department-Id</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="X-Department-Id"                data-endpoint="POSTapi-departments-bulk-delete"
-               value="ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1"
-               data-component="header">
-    <br>
-<p>Example: <code>ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Content-Type"                data-endpoint="POSTapi-departments-bulk-delete"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Accept"                data-endpoint="POSTapi-departments-bulk-delete"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                                <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
-        <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>ids</code></b>&nbsp;&nbsp;
-<small>string[]</small>&nbsp;
- &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="ids[0]"                data-endpoint="POSTapi-departments-bulk-delete"
-               data-component="body">
-        <input type="text" style="display: none"
-               name="ids[1]"                data-endpoint="POSTapi-departments-bulk-delete"
-               data-component="body">
-    <br>
-<p>Danh sách ID.</p>
-        </div>
-        </form>
-
-                    <h2 id="core-department-PATCHapi-departments-bulk-status">Cập nhật trạng thái department hàng loạt</h2>
-
-<p>
-<small class="badge badge-darkred">requires authentication</small>
-</p>
-
-
-
-<span id="example-requests-PATCHapi-departments-bulk-status">
-<blockquote>Example request:</blockquote>
-
-
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request PATCH \
-    "http://localhost:8000/api/departments/bulk-status" \
-    --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
-    --header "X-Department-Id: ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
-    --header "Content-Type: application/json" \
-    --header "Accept: application/json" \
-    --data "{
-    \"ids\": [
-        1,
-        2,
-        3
-    ],
-    \"status\": \"active\"
-}"
-</code></pre></div>
-
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/departments/bulk-status"
-);
-
-const headers = {
-    "Authorization": "Bearer Bearer {YOUR_ACCESS_TOKEN}",
-    "X-Department-Id": "ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1",
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-};
-
-let body = {
-    "ids": [
-        1,
-        2,
-        3
-    ],
-    "status": "active"
-};
-
-fetch(url, {
-    method: "PATCH",
-    headers,
-    body: JSON.stringify(body),
-}).then(response =&gt; response.json());</code></pre></div>
-
-
-<div class="php-example">
-    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost:8000/api/departments/bulk-status';
-$response = $client-&gt;patch(
-    $url,
-    [
-        'headers' =&gt; [
-            'Authorization' =&gt; 'Bearer Bearer {YOUR_ACCESS_TOKEN}',
-            'X-Department-Id' =&gt; 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1',
-            'Content-Type' =&gt; 'application/json',
-            'Accept' =&gt; 'application/json',
-        ],
-        'json' =&gt; [
-            'ids' =&gt; [
-                1,
-                2,
-                3,
-            ],
-            'status' =&gt; 'active',
-        ],
-    ]
-);
-$body = $response-&gt;getBody();
-print_r(json_decode((string) $body));</code></pre></div>
-
-</span>
-
-<span id="example-responses-PATCHapi-departments-bulk-status">
-            <blockquote>
-            <p>Example response (200):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;success&quot;: true,
-    &quot;message&quot;: &quot;Cập nhật trạng th&aacute;i department th&agrave;nh c&ocirc;ng.&quot;
-}</code>
- </pre>
-    </span>
-<span id="execution-results-PATCHapi-departments-bulk-status" hidden>
-    <blockquote>Received response<span
-                id="execution-response-status-PATCHapi-departments-bulk-status"></span>:
-    </blockquote>
-    <pre class="json"><code id="execution-response-content-PATCHapi-departments-bulk-status"
-      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
-</span>
-<span id="execution-error-PATCHapi-departments-bulk-status" hidden>
-    <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-PATCHapi-departments-bulk-status">
-
-Tip: Check that you&#039;re properly connected to the network.
-If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
-You can check the Dev Tools console for debugging information.</code></pre>
-</span>
-<form id="form-PATCHapi-departments-bulk-status" data-method="PATCH"
-      data-path="api/departments/bulk-status"
-      data-authed="1"
-      data-hasfiles="0"
-      data-isarraybody="0"
-      autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('PATCHapi-departments-bulk-status', this);">
-    <h3>
-        Request&nbsp;&nbsp;&nbsp;
-                    <button type="button"
-                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-PATCHapi-departments-bulk-status"
-                    onclick="tryItOut('PATCHapi-departments-bulk-status');">Try it out ⚡
-            </button>
-            <button type="button"
-                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-PATCHapi-departments-bulk-status"
-                    onclick="cancelTryOut('PATCHapi-departments-bulk-status');" hidden>Cancel 🛑
-            </button>&nbsp;&nbsp;
-            <button type="submit"
-                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-PATCHapi-departments-bulk-status"
-                    data-initial-text="Send Request 💥"
-                    data-loading-text="⏱ Sending..."
-                    hidden>Send Request 💥
-            </button>
-            </h3>
-            <p>
-            <small class="badge badge-purple">PATCH</small>
-            <b><code>api/departments/bulk-status</code></b>
-        </p>
-                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Authorization" class="auth-value"               data-endpoint="PATCHapi-departments-bulk-status"
-               value="Bearer Bearer {YOUR_ACCESS_TOKEN}"
-               data-component="header">
-    <br>
-<p>Example: <code>Bearer Bearer {YOUR_ACCESS_TOKEN}</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>X-Department-Id</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="X-Department-Id"                data-endpoint="PATCHapi-departments-bulk-status"
-               value="ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1"
-               data-component="header">
-    <br>
-<p>Example: <code>ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Content-Type"                data-endpoint="PATCHapi-departments-bulk-status"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Accept"                data-endpoint="PATCHapi-departments-bulk-status"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                                <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
-        <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>ids</code></b>&nbsp;&nbsp;
-<small>string[]</small>&nbsp;
- &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="ids[0]"                data-endpoint="PATCHapi-departments-bulk-status"
-               data-component="body">
-        <input type="text" style="display: none"
-               name="ids[1]"                data-endpoint="PATCHapi-departments-bulk-status"
-               data-component="body">
-    <br>
-<p>Danh sách ID.</p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>status</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
- &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="status"                data-endpoint="PATCHapi-departments-bulk-status"
-               value="active"
-               data-component="body">
-    <br>
-<p>Trạng thái: active, inactive. Example: <code>active</code></p>
-        </div>
-        </form>
-
-                    <h2 id="core-department-GETapi-departments-stats">Thống kê department</h2>
-
-<p>
-<small class="badge badge-darkred">requires authentication</small>
-</p>
-
-<p>Tổng số, đang kích hoạt (active), không kích hoạt (inactive). Áp dụng cùng bộ lọc với index.</p>
-
-<span id="example-requests-GETapi-departments-stats">
-<blockquote>Example request:</blockquote>
-
-
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:8000/api/departments/stats?search=cong-ty&amp;status=architecto&amp;from_date=2026-02-01&amp;to_date=2026-02-17&amp;sort_by=created_at&amp;sort_order=desc&amp;limit=10" \
-    --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
-    --header "X-Department-Id: ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
-    --header "Content-Type: application/json" \
-    --header "Accept: application/json"</code></pre></div>
-
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/departments/stats"
-);
-
-const params = {
-    "search": "cong-ty",
-    "status": "architecto",
-    "from_date": "2026-02-01",
-    "to_date": "2026-02-17",
-    "sort_by": "created_at",
-    "sort_order": "desc",
-    "limit": "10",
-};
-Object.keys(params)
-    .forEach(key =&gt; url.searchParams.append(key, params[key]));
-
-const headers = {
-    "Authorization": "Bearer Bearer {YOUR_ACCESS_TOKEN}",
-    "X-Department-Id": "ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1",
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-};
-
-
-fetch(url, {
-    method: "GET",
-    headers,
-}).then(response =&gt; response.json());</code></pre></div>
-
-
-<div class="php-example">
-    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost:8000/api/departments/stats';
-$response = $client-&gt;get(
-    $url,
-    [
-        'headers' =&gt; [
-            'Authorization' =&gt; 'Bearer Bearer {YOUR_ACCESS_TOKEN}',
-            'X-Department-Id' =&gt; 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1',
-            'Content-Type' =&gt; 'application/json',
-            'Accept' =&gt; 'application/json',
-        ],
-        'query' =&gt; [
-            'search' =&gt; 'cong-ty',
-            'status' =&gt; 'architecto',
-            'from_date' =&gt; '2026-02-01',
-            'to_date' =&gt; '2026-02-17',
-            'sort_by' =&gt; 'created_at',
-            'sort_order' =&gt; 'desc',
-            'limit' =&gt; '10',
-        ],
-    ]
-);
-$body = $response-&gt;getBody();
-print_r(json_decode((string) $body));</code></pre></div>
-
-</span>
-
-<span id="example-responses-GETapi-departments-stats">
-            <blockquote>
-            <p>Example response (200):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;success&quot;: true,
-    &quot;data&quot;: {
-        &quot;total&quot;: 10,
-        &quot;active&quot;: 5,
-        &quot;inactive&quot;: 5
-    }
-}</code>
- </pre>
-    </span>
-<span id="execution-results-GETapi-departments-stats" hidden>
-    <blockquote>Received response<span
-                id="execution-response-status-GETapi-departments-stats"></span>:
-    </blockquote>
-    <pre class="json"><code id="execution-response-content-GETapi-departments-stats"
-      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
-</span>
-<span id="execution-error-GETapi-departments-stats" hidden>
-    <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-GETapi-departments-stats">
-
-Tip: Check that you&#039;re properly connected to the network.
-If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
-You can check the Dev Tools console for debugging information.</code></pre>
-</span>
-<form id="form-GETapi-departments-stats" data-method="GET"
-      data-path="api/departments/stats"
-      data-authed="1"
-      data-hasfiles="0"
-      data-isarraybody="0"
-      autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('GETapi-departments-stats', this);">
-    <h3>
-        Request&nbsp;&nbsp;&nbsp;
-                    <button type="button"
-                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-GETapi-departments-stats"
-                    onclick="tryItOut('GETapi-departments-stats');">Try it out ⚡
-            </button>
-            <button type="button"
-                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-GETapi-departments-stats"
-                    onclick="cancelTryOut('GETapi-departments-stats');" hidden>Cancel 🛑
-            </button>&nbsp;&nbsp;
-            <button type="submit"
-                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-GETapi-departments-stats"
-                    data-initial-text="Send Request 💥"
-                    data-loading-text="⏱ Sending..."
-                    hidden>Send Request 💥
-            </button>
-            </h3>
-            <p>
-            <small class="badge badge-green">GET</small>
-            <b><code>api/departments/stats</code></b>
-        </p>
-                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Authorization" class="auth-value"               data-endpoint="GETapi-departments-stats"
-               value="Bearer Bearer {YOUR_ACCESS_TOKEN}"
-               data-component="header">
-    <br>
-<p>Example: <code>Bearer Bearer {YOUR_ACCESS_TOKEN}</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>X-Department-Id</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="X-Department-Id"                data-endpoint="GETapi-departments-stats"
-               value="ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1"
-               data-component="header">
-    <br>
-<p>Example: <code>ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Content-Type"                data-endpoint="GETapi-departments-stats"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Accept"                data-endpoint="GETapi-departments-stats"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                            <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
-                                    <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>search</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="search"                data-endpoint="GETapi-departments-stats"
-               value="cong-ty"
-               data-component="query">
-    <br>
-<p>Từ khóa tìm kiếm (name, slug). Example: <code>cong-ty</code></p>
-            </div>
-                                    <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>status</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="status"                data-endpoint="GETapi-departments-stats"
-               value="architecto"
-               data-component="query">
-    <br>
-<p>Lọc theo trạng thái: active, inactive. Example: <code>architecto</code></p>
-            </div>
-                                    <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>from_date</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="from_date"                data-endpoint="GETapi-departments-stats"
-               value="2026-02-01"
-               data-component="query">
-    <br>
-<p>date Lọc từ ngày tạo (created_at) (Y-m-d). Example: <code>2026-02-01</code></p>
-            </div>
-                                    <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>to_date</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="to_date"                data-endpoint="GETapi-departments-stats"
-               value="2026-02-17"
-               data-component="query">
-    <br>
-<p>date Lọc đến ngày tạo (created_at) (Y-m-d). Example: <code>2026-02-17</code></p>
-            </div>
-                                    <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>sort_by</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="sort_by"                data-endpoint="GETapi-departments-stats"
-               value="created_at"
-               data-component="query">
-    <br>
-<p>Sắp xếp theo: id, name, slug, status, created_at, updated_at. Example: <code>created_at</code></p>
-            </div>
-                                    <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>sort_order</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="sort_order"                data-endpoint="GETapi-departments-stats"
-               value="desc"
-               data-component="query">
-    <br>
-<p>Thứ tự: asc, desc. Example: <code>desc</code></p>
-            </div>
-                                    <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>limit</code></b>&nbsp;&nbsp;
-<small>integer</small>&nbsp;
-<i>optional</i> &nbsp;
- &nbsp;
-                <input type="number" style="display: none"
-               step="any"               name="limit"                data-endpoint="GETapi-departments-stats"
-               value="10"
-               data-component="query">
-    <br>
-<p>Số bản ghi mỗi trang (1-100). Example: <code>10</code></p>
-            </div>
-                </form>
-
-                    <h2 id="core-department-GETapi-departments-tree">Cây department (toàn bộ cây, không phân trang). Cấu trúc parent_id.</h2>
-
-<p>
-<small class="badge badge-darkred">requires authentication</small>
-</p>
-
-
-
-<span id="example-requests-GETapi-departments-tree">
-<blockquote>Example request:</blockquote>
-
-
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:8000/api/departments/tree?status=architecto" \
-    --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
-    --header "X-Department-Id: ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
-    --header "Content-Type: application/json" \
-    --header "Accept: application/json"</code></pre></div>
-
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/departments/tree"
-);
-
-const params = {
-    "status": "architecto",
-};
-Object.keys(params)
-    .forEach(key =&gt; url.searchParams.append(key, params[key]));
-
-const headers = {
-    "Authorization": "Bearer Bearer {YOUR_ACCESS_TOKEN}",
-    "X-Department-Id": "ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1",
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-};
-
-
-fetch(url, {
-    method: "GET",
-    headers,
-}).then(response =&gt; response.json());</code></pre></div>
-
-
-<div class="php-example">
-    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost:8000/api/departments/tree';
-$response = $client-&gt;get(
-    $url,
-    [
-        'headers' =&gt; [
-            'Authorization' =&gt; 'Bearer Bearer {YOUR_ACCESS_TOKEN}',
-            'X-Department-Id' =&gt; 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1',
-            'Content-Type' =&gt; 'application/json',
-            'Accept' =&gt; 'application/json',
-        ],
-        'query' =&gt; [
-            'status' =&gt; 'architecto',
-        ],
-    ]
-);
-$body = $response-&gt;getBody();
-print_r(json_decode((string) $body));</code></pre></div>
-
-</span>
-
-<span id="example-responses-GETapi-departments-tree">
-            <blockquote>
-            <p>Example response (200):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;success&quot;: true,
-    &quot;data&quot;: [
-        {
-            &quot;id&quot;: 1,
-            &quot;name&quot;: &quot;C&ocirc;ng ty A&quot;,
-            &quot;slug&quot;: &quot;cong-ty-a&quot;,
-            &quot;status&quot;: &quot;active&quot;,
-            &quot;parent_id&quot;: null,
-            &quot;children&quot;: []
-        }
-    ]
-}</code>
- </pre>
-    </span>
-<span id="execution-results-GETapi-departments-tree" hidden>
-    <blockquote>Received response<span
-                id="execution-response-status-GETapi-departments-tree"></span>:
-    </blockquote>
-    <pre class="json"><code id="execution-response-content-GETapi-departments-tree"
-      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
-</span>
-<span id="execution-error-GETapi-departments-tree" hidden>
-    <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-GETapi-departments-tree">
-
-Tip: Check that you&#039;re properly connected to the network.
-If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
-You can check the Dev Tools console for debugging information.</code></pre>
-</span>
-<form id="form-GETapi-departments-tree" data-method="GET"
-      data-path="api/departments/tree"
-      data-authed="1"
-      data-hasfiles="0"
-      data-isarraybody="0"
-      autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('GETapi-departments-tree', this);">
-    <h3>
-        Request&nbsp;&nbsp;&nbsp;
-                    <button type="button"
-                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-GETapi-departments-tree"
-                    onclick="tryItOut('GETapi-departments-tree');">Try it out ⚡
-            </button>
-            <button type="button"
-                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-GETapi-departments-tree"
-                    onclick="cancelTryOut('GETapi-departments-tree');" hidden>Cancel 🛑
-            </button>&nbsp;&nbsp;
-            <button type="submit"
-                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-GETapi-departments-tree"
-                    data-initial-text="Send Request 💥"
-                    data-loading-text="⏱ Sending..."
-                    hidden>Send Request 💥
-            </button>
-            </h3>
-            <p>
-            <small class="badge badge-green">GET</small>
-            <b><code>api/departments/tree</code></b>
-        </p>
-                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Authorization" class="auth-value"               data-endpoint="GETapi-departments-tree"
-               value="Bearer Bearer {YOUR_ACCESS_TOKEN}"
-               data-component="header">
-    <br>
-<p>Example: <code>Bearer Bearer {YOUR_ACCESS_TOKEN}</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>X-Department-Id</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="X-Department-Id"                data-endpoint="GETapi-departments-tree"
-               value="ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1"
-               data-component="header">
-    <br>
-<p>Example: <code>ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Content-Type"                data-endpoint="GETapi-departments-tree"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Accept"                data-endpoint="GETapi-departments-tree"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                            <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
-                                    <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>status</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="status"                data-endpoint="GETapi-departments-tree"
-               value="architecto"
-               data-component="query">
-    <br>
-<p>Lọc theo trạng thái: active, inactive. Example: <code>architecto</code></p>
-            </div>
-                </form>
-
-                    <h2 id="core-department-GETapi-departments">Danh sách department</h2>
-
-<p>
-<small class="badge badge-darkred">requires authentication</small>
-</p>
-
-<p>Lấy danh sách có phân trang, lọc và sắp xếp.</p>
-
-<span id="example-requests-GETapi-departments">
-<blockquote>Example request:</blockquote>
-
-
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:8000/api/departments?search=cong-ty&amp;status=architecto&amp;from_date=2026-02-01&amp;to_date=2026-02-17&amp;sort_by=id&amp;sort_order=desc&amp;limit=10" \
-    --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
-    --header "X-Department-Id: ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
-    --header "Content-Type: application/json" \
-    --header "Accept: application/json"</code></pre></div>
-
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/departments"
-);
-
-const params = {
-    "search": "cong-ty",
-    "status": "architecto",
-    "from_date": "2026-02-01",
-    "to_date": "2026-02-17",
-    "sort_by": "id",
-    "sort_order": "desc",
-    "limit": "10",
-};
-Object.keys(params)
-    .forEach(key =&gt; url.searchParams.append(key, params[key]));
-
-const headers = {
-    "Authorization": "Bearer Bearer {YOUR_ACCESS_TOKEN}",
-    "X-Department-Id": "ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1",
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-};
-
-
-fetch(url, {
-    method: "GET",
-    headers,
-}).then(response =&gt; response.json());</code></pre></div>
-
-
-<div class="php-example">
-    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost:8000/api/departments';
-$response = $client-&gt;get(
-    $url,
-    [
-        'headers' =&gt; [
-            'Authorization' =&gt; 'Bearer Bearer {YOUR_ACCESS_TOKEN}',
-            'X-Department-Id' =&gt; 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1',
-            'Content-Type' =&gt; 'application/json',
-            'Accept' =&gt; 'application/json',
-        ],
-        'query' =&gt; [
-            'search' =&gt; 'cong-ty',
-            'status' =&gt; 'architecto',
-            'from_date' =&gt; '2026-02-01',
-            'to_date' =&gt; '2026-02-17',
-            'sort_by' =&gt; 'id',
-            'sort_order' =&gt; 'desc',
-            'limit' =&gt; '10',
-        ],
-    ]
-);
-$body = $response-&gt;getBody();
-print_r(json_decode((string) $body));</code></pre></div>
-
-</span>
-
-<span id="example-responses-GETapi-departments">
-            <blockquote>
-            <p>Example response (200):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;data&quot;: [
-        {
-            &quot;id&quot;: 7,
-            &quot;name&quot;: &quot;Bailey Ltd&quot;,
-            &quot;slug&quot;: &quot;velit-et-fugiat-sunt-nihil-accusantium&quot;,
-            &quot;description&quot;: &quot;Modi deserunt aut ab provident perspiciatis.&quot;,
-            &quot;status&quot;: &quot;active&quot;,
-            &quot;parent_id&quot;: null,
-            &quot;sort_order&quot;: 23,
-            &quot;depth&quot;: 0,
-            &quot;created_by&quot;: &quot;N/A&quot;,
-            &quot;updated_by&quot;: &quot;N/A&quot;,
-            &quot;created_at&quot;: &quot;07:38:33 26/03/2026&quot;,
-            &quot;updated_at&quot;: &quot;07:38:33 26/03/2026&quot;
-        },
-        {
-            &quot;id&quot;: 8,
-            &quot;name&quot;: &quot;Marquardt Inc&quot;,
-            &quot;slug&quot;: &quot;nostrum-qui-commodi-incidunt-iure&quot;,
-            &quot;description&quot;: null,
-            &quot;status&quot;: &quot;active&quot;,
-            &quot;parent_id&quot;: null,
-            &quot;sort_order&quot;: 20,
-            &quot;depth&quot;: 0,
-            &quot;created_by&quot;: &quot;N/A&quot;,
-            &quot;updated_by&quot;: &quot;N/A&quot;,
-            &quot;created_at&quot;: &quot;07:38:33 26/03/2026&quot;,
-            &quot;updated_at&quot;: &quot;07:38:33 26/03/2026&quot;
-        }
-    ],
-    &quot;links&quot;: {
-        &quot;first&quot;: &quot;/?page=1&quot;,
-        &quot;last&quot;: &quot;/?page=1&quot;,
-        &quot;prev&quot;: null,
-        &quot;next&quot;: null
-    },
-    &quot;meta&quot;: {
-        &quot;current_page&quot;: 1,
-        &quot;from&quot;: 1,
-        &quot;last_page&quot;: 1,
-        &quot;links&quot;: [
-            {
-                &quot;url&quot;: null,
-                &quot;label&quot;: &quot;&amp;laquo; Previous&quot;,
-                &quot;page&quot;: null,
-                &quot;active&quot;: false
-            },
-            {
-                &quot;url&quot;: &quot;/?page=1&quot;,
-                &quot;label&quot;: &quot;1&quot;,
-                &quot;page&quot;: 1,
-                &quot;active&quot;: true
-            },
-            {
-                &quot;url&quot;: null,
-                &quot;label&quot;: &quot;Next &amp;raquo;&quot;,
-                &quot;page&quot;: null,
-                &quot;active&quot;: false
-            }
-        ],
-        &quot;path&quot;: &quot;/&quot;,
-        &quot;per_page&quot;: 10,
-        &quot;to&quot;: 2,
-        &quot;total&quot;: 2
-    },
-    &quot;success&quot;: &quot;true&quot;
-}</code>
- </pre>
-    </span>
-<span id="execution-results-GETapi-departments" hidden>
-    <blockquote>Received response<span
-                id="execution-response-status-GETapi-departments"></span>:
-    </blockquote>
-    <pre class="json"><code id="execution-response-content-GETapi-departments"
-      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
-</span>
-<span id="execution-error-GETapi-departments" hidden>
-    <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-GETapi-departments">
-
-Tip: Check that you&#039;re properly connected to the network.
-If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
-You can check the Dev Tools console for debugging information.</code></pre>
-</span>
-<form id="form-GETapi-departments" data-method="GET"
-      data-path="api/departments"
-      data-authed="1"
-      data-hasfiles="0"
-      data-isarraybody="0"
-      autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('GETapi-departments', this);">
-    <h3>
-        Request&nbsp;&nbsp;&nbsp;
-                    <button type="button"
-                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-GETapi-departments"
-                    onclick="tryItOut('GETapi-departments');">Try it out ⚡
-            </button>
-            <button type="button"
-                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-GETapi-departments"
-                    onclick="cancelTryOut('GETapi-departments');" hidden>Cancel 🛑
-            </button>&nbsp;&nbsp;
-            <button type="submit"
-                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-GETapi-departments"
-                    data-initial-text="Send Request 💥"
-                    data-loading-text="⏱ Sending..."
-                    hidden>Send Request 💥
-            </button>
-            </h3>
-            <p>
-            <small class="badge badge-green">GET</small>
-            <b><code>api/departments</code></b>
-        </p>
-                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Authorization" class="auth-value"               data-endpoint="GETapi-departments"
-               value="Bearer Bearer {YOUR_ACCESS_TOKEN}"
-               data-component="header">
-    <br>
-<p>Example: <code>Bearer Bearer {YOUR_ACCESS_TOKEN}</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>X-Department-Id</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="X-Department-Id"                data-endpoint="GETapi-departments"
-               value="ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1"
-               data-component="header">
-    <br>
-<p>Example: <code>ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Content-Type"                data-endpoint="GETapi-departments"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Accept"                data-endpoint="GETapi-departments"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                            <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
-                                    <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>search</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="search"                data-endpoint="GETapi-departments"
-               value="cong-ty"
-               data-component="query">
-    <br>
-<p>Từ khóa tìm kiếm (name, slug). Example: <code>cong-ty</code></p>
-            </div>
-                                    <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>status</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="status"                data-endpoint="GETapi-departments"
-               value="architecto"
-               data-component="query">
-    <br>
-<p>Lọc theo trạng thái: active, inactive. Example: <code>architecto</code></p>
-            </div>
-                                    <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>from_date</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="from_date"                data-endpoint="GETapi-departments"
-               value="2026-02-01"
-               data-component="query">
-    <br>
-<p>date Lọc từ ngày tạo (created_at) (Y-m-d). Example: <code>2026-02-01</code></p>
-            </div>
-                                    <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>to_date</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="to_date"                data-endpoint="GETapi-departments"
-               value="2026-02-17"
-               data-component="query">
-    <br>
-<p>date Lọc đến ngày tạo (created_at) (Y-m-d). Example: <code>2026-02-17</code></p>
-            </div>
-                                    <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>sort_by</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="sort_by"                data-endpoint="GETapi-departments"
-               value="id"
-               data-component="query">
-    <br>
-<p>Sắp xếp theo: id, name, slug, status, created_at, updated_at. Example: <code>id</code></p>
-            </div>
-                                    <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>sort_order</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="sort_order"                data-endpoint="GETapi-departments"
-               value="desc"
-               data-component="query">
-    <br>
-<p>Thứ tự: asc, desc. Example: <code>desc</code></p>
-            </div>
-                                    <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>limit</code></b>&nbsp;&nbsp;
-<small>integer</small>&nbsp;
-<i>optional</i> &nbsp;
- &nbsp;
-                <input type="number" style="display: none"
-               step="any"               name="limit"                data-endpoint="GETapi-departments"
-               value="10"
-               data-component="query">
-    <br>
-<p>Số bản ghi mỗi trang (1-100). Example: <code>10</code></p>
-            </div>
-                </form>
-
-                    <h2 id="core-department-GETapi-departments--department_id-">Chi tiết department</h2>
-
-<p>
-<small class="badge badge-darkred">requires authentication</small>
-</p>
-
-
-
-<span id="example-requests-GETapi-departments--department_id-">
-<blockquote>Example request:</blockquote>
-
-
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:8000/api/departments/1" \
-    --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
-    --header "X-Department-Id: ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
-    --header "Content-Type: application/json" \
-    --header "Accept: application/json"</code></pre></div>
-
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/departments/1"
-);
-
-const headers = {
-    "Authorization": "Bearer Bearer {YOUR_ACCESS_TOKEN}",
-    "X-Department-Id": "ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1",
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-};
-
-
-fetch(url, {
-    method: "GET",
-    headers,
-}).then(response =&gt; response.json());</code></pre></div>
-
-
-<div class="php-example">
-    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost:8000/api/departments/1';
-$response = $client-&gt;get(
-    $url,
-    [
-        'headers' =&gt; [
-            'Authorization' =&gt; 'Bearer Bearer {YOUR_ACCESS_TOKEN}',
-            'X-Department-Id' =&gt; 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1',
-            'Content-Type' =&gt; 'application/json',
-            'Accept' =&gt; 'application/json',
-        ],
-    ]
-);
-$body = $response-&gt;getBody();
-print_r(json_decode((string) $body));</code></pre></div>
-
-</span>
-
-<span id="example-responses-GETapi-departments--department_id-">
-            <blockquote>
-            <p>Example response (200):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;data&quot;: {
-        &quot;id&quot;: 10,
-        &quot;name&quot;: &quot;Price Ltd&quot;,
-        &quot;slug&quot;: &quot;qui-commodi-incidunt-iure-odit&quot;,
-        &quot;description&quot;: &quot;Modi ipsum nostrum omnis autem et.&quot;,
-        &quot;status&quot;: &quot;inactive&quot;,
-        &quot;parent_id&quot;: 9,
-        &quot;sort_order&quot;: 84,
-        &quot;depth&quot;: 1,
-        &quot;created_by&quot;: &quot;N/A&quot;,
-        &quot;updated_by&quot;: &quot;N/A&quot;,
-        &quot;created_at&quot;: &quot;07:38:33 26/03/2026&quot;,
-        &quot;updated_at&quot;: &quot;07:38:33 26/03/2026&quot;,
-        &quot;parent&quot;: {
-            &quot;id&quot;: 9,
-            &quot;name&quot;: &quot;Stokes and Sons&quot;,
-            &quot;slug&quot;: &quot;tempora-ex-voluptatem-laboriosam-praesentium-quis&quot;,
-            &quot;description&quot;: &quot;Fugit deleniti distinctio eum doloremque id aut libero.&quot;,
-            &quot;status&quot;: &quot;inactive&quot;,
-            &quot;parent_id&quot;: null,
-            &quot;sort_order&quot;: 49,
-            &quot;depth&quot;: 0,
-            &quot;created_by&quot;: &quot;N/A&quot;,
-            &quot;updated_by&quot;: &quot;N/A&quot;,
-            &quot;created_at&quot;: &quot;07:38:33 26/03/2026&quot;,
-            &quot;updated_at&quot;: &quot;07:38:33 26/03/2026&quot;
-        },
-        &quot;children&quot;: [
-            {
-                &quot;id&quot;: 11,
-                &quot;name&quot;: &quot;Kutch and Sons&quot;,
-                &quot;slug&quot;: &quot;nemo-odit-quia-officia-est-dignissimos&quot;,
-                &quot;description&quot;: null,
-                &quot;status&quot;: &quot;inactive&quot;,
-                &quot;parent_id&quot;: 10,
-                &quot;sort_order&quot;: 6,
-                &quot;depth&quot;: 2,
-                &quot;created_by&quot;: &quot;N/A&quot;,
-                &quot;updated_by&quot;: &quot;N/A&quot;,
-                &quot;created_at&quot;: &quot;07:38:33 26/03/2026&quot;,
-                &quot;updated_at&quot;: &quot;07:38:33 26/03/2026&quot;
-            }
-        ]
-    },
-    &quot;success&quot;: &quot;true&quot;
-}</code>
- </pre>
-    </span>
-<span id="execution-results-GETapi-departments--department_id-" hidden>
-    <blockquote>Received response<span
-                id="execution-response-status-GETapi-departments--department_id-"></span>:
-    </blockquote>
-    <pre class="json"><code id="execution-response-content-GETapi-departments--department_id-"
-      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
-</span>
-<span id="execution-error-GETapi-departments--department_id-" hidden>
-    <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-GETapi-departments--department_id-">
-
-Tip: Check that you&#039;re properly connected to the network.
-If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
-You can check the Dev Tools console for debugging information.</code></pre>
-</span>
-<form id="form-GETapi-departments--department_id-" data-method="GET"
-      data-path="api/departments/{department_id}"
-      data-authed="1"
-      data-hasfiles="0"
-      data-isarraybody="0"
-      autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('GETapi-departments--department_id-', this);">
-    <h3>
-        Request&nbsp;&nbsp;&nbsp;
-                    <button type="button"
-                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-GETapi-departments--department_id-"
-                    onclick="tryItOut('GETapi-departments--department_id-');">Try it out ⚡
-            </button>
-            <button type="button"
-                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-GETapi-departments--department_id-"
-                    onclick="cancelTryOut('GETapi-departments--department_id-');" hidden>Cancel 🛑
-            </button>&nbsp;&nbsp;
-            <button type="submit"
-                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-GETapi-departments--department_id-"
-                    data-initial-text="Send Request 💥"
-                    data-loading-text="⏱ Sending..."
-                    hidden>Send Request 💥
-            </button>
-            </h3>
-            <p>
-            <small class="badge badge-green">GET</small>
-            <b><code>api/departments/{department_id}</code></b>
-        </p>
-                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Authorization" class="auth-value"               data-endpoint="GETapi-departments--department_id-"
-               value="Bearer Bearer {YOUR_ACCESS_TOKEN}"
-               data-component="header">
-    <br>
-<p>Example: <code>Bearer Bearer {YOUR_ACCESS_TOKEN}</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>X-Department-Id</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="X-Department-Id"                data-endpoint="GETapi-departments--department_id-"
-               value="ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1"
-               data-component="header">
-    <br>
-<p>Example: <code>ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Content-Type"                data-endpoint="GETapi-departments--department_id-"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Accept"                data-endpoint="GETapi-departments--department_id-"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
-                    <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>department_id</code></b>&nbsp;&nbsp;
-<small>integer</small>&nbsp;
- &nbsp;
- &nbsp;
-                <input type="number" style="display: none"
-               step="any"               name="department_id"                data-endpoint="GETapi-departments--department_id-"
-               value="1"
-               data-component="url">
-    <br>
-<p>The ID of the department. Example: <code>1</code></p>
-            </div>
-                    <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>department</code></b>&nbsp;&nbsp;
-<small>integer</small>&nbsp;
- &nbsp;
- &nbsp;
-                <input type="number" style="display: none"
-               step="any"               name="department"                data-endpoint="GETapi-departments--department_id-"
-               value="1"
-               data-component="url">
-    <br>
-<p>ID department. Example: <code>1</code></p>
-            </div>
-                    </form>
-
-                    <h2 id="core-department-POSTapi-departments">Tạo department mới</h2>
-
-<p>
-<small class="badge badge-darkred">requires authentication</small>
-</p>
-
-
-
-<span id="example-requests-POSTapi-departments">
-<blockquote>Example request:</blockquote>
-
-
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request POST \
-    "http://localhost:8000/api/departments" \
-    --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
-    --header "X-Department-Id: ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
-    --header "Content-Type: application/json" \
-    --header "Accept: application/json" \
-    --data "{
-    \"name\": \"Công ty A\",
-    \"slug\": \"cong-ty-a\",
-    \"description\": \"Tổ chức quản trị\",
-    \"status\": \"active\",
-    \"parent_id\": null,
-    \"sort_order\": 0
-}"
-</code></pre></div>
-
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/departments"
-);
-
-const headers = {
-    "Authorization": "Bearer Bearer {YOUR_ACCESS_TOKEN}",
-    "X-Department-Id": "ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1",
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-};
-
-let body = {
-    "name": "Công ty A",
-    "slug": "cong-ty-a",
-    "description": "Tổ chức quản trị",
-    "status": "active",
-    "parent_id": null,
-    "sort_order": 0
-};
-
-fetch(url, {
-    method: "POST",
-    headers,
-    body: JSON.stringify(body),
-}).then(response =&gt; response.json());</code></pre></div>
-
-
-<div class="php-example">
-    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost:8000/api/departments';
-$response = $client-&gt;post(
-    $url,
-    [
-        'headers' =&gt; [
-            'Authorization' =&gt; 'Bearer Bearer {YOUR_ACCESS_TOKEN}',
-            'X-Department-Id' =&gt; 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1',
-            'Content-Type' =&gt; 'application/json',
-            'Accept' =&gt; 'application/json',
-        ],
-        'json' =&gt; [
-            'name' =&gt; 'Công ty A',
-            'slug' =&gt; 'cong-ty-a',
-            'description' =&gt; 'Tổ chức quản trị',
-            'status' =&gt; 'active',
-            'parent_id' =&gt; null,
-            'sort_order' =&gt; 0,
-        ],
-    ]
-);
-$body = $response-&gt;getBody();
-print_r(json_decode((string) $body));</code></pre></div>
-
-</span>
-
-<span id="example-responses-POSTapi-departments">
-            <blockquote>
-            <p>Example response (201):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;data&quot;: {
-        &quot;id&quot;: 12,
-        &quot;name&quot;: &quot;Dach-Gaylord&quot;,
-        &quot;slug&quot;: &quot;mollitia-modi-deserunt-aut-ab-provident-perspiciatis-quo&quot;,
-        &quot;description&quot;: null,
-        &quot;status&quot;: &quot;active&quot;,
-        &quot;parent_id&quot;: null,
-        &quot;sort_order&quot;: 49,
-        &quot;depth&quot;: 0,
-        &quot;created_by&quot;: &quot;N/A&quot;,
-        &quot;updated_by&quot;: &quot;N/A&quot;,
-        &quot;created_at&quot;: &quot;07:38:33 26/03/2026&quot;,
-        &quot;updated_at&quot;: &quot;07:38:33 26/03/2026&quot;
-    },
-    &quot;success&quot;: &quot;true&quot;,
-    &quot;message&quot;: &quot;Department đ&atilde; được tạo th&agrave;nh c&ocirc;ng!&quot;
-}</code>
- </pre>
-    </span>
-<span id="execution-results-POSTapi-departments" hidden>
-    <blockquote>Received response<span
-                id="execution-response-status-POSTapi-departments"></span>:
-    </blockquote>
-    <pre class="json"><code id="execution-response-content-POSTapi-departments"
-      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
-</span>
-<span id="execution-error-POSTapi-departments" hidden>
-    <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-POSTapi-departments">
-
-Tip: Check that you&#039;re properly connected to the network.
-If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
-You can check the Dev Tools console for debugging information.</code></pre>
-</span>
-<form id="form-POSTapi-departments" data-method="POST"
-      data-path="api/departments"
-      data-authed="1"
-      data-hasfiles="0"
-      data-isarraybody="0"
-      autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('POSTapi-departments', this);">
-    <h3>
-        Request&nbsp;&nbsp;&nbsp;
-                    <button type="button"
-                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-POSTapi-departments"
-                    onclick="tryItOut('POSTapi-departments');">Try it out ⚡
-            </button>
-            <button type="button"
-                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-POSTapi-departments"
-                    onclick="cancelTryOut('POSTapi-departments');" hidden>Cancel 🛑
-            </button>&nbsp;&nbsp;
-            <button type="submit"
-                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-POSTapi-departments"
-                    data-initial-text="Send Request 💥"
-                    data-loading-text="⏱ Sending..."
-                    hidden>Send Request 💥
-            </button>
-            </h3>
-            <p>
-            <small class="badge badge-black">POST</small>
-            <b><code>api/departments</code></b>
-        </p>
-                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Authorization" class="auth-value"               data-endpoint="POSTapi-departments"
-               value="Bearer Bearer {YOUR_ACCESS_TOKEN}"
-               data-component="header">
-    <br>
-<p>Example: <code>Bearer Bearer {YOUR_ACCESS_TOKEN}</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>X-Department-Id</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="X-Department-Id"                data-endpoint="POSTapi-departments"
-               value="ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1"
-               data-component="header">
-    <br>
-<p>Example: <code>ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Content-Type"                data-endpoint="POSTapi-departments"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Accept"                data-endpoint="POSTapi-departments"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                                <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
-        <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>name</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
- &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="name"                data-endpoint="POSTapi-departments"
-               value="Công ty A"
-               data-component="body">
-    <br>
-<p>Tên department. Example: <code>Công ty A</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>slug</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="slug"                data-endpoint="POSTapi-departments"
-               value="cong-ty-a"
-               data-component="body">
-    <br>
-<p>Slug (nếu không gửi sẽ tự sinh từ name). Example: <code>cong-ty-a</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>description</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="description"                data-endpoint="POSTapi-departments"
-               value="Tổ chức quản trị"
-               data-component="body">
-    <br>
-<p>Mô tả. Example: <code>Tổ chức quản trị</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>status</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
- &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="status"                data-endpoint="POSTapi-departments"
-               value="active"
-               data-component="body">
-    <br>
-<p>Trạng thái: active, inactive. Example: <code>active</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>parent_id</code></b>&nbsp;&nbsp;
-<small>integer</small>&nbsp;
-<i>optional</i> &nbsp;
- &nbsp;
-                <input type="number" style="display: none"
-               step="any"               name="parent_id"                data-endpoint="POSTapi-departments"
-               value=""
-               data-component="body">
-    <br>
-<p>ID department cha (null = gốc).</p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>sort_order</code></b>&nbsp;&nbsp;
-<small>integer</small>&nbsp;
-<i>optional</i> &nbsp;
- &nbsp;
-                <input type="number" style="display: none"
-               step="any"               name="sort_order"                data-endpoint="POSTapi-departments"
-               value="0"
-               data-component="body">
-    <br>
-<p>Thứ tự. Example: <code>0</code></p>
-        </div>
-        </form>
-
-                    <h2 id="core-department-PUTapi-departments--department_id-">Cập nhật department</h2>
-
-<p>
-<small class="badge badge-darkred">requires authentication</small>
-</p>
-
-
-
-<span id="example-requests-PUTapi-departments--department_id-">
-<blockquote>Example request:</blockquote>
-
-
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request PUT \
-    "http://localhost:8000/api/departments/1" \
-    --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
-    --header "X-Department-Id: ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
-    --header "Content-Type: application/json" \
-    --header "Accept: application/json" \
-    --data "{
-    \"name\": \"Công ty A\",
-    \"slug\": \"cong-ty-a\",
-    \"description\": \"Tổ chức quản trị\",
-    \"status\": \"inactive\",
-    \"parent_id\": null,
-    \"sort_order\": 0
-}"
-</code></pre></div>
-
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/departments/1"
-);
-
-const headers = {
-    "Authorization": "Bearer Bearer {YOUR_ACCESS_TOKEN}",
-    "X-Department-Id": "ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1",
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-};
-
-let body = {
-    "name": "Công ty A",
-    "slug": "cong-ty-a",
-    "description": "Tổ chức quản trị",
-    "status": "inactive",
-    "parent_id": null,
-    "sort_order": 0
-};
-
-fetch(url, {
-    method: "PUT",
-    headers,
-    body: JSON.stringify(body),
-}).then(response =&gt; response.json());</code></pre></div>
-
-
-<div class="php-example">
-    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost:8000/api/departments/1';
-$response = $client-&gt;put(
-    $url,
-    [
-        'headers' =&gt; [
-            'Authorization' =&gt; 'Bearer Bearer {YOUR_ACCESS_TOKEN}',
-            'X-Department-Id' =&gt; 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1',
-            'Content-Type' =&gt; 'application/json',
-            'Accept' =&gt; 'application/json',
-        ],
-        'json' =&gt; [
-            'name' =&gt; 'Công ty A',
-            'slug' =&gt; 'cong-ty-a',
-            'description' =&gt; 'Tổ chức quản trị',
-            'status' =&gt; 'inactive',
-            'parent_id' =&gt; null,
-            'sort_order' =&gt; 0,
-        ],
-    ]
-);
-$body = $response-&gt;getBody();
-print_r(json_decode((string) $body));</code></pre></div>
-
-</span>
-
-<span id="example-responses-PUTapi-departments--department_id-">
-            <blockquote>
-            <p>Example response (200):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;data&quot;: {
-        &quot;id&quot;: 14,
-        &quot;name&quot;: &quot;Tillman-Runte&quot;,
-        &quot;slug&quot;: &quot;aut-ab-provident-perspiciatis-quo-omnis-nostrum-aut&quot;,
-        &quot;description&quot;: &quot;Nostrum qui commodi incidunt iure.&quot;,
-        &quot;status&quot;: &quot;inactive&quot;,
-        &quot;parent_id&quot;: 13,
-        &quot;sort_order&quot;: 45,
-        &quot;depth&quot;: 1,
-        &quot;created_by&quot;: &quot;N/A&quot;,
-        &quot;updated_by&quot;: &quot;N/A&quot;,
-        &quot;created_at&quot;: &quot;07:38:33 26/03/2026&quot;,
-        &quot;updated_at&quot;: &quot;07:38:33 26/03/2026&quot;,
-        &quot;parent&quot;: {
-            &quot;id&quot;: 13,
-            &quot;name&quot;: &quot;Bauch, Fritsch and O&#039;Keefe&quot;,
-            &quot;slug&quot;: &quot;autem-et-consequatur-aut-dolores-enim-non-facere-tempora&quot;,
-            &quot;description&quot;: &quot;Laboriosam praesentium quis adipisci molestias fugit deleniti distinctio.&quot;,
-            &quot;status&quot;: &quot;active&quot;,
-            &quot;parent_id&quot;: null,
-            &quot;sort_order&quot;: 35,
-            &quot;depth&quot;: 0,
-            &quot;created_by&quot;: &quot;N/A&quot;,
-            &quot;updated_by&quot;: &quot;N/A&quot;,
-            &quot;created_at&quot;: &quot;07:38:33 26/03/2026&quot;,
-            &quot;updated_at&quot;: &quot;07:38:33 26/03/2026&quot;
-        },
-        &quot;children&quot;: [
-            {
-                &quot;id&quot;: 15,
-                &quot;name&quot;: &quot;Ankunding PLC&quot;,
-                &quot;slug&quot;: &quot;veniam-corporis-dolorem-mollitia&quot;,
-                &quot;description&quot;: &quot;Odit quia officia est dignissimos neque blanditiis odio.&quot;,
-                &quot;status&quot;: &quot;inactive&quot;,
-                &quot;parent_id&quot;: 14,
-                &quot;sort_order&quot;: 16,
-                &quot;depth&quot;: 2,
-                &quot;created_by&quot;: &quot;N/A&quot;,
-                &quot;updated_by&quot;: &quot;N/A&quot;,
-                &quot;created_at&quot;: &quot;07:38:33 26/03/2026&quot;,
-                &quot;updated_at&quot;: &quot;07:38:33 26/03/2026&quot;
-            }
-        ]
-    },
-    &quot;success&quot;: &quot;true&quot;,
-    &quot;message&quot;: &quot;Department đ&atilde; được cập nhật!&quot;
-}</code>
- </pre>
-    </span>
-<span id="execution-results-PUTapi-departments--department_id-" hidden>
-    <blockquote>Received response<span
-                id="execution-response-status-PUTapi-departments--department_id-"></span>:
-    </blockquote>
-    <pre class="json"><code id="execution-response-content-PUTapi-departments--department_id-"
-      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
-</span>
-<span id="execution-error-PUTapi-departments--department_id-" hidden>
-    <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-PUTapi-departments--department_id-">
-
-Tip: Check that you&#039;re properly connected to the network.
-If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
-You can check the Dev Tools console for debugging information.</code></pre>
-</span>
-<form id="form-PUTapi-departments--department_id-" data-method="PUT"
-      data-path="api/departments/{department_id}"
-      data-authed="1"
-      data-hasfiles="0"
-      data-isarraybody="0"
-      autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('PUTapi-departments--department_id-', this);">
-    <h3>
-        Request&nbsp;&nbsp;&nbsp;
-                    <button type="button"
-                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-PUTapi-departments--department_id-"
-                    onclick="tryItOut('PUTapi-departments--department_id-');">Try it out ⚡
-            </button>
-            <button type="button"
-                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-PUTapi-departments--department_id-"
-                    onclick="cancelTryOut('PUTapi-departments--department_id-');" hidden>Cancel 🛑
-            </button>&nbsp;&nbsp;
-            <button type="submit"
-                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-PUTapi-departments--department_id-"
-                    data-initial-text="Send Request 💥"
-                    data-loading-text="⏱ Sending..."
-                    hidden>Send Request 💥
-            </button>
-            </h3>
-            <p>
-            <small class="badge badge-darkblue">PUT</small>
-            <b><code>api/departments/{department_id}</code></b>
-        </p>
-                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Authorization" class="auth-value"               data-endpoint="PUTapi-departments--department_id-"
-               value="Bearer Bearer {YOUR_ACCESS_TOKEN}"
-               data-component="header">
-    <br>
-<p>Example: <code>Bearer Bearer {YOUR_ACCESS_TOKEN}</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>X-Department-Id</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="X-Department-Id"                data-endpoint="PUTapi-departments--department_id-"
-               value="ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1"
-               data-component="header">
-    <br>
-<p>Example: <code>ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Content-Type"                data-endpoint="PUTapi-departments--department_id-"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Accept"                data-endpoint="PUTapi-departments--department_id-"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
-                    <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>department_id</code></b>&nbsp;&nbsp;
-<small>integer</small>&nbsp;
- &nbsp;
- &nbsp;
-                <input type="number" style="display: none"
-               step="any"               name="department_id"                data-endpoint="PUTapi-departments--department_id-"
-               value="1"
-               data-component="url">
-    <br>
-<p>The ID of the department. Example: <code>1</code></p>
-            </div>
-                    <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>department</code></b>&nbsp;&nbsp;
-<small>integer</small>&nbsp;
- &nbsp;
- &nbsp;
-                <input type="number" style="display: none"
-               step="any"               name="department"                data-endpoint="PUTapi-departments--department_id-"
-               value="1"
-               data-component="url">
-    <br>
-<p>ID department. Example: <code>1</code></p>
-            </div>
-                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
-        <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>name</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="name"                data-endpoint="PUTapi-departments--department_id-"
-               value="Công ty A"
-               data-component="body">
-    <br>
-<p>Tên department. Example: <code>Công ty A</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>slug</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="slug"                data-endpoint="PUTapi-departments--department_id-"
-               value="cong-ty-a"
-               data-component="body">
-    <br>
-<p>Slug. Example: <code>cong-ty-a</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>description</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="description"                data-endpoint="PUTapi-departments--department_id-"
-               value="Tổ chức quản trị"
-               data-component="body">
-    <br>
-<p>Mô tả. Example: <code>Tổ chức quản trị</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>status</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="status"                data-endpoint="PUTapi-departments--department_id-"
-               value="inactive"
-               data-component="body">
-    <br>
-<p>Trạng thái: active, inactive. Example: <code>inactive</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>parent_id</code></b>&nbsp;&nbsp;
-<small>integer</small>&nbsp;
-<i>optional</i> &nbsp;
- &nbsp;
-                <input type="number" style="display: none"
-               step="any"               name="parent_id"                data-endpoint="PUTapi-departments--department_id-"
-               value=""
-               data-component="body">
-    <br>
-<p>ID department cha (null = gốc).</p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>sort_order</code></b>&nbsp;&nbsp;
-<small>integer</small>&nbsp;
-<i>optional</i> &nbsp;
- &nbsp;
-                <input type="number" style="display: none"
-               step="any"               name="sort_order"                data-endpoint="PUTapi-departments--department_id-"
-               value="0"
-               data-component="body">
-    <br>
-<p>Thứ tự. Example: <code>0</code></p>
-        </div>
-        </form>
-
-                    <h2 id="core-department-PATCHapi-departments--department_id-">Cập nhật department</h2>
-
-<p>
-<small class="badge badge-darkred">requires authentication</small>
-</p>
-
-
-
-<span id="example-requests-PATCHapi-departments--department_id-">
-<blockquote>Example request:</blockquote>
-
-
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request PATCH \
-    "http://localhost:8000/api/departments/1" \
-    --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
-    --header "X-Department-Id: ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
-    --header "Content-Type: application/json" \
-    --header "Accept: application/json" \
-    --data "{
-    \"name\": \"Công ty A\",
-    \"slug\": \"cong-ty-a\",
-    \"description\": \"Tổ chức quản trị\",
-    \"status\": \"inactive\",
-    \"parent_id\": null,
-    \"sort_order\": 0
-}"
-</code></pre></div>
-
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/departments/1"
-);
-
-const headers = {
-    "Authorization": "Bearer Bearer {YOUR_ACCESS_TOKEN}",
-    "X-Department-Id": "ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1",
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-};
-
-let body = {
-    "name": "Công ty A",
-    "slug": "cong-ty-a",
-    "description": "Tổ chức quản trị",
-    "status": "inactive",
-    "parent_id": null,
-    "sort_order": 0
-};
-
-fetch(url, {
-    method: "PATCH",
-    headers,
-    body: JSON.stringify(body),
-}).then(response =&gt; response.json());</code></pre></div>
-
-
-<div class="php-example">
-    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost:8000/api/departments/1';
-$response = $client-&gt;patch(
-    $url,
-    [
-        'headers' =&gt; [
-            'Authorization' =&gt; 'Bearer Bearer {YOUR_ACCESS_TOKEN}',
-            'X-Department-Id' =&gt; 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1',
-            'Content-Type' =&gt; 'application/json',
-            'Accept' =&gt; 'application/json',
-        ],
-        'json' =&gt; [
-            'name' =&gt; 'Công ty A',
-            'slug' =&gt; 'cong-ty-a',
-            'description' =&gt; 'Tổ chức quản trị',
-            'status' =&gt; 'inactive',
-            'parent_id' =&gt; null,
-            'sort_order' =&gt; 0,
-        ],
-    ]
-);
-$body = $response-&gt;getBody();
-print_r(json_decode((string) $body));</code></pre></div>
-
-</span>
-
-<span id="example-responses-PATCHapi-departments--department_id-">
-            <blockquote>
-            <p>Example response (200):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;data&quot;: {
-        &quot;id&quot;: 17,
-        &quot;name&quot;: &quot;Schuster Inc&quot;,
-        &quot;slug&quot;: &quot;perspiciatis-quo-omnis-nostrum-aut-adipisci-quidem-nostrum-qui&quot;,
-        &quot;description&quot;: &quot;Iure odit et et modi ipsum nostrum omnis.&quot;,
-        &quot;status&quot;: &quot;active&quot;,
-        &quot;parent_id&quot;: 16,
-        &quot;sort_order&quot;: 54,
-        &quot;depth&quot;: 1,
-        &quot;created_by&quot;: &quot;N/A&quot;,
-        &quot;updated_by&quot;: &quot;N/A&quot;,
-        &quot;created_at&quot;: &quot;07:38:33 26/03/2026&quot;,
-        &quot;updated_at&quot;: &quot;07:38:33 26/03/2026&quot;,
-        &quot;parent&quot;: {
-            &quot;id&quot;: 16,
-            &quot;name&quot;: &quot;Tromp-Leffler&quot;,
-            &quot;slug&quot;: &quot;non-facere-tempora-ex-voluptatem-laboriosam-praesentium&quot;,
-            &quot;description&quot;: &quot;Molestias fugit deleniti distinctio eum doloremque id.&quot;,
-            &quot;status&quot;: &quot;active&quot;,
-            &quot;parent_id&quot;: null,
-            &quot;sort_order&quot;: 61,
-            &quot;depth&quot;: 0,
-            &quot;created_by&quot;: &quot;N/A&quot;,
-            &quot;updated_by&quot;: &quot;N/A&quot;,
-            &quot;created_at&quot;: &quot;07:38:33 26/03/2026&quot;,
-            &quot;updated_at&quot;: &quot;07:38:33 26/03/2026&quot;
-        },
-        &quot;children&quot;: [
-            {
-                &quot;id&quot;: 18,
-                &quot;name&quot;: &quot;Batz Inc&quot;,
-                &quot;slug&quot;: &quot;mollitia-deleniti-nemo-odit-quia-officia&quot;,
-                &quot;description&quot;: &quot;Neque blanditiis odio veritatis excepturi doloribus delectus.&quot;,
-                &quot;status&quot;: &quot;inactive&quot;,
-                &quot;parent_id&quot;: 17,
-                &quot;sort_order&quot;: 22,
-                &quot;depth&quot;: 2,
-                &quot;created_by&quot;: &quot;N/A&quot;,
-                &quot;updated_by&quot;: &quot;N/A&quot;,
-                &quot;created_at&quot;: &quot;07:38:33 26/03/2026&quot;,
-                &quot;updated_at&quot;: &quot;07:38:33 26/03/2026&quot;
-            }
-        ]
-    },
-    &quot;success&quot;: &quot;true&quot;,
-    &quot;message&quot;: &quot;Department đ&atilde; được cập nhật!&quot;
-}</code>
- </pre>
-    </span>
-<span id="execution-results-PATCHapi-departments--department_id-" hidden>
-    <blockquote>Received response<span
-                id="execution-response-status-PATCHapi-departments--department_id-"></span>:
-    </blockquote>
-    <pre class="json"><code id="execution-response-content-PATCHapi-departments--department_id-"
-      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
-</span>
-<span id="execution-error-PATCHapi-departments--department_id-" hidden>
-    <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-PATCHapi-departments--department_id-">
-
-Tip: Check that you&#039;re properly connected to the network.
-If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
-You can check the Dev Tools console for debugging information.</code></pre>
-</span>
-<form id="form-PATCHapi-departments--department_id-" data-method="PATCH"
-      data-path="api/departments/{department_id}"
-      data-authed="1"
-      data-hasfiles="0"
-      data-isarraybody="0"
-      autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('PATCHapi-departments--department_id-', this);">
-    <h3>
-        Request&nbsp;&nbsp;&nbsp;
-                    <button type="button"
-                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-PATCHapi-departments--department_id-"
-                    onclick="tryItOut('PATCHapi-departments--department_id-');">Try it out ⚡
-            </button>
-            <button type="button"
-                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-PATCHapi-departments--department_id-"
-                    onclick="cancelTryOut('PATCHapi-departments--department_id-');" hidden>Cancel 🛑
-            </button>&nbsp;&nbsp;
-            <button type="submit"
-                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-PATCHapi-departments--department_id-"
-                    data-initial-text="Send Request 💥"
-                    data-loading-text="⏱ Sending..."
-                    hidden>Send Request 💥
-            </button>
-            </h3>
-            <p>
-            <small class="badge badge-purple">PATCH</small>
-            <b><code>api/departments/{department_id}</code></b>
-        </p>
-                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Authorization" class="auth-value"               data-endpoint="PATCHapi-departments--department_id-"
-               value="Bearer Bearer {YOUR_ACCESS_TOKEN}"
-               data-component="header">
-    <br>
-<p>Example: <code>Bearer Bearer {YOUR_ACCESS_TOKEN}</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>X-Department-Id</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="X-Department-Id"                data-endpoint="PATCHapi-departments--department_id-"
-               value="ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1"
-               data-component="header">
-    <br>
-<p>Example: <code>ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Content-Type"                data-endpoint="PATCHapi-departments--department_id-"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Accept"                data-endpoint="PATCHapi-departments--department_id-"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
-                    <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>department_id</code></b>&nbsp;&nbsp;
-<small>integer</small>&nbsp;
- &nbsp;
- &nbsp;
-                <input type="number" style="display: none"
-               step="any"               name="department_id"                data-endpoint="PATCHapi-departments--department_id-"
-               value="1"
-               data-component="url">
-    <br>
-<p>The ID of the department. Example: <code>1</code></p>
-            </div>
-                    <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>department</code></b>&nbsp;&nbsp;
-<small>integer</small>&nbsp;
- &nbsp;
- &nbsp;
-                <input type="number" style="display: none"
-               step="any"               name="department"                data-endpoint="PATCHapi-departments--department_id-"
-               value="1"
-               data-component="url">
-    <br>
-<p>ID department. Example: <code>1</code></p>
-            </div>
-                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
-        <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>name</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="name"                data-endpoint="PATCHapi-departments--department_id-"
-               value="Công ty A"
-               data-component="body">
-    <br>
-<p>Tên department. Example: <code>Công ty A</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>slug</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="slug"                data-endpoint="PATCHapi-departments--department_id-"
-               value="cong-ty-a"
-               data-component="body">
-    <br>
-<p>Slug. Example: <code>cong-ty-a</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>description</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="description"                data-endpoint="PATCHapi-departments--department_id-"
-               value="Tổ chức quản trị"
-               data-component="body">
-    <br>
-<p>Mô tả. Example: <code>Tổ chức quản trị</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>status</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="status"                data-endpoint="PATCHapi-departments--department_id-"
-               value="inactive"
-               data-component="body">
-    <br>
-<p>Trạng thái: active, inactive. Example: <code>inactive</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>parent_id</code></b>&nbsp;&nbsp;
-<small>integer</small>&nbsp;
-<i>optional</i> &nbsp;
- &nbsp;
-                <input type="number" style="display: none"
-               step="any"               name="parent_id"                data-endpoint="PATCHapi-departments--department_id-"
-               value=""
-               data-component="body">
-    <br>
-<p>ID department cha (null = gốc).</p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>sort_order</code></b>&nbsp;&nbsp;
-<small>integer</small>&nbsp;
-<i>optional</i> &nbsp;
- &nbsp;
-                <input type="number" style="display: none"
-               step="any"               name="sort_order"                data-endpoint="PATCHapi-departments--department_id-"
-               value="0"
-               data-component="body">
-    <br>
-<p>Thứ tự. Example: <code>0</code></p>
-        </div>
-        </form>
-
-                    <h2 id="core-department-DELETEapi-departments--department_id-">Xóa department</h2>
-
-<p>
-<small class="badge badge-darkred">requires authentication</small>
-</p>
-
-
-
-<span id="example-requests-DELETEapi-departments--department_id-">
-<blockquote>Example request:</blockquote>
-
-
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request DELETE \
-    "http://localhost:8000/api/departments/1" \
-    --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
-    --header "X-Department-Id: ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
-    --header "Content-Type: application/json" \
-    --header "Accept: application/json"</code></pre></div>
-
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/departments/1"
-);
-
-const headers = {
-    "Authorization": "Bearer Bearer {YOUR_ACCESS_TOKEN}",
-    "X-Department-Id": "ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1",
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-};
-
-
-fetch(url, {
-    method: "DELETE",
-    headers,
-}).then(response =&gt; response.json());</code></pre></div>
-
-
-<div class="php-example">
-    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost:8000/api/departments/1';
-$response = $client-&gt;delete(
-    $url,
-    [
-        'headers' =&gt; [
-            'Authorization' =&gt; 'Bearer Bearer {YOUR_ACCESS_TOKEN}',
-            'X-Department-Id' =&gt; 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1',
-            'Content-Type' =&gt; 'application/json',
-            'Accept' =&gt; 'application/json',
-        ],
-    ]
-);
-$body = $response-&gt;getBody();
-print_r(json_decode((string) $body));</code></pre></div>
-
-</span>
-
-<span id="example-responses-DELETEapi-departments--department_id-">
-            <blockquote>
-            <p>Example response (200):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;success&quot;: true,
-    &quot;message&quot;: &quot;Department đ&atilde; được x&oacute;a!&quot;
-}</code>
- </pre>
-    </span>
-<span id="execution-results-DELETEapi-departments--department_id-" hidden>
-    <blockquote>Received response<span
-                id="execution-response-status-DELETEapi-departments--department_id-"></span>:
-    </blockquote>
-    <pre class="json"><code id="execution-response-content-DELETEapi-departments--department_id-"
-      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
-</span>
-<span id="execution-error-DELETEapi-departments--department_id-" hidden>
-    <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-DELETEapi-departments--department_id-">
-
-Tip: Check that you&#039;re properly connected to the network.
-If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
-You can check the Dev Tools console for debugging information.</code></pre>
-</span>
-<form id="form-DELETEapi-departments--department_id-" data-method="DELETE"
-      data-path="api/departments/{department_id}"
-      data-authed="1"
-      data-hasfiles="0"
-      data-isarraybody="0"
-      autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('DELETEapi-departments--department_id-', this);">
-    <h3>
-        Request&nbsp;&nbsp;&nbsp;
-                    <button type="button"
-                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-DELETEapi-departments--department_id-"
-                    onclick="tryItOut('DELETEapi-departments--department_id-');">Try it out ⚡
-            </button>
-            <button type="button"
-                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-DELETEapi-departments--department_id-"
-                    onclick="cancelTryOut('DELETEapi-departments--department_id-');" hidden>Cancel 🛑
-            </button>&nbsp;&nbsp;
-            <button type="submit"
-                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-DELETEapi-departments--department_id-"
-                    data-initial-text="Send Request 💥"
-                    data-loading-text="⏱ Sending..."
-                    hidden>Send Request 💥
-            </button>
-            </h3>
-            <p>
-            <small class="badge badge-red">DELETE</small>
-            <b><code>api/departments/{department_id}</code></b>
-        </p>
-                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Authorization" class="auth-value"               data-endpoint="DELETEapi-departments--department_id-"
-               value="Bearer Bearer {YOUR_ACCESS_TOKEN}"
-               data-component="header">
-    <br>
-<p>Example: <code>Bearer Bearer {YOUR_ACCESS_TOKEN}</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>X-Department-Id</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="X-Department-Id"                data-endpoint="DELETEapi-departments--department_id-"
-               value="ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1"
-               data-component="header">
-    <br>
-<p>Example: <code>ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Content-Type"                data-endpoint="DELETEapi-departments--department_id-"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Accept"                data-endpoint="DELETEapi-departments--department_id-"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
-                    <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>department_id</code></b>&nbsp;&nbsp;
-<small>integer</small>&nbsp;
- &nbsp;
- &nbsp;
-                <input type="number" style="display: none"
-               step="any"               name="department_id"                data-endpoint="DELETEapi-departments--department_id-"
-               value="1"
-               data-component="url">
-    <br>
-<p>The ID of the department. Example: <code>1</code></p>
-            </div>
-                    <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>department</code></b>&nbsp;&nbsp;
-<small>integer</small>&nbsp;
- &nbsp;
- &nbsp;
-                <input type="number" style="display: none"
-               step="any"               name="department"                data-endpoint="DELETEapi-departments--department_id-"
-               value="1"
-               data-component="url">
-    <br>
-<p>ID department. Example: <code>1</code></p>
-            </div>
-                    </form>
-
-                    <h2 id="core-department-PATCHapi-departments--department_id--status">Thay đổi trạng thái department</h2>
-
-<p>
-<small class="badge badge-darkred">requires authentication</small>
-</p>
-
-
-
-<span id="example-requests-PATCHapi-departments--department_id--status">
-<blockquote>Example request:</blockquote>
-
-
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request PATCH \
-    "http://localhost:8000/api/departments/1/status" \
-    --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
-    --header "X-Department-Id: ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
-    --header "Content-Type: application/json" \
-    --header "Accept: application/json" \
-    --data "{
-    \"status\": \"inactive\"
-}"
-</code></pre></div>
-
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/departments/1/status"
-);
-
-const headers = {
-    "Authorization": "Bearer Bearer {YOUR_ACCESS_TOKEN}",
-    "X-Department-Id": "ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1",
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-};
-
-let body = {
-    "status": "inactive"
-};
-
-fetch(url, {
-    method: "PATCH",
-    headers,
-    body: JSON.stringify(body),
-}).then(response =&gt; response.json());</code></pre></div>
-
-
-<div class="php-example">
-    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost:8000/api/departments/1/status';
-$response = $client-&gt;patch(
-    $url,
-    [
-        'headers' =&gt; [
-            'Authorization' =&gt; 'Bearer Bearer {YOUR_ACCESS_TOKEN}',
-            'X-Department-Id' =&gt; 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1',
-            'Content-Type' =&gt; 'application/json',
-            'Accept' =&gt; 'application/json',
-        ],
-        'json' =&gt; [
-            'status' =&gt; 'inactive',
-        ],
-    ]
-);
-$body = $response-&gt;getBody();
-print_r(json_decode((string) $body));</code></pre></div>
-
-</span>
-
-<span id="example-responses-PATCHapi-departments--department_id--status">
-            <blockquote>
-            <p>Example response (200):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;data&quot;: {
-        &quot;id&quot;: 20,
-        &quot;name&quot;: &quot;Dare Group&quot;,
-        &quot;slug&quot;: &quot;iure-odit-et-et-modi-ipsum-nostrum-omnis&quot;,
-        &quot;description&quot;: &quot;Consequatur aut dolores enim non facere tempora.&quot;,
-        &quot;status&quot;: &quot;inactive&quot;,
-        &quot;parent_id&quot;: 19,
-        &quot;sort_order&quot;: 78,
-        &quot;depth&quot;: 1,
-        &quot;created_by&quot;: &quot;N/A&quot;,
-        &quot;updated_by&quot;: &quot;N/A&quot;,
-        &quot;created_at&quot;: &quot;07:38:33 26/03/2026&quot;,
-        &quot;updated_at&quot;: &quot;07:38:33 26/03/2026&quot;,
-        &quot;parent&quot;: {
-            &quot;id&quot;: 19,
-            &quot;name&quot;: &quot;Raynor Ltd&quot;,
-            &quot;slug&quot;: &quot;molestias-fugit-deleniti-distinctio-eum-doloremque-id&quot;,
-            &quot;description&quot;: null,
-            &quot;status&quot;: &quot;active&quot;,
-            &quot;parent_id&quot;: null,
-            &quot;sort_order&quot;: 49,
-            &quot;depth&quot;: 0,
-            &quot;created_by&quot;: &quot;N/A&quot;,
-            &quot;updated_by&quot;: &quot;N/A&quot;,
-            &quot;created_at&quot;: &quot;07:38:33 26/03/2026&quot;,
-            &quot;updated_at&quot;: &quot;07:38:33 26/03/2026&quot;
-        },
-        &quot;children&quot;: [
-            {
-                &quot;id&quot;: 21,
-                &quot;name&quot;: &quot;Mayer-Kutch&quot;,
-                &quot;slug&quot;: &quot;deleniti-nemo-odit-quia-officia&quot;,
-                &quot;description&quot;: &quot;Neque blanditiis odio veritatis excepturi doloribus delectus.&quot;,
-                &quot;status&quot;: &quot;inactive&quot;,
-                &quot;parent_id&quot;: 20,
-                &quot;sort_order&quot;: 22,
-                &quot;depth&quot;: 2,
-                &quot;created_by&quot;: &quot;N/A&quot;,
-                &quot;updated_by&quot;: &quot;N/A&quot;,
-                &quot;created_at&quot;: &quot;07:38:33 26/03/2026&quot;,
-                &quot;updated_at&quot;: &quot;07:38:33 26/03/2026&quot;
-            }
-        ]
-    },
-    &quot;success&quot;: &quot;true&quot;,
-    &quot;message&quot;: &quot;Cập nhật trạng th&aacute;i th&agrave;nh c&ocirc;ng!&quot;
-}</code>
- </pre>
-    </span>
-<span id="execution-results-PATCHapi-departments--department_id--status" hidden>
-    <blockquote>Received response<span
-                id="execution-response-status-PATCHapi-departments--department_id--status"></span>:
-    </blockquote>
-    <pre class="json"><code id="execution-response-content-PATCHapi-departments--department_id--status"
-      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
-</span>
-<span id="execution-error-PATCHapi-departments--department_id--status" hidden>
-    <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-PATCHapi-departments--department_id--status">
-
-Tip: Check that you&#039;re properly connected to the network.
-If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
-You can check the Dev Tools console for debugging information.</code></pre>
-</span>
-<form id="form-PATCHapi-departments--department_id--status" data-method="PATCH"
-      data-path="api/departments/{department_id}/status"
-      data-authed="1"
-      data-hasfiles="0"
-      data-isarraybody="0"
-      autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('PATCHapi-departments--department_id--status', this);">
-    <h3>
-        Request&nbsp;&nbsp;&nbsp;
-                    <button type="button"
-                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-PATCHapi-departments--department_id--status"
-                    onclick="tryItOut('PATCHapi-departments--department_id--status');">Try it out ⚡
-            </button>
-            <button type="button"
-                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-PATCHapi-departments--department_id--status"
-                    onclick="cancelTryOut('PATCHapi-departments--department_id--status');" hidden>Cancel 🛑
-            </button>&nbsp;&nbsp;
-            <button type="submit"
-                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-PATCHapi-departments--department_id--status"
-                    data-initial-text="Send Request 💥"
-                    data-loading-text="⏱ Sending..."
-                    hidden>Send Request 💥
-            </button>
-            </h3>
-            <p>
-            <small class="badge badge-purple">PATCH</small>
-            <b><code>api/departments/{department_id}/status</code></b>
-        </p>
-                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Authorization" class="auth-value"               data-endpoint="PATCHapi-departments--department_id--status"
-               value="Bearer Bearer {YOUR_ACCESS_TOKEN}"
-               data-component="header">
-    <br>
-<p>Example: <code>Bearer Bearer {YOUR_ACCESS_TOKEN}</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>X-Department-Id</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="X-Department-Id"                data-endpoint="PATCHapi-departments--department_id--status"
-               value="ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1"
-               data-component="header">
-    <br>
-<p>Example: <code>ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Content-Type"                data-endpoint="PATCHapi-departments--department_id--status"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Accept"                data-endpoint="PATCHapi-departments--department_id--status"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
-                    <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>department_id</code></b>&nbsp;&nbsp;
-<small>integer</small>&nbsp;
- &nbsp;
- &nbsp;
-                <input type="number" style="display: none"
-               step="any"               name="department_id"                data-endpoint="PATCHapi-departments--department_id--status"
-               value="1"
-               data-component="url">
-    <br>
-<p>The ID of the department. Example: <code>1</code></p>
-            </div>
-                    <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>department</code></b>&nbsp;&nbsp;
-<small>integer</small>&nbsp;
- &nbsp;
- &nbsp;
-                <input type="number" style="display: none"
-               step="any"               name="department"                data-endpoint="PATCHapi-departments--department_id--status"
-               value="1"
-               data-component="url">
-    <br>
-<p>ID department. Example: <code>1</code></p>
-            </div>
-                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
-        <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>status</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
- &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="status"                data-endpoint="PATCHapi-departments--department_id--status"
-               value="inactive"
-               data-component="body">
-    <br>
-<p>Trạng thái mới: active, inactive. Example: <code>inactive</code></p>
-        </div>
-        </form>
-
                 <h1 id="core-logactivity">Core - LogActivity</h1>
 
     
@@ -6761,12 +2789,12 @@ print_r(json_decode((string) $body));</code></pre></div>
             &quot;status_code&quot;: 404,
             &quot;ip_address&quot;: &quot;125.161.29.220&quot;,
             &quot;country&quot;: &quot;Pakistan&quot;,
-            &quot;user_agent&quot;: &quot;Mozilla/5.0 (Windows NT 5.0; en-US; rv:1.9.2.20) Gecko/20251105 Firefox/35.0&quot;,
+            &quot;user_agent&quot;: &quot;Mozilla/5.0 (Windows NT 5.0; en-US; rv:1.9.2.20) Gecko/20251104 Firefox/35.0&quot;,
             &quot;request_data&quot;: {
                 &quot;sample&quot;: &quot;et&quot;
             },
-            &quot;created_at&quot;: &quot;07:38:33 26/03/2026&quot;,
-            &quot;updated_at&quot;: &quot;07:38:33 26/03/2026&quot;
+            &quot;created_at&quot;: &quot;08:49:08 26/03/2026&quot;,
+            &quot;updated_at&quot;: &quot;08:49:08 26/03/2026&quot;
         },
         {
             &quot;id&quot;: 3,
@@ -6784,8 +2812,8 @@ print_r(json_decode((string) $body));</code></pre></div>
             &quot;request_data&quot;: {
                 &quot;sample&quot;: &quot;accusamus&quot;
             },
-            &quot;created_at&quot;: &quot;07:38:34 26/03/2026&quot;,
-            &quot;updated_at&quot;: &quot;07:38:34 26/03/2026&quot;
+            &quot;created_at&quot;: &quot;08:49:08 26/03/2026&quot;,
+            &quot;updated_at&quot;: &quot;08:49:08 26/03/2026&quot;
         }
     ],
     &quot;links&quot;: {
@@ -7105,7 +3133,7 @@ print_r(json_decode((string) $body));</code></pre></div>
         &quot;user_type&quot;: &quot;User&quot;,
         &quot;user_id&quot;: 22,
         &quot;user_name&quot;: &quot;Bridget Schaden&quot;,
-        &quot;department_id&quot;: 22,
+        &quot;department_id&quot;: 3,
         &quot;route&quot;: &quot;https://mclaughlin.com/ipsum-nostrum-omnis-autem-et-consequatur-aut-dolores-enim.html&quot;,
         &quot;method_type&quot;: &quot;POST&quot;,
         &quot;status_code&quot;: 401,
@@ -7115,8 +3143,8 @@ print_r(json_decode((string) $body));</code></pre></div>
         &quot;request_data&quot;: {
             &quot;sample&quot;: &quot;veniam&quot;
         },
-        &quot;created_at&quot;: &quot;07:38:34 26/03/2026&quot;,
-        &quot;updated_at&quot;: &quot;07:38:34 26/03/2026&quot;
+        &quot;created_at&quot;: &quot;08:49:08 26/03/2026&quot;,
+        &quot;updated_at&quot;: &quot;08:49:08 26/03/2026&quot;
     },
     &quot;success&quot;: &quot;true&quot;
 }</code>
@@ -7740,7 +3768,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "X-Department-Id: ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: multipart/form-data" \
     --header "Accept: application/json" \
-    --form "file=@/tmp/phpg8f9cdogmaak0IBgK4S" </code></pre></div>
+    --form "file=@/tmp/phpmj5rqkql25hf7LhwiYP" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -7780,7 +3808,7 @@ $response = $client-&gt;post(
         'multipart' =&gt; [
             [
                 'name' =&gt; 'file',
-                'contents' =&gt; fopen('/tmp/phpg8f9cdogmaak0IBgK4S', 'r')
+                'contents' =&gt; fopen('/tmp/phpmj5rqkql25hf7LhwiYP', 'r')
             ],
         ],
     ]
@@ -7908,7 +3936,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>File Excel (xlsx, xls, csv). Cột theo chuẩn export. Example: <code>/tmp/phpg8f9cdogmaak0IBgK4S</code></p>
+<p>File Excel (xlsx, xls, csv). Cột theo chuẩn export. Example: <code>/tmp/phpmj5rqkql25hf7LhwiYP</code></p>
         </div>
         </form>
 
@@ -8683,24 +4711,24 @@ print_r(json_decode((string) $body));</code></pre></div>
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: [
         {
-            &quot;id&quot;: 93,
+            &quot;id&quot;: 80,
             &quot;name&quot;: &quot;users.update.4027&quot;,
             &quot;guard_name&quot;: &quot;web&quot;,
             &quot;description&quot;: null,
             &quot;sort_order&quot;: 95,
             &quot;parent_id&quot;: null,
-            &quot;created_at&quot;: &quot;07:38:33 26/03/2026&quot;,
-            &quot;updated_at&quot;: &quot;07:38:33 26/03/2026&quot;
+            &quot;created_at&quot;: &quot;08:49:08 26/03/2026&quot;,
+            &quot;updated_at&quot;: &quot;08:49:08 26/03/2026&quot;
         },
         {
-            &quot;id&quot;: 94,
-            &quot;name&quot;: &quot;documents.store.9352&quot;,
+            &quot;id&quot;: 81,
+            &quot;name&quot;: &quot;documents.index.6955&quot;,
             &quot;guard_name&quot;: &quot;web&quot;,
             &quot;description&quot;: null,
-            &quot;sort_order&quot;: 45,
+            &quot;sort_order&quot;: 39,
             &quot;parent_id&quot;: null,
-            &quot;created_at&quot;: &quot;07:38:33 26/03/2026&quot;,
-            &quot;updated_at&quot;: &quot;07:38:33 26/03/2026&quot;
+            &quot;created_at&quot;: &quot;08:49:08 26/03/2026&quot;,
+            &quot;updated_at&quot;: &quot;08:49:08 26/03/2026&quot;
         }
     ],
     &quot;links&quot;: {
@@ -8991,30 +5019,30 @@ print_r(json_decode((string) $body));</code></pre></div>
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: {
-        &quot;id&quot;: 96,
+        &quot;id&quot;: 83,
         &quot;name&quot;: &quot;users.index.4524&quot;,
         &quot;guard_name&quot;: &quot;web&quot;,
         &quot;description&quot;: &quot;Commodi incidunt iure odit.&quot;,
         &quot;sort_order&quot;: 45,
-        &quot;parent_id&quot;: 95,
+        &quot;parent_id&quot;: 82,
         &quot;parent&quot;: {
-            &quot;id&quot;: 95,
+            &quot;id&quot;: 82,
             &quot;name&quot;: &quot;documents.show.967&quot;
         },
         &quot;children&quot;: [
             {
-                &quot;id&quot;: 97,
+                &quot;id&quot;: 84,
                 &quot;name&quot;: &quot;roles.destroy.1904&quot;,
                 &quot;guard_name&quot;: &quot;web&quot;,
                 &quot;description&quot;: null,
                 &quot;sort_order&quot;: 93,
-                &quot;parent_id&quot;: 96,
-                &quot;created_at&quot;: &quot;07:38:33 26/03/2026&quot;,
-                &quot;updated_at&quot;: &quot;07:38:33 26/03/2026&quot;
+                &quot;parent_id&quot;: 83,
+                &quot;created_at&quot;: &quot;08:49:08 26/03/2026&quot;,
+                &quot;updated_at&quot;: &quot;08:49:08 26/03/2026&quot;
             }
         ],
-        &quot;created_at&quot;: &quot;07:38:33 26/03/2026&quot;,
-        &quot;updated_at&quot;: &quot;07:38:33 26/03/2026&quot;
+        &quot;created_at&quot;: &quot;08:49:08 26/03/2026&quot;,
+        &quot;updated_at&quot;: &quot;08:49:08 26/03/2026&quot;
     },
     &quot;success&quot;: &quot;true&quot;
 }</code>
@@ -9232,14 +5260,14 @@ print_r(json_decode((string) $body));</code></pre></div>
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: {
-        &quot;id&quot;: 98,
+        &quot;id&quot;: 85,
         &quot;name&quot;: &quot;roles.index.660&quot;,
         &quot;guard_name&quot;: &quot;web&quot;,
         &quot;description&quot;: &quot;Et fugiat sunt nihil accusantium.&quot;,
         &quot;sort_order&quot;: 91,
         &quot;parent_id&quot;: null,
-        &quot;created_at&quot;: &quot;07:38:33 26/03/2026&quot;,
-        &quot;updated_at&quot;: &quot;07:38:33 26/03/2026&quot;
+        &quot;created_at&quot;: &quot;08:49:08 26/03/2026&quot;,
+        &quot;updated_at&quot;: &quot;08:49:08 26/03/2026&quot;
     },
     &quot;success&quot;: &quot;true&quot;,
     &quot;message&quot;: &quot;Quyền đ&atilde; được tạo th&agrave;nh c&ocirc;ng!&quot;
@@ -9494,14 +5522,14 @@ print_r(json_decode((string) $body));</code></pre></div>
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: {
-        &quot;id&quot;: 99,
+        &quot;id&quot;: 86,
         &quot;name&quot;: &quot;roles.index.4338&quot;,
         &quot;guard_name&quot;: &quot;web&quot;,
         &quot;description&quot;: null,
         &quot;sort_order&quot;: 7,
         &quot;parent_id&quot;: null,
-        &quot;created_at&quot;: &quot;07:38:33 26/03/2026&quot;,
-        &quot;updated_at&quot;: &quot;07:38:33 26/03/2026&quot;
+        &quot;created_at&quot;: &quot;08:49:08 26/03/2026&quot;,
+        &quot;updated_at&quot;: &quot;08:49:08 26/03/2026&quot;
     },
     &quot;success&quot;: &quot;true&quot;,
     &quot;message&quot;: &quot;Quyền đ&atilde; được cập nhật!&quot;
@@ -9781,14 +5809,14 @@ print_r(json_decode((string) $body));</code></pre></div>
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: {
-        &quot;id&quot;: 100,
+        &quot;id&quot;: 87,
         &quot;name&quot;: &quot;roles.index.3491&quot;,
         &quot;guard_name&quot;: &quot;web&quot;,
         &quot;description&quot;: &quot;Sunt nihil accusantium harum mollitia.&quot;,
         &quot;sort_order&quot;: 86,
         &quot;parent_id&quot;: null,
-        &quot;created_at&quot;: &quot;07:38:33 26/03/2026&quot;,
-        &quot;updated_at&quot;: &quot;07:38:33 26/03/2026&quot;
+        &quot;created_at&quot;: &quot;08:49:08 26/03/2026&quot;,
+        &quot;updated_at&quot;: &quot;08:49:08 26/03/2026&quot;
     },
     &quot;success&quot;: &quot;true&quot;,
     &quot;message&quot;: &quot;Quyền đ&atilde; được cập nhật!&quot;
@@ -10474,7 +6502,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "X-Department-Id: ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: multipart/form-data" \
     --header "Accept: application/json" \
-    --form "file=@/tmp/php6h8k749lu7lv2F9NEWj" </code></pre></div>
+    --form "file=@/tmp/php0ag9euddh7vs68uHY7Z" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -10514,7 +6542,7 @@ $response = $client-&gt;post(
         'multipart' =&gt; [
             [
                 'name' =&gt; 'file',
-                'contents' =&gt; fopen('/tmp/php6h8k749lu7lv2F9NEWj', 'r')
+                'contents' =&gt; fopen('/tmp/php0ag9euddh7vs68uHY7Z', 'r')
             ],
         ],
     ]
@@ -10642,7 +6670,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>File Excel (xlsx, xls, csv). Cột theo chuẩn export. Example: <code>/tmp/php6h8k749lu7lv2F9NEWj</code></p>
+<p>File Excel (xlsx, xls, csv). Cột theo chuẩn export. Example: <code>/tmp/php0ag9euddh7vs68uHY7Z</code></p>
         </div>
         </form>
 
@@ -11220,15 +7248,15 @@ print_r(json_decode((string) $body));</code></pre></div>
             &quot;id&quot;: 6,
             &quot;name&quot;: &quot;role_ng775&quot;,
             &quot;guard_name&quot;: &quot;web&quot;,
-            &quot;created_at&quot;: &quot;07:38:33 26/03/2026&quot;,
-            &quot;updated_at&quot;: &quot;07:38:33 26/03/2026&quot;
+            &quot;created_at&quot;: &quot;08:49:08 26/03/2026&quot;,
+            &quot;updated_at&quot;: &quot;08:49:08 26/03/2026&quot;
         },
         {
             &quot;id&quot;: 7,
             &quot;name&quot;: &quot;role_mi365&quot;,
             &quot;guard_name&quot;: &quot;web&quot;,
-            &quot;created_at&quot;: &quot;07:38:33 26/03/2026&quot;,
-            &quot;updated_at&quot;: &quot;07:38:33 26/03/2026&quot;
+            &quot;created_at&quot;: &quot;08:49:08 26/03/2026&quot;,
+            &quot;updated_at&quot;: &quot;08:49:08 26/03/2026&quot;
         }
     ],
     &quot;links&quot;: {
@@ -11525,8 +7553,8 @@ print_r(json_decode((string) $body));</code></pre></div>
         &quot;permissions&quot;: [
             &quot;departments.show.5485&quot;
         ],
-        &quot;created_at&quot;: &quot;07:38:33 26/03/2026&quot;,
-        &quot;updated_at&quot;: &quot;07:38:33 26/03/2026&quot;
+        &quot;created_at&quot;: &quot;08:49:08 26/03/2026&quot;,
+        &quot;updated_at&quot;: &quot;08:49:08 26/03/2026&quot;
     },
     &quot;success&quot;: &quot;true&quot;
 }</code>
@@ -11754,10 +7782,10 @@ print_r(json_decode((string) $body));</code></pre></div>
         &quot;name&quot;: &quot;role_zm806&quot;,
         &quot;guard_name&quot;: &quot;web&quot;,
         &quot;permissions&quot;: [
-            &quot;documents.index.6955&quot;
+            &quot;documents.index.5606&quot;
         ],
-        &quot;created_at&quot;: &quot;07:38:33 26/03/2026&quot;,
-        &quot;updated_at&quot;: &quot;07:38:33 26/03/2026&quot;
+        &quot;created_at&quot;: &quot;08:49:08 26/03/2026&quot;,
+        &quot;updated_at&quot;: &quot;08:49:08 26/03/2026&quot;
     },
     &quot;success&quot;: &quot;true&quot;,
     &quot;message&quot;: &quot;Vai tr&ograve; đ&atilde; được tạo th&agrave;nh c&ocirc;ng!&quot;
@@ -11999,8 +8027,8 @@ print_r(json_decode((string) $body));</code></pre></div>
         &quot;permissions&quot;: [
             &quot;users.update.3433&quot;
         ],
-        &quot;created_at&quot;: &quot;07:38:33 26/03/2026&quot;,
-        &quot;updated_at&quot;: &quot;07:38:33 26/03/2026&quot;
+        &quot;created_at&quot;: &quot;08:49:08 26/03/2026&quot;,
+        &quot;updated_at&quot;: &quot;08:49:08 26/03/2026&quot;
     },
     &quot;success&quot;: &quot;true&quot;,
     &quot;message&quot;: &quot;Vai tr&ograve; đ&atilde; được cập nhật!&quot;
@@ -12267,8 +8295,8 @@ print_r(json_decode((string) $body));</code></pre></div>
         &quot;permissions&quot;: [
             &quot;roles.destroy.6854&quot;
         ],
-        &quot;created_at&quot;: &quot;07:38:33 26/03/2026&quot;,
-        &quot;updated_at&quot;: &quot;07:38:33 26/03/2026&quot;
+        &quot;created_at&quot;: &quot;08:49:08 26/03/2026&quot;,
+        &quot;updated_at&quot;: &quot;08:49:08 26/03/2026&quot;
     },
     &quot;success&quot;: &quot;true&quot;,
     &quot;message&quot;: &quot;Vai tr&ograve; đ&atilde; được cập nhật!&quot;
@@ -13658,7 +9686,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "X-Department-Id: ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: multipart/form-data" \
     --header "Accept: application/json" \
-    --form "file=@/tmp/phps66jsrvkf35l6lXWqya" </code></pre></div>
+    --form "file=@/tmp/php90osaqs5s8edcRZyivk" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -13698,7 +9726,7 @@ $response = $client-&gt;post(
         'multipart' =&gt; [
             [
                 'name' =&gt; 'file',
-                'contents' =&gt; fopen('/tmp/phps66jsrvkf35l6lXWqya', 'r')
+                'contents' =&gt; fopen('/tmp/php90osaqs5s8edcRZyivk', 'r')
             ],
         ],
     ]
@@ -13826,7 +9854,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>File Excel (xlsx, xls, csv). Cột theo chuẩn export. Example: <code>/tmp/phps66jsrvkf35l6lXWqya</code></p>
+<p>File Excel (xlsx, xls, csv). Cột theo chuẩn export. Example: <code>/tmp/php90osaqs5s8edcRZyivk</code></p>
         </div>
         </form>
 
@@ -14635,8 +10663,8 @@ print_r(json_decode((string) $body));</code></pre></div>
             &quot;status&quot;: &quot;inactive&quot;,
             &quot;created_by&quot;: &quot;N/A&quot;,
             &quot;updated_by&quot;: &quot;N/A&quot;,
-            &quot;created_at&quot;: &quot;07:38:33 26/03/2026&quot;,
-            &quot;updated_at&quot;: &quot;07:38:33 26/03/2026&quot;
+            &quot;created_at&quot;: &quot;08:49:08 26/03/2026&quot;,
+            &quot;updated_at&quot;: &quot;08:49:08 26/03/2026&quot;
         },
         {
             &quot;id&quot;: 16,
@@ -14650,8 +10678,8 @@ print_r(json_decode((string) $body));</code></pre></div>
             &quot;status&quot;: &quot;inactive&quot;,
             &quot;created_by&quot;: &quot;N/A&quot;,
             &quot;updated_by&quot;: &quot;N/A&quot;,
-            &quot;created_at&quot;: &quot;07:38:33 26/03/2026&quot;,
-            &quot;updated_at&quot;: &quot;07:38:33 26/03/2026&quot;
+            &quot;created_at&quot;: &quot;08:49:08 26/03/2026&quot;,
+            &quot;updated_at&quot;: &quot;08:49:08 26/03/2026&quot;
         }
     ],
     &quot;links&quot;: {
@@ -14994,8 +11022,8 @@ print_r(json_decode((string) $body));</code></pre></div>
         &quot;status&quot;: &quot;active&quot;,
         &quot;created_by&quot;: &quot;N/A&quot;,
         &quot;updated_by&quot;: &quot;N/A&quot;,
-        &quot;created_at&quot;: &quot;07:38:33 26/03/2026&quot;,
-        &quot;updated_at&quot;: &quot;07:38:33 26/03/2026&quot;
+        &quot;created_at&quot;: &quot;08:49:08 26/03/2026&quot;,
+        &quot;updated_at&quot;: &quot;08:49:08 26/03/2026&quot;
     },
     &quot;success&quot;: &quot;true&quot;,
     &quot;message&quot;: &quot;T&agrave;i khoản đ&atilde; được tạo th&agrave;nh c&ocirc;ng!&quot;
@@ -15321,8 +11349,8 @@ print_r(json_decode((string) $body));</code></pre></div>
         &quot;status&quot;: &quot;inactive&quot;,
         &quot;created_by&quot;: &quot;N/A&quot;,
         &quot;updated_by&quot;: &quot;N/A&quot;,
-        &quot;created_at&quot;: &quot;07:38:33 26/03/2026&quot;,
-        &quot;updated_at&quot;: &quot;07:38:33 26/03/2026&quot;
+        &quot;created_at&quot;: &quot;08:49:08 26/03/2026&quot;,
+        &quot;updated_at&quot;: &quot;08:49:08 26/03/2026&quot;
     },
     &quot;success&quot;: &quot;true&quot;,
     &quot;message&quot;: &quot;Cập nhật trạng th&aacute;i th&agrave;nh c&ocirc;ng!&quot;
@@ -15542,8 +11570,8 @@ print_r(json_decode((string) $body));</code></pre></div>
         &quot;status&quot;: &quot;inactive&quot;,
         &quot;created_by&quot;: &quot;N/A&quot;,
         &quot;updated_by&quot;: &quot;N/A&quot;,
-        &quot;created_at&quot;: &quot;07:38:33 26/03/2026&quot;,
-        &quot;updated_at&quot;: &quot;07:38:33 26/03/2026&quot;
+        &quot;created_at&quot;: &quot;08:49:08 26/03/2026&quot;,
+        &quot;updated_at&quot;: &quot;08:49:08 26/03/2026&quot;
     },
     &quot;success&quot;: &quot;true&quot;
 }</code>
@@ -15790,8 +11818,8 @@ print_r(json_decode((string) $body));</code></pre></div>
         &quot;status&quot;: &quot;active&quot;,
         &quot;created_by&quot;: &quot;N/A&quot;,
         &quot;updated_by&quot;: &quot;N/A&quot;,
-        &quot;created_at&quot;: &quot;07:38:33 26/03/2026&quot;,
-        &quot;updated_at&quot;: &quot;07:38:33 26/03/2026&quot;
+        &quot;created_at&quot;: &quot;08:49:08 26/03/2026&quot;,
+        &quot;updated_at&quot;: &quot;08:49:08 26/03/2026&quot;
     },
     &quot;success&quot;: &quot;true&quot;,
     &quot;message&quot;: &quot;T&agrave;i khoản đ&atilde; được cập nhật!&quot;
@@ -16172,8 +12200,8 @@ print_r(json_decode((string) $body));</code></pre></div>
         &quot;status&quot;: &quot;active&quot;,
         &quot;created_by&quot;: &quot;N/A&quot;,
         &quot;updated_by&quot;: &quot;N/A&quot;,
-        &quot;created_at&quot;: &quot;07:38:33 26/03/2026&quot;,
-        &quot;updated_at&quot;: &quot;07:38:33 26/03/2026&quot;
+        &quot;created_at&quot;: &quot;08:49:08 26/03/2026&quot;,
+        &quot;updated_at&quot;: &quot;08:49:08 26/03/2026&quot;
     },
     &quot;success&quot;: &quot;true&quot;,
     &quot;message&quot;: &quot;T&agrave;i khoản đ&atilde; được cập nhật!&quot;
@@ -17587,7 +13615,7 @@ Must be one of:
     --header "X-Department-Id: ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: multipart/form-data" \
     --header "Accept: application/json" \
-    --form "file=@/tmp/php6qe3ulpr7l6pc4tq1jb" </code></pre></div>
+    --form "file=@/tmp/php6vqihuvqagit0N7ys2v" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -17627,7 +13655,7 @@ $response = $client-&gt;post(
         'multipart' =&gt; [
             [
                 'name' =&gt; 'file',
-                'contents' =&gt; fopen('/tmp/php6qe3ulpr7l6pc4tq1jb', 'r')
+                'contents' =&gt; fopen('/tmp/php6vqihuvqagit0N7ys2v', 'r')
             ],
         ],
     ]
@@ -17755,7 +13783,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>File Excel (xlsx, xls, csv). Example: <code>/tmp/php6qe3ulpr7l6pc4tq1jb</code></p>
+<p>File Excel (xlsx, xls, csv). Example: <code>/tmp/php6vqihuvqagit0N7ys2v</code></p>
         </div>
         </form>
 
@@ -18587,10 +14615,10 @@ print_r(json_decode((string) $body));</code></pre></div>
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: [
         {
-            &quot;id&quot;: 50,
+            &quot;id&quot;: 44,
             &quot;event_date&quot;: &quot;14/04/2026&quot;,
             &quot;session&quot;: &quot;sang&quot;,
-            &quot;start_time&quot;: &quot;15:37:00&quot;,
+            &quot;start_time&quot;: &quot;14:26:00&quot;,
             &quot;content&quot;: &quot;Velit et fugiat sunt nihil accusantium.&quot;,
             &quot;location&quot;: &quot;78142 Nick Field\nWest Noahmouth, WV 59021-4902&quot;,
             &quot;prep_unit&quot;: null,
@@ -18606,11 +14634,11 @@ print_r(json_decode((string) $body));</code></pre></div>
             &quot;nature_label&quot;: &quot;Mật&quot;,
             &quot;created_by&quot;: &quot;N/A&quot;,
             &quot;updated_by&quot;: &quot;N/A&quot;,
-            &quot;created_at&quot;: &quot;07:38:34 26/03/2026&quot;,
-            &quot;updated_at&quot;: &quot;07:38:34 26/03/2026&quot;
+            &quot;created_at&quot;: &quot;08:49:08 26/03/2026&quot;,
+            &quot;updated_at&quot;: &quot;08:49:08 26/03/2026&quot;
         },
         {
-            &quot;id&quot;: 51,
+            &quot;id&quot;: 45,
             &quot;event_date&quot;: &quot;17/04/2026&quot;,
             &quot;session&quot;: &quot;chieu&quot;,
             &quot;start_time&quot;: &quot;08:01:00&quot;,
@@ -18629,8 +14657,8 @@ print_r(json_decode((string) $body));</code></pre></div>
             &quot;nature_label&quot;: &quot;Mật&quot;,
             &quot;created_by&quot;: &quot;N/A&quot;,
             &quot;updated_by&quot;: &quot;N/A&quot;,
-            &quot;created_at&quot;: &quot;07:38:34 26/03/2026&quot;,
-            &quot;updated_at&quot;: &quot;07:38:34 26/03/2026&quot;
+            &quot;created_at&quot;: &quot;08:49:08 26/03/2026&quot;,
+            &quot;updated_at&quot;: &quot;08:49:08 26/03/2026&quot;
         }
     ],
     &quot;links&quot;: {
@@ -18995,12 +15023,12 @@ Must be one of:
     --form "meeting_type=hop_thuong_ky"\
     --form "nature=thuong"\
     --form "color_code=#FF5733"\
-    --form "status=inactive"\
+    --form "status=active"\
     --form "participants[]=architecto"\
-    --form "notification[channel]=zalo"\
-    --form "notification[remind_at]=2026-03-26T07:38:34"\
+    --form "notification[channel]=sms"\
+    --form "notification[remind_at]=2026-03-26T08:49:08"\
     --form "notifications[]=architecto"\
-    --form "attachments[]=@/tmp/phpvmh3pi4kcs0m6HvA1ya" </code></pre></div>
+    --form "attachments[]=@/tmp/php9l21n795isv5alx5gF6" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -19028,10 +15056,10 @@ body.append('driver_info', 'Nguyễn Văn A');
 body.append('meeting_type', 'hop_thuong_ky');
 body.append('nature', 'thuong');
 body.append('color_code', '#FF5733');
-body.append('status', 'inactive');
+body.append('status', 'active');
 body.append('participants[]', 'architecto');
-body.append('notification[channel]', 'zalo');
-body.append('notification[remind_at]', '2026-03-26T07:38:34');
+body.append('notification[channel]', 'sms');
+body.append('notification[remind_at]', '2026-03-26T08:49:08');
 body.append('notifications[]', 'architecto');
 body.append('attachments[]', document.querySelector('input[name="attachments[]"]').files[0]);
 
@@ -19105,7 +15133,7 @@ $response = $client-&gt;post(
             ],
             [
                 'name' =&gt; 'status',
-                'contents' =&gt; 'inactive'
+                'contents' =&gt; 'active'
             ],
             [
                 'name' =&gt; 'participants[]',
@@ -19113,11 +15141,11 @@ $response = $client-&gt;post(
             ],
             [
                 'name' =&gt; 'notification[channel]',
-                'contents' =&gt; 'zalo'
+                'contents' =&gt; 'sms'
             ],
             [
                 'name' =&gt; 'notification[remind_at]',
-                'contents' =&gt; '2026-03-26T07:38:34'
+                'contents' =&gt; '2026-03-26T08:49:08'
             ],
             [
                 'name' =&gt; 'notifications[]',
@@ -19125,7 +15153,7 @@ $response = $client-&gt;post(
             ],
             [
                 'name' =&gt; 'attachments[]',
-                'contents' =&gt; fopen('/tmp/phpvmh3pi4kcs0m6HvA1ya', 'r')
+                'contents' =&gt; fopen('/tmp/php9l21n795isv5alx5gF6', 'r')
             ],
         ],
     ]
@@ -19143,10 +15171,10 @@ print_r(json_decode((string) $body));</code></pre></div>
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: {
-        &quot;id&quot;: 52,
+        &quot;id&quot;: 46,
         &quot;event_date&quot;: &quot;05/04/2026&quot;,
         &quot;session&quot;: &quot;sang&quot;,
-        &quot;start_time&quot;: &quot;21:01:00&quot;,
+        &quot;start_time&quot;: &quot;19:50:00&quot;,
         &quot;content&quot;: &quot;Quos velit et fugiat sunt nihil accusantium harum.&quot;,
         &quot;location&quot;: null,
         &quot;prep_unit&quot;: null,
@@ -19162,8 +15190,8 @@ print_r(json_decode((string) $body));</code></pre></div>
         &quot;nature_label&quot;: &quot;Thường&quot;,
         &quot;created_by&quot;: &quot;N/A&quot;,
         &quot;updated_by&quot;: &quot;N/A&quot;,
-        &quot;created_at&quot;: &quot;07:38:34 26/03/2026&quot;,
-        &quot;updated_at&quot;: &quot;07:38:34 26/03/2026&quot;
+        &quot;created_at&quot;: &quot;08:49:08 26/03/2026&quot;,
+        &quot;updated_at&quot;: &quot;08:49:08 26/03/2026&quot;
     },
     &quot;success&quot;: &quot;true&quot;,
     &quot;message&quot;: &quot;Tạo lịch c&ocirc;ng t&aacute;c th&agrave;nh c&ocirc;ng!&quot;
@@ -19417,10 +15445,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="status"                data-endpoint="POSTapi-schedules"
-               value="inactive"
+               value="active"
                data-component="body">
     <br>
-<p>Example: <code>inactive</code></p>
+<p>Example: <code>active</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>active</code></li> <li><code>inactive</code></li></ul>
         </div>
@@ -19513,10 +15541,10 @@ Must be one of:
  &nbsp;
                 <input type="text" style="display: none"
                               name="notification.channel"                data-endpoint="POSTapi-schedules"
-               value="zalo"
+               value="sms"
                data-component="body">
     <br>
-<p>This field is required when <code>notification</code> is present. Example: <code>zalo</code></p>
+<p>This field is required when <code>notification</code> is present. Example: <code>sms</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>sms</code></li> <li><code>zalo</code></li> <li><code>website</code></li> <li><code>app</code></li></ul>
                     </div>
@@ -19527,10 +15555,10 @@ Must be one of:
  &nbsp;
                 <input type="text" style="display: none"
                               name="notification.remind_at"                data-endpoint="POSTapi-schedules"
-               value="2026-03-26T07:38:34"
+               value="2026-03-26T08:49:08"
                data-component="body">
     <br>
-<p>This field is required when <code>notification</code> is present. Must be a valid date. Example: <code>2026-03-26T07:38:34</code></p>
+<p>This field is required when <code>notification</code> is present. Must be a valid date. Example: <code>2026-03-26T08:49:08</code></p>
                     </div>
                                     </details>
         </div>
@@ -20664,10 +16692,10 @@ print_r(json_decode((string) $body));</code></pre></div>
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: {
-        &quot;id&quot;: 53,
+        &quot;id&quot;: 47,
         &quot;event_date&quot;: &quot;30/03/2026&quot;,
         &quot;session&quot;: &quot;sang&quot;,
-        &quot;start_time&quot;: &quot;19:23:00&quot;,
+        &quot;start_time&quot;: &quot;18:13:00&quot;,
         &quot;content&quot;: &quot;Qui commodi incidunt iure odit.&quot;,
         &quot;location&quot;: &quot;77365 Christian Turnpike Suite 432\nNorth Roderick, SD 69128-2316&quot;,
         &quot;prep_unit&quot;: &quot;Haag and Sons&quot;,
@@ -20683,8 +16711,8 @@ print_r(json_decode((string) $body));</code></pre></div>
         &quot;nature_label&quot;: &quot;Mật&quot;,
         &quot;created_by&quot;: &quot;N/A&quot;,
         &quot;updated_by&quot;: &quot;N/A&quot;,
-        &quot;created_at&quot;: &quot;07:38:34 26/03/2026&quot;,
-        &quot;updated_at&quot;: &quot;07:38:34 26/03/2026&quot;
+        &quot;created_at&quot;: &quot;08:49:08 26/03/2026&quot;,
+        &quot;updated_at&quot;: &quot;08:49:08 26/03/2026&quot;
     },
     &quot;success&quot;: &quot;true&quot;
 }</code>
@@ -20845,11 +16873,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --form "color_code=architecto"\
     --form "status=inactive"\
     --form "participants[]=architecto"\
-    --form "notification[channel]=sms"\
-    --form "notification[remind_at]=2026-03-26T07:38:34"\
+    --form "notification[channel]=zalo"\
+    --form "notification[remind_at]=2026-03-26T08:49:08"\
     --form "remove_attachment_ids[]=architecto"\
     --form "notifications[]=architecto"\
-    --form "attachments[]=@/tmp/phponfc5h3jfamq4clDEAf" </code></pre></div>
+    --form "attachments[]=@/tmp/phpheggj4rbc9js5Y3MG9y" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -20879,8 +16907,8 @@ body.append('nature', 'architecto');
 body.append('color_code', 'architecto');
 body.append('status', 'inactive');
 body.append('participants[]', 'architecto');
-body.append('notification[channel]', 'sms');
-body.append('notification[remind_at]', '2026-03-26T07:38:34');
+body.append('notification[channel]', 'zalo');
+body.append('notification[remind_at]', '2026-03-26T08:49:08');
 body.append('remove_attachment_ids[]', 'architecto');
 body.append('notifications[]', 'architecto');
 body.append('attachments[]', document.querySelector('input[name="attachments[]"]').files[0]);
@@ -20963,11 +16991,11 @@ $response = $client-&gt;put(
             ],
             [
                 'name' =&gt; 'notification[channel]',
-                'contents' =&gt; 'sms'
+                'contents' =&gt; 'zalo'
             ],
             [
                 'name' =&gt; 'notification[remind_at]',
-                'contents' =&gt; '2026-03-26T07:38:34'
+                'contents' =&gt; '2026-03-26T08:49:08'
             ],
             [
                 'name' =&gt; 'remove_attachment_ids[]',
@@ -20979,7 +17007,7 @@ $response = $client-&gt;put(
             ],
             [
                 'name' =&gt; 'attachments[]',
-                'contents' =&gt; fopen('/tmp/phponfc5h3jfamq4clDEAf', 'r')
+                'contents' =&gt; fopen('/tmp/phpheggj4rbc9js5Y3MG9y', 'r')
             ],
         ],
     ]
@@ -20997,10 +17025,10 @@ print_r(json_decode((string) $body));</code></pre></div>
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: {
-        &quot;id&quot;: 54,
+        &quot;id&quot;: 48,
         &quot;event_date&quot;: &quot;05/04/2026&quot;,
         &quot;session&quot;: &quot;sang&quot;,
-        &quot;start_time&quot;: &quot;21:01:00&quot;,
+        &quot;start_time&quot;: &quot;19:50:00&quot;,
         &quot;content&quot;: &quot;Quos velit et fugiat sunt nihil accusantium harum.&quot;,
         &quot;location&quot;: null,
         &quot;prep_unit&quot;: null,
@@ -21016,8 +17044,8 @@ print_r(json_decode((string) $body));</code></pre></div>
         &quot;nature_label&quot;: &quot;Thường&quot;,
         &quot;created_by&quot;: &quot;N/A&quot;,
         &quot;updated_by&quot;: &quot;N/A&quot;,
-        &quot;created_at&quot;: &quot;07:38:34 26/03/2026&quot;,
-        &quot;updated_at&quot;: &quot;07:38:34 26/03/2026&quot;
+        &quot;created_at&quot;: &quot;08:49:08 26/03/2026&quot;,
+        &quot;updated_at&quot;: &quot;08:49:08 26/03/2026&quot;
     },
     &quot;success&quot;: &quot;true&quot;,
     &quot;message&quot;: &quot;Cập nhật lịch c&ocirc;ng t&aacute;c th&agrave;nh c&ocirc;ng!&quot;
@@ -21356,10 +17384,10 @@ Must be one of:
  &nbsp;
                 <input type="text" style="display: none"
                               name="notification.channel"                data-endpoint="PUTapi-schedules--schedule_id-"
-               value="sms"
+               value="zalo"
                data-component="body">
     <br>
-<p>This field is required when <code>notification</code> is present. Example: <code>sms</code></p>
+<p>This field is required when <code>notification</code> is present. Example: <code>zalo</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>sms</code></li> <li><code>zalo</code></li> <li><code>website</code></li> <li><code>app</code></li></ul>
                     </div>
@@ -21370,10 +17398,10 @@ Must be one of:
  &nbsp;
                 <input type="text" style="display: none"
                               name="notification.remind_at"                data-endpoint="PUTapi-schedules--schedule_id-"
-               value="2026-03-26T07:38:34"
+               value="2026-03-26T08:49:08"
                data-component="body">
     <br>
-<p>This field is required when <code>notification</code> is present. Must be a valid date. Example: <code>2026-03-26T07:38:34</code></p>
+<p>This field is required when <code>notification</code> is present. Must be a valid date. Example: <code>2026-03-26T08:49:08</code></p>
                     </div>
                                     </details>
         </div>
@@ -21452,13 +17480,13 @@ Must be one of:
     --form "meeting_type=architecto"\
     --form "nature=architecto"\
     --form "color_code=architecto"\
-    --form "status=active"\
+    --form "status=inactive"\
     --form "participants[]=architecto"\
-    --form "notification[channel]=zalo"\
-    --form "notification[remind_at]=2026-03-26T07:38:34"\
+    --form "notification[channel]=app"\
+    --form "notification[remind_at]=2026-03-26T08:49:09"\
     --form "remove_attachment_ids[]=architecto"\
     --form "notifications[]=architecto"\
-    --form "attachments[]=@/tmp/phpagt62lsprkpn7IStVpz" </code></pre></div>
+    --form "attachments[]=@/tmp/phprdf045jt08419VGxDOZ" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -21486,10 +17514,10 @@ body.append('driver_info', 'architecto');
 body.append('meeting_type', 'architecto');
 body.append('nature', 'architecto');
 body.append('color_code', 'architecto');
-body.append('status', 'active');
+body.append('status', 'inactive');
 body.append('participants[]', 'architecto');
-body.append('notification[channel]', 'zalo');
-body.append('notification[remind_at]', '2026-03-26T07:38:34');
+body.append('notification[channel]', 'app');
+body.append('notification[remind_at]', '2026-03-26T08:49:09');
 body.append('remove_attachment_ids[]', 'architecto');
 body.append('notifications[]', 'architecto');
 body.append('attachments[]', document.querySelector('input[name="attachments[]"]').files[0]);
@@ -21564,7 +17592,7 @@ $response = $client-&gt;patch(
             ],
             [
                 'name' =&gt; 'status',
-                'contents' =&gt; 'active'
+                'contents' =&gt; 'inactive'
             ],
             [
                 'name' =&gt; 'participants[]',
@@ -21572,11 +17600,11 @@ $response = $client-&gt;patch(
             ],
             [
                 'name' =&gt; 'notification[channel]',
-                'contents' =&gt; 'zalo'
+                'contents' =&gt; 'app'
             ],
             [
                 'name' =&gt; 'notification[remind_at]',
-                'contents' =&gt; '2026-03-26T07:38:34'
+                'contents' =&gt; '2026-03-26T08:49:09'
             ],
             [
                 'name' =&gt; 'remove_attachment_ids[]',
@@ -21588,7 +17616,7 @@ $response = $client-&gt;patch(
             ],
             [
                 'name' =&gt; 'attachments[]',
-                'contents' =&gt; fopen('/tmp/phpagt62lsprkpn7IStVpz', 'r')
+                'contents' =&gt; fopen('/tmp/phprdf045jt08419VGxDOZ', 'r')
             ],
         ],
     ]
@@ -21606,10 +17634,10 @@ print_r(json_decode((string) $body));</code></pre></div>
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: {
-        &quot;id&quot;: 55,
+        &quot;id&quot;: 49,
         &quot;event_date&quot;: &quot;05/04/2026&quot;,
         &quot;session&quot;: &quot;sang&quot;,
-        &quot;start_time&quot;: &quot;21:01:00&quot;,
+        &quot;start_time&quot;: &quot;19:50:00&quot;,
         &quot;content&quot;: &quot;Quos velit et fugiat sunt nihil accusantium harum.&quot;,
         &quot;location&quot;: null,
         &quot;prep_unit&quot;: null,
@@ -21625,8 +17653,8 @@ print_r(json_decode((string) $body));</code></pre></div>
         &quot;nature_label&quot;: &quot;Thường&quot;,
         &quot;created_by&quot;: &quot;N/A&quot;,
         &quot;updated_by&quot;: &quot;N/A&quot;,
-        &quot;created_at&quot;: &quot;07:38:34 26/03/2026&quot;,
-        &quot;updated_at&quot;: &quot;07:38:34 26/03/2026&quot;
+        &quot;created_at&quot;: &quot;08:49:09 26/03/2026&quot;,
+        &quot;updated_at&quot;: &quot;08:49:09 26/03/2026&quot;
     },
     &quot;success&quot;: &quot;true&quot;,
     &quot;message&quot;: &quot;Cập nhật lịch c&ocirc;ng t&aacute;c th&agrave;nh c&ocirc;ng!&quot;
@@ -21905,10 +17933,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="status"                data-endpoint="PATCHapi-schedules--schedule_id-"
-               value="active"
+               value="inactive"
                data-component="body">
     <br>
-<p>Example: <code>active</code></p>
+<p>Example: <code>inactive</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>active</code></li> <li><code>inactive</code></li></ul>
         </div>
@@ -21965,10 +17993,10 @@ Must be one of:
  &nbsp;
                 <input type="text" style="display: none"
                               name="notification.channel"                data-endpoint="PATCHapi-schedules--schedule_id-"
-               value="zalo"
+               value="app"
                data-component="body">
     <br>
-<p>This field is required when <code>notification</code> is present. Example: <code>zalo</code></p>
+<p>This field is required when <code>notification</code> is present. Example: <code>app</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>sms</code></li> <li><code>zalo</code></li> <li><code>website</code></li> <li><code>app</code></li></ul>
                     </div>
@@ -21979,10 +18007,10 @@ Must be one of:
  &nbsp;
                 <input type="text" style="display: none"
                               name="notification.remind_at"                data-endpoint="PATCHapi-schedules--schedule_id-"
-               value="2026-03-26T07:38:34"
+               value="2026-03-26T08:49:09"
                data-component="body">
     <br>
-<p>This field is required when <code>notification</code> is present. Must be a valid date. Example: <code>2026-03-26T07:38:34</code></p>
+<p>This field is required when <code>notification</code> is present. Must be a valid date. Example: <code>2026-03-26T08:49:09</code></p>
                     </div>
                                     </details>
         </div>
@@ -22474,26 +18502,26 @@ print_r(json_decode((string) $body));</code></pre></div>
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: [
         {
-            &quot;id&quot;: 77,
-            &quot;schedule_id&quot;: 56,
+            &quot;id&quot;: 70,
+            &quot;schedule_id&quot;: 50,
             &quot;channel&quot;: &quot;sms&quot;,
             &quot;status&quot;: &quot;pending&quot;,
-            &quot;remind_at&quot;: &quot;21:36:21 27/03/2026&quot;,
+            &quot;remind_at&quot;: &quot;22:46:56 27/03/2026&quot;,
             &quot;sent_at&quot;: null,
             &quot;read_at&quot;: null,
             &quot;is_read&quot;: false,
-            &quot;created_at&quot;: &quot;07:38:34 26/03/2026&quot;
+            &quot;created_at&quot;: &quot;08:49:09 26/03/2026&quot;
         },
         {
-            &quot;id&quot;: 78,
-            &quot;schedule_id&quot;: 57,
+            &quot;id&quot;: 71,
+            &quot;schedule_id&quot;: 51,
             &quot;channel&quot;: &quot;sms&quot;,
             &quot;status&quot;: &quot;pending&quot;,
-            &quot;remind_at&quot;: &quot;19:17:28 26/03/2026&quot;,
+            &quot;remind_at&quot;: &quot;20:28:03 26/03/2026&quot;,
             &quot;sent_at&quot;: null,
             &quot;read_at&quot;: null,
             &quot;is_read&quot;: false,
-            &quot;created_at&quot;: &quot;07:38:34 26/03/2026&quot;
+            &quot;created_at&quot;: &quot;08:49:09 26/03/2026&quot;
         }
     ],
     &quot;links&quot;: {
