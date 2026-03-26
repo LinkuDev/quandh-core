@@ -15,7 +15,7 @@ endpoints:
       subgroup: ''
       subgroupDescription: ''
       title: 'Xuất danh sách role'
-      description: 'Áp dụng cùng bộ lọc với index. Xuất ra các trường: id, name, guard_name, department_id, department_name, created_at, updated_at.'
+      description: 'Áp dụng cùng bộ lọc với index. Xuất ra các trường: id, name, guard_name, created_at, updated_at.'
       authenticated: true
       deprecated: false
     headers:
@@ -144,7 +144,7 @@ endpoints:
       subgroup: ''
       subgroupDescription: ''
       title: 'Nhập danh sách role'
-      description: 'Cột bắt buộc: name. Cột không bắt buộc: guard_name (mặc định "web"), department_id.'
+      description: 'Cột bắt buộc: name. Cột không bắt buộc: guard_name (mặc định "web").'
       authenticated: true
       deprecated: false
     headers:
@@ -384,7 +384,7 @@ endpoints:
       subgroup: ''
       subgroupDescription: ''
       title: 'Danh sách role'
-      description: 'Lấy danh sách có phân trang, lọc và sắp xếp. Có kèm department và permissions.'
+      description: 'Lấy danh sách có phân trang, lọc và sắp xếp. Có kèm permissions.'
       authenticated: true
       deprecated: false
     headers:
@@ -487,7 +487,7 @@ endpoints:
       -
         custom: []
         status: 200
-        content: '{"data":[{"id":24,"name":"role_ng775","guard_name":"web","department_id":null,"created_at":"03:43:48 25\/03\/2026","updated_at":"03:43:48 25\/03\/2026"},{"id":25,"name":"role_mi365","guard_name":"web","department_id":null,"created_at":"03:43:48 25\/03\/2026","updated_at":"03:43:48 25\/03\/2026"}],"links":{"first":"\/?page=1","last":"\/?page=1","prev":null,"next":null},"meta":{"current_page":1,"from":1,"last_page":1,"links":[{"url":null,"label":"&laquo; Previous","page":null,"active":false},{"url":"\/?page=1","label":"1","page":1,"active":true},{"url":null,"label":"Next &raquo;","page":null,"active":false}],"path":"\/","per_page":10,"to":2,"total":2},"success":"true"}'
+        content: '{"data":[{"id":6,"name":"role_ng775","guard_name":"web","created_at":"07:38:33 26\/03\/2026","updated_at":"07:38:33 26\/03\/2026"},{"id":7,"name":"role_mi365","guard_name":"web","created_at":"07:38:33 26\/03\/2026","updated_at":"07:38:33 26\/03\/2026"}],"links":{"first":"\/?page=1","last":"\/?page=1","prev":null,"next":null},"meta":{"current_page":1,"from":1,"last_page":1,"links":[{"url":null,"label":"&laquo; Previous","page":null,"active":false},{"url":"\/?page=1","label":"1","page":1,"active":true},{"url":null,"label":"Next &raquo;","page":null,"active":false}],"path":"\/","per_page":10,"to":2,"total":2},"success":"true"}'
         headers: []
         description: ''
     responseFields: []
@@ -553,7 +553,7 @@ endpoints:
       -
         custom: []
         status: 200
-        content: '{"data":{"id":26,"name":"role_wp680","guard_name":"web","department_id":70,"department":{"id":70,"name":"Dare Group"},"permissions":["departments.index.7602"],"created_at":"03:43:48 25\/03\/2026","updated_at":"03:43:48 25\/03\/2026"},"success":"true"}'
+        content: '{"data":{"id":8,"name":"role_wp680","guard_name":"web","permissions":["departments.show.5485"],"created_at":"07:38:33 26\/03\/2026","updated_at":"07:38:33 26\/03\/2026"},"success":"true"}'
         headers: []
         description: ''
     responseFields: []
@@ -637,7 +637,7 @@ endpoints:
       -
         custom: []
         status: 201
-        content: '{"data":{"id":27,"name":"role_zm806","guard_name":"web","department_id":null,"permissions":["documents.index.5606"],"created_at":"03:43:48 25\/03\/2026","updated_at":"03:43:48 25\/03\/2026"},"success":"true","message":"Vai tr\u00f2 \u0111\u00e3 \u0111\u01b0\u1ee3c t\u1ea1o th\u00e0nh c\u00f4ng!"}'
+        content: '{"data":{"id":9,"name":"role_zm806","guard_name":"web","permissions":["documents.index.6955"],"created_at":"07:38:33 26\/03\/2026","updated_at":"07:38:33 26\/03\/2026"},"success":"true","message":"Vai tr\u00f2 \u0111\u00e3 \u0111\u01b0\u1ee3c t\u1ea1o th\u00e0nh c\u00f4ng!"}'
         headers: []
         description: ''
     responseFields: []
@@ -743,7 +743,7 @@ endpoints:
       -
         custom: []
         status: 200
-        content: '{"data":{"id":28,"name":"role_yv564","guard_name":"web","department_id":null,"permissions":["users.update.3433"],"created_at":"03:43:48 25\/03\/2026","updated_at":"03:43:48 25\/03\/2026"},"success":"true","message":"Vai tr\u00f2 \u0111\u00e3 \u0111\u01b0\u1ee3c c\u1eadp nh\u1eadt!"}'
+        content: '{"data":{"id":10,"name":"role_yv564","guard_name":"web","permissions":["users.update.3433"],"created_at":"07:38:33 26\/03\/2026","updated_at":"07:38:33 26\/03\/2026"},"success":"true","message":"Vai tr\u00f2 \u0111\u00e3 \u0111\u01b0\u1ee3c c\u1eadp nh\u1eadt!"}'
         headers: []
         description: ''
     responseFields: []
@@ -849,7 +849,7 @@ endpoints:
       -
         custom: []
         status: 200
-        content: '{"data":{"id":29,"name":"role_lj575","guard_name":"web","department_id":null,"permissions":["roles.destroy.6854"],"created_at":"03:43:48 25\/03\/2026","updated_at":"03:43:48 25\/03\/2026"},"success":"true","message":"Vai tr\u00f2 \u0111\u00e3 \u0111\u01b0\u1ee3c c\u1eadp nh\u1eadt!"}'
+        content: '{"data":{"id":11,"name":"role_lj575","guard_name":"web","permissions":["roles.destroy.6854"],"created_at":"07:38:33 26\/03\/2026","updated_at":"07:38:33 26\/03\/2026"},"success":"true","message":"Vai tr\u00f2 \u0111\u00e3 \u0111\u01b0\u1ee3c c\u1eadp nh\u1eadt!"}'
         headers: []
         description: ''
     responseFields: []

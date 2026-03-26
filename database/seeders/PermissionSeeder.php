@@ -12,36 +12,32 @@ use Illuminate\Database\Seeder;
 /**
  * Seed permission, role, department và phân quyền cho dự án.
  *
- * Khi thêm module mới hoặc thêm action (stats, index, show, store, ...) vào module,
- * bắt buộc cập nhật danh sách PERMISSIONS bên dưới cho đầy đủ, sau đó chạy lại seed.
+ * Permissions tách theo module prefix:
+ * - Core: users.*, permissions.*, roles.*, departments.*, log-activities.*, settings.*
+ * - Thường trực: thuong-truc-schedules.*
+ * - Văn phòng: van-phong-schedules.* (có thêm approve)
  */
 class PermissionSeeder extends Seeder
 {
-    /** Guard thống nhất cho Spatie (web + API Sanctum), tránh nhân đôi permission trong DB. */
     protected const GUARD = 'web';
 
-    /**
-     * Danh sách đầy đủ permission theo module và resource.
-     * Định dạng: 'resource.action' — resource trùng prefix API.
-     * Khi thêm module/chức năng: bổ sung vào đúng nhóm và chạy sail artisan db:seed --class=PermissionSeeder.
-     */
     protected static array $PERMISSIONS = [
         // Core - Users
         'users' => [
             'stats', 'index', 'show', 'store', 'update', 'destroy',
             'bulkDestroy', 'bulkUpdateStatus', 'changeStatus', 'export', 'import',
         ],
-        // Core - Permissions (có description, sort_order, parent_id để nhóm frontend)
+        // Core - Permissions
         'permissions' => [
             'stats', 'index', 'tree', 'show', 'store', 'update', 'destroy',
             'bulkDestroy', 'export', 'import',
         ],
-        // Core - Roles (bảng roles chuẩn Spatie, không có cột status)
+        // Core - Roles
         'roles' => [
             'stats', 'index', 'show', 'store', 'update', 'destroy',
             'bulkDestroy', 'export', 'import',
         ],
-        // Core - Departments (cấu trúc cây parent_id)
+        // Core - Departments
         'departments' => [
             'stats', 'index', 'tree', 'show', 'store', 'update', 'destroy',
             'bulkDestroy', 'bulkUpdateStatus', 'changeStatus', 'export', 'import',
@@ -55,9 +51,17 @@ class PermissionSeeder extends Seeder
         'settings' => [
             'index', 'show', 'update',
         ],
-        // Schedule - Lịch công tác
-        'schedules' => [
+        // Module Thường trực — Lịch công tác (tạo → active luôn)
+        'thuong-truc-schedules' => [
             'stats', 'index', 'show', 'store', 'update', 'destroy',
+            'bulkDestroy', 'bulkUpdateStatus', 'changeStatus',
+            'export', 'exportPdf', 'import', 'reorder',
+            'updateAll', 'destroyAll',
+        ],
+        // Module Văn phòng — Lịch công tác (tạo → pending → approve)
+        'van-phong-schedules' => [
+            'stats', 'index', 'show', 'store', 'update', 'destroy',
+            'approve',
             'bulkDestroy', 'bulkUpdateStatus', 'changeStatus',
             'export', 'exportPdf', 'import', 'reorder',
             'updateAll', 'destroyAll',
@@ -74,7 +78,6 @@ class PermissionSeeder extends Seeder
         $this->seedFixedUsersAndAssignRoles();
     }
 
-    /** Chuyển permission/role từ guard api sang web (một lần khi đổi chiến lược guard). */
     protected function migrateGuardApiToWeb(): void
     {
         Permission::where('guard_name', 'api')->update(['guard_name' => 'web']);
@@ -82,7 +85,7 @@ class PermissionSeeder extends Seeder
         app(\Spatie\Permission\PermissionRegistrar::class)->forgetCachedPermissions();
     }
 
-    /** Tạo departments theo cơ cấu Thành ủy. */
+    /** Tạo departments theo cơ cấu Thành ủy (dùng cho schedule.department_id). */
     protected function seedDepartments(): void
     {
         Department::firstOrCreate(
@@ -104,7 +107,6 @@ class PermissionSeeder extends Seeder
         );
     }
 
-    /** Nhãn nhóm permission theo resource (để description). */
     protected static array $RESOURCE_LABELS = [
         'users' => 'Người dùng',
         'permissions' => 'Quyền',
@@ -112,10 +114,10 @@ class PermissionSeeder extends Seeder
         'departments' => 'Đơn vị',
         'log-activities' => 'Nhật ký truy cập',
         'settings' => 'Cấu hình hệ thống',
-        'schedules' => 'Lịch công tác',
+        'thuong-truc-schedules' => 'Thường trực - Lịch công tác',
+        'van-phong-schedules' => 'Văn phòng - Lịch công tác',
     ];
 
-    /** Nhãn action (để description). */
     protected static array $ACTION_LABELS = [
         'stats' => 'Thống kê',
         'index' => 'Danh sách',
@@ -124,6 +126,7 @@ class PermissionSeeder extends Seeder
         'store' => 'Tạo mới',
         'update' => 'Cập nhật',
         'destroy' => 'Xóa',
+        'approve' => 'Duyệt lịch',
         'bulkDestroy' => 'Xóa hàng loạt',
         'bulkUpdateStatus' => 'Cập nhật trạng thái hàng loạt',
         'changeStatus' => 'Đổi trạng thái',
@@ -136,11 +139,9 @@ class PermissionSeeder extends Seeder
         'updateAll' => 'Cập nhật tất cả',
     ];
 
-    /** Tạo đầy đủ permission từ danh sách PERMISSIONS (kèm description, sort_order, parent_id). */
     protected function seedPermissions(): void
     {
         $sortOrder = 0;
-        $parentIds = [];
 
         foreach (self::$PERMISSIONS as $resource => $actions) {
             $groupName = "group:{$resource}";
@@ -149,7 +150,6 @@ class PermissionSeeder extends Seeder
                 ['name' => $groupName, 'guard_name' => self::GUARD],
                 ['name' => $groupName, 'guard_name' => self::GUARD, 'description' => $groupLabel, 'sort_order' => $sortOrder++, 'parent_id' => null]
             );
-            $parentIds[$resource] = $group->id;
 
             foreach ($actions as $idx => $action) {
                 $name = "{$resource}.{$action}";
@@ -165,10 +165,8 @@ class PermissionSeeder extends Seeder
         app(\Spatie\Permission\PermissionRegistrar::class)->forgetCachedPermissions();
     }
 
-    /** Tạo các role mặc định theo nghiệp vụ Thành ủy. */
     protected function seedRoles(): void
     {
-        // Role global: không gắn department_id trực tiếp trên bảng roles.
         $roles = [
             'Super Admin',
             'Lãnh đạo',
@@ -180,15 +178,10 @@ class PermissionSeeder extends Seeder
         foreach ($roles as $role) {
             Role::firstOrCreate(
                 ['name' => $role, 'guard_name' => self::GUARD],
-                ['department_id' => null]
             );
         }
-
-        // Chuẩn hóa dữ liệu cũ nếu còn role theo department.
-        Role::query()->update(['department_id' => null]);
     }
 
-    /** Gán permission cho từng role theo nghiệp vụ Thành ủy. */
     protected function assignPermissionsToRoles(): void
     {
         $allPermissionNames = $this->getAllPermissionNames();
@@ -199,55 +192,62 @@ class PermissionSeeder extends Seeder
             $superAdmin->syncPermissions($allPermissionNames);
         }
 
-        // Lãnh đạo: xem lịch công tác + danh mục
+        // Lãnh đạo: xem lịch cả 2 module
         $lanhDao = Role::where('name', 'Lãnh đạo')->where('guard_name', self::GUARD)->first();
         if ($lanhDao) {
-            $lanhDao->syncPermissions($this->getViewOnlyPermissionNames());
+            $lanhDao->syncPermissions([
+                'thuong-truc-schedules.stats', 'thuong-truc-schedules.index', 'thuong-truc-schedules.show',
+                'van-phong-schedules.stats', 'van-phong-schedules.index', 'van-phong-schedules.show',
+            ]);
         }
 
-        // Thư ký: quản lý lịch cho Lãnh đạo (CRUD lịch + xem danh mục)
+        // Thư ký: CRUD lịch Thường trực (owner check qua Policy)
         $thuKy = Role::where('name', 'Thư ký')->where('guard_name', self::GUARD)->first();
         if ($thuKy) {
-            $thuKy->syncPermissions($this->getSecretaryPermissionNames());
+            $thuKy->syncPermissions([
+                'thuong-truc-schedules.stats', 'thuong-truc-schedules.index', 'thuong-truc-schedules.show',
+                'thuong-truc-schedules.store', 'thuong-truc-schedules.update', 'thuong-truc-schedules.destroy',
+                'thuong-truc-schedules.changeStatus', 'thuong-truc-schedules.export', 'thuong-truc-schedules.exportPdf',
+                'thuong-truc-schedules.reorder',
+            ]);
         }
 
-        // Công chức tổng hợp: điều chỉnh tất cả lịch + quản lý danh mục
+        // Công chức tổng hợp: toàn quyền lịch Văn phòng (bypass owner check)
         $congChucTongHop = Role::where('name', 'Công chức tổng hợp')->where('guard_name', self::GUARD)->first();
         if ($congChucTongHop) {
-            $congChucTongHop->syncPermissions($this->getCoordinatorPermissionNames());
+            $vpPermissions = [];
+            foreach (self::$PERMISSIONS['van-phong-schedules'] as $action) {
+                $vpPermissions[] = "van-phong-schedules.{$action}";
+            }
+            $congChucTongHop->syncPermissions($vpPermissions);
         }
 
-        // Cán bộ công chức: CRUD lịch của mình + xem danh mục
+        // Cán bộ công chức: CRUD lịch Văn phòng (owner check qua Policy, không có approve)
         $canBo = Role::where('name', 'Cán bộ công chức')->where('guard_name', self::GUARD)->first();
         if ($canBo) {
-            $canBo->syncPermissions($this->getOfficerPermissionNames());
+            $canBo->syncPermissions([
+                'van-phong-schedules.stats', 'van-phong-schedules.index', 'van-phong-schedules.show',
+                'van-phong-schedules.store', 'van-phong-schedules.update', 'van-phong-schedules.destroy',
+                'van-phong-schedules.changeStatus', 'van-phong-schedules.export',
+            ]);
         }
     }
 
     /**
-     * Tạo user cố định để đăng nhập kiểm tra và gán role:
-     * - admin@example.com => Super Admin (Thường trực Thành ủy)
-     * - thuky@example.com => Thư ký (Thường trực Thành ủy)
-     * - tonghop@example.com => Công chức tổng hợp (Văn phòng Thành ủy)
-     * - canbo@example.com => Cán bộ công chức (Văn phòng Thành ủy)
+     * Tạo user cố định để đăng nhập kiểm tra:
+     * - admin@example.com => Super Admin
+     * - thuky@example.com => Thư ký
+     * - tonghop@example.com => Công chức tổng hợp
+     * - canbo@example.com => Cán bộ công chức
      */
     protected function seedFixedUsersAndAssignRoles(): void
     {
-        $thuongTruc = Department::where('slug', 'thuong-truc-thanh-uy')->first();
-        $vanPhong = Department::where('slug', 'van-phong-thanh-uy')->first();
-
-        if (! $thuongTruc || ! $vanPhong) {
-            return;
-        }
-
         $superAdminRole = Role::where('name', 'Super Admin')->where('guard_name', self::GUARD)->first();
         $thuKyRole = Role::where('name', 'Thư ký')->where('guard_name', self::GUARD)->first();
         $tongHopRole = Role::where('name', 'Công chức tổng hợp')->where('guard_name', self::GUARD)->first();
         $canBoRole = Role::where('name', 'Cán bộ công chức')->where('guard_name', self::GUARD)->first();
 
-        // Super Admin — Thường trực Thành ủy
-        setPermissionsTeamId($thuongTruc->id);
-
+        // Super Admin
         $adminUser = User::updateOrCreate(
             ['email' => 'admin@example.com'],
             [
@@ -264,13 +264,13 @@ class PermissionSeeder extends Seeder
             $adminUser->syncRoles([$superAdminRole]);
         }
 
-        // Thư ký — Thường trực Thành ủy
+        // Thư ký
         $thuKyUser = User::updateOrCreate(
             ['email' => 'thuky@example.com'],
             [
                 'name' => 'Nguyễn Văn Thư',
                 'user_name' => 'thuky',
-                'password' => 'quandcore**11',
+                'password' => '123123',
                 'position' => 'Thư ký Thường trực',
                 'status' => StatusEnum::Active->value,
                 'email_verified_at' => now(),
@@ -281,15 +281,13 @@ class PermissionSeeder extends Seeder
             $thuKyUser->syncRoles([$thuKyRole]);
         }
 
-        // Công chức tổng hợp — Văn phòng Thành ủy
-        setPermissionsTeamId($vanPhong->id);
-
+        // Công chức tổng hợp
         $tongHopUser = User::updateOrCreate(
             ['email' => 'tonghop@example.com'],
             [
                 'name' => 'Trần Thị Tổng Hợp',
                 'user_name' => 'tonghop',
-                'password' => 'quandcore**11',
+                'password' => '123123',
                 'position' => 'Công chức tổng hợp',
                 'status' => StatusEnum::Active->value,
                 'email_verified_at' => now(),
@@ -300,13 +298,13 @@ class PermissionSeeder extends Seeder
             $tongHopUser->syncRoles([$tongHopRole]);
         }
 
-        // Cán bộ công chức — Văn phòng Thành ủy
+        // Cán bộ công chức
         $canBoUser = User::updateOrCreate(
             ['email' => 'canbo@example.com'],
             [
                 'name' => 'Lê Văn Cán Bộ',
                 'user_name' => 'canbo',
-                'password' => 'quandcore**11',
+                'password' => '123123',
                 'position' => 'Chuyên viên',
                 'status' => StatusEnum::Active->value,
                 'email_verified_at' => now(),
@@ -318,7 +316,6 @@ class PermissionSeeder extends Seeder
         }
     }
 
-    /** Lấy toàn bộ tên permission (resource.action). */
     protected function getAllPermissionNames(): array
     {
         $names = [];
@@ -329,47 +326,5 @@ class PermissionSeeder extends Seeder
         }
 
         return $names;
-    }
-
-    /** Permission cho Lãnh đạo: chỉ xem lịch công tác. */
-    protected function getViewOnlyPermissionNames(): array
-    {
-        return [
-            'schedules.stats', 'schedules.index', 'schedules.show',
-        ];
-    }
-
-    /** Permission cho Thư ký: CRUD lịch cho Lãnh đạo. */
-    protected function getSecretaryPermissionNames(): array
-    {
-        return [
-            'schedules.stats', 'schedules.index', 'schedules.show',
-            'schedules.store', 'schedules.update', 'schedules.destroy',
-            'schedules.changeStatus', 'schedules.export', 'schedules.exportPdf',
-            'schedules.reorder',
-        ];
-    }
-
-    /** Permission cho Công chức tổng hợp: toàn quyền lịch. */
-    protected function getCoordinatorPermissionNames(): array
-    {
-        $names = [];
-        if (isset(self::$PERMISSIONS['schedules'])) {
-            foreach (self::$PERMISSIONS['schedules'] as $action) {
-                $names[] = "schedules.{$action}";
-            }
-        }
-
-        return $names;
-    }
-
-    /** Permission cho Cán bộ công chức: CRUD lịch của mình. */
-    protected function getOfficerPermissionNames(): array
-    {
-        return [
-            'schedules.stats', 'schedules.index', 'schedules.show',
-            'schedules.store', 'schedules.update', 'schedules.destroy',
-            'schedules.changeStatus', 'schedules.export',
-        ];
     }
 }

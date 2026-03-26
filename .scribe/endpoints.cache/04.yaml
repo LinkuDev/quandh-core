@@ -15,7 +15,7 @@ endpoints:
       subgroup: ''
       subgroupDescription: ''
       title: 'Xuất danh sách người dùng'
-      description: 'Áp dụng cùng bộ lọc với index. Xuất ra các trường: id, name, email, user_name, status, created_by, updated_by, created_at, updated_at.'
+      description: 'Xuất ra các trường: id, name, email, user_name, position, phone, zalo_id, department, role, status, created_by, updated_by, created_at, updated_at.'
       authenticated: true
       deprecated: false
     headers:
@@ -559,73 +559,7 @@ endpoints:
       -
         custom: []
         status: 200
-        content: '{"data":[{"id":45,"name":"Ms. Elisabeth Okuneva","email":"gulgowski.asia@example.com","user_name":"idickens","position":null,"phone":null,"zalo_id":null,"status":"inactive","created_by":"N\/A","updated_by":"N\/A","assignments":[],"created_at":"03:43:48 25\/03\/2026","updated_at":"03:43:48 25\/03\/2026"},{"id":46,"name":"Mya DuBuque","email":"breitenberg.gilbert@example.com","user_name":"price.amber","position":null,"phone":null,"zalo_id":null,"status":"inactive","created_by":"N\/A","updated_by":"N\/A","assignments":[],"created_at":"03:43:48 25\/03\/2026","updated_at":"03:43:48 25\/03\/2026"}],"links":{"first":"\/?page=1","last":"\/?page=1","prev":null,"next":null},"meta":{"current_page":1,"from":1,"last_page":1,"links":[{"url":null,"label":"&laquo; Previous","page":null,"active":false},{"url":"\/?page=1","label":"1","page":1,"active":true},{"url":null,"label":"Next &raquo;","page":null,"active":false}],"path":"\/","per_page":10,"to":2,"total":2},"success":"true"}'
-        headers: []
-        description: ''
-    responseFields: []
-    auth:
-      - headers
-      - Authorization
-      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
-    controller: null
-    method: null
-    route: null
-  -
-    custom: []
-    httpMethods:
-      - GET
-    uri: 'api/users/{user_id}'
-    metadata:
-      custom: []
-      groupName: 'Core - User'
-      groupDescription: ''
-      subgroup: ''
-      subgroupDescription: ''
-      title: 'Chi tiết người dùng'
-      description: ''
-      authenticated: true
-      deprecated: false
-    headers:
-      Authorization: 'Bearer Bearer {YOUR_ACCESS_TOKEN}'
-      X-Department-Id: 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters:
-      user_id:
-        custom: []
-        name: user_id
-        description: 'The ID of the user.'
-        required: true
-        example: 1
-        type: integer
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        deprecated: false
-      user:
-        custom: []
-        name: user
-        description: 'ID người dùng.'
-        required: true
-        example: 1
-        type: integer
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        deprecated: false
-    cleanUrlParameters:
-      user_id: 1
-      user: 1
-    queryParameters: []
-    cleanQueryParameters: []
-    bodyParameters: []
-    cleanBodyParameters: []
-    fileParameters: []
-    responses:
-      -
-        custom: []
-        status: 200
-        content: '{"data":{"id":47,"name":"Morgan Hirthe","email":"dare.emelie@example.com","user_name":"imclaughlin","position":null,"phone":null,"zalo_id":null,"status":"inactive","created_by":"N\/A","updated_by":"N\/A","assignments":[],"created_at":"03:43:48 25\/03\/2026","updated_at":"03:43:48 25\/03\/2026"},"success":"true"}'
+        content: '{"data":[{"id":15,"name":"Ms. Elisabeth Okuneva","email":"gulgowski.asia@example.com","user_name":"idickens","position":null,"phone":null,"zalo_id":null,"role":null,"status":"inactive","created_by":"N\/A","updated_by":"N\/A","created_at":"07:38:33 26\/03\/2026","updated_at":"07:38:33 26\/03\/2026"},{"id":16,"name":"Mya DuBuque","email":"breitenberg.gilbert@example.com","user_name":"price.amber","position":null,"phone":null,"zalo_id":null,"role":null,"status":"inactive","created_by":"N\/A","updated_by":"N\/A","created_at":"07:38:33 26\/03\/2026","updated_at":"07:38:33 26\/03\/2026"}],"links":{"first":"\/?page=1","last":"\/?page=1","prev":null,"next":null},"meta":{"current_page":1,"from":1,"last_page":1,"links":[{"url":null,"label":"&laquo; Previous","page":null,"active":false},{"url":"\/?page=1","label":"1","page":1,"active":true},{"url":null,"label":"Next &raquo;","page":null,"active":false}],"path":"\/","per_page":10,"to":2,"total":2},"success":"true"}'
         headers: []
         description: ''
     responseFields: []
@@ -686,12 +620,12 @@ endpoints:
       user_name:
         custom: []
         name: user_name
-        description: 'Tên đăng nhập (không dấu cách, cho phép . _ -). Must match the regex /^[a-zA-Z0-9._-]*$/. Must not be greater than 100 characters.'
+        description: Nickname.
         required: false
         example: nguyenvana
         type: string
         enumValues: []
-        exampleWasSpecified: false
+        exampleWasSpecified: true
         nullable: true
         deprecated: false
       password:
@@ -716,39 +650,59 @@ endpoints:
         exampleWasSpecified: true
         nullable: true
         deprecated: false
-      assignments:
+      position:
         custom: []
-        name: assignments
-        description: 'Danh sách gán vai trò theo đơn vị. Ví dụ: [{"role_id":1,"department_ids":[2,3]},{"role_id":5,"department_ids":[9]}]'
+        name: position
+        description: 'Chức vụ.'
         required: false
-        example:
-          - architecto
-        type: 'string[]'
+        example: 'Chuyên viên'
+        type: string
         enumValues: []
-        exampleWasSpecified: false
+        exampleWasSpecified: true
         nullable: true
         deprecated: false
-      'assignments[].role_id':
+      phone:
         custom: []
-        name: 'assignments[].role_id'
-        description: 'The <code>id</code> of an existing record in the roles table.'
+        name: phone
+        description: 'Số điện thoại.'
+        required: false
+        example: '0901234567'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        deprecated: false
+      zalo_id:
+        custom: []
+        name: zalo_id
+        description: 'Zalo ID.'
+        required: false
+        example: '0901234567'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        deprecated: false
+      department_id:
+        custom: []
+        name: department_id
+        description: 'ID đơn vị.'
         required: true
-        example: 16
+        example: 1
         type: integer
         enumValues: []
-        exampleWasSpecified: false
+        exampleWasSpecified: true
         nullable: false
         deprecated: false
-      'assignments[].department_ids':
+      role_id:
         custom: []
-        name: 'assignments[].department_ids'
-        description: 'The <code>id</code> of an existing record in the departments table.'
-        required: false
-        example:
-          - 16
-        type: 'integer[]'
+        name: role_id
+        description: 'ID vai trò.'
+        required: true
+        example: 1
+        type: integer
         enumValues: []
-        exampleWasSpecified: false
+        exampleWasSpecified: true
         nullable: false
         deprecated: false
       password_confirmation:
@@ -756,10 +710,10 @@ endpoints:
         name: password_confirmation
         description: 'Xác nhận mật khẩu.'
         required: true
-        example: architecto
+        example: password123
         type: string
         enumValues: []
-        exampleWasSpecified: false
+        exampleWasSpecified: true
         nullable: false
         deprecated: false
     cleanBodyParameters:
@@ -768,431 +722,18 @@ endpoints:
       user_name: nguyenvana
       password: password123
       status: active
-      assignments:
-        - architecto
-      password_confirmation: architecto
+      position: 'Chuyên viên'
+      phone: '0901234567'
+      zalo_id: '0901234567'
+      department_id: 1
+      role_id: 1
+      password_confirmation: password123
     fileParameters: []
     responses:
       -
         custom: []
         status: 201
-        content: '{"data":{"id":48,"name":"Ms. Elisabeth Okuneva","email":"idickens@example.org","user_name":"aschuster","position":null,"phone":null,"zalo_id":null,"status":"active","created_by":"N\/A","updated_by":"N\/A","assignments":[],"created_at":"03:43:48 25\/03\/2026","updated_at":"03:43:48 25\/03\/2026"},"success":"true","message":"T\u00e0i kho\u1ea3n \u0111\u00e3 \u0111\u01b0\u1ee3c t\u1ea1o th\u00e0nh c\u00f4ng!"}'
-        headers: []
-        description: ''
-    responseFields: []
-    auth:
-      - headers
-      - Authorization
-      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
-    controller: null
-    method: null
-    route: null
-  -
-    custom: []
-    httpMethods:
-      - PUT
-    uri: 'api/users/{user_id}'
-    metadata:
-      custom: []
-      groupName: 'Core - User'
-      groupDescription: ''
-      subgroup: ''
-      subgroupDescription: ''
-      title: 'Cập nhật người dùng'
-      description: ''
-      authenticated: true
-      deprecated: false
-    headers:
-      Authorization: 'Bearer Bearer {YOUR_ACCESS_TOKEN}'
-      X-Department-Id: 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters:
-      user_id:
-        custom: []
-        name: user_id
-        description: 'The ID of the user.'
-        required: true
-        example: 1
-        type: integer
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        deprecated: false
-      user:
-        custom: []
-        name: user
-        description: 'ID người dùng.'
-        required: true
-        example: 1
-        type: integer
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        deprecated: false
-    cleanUrlParameters:
-      user_id: 1
-      user: 1
-    queryParameters: []
-    cleanQueryParameters: []
-    bodyParameters:
-      name:
-        custom: []
-        name: name
-        description: 'Tên người dùng.'
-        required: false
-        example: architecto
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        deprecated: false
-      email:
-        custom: []
-        name: email
-        description: 'Email (duy nhất).'
-        required: false
-        example: gbailey@example.net
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        deprecated: false
-      user_name:
-        custom: []
-        name: user_name
-        description: 'Tên đăng nhập (không dấu cách, cho phép . _ -). Must match the regex /^[a-zA-Z0-9._-]*$/. Must not be greater than 100 characters.'
-        required: false
-        example: nguyenvanb
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: true
-        deprecated: false
-      password:
-        custom: []
-        name: password
-        description: 'Mật khẩu mới (nếu muốn đổi).'
-        required: false
-        example: '|]|{+-'
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        deprecated: false
-      status:
-        custom: []
-        name: status
-        description: 'Trạng thái: active, inactive, banned.'
-        required: false
-        example: architecto
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        deprecated: false
-      assignments:
-        custom: []
-        name: assignments
-        description: 'Danh sách gán vai trò theo đơn vị. Khi gửi field này, hệ thống sẽ đồng bộ lại toàn bộ phân quyền của user.'
-        required: false
-        example:
-          - architecto
-        type: 'string[]'
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        deprecated: false
-      'assignments[].role_id':
-        custom: []
-        name: 'assignments[].role_id'
-        description: 'The <code>id</code> of an existing record in the roles table.'
-        required: true
-        example: 16
-        type: integer
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        deprecated: false
-      'assignments[].department_ids':
-        custom: []
-        name: 'assignments[].department_ids'
-        description: 'The <code>id</code> of an existing record in the departments table.'
-        required: false
-        example:
-          - 16
-        type: 'integer[]'
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        deprecated: false
-      password_confirmation:
-        custom: []
-        name: password_confirmation
-        description: 'Xác nhận mật khẩu.'
-        required: false
-        example: architecto
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        deprecated: false
-    cleanBodyParameters:
-      name: architecto
-      email: gbailey@example.net
-      user_name: nguyenvanb
-      password: '|]|{+-'
-      status: architecto
-      assignments:
-        - architecto
-      password_confirmation: architecto
-    fileParameters: []
-    responses:
-      -
-        custom: []
-        status: 200
-        content: '{"data":{"id":49,"name":"Ms. Elisabeth Okuneva","email":"aschuster@example.com","user_name":"gilbert32","position":null,"phone":null,"zalo_id":null,"status":"active","created_by":"N\/A","updated_by":"N\/A","assignments":[],"created_at":"03:43:48 25\/03\/2026","updated_at":"03:43:48 25\/03\/2026"},"success":"true","message":"T\u00e0i kho\u1ea3n \u0111\u00e3 \u0111\u01b0\u1ee3c c\u1eadp nh\u1eadt!"}'
-        headers: []
-        description: ''
-    responseFields: []
-    auth:
-      - headers
-      - Authorization
-      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
-    controller: null
-    method: null
-    route: null
-  -
-    custom: []
-    httpMethods:
-      - PATCH
-    uri: 'api/users/{user_id}'
-    metadata:
-      custom: []
-      groupName: 'Core - User'
-      groupDescription: ''
-      subgroup: ''
-      subgroupDescription: ''
-      title: 'Cập nhật người dùng'
-      description: ''
-      authenticated: true
-      deprecated: false
-    headers:
-      Authorization: 'Bearer Bearer {YOUR_ACCESS_TOKEN}'
-      X-Department-Id: 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters:
-      user_id:
-        custom: []
-        name: user_id
-        description: 'The ID of the user.'
-        required: true
-        example: 1
-        type: integer
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        deprecated: false
-      user:
-        custom: []
-        name: user
-        description: 'ID người dùng.'
-        required: true
-        example: 1
-        type: integer
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        deprecated: false
-    cleanUrlParameters:
-      user_id: 1
-      user: 1
-    queryParameters: []
-    cleanQueryParameters: []
-    bodyParameters:
-      name:
-        custom: []
-        name: name
-        description: 'Tên người dùng.'
-        required: false
-        example: architecto
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        deprecated: false
-      email:
-        custom: []
-        name: email
-        description: 'Email (duy nhất).'
-        required: false
-        example: gbailey@example.net
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        deprecated: false
-      user_name:
-        custom: []
-        name: user_name
-        description: 'Tên đăng nhập (không dấu cách, cho phép . _ -). Must match the regex /^[a-zA-Z0-9._-]*$/. Must not be greater than 100 characters.'
-        required: false
-        example: nguyenvanb
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: true
-        deprecated: false
-      password:
-        custom: []
-        name: password
-        description: 'Mật khẩu mới (nếu muốn đổi).'
-        required: false
-        example: '|]|{+-'
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        deprecated: false
-      status:
-        custom: []
-        name: status
-        description: 'Trạng thái: active, inactive, banned.'
-        required: false
-        example: architecto
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        deprecated: false
-      assignments:
-        custom: []
-        name: assignments
-        description: 'Danh sách gán vai trò theo đơn vị. Khi gửi field này, hệ thống sẽ đồng bộ lại toàn bộ phân quyền của user.'
-        required: false
-        example:
-          - architecto
-        type: 'string[]'
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        deprecated: false
-      'assignments[].role_id':
-        custom: []
-        name: 'assignments[].role_id'
-        description: 'The <code>id</code> of an existing record in the roles table.'
-        required: true
-        example: 16
-        type: integer
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        deprecated: false
-      'assignments[].department_ids':
-        custom: []
-        name: 'assignments[].department_ids'
-        description: 'The <code>id</code> of an existing record in the departments table.'
-        required: false
-        example:
-          - 16
-        type: 'integer[]'
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        deprecated: false
-      password_confirmation:
-        custom: []
-        name: password_confirmation
-        description: 'Xác nhận mật khẩu.'
-        required: false
-        example: architecto
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        deprecated: false
-    cleanBodyParameters:
-      name: architecto
-      email: gbailey@example.net
-      user_name: nguyenvanb
-      password: '|]|{+-'
-      status: architecto
-      assignments:
-        - architecto
-      password_confirmation: architecto
-    fileParameters: []
-    responses:
-      -
-        custom: []
-        status: 200
-        content: '{"data":{"id":50,"name":"Ms. Elisabeth Okuneva","email":"gilbert32@example.com","user_name":"hirthe.theo","position":null,"phone":null,"zalo_id":null,"status":"active","created_by":"N\/A","updated_by":"N\/A","assignments":[],"created_at":"03:43:48 25\/03\/2026","updated_at":"03:43:48 25\/03\/2026"},"success":"true","message":"T\u00e0i kho\u1ea3n \u0111\u00e3 \u0111\u01b0\u1ee3c c\u1eadp nh\u1eadt!"}'
-        headers: []
-        description: ''
-    responseFields: []
-    auth:
-      - headers
-      - Authorization
-      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
-    controller: null
-    method: null
-    route: null
-  -
-    custom: []
-    httpMethods:
-      - DELETE
-    uri: 'api/users/{user_id}'
-    metadata:
-      custom: []
-      groupName: 'Core - User'
-      groupDescription: ''
-      subgroup: ''
-      subgroupDescription: ''
-      title: 'Xóa người dùng'
-      description: ''
-      authenticated: true
-      deprecated: false
-    headers:
-      Authorization: 'Bearer Bearer {YOUR_ACCESS_TOKEN}'
-      X-Department-Id: 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters:
-      user_id:
-        custom: []
-        name: user_id
-        description: 'The ID of the user.'
-        required: true
-        example: 1
-        type: integer
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        deprecated: false
-      user:
-        custom: []
-        name: user
-        description: 'ID người dùng.'
-        required: true
-        example: 1
-        type: integer
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        deprecated: false
-    cleanUrlParameters:
-      user_id: 1
-      user: 1
-    queryParameters: []
-    cleanQueryParameters: []
-    bodyParameters: []
-    cleanBodyParameters: []
-    fileParameters: []
-    responses:
-      -
-        custom: []
-        status: 200
-        content: '{"success": true, "message": "Tài khoản đã được xóa thành công!"}'
+        content: '{"data":{"id":17,"name":"Ms. Audra Crooks II","email":"idickens@example.org","user_name":"aschuster","position":null,"phone":null,"zalo_id":null,"role":null,"status":"active","created_by":"N\/A","updated_by":"N\/A","created_at":"07:38:33 26\/03\/2026","updated_at":"07:38:33 26\/03\/2026"},"success":"true","message":"T\u00e0i kho\u1ea3n \u0111\u00e3 \u0111\u01b0\u1ee3c t\u1ea1o th\u00e0nh c\u00f4ng!"}'
         headers: []
         description: ''
     responseFields: []
@@ -1270,7 +811,535 @@ endpoints:
       -
         custom: []
         status: 200
-        content: '{"data":{"id":51,"name":"Morgan Hirthe","email":"imclaughlin@example.org","user_name":"okeefe.isidro","position":null,"phone":null,"zalo_id":null,"status":"inactive","created_by":"N\/A","updated_by":"N\/A","assignments":[],"created_at":"03:43:48 25\/03\/2026","updated_at":"03:43:48 25\/03\/2026"},"success":"true","message":"C\u1eadp nh\u1eadt tr\u1ea1ng th\u00e1i th\u00e0nh c\u00f4ng!"}'
+        content: '{"data":{"id":18,"name":"Morgan Hirthe","email":"dare.emelie@example.com","user_name":"imclaughlin","position":null,"phone":null,"zalo_id":null,"role":null,"status":"inactive","created_by":"N\/A","updated_by":"N\/A","created_at":"07:38:33 26\/03\/2026","updated_at":"07:38:33 26\/03\/2026"},"success":"true","message":"C\u1eadp nh\u1eadt tr\u1ea1ng th\u00e1i th\u00e0nh c\u00f4ng!"}'
+        headers: []
+        description: ''
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - GET
+    uri: 'api/users/{user_id}'
+    metadata:
+      custom: []
+      groupName: 'Core - User'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Chi tiết người dùng'
+      description: ''
+      authenticated: true
+      deprecated: false
+    headers:
+      Authorization: 'Bearer Bearer {YOUR_ACCESS_TOKEN}'
+      X-Department-Id: 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      user_id:
+        custom: []
+        name: user_id
+        description: 'The ID of the user.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      user:
+        custom: []
+        name: user
+        description: 'ID người dùng.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+    cleanUrlParameters:
+      user_id: 1
+      user: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        custom: []
+        status: 200
+        content: '{"data":{"id":19,"name":"Morgan Hirthe","email":"imclaughlin@example.org","user_name":"okeefe.isidro","position":null,"phone":null,"zalo_id":null,"role":null,"status":"inactive","created_by":"N\/A","updated_by":"N\/A","created_at":"07:38:33 26\/03\/2026","updated_at":"07:38:33 26\/03\/2026"},"success":"true"}'
+        headers: []
+        description: ''
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - PUT
+    uri: 'api/users/{user_id}'
+    metadata:
+      custom: []
+      groupName: 'Core - User'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Cập nhật người dùng'
+      description: ''
+      authenticated: true
+      deprecated: false
+    headers:
+      Authorization: 'Bearer Bearer {YOUR_ACCESS_TOKEN}'
+      X-Department-Id: 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      user_id:
+        custom: []
+        name: user_id
+        description: 'The ID of the user.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      user:
+        custom: []
+        name: user
+        description: 'ID người dùng.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+    cleanUrlParameters:
+      user_id: 1
+      user: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      name:
+        custom: []
+        name: name
+        description: 'Tên người dùng.'
+        required: false
+        example: 'Nguyễn Văn B'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+      email:
+        custom: []
+        name: email
+        description: 'Email (duy nhất).'
+        required: false
+        example: user@example.com
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+      user_name:
+        custom: []
+        name: user_name
+        description: Nickname.
+        required: false
+        example: nguyenvanb
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        deprecated: false
+      password:
+        custom: []
+        name: password
+        description: 'Mật khẩu mới.'
+        required: false
+        example: newpassword123
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+      status:
+        custom: []
+        name: status
+        description: 'Trạng thái: active, inactive, banned.'
+        required: false
+        example: active
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+      position:
+        custom: []
+        name: position
+        description: 'Chức vụ.'
+        required: false
+        example: 'Chuyên viên'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        deprecated: false
+      phone:
+        custom: []
+        name: phone
+        description: 'Số điện thoại.'
+        required: false
+        example: '0901234567'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        deprecated: false
+      zalo_id:
+        custom: []
+        name: zalo_id
+        description: 'Zalo ID.'
+        required: false
+        example: '0901234567'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        deprecated: false
+      department_id:
+        custom: []
+        name: department_id
+        description: 'ID đơn vị.'
+        required: false
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+      role_id:
+        custom: []
+        name: role_id
+        description: 'ID vai trò.'
+        required: false
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+      password_confirmation:
+        custom: []
+        name: password_confirmation
+        description: 'Xác nhận mật khẩu.'
+        required: false
+        example: newpassword123
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+    cleanBodyParameters:
+      name: 'Nguyễn Văn B'
+      email: user@example.com
+      user_name: nguyenvanb
+      password: newpassword123
+      status: active
+      position: 'Chuyên viên'
+      phone: '0901234567'
+      zalo_id: '0901234567'
+      department_id: 1
+      role_id: 1
+      password_confirmation: newpassword123
+    fileParameters: []
+    responses:
+      -
+        custom: []
+        status: 200
+        content: '{"data":{"id":20,"name":"Ms. Audra Crooks II","email":"aschuster@example.com","user_name":"gilbert32","position":null,"phone":null,"zalo_id":null,"role":null,"status":"active","created_by":"N\/A","updated_by":"N\/A","created_at":"07:38:33 26\/03\/2026","updated_at":"07:38:33 26\/03\/2026"},"success":"true","message":"T\u00e0i kho\u1ea3n \u0111\u00e3 \u0111\u01b0\u1ee3c c\u1eadp nh\u1eadt!"}'
+        headers: []
+        description: ''
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - PATCH
+    uri: 'api/users/{user_id}'
+    metadata:
+      custom: []
+      groupName: 'Core - User'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Cập nhật người dùng'
+      description: ''
+      authenticated: true
+      deprecated: false
+    headers:
+      Authorization: 'Bearer Bearer {YOUR_ACCESS_TOKEN}'
+      X-Department-Id: 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      user_id:
+        custom: []
+        name: user_id
+        description: 'The ID of the user.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      user:
+        custom: []
+        name: user
+        description: 'ID người dùng.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+    cleanUrlParameters:
+      user_id: 1
+      user: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      name:
+        custom: []
+        name: name
+        description: 'Tên người dùng.'
+        required: false
+        example: 'Nguyễn Văn B'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+      email:
+        custom: []
+        name: email
+        description: 'Email (duy nhất).'
+        required: false
+        example: user@example.com
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+      user_name:
+        custom: []
+        name: user_name
+        description: Nickname.
+        required: false
+        example: nguyenvanb
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        deprecated: false
+      password:
+        custom: []
+        name: password
+        description: 'Mật khẩu mới.'
+        required: false
+        example: newpassword123
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+      status:
+        custom: []
+        name: status
+        description: 'Trạng thái: active, inactive, banned.'
+        required: false
+        example: active
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+      position:
+        custom: []
+        name: position
+        description: 'Chức vụ.'
+        required: false
+        example: 'Chuyên viên'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        deprecated: false
+      phone:
+        custom: []
+        name: phone
+        description: 'Số điện thoại.'
+        required: false
+        example: '0901234567'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        deprecated: false
+      zalo_id:
+        custom: []
+        name: zalo_id
+        description: 'Zalo ID.'
+        required: false
+        example: '0901234567'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        deprecated: false
+      department_id:
+        custom: []
+        name: department_id
+        description: 'ID đơn vị.'
+        required: false
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+      role_id:
+        custom: []
+        name: role_id
+        description: 'ID vai trò.'
+        required: false
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+      password_confirmation:
+        custom: []
+        name: password_confirmation
+        description: 'Xác nhận mật khẩu.'
+        required: false
+        example: newpassword123
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+    cleanBodyParameters:
+      name: 'Nguyễn Văn B'
+      email: user@example.com
+      user_name: nguyenvanb
+      password: newpassword123
+      status: active
+      position: 'Chuyên viên'
+      phone: '0901234567'
+      zalo_id: '0901234567'
+      department_id: 1
+      role_id: 1
+      password_confirmation: newpassword123
+    fileParameters: []
+    responses:
+      -
+        custom: []
+        status: 200
+        content: '{"data":{"id":21,"name":"Ms. Audra Crooks II","email":"gilbert32@example.com","user_name":"hirthe.theo","position":null,"phone":null,"zalo_id":null,"role":null,"status":"active","created_by":"N\/A","updated_by":"N\/A","created_at":"07:38:33 26\/03\/2026","updated_at":"07:38:33 26\/03\/2026"},"success":"true","message":"T\u00e0i kho\u1ea3n \u0111\u00e3 \u0111\u01b0\u1ee3c c\u1eadp nh\u1eadt!"}'
+        headers: []
+        description: ''
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - DELETE
+    uri: 'api/users/{user_id}'
+    metadata:
+      custom: []
+      groupName: 'Core - User'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Xóa người dùng'
+      description: ''
+      authenticated: true
+      deprecated: false
+    headers:
+      Authorization: 'Bearer Bearer {YOUR_ACCESS_TOKEN}'
+      X-Department-Id: 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      user_id:
+        custom: []
+        name: user_id
+        description: 'The ID of the user.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      user:
+        custom: []
+        name: user
+        description: 'ID người dùng.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+    cleanUrlParameters:
+      user_id: 1
+      user: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        custom: []
+        status: 200
+        content: '{"success": true, "message": "Tài khoản đã được xóa thành công!"}'
         headers: []
         description: ''
     responseFields: []

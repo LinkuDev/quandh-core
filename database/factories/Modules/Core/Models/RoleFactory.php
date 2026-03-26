@@ -17,7 +17,6 @@ class RoleFactory extends Factory
         return [
             'name' => 'role_'.fake()->unique()->bothify('??###'),
             'guard_name' => 'web',
-            'department_id' => null,
         ];
     }
 }

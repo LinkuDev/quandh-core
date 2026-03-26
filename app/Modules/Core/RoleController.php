@@ -45,7 +45,7 @@ class RoleController extends Controller
     /**
      * Danh sách role
      *
-     * Lấy danh sách có phân trang, lọc và sắp xếp. Có kèm department và permissions.
+     * Lấy danh sách có phân trang, lọc và sắp xếp. Có kèm permissions.
      *
      * @queryParam search string Từ khóa tìm kiếm (name, guard_name). Example: admin
      * @queryParam from_date date Lọc từ ngày tạo (created_at) (Y-m-d). Example: 2026-02-01
@@ -74,7 +74,7 @@ class RoleController extends Controller
      *
      * @apiResource App\Modules\Core\Resources\RoleResource
      *
-     * @apiResourceModel App\Modules\Core\Models\Role with=department,permissions
+     * @apiResourceModel App\Modules\Core\Models\Role with=permissions
      *
      * @apiResourceAdditional success=true
      */
@@ -158,7 +158,7 @@ class RoleController extends Controller
     /**
      * Xuất danh sách role
      *
-     * Áp dụng cùng bộ lọc với index. Xuất ra các trường: id, name, guard_name, department_id, department_name, created_at, updated_at.
+     * Áp dụng cùng bộ lọc với index. Xuất ra các trường: id, name, guard_name, created_at, updated_at.
      *
      * @queryParam search string Từ khóa tìm kiếm (name, guard_name).
      * @queryParam from_date date Lọc từ ngày tạo (created_at) (Y-m-d).
@@ -174,7 +174,7 @@ class RoleController extends Controller
     /**
      * Nhập danh sách role
      *
-     * Cột bắt buộc: name. Cột không bắt buộc: guard_name (mặc định "web"), department_id.
+     * Cột bắt buộc: name. Cột không bắt buộc: guard_name (mặc định "web").
      *
      * @bodyParam file file required File Excel (xlsx, xls, csv). Cột theo chuẩn export.
      *

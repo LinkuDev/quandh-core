@@ -126,6 +126,7 @@ class Schedule extends Model implements HasMedia
             ->when($filters['participant_user_id'] ?? null, function ($q, $userId) {
                 $q->whereHas('participants', fn ($sub) => $sub->where('schedule_participants.user_id', $userId));
             })
+            ->orderBy('schedules.event_date', 'asc')
             ->orderBy('schedules.sort_order', 'asc');
     }
 }

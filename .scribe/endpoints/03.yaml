@@ -1001,73 +1001,7 @@ endpoints:
       -
         custom: []
         status: 200
-        content: '{"data":[{"id":null,"event_date":"16\/04\/2026","session":"chieu","start_time":"08:01","content":"Dolores enim non facere tempora.","location":"47809 Considine Landing Suite 782\nNitzschetown, CA 87335-0574","prep_unit":"Schaden, King and Fahey","driver_info":"Prof. Carson Emard","color_code":null,"sort_order":6,"department_id":null,"status":"active","meeting_type":"hop_dot_xuat","meeting_type_label":"H\u1ecdp \u0111\u1ed9t xu\u1ea5t","nature":"mat","nature_label":"M\u1eadt","created_by":"N\/A","updated_by":"N\/A","created_at":null,"updated_at":null},{"id":null,"event_date":"16\/04\/2026","session":"sang","start_time":"21:28","content":"Quia perspiciatis deserunt ducimus corrupti et.","location":null,"prep_unit":null,"driver_info":null,"color_code":null,"sort_order":71,"department_id":null,"status":"active","meeting_type":"hop_chuyen_de","meeting_type_label":"H\u1ecdp chuy\u00ean \u0111\u1ec1","nature":"mat","nature_label":"M\u1eadt","created_by":"N\/A","updated_by":"N\/A","created_at":null,"updated_at":null}],"links":{"first":"\/?page=1","last":"\/?page=1","prev":null,"next":null},"meta":{"current_page":1,"from":1,"last_page":1,"links":[{"url":null,"label":"&laquo; Previous","page":null,"active":false},{"url":"\/?page=1","label":"1","page":1,"active":true},{"url":null,"label":"Next &raquo;","page":null,"active":false}],"path":"\/","per_page":20,"to":2,"total":2},"success":"true"}'
-        headers: []
-        description: ''
-    responseFields: []
-    auth:
-      - headers
-      - Authorization
-      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
-    controller: null
-    method: null
-    route: null
-  -
-    custom: []
-    httpMethods:
-      - GET
-    uri: 'api/schedules/{schedule_id}'
-    metadata:
-      custom: []
-      groupName: 'Schedule - Lịch công tác'
-      groupDescription: ''
-      subgroup: ''
-      subgroupDescription: ''
-      title: 'Chi tiết lịch công tác'
-      description: ''
-      authenticated: true
-      deprecated: false
-    headers:
-      Authorization: 'Bearer Bearer {YOUR_ACCESS_TOKEN}'
-      X-Department-Id: 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters:
-      schedule_id:
-        custom: []
-        name: schedule_id
-        description: 'The ID of the schedule.'
-        required: true
-        example: 1
-        type: integer
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        deprecated: false
-      schedule:
-        custom: []
-        name: schedule
-        description: 'ID lịch.'
-        required: true
-        example: 1
-        type: integer
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        deprecated: false
-    cleanUrlParameters:
-      schedule_id: 1
-      schedule: 1
-    queryParameters: []
-    cleanQueryParameters: []
-    bodyParameters: []
-    cleanBodyParameters: []
-    fileParameters: []
-    responses:
-      -
-        custom: []
-        status: 200
-        content: '{"data":{"id":null,"event_date":"29\/03\/2026","session":"sang","start_time":"03:25","content":"Dolorem mollitia deleniti nemo.","location":"2945 O''Connell Mission Apt. 329\nEast Eltonhaven, TN 91558","prep_unit":null,"driver_info":null,"color_code":null,"sort_order":8,"department_id":null,"status":"inactive","meeting_type":"khac","meeting_type_label":"Kh\u00e1c","nature":"thuong","nature_label":"Th\u01b0\u1eddng","created_by":"N\/A","updated_by":"N\/A","created_at":null,"updated_at":null},"success":"true"}'
+        content: '{"data":[{"id":50,"event_date":"14\/04\/2026","session":"sang","start_time":"15:37:00","content":"Velit et fugiat sunt nihil accusantium.","location":"78142 Nick Field\nWest Noahmouth, WV 59021-4902","prep_unit":null,"driver_info":null,"color_code":"#865450","sort_order":8,"department_id":null,"status":"active","chairperson_id":null,"meeting_type":"hop_dot_xuat","meeting_type_label":"H\u1ecdp \u0111\u1ed9t xu\u1ea5t","nature":"mat","nature_label":"M\u1eadt","created_by":"N\/A","updated_by":"N\/A","created_at":"07:38:34 26\/03\/2026","updated_at":"07:38:34 26\/03\/2026"},{"id":51,"event_date":"17\/04\/2026","session":"chieu","start_time":"08:01:00","content":"Dolores enim non facere tempora.","location":"47809 Considine Landing Suite 782\nNitzschetown, CA 87335-0574","prep_unit":"Schaden, King and Fahey","driver_info":"Prof. Carson Emard","color_code":null,"sort_order":6,"department_id":null,"status":"active","chairperson_id":null,"meeting_type":"hop_dot_xuat","meeting_type_label":"H\u1ecdp \u0111\u1ed9t xu\u1ea5t","nature":"mat","nature_label":"M\u1eadt","created_by":"N\/A","updated_by":"N\/A","created_at":"07:38:34 26\/03\/2026","updated_at":"07:38:34 26\/03\/2026"}],"links":{"first":"\/?page=1","last":"\/?page=1","prev":null,"next":null},"meta":{"current_page":1,"from":1,"last_page":1,"links":[{"url":null,"label":"&laquo; Previous","page":null,"active":false},{"url":"\/?page=1","label":"1","page":1,"active":true},{"url":null,"label":"Next &raquo;","page":null,"active":false}],"path":"\/","per_page":20,"to":2,"total":2},"success":"true"}'
         headers: []
         description: ''
     responseFields: []
@@ -1240,7 +1174,7 @@ endpoints:
         name: status
         description: ''
         required: false
-        example: active
+        example: inactive
         type: string
         enumValues:
           - active
@@ -1276,7 +1210,7 @@ endpoints:
         name: notification.channel
         description: 'This field is required when <code>notification</code> is present.'
         required: false
-        example: app
+        example: zalo
         type: string
         enumValues:
           - sms
@@ -1291,7 +1225,7 @@ endpoints:
         name: notification.remind_at
         description: 'This field is required when <code>notification</code> is present. Must be a valid date.'
         required: false
-        example: '2026-03-25T03:43:49'
+        example: '2026-03-26T07:38:34'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -1411,12 +1345,12 @@ endpoints:
       meeting_type: hop_thuong_ky
       nature: thuong
       color_code: '#FF5733'
-      status: active
+      status: inactive
       participants:
         - architecto
       notification:
-        channel: app
-        remind_at: '2026-03-25T03:43:49'
+        channel: zalo
+        remind_at: '2026-03-26T07:38:34'
       notifications:
         - architecto
     fileParameters:
@@ -1426,831 +1360,9 @@ endpoints:
       -
         custom: []
         status: 201
-        content: '{"data":{"id":null,"event_date":"05\/04\/2026","session":"sang","start_time":"11:11","content":"Nostrum qui commodi incidunt iure.","location":null,"prep_unit":"Bauch, Fritsch and O''Keefe","driver_info":null,"color_code":null,"sort_order":84,"department_id":null,"status":"inactive","meeting_type":"hop_chuyen_de","meeting_type_label":"H\u1ecdp chuy\u00ean \u0111\u1ec1","nature":"quan_trong","nature_label":"Quan tr\u1ecdng","created_by":"N\/A","updated_by":"N\/A","created_at":null,"updated_at":null},"success":"true","message":"T\u1ea1o l\u1ecbch c\u00f4ng t\u00e1c th\u00e0nh c\u00f4ng!"}'
+        content: '{"data":{"id":52,"event_date":"05\/04\/2026","session":"sang","start_time":"21:01:00","content":"Quos velit et fugiat sunt nihil accusantium harum.","location":null,"prep_unit":null,"driver_info":null,"color_code":"#3d1ffb","sort_order":88,"department_id":null,"status":"active","chairperson_id":null,"meeting_type":"hoi_nghi","meeting_type_label":"H\u1ed9i ngh\u1ecb","nature":"thuong","nature_label":"Th\u01b0\u1eddng","created_by":"N\/A","updated_by":"N\/A","created_at":"07:38:34 26\/03\/2026","updated_at":"07:38:34 26\/03\/2026"},"success":"true","message":"T\u1ea1o l\u1ecbch c\u00f4ng t\u00e1c th\u00e0nh c\u00f4ng!"}'
         headers: []
         description: ''
-    responseFields: []
-    auth:
-      - headers
-      - Authorization
-      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
-    controller: null
-    method: null
-    route: null
-  -
-    custom: []
-    httpMethods:
-      - PUT
-    uri: 'api/schedules/{schedule_id}'
-    metadata:
-      custom: []
-      groupName: 'Schedule - Lịch công tác'
-      groupDescription: ''
-      subgroup: ''
-      subgroupDescription: ''
-      title: 'Cập nhật lịch công tác'
-      description: ''
-      authenticated: true
-      deprecated: false
-    headers:
-      Authorization: 'Bearer Bearer {YOUR_ACCESS_TOKEN}'
-      X-Department-Id: 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
-      Content-Type: multipart/form-data
-      Accept: application/json
-    urlParameters:
-      schedule_id:
-        custom: []
-        name: schedule_id
-        description: 'The ID of the schedule.'
-        required: true
-        example: 1
-        type: integer
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        deprecated: false
-      schedule:
-        custom: []
-        name: schedule
-        description: 'ID lịch.'
-        required: true
-        example: 1
-        type: integer
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        deprecated: false
-    cleanUrlParameters:
-      schedule_id: 1
-      schedule: 1
-    queryParameters: []
-    cleanQueryParameters: []
-    bodyParameters:
-      content:
-        custom: []
-        name: content
-        description: 'Nội dung lịch.'
-        required: false
-        example: architecto
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        deprecated: false
-      event_date:
-        custom: []
-        name: event_date
-        description: 'Ngày diễn ra (Y-m-d).'
-        required: false
-        example: architecto
-        type: date
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        deprecated: false
-      session:
-        custom: []
-        name: session
-        description: 'Buổi: sang, chieu, toi.'
-        required: false
-        example: architecto
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        deprecated: false
-      department_id:
-        custom: []
-        name: department_id
-        description: 'ID đơn vị.'
-        required: false
-        example: 16
-        type: integer
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        deprecated: false
-      start_time:
-        custom: []
-        name: start_time
-        description: 'Giờ bắt đầu (HH:mm).'
-        required: false
-        example: architecto
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: true
-        deprecated: false
-      chairperson_id:
-        custom: []
-        name: chairperson_id
-        description: 'ID người chủ trì.'
-        required: false
-        example: 16
-        type: integer
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: true
-        deprecated: false
-      location:
-        custom: []
-        name: location
-        description: 'Địa điểm.'
-        required: false
-        example: architecto
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: true
-        deprecated: false
-      prep_unit:
-        custom: []
-        name: prep_unit
-        description: 'Đơn vị chuẩn bị.'
-        required: false
-        example: architecto
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: true
-        deprecated: false
-      driver_info:
-        custom: []
-        name: driver_info
-        description: 'Thông tin lái xe.'
-        required: false
-        example: architecto
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: true
-        deprecated: false
-      meeting_type:
-        custom: []
-        name: meeting_type
-        description: 'Loại cuộc họp: hop_thuong_ky, hop_dot_xuat, hop_chuyen_de, hoi_nghi, tiep_khach, di_cong_tac, khac.'
-        required: false
-        example: architecto
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: true
-        deprecated: false
-      nature:
-        custom: []
-        name: nature
-        description: 'Tính chất: thuong, quan_trong, mat.'
-        required: false
-        example: architecto
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: true
-        deprecated: false
-      color_code:
-        custom: []
-        name: color_code
-        description: 'Mã màu.'
-        required: false
-        example: architecto
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: true
-        deprecated: false
-      status:
-        custom: []
-        name: status
-        description: ''
-        required: false
-        example: active
-        type: string
-        enumValues:
-          - active
-          - inactive
-        exampleWasSpecified: false
-        nullable: false
-        deprecated: false
-      participants:
-        custom: []
-        name: participants
-        description: 'Danh sách thành phần tham dự (ghi đè toàn bộ).'
-        required: false
-        example:
-          - architecto
-        type: 'string[]'
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: true
-        deprecated: false
-      notification:
-        custom: []
-        name: notification
-        description: ''
-        required: false
-        example: null
-        type: object
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: true
-        deprecated: false
-      notification.channel:
-        custom: []
-        name: notification.channel
-        description: 'This field is required when <code>notification</code> is present.'
-        required: false
-        example: sms
-        type: string
-        enumValues:
-          - sms
-          - zalo
-          - website
-          - app
-        exampleWasSpecified: false
-        nullable: false
-        deprecated: false
-      notification.remind_at:
-        custom: []
-        name: notification.remind_at
-        description: 'This field is required when <code>notification</code> is present. Must be a valid date.'
-        required: false
-        example: '2026-03-25T03:43:49'
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        deprecated: false
-      remove_attachment_ids:
-        custom: []
-        name: remove_attachment_ids
-        description: 'Danh sách ID file cần xóa.'
-        required: false
-        example:
-          - architecto
-        type: 'string[]'
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        deprecated: false
-      attachments:
-        custom: []
-        name: attachments
-        description: 'Tập tin đính kèm mới.'
-        required: false
-        example:
-          - null
-        type: 'file[]'
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        deprecated: false
-      'participants[].user_id':
-        custom: []
-        name: 'participants[].user_id'
-        description: 'The <code>id</code> of an existing record in the users table.'
-        required: false
-        example: 16
-        type: integer
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: true
-        deprecated: false
-      'participants[].external_name':
-        custom: []
-        name: 'participants[].external_name'
-        description: 'Must not be greater than 255 characters.'
-        required: false
-        example: 'n'
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: true
-        deprecated: false
-      notifications:
-        custom: []
-        name: notifications
-        description: 'Danh sách thông báo (ghi đè toàn bộ).'
-        required: false
-        example:
-          - architecto
-        type: 'string[]'
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        deprecated: false
-    cleanBodyParameters:
-      content: architecto
-      event_date: architecto
-      session: architecto
-      department_id: 16
-      start_time: architecto
-      chairperson_id: 16
-      location: architecto
-      prep_unit: architecto
-      driver_info: architecto
-      meeting_type: architecto
-      nature: architecto
-      color_code: architecto
-      status: active
-      participants:
-        - architecto
-      notification:
-        channel: sms
-        remind_at: '2026-03-25T03:43:49'
-      remove_attachment_ids:
-        - architecto
-      notifications:
-        - architecto
-    fileParameters:
-      attachments:
-        - null
-    responses:
-      -
-        custom: []
-        status: 200
-        content: '{"data":{"id":null,"event_date":"05\/04\/2026","session":"sang","start_time":"11:11","content":"Nostrum qui commodi incidunt iure.","location":null,"prep_unit":"Bauch, Fritsch and O''Keefe","driver_info":null,"color_code":null,"sort_order":84,"department_id":null,"status":"inactive","meeting_type":"hop_chuyen_de","meeting_type_label":"H\u1ecdp chuy\u00ean \u0111\u1ec1","nature":"quan_trong","nature_label":"Quan tr\u1ecdng","created_by":"N\/A","updated_by":"N\/A","created_at":null,"updated_at":null},"success":"true","message":"C\u1eadp nh\u1eadt l\u1ecbch c\u00f4ng t\u00e1c th\u00e0nh c\u00f4ng!"}'
-        headers: []
-        description: ''
-    responseFields: []
-    auth:
-      - headers
-      - Authorization
-      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
-    controller: null
-    method: null
-    route: null
-  -
-    custom: []
-    httpMethods:
-      - PATCH
-    uri: 'api/schedules/{schedule_id}'
-    metadata:
-      custom: []
-      groupName: 'Schedule - Lịch công tác'
-      groupDescription: ''
-      subgroup: ''
-      subgroupDescription: ''
-      title: 'Cập nhật lịch công tác'
-      description: ''
-      authenticated: true
-      deprecated: false
-    headers:
-      Authorization: 'Bearer Bearer {YOUR_ACCESS_TOKEN}'
-      X-Department-Id: 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
-      Content-Type: multipart/form-data
-      Accept: application/json
-    urlParameters:
-      schedule_id:
-        custom: []
-        name: schedule_id
-        description: 'The ID of the schedule.'
-        required: true
-        example: 1
-        type: integer
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        deprecated: false
-      schedule:
-        custom: []
-        name: schedule
-        description: 'ID lịch.'
-        required: true
-        example: 1
-        type: integer
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        deprecated: false
-    cleanUrlParameters:
-      schedule_id: 1
-      schedule: 1
-    queryParameters: []
-    cleanQueryParameters: []
-    bodyParameters:
-      content:
-        custom: []
-        name: content
-        description: 'Nội dung lịch.'
-        required: false
-        example: architecto
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        deprecated: false
-      event_date:
-        custom: []
-        name: event_date
-        description: 'Ngày diễn ra (Y-m-d).'
-        required: false
-        example: architecto
-        type: date
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        deprecated: false
-      session:
-        custom: []
-        name: session
-        description: 'Buổi: sang, chieu, toi.'
-        required: false
-        example: architecto
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        deprecated: false
-      department_id:
-        custom: []
-        name: department_id
-        description: 'ID đơn vị.'
-        required: false
-        example: 16
-        type: integer
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        deprecated: false
-      start_time:
-        custom: []
-        name: start_time
-        description: 'Giờ bắt đầu (HH:mm).'
-        required: false
-        example: architecto
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: true
-        deprecated: false
-      chairperson_id:
-        custom: []
-        name: chairperson_id
-        description: 'ID người chủ trì.'
-        required: false
-        example: 16
-        type: integer
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: true
-        deprecated: false
-      location:
-        custom: []
-        name: location
-        description: 'Địa điểm.'
-        required: false
-        example: architecto
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: true
-        deprecated: false
-      prep_unit:
-        custom: []
-        name: prep_unit
-        description: 'Đơn vị chuẩn bị.'
-        required: false
-        example: architecto
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: true
-        deprecated: false
-      driver_info:
-        custom: []
-        name: driver_info
-        description: 'Thông tin lái xe.'
-        required: false
-        example: architecto
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: true
-        deprecated: false
-      meeting_type:
-        custom: []
-        name: meeting_type
-        description: 'Loại cuộc họp: hop_thuong_ky, hop_dot_xuat, hop_chuyen_de, hoi_nghi, tiep_khach, di_cong_tac, khac.'
-        required: false
-        example: architecto
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: true
-        deprecated: false
-      nature:
-        custom: []
-        name: nature
-        description: 'Tính chất: thuong, quan_trong, mat.'
-        required: false
-        example: architecto
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: true
-        deprecated: false
-      color_code:
-        custom: []
-        name: color_code
-        description: 'Mã màu.'
-        required: false
-        example: architecto
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: true
-        deprecated: false
-      status:
-        custom: []
-        name: status
-        description: ''
-        required: false
-        example: inactive
-        type: string
-        enumValues:
-          - active
-          - inactive
-        exampleWasSpecified: false
-        nullable: false
-        deprecated: false
-      participants:
-        custom: []
-        name: participants
-        description: 'Danh sách thành phần tham dự (ghi đè toàn bộ).'
-        required: false
-        example:
-          - architecto
-        type: 'string[]'
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: true
-        deprecated: false
-      notification:
-        custom: []
-        name: notification
-        description: ''
-        required: false
-        example: null
-        type: object
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: true
-        deprecated: false
-      notification.channel:
-        custom: []
-        name: notification.channel
-        description: 'This field is required when <code>notification</code> is present.'
-        required: false
-        example: app
-        type: string
-        enumValues:
-          - sms
-          - zalo
-          - website
-          - app
-        exampleWasSpecified: false
-        nullable: false
-        deprecated: false
-      notification.remind_at:
-        custom: []
-        name: notification.remind_at
-        description: 'This field is required when <code>notification</code> is present. Must be a valid date.'
-        required: false
-        example: '2026-03-25T03:43:49'
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        deprecated: false
-      remove_attachment_ids:
-        custom: []
-        name: remove_attachment_ids
-        description: 'Danh sách ID file cần xóa.'
-        required: false
-        example:
-          - architecto
-        type: 'string[]'
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        deprecated: false
-      attachments:
-        custom: []
-        name: attachments
-        description: 'Tập tin đính kèm mới.'
-        required: false
-        example:
-          - null
-        type: 'file[]'
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        deprecated: false
-      'participants[].user_id':
-        custom: []
-        name: 'participants[].user_id'
-        description: 'The <code>id</code> of an existing record in the users table.'
-        required: false
-        example: 16
-        type: integer
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: true
-        deprecated: false
-      'participants[].external_name':
-        custom: []
-        name: 'participants[].external_name'
-        description: 'Must not be greater than 255 characters.'
-        required: false
-        example: 'n'
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: true
-        deprecated: false
-      notifications:
-        custom: []
-        name: notifications
-        description: 'Danh sách thông báo (ghi đè toàn bộ).'
-        required: false
-        example:
-          - architecto
-        type: 'string[]'
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        deprecated: false
-    cleanBodyParameters:
-      content: architecto
-      event_date: architecto
-      session: architecto
-      department_id: 16
-      start_time: architecto
-      chairperson_id: 16
-      location: architecto
-      prep_unit: architecto
-      driver_info: architecto
-      meeting_type: architecto
-      nature: architecto
-      color_code: architecto
-      status: inactive
-      participants:
-        - architecto
-      notification:
-        channel: app
-        remind_at: '2026-03-25T03:43:49'
-      remove_attachment_ids:
-        - architecto
-      notifications:
-        - architecto
-    fileParameters:
-      attachments:
-        - null
-    responses:
-      -
-        custom: []
-        status: 200
-        content: '{"data":{"id":null,"event_date":"05\/04\/2026","session":"sang","start_time":"11:11","content":"Nostrum qui commodi incidunt iure.","location":null,"prep_unit":"Bauch, Fritsch and O''Keefe","driver_info":null,"color_code":null,"sort_order":84,"department_id":null,"status":"inactive","meeting_type":"hop_chuyen_de","meeting_type_label":"H\u1ecdp chuy\u00ean \u0111\u1ec1","nature":"quan_trong","nature_label":"Quan tr\u1ecdng","created_by":"N\/A","updated_by":"N\/A","created_at":null,"updated_at":null},"success":"true","message":"C\u1eadp nh\u1eadt l\u1ecbch c\u00f4ng t\u00e1c th\u00e0nh c\u00f4ng!"}'
-        headers: []
-        description: ''
-    responseFields: []
-    auth:
-      - headers
-      - Authorization
-      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
-    controller: null
-    method: null
-    route: null
-  -
-    custom: []
-    httpMethods:
-      - DELETE
-    uri: 'api/schedules/{schedule_id}'
-    metadata:
-      custom: []
-      groupName: 'Schedule - Lịch công tác'
-      groupDescription: ''
-      subgroup: ''
-      subgroupDescription: ''
-      title: 'Xóa lịch công tác'
-      description: ''
-      authenticated: true
-      deprecated: false
-    headers:
-      Authorization: 'Bearer Bearer {YOUR_ACCESS_TOKEN}'
-      X-Department-Id: 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters:
-      schedule_id:
-        custom: []
-        name: schedule_id
-        description: 'The ID of the schedule.'
-        required: true
-        example: 1
-        type: integer
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        deprecated: false
-      schedule:
-        custom: []
-        name: schedule
-        description: 'ID lịch.'
-        required: true
-        example: 1
-        type: integer
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        deprecated: false
-    cleanUrlParameters:
-      schedule_id: 1
-      schedule: 1
-    queryParameters: []
-    cleanQueryParameters: []
-    bodyParameters: []
-    cleanBodyParameters: []
-    fileParameters: []
-    responses:
-      -
-        custom: []
-        status: 200
-        content: '{"success": true, "message": "Xóa lịch công tác thành công!"}'
-        headers: []
-        description: ''
-    responseFields: []
-    auth:
-      - headers
-      - Authorization
-      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
-    controller: null
-    method: null
-    route: null
-  -
-    custom: []
-    httpMethods:
-      - PATCH
-    uri: 'api/schedules/{schedule_id}/status'
-    metadata:
-      custom: []
-      groupName: 'Schedule - Lịch công tác'
-      groupDescription: ''
-      subgroup: ''
-      subgroupDescription: ''
-      title: 'Đổi trạng thái lịch công tác'
-      description: ''
-      authenticated: true
-      deprecated: false
-    headers:
-      Authorization: 'Bearer Bearer {YOUR_ACCESS_TOKEN}'
-      X-Department-Id: 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters:
-      schedule_id:
-        custom: []
-        name: schedule_id
-        description: 'The ID of the schedule.'
-        required: true
-        example: 1
-        type: integer
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        deprecated: false
-      schedule:
-        custom: []
-        name: schedule
-        description: 'ID lịch.'
-        required: true
-        example: 1
-        type: integer
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        deprecated: false
-    cleanUrlParameters:
-      schedule_id: 1
-      schedule: 1
-    queryParameters: []
-    cleanQueryParameters: []
-    bodyParameters:
-      status:
-        custom: []
-        name: status
-        description: 'Trạng thái mới: active, inactive.'
-        required: true
-        example: active
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        deprecated: false
-    cleanBodyParameters:
-      status: active
-    fileParameters: []
-    responses: []
     responseFields: []
     auth:
       - headers
@@ -2515,6 +1627,894 @@ endpoints:
       target_id: 5
     fileParameters: []
     responses: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - PATCH
+    uri: 'api/schedules/{schedule_id}/status'
+    metadata:
+      custom: []
+      groupName: 'Schedule - Lịch công tác'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Đổi trạng thái lịch công tác'
+      description: ''
+      authenticated: true
+      deprecated: false
+    headers:
+      Authorization: 'Bearer Bearer {YOUR_ACCESS_TOKEN}'
+      X-Department-Id: 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      schedule_id:
+        custom: []
+        name: schedule_id
+        description: 'The ID of the schedule.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      schedule:
+        custom: []
+        name: schedule
+        description: 'ID lịch.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+    cleanUrlParameters:
+      schedule_id: 1
+      schedule: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      status:
+        custom: []
+        name: status
+        description: 'Trạng thái mới: active, inactive.'
+        required: true
+        example: active
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+    cleanBodyParameters:
+      status: active
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - GET
+    uri: 'api/schedules/{schedule_id}'
+    metadata:
+      custom: []
+      groupName: 'Schedule - Lịch công tác'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Chi tiết lịch công tác'
+      description: ''
+      authenticated: true
+      deprecated: false
+    headers:
+      Authorization: 'Bearer Bearer {YOUR_ACCESS_TOKEN}'
+      X-Department-Id: 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      schedule_id:
+        custom: []
+        name: schedule_id
+        description: 'The ID of the schedule.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      schedule:
+        custom: []
+        name: schedule
+        description: 'ID lịch.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+    cleanUrlParameters:
+      schedule_id: 1
+      schedule: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        custom: []
+        status: 200
+        content: '{"data":{"id":53,"event_date":"30\/03\/2026","session":"sang","start_time":"19:23:00","content":"Qui commodi incidunt iure odit.","location":"77365 Christian Turnpike Suite 432\nNorth Roderick, SD 69128-2316","prep_unit":"Haag and Sons","driver_info":null,"color_code":null,"sort_order":57,"department_id":null,"status":"active","chairperson_id":null,"meeting_type":"hop_dot_xuat","meeting_type_label":"H\u1ecdp \u0111\u1ed9t xu\u1ea5t","nature":"mat","nature_label":"M\u1eadt","created_by":"N\/A","updated_by":"N\/A","created_at":"07:38:34 26\/03\/2026","updated_at":"07:38:34 26\/03\/2026"},"success":"true"}'
+        headers: []
+        description: ''
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - PUT
+    uri: 'api/schedules/{schedule_id}'
+    metadata:
+      custom: []
+      groupName: 'Schedule - Lịch công tác'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Cập nhật lịch công tác'
+      description: ''
+      authenticated: true
+      deprecated: false
+    headers:
+      Authorization: 'Bearer Bearer {YOUR_ACCESS_TOKEN}'
+      X-Department-Id: 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
+      Content-Type: multipart/form-data
+      Accept: application/json
+    urlParameters:
+      schedule_id:
+        custom: []
+        name: schedule_id
+        description: 'The ID of the schedule.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      schedule:
+        custom: []
+        name: schedule
+        description: 'ID lịch.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+    cleanUrlParameters:
+      schedule_id: 1
+      schedule: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      content:
+        custom: []
+        name: content
+        description: 'Nội dung lịch.'
+        required: false
+        example: architecto
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      event_date:
+        custom: []
+        name: event_date
+        description: 'Ngày diễn ra (Y-m-d).'
+        required: false
+        example: architecto
+        type: date
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      session:
+        custom: []
+        name: session
+        description: 'Buổi: sang, chieu, toi.'
+        required: false
+        example: architecto
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      department_id:
+        custom: []
+        name: department_id
+        description: 'ID đơn vị.'
+        required: false
+        example: 16
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      start_time:
+        custom: []
+        name: start_time
+        description: 'Giờ bắt đầu (HH:mm).'
+        required: false
+        example: architecto
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      chairperson_id:
+        custom: []
+        name: chairperson_id
+        description: 'ID người chủ trì.'
+        required: false
+        example: 16
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      location:
+        custom: []
+        name: location
+        description: 'Địa điểm.'
+        required: false
+        example: architecto
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      prep_unit:
+        custom: []
+        name: prep_unit
+        description: 'Đơn vị chuẩn bị.'
+        required: false
+        example: architecto
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      driver_info:
+        custom: []
+        name: driver_info
+        description: 'Thông tin lái xe.'
+        required: false
+        example: architecto
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      meeting_type:
+        custom: []
+        name: meeting_type
+        description: 'Loại cuộc họp: hop_thuong_ky, hop_dot_xuat, hop_chuyen_de, hoi_nghi, tiep_khach, di_cong_tac, khac.'
+        required: false
+        example: architecto
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      nature:
+        custom: []
+        name: nature
+        description: 'Tính chất: thuong, quan_trong, mat.'
+        required: false
+        example: architecto
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      color_code:
+        custom: []
+        name: color_code
+        description: 'Mã màu.'
+        required: false
+        example: architecto
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      status:
+        custom: []
+        name: status
+        description: ''
+        required: false
+        example: inactive
+        type: string
+        enumValues:
+          - active
+          - inactive
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      participants:
+        custom: []
+        name: participants
+        description: 'Danh sách thành phần tham dự (ghi đè toàn bộ).'
+        required: false
+        example:
+          - architecto
+        type: 'string[]'
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      notification:
+        custom: []
+        name: notification
+        description: ''
+        required: false
+        example: null
+        type: object
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      notification.channel:
+        custom: []
+        name: notification.channel
+        description: 'This field is required when <code>notification</code> is present.'
+        required: false
+        example: sms
+        type: string
+        enumValues:
+          - sms
+          - zalo
+          - website
+          - app
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      notification.remind_at:
+        custom: []
+        name: notification.remind_at
+        description: 'This field is required when <code>notification</code> is present. Must be a valid date.'
+        required: false
+        example: '2026-03-26T07:38:34'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      remove_attachment_ids:
+        custom: []
+        name: remove_attachment_ids
+        description: 'Danh sách ID file cần xóa.'
+        required: false
+        example:
+          - architecto
+        type: 'string[]'
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      attachments:
+        custom: []
+        name: attachments
+        description: 'Tập tin đính kèm mới.'
+        required: false
+        example:
+          - null
+        type: 'file[]'
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      'participants[].user_id':
+        custom: []
+        name: 'participants[].user_id'
+        description: 'The <code>id</code> of an existing record in the users table.'
+        required: false
+        example: 16
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      'participants[].external_name':
+        custom: []
+        name: 'participants[].external_name'
+        description: 'Must not be greater than 255 characters.'
+        required: false
+        example: 'n'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      notifications:
+        custom: []
+        name: notifications
+        description: 'Danh sách thông báo (ghi đè toàn bộ).'
+        required: false
+        example:
+          - architecto
+        type: 'string[]'
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+    cleanBodyParameters:
+      content: architecto
+      event_date: architecto
+      session: architecto
+      department_id: 16
+      start_time: architecto
+      chairperson_id: 16
+      location: architecto
+      prep_unit: architecto
+      driver_info: architecto
+      meeting_type: architecto
+      nature: architecto
+      color_code: architecto
+      status: inactive
+      participants:
+        - architecto
+      notification:
+        channel: sms
+        remind_at: '2026-03-26T07:38:34'
+      remove_attachment_ids:
+        - architecto
+      notifications:
+        - architecto
+    fileParameters:
+      attachments:
+        - null
+    responses:
+      -
+        custom: []
+        status: 200
+        content: '{"data":{"id":54,"event_date":"05\/04\/2026","session":"sang","start_time":"21:01:00","content":"Quos velit et fugiat sunt nihil accusantium harum.","location":null,"prep_unit":null,"driver_info":null,"color_code":"#3d1ffb","sort_order":88,"department_id":null,"status":"active","chairperson_id":null,"meeting_type":"hoi_nghi","meeting_type_label":"H\u1ed9i ngh\u1ecb","nature":"thuong","nature_label":"Th\u01b0\u1eddng","created_by":"N\/A","updated_by":"N\/A","created_at":"07:38:34 26\/03\/2026","updated_at":"07:38:34 26\/03\/2026"},"success":"true","message":"C\u1eadp nh\u1eadt l\u1ecbch c\u00f4ng t\u00e1c th\u00e0nh c\u00f4ng!"}'
+        headers: []
+        description: ''
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - PATCH
+    uri: 'api/schedules/{schedule_id}'
+    metadata:
+      custom: []
+      groupName: 'Schedule - Lịch công tác'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Cập nhật lịch công tác'
+      description: ''
+      authenticated: true
+      deprecated: false
+    headers:
+      Authorization: 'Bearer Bearer {YOUR_ACCESS_TOKEN}'
+      X-Department-Id: 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
+      Content-Type: multipart/form-data
+      Accept: application/json
+    urlParameters:
+      schedule_id:
+        custom: []
+        name: schedule_id
+        description: 'The ID of the schedule.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      schedule:
+        custom: []
+        name: schedule
+        description: 'ID lịch.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+    cleanUrlParameters:
+      schedule_id: 1
+      schedule: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      content:
+        custom: []
+        name: content
+        description: 'Nội dung lịch.'
+        required: false
+        example: architecto
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      event_date:
+        custom: []
+        name: event_date
+        description: 'Ngày diễn ra (Y-m-d).'
+        required: false
+        example: architecto
+        type: date
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      session:
+        custom: []
+        name: session
+        description: 'Buổi: sang, chieu, toi.'
+        required: false
+        example: architecto
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      department_id:
+        custom: []
+        name: department_id
+        description: 'ID đơn vị.'
+        required: false
+        example: 16
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      start_time:
+        custom: []
+        name: start_time
+        description: 'Giờ bắt đầu (HH:mm).'
+        required: false
+        example: architecto
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      chairperson_id:
+        custom: []
+        name: chairperson_id
+        description: 'ID người chủ trì.'
+        required: false
+        example: 16
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      location:
+        custom: []
+        name: location
+        description: 'Địa điểm.'
+        required: false
+        example: architecto
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      prep_unit:
+        custom: []
+        name: prep_unit
+        description: 'Đơn vị chuẩn bị.'
+        required: false
+        example: architecto
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      driver_info:
+        custom: []
+        name: driver_info
+        description: 'Thông tin lái xe.'
+        required: false
+        example: architecto
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      meeting_type:
+        custom: []
+        name: meeting_type
+        description: 'Loại cuộc họp: hop_thuong_ky, hop_dot_xuat, hop_chuyen_de, hoi_nghi, tiep_khach, di_cong_tac, khac.'
+        required: false
+        example: architecto
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      nature:
+        custom: []
+        name: nature
+        description: 'Tính chất: thuong, quan_trong, mat.'
+        required: false
+        example: architecto
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      color_code:
+        custom: []
+        name: color_code
+        description: 'Mã màu.'
+        required: false
+        example: architecto
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      status:
+        custom: []
+        name: status
+        description: ''
+        required: false
+        example: active
+        type: string
+        enumValues:
+          - active
+          - inactive
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      participants:
+        custom: []
+        name: participants
+        description: 'Danh sách thành phần tham dự (ghi đè toàn bộ).'
+        required: false
+        example:
+          - architecto
+        type: 'string[]'
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      notification:
+        custom: []
+        name: notification
+        description: ''
+        required: false
+        example: null
+        type: object
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      notification.channel:
+        custom: []
+        name: notification.channel
+        description: 'This field is required when <code>notification</code> is present.'
+        required: false
+        example: zalo
+        type: string
+        enumValues:
+          - sms
+          - zalo
+          - website
+          - app
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      notification.remind_at:
+        custom: []
+        name: notification.remind_at
+        description: 'This field is required when <code>notification</code> is present. Must be a valid date.'
+        required: false
+        example: '2026-03-26T07:38:34'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      remove_attachment_ids:
+        custom: []
+        name: remove_attachment_ids
+        description: 'Danh sách ID file cần xóa.'
+        required: false
+        example:
+          - architecto
+        type: 'string[]'
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      attachments:
+        custom: []
+        name: attachments
+        description: 'Tập tin đính kèm mới.'
+        required: false
+        example:
+          - null
+        type: 'file[]'
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      'participants[].user_id':
+        custom: []
+        name: 'participants[].user_id'
+        description: 'The <code>id</code> of an existing record in the users table.'
+        required: false
+        example: 16
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      'participants[].external_name':
+        custom: []
+        name: 'participants[].external_name'
+        description: 'Must not be greater than 255 characters.'
+        required: false
+        example: 'n'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      notifications:
+        custom: []
+        name: notifications
+        description: 'Danh sách thông báo (ghi đè toàn bộ).'
+        required: false
+        example:
+          - architecto
+        type: 'string[]'
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+    cleanBodyParameters:
+      content: architecto
+      event_date: architecto
+      session: architecto
+      department_id: 16
+      start_time: architecto
+      chairperson_id: 16
+      location: architecto
+      prep_unit: architecto
+      driver_info: architecto
+      meeting_type: architecto
+      nature: architecto
+      color_code: architecto
+      status: active
+      participants:
+        - architecto
+      notification:
+        channel: zalo
+        remind_at: '2026-03-26T07:38:34'
+      remove_attachment_ids:
+        - architecto
+      notifications:
+        - architecto
+    fileParameters:
+      attachments:
+        - null
+    responses:
+      -
+        custom: []
+        status: 200
+        content: '{"data":{"id":55,"event_date":"05\/04\/2026","session":"sang","start_time":"21:01:00","content":"Quos velit et fugiat sunt nihil accusantium harum.","location":null,"prep_unit":null,"driver_info":null,"color_code":"#3d1ffb","sort_order":88,"department_id":null,"status":"active","chairperson_id":null,"meeting_type":"hoi_nghi","meeting_type_label":"H\u1ed9i ngh\u1ecb","nature":"thuong","nature_label":"Th\u01b0\u1eddng","created_by":"N\/A","updated_by":"N\/A","created_at":"07:38:34 26\/03\/2026","updated_at":"07:38:34 26\/03\/2026"},"success":"true","message":"C\u1eadp nh\u1eadt l\u1ecbch c\u00f4ng t\u00e1c th\u00e0nh c\u00f4ng!"}'
+        headers: []
+        description: ''
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - DELETE
+    uri: 'api/schedules/{schedule_id}'
+    metadata:
+      custom: []
+      groupName: 'Schedule - Lịch công tác'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Xóa lịch công tác'
+      description: ''
+      authenticated: true
+      deprecated: false
+    headers:
+      Authorization: 'Bearer Bearer {YOUR_ACCESS_TOKEN}'
+      X-Department-Id: 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      schedule_id:
+        custom: []
+        name: schedule_id
+        description: 'The ID of the schedule.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      schedule:
+        custom: []
+        name: schedule
+        description: 'ID lịch.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+    cleanUrlParameters:
+      schedule_id: 1
+      schedule: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        custom: []
+        status: 200
+        content: '{"success": true, "message": "Xóa lịch công tác thành công!"}'
+        headers: []
+        description: ''
     responseFields: []
     auth:
       - headers

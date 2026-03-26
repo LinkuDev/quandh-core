@@ -30,7 +30,7 @@ return [
      * Bật tính năng Teams (Spatie): roles và permissions gắn với department_id.
      * Cần có bảng departments trước khi chạy migration permission.
      */
-    'teams' => true,
+    'teams' => false,
 
     'team_resolver' => \Spatie\Permission\DefaultTeamResolver::class,
     'use_passport_client_credentials' => false,

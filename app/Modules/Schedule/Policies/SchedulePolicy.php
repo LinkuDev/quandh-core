@@ -6,34 +6,47 @@ use App\Modules\Core\Models\User;
 use App\Modules\Schedule\Models\Schedule;
 
 /**
- * Phân quyền theo bản ghi cho lịch công tác.
+ * Owner check cho Schedule.
  *
- * - Người tạo (created_by) có quyền sửa/xóa lịch của mình.
- * - Công chức tổng hợp (có permission schedules.updateAll / schedules.destroyAll) sửa/xóa được tất cả.
+ * - Chỉ người tạo (created_by) mới được update/destroy schedule của mình.
+ * - Ngoại lệ: user có permission updateAll/destroyAll trên module tương ứng.
+ *
+ * Module prefix xác định qua department.slug của schedule:
+ * - van-phong-thanh-uy → van-phong-schedules
+ * - Còn lại → thuong-truc-schedules
  */
 class SchedulePolicy
 {
-    /**
-     * Cho phép sửa lịch nếu là chủ sở hữu hoặc có quyền updateAll.
-     */
     public function update(User $user, Schedule $schedule): bool
     {
-        if ($user->can('schedules.updateAll')) {
+        $prefix = $this->getModulePrefix($schedule);
+
+        if ($user->can("{$prefix}.updateAll")) {
             return true;
         }
 
         return $schedule->created_by === $user->id;
     }
 
-    /**
-     * Cho phép xóa lịch nếu là chủ sở hữu hoặc có quyền destroyAll.
-     */
     public function destroy(User $user, Schedule $schedule): bool
     {
-        if ($user->can('schedules.destroyAll')) {
+        $prefix = $this->getModulePrefix($schedule);
+
+        if ($user->can("{$prefix}.destroyAll")) {
             return true;
         }
 
         return $schedule->created_by === $user->id;
+    }
+
+    private function getModulePrefix(Schedule $schedule): string
+    {
+        $department = $schedule->department;
+
+        if ($department && $department->slug === 'van-phong-thanh-uy') {
+            return 'van-phong-schedules';
+        }
+
+        return 'thuong-truc-schedules';
     }
 }

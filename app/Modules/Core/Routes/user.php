@@ -9,9 +9,9 @@ Route::post('/bulk-delete', [UserController::class, 'bulkDestroy'])->middleware(
 Route::patch('/bulk-status', [UserController::class, 'bulkUpdateStatus'])->middleware('permission:users.bulkUpdateStatus,web');
 Route::get('/stats', [UserController::class, 'stats'])->middleware('permission:users.stats,web');
 Route::get('/', [UserController::class, 'index'])->middleware('permission:users.index,web');
-Route::get('/{user}', [UserController::class, 'show'])->middleware('permission:users.show,web');
 Route::post('/', [UserController::class, 'store'])->middleware('permission:users.store,web');
+Route::patch('/{user}/status', [UserController::class, 'changeStatus'])->middleware('permission:users.changeStatus,web');
+Route::get('/{user}', [UserController::class, 'show'])->middleware('permission:users.show,web');
 Route::put('/{user}', [UserController::class, 'update'])->middleware('permission:users.update,web');
 Route::patch('/{user}', [UserController::class, 'update'])->middleware('permission:users.update,web');
 Route::delete('/{user}', [UserController::class, 'destroy'])->middleware('permission:users.destroy,web');
-Route::patch('/{user}/status', [UserController::class, 'changeStatus'])->middleware('permission:users.changeStatus,web');

@@ -13,21 +13,21 @@ class RoleService
 {
     public function stats(array $filters): array
     {
-        $base = Role::with('department')->filter($filters);
+        $base = Role::filter($filters);
 
         return ['total' => (clone $base)->count()];
     }
 
     public function index(array $filters, int $limit)
     {
-        return Role::with(['department', 'permissions'])
+        return Role::with('permissions')
             ->filter($filters)
             ->paginate($limit);
     }
 
     public function show(Role $role): Role
     {
-        return $role->load(['department', 'permissions']);
+        return $role->load('permissions');
     }
 
     public function store(array $data): Role
@@ -36,7 +36,6 @@ class RoleService
             $permissionIds = $data['permission_ids'] ?? null;
             unset($data['permission_ids']);
             $data['guard_name'] = $data['guard_name'] ?? config('auth.defaults.guard', 'web');
-            $data['department_id'] = null;
 
             $role = Role::create($data);
 
@@ -53,7 +52,6 @@ class RoleService
         return DB::transaction(function () use ($role, $data) {
             $permissionIds = $data['permission_ids'] ?? null;
             unset($data['permission_ids']);
-            $data['department_id'] = null;
 
             $role->update($data);
 

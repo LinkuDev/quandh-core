@@ -14,14 +14,10 @@ class RolesExport implements FromCollection, WithHeadings
 
     public function collection()
     {
-        $items = Role::with('department')->filter($this->filters)->get();
-
-        return $items->map(fn ($r) => [
+        return Role::filter($this->filters)->get()->map(fn ($r) => [
             'id' => $r->id,
             'name' => $r->name,
             'guard_name' => $r->guard_name,
-            'department_id' => $r->department_id,
-            'department_name' => $r->department?->name ?? 'N/A',
             'created_at' => $r->created_at?->format('H:i:s d/m/Y'),
             'updated_at' => $r->updated_at?->format('H:i:s d/m/Y'),
         ]);
@@ -29,6 +25,6 @@ class RolesExport implements FromCollection, WithHeadings
 
     public function headings(): array
     {
-        return ['ID', 'Name', 'Guard Name', 'Department ID', 'Department Name', 'Created At', 'Updated At'];
+        return ['ID', 'Tên', 'Guard', 'Ngày tạo', 'Ngày cập nhật'];
     }
 }

@@ -13,8 +13,6 @@ class RoleResource extends JsonResource
             'id' => $this->id,
             'name' => $this->name,
             'guard_name' => $this->guard_name,
-            'department_id' => $this->department_id,
-            'department' => $this->whenLoaded('department', fn () => $this->department ? ['id' => $this->department->id, 'name' => $this->department->name] : null),
             'permissions' => $this->whenLoaded('permissions', fn () => $this->permissions->pluck('name')),
             'created_at' => $this->created_at?->format('H:i:s d/m/Y'),
             'updated_at' => $this->updated_at?->format('H:i:s d/m/Y'),

@@ -86,7 +86,7 @@ endpoints:
       -
         custom: []
         status: 200
-        content: '{"data":[{"id":1,"schedule_id":1,"channel":"website","status":"pending","remind_at":"12:00:00 15\/03\/2026","sent_at":null,"read_at":null,"is_read":false,"created_at":"02:14:46 25\/03\/2026"},{"id":1,"schedule_id":1,"channel":"website","status":"pending","remind_at":"12:00:00 15\/03\/2026","sent_at":null,"read_at":null,"is_read":false,"created_at":"02:14:46 25\/03\/2026"}],"links":{"first":"\/?page=1","last":"\/?page=1","prev":null,"next":null},"meta":{"current_page":1,"from":1,"last_page":1,"links":[{"url":null,"label":"&laquo; Previous","page":null,"active":false},{"url":"\/?page=1","label":"1","page":1,"active":true},{"url":null,"label":"Next &raquo;","page":null,"active":false}],"path":"\/","per_page":20,"to":2,"total":2},"success":"true"}'
+        content: '{"data":[{"id":77,"schedule_id":56,"channel":"sms","status":"pending","remind_at":"21:36:21 27\/03\/2026","sent_at":null,"read_at":null,"is_read":false,"created_at":"07:38:34 26\/03\/2026"},{"id":78,"schedule_id":57,"channel":"sms","status":"pending","remind_at":"19:17:28 26\/03\/2026","sent_at":null,"read_at":null,"is_read":false,"created_at":"07:38:34 26\/03\/2026"}],"links":{"first":"\/?page=1","last":"\/?page=1","prev":null,"next":null},"meta":{"current_page":1,"from":1,"last_page":1,"links":[{"url":null,"label":"&laquo; Previous","page":null,"active":false},{"url":"\/?page=1","label":"1","page":1,"active":true},{"url":null,"label":"Next &raquo;","page":null,"active":false}],"path":"\/","per_page":20,"to":2,"total":2},"success":"true"}'
         headers: []
         description: ''
     responseFields: []

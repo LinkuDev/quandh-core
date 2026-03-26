@@ -80,7 +80,7 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        return $this->successResource(new UserResource($user));
+        return $this->successResource(new UserResource($this->userService->show($user)));
     }
 
     /**
@@ -88,10 +88,15 @@ class UserController extends Controller
      *
      * @bodyParam name string required Tên người dùng. Example: Nguyễn Văn A
      * @bodyParam email string required Email (duy nhất). Example: user@example.com
+     * @bodyParam user_name string Nickname. Example: nguyenvana
      * @bodyParam password string required Mật khẩu (tối thiểu 6 ký tự). Example: password123
-     * @bodyParam password_confirmation string required Xác nhận mật khẩu.
+     * @bodyParam password_confirmation string required Xác nhận mật khẩu. Example: password123
      * @bodyParam status string Trạng thái: active, inactive, banned. Example: active
-     * @bodyParam assignments array Danh sách gán vai trò theo đơn vị. Ví dụ: [{"role_id":1,"department_ids":[2,3]},{"role_id":5,"department_ids":[9]}]
+     * @bodyParam position string Chức vụ. Example: Chuyên viên
+     * @bodyParam phone string Số điện thoại. Example: 0901234567
+     * @bodyParam zalo_id string Zalo ID. Example: 0901234567
+     * @bodyParam department_id integer required ID đơn vị. Example: 1
+     * @bodyParam role_id integer required ID vai trò. Example: 1
      *
      * @apiResource App\Modules\Core\Resources\UserResource status=201
      *
@@ -111,12 +116,17 @@ class UserController extends Controller
      *
      * @urlParam user integer required ID người dùng. Example: 1
      *
-     * @bodyParam name string Tên người dùng.
-     * @bodyParam email string Email (duy nhất).
-     * @bodyParam password string Mật khẩu mới (nếu muốn đổi).
-     * @bodyParam password_confirmation string Xác nhận mật khẩu.
-     * @bodyParam status string Trạng thái: active, inactive, banned.
-     * @bodyParam assignments array Danh sách gán vai trò theo đơn vị. Khi gửi field này, hệ thống sẽ đồng bộ lại toàn bộ phân quyền của user.
+     * @bodyParam name string Tên người dùng. Example: Nguyễn Văn B
+     * @bodyParam email string Email (duy nhất). Example: user@example.com
+     * @bodyParam user_name string Nickname. Example: nguyenvanb
+     * @bodyParam password string Mật khẩu mới. Example: newpassword123
+     * @bodyParam password_confirmation string Xác nhận mật khẩu. Example: newpassword123
+     * @bodyParam status string Trạng thái: active, inactive, banned. Example: active
+     * @bodyParam position string Chức vụ. Example: Chuyên viên
+     * @bodyParam phone string Số điện thoại. Example: 0901234567
+     * @bodyParam zalo_id string Zalo ID. Example: 0901234567
+     * @bodyParam department_id integer ID đơn vị. Example: 1
+     * @bodyParam role_id integer ID vai trò. Example: 1
      *
      * @apiResource App\Modules\Core\Resources\UserResource
      *
@@ -177,7 +187,7 @@ class UserController extends Controller
     /**
      * Xuất danh sách người dùng
      *
-     * Áp dụng cùng bộ lọc với index. Xuất ra các trường: id, name, email, user_name, status, created_by, updated_by, created_at, updated_at.
+     * Xuất ra các trường: id, name, email, user_name, position, phone, zalo_id, department, role, status, created_by, updated_by, created_at, updated_at.
      *
      * @queryParam search string Từ khóa tìm kiếm (name, email).
      * @queryParam status string Lọc theo trạng thái: active, inactive, banned.

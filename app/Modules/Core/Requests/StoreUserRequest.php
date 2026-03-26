@@ -27,10 +27,11 @@ class StoreUserRequest extends FormRequest
             'user_name' => 'nullable|string|max:100|unique:users,user_name|regex:/^[a-zA-Z0-9._-]*$/',
             'password' => 'required|string|min:6|confirmed',
             'status' => ['nullable', 'in:'.implode(',', UserStatusEnum::values())],
-            'assignments' => 'nullable|array',
-            'assignments.*.role_id' => 'required|integer|distinct|exists:roles,id',
-            'assignments.*.department_ids' => 'required|array|min:1',
-            'assignments.*.department_ids.*' => 'integer|distinct|exists:departments,id',
+            'position' => 'nullable|string|max:255',
+            'phone' => 'nullable|string|max:20',
+            'zalo_id' => 'nullable|string|max:100',
+            'department_id' => 'required|integer|exists:departments,id',
+            'role_id' => 'required|integer|exists:roles,id',
         ];
     }
 
@@ -38,7 +39,6 @@ class StoreUserRequest extends FormRequest
     {
         return [
             'name.required' => 'Tên người dùng không được để trống.',
-            'name.string' => 'Tên người dùng phải là một chuỗi ký tự.',
             'name.max' => 'Tên người dùng không được vượt quá 255 ký tự.',
             'email.required' => 'Email không được để trống.',
             'email.email' => 'Email không hợp lệ.',
@@ -46,58 +46,30 @@ class StoreUserRequest extends FormRequest
             'user_name.unique' => 'Tên đăng nhập đã tồn tại.',
             'user_name.regex' => 'Tên đăng nhập chỉ chấp nhận chữ, số, dấu chấm, gạch dưới, gạch ngang.',
             'password.required' => 'Mật khẩu không được để trống.',
-            'password.string' => 'Mật khẩu phải là một chuỗi ký tự.',
             'password.min' => 'Mật khẩu phải có ít nhất 6 ký tự.',
             'password.confirmed' => 'Mật khẩu không khớp.',
-            'status.in' => 'Trạng thái không hợp lệ. Chỉ chấp nhận active, inactive, banned.',
-            'assignments.array' => 'Danh sách phân quyền phải là mảng.',
-            'assignments.*.role_id.required' => 'Vai trò là bắt buộc trong từng phân quyền.',
-            'assignments.*.role_id.integer' => 'ID vai trò phải là số nguyên.',
-            'assignments.*.role_id.distinct' => 'Vai trò bị trùng trong danh sách phân quyền.',
-            'assignments.*.role_id.exists' => 'Vai trò không tồn tại.',
-            'assignments.*.department_ids.required' => 'Tổ chức là bắt buộc trong từng phân quyền.',
-            'assignments.*.department_ids.array' => 'Danh sách đơn vị phải là mảng.',
-            'assignments.*.department_ids.min' => 'Mỗi vai trò phải có ít nhất một đơn vị.',
-            'assignments.*.department_ids.*.integer' => 'ID đơn vị phải là số nguyên.',
-            'assignments.*.department_ids.*.distinct' => 'Tổ chức bị trùng trong cùng một vai trò.',
-            'assignments.*.department_ids.*.exists' => 'Tổ chức không tồn tại.',
+            'status.in' => 'Trạng thái không hợp lệ.',
+            'department_id.required' => 'Đơn vị không được để trống.',
+            'department_id.exists' => 'Đơn vị không tồn tại.',
+            'role_id.required' => 'Vai trò không được để trống.',
+            'role_id.exists' => 'Vai trò không tồn tại.',
         ];
     }
 
     public function bodyParameters(): array
     {
         return [
-            'name' => [
-                'description' => 'Tên người dùng',
-                'example' => 'Nguyễn Văn A',
-            ],
-            'email' => [
-                'description' => 'Email đăng nhập',
-                'example' => 'user@example.com',
-            ],
-            'user_name' => [
-                'description' => 'Tên đăng nhập (không dấu cách, cho phép . _ -)',
-                'example' => 'nguyenvana',
-            ],
-            'password' => [
-                'description' => 'Mật khẩu (tối thiểu 6 ký tự)',
-                'example' => 'password123',
-            ],
-            'password_confirmation' => [
-                'description' => 'Xác nhận mật khẩu',
-                'example' => 'password123',
-            ],
-            'status' => [
-                'description' => 'Trạng thái người dùng',
-                'example' => UserStatusEnum::Active->value,
-            ],
-            'assignments' => [
-                'description' => 'Danh sách gán vai trò theo đơn vị. Mỗi phần tử gồm role_id và department_ids.',
-                'example' => [
-                    ['role_id' => 1, 'department_ids' => [2, 3]],
-                    ['role_id' => 5, 'department_ids' => [9]],
-                ],
-            ],
+            'name' => ['description' => 'Tên người dùng', 'example' => 'Nguyễn Văn A'],
+            'email' => ['description' => 'Email đăng nhập', 'example' => 'user@example.com'],
+            'user_name' => ['description' => 'Tên đăng nhập', 'example' => 'nguyenvana'],
+            'password' => ['description' => 'Mật khẩu (tối thiểu 6 ký tự)', 'example' => 'password123'],
+            'password_confirmation' => ['description' => 'Xác nhận mật khẩu', 'example' => 'password123'],
+            'status' => ['description' => 'Trạng thái', 'example' => UserStatusEnum::Active->value],
+            'position' => ['description' => 'Chức vụ', 'example' => 'Chuyên viên'],
+            'phone' => ['description' => 'Số điện thoại', 'example' => '0901234567'],
+            'zalo_id' => ['description' => 'Zalo ID', 'example' => '0901234567'],
+            'department_id' => ['description' => 'ID đơn vị', 'example' => 1],
+            'role_id' => ['description' => 'ID vai trò', 'example' => 1],
         ];
     }
 }

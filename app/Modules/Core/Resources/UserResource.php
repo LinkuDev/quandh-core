@@ -2,7 +2,6 @@
 
 namespace App\Modules\Core\Resources;
 
-use App\Modules\Core\Models\Department;
 use App\Modules\Core\Models\Role;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
@@ -20,72 +19,35 @@ class UserResource extends JsonResource
             'position' => $this->position,
             'phone' => $this->phone,
             'zalo_id' => $this->zalo_id,
+            'role' => $this->currentRole(),
             'status' => $this->status,
             'created_by' => $this->creator?->name ?? 'N/A',
             'updated_by' => $this->editor?->name ?? 'N/A',
-            'assignments' => $this->roleAssignments(),
             'created_at' => $this->created_at?->format('H:i:s d/m/Y'),
             'updated_at' => $this->updated_at?->format('H:i:s d/m/Y'),
         ];
     }
 
-    protected function roleAssignments(): array
+    protected function currentRole(): ?array
     {
         $tableNames = config('permission.table_names');
         $columnNames = config('permission.column_names');
         $modelHasRolesTable = $tableNames['model_has_roles'] ?? 'model_has_roles';
         $rolePivotKey = $columnNames['role_pivot_key'] ?? 'role_id';
         $modelMorphKey = $columnNames['model_morph_key'] ?? 'model_id';
-        $teamForeignKey = $columnNames['team_foreign_key'] ?? 'department_id';
 
-        $rows = DB::table($modelHasRolesTable)
+        $row = DB::table($modelHasRolesTable)
             ->where($modelMorphKey, $this->id)
             ->where('model_type', \App\Modules\Core\Models\User::class)
-            ->select([$teamForeignKey.' as department_id', $rolePivotKey.' as role_id'])
-            ->get();
+            ->select($rolePivotKey.' as role_id')
+            ->first();
 
-        if ($rows->isEmpty()) {
-            return [];
+        if (! $row) {
+            return null;
         }
 
-        $roleIds = $rows->pluck('role_id')->unique()->values();
-        $departmentIds = $rows->pluck('department_id')->unique()->values();
+        $role = Role::find($row->role_id, ['id', 'name']);
 
-        $roles = Role::whereIn('id', $roleIds)
-            ->get(['id', 'name'])
-            ->keyBy('id');
-
-        $departments = Department::whereIn('id', $departmentIds)
-            ->get(['id', 'name'])
-            ->keyBy('id');
-
-        return $rows
-            ->groupBy('role_id')
-            ->map(function ($items, $roleId) use ($roles, $departments) {
-                $role = $roles->get((int) $roleId);
-
-                return [
-                    'role_id' => (int) $roleId,
-                    'role_name' => $role?->name,
-                    'department_ids' => $items
-                        ->pluck('department_id')
-                        ->map(fn ($id) => (int) $id)
-                        ->unique()
-                        ->values()
-                        ->all(),
-                    'departments' => $items
-                        ->pluck('department_id')
-                        ->map(fn ($id) => (int) $id)
-                        ->unique()
-                        ->values()
-                        ->map(fn ($id) => [
-                            'id' => $id,
-                            'name' => $departments->get($id)?->name,
-                        ])
-                        ->all(),
-                ];
-            })
-            ->values()
-            ->all();
+        return $role ? ['id' => $role->id, 'name' => $role->name] : null;
     }
 }
