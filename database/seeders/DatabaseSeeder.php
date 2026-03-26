@@ -26,15 +26,12 @@ class DatabaseSeeder extends Seeder
     }
 
     /**
-     * Tạo user với chức danh mẫu.
+     * Tạo user mẫu (position tự derive từ role qua accessor).
      */
     protected function seedUsers(): void
     {
-        $positions = ['Bí thư', 'Phó Bí thư', 'Ủy viên', 'Chánh Văn phòng', 'Phó Chánh Văn phòng', null, null, null, null, null];
-
-        foreach ($positions as $index => $position) {
+        for ($i = 0; $i < 10; $i++) {
             User::factory()->create([
-                'position' => $position,
                 'phone' => fake()->numerify('09########'),
                 'zalo_id' => fake()->optional(0.5)->numerify('09########'),
             ]);

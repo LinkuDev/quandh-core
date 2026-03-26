@@ -26,7 +26,6 @@ class User extends Authenticatable
         'user_name',
         'password',
         'status',
-        'position',
         'phone',
         'zalo_id',
         'created_by',
@@ -37,6 +36,8 @@ class User extends Authenticatable
         'password',
         'remember_token',
     ];
+
+    protected $appends = ['position'];
 
     protected static function booted()
     {
@@ -50,6 +51,14 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    /**
+     * position = tên role đầu tiên của user (derive từ many-to-many với Spatie roles).
+     */
+    public function getPositionAttribute(): ?string
+    {
+        return $this->roles->first()?->name;
     }
 
     public function creator()

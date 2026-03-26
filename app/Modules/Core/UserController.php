@@ -17,7 +17,6 @@ use App\Modules\Core\Services\UserService;
 
 /**
  * @group Core - User
- * @header X-Department-Id ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1
  *
  * Quản lý người dùng: danh sách, chi tiết, tạo, cập nhật, xóa, thao tác hàng loạt, xuất/nhập Excel, đổi trạng thái.
  */
@@ -28,13 +27,12 @@ class UserController extends Controller
     /**
      * Thống kê người dùng
      *
-     * Tổng số, đang kích hoạt (active), không kích hoạt (inactive, banned). Áp dụng cùng bộ lọc với index.
+     * Tổng số, đang kích hoạt (active), không kích hoạt (inactive, banned).
      *
      * @queryParam search string Từ khóa tìm kiếm (name, email, user_name). Example: john
      * @queryParam status string Lọc theo trạng thái: active, inactive, banned.
      * @queryParam sort_by string Sắp xếp theo: id, name, email, user_name, created_at. Example: created_at
      * @queryParam sort_order string Thứ tự: asc, desc. Example: desc
-     * @queryParam limit integer Số bản ghi mỗi trang (1-100). Example: 10
      *
      * @response 200 {"success": true, "data": {"total": 10, "active": 5, "inactive": 5}}
      */
@@ -46,19 +44,11 @@ class UserController extends Controller
     /**
      * Danh sách người dùng
      *
-     * Lấy danh sách có phân trang, lọc và sắp xếp.
-     *
      * @queryParam search string Từ khóa tìm kiếm (name, email, user_name). Example: john
      * @queryParam status string Lọc theo trạng thái: active, inactive, banned.
      * @queryParam sort_by string Sắp xếp theo: id, name, email, user_name, created_at. Example: created_at
      * @queryParam sort_order string Thứ tự: asc, desc. Example: desc
      * @queryParam limit integer Số bản ghi mỗi trang (1-100). Example: 10
-     *
-     * @apiResourceCollection App\Modules\Core\Resources\UserCollection
-     *
-     * @apiResourceModel App\Modules\Core\Models\User paginate=10
-     *
-     * @apiResourceAdditional success=true
      */
     public function index(FilterRequest $request)
     {
@@ -71,12 +61,6 @@ class UserController extends Controller
      * Chi tiết người dùng
      *
      * @urlParam user integer required ID người dùng. Example: 1
-     *
-     * @apiResource App\Modules\Core\Resources\UserResource
-     *
-     * @apiResourceModel App\Modules\Core\Models\User
-     *
-     * @apiResourceAdditional success=true
      */
     public function show(User $user)
     {
@@ -86,23 +70,17 @@ class UserController extends Controller
     /**
      * Tạo người dùng mới
      *
+     * Trường position tự động lấy từ role name, không cần gửi.
+     *
      * @bodyParam name string required Tên người dùng. Example: Nguyễn Văn A
      * @bodyParam email string required Email (duy nhất). Example: user@example.com
-     * @bodyParam user_name string Nickname. Example: nguyenvana
+     * @bodyParam user_name string Tên đăng nhập. Example: nguyenvana
      * @bodyParam password string required Mật khẩu (tối thiểu 6 ký tự). Example: password123
      * @bodyParam password_confirmation string required Xác nhận mật khẩu. Example: password123
      * @bodyParam status string Trạng thái: active, inactive, banned. Example: active
-     * @bodyParam position string Chức vụ. Example: Chuyên viên
      * @bodyParam phone string Số điện thoại. Example: 0901234567
      * @bodyParam zalo_id string Zalo ID. Example: 0901234567
-     * @bodyParam department_id integer required ID đơn vị. Example: 1
-     * @bodyParam role_id integer required ID vai trò. Example: 1
-     *
-     * @apiResource App\Modules\Core\Resources\UserResource status=201
-     *
-     * @apiResourceModel App\Modules\Core\Models\User
-     *
-     * @apiResourceAdditional success=true message="Tài khoản đã được tạo thành công!"
+     * @bodyParam role_id integer required ID vai trò (position tự derive từ role). Example: 1
      */
     public function store(StoreUserRequest $request)
     {
@@ -114,25 +92,19 @@ class UserController extends Controller
     /**
      * Cập nhật người dùng
      *
+     * Trường position tự động lấy từ role name, không cần gửi.
+     *
      * @urlParam user integer required ID người dùng. Example: 1
      *
      * @bodyParam name string Tên người dùng. Example: Nguyễn Văn B
      * @bodyParam email string Email (duy nhất). Example: user@example.com
-     * @bodyParam user_name string Nickname. Example: nguyenvanb
+     * @bodyParam user_name string Tên đăng nhập. Example: nguyenvanb
      * @bodyParam password string Mật khẩu mới. Example: newpassword123
      * @bodyParam password_confirmation string Xác nhận mật khẩu. Example: newpassword123
      * @bodyParam status string Trạng thái: active, inactive, banned. Example: active
-     * @bodyParam position string Chức vụ. Example: Chuyên viên
      * @bodyParam phone string Số điện thoại. Example: 0901234567
      * @bodyParam zalo_id string Zalo ID. Example: 0901234567
-     * @bodyParam department_id integer ID đơn vị. Example: 1
-     * @bodyParam role_id integer ID vai trò. Example: 1
-     *
-     * @apiResource App\Modules\Core\Resources\UserResource
-     *
-     * @apiResourceModel App\Modules\Core\Models\User
-     *
-     * @apiResourceAdditional success=true message="Tài khoản đã được cập nhật!"
+     * @bodyParam role_id integer ID vai trò (đổi role = đổi position). Example: 1
      */
     public function update(UpdateUserRequest $request, User $user)
     {
@@ -187,13 +159,12 @@ class UserController extends Controller
     /**
      * Xuất danh sách người dùng
      *
-     * Xuất ra các trường: id, name, email, user_name, position, phone, zalo_id, department, role, status, created_by, updated_by, created_at, updated_at.
+     * Xuất ra các trường: id, name, email, user_name, position (từ role), phone, zalo_id, role, status, created_by, updated_by, created_at, updated_at.
      *
      * @queryParam search string Từ khóa tìm kiếm (name, email).
      * @queryParam status string Lọc theo trạng thái: active, inactive, banned.
      * @queryParam sort_by string Sắp xếp theo: id, name, email, created_at.
      * @queryParam sort_order string Thứ tự: asc, desc.
-     * @queryParam limit integer Số bản ghi (1-100).
      */
     public function export(FilterRequest $request)
     {
@@ -205,7 +176,7 @@ class UserController extends Controller
      *
      * Cột bắt buộc: name, email. Cột không bắt buộc: user_name, password (mặc định "password"), status (mặc định "active").
      *
-     * @bodyParam file file required File Excel (xlsx, xls, csv). Cột theo chuẩn export.
+     * @bodyParam file file required File Excel (xlsx, xls, csv).
      *
      * @response 200 {"success": true, "message": "Import người dùng thành công."}
      */
@@ -222,12 +193,6 @@ class UserController extends Controller
      * @urlParam user integer required ID người dùng. Example: 1
      *
      * @bodyParam status string required Trạng thái mới: active, inactive, banned. Example: active
-     *
-     * @apiResource App\Modules\Core\Resources\UserResource
-     *
-     * @apiResourceModel App\Modules\Core\Models\User
-     *
-     * @apiResourceAdditional success=true message="Cập nhật trạng thái thành công!"
      */
     public function changeStatus(ChangeStatusUserRequest $request, User $user)
     {

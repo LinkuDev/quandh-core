@@ -1001,7 +1001,7 @@ endpoints:
       -
         custom: []
         status: 200
-        content: '{"data":[{"id":44,"event_date":"14\/04\/2026","session":"sang","start_time":"14:26:00","content":"Velit et fugiat sunt nihil accusantium.","location":"78142 Nick Field\nWest Noahmouth, WV 59021-4902","prep_unit":null,"driver_info":null,"color_code":"#865450","sort_order":8,"department_id":null,"status":"active","chairperson_id":null,"meeting_type":"hop_dot_xuat","meeting_type_label":"H\u1ecdp \u0111\u1ed9t xu\u1ea5t","nature":"mat","nature_label":"M\u1eadt","created_by":"N\/A","updated_by":"N\/A","created_at":"08:49:08 26\/03\/2026","updated_at":"08:49:08 26\/03\/2026"},{"id":45,"event_date":"17\/04\/2026","session":"chieu","start_time":"08:01:00","content":"Dolores enim non facere tempora.","location":"47809 Considine Landing Suite 782\nNitzschetown, CA 87335-0574","prep_unit":"Schaden, King and Fahey","driver_info":"Prof. Carson Emard","color_code":null,"sort_order":6,"department_id":null,"status":"active","chairperson_id":null,"meeting_type":"hop_dot_xuat","meeting_type_label":"H\u1ecdp \u0111\u1ed9t xu\u1ea5t","nature":"mat","nature_label":"M\u1eadt","created_by":"N\/A","updated_by":"N\/A","created_at":"08:49:08 26\/03\/2026","updated_at":"08:49:08 26\/03\/2026"}],"links":{"first":"\/?page=1","last":"\/?page=1","prev":null,"next":null},"meta":{"current_page":1,"from":1,"last_page":1,"links":[{"url":null,"label":"&laquo; Previous","page":null,"active":false},{"url":"\/?page=1","label":"1","page":1,"active":true},{"url":null,"label":"Next &raquo;","page":null,"active":false}],"path":"\/","per_page":20,"to":2,"total":2},"success":"true"}'
+        content: '{"data":[{"id":57,"event_date":"14\/04\/2026","session":"sang","start_time":"13:17:00","content":"Velit et fugiat sunt nihil accusantium.","location":"78142 Nick Field\nWest Noahmouth, WV 59021-4902","prep_unit":null,"driver_info":null,"color_code":"#865450","sort_order":8,"department_id":null,"status":"active","chairperson_id":null,"meeting_type":"hop_dot_xuat","meeting_type_label":"H\u1ecdp \u0111\u1ed9t xu\u1ea5t","nature":"mat","nature_label":"M\u1eadt","created_by":"N\/A","updated_by":"N\/A","created_at":"09:58:06 26\/03\/2026","updated_at":"09:58:06 26\/03\/2026"},{"id":58,"event_date":"17\/04\/2026","session":"chieu","start_time":"08:01:00","content":"Dolores enim non facere tempora.","location":"47809 Considine Landing Suite 782\nNitzschetown, CA 87335-0574","prep_unit":"Schaden, King and Fahey","driver_info":"Prof. Carson Emard","color_code":null,"sort_order":6,"department_id":null,"status":"active","chairperson_id":null,"meeting_type":"hop_dot_xuat","meeting_type_label":"H\u1ecdp \u0111\u1ed9t xu\u1ea5t","nature":"mat","nature_label":"M\u1eadt","created_by":"N\/A","updated_by":"N\/A","created_at":"09:58:06 26\/03\/2026","updated_at":"09:58:06 26\/03\/2026"}],"links":{"first":"\/?page=1","last":"\/?page=1","prev":null,"next":null},"meta":{"current_page":1,"from":1,"last_page":1,"links":[{"url":null,"label":"&laquo; Previous","page":null,"active":false},{"url":"\/?page=1","label":"1","page":1,"active":true},{"url":null,"label":"Next &raquo;","page":null,"active":false}],"path":"\/","per_page":20,"to":2,"total":2},"success":"true"}'
         headers: []
         description: ''
     responseFields: []
@@ -1174,7 +1174,7 @@ endpoints:
         name: status
         description: ''
         required: false
-        example: active
+        example: inactive
         type: string
         enumValues:
           - active
@@ -1225,7 +1225,7 @@ endpoints:
         name: notification.remind_at
         description: 'This field is required when <code>notification</code> is present. Must be a valid date.'
         required: false
-        example: '2026-03-26T08:49:08'
+        example: '2026-03-26T09:58:06'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -1345,12 +1345,12 @@ endpoints:
       meeting_type: hop_thuong_ky
       nature: thuong
       color_code: '#FF5733'
-      status: active
+      status: inactive
       participants:
         - architecto
       notification:
         channel: sms
-        remind_at: '2026-03-26T08:49:08'
+        remind_at: '2026-03-26T09:58:06'
       notifications:
         - architecto
     fileParameters:
@@ -1360,7 +1360,7 @@ endpoints:
       -
         custom: []
         status: 201
-        content: '{"data":{"id":46,"event_date":"05\/04\/2026","session":"sang","start_time":"19:50:00","content":"Quos velit et fugiat sunt nihil accusantium harum.","location":null,"prep_unit":null,"driver_info":null,"color_code":"#3d1ffb","sort_order":88,"department_id":null,"status":"active","chairperson_id":null,"meeting_type":"hoi_nghi","meeting_type_label":"H\u1ed9i ngh\u1ecb","nature":"thuong","nature_label":"Th\u01b0\u1eddng","created_by":"N\/A","updated_by":"N\/A","created_at":"08:49:08 26\/03\/2026","updated_at":"08:49:08 26\/03\/2026"},"success":"true","message":"T\u1ea1o l\u1ecbch c\u00f4ng t\u00e1c th\u00e0nh c\u00f4ng!"}'
+        content: '{"data":{"id":59,"event_date":"05\/04\/2026","session":"sang","start_time":"18:41:00","content":"Quos velit et fugiat sunt nihil accusantium harum.","location":null,"prep_unit":null,"driver_info":null,"color_code":"#3d1ffb","sort_order":88,"department_id":null,"status":"active","chairperson_id":null,"meeting_type":"hoi_nghi","meeting_type_label":"H\u1ed9i ngh\u1ecb","nature":"thuong","nature_label":"Th\u01b0\u1eddng","created_by":"N\/A","updated_by":"N\/A","created_at":"09:58:06 26\/03\/2026","updated_at":"09:58:06 26\/03\/2026"},"success":"true","message":"T\u1ea1o l\u1ecbch c\u00f4ng t\u00e1c th\u00e0nh c\u00f4ng!"}'
         headers: []
         description: ''
     responseFields: []
@@ -1762,7 +1762,7 @@ endpoints:
       -
         custom: []
         status: 200
-        content: '{"data":{"id":47,"event_date":"30\/03\/2026","session":"sang","start_time":"18:13:00","content":"Qui commodi incidunt iure odit.","location":"77365 Christian Turnpike Suite 432\nNorth Roderick, SD 69128-2316","prep_unit":"Haag and Sons","driver_info":null,"color_code":null,"sort_order":57,"department_id":null,"status":"active","chairperson_id":null,"meeting_type":"hop_dot_xuat","meeting_type_label":"H\u1ecdp \u0111\u1ed9t xu\u1ea5t","nature":"mat","nature_label":"M\u1eadt","created_by":"N\/A","updated_by":"N\/A","created_at":"08:49:08 26\/03\/2026","updated_at":"08:49:08 26\/03\/2026"},"success":"true"}'
+        content: '{"data":{"id":60,"event_date":"31\/03\/2026","session":"sang","start_time":"17:04:00","content":"Qui commodi incidunt iure odit.","location":"77365 Christian Turnpike Suite 432\nNorth Roderick, SD 69128-2316","prep_unit":"Haag and Sons","driver_info":null,"color_code":null,"sort_order":57,"department_id":null,"status":"active","chairperson_id":null,"meeting_type":"hop_dot_xuat","meeting_type_label":"H\u1ecdp \u0111\u1ed9t xu\u1ea5t","nature":"mat","nature_label":"M\u1eadt","created_by":"N\/A","updated_by":"N\/A","created_at":"09:58:06 26\/03\/2026","updated_at":"09:58:06 26\/03\/2026"},"success":"true"}'
         headers: []
         description: ''
     responseFields: []
@@ -2010,7 +2010,7 @@ endpoints:
         name: notification.remind_at
         description: 'This field is required when <code>notification</code> is present. Must be a valid date.'
         required: false
-        example: '2026-03-26T08:49:08'
+        example: '2026-03-26T09:58:06'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -2092,7 +2092,7 @@ endpoints:
         - architecto
       notification:
         channel: zalo
-        remind_at: '2026-03-26T08:49:08'
+        remind_at: '2026-03-26T09:58:06'
       remove_attachment_ids:
         - architecto
       notifications:
@@ -2104,7 +2104,7 @@ endpoints:
       -
         custom: []
         status: 200
-        content: '{"data":{"id":48,"event_date":"05\/04\/2026","session":"sang","start_time":"19:50:00","content":"Quos velit et fugiat sunt nihil accusantium harum.","location":null,"prep_unit":null,"driver_info":null,"color_code":"#3d1ffb","sort_order":88,"department_id":null,"status":"active","chairperson_id":null,"meeting_type":"hoi_nghi","meeting_type_label":"H\u1ed9i ngh\u1ecb","nature":"thuong","nature_label":"Th\u01b0\u1eddng","created_by":"N\/A","updated_by":"N\/A","created_at":"08:49:08 26\/03\/2026","updated_at":"08:49:08 26\/03\/2026"},"success":"true","message":"C\u1eadp nh\u1eadt l\u1ecbch c\u00f4ng t\u00e1c th\u00e0nh c\u00f4ng!"}'
+        content: '{"data":{"id":61,"event_date":"05\/04\/2026","session":"sang","start_time":"18:41:00","content":"Quos velit et fugiat sunt nihil accusantium harum.","location":null,"prep_unit":null,"driver_info":null,"color_code":"#3d1ffb","sort_order":88,"department_id":null,"status":"active","chairperson_id":null,"meeting_type":"hoi_nghi","meeting_type_label":"H\u1ed9i ngh\u1ecb","nature":"thuong","nature_label":"Th\u01b0\u1eddng","created_by":"N\/A","updated_by":"N\/A","created_at":"09:58:06 26\/03\/2026","updated_at":"09:58:06 26\/03\/2026"},"success":"true","message":"C\u1eadp nh\u1eadt l\u1ecbch c\u00f4ng t\u00e1c th\u00e0nh c\u00f4ng!"}'
         headers: []
         description: ''
     responseFields: []
@@ -2337,7 +2337,7 @@ endpoints:
         name: notification.channel
         description: 'This field is required when <code>notification</code> is present.'
         required: false
-        example: app
+        example: zalo
         type: string
         enumValues:
           - sms
@@ -2352,7 +2352,7 @@ endpoints:
         name: notification.remind_at
         description: 'This field is required when <code>notification</code> is present. Must be a valid date.'
         required: false
-        example: '2026-03-26T08:49:09'
+        example: '2026-03-26T09:58:06'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -2433,8 +2433,8 @@ endpoints:
       participants:
         - architecto
       notification:
-        channel: app
-        remind_at: '2026-03-26T08:49:09'
+        channel: zalo
+        remind_at: '2026-03-26T09:58:06'
       remove_attachment_ids:
         - architecto
       notifications:
@@ -2446,7 +2446,7 @@ endpoints:
       -
         custom: []
         status: 200
-        content: '{"data":{"id":49,"event_date":"05\/04\/2026","session":"sang","start_time":"19:50:00","content":"Quos velit et fugiat sunt nihil accusantium harum.","location":null,"prep_unit":null,"driver_info":null,"color_code":"#3d1ffb","sort_order":88,"department_id":null,"status":"active","chairperson_id":null,"meeting_type":"hoi_nghi","meeting_type_label":"H\u1ed9i ngh\u1ecb","nature":"thuong","nature_label":"Th\u01b0\u1eddng","created_by":"N\/A","updated_by":"N\/A","created_at":"08:49:09 26\/03\/2026","updated_at":"08:49:09 26\/03\/2026"},"success":"true","message":"C\u1eadp nh\u1eadt l\u1ecbch c\u00f4ng t\u00e1c th\u00e0nh c\u00f4ng!"}'
+        content: '{"data":{"id":62,"event_date":"05\/04\/2026","session":"sang","start_time":"18:41:00","content":"Quos velit et fugiat sunt nihil accusantium harum.","location":null,"prep_unit":null,"driver_info":null,"color_code":"#3d1ffb","sort_order":88,"department_id":null,"status":"active","chairperson_id":null,"meeting_type":"hoi_nghi","meeting_type_label":"H\u1ed9i ngh\u1ecb","nature":"thuong","nature_label":"Th\u01b0\u1eddng","created_by":"N\/A","updated_by":"N\/A","created_at":"09:58:06 26\/03\/2026","updated_at":"09:58:06 26\/03\/2026"},"success":"true","message":"C\u1eadp nh\u1eadt l\u1ecbch c\u00f4ng t\u00e1c th\u00e0nh c\u00f4ng!"}'
         headers: []
         description: ''
     responseFields: []

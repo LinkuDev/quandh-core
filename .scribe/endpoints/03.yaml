@@ -1,5 +1,7 @@
 name: 'Core - User'
-description: ''
+description: |-
+
+  Quản lý người dùng: danh sách, chi tiết, tạo, cập nhật, xóa, thao tác hàng loạt, xuất/nhập Excel, đổi trạng thái.
 endpoints:
   -
     custom: []
@@ -9,16 +11,17 @@ endpoints:
     metadata:
       custom: []
       groupName: 'Core - User'
-      groupDescription: ''
+      groupDescription: |-
+
+        Quản lý người dùng: danh sách, chi tiết, tạo, cập nhật, xóa, thao tác hàng loạt, xuất/nhập Excel, đổi trạng thái.
       subgroup: ''
       subgroupDescription: ''
       title: 'Xuất danh sách người dùng'
-      description: 'Xuất ra các trường: id, name, email, user_name, position, phone, zalo_id, department, role, status, created_by, updated_by, created_at, updated_at.'
+      description: 'Xuất ra các trường: id, name, email, user_name, position (từ role), phone, zalo_id, role, status, created_by, updated_by, created_at, updated_at.'
       authenticated: true
       deprecated: false
     headers:
       Authorization: 'Bearer Bearer {YOUR_ACCESS_TOKEN}'
-      X-Department-Id: 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
@@ -93,9 +96,9 @@ endpoints:
       limit:
         custom: []
         name: limit
-        description: 'Số bản ghi (1-100).'
+        description: 'Số bản ghi mỗi trang (1-100). Must be at least 1. Must not be greater than 100.'
         required: false
-        example: 16
+        example: 10
         type: integer
         enumValues: []
         exampleWasSpecified: false
@@ -108,7 +111,7 @@ endpoints:
       to_date: '2026-12-31'
       sort_by: architecto
       sort_order: architecto
-      limit: 16
+      limit: 10
     bodyParameters: []
     cleanBodyParameters: []
     fileParameters: []
@@ -138,7 +141,9 @@ endpoints:
     metadata:
       custom: []
       groupName: 'Core - User'
-      groupDescription: ''
+      groupDescription: |-
+
+        Quản lý người dùng: danh sách, chi tiết, tạo, cập nhật, xóa, thao tác hàng loạt, xuất/nhập Excel, đổi trạng thái.
       subgroup: ''
       subgroupDescription: ''
       title: 'Nhập danh sách người dùng'
@@ -147,7 +152,6 @@ endpoints:
       deprecated: false
     headers:
       Authorization: 'Bearer Bearer {YOUR_ACCESS_TOKEN}'
-      X-Department-Id: 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
       Content-Type: multipart/form-data
       Accept: application/json
     urlParameters: []
@@ -158,7 +162,7 @@ endpoints:
       file:
         custom: []
         name: file
-        description: 'File Excel (xlsx, xls, csv). Cột theo chuẩn export.'
+        description: 'File Excel (xlsx, xls, csv).'
         required: true
         example: null
         type: file
@@ -192,7 +196,9 @@ endpoints:
     metadata:
       custom: []
       groupName: 'Core - User'
-      groupDescription: ''
+      groupDescription: |-
+
+        Quản lý người dùng: danh sách, chi tiết, tạo, cập nhật, xóa, thao tác hàng loạt, xuất/nhập Excel, đổi trạng thái.
       subgroup: ''
       subgroupDescription: ''
       title: 'Xóa hàng loạt người dùng'
@@ -201,7 +207,6 @@ endpoints:
       deprecated: false
     headers:
       Authorization: 'Bearer Bearer {YOUR_ACCESS_TOKEN}'
-      X-Department-Id: 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
@@ -252,7 +257,9 @@ endpoints:
     metadata:
       custom: []
       groupName: 'Core - User'
-      groupDescription: ''
+      groupDescription: |-
+
+        Quản lý người dùng: danh sách, chi tiết, tạo, cập nhật, xóa, thao tác hàng loạt, xuất/nhập Excel, đổi trạng thái.
       subgroup: ''
       subgroupDescription: ''
       title: 'Cập nhật trạng thái hàng loạt'
@@ -261,7 +268,6 @@ endpoints:
       deprecated: false
     headers:
       Authorization: 'Bearer Bearer {YOUR_ACCESS_TOKEN}'
-      X-Department-Id: 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
@@ -324,16 +330,17 @@ endpoints:
     metadata:
       custom: []
       groupName: 'Core - User'
-      groupDescription: ''
+      groupDescription: |-
+
+        Quản lý người dùng: danh sách, chi tiết, tạo, cập nhật, xóa, thao tác hàng loạt, xuất/nhập Excel, đổi trạng thái.
       subgroup: ''
       subgroupDescription: ''
       title: 'Thống kê người dùng'
-      description: 'Tổng số, đang kích hoạt (active), không kích hoạt (inactive, banned). Áp dụng cùng bộ lọc với index.'
+      description: 'Tổng số, đang kích hoạt (active), không kích hoạt (inactive, banned).'
       authenticated: true
       deprecated: false
     headers:
       Authorization: 'Bearer Bearer {YOUR_ACCESS_TOKEN}'
-      X-Department-Id: 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
@@ -408,12 +415,12 @@ endpoints:
       limit:
         custom: []
         name: limit
-        description: 'Số bản ghi mỗi trang (1-100).'
+        description: 'Số bản ghi mỗi trang (1-100). Must be at least 1. Must not be greater than 100.'
         required: false
         example: 10
         type: integer
         enumValues: []
-        exampleWasSpecified: true
+        exampleWasSpecified: false
         nullable: true
         deprecated: false
     cleanQueryParameters:
@@ -450,16 +457,17 @@ endpoints:
     metadata:
       custom: []
       groupName: 'Core - User'
-      groupDescription: ''
+      groupDescription: |-
+
+        Quản lý người dùng: danh sách, chi tiết, tạo, cập nhật, xóa, thao tác hàng loạt, xuất/nhập Excel, đổi trạng thái.
       subgroup: ''
       subgroupDescription: ''
       title: 'Danh sách người dùng'
-      description: 'Lấy danh sách có phân trang, lọc và sắp xếp.'
+      description: ''
       authenticated: true
       deprecated: false
     headers:
       Authorization: 'Bearer Bearer {YOUR_ACCESS_TOKEN}'
-      X-Department-Id: 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
@@ -556,10 +564,13 @@ endpoints:
     responses:
       -
         custom: []
-        status: 200
-        content: '{"data":[{"id":15,"name":"Ms. Elisabeth Okuneva","email":"gulgowski.asia@example.com","user_name":"idickens","position":null,"phone":null,"zalo_id":null,"role":null,"status":"inactive","created_by":"N\/A","updated_by":"N\/A","created_at":"08:49:08 26\/03\/2026","updated_at":"08:49:08 26\/03\/2026"},{"id":16,"name":"Mya DuBuque","email":"breitenberg.gilbert@example.com","user_name":"price.amber","position":null,"phone":null,"zalo_id":null,"role":null,"status":"inactive","created_by":"N\/A","updated_by":"N\/A","created_at":"08:49:08 26\/03\/2026","updated_at":"08:49:08 26\/03\/2026"}],"links":{"first":"\/?page=1","last":"\/?page=1","prev":null,"next":null},"meta":{"current_page":1,"from":1,"last_page":1,"links":[{"url":null,"label":"&laquo; Previous","page":null,"active":false},{"url":"\/?page=1","label":"1","page":1,"active":true},{"url":null,"label":"Next &raquo;","page":null,"active":false}],"path":"\/","per_page":10,"to":2,"total":2},"success":"true"}'
-        headers: []
-        description: ''
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
     responseFields: []
     auth:
       - headers
@@ -576,16 +587,17 @@ endpoints:
     metadata:
       custom: []
       groupName: 'Core - User'
-      groupDescription: ''
+      groupDescription: |-
+
+        Quản lý người dùng: danh sách, chi tiết, tạo, cập nhật, xóa, thao tác hàng loạt, xuất/nhập Excel, đổi trạng thái.
       subgroup: ''
       subgroupDescription: ''
       title: 'Tạo người dùng mới'
-      description: ''
+      description: 'Trường position tự động lấy từ role name, không cần gửi.'
       authenticated: true
       deprecated: false
     headers:
       Authorization: 'Bearer Bearer {YOUR_ACCESS_TOKEN}'
-      X-Department-Id: 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
@@ -618,7 +630,7 @@ endpoints:
       user_name:
         custom: []
         name: user_name
-        description: Nickname.
+        description: 'Tên đăng nhập.'
         required: false
         example: nguyenvana
         type: string
@@ -648,17 +660,6 @@ endpoints:
         exampleWasSpecified: true
         nullable: true
         deprecated: false
-      position:
-        custom: []
-        name: position
-        description: 'Chức vụ.'
-        required: false
-        example: 'Chuyên viên'
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: true
-        deprecated: false
       phone:
         custom: []
         name: phone
@@ -681,21 +682,10 @@ endpoints:
         exampleWasSpecified: true
         nullable: true
         deprecated: false
-      department_id:
-        custom: []
-        name: department_id
-        description: 'ID đơn vị.'
-        required: true
-        example: 1
-        type: integer
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        deprecated: false
       role_id:
         custom: []
         name: role_id
-        description: 'ID vai trò.'
+        description: 'ID vai trò (position tự derive từ role).'
         required: true
         example: 1
         type: integer
@@ -720,20 +710,12 @@ endpoints:
       user_name: nguyenvana
       password: password123
       status: active
-      position: 'Chuyên viên'
       phone: '0901234567'
       zalo_id: '0901234567'
-      department_id: 1
       role_id: 1
       password_confirmation: password123
     fileParameters: []
-    responses:
-      -
-        custom: []
-        status: 201
-        content: '{"data":{"id":17,"name":"Ms. Audra Crooks II","email":"idickens@example.org","user_name":"aschuster","position":null,"phone":null,"zalo_id":null,"role":null,"status":"active","created_by":"N\/A","updated_by":"N\/A","created_at":"08:49:08 26\/03\/2026","updated_at":"08:49:08 26\/03\/2026"},"success":"true","message":"T\u00e0i kho\u1ea3n \u0111\u00e3 \u0111\u01b0\u1ee3c t\u1ea1o th\u00e0nh c\u00f4ng!"}'
-        headers: []
-        description: ''
+    responses: []
     responseFields: []
     auth:
       - headers
@@ -750,7 +732,9 @@ endpoints:
     metadata:
       custom: []
       groupName: 'Core - User'
-      groupDescription: ''
+      groupDescription: |-
+
+        Quản lý người dùng: danh sách, chi tiết, tạo, cập nhật, xóa, thao tác hàng loạt, xuất/nhập Excel, đổi trạng thái.
       subgroup: ''
       subgroupDescription: ''
       title: 'Thay đổi trạng thái người dùng'
@@ -759,7 +743,6 @@ endpoints:
       deprecated: false
     headers:
       Authorization: 'Bearer Bearer {YOUR_ACCESS_TOKEN}'
-      X-Department-Id: 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
       Content-Type: application/json
       Accept: application/json
     urlParameters:
@@ -805,13 +788,7 @@ endpoints:
     cleanBodyParameters:
       status: active
     fileParameters: []
-    responses:
-      -
-        custom: []
-        status: 200
-        content: '{"data":{"id":18,"name":"Morgan Hirthe","email":"dare.emelie@example.com","user_name":"imclaughlin","position":null,"phone":null,"zalo_id":null,"role":null,"status":"inactive","created_by":"N\/A","updated_by":"N\/A","created_at":"08:49:08 26\/03\/2026","updated_at":"08:49:08 26\/03\/2026"},"success":"true","message":"C\u1eadp nh\u1eadt tr\u1ea1ng th\u00e1i th\u00e0nh c\u00f4ng!"}'
-        headers: []
-        description: ''
+    responses: []
     responseFields: []
     auth:
       - headers
@@ -828,7 +805,9 @@ endpoints:
     metadata:
       custom: []
       groupName: 'Core - User'
-      groupDescription: ''
+      groupDescription: |-
+
+        Quản lý người dùng: danh sách, chi tiết, tạo, cập nhật, xóa, thao tác hàng loạt, xuất/nhập Excel, đổi trạng thái.
       subgroup: ''
       subgroupDescription: ''
       title: 'Chi tiết người dùng'
@@ -837,7 +816,6 @@ endpoints:
       deprecated: false
     headers:
       Authorization: 'Bearer Bearer {YOUR_ACCESS_TOKEN}'
-      X-Department-Id: 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
       Content-Type: application/json
       Accept: application/json
     urlParameters:
@@ -874,10 +852,13 @@ endpoints:
     responses:
       -
         custom: []
-        status: 200
-        content: '{"data":{"id":19,"name":"Morgan Hirthe","email":"imclaughlin@example.org","user_name":"okeefe.isidro","position":null,"phone":null,"zalo_id":null,"role":null,"status":"inactive","created_by":"N\/A","updated_by":"N\/A","created_at":"08:49:08 26\/03\/2026","updated_at":"08:49:08 26\/03\/2026"},"success":"true"}'
-        headers: []
-        description: ''
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
     responseFields: []
     auth:
       - headers
@@ -894,16 +875,17 @@ endpoints:
     metadata:
       custom: []
       groupName: 'Core - User'
-      groupDescription: ''
+      groupDescription: |-
+
+        Quản lý người dùng: danh sách, chi tiết, tạo, cập nhật, xóa, thao tác hàng loạt, xuất/nhập Excel, đổi trạng thái.
       subgroup: ''
       subgroupDescription: ''
       title: 'Cập nhật người dùng'
-      description: ''
+      description: 'Trường position tự động lấy từ role name, không cần gửi.'
       authenticated: true
       deprecated: false
     headers:
       Authorization: 'Bearer Bearer {YOUR_ACCESS_TOKEN}'
-      X-Department-Id: 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
       Content-Type: application/json
       Accept: application/json
     urlParameters:
@@ -960,7 +942,7 @@ endpoints:
       user_name:
         custom: []
         name: user_name
-        description: Nickname.
+        description: 'Tên đăng nhập.'
         required: false
         example: nguyenvanb
         type: string
@@ -990,17 +972,6 @@ endpoints:
         exampleWasSpecified: true
         nullable: false
         deprecated: false
-      position:
-        custom: []
-        name: position
-        description: 'Chức vụ.'
-        required: false
-        example: 'Chuyên viên'
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: true
-        deprecated: false
       phone:
         custom: []
         name: phone
@@ -1023,21 +994,10 @@ endpoints:
         exampleWasSpecified: true
         nullable: true
         deprecated: false
-      department_id:
-        custom: []
-        name: department_id
-        description: 'ID đơn vị.'
-        required: false
-        example: 1
-        type: integer
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        deprecated: false
       role_id:
         custom: []
         name: role_id
-        description: 'ID vai trò.'
+        description: 'ID vai trò (đổi role = đổi position).'
         required: false
         example: 1
         type: integer
@@ -1062,20 +1022,12 @@ endpoints:
       user_name: nguyenvanb
       password: newpassword123
       status: active
-      position: 'Chuyên viên'
       phone: '0901234567'
       zalo_id: '0901234567'
-      department_id: 1
       role_id: 1
       password_confirmation: newpassword123
     fileParameters: []
-    responses:
-      -
-        custom: []
-        status: 200
-        content: '{"data":{"id":20,"name":"Ms. Audra Crooks II","email":"aschuster@example.com","user_name":"gilbert32","position":null,"phone":null,"zalo_id":null,"role":null,"status":"active","created_by":"N\/A","updated_by":"N\/A","created_at":"08:49:08 26\/03\/2026","updated_at":"08:49:08 26\/03\/2026"},"success":"true","message":"T\u00e0i kho\u1ea3n \u0111\u00e3 \u0111\u01b0\u1ee3c c\u1eadp nh\u1eadt!"}'
-        headers: []
-        description: ''
+    responses: []
     responseFields: []
     auth:
       - headers
@@ -1092,16 +1044,17 @@ endpoints:
     metadata:
       custom: []
       groupName: 'Core - User'
-      groupDescription: ''
+      groupDescription: |-
+
+        Quản lý người dùng: danh sách, chi tiết, tạo, cập nhật, xóa, thao tác hàng loạt, xuất/nhập Excel, đổi trạng thái.
       subgroup: ''
       subgroupDescription: ''
       title: 'Cập nhật người dùng'
-      description: ''
+      description: 'Trường position tự động lấy từ role name, không cần gửi.'
       authenticated: true
       deprecated: false
     headers:
       Authorization: 'Bearer Bearer {YOUR_ACCESS_TOKEN}'
-      X-Department-Id: 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
       Content-Type: application/json
       Accept: application/json
     urlParameters:
@@ -1158,7 +1111,7 @@ endpoints:
       user_name:
         custom: []
         name: user_name
-        description: Nickname.
+        description: 'Tên đăng nhập.'
         required: false
         example: nguyenvanb
         type: string
@@ -1188,17 +1141,6 @@ endpoints:
         exampleWasSpecified: true
         nullable: false
         deprecated: false
-      position:
-        custom: []
-        name: position
-        description: 'Chức vụ.'
-        required: false
-        example: 'Chuyên viên'
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: true
-        deprecated: false
       phone:
         custom: []
         name: phone
@@ -1221,21 +1163,10 @@ endpoints:
         exampleWasSpecified: true
         nullable: true
         deprecated: false
-      department_id:
-        custom: []
-        name: department_id
-        description: 'ID đơn vị.'
-        required: false
-        example: 1
-        type: integer
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        deprecated: false
       role_id:
         custom: []
         name: role_id
-        description: 'ID vai trò.'
+        description: 'ID vai trò (đổi role = đổi position).'
         required: false
         example: 1
         type: integer
@@ -1260,20 +1191,12 @@ endpoints:
       user_name: nguyenvanb
       password: newpassword123
       status: active
-      position: 'Chuyên viên'
       phone: '0901234567'
       zalo_id: '0901234567'
-      department_id: 1
       role_id: 1
       password_confirmation: newpassword123
     fileParameters: []
-    responses:
-      -
-        custom: []
-        status: 200
-        content: '{"data":{"id":21,"name":"Ms. Audra Crooks II","email":"gilbert32@example.com","user_name":"hirthe.theo","position":null,"phone":null,"zalo_id":null,"role":null,"status":"active","created_by":"N\/A","updated_by":"N\/A","created_at":"08:49:08 26\/03\/2026","updated_at":"08:49:08 26\/03\/2026"},"success":"true","message":"T\u00e0i kho\u1ea3n \u0111\u00e3 \u0111\u01b0\u1ee3c c\u1eadp nh\u1eadt!"}'
-        headers: []
-        description: ''
+    responses: []
     responseFields: []
     auth:
       - headers
@@ -1290,7 +1213,9 @@ endpoints:
     metadata:
       custom: []
       groupName: 'Core - User'
-      groupDescription: ''
+      groupDescription: |-
+
+        Quản lý người dùng: danh sách, chi tiết, tạo, cập nhật, xóa, thao tác hàng loạt, xuất/nhập Excel, đổi trạng thái.
       subgroup: ''
       subgroupDescription: ''
       title: 'Xóa người dùng'
@@ -1299,7 +1224,6 @@ endpoints:
       deprecated: false
     headers:
       Authorization: 'Bearer Bearer {YOUR_ACCESS_TOKEN}'
-      X-Department-Id: 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1'
       Content-Type: application/json
       Accept: application/json
     urlParameters:

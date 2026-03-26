@@ -27,10 +27,8 @@ class UpdateUserRequest extends FormRequest
             'user_name' => 'sometimes|nullable|string|max:100|unique:users,user_name,'.$this->route('user').'|regex:/^[a-zA-Z0-9._-]*$/',
             'password' => 'sometimes|string|min:6|confirmed',
             'status' => ['sometimes', 'in:'.implode(',', UserStatusEnum::values())],
-            'position' => 'sometimes|nullable|string|max:255',
             'phone' => 'sometimes|nullable|string|max:20',
             'zalo_id' => 'sometimes|nullable|string|max:100',
-            'department_id' => 'sometimes|integer|exists:departments,id',
             'role_id' => 'sometimes|integer|exists:roles,id',
         ];
     }
@@ -46,7 +44,6 @@ class UpdateUserRequest extends FormRequest
             'password.min' => 'Mật khẩu phải có ít nhất 6 ký tự.',
             'password.confirmed' => 'Mật khẩu không khớp.',
             'status.in' => 'Trạng thái không hợp lệ.',
-            'department_id.exists' => 'Đơn vị không tồn tại.',
             'role_id.exists' => 'Vai trò không tồn tại.',
         ];
     }
@@ -60,11 +57,9 @@ class UpdateUserRequest extends FormRequest
             'password' => ['description' => 'Mật khẩu mới', 'example' => 'newpassword123'],
             'password_confirmation' => ['description' => 'Xác nhận mật khẩu mới', 'example' => 'newpassword123'],
             'status' => ['description' => 'Trạng thái', 'example' => UserStatusEnum::Active->value],
-            'position' => ['description' => 'Chức vụ', 'example' => 'Chuyên viên'],
             'phone' => ['description' => 'Số điện thoại', 'example' => '0901234567'],
             'zalo_id' => ['description' => 'Zalo ID', 'example' => '0901234567'],
-            'department_id' => ['description' => 'ID đơn vị', 'example' => 1],
-            'role_id' => ['description' => 'ID vai trò', 'example' => 1],
+            'role_id' => ['description' => 'ID vai trò (đổi role = đổi position)', 'example' => 1],
         ];
     }
 }

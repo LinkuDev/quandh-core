@@ -248,7 +248,6 @@ class PermissionSeeder extends Seeder
                 'name' => 'Quản trị viên',
                 'user_name' => 'admin',
                 'password' => '123123',
-                'position' => 'Quản trị hệ thống',
                 'status' => StatusEnum::Active->value,
                 'email_verified_at' => now(),
             ]
@@ -265,7 +264,6 @@ class PermissionSeeder extends Seeder
                 'name' => 'Nguyễn Văn Thư',
                 'user_name' => 'thuky',
                 'password' => '123123',
-                'position' => 'Thư ký Thường trực',
                 'status' => StatusEnum::Active->value,
                 'email_verified_at' => now(),
             ]
@@ -282,7 +280,6 @@ class PermissionSeeder extends Seeder
                 'name' => 'Trần Thị Tổng Hợp',
                 'user_name' => 'tonghop',
                 'password' => '123123',
-                'position' => 'Công chức tổng hợp',
                 'status' => StatusEnum::Active->value,
                 'email_verified_at' => now(),
             ]
@@ -299,7 +296,6 @@ class PermissionSeeder extends Seeder
                 'name' => 'Lê Văn Cán Bộ',
                 'user_name' => 'canbo',
                 'password' => '123123',
-                'position' => 'Chuyên viên',
                 'status' => StatusEnum::Active->value,
                 'email_verified_at' => now(),
             ]

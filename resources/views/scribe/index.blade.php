@@ -2793,8 +2793,8 @@ print_r(json_decode((string) $body));</code></pre></div>
             &quot;request_data&quot;: {
                 &quot;sample&quot;: &quot;et&quot;
             },
-            &quot;created_at&quot;: &quot;08:49:08 26/03/2026&quot;,
-            &quot;updated_at&quot;: &quot;08:49:08 26/03/2026&quot;
+            &quot;created_at&quot;: &quot;09:58:06 26/03/2026&quot;,
+            &quot;updated_at&quot;: &quot;09:58:06 26/03/2026&quot;
         },
         {
             &quot;id&quot;: 3,
@@ -2812,8 +2812,8 @@ print_r(json_decode((string) $body));</code></pre></div>
             &quot;request_data&quot;: {
                 &quot;sample&quot;: &quot;accusamus&quot;
             },
-            &quot;created_at&quot;: &quot;08:49:08 26/03/2026&quot;,
-            &quot;updated_at&quot;: &quot;08:49:08 26/03/2026&quot;
+            &quot;created_at&quot;: &quot;09:58:06 26/03/2026&quot;,
+            &quot;updated_at&quot;: &quot;09:58:06 26/03/2026&quot;
         }
     ],
     &quot;links&quot;: {
@@ -3131,7 +3131,7 @@ print_r(json_decode((string) $body));</code></pre></div>
         &quot;id&quot;: 4,
         &quot;description&quot;: &quot;Adipisci quidem nostrum qui commodi incidunt iure.&quot;,
         &quot;user_type&quot;: &quot;User&quot;,
-        &quot;user_id&quot;: 22,
+        &quot;user_id&quot;: 15,
         &quot;user_name&quot;: &quot;Bridget Schaden&quot;,
         &quot;department_id&quot;: 3,
         &quot;route&quot;: &quot;https://mclaughlin.com/ipsum-nostrum-omnis-autem-et-consequatur-aut-dolores-enim.html&quot;,
@@ -3143,8 +3143,8 @@ print_r(json_decode((string) $body));</code></pre></div>
         &quot;request_data&quot;: {
             &quot;sample&quot;: &quot;veniam&quot;
         },
-        &quot;created_at&quot;: &quot;08:49:08 26/03/2026&quot;,
-        &quot;updated_at&quot;: &quot;08:49:08 26/03/2026&quot;
+        &quot;created_at&quot;: &quot;09:58:06 26/03/2026&quot;,
+        &quot;updated_at&quot;: &quot;09:58:06 26/03/2026&quot;
     },
     &quot;success&quot;: &quot;true&quot;
 }</code>
@@ -3768,7 +3768,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "X-Department-Id: ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: multipart/form-data" \
     --header "Accept: application/json" \
-    --form "file=@/tmp/phpmj5rqkql25hf7LhwiYP" </code></pre></div>
+    --form "file=@/tmp/php32se81edmlrmepe0pi3" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -3808,7 +3808,7 @@ $response = $client-&gt;post(
         'multipart' =&gt; [
             [
                 'name' =&gt; 'file',
-                'contents' =&gt; fopen('/tmp/phpmj5rqkql25hf7LhwiYP', 'r')
+                'contents' =&gt; fopen('/tmp/php32se81edmlrmepe0pi3', 'r')
             ],
         ],
     ]
@@ -3936,7 +3936,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>File Excel (xlsx, xls, csv). Cột theo chuẩn export. Example: <code>/tmp/phpmj5rqkql25hf7LhwiYP</code></p>
+<p>File Excel (xlsx, xls, csv). Cột theo chuẩn export. Example: <code>/tmp/php32se81edmlrmepe0pi3</code></p>
         </div>
         </form>
 
@@ -4717,8 +4717,8 @@ print_r(json_decode((string) $body));</code></pre></div>
             &quot;description&quot;: null,
             &quot;sort_order&quot;: 95,
             &quot;parent_id&quot;: null,
-            &quot;created_at&quot;: &quot;08:49:08 26/03/2026&quot;,
-            &quot;updated_at&quot;: &quot;08:49:08 26/03/2026&quot;
+            &quot;created_at&quot;: &quot;09:58:05 26/03/2026&quot;,
+            &quot;updated_at&quot;: &quot;09:58:05 26/03/2026&quot;
         },
         {
             &quot;id&quot;: 81,
@@ -4727,8 +4727,8 @@ print_r(json_decode((string) $body));</code></pre></div>
             &quot;description&quot;: null,
             &quot;sort_order&quot;: 39,
             &quot;parent_id&quot;: null,
-            &quot;created_at&quot;: &quot;08:49:08 26/03/2026&quot;,
-            &quot;updated_at&quot;: &quot;08:49:08 26/03/2026&quot;
+            &quot;created_at&quot;: &quot;09:58:05 26/03/2026&quot;,
+            &quot;updated_at&quot;: &quot;09:58:05 26/03/2026&quot;
         }
     ],
     &quot;links&quot;: {
@@ -5037,12 +5037,12 @@ print_r(json_decode((string) $body));</code></pre></div>
                 &quot;description&quot;: null,
                 &quot;sort_order&quot;: 93,
                 &quot;parent_id&quot;: 83,
-                &quot;created_at&quot;: &quot;08:49:08 26/03/2026&quot;,
-                &quot;updated_at&quot;: &quot;08:49:08 26/03/2026&quot;
+                &quot;created_at&quot;: &quot;09:58:05 26/03/2026&quot;,
+                &quot;updated_at&quot;: &quot;09:58:05 26/03/2026&quot;
             }
         ],
-        &quot;created_at&quot;: &quot;08:49:08 26/03/2026&quot;,
-        &quot;updated_at&quot;: &quot;08:49:08 26/03/2026&quot;
+        &quot;created_at&quot;: &quot;09:58:05 26/03/2026&quot;,
+        &quot;updated_at&quot;: &quot;09:58:05 26/03/2026&quot;
     },
     &quot;success&quot;: &quot;true&quot;
 }</code>
@@ -5266,8 +5266,8 @@ print_r(json_decode((string) $body));</code></pre></div>
         &quot;description&quot;: &quot;Et fugiat sunt nihil accusantium.&quot;,
         &quot;sort_order&quot;: 91,
         &quot;parent_id&quot;: null,
-        &quot;created_at&quot;: &quot;08:49:08 26/03/2026&quot;,
-        &quot;updated_at&quot;: &quot;08:49:08 26/03/2026&quot;
+        &quot;created_at&quot;: &quot;09:58:05 26/03/2026&quot;,
+        &quot;updated_at&quot;: &quot;09:58:05 26/03/2026&quot;
     },
     &quot;success&quot;: &quot;true&quot;,
     &quot;message&quot;: &quot;Quyền đ&atilde; được tạo th&agrave;nh c&ocirc;ng!&quot;
@@ -5528,8 +5528,8 @@ print_r(json_decode((string) $body));</code></pre></div>
         &quot;description&quot;: null,
         &quot;sort_order&quot;: 7,
         &quot;parent_id&quot;: null,
-        &quot;created_at&quot;: &quot;08:49:08 26/03/2026&quot;,
-        &quot;updated_at&quot;: &quot;08:49:08 26/03/2026&quot;
+        &quot;created_at&quot;: &quot;09:58:05 26/03/2026&quot;,
+        &quot;updated_at&quot;: &quot;09:58:05 26/03/2026&quot;
     },
     &quot;success&quot;: &quot;true&quot;,
     &quot;message&quot;: &quot;Quyền đ&atilde; được cập nhật!&quot;
@@ -5815,8 +5815,8 @@ print_r(json_decode((string) $body));</code></pre></div>
         &quot;description&quot;: &quot;Sunt nihil accusantium harum mollitia.&quot;,
         &quot;sort_order&quot;: 86,
         &quot;parent_id&quot;: null,
-        &quot;created_at&quot;: &quot;08:49:08 26/03/2026&quot;,
-        &quot;updated_at&quot;: &quot;08:49:08 26/03/2026&quot;
+        &quot;created_at&quot;: &quot;09:58:05 26/03/2026&quot;,
+        &quot;updated_at&quot;: &quot;09:58:05 26/03/2026&quot;
     },
     &quot;success&quot;: &quot;true&quot;,
     &quot;message&quot;: &quot;Quyền đ&atilde; được cập nhật!&quot;
@@ -6502,7 +6502,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "X-Department-Id: ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: multipart/form-data" \
     --header "Accept: application/json" \
-    --form "file=@/tmp/php0ag9euddh7vs68uHY7Z" </code></pre></div>
+    --form "file=@/tmp/php75rkbb7k2g00fKIVsyM" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -6542,7 +6542,7 @@ $response = $client-&gt;post(
         'multipart' =&gt; [
             [
                 'name' =&gt; 'file',
-                'contents' =&gt; fopen('/tmp/php0ag9euddh7vs68uHY7Z', 'r')
+                'contents' =&gt; fopen('/tmp/php75rkbb7k2g00fKIVsyM', 'r')
             ],
         ],
     ]
@@ -6670,7 +6670,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>File Excel (xlsx, xls, csv). Cột theo chuẩn export. Example: <code>/tmp/php0ag9euddh7vs68uHY7Z</code></p>
+<p>File Excel (xlsx, xls, csv). Cột theo chuẩn export. Example: <code>/tmp/php75rkbb7k2g00fKIVsyM</code></p>
         </div>
         </form>
 
@@ -7248,15 +7248,15 @@ print_r(json_decode((string) $body));</code></pre></div>
             &quot;id&quot;: 6,
             &quot;name&quot;: &quot;role_ng775&quot;,
             &quot;guard_name&quot;: &quot;web&quot;,
-            &quot;created_at&quot;: &quot;08:49:08 26/03/2026&quot;,
-            &quot;updated_at&quot;: &quot;08:49:08 26/03/2026&quot;
+            &quot;created_at&quot;: &quot;09:58:05 26/03/2026&quot;,
+            &quot;updated_at&quot;: &quot;09:58:05 26/03/2026&quot;
         },
         {
             &quot;id&quot;: 7,
             &quot;name&quot;: &quot;role_mi365&quot;,
             &quot;guard_name&quot;: &quot;web&quot;,
-            &quot;created_at&quot;: &quot;08:49:08 26/03/2026&quot;,
-            &quot;updated_at&quot;: &quot;08:49:08 26/03/2026&quot;
+            &quot;created_at&quot;: &quot;09:58:05 26/03/2026&quot;,
+            &quot;updated_at&quot;: &quot;09:58:05 26/03/2026&quot;
         }
     ],
     &quot;links&quot;: {
@@ -7553,8 +7553,8 @@ print_r(json_decode((string) $body));</code></pre></div>
         &quot;permissions&quot;: [
             &quot;departments.show.5485&quot;
         ],
-        &quot;created_at&quot;: &quot;08:49:08 26/03/2026&quot;,
-        &quot;updated_at&quot;: &quot;08:49:08 26/03/2026&quot;
+        &quot;created_at&quot;: &quot;09:58:05 26/03/2026&quot;,
+        &quot;updated_at&quot;: &quot;09:58:05 26/03/2026&quot;
     },
     &quot;success&quot;: &quot;true&quot;
 }</code>
@@ -7784,8 +7784,8 @@ print_r(json_decode((string) $body));</code></pre></div>
         &quot;permissions&quot;: [
             &quot;documents.index.5606&quot;
         ],
-        &quot;created_at&quot;: &quot;08:49:08 26/03/2026&quot;,
-        &quot;updated_at&quot;: &quot;08:49:08 26/03/2026&quot;
+        &quot;created_at&quot;: &quot;09:58:05 26/03/2026&quot;,
+        &quot;updated_at&quot;: &quot;09:58:05 26/03/2026&quot;
     },
     &quot;success&quot;: &quot;true&quot;,
     &quot;message&quot;: &quot;Vai tr&ograve; đ&atilde; được tạo th&agrave;nh c&ocirc;ng!&quot;
@@ -8027,8 +8027,8 @@ print_r(json_decode((string) $body));</code></pre></div>
         &quot;permissions&quot;: [
             &quot;users.update.3433&quot;
         ],
-        &quot;created_at&quot;: &quot;08:49:08 26/03/2026&quot;,
-        &quot;updated_at&quot;: &quot;08:49:08 26/03/2026&quot;
+        &quot;created_at&quot;: &quot;09:58:05 26/03/2026&quot;,
+        &quot;updated_at&quot;: &quot;09:58:05 26/03/2026&quot;
     },
     &quot;success&quot;: &quot;true&quot;,
     &quot;message&quot;: &quot;Vai tr&ograve; đ&atilde; được cập nhật!&quot;
@@ -8295,8 +8295,8 @@ print_r(json_decode((string) $body));</code></pre></div>
         &quot;permissions&quot;: [
             &quot;roles.destroy.6854&quot;
         ],
-        &quot;created_at&quot;: &quot;08:49:08 26/03/2026&quot;,
-        &quot;updated_at&quot;: &quot;08:49:08 26/03/2026&quot;
+        &quot;created_at&quot;: &quot;09:58:05 26/03/2026&quot;,
+        &quot;updated_at&quot;: &quot;09:58:05 26/03/2026&quot;
     },
     &quot;success&quot;: &quot;true&quot;,
     &quot;message&quot;: &quot;Vai tr&ograve; đ&atilde; được cập nhật!&quot;
@@ -9385,7 +9385,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
                 <h1 id="core-user">Core - User</h1>
 
-    
+    <p>Quản lý người dùng: danh sách, chi tiết, tạo, cập nhật, xóa, thao tác hàng loạt, xuất/nhập Excel, đổi trạng thái.</p>
 
                                 <h2 id="core-user-GETapi-users-export">Xuất danh sách người dùng</h2>
 
@@ -9393,7 +9393,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <small class="badge badge-darkred">requires authentication</small>
 </p>
 
-<p>Xuất ra các trường: id, name, email, user_name, position, phone, zalo_id, department, role, status, created_by, updated_by, created_at, updated_at.</p>
+<p>Xuất ra các trường: id, name, email, user_name, position (từ role), phone, zalo_id, role, status, created_by, updated_by, created_at, updated_at.</p>
 
 <span id="example-requests-GETapi-users-export">
 <blockquote>Example request:</blockquote>
@@ -9401,9 +9401,8 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:8000/api/users/export?search=architecto&amp;status=architecto&amp;from_date=2026-01-01&amp;to_date=2026-12-31&amp;sort_by=architecto&amp;sort_order=architecto&amp;limit=16" \
+    --get "http://localhost:8000/api/users/export?search=architecto&amp;status=architecto&amp;from_date=2026-01-01&amp;to_date=2026-12-31&amp;sort_by=architecto&amp;sort_order=architecto&amp;limit=10" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
-    --header "X-Department-Id: ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
@@ -9420,14 +9419,13 @@ const params = {
     "to_date": "2026-12-31",
     "sort_by": "architecto",
     "sort_order": "architecto",
-    "limit": "16",
+    "limit": "10",
 };
 Object.keys(params)
     .forEach(key =&gt; url.searchParams.append(key, params[key]));
 
 const headers = {
     "Authorization": "Bearer Bearer {YOUR_ACCESS_TOKEN}",
-    "X-Department-Id": "ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -9447,7 +9445,6 @@ $response = $client-&gt;get(
     [
         'headers' =&gt; [
             'Authorization' =&gt; 'Bearer Bearer {YOUR_ACCESS_TOKEN}',
-            'X-Department-Id' =&gt; 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1',
             'Content-Type' =&gt; 'application/json',
             'Accept' =&gt; 'application/json',
         ],
@@ -9458,7 +9455,7 @@ $response = $client-&gt;get(
             'to_date' =&gt; '2026-12-31',
             'sort_by' =&gt; 'architecto',
             'sort_order' =&gt; 'architecto',
-            'limit' =&gt; '16',
+            'limit' =&gt; '10',
         ],
     ]
 );
@@ -9543,18 +9540,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
                data-component="header">
     <br>
 <p>Example: <code>Bearer Bearer {YOUR_ACCESS_TOKEN}</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>X-Department-Id</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="X-Department-Id"                data-endpoint="GETapi-users-export"
-               value="ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1"
-               data-component="header">
-    <br>
-<p>Example: <code>ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1</code></p>
             </div>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
@@ -9660,10 +9645,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="limit"                data-endpoint="GETapi-users-export"
-               value="16"
+               value="10"
                data-component="query">
     <br>
-<p>Số bản ghi (1-100). Example: <code>16</code></p>
+<p>Số bản ghi mỗi trang (1-100). Must be at least 1. Must not be greater than 100. Example: <code>10</code></p>
             </div>
                 </form>
 
@@ -9683,10 +9668,9 @@ You can check the Dev Tools console for debugging information.</code></pre>
     <pre><code class="language-bash">curl --request POST \
     "http://localhost:8000/api/users/import" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
-    --header "X-Department-Id: ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: multipart/form-data" \
     --header "Accept: application/json" \
-    --form "file=@/tmp/php90osaqs5s8edcRZyivk" </code></pre></div>
+    --form "file=@/tmp/php0tk1he3thqbr8XYK8MZ" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -9696,7 +9680,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 const headers = {
     "Authorization": "Bearer Bearer {YOUR_ACCESS_TOKEN}",
-    "X-Department-Id": "ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1",
     "Content-Type": "multipart/form-data",
     "Accept": "application/json",
 };
@@ -9719,14 +9702,13 @@ $response = $client-&gt;post(
     [
         'headers' =&gt; [
             'Authorization' =&gt; 'Bearer Bearer {YOUR_ACCESS_TOKEN}',
-            'X-Department-Id' =&gt; 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1',
             'Content-Type' =&gt; 'multipart/form-data',
             'Accept' =&gt; 'application/json',
         ],
         'multipart' =&gt; [
             [
                 'name' =&gt; 'file',
-                'contents' =&gt; fopen('/tmp/php90osaqs5s8edcRZyivk', 'r')
+                'contents' =&gt; fopen('/tmp/php0tk1he3thqbr8XYK8MZ', 'r')
             ],
         ],
     ]
@@ -9808,18 +9790,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <p>Example: <code>Bearer Bearer {YOUR_ACCESS_TOKEN}</code></p>
             </div>
                                 <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>X-Department-Id</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="X-Department-Id"                data-endpoint="POSTapi-users-import"
-               value="ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1"
-               data-component="header">
-    <br>
-<p>Example: <code>ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
@@ -9854,7 +9824,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>File Excel (xlsx, xls, csv). Cột theo chuẩn export. Example: <code>/tmp/php90osaqs5s8edcRZyivk</code></p>
+<p>File Excel (xlsx, xls, csv). Example: <code>/tmp/php0tk1he3thqbr8XYK8MZ</code></p>
         </div>
         </form>
 
@@ -9874,7 +9844,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
     <pre><code class="language-bash">curl --request POST \
     "http://localhost:8000/api/users/bulk-delete" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
-    --header "X-Department-Id: ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -9894,7 +9863,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 const headers = {
     "Authorization": "Bearer Bearer {YOUR_ACCESS_TOKEN}",
-    "X-Department-Id": "ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -9922,7 +9890,6 @@ $response = $client-&gt;post(
     [
         'headers' =&gt; [
             'Authorization' =&gt; 'Bearer Bearer {YOUR_ACCESS_TOKEN}',
-            'X-Department-Id' =&gt; 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1',
             'Content-Type' =&gt; 'application/json',
             'Accept' =&gt; 'application/json',
         ],
@@ -10012,18 +9979,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <p>Example: <code>Bearer Bearer {YOUR_ACCESS_TOKEN}</code></p>
             </div>
                                 <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>X-Department-Id</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="X-Department-Id"                data-endpoint="POSTapi-users-bulk-delete"
-               value="ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1"
-               data-component="header">
-    <br>
-<p>Example: <code>ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
@@ -10080,7 +10035,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
     <pre><code class="language-bash">curl --request PATCH \
     "http://localhost:8000/api/users/bulk-status" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
-    --header "X-Department-Id: ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -10101,7 +10055,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 const headers = {
     "Authorization": "Bearer Bearer {YOUR_ACCESS_TOKEN}",
-    "X-Department-Id": "ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -10130,7 +10083,6 @@ $response = $client-&gt;patch(
     [
         'headers' =&gt; [
             'Authorization' =&gt; 'Bearer Bearer {YOUR_ACCESS_TOKEN}',
-            'X-Department-Id' =&gt; 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1',
             'Content-Type' =&gt; 'application/json',
             'Accept' =&gt; 'application/json',
         ],
@@ -10221,18 +10173,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <p>Example: <code>Bearer Bearer {YOUR_ACCESS_TOKEN}</code></p>
             </div>
                                 <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>X-Department-Id</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="X-Department-Id"                data-endpoint="PATCHapi-users-bulk-status"
-               value="ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1"
-               data-component="header">
-    <br>
-<p>Example: <code>ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
@@ -10291,7 +10231,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <small class="badge badge-darkred">requires authentication</small>
 </p>
 
-<p>Tổng số, đang kích hoạt (active), không kích hoạt (inactive, banned). Áp dụng cùng bộ lọc với index.</p>
+<p>Tổng số, đang kích hoạt (active), không kích hoạt (inactive, banned).</p>
 
 <span id="example-requests-GETapi-users-stats">
 <blockquote>Example request:</blockquote>
@@ -10301,7 +10241,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
     <pre><code class="language-bash">curl --request GET \
     --get "http://localhost:8000/api/users/stats?search=john&amp;status=architecto&amp;from_date=2026-01-01&amp;to_date=2026-12-31&amp;sort_by=created_at&amp;sort_order=desc&amp;limit=10" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
-    --header "X-Department-Id: ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
@@ -10325,7 +10264,6 @@ Object.keys(params)
 
 const headers = {
     "Authorization": "Bearer Bearer {YOUR_ACCESS_TOKEN}",
-    "X-Department-Id": "ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -10345,7 +10283,6 @@ $response = $client-&gt;get(
     [
         'headers' =&gt; [
             'Authorization' =&gt; 'Bearer Bearer {YOUR_ACCESS_TOKEN}',
-            'X-Department-Id' =&gt; 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1',
             'Content-Type' =&gt; 'application/json',
             'Accept' =&gt; 'application/json',
         ],
@@ -10439,18 +10376,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
                data-component="header">
     <br>
 <p>Example: <code>Bearer Bearer {YOUR_ACCESS_TOKEN}</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>X-Department-Id</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="X-Department-Id"                data-endpoint="GETapi-users-stats"
-               value="ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1"
-               data-component="header">
-    <br>
-<p>Example: <code>ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1</code></p>
             </div>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
@@ -10559,7 +10484,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="10"
                data-component="query">
     <br>
-<p>Số bản ghi mỗi trang (1-100). Example: <code>10</code></p>
+<p>Số bản ghi mỗi trang (1-100). Must be at least 1. Must not be greater than 100. Example: <code>10</code></p>
             </div>
                 </form>
 
@@ -10569,7 +10494,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <small class="badge badge-darkred">requires authentication</small>
 </p>
 
-<p>Lấy danh sách có phân trang, lọc và sắp xếp.</p>
+
 
 <span id="example-requests-GETapi-users">
 <blockquote>Example request:</blockquote>
@@ -10579,7 +10504,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
     <pre><code class="language-bash">curl --request GET \
     --get "http://localhost:8000/api/users?search=john&amp;status=architecto&amp;from_date=2026-01-01&amp;to_date=2026-12-31&amp;sort_by=created_at&amp;sort_order=desc&amp;limit=10" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
-    --header "X-Department-Id: ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
@@ -10603,7 +10527,6 @@ Object.keys(params)
 
 const headers = {
     "Authorization": "Bearer Bearer {YOUR_ACCESS_TOKEN}",
-    "X-Department-Id": "ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -10623,7 +10546,6 @@ $response = $client-&gt;get(
     [
         'headers' =&gt; [
             'Authorization' =&gt; 'Bearer Bearer {YOUR_ACCESS_TOKEN}',
-            'X-Department-Id' =&gt; 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1',
             'Content-Type' =&gt; 'application/json',
             'Accept' =&gt; 'application/json',
         ],
@@ -10645,79 +10567,19 @@ print_r(json_decode((string) $body));</code></pre></div>
 
 <span id="example-responses-GETapi-users">
             <blockquote>
-            <p>Example response (200):</p>
+            <p>Example response (401):</p>
         </blockquote>
-                <pre>
+                <details class="annotation">
+            <summary style="cursor: pointer;">
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+access-control-allow-origin: *
+ </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;data&quot;: [
-        {
-            &quot;id&quot;: 15,
-            &quot;name&quot;: &quot;Ms. Elisabeth Okuneva&quot;,
-            &quot;email&quot;: &quot;gulgowski.asia@example.com&quot;,
-            &quot;user_name&quot;: &quot;idickens&quot;,
-            &quot;position&quot;: null,
-            &quot;phone&quot;: null,
-            &quot;zalo_id&quot;: null,
-            &quot;role&quot;: null,
-            &quot;status&quot;: &quot;inactive&quot;,
-            &quot;created_by&quot;: &quot;N/A&quot;,
-            &quot;updated_by&quot;: &quot;N/A&quot;,
-            &quot;created_at&quot;: &quot;08:49:08 26/03/2026&quot;,
-            &quot;updated_at&quot;: &quot;08:49:08 26/03/2026&quot;
-        },
-        {
-            &quot;id&quot;: 16,
-            &quot;name&quot;: &quot;Mya DuBuque&quot;,
-            &quot;email&quot;: &quot;breitenberg.gilbert@example.com&quot;,
-            &quot;user_name&quot;: &quot;price.amber&quot;,
-            &quot;position&quot;: null,
-            &quot;phone&quot;: null,
-            &quot;zalo_id&quot;: null,
-            &quot;role&quot;: null,
-            &quot;status&quot;: &quot;inactive&quot;,
-            &quot;created_by&quot;: &quot;N/A&quot;,
-            &quot;updated_by&quot;: &quot;N/A&quot;,
-            &quot;created_at&quot;: &quot;08:49:08 26/03/2026&quot;,
-            &quot;updated_at&quot;: &quot;08:49:08 26/03/2026&quot;
-        }
-    ],
-    &quot;links&quot;: {
-        &quot;first&quot;: &quot;/?page=1&quot;,
-        &quot;last&quot;: &quot;/?page=1&quot;,
-        &quot;prev&quot;: null,
-        &quot;next&quot;: null
-    },
-    &quot;meta&quot;: {
-        &quot;current_page&quot;: 1,
-        &quot;from&quot;: 1,
-        &quot;last_page&quot;: 1,
-        &quot;links&quot;: [
-            {
-                &quot;url&quot;: null,
-                &quot;label&quot;: &quot;&amp;laquo; Previous&quot;,
-                &quot;page&quot;: null,
-                &quot;active&quot;: false
-            },
-            {
-                &quot;url&quot;: &quot;/?page=1&quot;,
-                &quot;label&quot;: &quot;1&quot;,
-                &quot;page&quot;: 1,
-                &quot;active&quot;: true
-            },
-            {
-                &quot;url&quot;: null,
-                &quot;label&quot;: &quot;Next &amp;raquo;&quot;,
-                &quot;page&quot;: null,
-                &quot;active&quot;: false
-            }
-        ],
-        &quot;path&quot;: &quot;/&quot;,
-        &quot;per_page&quot;: 10,
-        &quot;to&quot;: 2,
-        &quot;total&quot;: 2
-    },
-    &quot;success&quot;: &quot;true&quot;
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
 }</code>
  </pre>
     </span>
@@ -10779,18 +10641,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
                data-component="header">
     <br>
 <p>Example: <code>Bearer Bearer {YOUR_ACCESS_TOKEN}</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>X-Department-Id</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="X-Department-Id"                data-endpoint="GETapi-users"
-               value="ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1"
-               data-component="header">
-    <br>
-<p>Example: <code>ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1</code></p>
             </div>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
@@ -10909,7 +10759,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <small class="badge badge-darkred">requires authentication</small>
 </p>
 
-
+<p>Trường position tự động lấy từ role name, không cần gửi.</p>
 
 <span id="example-requests-POSTapi-users">
 <blockquote>Example request:</blockquote>
@@ -10919,7 +10769,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
     <pre><code class="language-bash">curl --request POST \
     "http://localhost:8000/api/users" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
-    --header "X-Department-Id: ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -10928,10 +10777,8 @@ You can check the Dev Tools console for debugging information.</code></pre>
     \"user_name\": \"nguyenvana\",
     \"password\": \"password123\",
     \"status\": \"active\",
-    \"position\": \"Chuyên viên\",
     \"phone\": \"0901234567\",
     \"zalo_id\": \"0901234567\",
-    \"department_id\": 1,
     \"role_id\": 1,
     \"password_confirmation\": \"password123\"
 }"
@@ -10945,7 +10792,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 const headers = {
     "Authorization": "Bearer Bearer {YOUR_ACCESS_TOKEN}",
-    "X-Department-Id": "ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -10956,10 +10802,8 @@ let body = {
     "user_name": "nguyenvana",
     "password": "password123",
     "status": "active",
-    "position": "Chuyên viên",
     "phone": "0901234567",
     "zalo_id": "0901234567",
-    "department_id": 1,
     "role_id": 1,
     "password_confirmation": "password123"
 };
@@ -10979,7 +10823,6 @@ $response = $client-&gt;post(
     [
         'headers' =&gt; [
             'Authorization' =&gt; 'Bearer Bearer {YOUR_ACCESS_TOKEN}',
-            'X-Department-Id' =&gt; 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1',
             'Content-Type' =&gt; 'application/json',
             'Accept' =&gt; 'application/json',
         ],
@@ -10989,10 +10832,8 @@ $response = $client-&gt;post(
             'user_name' =&gt; 'nguyenvana',
             'password' =&gt; 'password123',
             'status' =&gt; 'active',
-            'position' =&gt; 'Chuyên viên',
             'phone' =&gt; '0901234567',
             'zalo_id' =&gt; '0901234567',
-            'department_id' =&gt; 1,
             'role_id' =&gt; 1,
             'password_confirmation' =&gt; 'password123',
         ],
@@ -11004,32 +10845,7 @@ print_r(json_decode((string) $body));</code></pre></div>
 </span>
 
 <span id="example-responses-POSTapi-users">
-            <blockquote>
-            <p>Example response (201):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;data&quot;: {
-        &quot;id&quot;: 17,
-        &quot;name&quot;: &quot;Ms. Audra Crooks II&quot;,
-        &quot;email&quot;: &quot;idickens@example.org&quot;,
-        &quot;user_name&quot;: &quot;aschuster&quot;,
-        &quot;position&quot;: null,
-        &quot;phone&quot;: null,
-        &quot;zalo_id&quot;: null,
-        &quot;role&quot;: null,
-        &quot;status&quot;: &quot;active&quot;,
-        &quot;created_by&quot;: &quot;N/A&quot;,
-        &quot;updated_by&quot;: &quot;N/A&quot;,
-        &quot;created_at&quot;: &quot;08:49:08 26/03/2026&quot;,
-        &quot;updated_at&quot;: &quot;08:49:08 26/03/2026&quot;
-    },
-    &quot;success&quot;: &quot;true&quot;,
-    &quot;message&quot;: &quot;T&agrave;i khoản đ&atilde; được tạo th&agrave;nh c&ocirc;ng!&quot;
-}</code>
- </pre>
-    </span>
+</span>
 <span id="execution-results-POSTapi-users" hidden>
     <blockquote>Received response<span
                 id="execution-response-status-POSTapi-users"></span>:
@@ -11090,18 +10906,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <p>Example: <code>Bearer Bearer {YOUR_ACCESS_TOKEN}</code></p>
             </div>
                                 <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>X-Department-Id</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="X-Department-Id"                data-endpoint="POSTapi-users"
-               value="ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1"
-               data-component="header">
-    <br>
-<p>Example: <code>ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
@@ -11160,7 +10964,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="nguyenvana"
                data-component="body">
     <br>
-<p>Nickname. Example: <code>nguyenvana</code></p>
+<p>Tên đăng nhập. Example: <code>nguyenvana</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>password</code></b>&nbsp;&nbsp;
@@ -11187,18 +10991,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <p>Trạng thái: active, inactive, banned. Example: <code>active</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>position</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="position"                data-endpoint="POSTapi-users"
-               value="Chuyên viên"
-               data-component="body">
-    <br>
-<p>Chức vụ. Example: <code>Chuyên viên</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>phone</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
 <i>optional</i> &nbsp;
@@ -11223,18 +11015,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <p>Zalo ID. Example: <code>0901234567</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>department_id</code></b>&nbsp;&nbsp;
-<small>integer</small>&nbsp;
- &nbsp;
- &nbsp;
-                <input type="number" style="display: none"
-               step="any"               name="department_id"                data-endpoint="POSTapi-users"
-               value="1"
-               data-component="body">
-    <br>
-<p>ID đơn vị. Example: <code>1</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>role_id</code></b>&nbsp;&nbsp;
 <small>integer</small>&nbsp;
  &nbsp;
@@ -11244,7 +11024,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="1"
                data-component="body">
     <br>
-<p>ID vai trò. Example: <code>1</code></p>
+<p>ID vai trò (position tự derive từ role). Example: <code>1</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>password_confirmation</code></b>&nbsp;&nbsp;
@@ -11276,7 +11056,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
     <pre><code class="language-bash">curl --request PATCH \
     "http://localhost:8000/api/users/1/status" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
-    --header "X-Department-Id: ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -11292,7 +11071,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 const headers = {
     "Authorization": "Bearer Bearer {YOUR_ACCESS_TOKEN}",
-    "X-Department-Id": "ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -11316,7 +11094,6 @@ $response = $client-&gt;patch(
     [
         'headers' =&gt; [
             'Authorization' =&gt; 'Bearer Bearer {YOUR_ACCESS_TOKEN}',
-            'X-Department-Id' =&gt; 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1',
             'Content-Type' =&gt; 'application/json',
             'Accept' =&gt; 'application/json',
         ],
@@ -11331,32 +11108,7 @@ print_r(json_decode((string) $body));</code></pre></div>
 </span>
 
 <span id="example-responses-PATCHapi-users--user_id--status">
-            <blockquote>
-            <p>Example response (200):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;data&quot;: {
-        &quot;id&quot;: 18,
-        &quot;name&quot;: &quot;Morgan Hirthe&quot;,
-        &quot;email&quot;: &quot;dare.emelie@example.com&quot;,
-        &quot;user_name&quot;: &quot;imclaughlin&quot;,
-        &quot;position&quot;: null,
-        &quot;phone&quot;: null,
-        &quot;zalo_id&quot;: null,
-        &quot;role&quot;: null,
-        &quot;status&quot;: &quot;inactive&quot;,
-        &quot;created_by&quot;: &quot;N/A&quot;,
-        &quot;updated_by&quot;: &quot;N/A&quot;,
-        &quot;created_at&quot;: &quot;08:49:08 26/03/2026&quot;,
-        &quot;updated_at&quot;: &quot;08:49:08 26/03/2026&quot;
-    },
-    &quot;success&quot;: &quot;true&quot;,
-    &quot;message&quot;: &quot;Cập nhật trạng th&aacute;i th&agrave;nh c&ocirc;ng!&quot;
-}</code>
- </pre>
-    </span>
+</span>
 <span id="execution-results-PATCHapi-users--user_id--status" hidden>
     <blockquote>Received response<span
                 id="execution-response-status-PATCHapi-users--user_id--status"></span>:
@@ -11415,18 +11167,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
                data-component="header">
     <br>
 <p>Example: <code>Bearer Bearer {YOUR_ACCESS_TOKEN}</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>X-Department-Id</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="X-Department-Id"                data-endpoint="PATCHapi-users--user_id--status"
-               value="ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1"
-               data-component="header">
-    <br>
-<p>Example: <code>ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1</code></p>
             </div>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
@@ -11508,7 +11248,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
     <pre><code class="language-bash">curl --request GET \
     --get "http://localhost:8000/api/users/1" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
-    --header "X-Department-Id: ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
@@ -11520,7 +11259,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 const headers = {
     "Authorization": "Bearer Bearer {YOUR_ACCESS_TOKEN}",
-    "X-Department-Id": "ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -11540,7 +11278,6 @@ $response = $client-&gt;get(
     [
         'headers' =&gt; [
             'Authorization' =&gt; 'Bearer Bearer {YOUR_ACCESS_TOKEN}',
-            'X-Department-Id' =&gt; 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1',
             'Content-Type' =&gt; 'application/json',
             'Accept' =&gt; 'application/json',
         ],
@@ -11553,27 +11290,19 @@ print_r(json_decode((string) $body));</code></pre></div>
 
 <span id="example-responses-GETapi-users--user_id-">
             <blockquote>
-            <p>Example response (200):</p>
+            <p>Example response (401):</p>
         </blockquote>
-                <pre>
+                <details class="annotation">
+            <summary style="cursor: pointer;">
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+access-control-allow-origin: *
+ </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;data&quot;: {
-        &quot;id&quot;: 19,
-        &quot;name&quot;: &quot;Morgan Hirthe&quot;,
-        &quot;email&quot;: &quot;imclaughlin@example.org&quot;,
-        &quot;user_name&quot;: &quot;okeefe.isidro&quot;,
-        &quot;position&quot;: null,
-        &quot;phone&quot;: null,
-        &quot;zalo_id&quot;: null,
-        &quot;role&quot;: null,
-        &quot;status&quot;: &quot;inactive&quot;,
-        &quot;created_by&quot;: &quot;N/A&quot;,
-        &quot;updated_by&quot;: &quot;N/A&quot;,
-        &quot;created_at&quot;: &quot;08:49:08 26/03/2026&quot;,
-        &quot;updated_at&quot;: &quot;08:49:08 26/03/2026&quot;
-    },
-    &quot;success&quot;: &quot;true&quot;
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
 }</code>
  </pre>
     </span>
@@ -11637,18 +11366,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <p>Example: <code>Bearer Bearer {YOUR_ACCESS_TOKEN}</code></p>
             </div>
                                 <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>X-Department-Id</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="X-Department-Id"                data-endpoint="GETapi-users--user_id-"
-               value="ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1"
-               data-component="header">
-    <br>
-<p>Example: <code>ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
@@ -11705,7 +11422,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <small class="badge badge-darkred">requires authentication</small>
 </p>
 
-
+<p>Trường position tự động lấy từ role name, không cần gửi.</p>
 
 <span id="example-requests-PUTapi-users--user_id-">
 <blockquote>Example request:</blockquote>
@@ -11715,7 +11432,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
     <pre><code class="language-bash">curl --request PUT \
     "http://localhost:8000/api/users/1" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
-    --header "X-Department-Id: ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -11724,10 +11440,8 @@ You can check the Dev Tools console for debugging information.</code></pre>
     \"user_name\": \"nguyenvanb\",
     \"password\": \"newpassword123\",
     \"status\": \"active\",
-    \"position\": \"Chuyên viên\",
     \"phone\": \"0901234567\",
     \"zalo_id\": \"0901234567\",
-    \"department_id\": 1,
     \"role_id\": 1,
     \"password_confirmation\": \"newpassword123\"
 }"
@@ -11741,7 +11455,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 const headers = {
     "Authorization": "Bearer Bearer {YOUR_ACCESS_TOKEN}",
-    "X-Department-Id": "ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -11752,10 +11465,8 @@ let body = {
     "user_name": "nguyenvanb",
     "password": "newpassword123",
     "status": "active",
-    "position": "Chuyên viên",
     "phone": "0901234567",
     "zalo_id": "0901234567",
-    "department_id": 1,
     "role_id": 1,
     "password_confirmation": "newpassword123"
 };
@@ -11775,7 +11486,6 @@ $response = $client-&gt;put(
     [
         'headers' =&gt; [
             'Authorization' =&gt; 'Bearer Bearer {YOUR_ACCESS_TOKEN}',
-            'X-Department-Id' =&gt; 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1',
             'Content-Type' =&gt; 'application/json',
             'Accept' =&gt; 'application/json',
         ],
@@ -11785,10 +11495,8 @@ $response = $client-&gt;put(
             'user_name' =&gt; 'nguyenvanb',
             'password' =&gt; 'newpassword123',
             'status' =&gt; 'active',
-            'position' =&gt; 'Chuyên viên',
             'phone' =&gt; '0901234567',
             'zalo_id' =&gt; '0901234567',
-            'department_id' =&gt; 1,
             'role_id' =&gt; 1,
             'password_confirmation' =&gt; 'newpassword123',
         ],
@@ -11800,32 +11508,7 @@ print_r(json_decode((string) $body));</code></pre></div>
 </span>
 
 <span id="example-responses-PUTapi-users--user_id-">
-            <blockquote>
-            <p>Example response (200):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;data&quot;: {
-        &quot;id&quot;: 20,
-        &quot;name&quot;: &quot;Ms. Audra Crooks II&quot;,
-        &quot;email&quot;: &quot;aschuster@example.com&quot;,
-        &quot;user_name&quot;: &quot;gilbert32&quot;,
-        &quot;position&quot;: null,
-        &quot;phone&quot;: null,
-        &quot;zalo_id&quot;: null,
-        &quot;role&quot;: null,
-        &quot;status&quot;: &quot;active&quot;,
-        &quot;created_by&quot;: &quot;N/A&quot;,
-        &quot;updated_by&quot;: &quot;N/A&quot;,
-        &quot;created_at&quot;: &quot;08:49:08 26/03/2026&quot;,
-        &quot;updated_at&quot;: &quot;08:49:08 26/03/2026&quot;
-    },
-    &quot;success&quot;: &quot;true&quot;,
-    &quot;message&quot;: &quot;T&agrave;i khoản đ&atilde; được cập nhật!&quot;
-}</code>
- </pre>
-    </span>
+</span>
 <span id="execution-results-PUTapi-users--user_id-" hidden>
     <blockquote>Received response<span
                 id="execution-response-status-PUTapi-users--user_id-"></span>:
@@ -11884,18 +11567,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
                data-component="header">
     <br>
 <p>Example: <code>Bearer Bearer {YOUR_ACCESS_TOKEN}</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>X-Department-Id</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="X-Department-Id"                data-endpoint="PUTapi-users--user_id-"
-               value="ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1"
-               data-component="header">
-    <br>
-<p>Example: <code>ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1</code></p>
             </div>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
@@ -11981,7 +11652,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="nguyenvanb"
                data-component="body">
     <br>
-<p>Nickname. Example: <code>nguyenvanb</code></p>
+<p>Tên đăng nhập. Example: <code>nguyenvanb</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>password</code></b>&nbsp;&nbsp;
@@ -12008,18 +11679,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <p>Trạng thái: active, inactive, banned. Example: <code>active</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>position</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="position"                data-endpoint="PUTapi-users--user_id-"
-               value="Chuyên viên"
-               data-component="body">
-    <br>
-<p>Chức vụ. Example: <code>Chuyên viên</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>phone</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
 <i>optional</i> &nbsp;
@@ -12044,18 +11703,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <p>Zalo ID. Example: <code>0901234567</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>department_id</code></b>&nbsp;&nbsp;
-<small>integer</small>&nbsp;
-<i>optional</i> &nbsp;
- &nbsp;
-                <input type="number" style="display: none"
-               step="any"               name="department_id"                data-endpoint="PUTapi-users--user_id-"
-               value="1"
-               data-component="body">
-    <br>
-<p>ID đơn vị. Example: <code>1</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>role_id</code></b>&nbsp;&nbsp;
 <small>integer</small>&nbsp;
 <i>optional</i> &nbsp;
@@ -12065,7 +11712,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="1"
                data-component="body">
     <br>
-<p>ID vai trò. Example: <code>1</code></p>
+<p>ID vai trò (đổi role = đổi position). Example: <code>1</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>password_confirmation</code></b>&nbsp;&nbsp;
@@ -12087,7 +11734,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <small class="badge badge-darkred">requires authentication</small>
 </p>
 
-
+<p>Trường position tự động lấy từ role name, không cần gửi.</p>
 
 <span id="example-requests-PATCHapi-users--user_id-">
 <blockquote>Example request:</blockquote>
@@ -12097,7 +11744,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
     <pre><code class="language-bash">curl --request PATCH \
     "http://localhost:8000/api/users/1" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
-    --header "X-Department-Id: ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -12106,10 +11752,8 @@ You can check the Dev Tools console for debugging information.</code></pre>
     \"user_name\": \"nguyenvanb\",
     \"password\": \"newpassword123\",
     \"status\": \"active\",
-    \"position\": \"Chuyên viên\",
     \"phone\": \"0901234567\",
     \"zalo_id\": \"0901234567\",
-    \"department_id\": 1,
     \"role_id\": 1,
     \"password_confirmation\": \"newpassword123\"
 }"
@@ -12123,7 +11767,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 const headers = {
     "Authorization": "Bearer Bearer {YOUR_ACCESS_TOKEN}",
-    "X-Department-Id": "ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -12134,10 +11777,8 @@ let body = {
     "user_name": "nguyenvanb",
     "password": "newpassword123",
     "status": "active",
-    "position": "Chuyên viên",
     "phone": "0901234567",
     "zalo_id": "0901234567",
-    "department_id": 1,
     "role_id": 1,
     "password_confirmation": "newpassword123"
 };
@@ -12157,7 +11798,6 @@ $response = $client-&gt;patch(
     [
         'headers' =&gt; [
             'Authorization' =&gt; 'Bearer Bearer {YOUR_ACCESS_TOKEN}',
-            'X-Department-Id' =&gt; 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1',
             'Content-Type' =&gt; 'application/json',
             'Accept' =&gt; 'application/json',
         ],
@@ -12167,10 +11807,8 @@ $response = $client-&gt;patch(
             'user_name' =&gt; 'nguyenvanb',
             'password' =&gt; 'newpassword123',
             'status' =&gt; 'active',
-            'position' =&gt; 'Chuyên viên',
             'phone' =&gt; '0901234567',
             'zalo_id' =&gt; '0901234567',
-            'department_id' =&gt; 1,
             'role_id' =&gt; 1,
             'password_confirmation' =&gt; 'newpassword123',
         ],
@@ -12182,32 +11820,7 @@ print_r(json_decode((string) $body));</code></pre></div>
 </span>
 
 <span id="example-responses-PATCHapi-users--user_id-">
-            <blockquote>
-            <p>Example response (200):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;data&quot;: {
-        &quot;id&quot;: 21,
-        &quot;name&quot;: &quot;Ms. Audra Crooks II&quot;,
-        &quot;email&quot;: &quot;gilbert32@example.com&quot;,
-        &quot;user_name&quot;: &quot;hirthe.theo&quot;,
-        &quot;position&quot;: null,
-        &quot;phone&quot;: null,
-        &quot;zalo_id&quot;: null,
-        &quot;role&quot;: null,
-        &quot;status&quot;: &quot;active&quot;,
-        &quot;created_by&quot;: &quot;N/A&quot;,
-        &quot;updated_by&quot;: &quot;N/A&quot;,
-        &quot;created_at&quot;: &quot;08:49:08 26/03/2026&quot;,
-        &quot;updated_at&quot;: &quot;08:49:08 26/03/2026&quot;
-    },
-    &quot;success&quot;: &quot;true&quot;,
-    &quot;message&quot;: &quot;T&agrave;i khoản đ&atilde; được cập nhật!&quot;
-}</code>
- </pre>
-    </span>
+</span>
 <span id="execution-results-PATCHapi-users--user_id-" hidden>
     <blockquote>Received response<span
                 id="execution-response-status-PATCHapi-users--user_id-"></span>:
@@ -12266,18 +11879,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
                data-component="header">
     <br>
 <p>Example: <code>Bearer Bearer {YOUR_ACCESS_TOKEN}</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>X-Department-Id</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="X-Department-Id"                data-endpoint="PATCHapi-users--user_id-"
-               value="ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1"
-               data-component="header">
-    <br>
-<p>Example: <code>ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1</code></p>
             </div>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
@@ -12363,7 +11964,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="nguyenvanb"
                data-component="body">
     <br>
-<p>Nickname. Example: <code>nguyenvanb</code></p>
+<p>Tên đăng nhập. Example: <code>nguyenvanb</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>password</code></b>&nbsp;&nbsp;
@@ -12390,18 +11991,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <p>Trạng thái: active, inactive, banned. Example: <code>active</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>position</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="position"                data-endpoint="PATCHapi-users--user_id-"
-               value="Chuyên viên"
-               data-component="body">
-    <br>
-<p>Chức vụ. Example: <code>Chuyên viên</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>phone</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
 <i>optional</i> &nbsp;
@@ -12426,18 +12015,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <p>Zalo ID. Example: <code>0901234567</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>department_id</code></b>&nbsp;&nbsp;
-<small>integer</small>&nbsp;
-<i>optional</i> &nbsp;
- &nbsp;
-                <input type="number" style="display: none"
-               step="any"               name="department_id"                data-endpoint="PATCHapi-users--user_id-"
-               value="1"
-               data-component="body">
-    <br>
-<p>ID đơn vị. Example: <code>1</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>role_id</code></b>&nbsp;&nbsp;
 <small>integer</small>&nbsp;
 <i>optional</i> &nbsp;
@@ -12447,7 +12024,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="1"
                data-component="body">
     <br>
-<p>ID vai trò. Example: <code>1</code></p>
+<p>ID vai trò (đổi role = đổi position). Example: <code>1</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>password_confirmation</code></b>&nbsp;&nbsp;
@@ -12479,7 +12056,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
     <pre><code class="language-bash">curl --request DELETE \
     "http://localhost:8000/api/users/1" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
-    --header "X-Department-Id: ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
@@ -12491,7 +12067,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 const headers = {
     "Authorization": "Bearer Bearer {YOUR_ACCESS_TOKEN}",
-    "X-Department-Id": "ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -12511,7 +12086,6 @@ $response = $client-&gt;delete(
     [
         'headers' =&gt; [
             'Authorization' =&gt; 'Bearer Bearer {YOUR_ACCESS_TOKEN}',
-            'X-Department-Id' =&gt; 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1',
             'Content-Type' =&gt; 'application/json',
             'Accept' =&gt; 'application/json',
         ],
@@ -12592,18 +12166,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
                data-component="header">
     <br>
 <p>Example: <code>Bearer Bearer {YOUR_ACCESS_TOKEN}</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>X-Department-Id</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="X-Department-Id"                data-endpoint="DELETEapi-users--user_id-"
-               value="ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1"
-               data-component="header">
-    <br>
-<p>Example: <code>ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1</code></p>
             </div>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
@@ -13615,7 +13177,7 @@ Must be one of:
     --header "X-Department-Id: ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: multipart/form-data" \
     --header "Accept: application/json" \
-    --form "file=@/tmp/php6vqihuvqagit0N7ys2v" </code></pre></div>
+    --form "file=@/tmp/phpur6as5mdasbn53RUrOJ" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -13655,7 +13217,7 @@ $response = $client-&gt;post(
         'multipart' =&gt; [
             [
                 'name' =&gt; 'file',
-                'contents' =&gt; fopen('/tmp/php6vqihuvqagit0N7ys2v', 'r')
+                'contents' =&gt; fopen('/tmp/phpur6as5mdasbn53RUrOJ', 'r')
             ],
         ],
     ]
@@ -13783,7 +13345,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>File Excel (xlsx, xls, csv). Example: <code>/tmp/php6vqihuvqagit0N7ys2v</code></p>
+<p>File Excel (xlsx, xls, csv). Example: <code>/tmp/phpur6as5mdasbn53RUrOJ</code></p>
         </div>
         </form>
 
@@ -14615,10 +14177,10 @@ print_r(json_decode((string) $body));</code></pre></div>
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: [
         {
-            &quot;id&quot;: 44,
+            &quot;id&quot;: 57,
             &quot;event_date&quot;: &quot;14/04/2026&quot;,
             &quot;session&quot;: &quot;sang&quot;,
-            &quot;start_time&quot;: &quot;14:26:00&quot;,
+            &quot;start_time&quot;: &quot;13:17:00&quot;,
             &quot;content&quot;: &quot;Velit et fugiat sunt nihil accusantium.&quot;,
             &quot;location&quot;: &quot;78142 Nick Field\nWest Noahmouth, WV 59021-4902&quot;,
             &quot;prep_unit&quot;: null,
@@ -14634,11 +14196,11 @@ print_r(json_decode((string) $body));</code></pre></div>
             &quot;nature_label&quot;: &quot;Mật&quot;,
             &quot;created_by&quot;: &quot;N/A&quot;,
             &quot;updated_by&quot;: &quot;N/A&quot;,
-            &quot;created_at&quot;: &quot;08:49:08 26/03/2026&quot;,
-            &quot;updated_at&quot;: &quot;08:49:08 26/03/2026&quot;
+            &quot;created_at&quot;: &quot;09:58:06 26/03/2026&quot;,
+            &quot;updated_at&quot;: &quot;09:58:06 26/03/2026&quot;
         },
         {
-            &quot;id&quot;: 45,
+            &quot;id&quot;: 58,
             &quot;event_date&quot;: &quot;17/04/2026&quot;,
             &quot;session&quot;: &quot;chieu&quot;,
             &quot;start_time&quot;: &quot;08:01:00&quot;,
@@ -14657,8 +14219,8 @@ print_r(json_decode((string) $body));</code></pre></div>
             &quot;nature_label&quot;: &quot;Mật&quot;,
             &quot;created_by&quot;: &quot;N/A&quot;,
             &quot;updated_by&quot;: &quot;N/A&quot;,
-            &quot;created_at&quot;: &quot;08:49:08 26/03/2026&quot;,
-            &quot;updated_at&quot;: &quot;08:49:08 26/03/2026&quot;
+            &quot;created_at&quot;: &quot;09:58:06 26/03/2026&quot;,
+            &quot;updated_at&quot;: &quot;09:58:06 26/03/2026&quot;
         }
     ],
     &quot;links&quot;: {
@@ -15023,12 +14585,12 @@ Must be one of:
     --form "meeting_type=hop_thuong_ky"\
     --form "nature=thuong"\
     --form "color_code=#FF5733"\
-    --form "status=active"\
+    --form "status=inactive"\
     --form "participants[]=architecto"\
     --form "notification[channel]=sms"\
-    --form "notification[remind_at]=2026-03-26T08:49:08"\
+    --form "notification[remind_at]=2026-03-26T09:58:06"\
     --form "notifications[]=architecto"\
-    --form "attachments[]=@/tmp/php9l21n795isv5alx5gF6" </code></pre></div>
+    --form "attachments[]=@/tmp/phpv1ggc0lkndi74WdbVY2" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -15056,10 +14618,10 @@ body.append('driver_info', 'Nguyễn Văn A');
 body.append('meeting_type', 'hop_thuong_ky');
 body.append('nature', 'thuong');
 body.append('color_code', '#FF5733');
-body.append('status', 'active');
+body.append('status', 'inactive');
 body.append('participants[]', 'architecto');
 body.append('notification[channel]', 'sms');
-body.append('notification[remind_at]', '2026-03-26T08:49:08');
+body.append('notification[remind_at]', '2026-03-26T09:58:06');
 body.append('notifications[]', 'architecto');
 body.append('attachments[]', document.querySelector('input[name="attachments[]"]').files[0]);
 
@@ -15133,7 +14695,7 @@ $response = $client-&gt;post(
             ],
             [
                 'name' =&gt; 'status',
-                'contents' =&gt; 'active'
+                'contents' =&gt; 'inactive'
             ],
             [
                 'name' =&gt; 'participants[]',
@@ -15145,7 +14707,7 @@ $response = $client-&gt;post(
             ],
             [
                 'name' =&gt; 'notification[remind_at]',
-                'contents' =&gt; '2026-03-26T08:49:08'
+                'contents' =&gt; '2026-03-26T09:58:06'
             ],
             [
                 'name' =&gt; 'notifications[]',
@@ -15153,7 +14715,7 @@ $response = $client-&gt;post(
             ],
             [
                 'name' =&gt; 'attachments[]',
-                'contents' =&gt; fopen('/tmp/php9l21n795isv5alx5gF6', 'r')
+                'contents' =&gt; fopen('/tmp/phpv1ggc0lkndi74WdbVY2', 'r')
             ],
         ],
     ]
@@ -15171,10 +14733,10 @@ print_r(json_decode((string) $body));</code></pre></div>
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: {
-        &quot;id&quot;: 46,
+        &quot;id&quot;: 59,
         &quot;event_date&quot;: &quot;05/04/2026&quot;,
         &quot;session&quot;: &quot;sang&quot;,
-        &quot;start_time&quot;: &quot;19:50:00&quot;,
+        &quot;start_time&quot;: &quot;18:41:00&quot;,
         &quot;content&quot;: &quot;Quos velit et fugiat sunt nihil accusantium harum.&quot;,
         &quot;location&quot;: null,
         &quot;prep_unit&quot;: null,
@@ -15190,8 +14752,8 @@ print_r(json_decode((string) $body));</code></pre></div>
         &quot;nature_label&quot;: &quot;Thường&quot;,
         &quot;created_by&quot;: &quot;N/A&quot;,
         &quot;updated_by&quot;: &quot;N/A&quot;,
-        &quot;created_at&quot;: &quot;08:49:08 26/03/2026&quot;,
-        &quot;updated_at&quot;: &quot;08:49:08 26/03/2026&quot;
+        &quot;created_at&quot;: &quot;09:58:06 26/03/2026&quot;,
+        &quot;updated_at&quot;: &quot;09:58:06 26/03/2026&quot;
     },
     &quot;success&quot;: &quot;true&quot;,
     &quot;message&quot;: &quot;Tạo lịch c&ocirc;ng t&aacute;c th&agrave;nh c&ocirc;ng!&quot;
@@ -15445,10 +15007,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="status"                data-endpoint="POSTapi-schedules"
-               value="active"
+               value="inactive"
                data-component="body">
     <br>
-<p>Example: <code>active</code></p>
+<p>Example: <code>inactive</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>active</code></li> <li><code>inactive</code></li></ul>
         </div>
@@ -15555,10 +15117,10 @@ Must be one of:
  &nbsp;
                 <input type="text" style="display: none"
                               name="notification.remind_at"                data-endpoint="POSTapi-schedules"
-               value="2026-03-26T08:49:08"
+               value="2026-03-26T09:58:06"
                data-component="body">
     <br>
-<p>This field is required when <code>notification</code> is present. Must be a valid date. Example: <code>2026-03-26T08:49:08</code></p>
+<p>This field is required when <code>notification</code> is present. Must be a valid date. Example: <code>2026-03-26T09:58:06</code></p>
                     </div>
                                     </details>
         </div>
@@ -16692,10 +16254,10 @@ print_r(json_decode((string) $body));</code></pre></div>
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: {
-        &quot;id&quot;: 47,
-        &quot;event_date&quot;: &quot;30/03/2026&quot;,
+        &quot;id&quot;: 60,
+        &quot;event_date&quot;: &quot;31/03/2026&quot;,
         &quot;session&quot;: &quot;sang&quot;,
-        &quot;start_time&quot;: &quot;18:13:00&quot;,
+        &quot;start_time&quot;: &quot;17:04:00&quot;,
         &quot;content&quot;: &quot;Qui commodi incidunt iure odit.&quot;,
         &quot;location&quot;: &quot;77365 Christian Turnpike Suite 432\nNorth Roderick, SD 69128-2316&quot;,
         &quot;prep_unit&quot;: &quot;Haag and Sons&quot;,
@@ -16711,8 +16273,8 @@ print_r(json_decode((string) $body));</code></pre></div>
         &quot;nature_label&quot;: &quot;Mật&quot;,
         &quot;created_by&quot;: &quot;N/A&quot;,
         &quot;updated_by&quot;: &quot;N/A&quot;,
-        &quot;created_at&quot;: &quot;08:49:08 26/03/2026&quot;,
-        &quot;updated_at&quot;: &quot;08:49:08 26/03/2026&quot;
+        &quot;created_at&quot;: &quot;09:58:06 26/03/2026&quot;,
+        &quot;updated_at&quot;: &quot;09:58:06 26/03/2026&quot;
     },
     &quot;success&quot;: &quot;true&quot;
 }</code>
@@ -16874,10 +16436,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --form "status=inactive"\
     --form "participants[]=architecto"\
     --form "notification[channel]=zalo"\
-    --form "notification[remind_at]=2026-03-26T08:49:08"\
+    --form "notification[remind_at]=2026-03-26T09:58:06"\
     --form "remove_attachment_ids[]=architecto"\
     --form "notifications[]=architecto"\
-    --form "attachments[]=@/tmp/phpheggj4rbc9js5Y3MG9y" </code></pre></div>
+    --form "attachments[]=@/tmp/phpqgur7gnj6vaq31vU6qd" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -16908,7 +16470,7 @@ body.append('color_code', 'architecto');
 body.append('status', 'inactive');
 body.append('participants[]', 'architecto');
 body.append('notification[channel]', 'zalo');
-body.append('notification[remind_at]', '2026-03-26T08:49:08');
+body.append('notification[remind_at]', '2026-03-26T09:58:06');
 body.append('remove_attachment_ids[]', 'architecto');
 body.append('notifications[]', 'architecto');
 body.append('attachments[]', document.querySelector('input[name="attachments[]"]').files[0]);
@@ -16995,7 +16557,7 @@ $response = $client-&gt;put(
             ],
             [
                 'name' =&gt; 'notification[remind_at]',
-                'contents' =&gt; '2026-03-26T08:49:08'
+                'contents' =&gt; '2026-03-26T09:58:06'
             ],
             [
                 'name' =&gt; 'remove_attachment_ids[]',
@@ -17007,7 +16569,7 @@ $response = $client-&gt;put(
             ],
             [
                 'name' =&gt; 'attachments[]',
-                'contents' =&gt; fopen('/tmp/phpheggj4rbc9js5Y3MG9y', 'r')
+                'contents' =&gt; fopen('/tmp/phpqgur7gnj6vaq31vU6qd', 'r')
             ],
         ],
     ]
@@ -17025,10 +16587,10 @@ print_r(json_decode((string) $body));</code></pre></div>
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: {
-        &quot;id&quot;: 48,
+        &quot;id&quot;: 61,
         &quot;event_date&quot;: &quot;05/04/2026&quot;,
         &quot;session&quot;: &quot;sang&quot;,
-        &quot;start_time&quot;: &quot;19:50:00&quot;,
+        &quot;start_time&quot;: &quot;18:41:00&quot;,
         &quot;content&quot;: &quot;Quos velit et fugiat sunt nihil accusantium harum.&quot;,
         &quot;location&quot;: null,
         &quot;prep_unit&quot;: null,
@@ -17044,8 +16606,8 @@ print_r(json_decode((string) $body));</code></pre></div>
         &quot;nature_label&quot;: &quot;Thường&quot;,
         &quot;created_by&quot;: &quot;N/A&quot;,
         &quot;updated_by&quot;: &quot;N/A&quot;,
-        &quot;created_at&quot;: &quot;08:49:08 26/03/2026&quot;,
-        &quot;updated_at&quot;: &quot;08:49:08 26/03/2026&quot;
+        &quot;created_at&quot;: &quot;09:58:06 26/03/2026&quot;,
+        &quot;updated_at&quot;: &quot;09:58:06 26/03/2026&quot;
     },
     &quot;success&quot;: &quot;true&quot;,
     &quot;message&quot;: &quot;Cập nhật lịch c&ocirc;ng t&aacute;c th&agrave;nh c&ocirc;ng!&quot;
@@ -17398,10 +16960,10 @@ Must be one of:
  &nbsp;
                 <input type="text" style="display: none"
                               name="notification.remind_at"                data-endpoint="PUTapi-schedules--schedule_id-"
-               value="2026-03-26T08:49:08"
+               value="2026-03-26T09:58:06"
                data-component="body">
     <br>
-<p>This field is required when <code>notification</code> is present. Must be a valid date. Example: <code>2026-03-26T08:49:08</code></p>
+<p>This field is required when <code>notification</code> is present. Must be a valid date. Example: <code>2026-03-26T09:58:06</code></p>
                     </div>
                                     </details>
         </div>
@@ -17482,11 +17044,11 @@ Must be one of:
     --form "color_code=architecto"\
     --form "status=inactive"\
     --form "participants[]=architecto"\
-    --form "notification[channel]=app"\
-    --form "notification[remind_at]=2026-03-26T08:49:09"\
+    --form "notification[channel]=zalo"\
+    --form "notification[remind_at]=2026-03-26T09:58:06"\
     --form "remove_attachment_ids[]=architecto"\
     --form "notifications[]=architecto"\
-    --form "attachments[]=@/tmp/phprdf045jt08419VGxDOZ" </code></pre></div>
+    --form "attachments[]=@/tmp/phpmdnvpumfrdal00nkOG9" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -17516,8 +17078,8 @@ body.append('nature', 'architecto');
 body.append('color_code', 'architecto');
 body.append('status', 'inactive');
 body.append('participants[]', 'architecto');
-body.append('notification[channel]', 'app');
-body.append('notification[remind_at]', '2026-03-26T08:49:09');
+body.append('notification[channel]', 'zalo');
+body.append('notification[remind_at]', '2026-03-26T09:58:06');
 body.append('remove_attachment_ids[]', 'architecto');
 body.append('notifications[]', 'architecto');
 body.append('attachments[]', document.querySelector('input[name="attachments[]"]').files[0]);
@@ -17600,11 +17162,11 @@ $response = $client-&gt;patch(
             ],
             [
                 'name' =&gt; 'notification[channel]',
-                'contents' =&gt; 'app'
+                'contents' =&gt; 'zalo'
             ],
             [
                 'name' =&gt; 'notification[remind_at]',
-                'contents' =&gt; '2026-03-26T08:49:09'
+                'contents' =&gt; '2026-03-26T09:58:06'
             ],
             [
                 'name' =&gt; 'remove_attachment_ids[]',
@@ -17616,7 +17178,7 @@ $response = $client-&gt;patch(
             ],
             [
                 'name' =&gt; 'attachments[]',
-                'contents' =&gt; fopen('/tmp/phprdf045jt08419VGxDOZ', 'r')
+                'contents' =&gt; fopen('/tmp/phpmdnvpumfrdal00nkOG9', 'r')
             ],
         ],
     ]
@@ -17634,10 +17196,10 @@ print_r(json_decode((string) $body));</code></pre></div>
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: {
-        &quot;id&quot;: 49,
+        &quot;id&quot;: 62,
         &quot;event_date&quot;: &quot;05/04/2026&quot;,
         &quot;session&quot;: &quot;sang&quot;,
-        &quot;start_time&quot;: &quot;19:50:00&quot;,
+        &quot;start_time&quot;: &quot;18:41:00&quot;,
         &quot;content&quot;: &quot;Quos velit et fugiat sunt nihil accusantium harum.&quot;,
         &quot;location&quot;: null,
         &quot;prep_unit&quot;: null,
@@ -17653,8 +17215,8 @@ print_r(json_decode((string) $body));</code></pre></div>
         &quot;nature_label&quot;: &quot;Thường&quot;,
         &quot;created_by&quot;: &quot;N/A&quot;,
         &quot;updated_by&quot;: &quot;N/A&quot;,
-        &quot;created_at&quot;: &quot;08:49:09 26/03/2026&quot;,
-        &quot;updated_at&quot;: &quot;08:49:09 26/03/2026&quot;
+        &quot;created_at&quot;: &quot;09:58:06 26/03/2026&quot;,
+        &quot;updated_at&quot;: &quot;09:58:06 26/03/2026&quot;
     },
     &quot;success&quot;: &quot;true&quot;,
     &quot;message&quot;: &quot;Cập nhật lịch c&ocirc;ng t&aacute;c th&agrave;nh c&ocirc;ng!&quot;
@@ -17993,10 +17555,10 @@ Must be one of:
  &nbsp;
                 <input type="text" style="display: none"
                               name="notification.channel"                data-endpoint="PATCHapi-schedules--schedule_id-"
-               value="app"
+               value="zalo"
                data-component="body">
     <br>
-<p>This field is required when <code>notification</code> is present. Example: <code>app</code></p>
+<p>This field is required when <code>notification</code> is present. Example: <code>zalo</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>sms</code></li> <li><code>zalo</code></li> <li><code>website</code></li> <li><code>app</code></li></ul>
                     </div>
@@ -18007,10 +17569,10 @@ Must be one of:
  &nbsp;
                 <input type="text" style="display: none"
                               name="notification.remind_at"                data-endpoint="PATCHapi-schedules--schedule_id-"
-               value="2026-03-26T08:49:09"
+               value="2026-03-26T09:58:06"
                data-component="body">
     <br>
-<p>This field is required when <code>notification</code> is present. Must be a valid date. Example: <code>2026-03-26T08:49:09</code></p>
+<p>This field is required when <code>notification</code> is present. Must be a valid date. Example: <code>2026-03-26T09:58:06</code></p>
                     </div>
                                     </details>
         </div>
@@ -18502,26 +18064,26 @@ print_r(json_decode((string) $body));</code></pre></div>
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: [
         {
-            &quot;id&quot;: 70,
-            &quot;schedule_id&quot;: 50,
+            &quot;id&quot;: 92,
+            &quot;schedule_id&quot;: 63,
             &quot;channel&quot;: &quot;sms&quot;,
             &quot;status&quot;: &quot;pending&quot;,
-            &quot;remind_at&quot;: &quot;22:46:56 27/03/2026&quot;,
+            &quot;remind_at&quot;: &quot;23:55:53 27/03/2026&quot;,
             &quot;sent_at&quot;: null,
             &quot;read_at&quot;: null,
             &quot;is_read&quot;: false,
-            &quot;created_at&quot;: &quot;08:49:09 26/03/2026&quot;
+            &quot;created_at&quot;: &quot;09:58:06 26/03/2026&quot;
         },
         {
-            &quot;id&quot;: 71,
-            &quot;schedule_id&quot;: 51,
+            &quot;id&quot;: 93,
+            &quot;schedule_id&quot;: 64,
             &quot;channel&quot;: &quot;sms&quot;,
             &quot;status&quot;: &quot;pending&quot;,
-            &quot;remind_at&quot;: &quot;20:28:03 26/03/2026&quot;,
+            &quot;remind_at&quot;: &quot;21:37:00 26/03/2026&quot;,
             &quot;sent_at&quot;: null,
             &quot;read_at&quot;: null,
             &quot;is_read&quot;: false,
-            &quot;created_at&quot;: &quot;08:49:09 26/03/2026&quot;
+            &quot;created_at&quot;: &quot;09:58:06 26/03/2026&quot;
         }
     ],
     &quot;links&quot;: {
