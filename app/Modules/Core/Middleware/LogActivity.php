@@ -59,13 +59,10 @@ class LogActivity
             $user = Auth::guard('sanctum')->user();
             $userType = $user ? class_basename($user) : 'Guest';
             $userId = $user?->id;
-            $departmentId = function_exists('getPermissionsTeamId') ? getPermissionsTeamId() : null;
-
             LogActivityModel::create([
                 'description' => $this->buildDescription($request),
                 'user_type' => $userType,
                 'user_id' => $userId,
-                'department_id' => $departmentId,
                 'route' => $request->fullUrl(),
                 'method_type' => $request->method(),
                 'status_code' => $statusCode,

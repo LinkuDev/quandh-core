@@ -23,7 +23,6 @@ class LogActivity extends Model
         'description',
         'user_type',
         'user_id',
-        'department_id',
         'route',
         'method_type',
         'status_code',
@@ -41,11 +40,6 @@ class LogActivity extends Model
     public function user()
     {
         return $this->belongsTo(User::class, 'user_id');
-    }
-
-    public function department()
-    {
-        return $this->belongsTo(Department::class, 'department_id');
     }
 
     public function scopeFilter($query, array $filters)
