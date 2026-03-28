@@ -17,7 +17,7 @@ class ScheduleNotificationResource extends JsonResource
                 'content' => $this->schedule->content,
                 'event_date' => $this->schedule->event_date?->format('d/m/Y'),
                 'session' => $this->schedule->session,
-                'department' => $this->schedule->department?->name,
+                'schedule_type' => $this->schedule->schedule_type?->label(),
             ]),
             'channel' => $this->channel,
             'status' => $this->status,

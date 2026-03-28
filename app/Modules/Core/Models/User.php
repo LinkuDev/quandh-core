@@ -28,6 +28,7 @@ class User extends Authenticatable
         'status',
         'phone',
         'zalo_id',
+        'organization_id',
         'created_by',
         'updated_by',
     ];
@@ -59,6 +60,11 @@ class User extends Authenticatable
     public function getPositionAttribute(): ?string
     {
         return $this->roles->first()?->name;
+    }
+
+    public function organization()
+    {
+        return $this->belongsTo(\App\Modules\Core\Models\Organization::class);
     }
 
     public function creator()

@@ -186,7 +186,6 @@ class LogActivity
 
         $params = $request->route()?->parameters() ?? [];
         $id = $params['user']
-            ?? $params['department']
             ?? $params['role']
             ?? $params['logActivity']
             ?? $params['schedule']
@@ -205,7 +204,6 @@ class LogActivity
             'users' => 'người dùng',
             'permissions' => 'quyền',
             'roles' => 'vai trò',
-            'departments' => 'đơn vị',
             'auth' => 'xác thực',
             'log-activities' => 'nhật ký truy cập',
             'settings' => 'cấu hình hệ thống',

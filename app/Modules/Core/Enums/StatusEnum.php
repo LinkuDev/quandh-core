@@ -3,7 +3,7 @@
 namespace App\Modules\Core\Enums;
 
 /**
- * Trạng thái chung: active, inactive (Department, PostCategory, ...).
+ * Trạng thái chung: active, inactive (Organization, PostCategory, ...).
  */
 enum StatusEnum: string
 {

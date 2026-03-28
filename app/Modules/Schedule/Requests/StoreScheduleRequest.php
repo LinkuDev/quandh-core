@@ -7,6 +7,7 @@ use App\Modules\Schedule\Enums\NotificationChannelEnum;
 use App\Modules\Schedule\Enums\ScheduleNatureEnum;
 use App\Modules\Schedule\Enums\ScheduleSessionEnum;
 use App\Modules\Schedule\Enums\ScheduleStatusEnum;
+use App\Modules\Schedule\Enums\ScheduleTypeEnum;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StoreScheduleRequest extends FormRequest
@@ -22,7 +23,7 @@ class StoreScheduleRequest extends FormRequest
             'content' => 'required|string',
             'event_date' => 'required|date',
             'session' => ['required', ScheduleSessionEnum::rule()],
-            'department_id' => 'required|integer|exists:departments,id',
+            'schedule_type' => ['required', ScheduleTypeEnum::rule()],
             'start_time' => 'nullable|date_format:H:i',
             'chairperson_id' => 'nullable|integer|exists:users,id',
             'location' => 'nullable|string|max:255',
@@ -51,8 +52,8 @@ class StoreScheduleRequest extends FormRequest
             'event_date.required' => 'Ngày lịch không được để trống.',
             'event_date.date' => 'Ngày lịch không hợp lệ.',
             'session.required' => 'Buổi không được để trống.',
-            'department_id.required' => 'Tổ chức không được để trống.',
-            'department_id.exists' => 'Tổ chức không tồn tại.',
+            'schedule_type.required' => 'Loại lịch không được để trống.',
+            'schedule_type.in' => 'Loại lịch không hợp lệ (thuong_truc hoặc van_phong).',
             'start_time.date_format' => 'Thời gian bắt đầu phải theo định dạng HH:mm.',
             'chairperson_id.exists' => 'Chủ trì không tồn tại trong hệ thống.',
             'meeting_type.in' => 'Loại cuộc họp không hợp lệ.',
@@ -69,7 +70,7 @@ class StoreScheduleRequest extends FormRequest
             'content' => ['description' => 'Nội dung lịch công tác', 'example' => 'Họp Ban Thường vụ'],
             'event_date' => ['description' => 'Ngày diễn ra (Y-m-d)', 'example' => '2026-04-01'],
             'session' => ['description' => 'Buổi: sang, chieu, toi', 'example' => 'sang'],
-            'department_id' => ['description' => 'ID đơn vị (Thường trực Thành ủy / Văn phòng Thành ủy)', 'example' => 1],
+            'schedule_type' => ['description' => 'Loại lịch: thuong_truc (Thường trực Thành ủy), van_phong (Văn phòng Thành ủy)', 'example' => 'thuong_truc'],
             'start_time' => ['description' => 'Giờ bắt đầu (HH:mm)', 'example' => '08:00'],
             'chairperson_id' => ['description' => 'ID người chủ trì', 'example' => 1],
             'location' => ['description' => 'Địa điểm', 'example' => 'Phòng họp A'],

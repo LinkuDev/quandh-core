@@ -46,12 +46,10 @@ app/Modules/
 │   │   └── UserStatusEnum.php
 │   ├── Exports/
 │   │   ├── LogActivitiesExport.php
-│   │   ├── DepartmentsExport.php
 │   │   ├── PermissionsExport.php
 │   │   ├── RolesExport.php
 │   │   └── UsersExport.php
 │   ├── Imports/
-│   │   ├── DepartmentsImport.php
 │   │   ├── PermissionsImport.php
 │   │   ├── RolesImport.php
 │   │   └── UsersImport.php
@@ -60,7 +58,7 @@ app/Modules/
 │   │   └── SetPermissionsTeamId.php
 │   ├── Models/
 │   │   ├── LogActivity.php
-│   │   ├── Department.php
+│   │   ├── Organization.php
 │   │   ├── Permission.php
 │   │   ├── Role.php
 │   │   ├── Setting.php
@@ -71,7 +69,6 @@ app/Modules/
 │   │   └── ... (Resource, Collection, TreeResource, PublicOptionResource)
 │   ├── Routes/
 │   │   ├── log_activity.php
-│   │   ├── department.php
 │   │   ├── permission.php
 │   │   ├── role.php
 │   │   ├── setting.php
@@ -79,14 +76,12 @@ app/Modules/
 │   ├── Services/
 │   │   ├── LogActivityService.php
 │   │   ├── MediaService.php
-│   │   ├── DepartmentService.php
 │   │   ├── PermissionService.php
 │   │   ├── RoleService.php
 │   │   └── SettingService.php
 │   ├── Traits/
 │   │   └── RespondsWithJson.php
 │   ├── LogActivityController.php
-│   ├── DepartmentController.php
 │   ├── PermissionController.php
 │   ├── RoleController.php
 │   └── SettingController.php
@@ -95,7 +90,8 @@ app/Modules/
     │   ├── NotificationChannelEnum.php
     │   ├── NotificationStatusEnum.php
     │   ├── ScheduleSessionEnum.php
-    │   └── ScheduleStatusEnum.php
+    │   ├── ScheduleStatusEnum.php
+    │   └── ScheduleTypeEnum.php
     ├── Exports/
     │   ├── CatalogExport.php
     │   └── SchedulesExport.php

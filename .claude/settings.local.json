@@ -1,0 +1,23 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(grep -n \"class ScheduleNotificationService\" /d/projects/quandh-core/app/Modules/Schedule/Services/*.php)",
+      "Bash(php -l /d/projects/quandh-core/app/Modules/Schedule/Enums/ScheduleTypeEnum.php)",
+      "Bash(php -l /d/projects/quandh-core/database/seeders/DatabaseSeeder.php)",
+      "Bash(php -l /d/projects/quandh-core/app/Modules/Schedule/Requests/StoreScheduleRequest.php)",
+      "Bash(php -l /d/projects/quandh-core/app/Modules/Schedule/Requests/UpdateScheduleRequest.php)",
+      "Bash(php -l /d/projects/quandh-core/app/Modules/Schedule/Exports/SchedulesExport.php)",
+      "Bash(php -l /d/projects/quandh-core/app/Modules/Schedule/Imports/SchedulesImport.php)",
+      "Bash(php -l /d/projects/quandh-core/app/Modules/Core/Models/Organization.php)",
+      "Bash(php -l /d/projects/quandh-core/app/Modules/Core/Models/User.php)",
+      "Bash(php -l /d/projects/quandh-core/app/Modules/Schedule/Policies/SchedulePolicy.php)",
+      "Bash(php -l /d/projects/quandh-core/app/Modules/Schedule/Services/ScheduleNotificationService.php)",
+      "Bash(php -l /d/projects/quandh-core/app/Modules/Schedule/Resources/ScheduleResource.php)",
+      "Bash(php -l /d/projects/quandh-core/app/Modules/Schedule/Resources/ScheduleCollection.php)",
+      "Bash(xargs php:*)",
+      "Bash(for f:*)",
+      "Bash(do php:*)",
+      "Bash(done)"
+    ]
+  }
+}

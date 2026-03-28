@@ -18,7 +18,6 @@ use App\Modules\Schedule\Services\ScheduleService;
 
 /**
  * @group Schedule - Lịch công tác
- * @header X-Department-Id ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1
  *
  * Quản lý lịch công tác Thường trực Thành ủy và Văn phòng Thành ủy: thống kê, danh sách, chi tiết, tạo, cập nhật, xóa, thao tác hàng loạt, sắp xếp thứ tự, xuất Excel/PDF, nhập Excel.
  */
@@ -35,7 +34,7 @@ class ScheduleController extends Controller
      *
      * @queryParam from_date date Lọc từ ngày (Y-m-d). Example: 2026-04-01
      * @queryParam to_date date Lọc đến ngày (Y-m-d). Example: 2026-04-30
-     * @queryParam department_id integer ID đơn vị.
+     * @queryParam schedule_type string Loại lịch: thuong_truc, van_phong.
      * @queryParam session string Buổi: sang, chieu, toi.
      * @queryParam limit integer Số bản ghi mỗi trang (1-100). Example: 20
      */
@@ -53,7 +52,7 @@ class ScheduleController extends Controller
      *
      * @queryParam search string Từ khóa tìm kiếm theo nội dung.
      * @queryParam status string Trạng thái: active, inactive.
-     * @queryParam department_id integer ID đơn vị.
+     * @queryParam schedule_type string Loại lịch: thuong_truc, van_phong.
      * @queryParam from_date date Lọc từ ngày (Y-m-d). Example: 2026-04-01
      * @queryParam to_date date Lọc đến ngày (Y-m-d). Example: 2026-04-30
      *
@@ -75,7 +74,7 @@ class ScheduleController extends Controller
      * @queryParam from_date date Lọc từ ngày (Y-m-d).
      * @queryParam to_date date Lọc đến ngày (Y-m-d).
      * @queryParam session string Buổi: sang, chieu, toi.
-     * @queryParam department_id integer ID đơn vị.
+     * @queryParam schedule_type string Loại lịch: thuong_truc, van_phong.
      * @queryParam chairperson_id integer Lọc theo chủ trì.
      * @queryParam meeting_type string Lọc theo loại cuộc họp: hop_thuong_ky, hop_dot_xuat, hop_chuyen_de, hoi_nghi, tiep_khach, di_cong_tac, khac.
      * @queryParam nature string Lọc theo tính chất: thuong, quan_trong, mat.
@@ -122,13 +121,13 @@ class ScheduleController extends Controller
      * @bodyParam content string required Nội dung lịch. Example: Họp Ban Thường vụ
      * @bodyParam event_date date required Ngày diễn ra (Y-m-d). Example: 2026-04-01
      * @bodyParam session string required Buổi: sang, chieu, toi. Example: sang
-     * @bodyParam department_id integer required ID đơn vị. Example: 1
+     * @bodyParam schedule_type string required Loại lịch: thuong_truc (Thường trực), van_phong (Văn phòng). Example: thuong_truc
      * @bodyParam start_time string Giờ bắt đầu (HH:mm). Example: 08:00
      * @bodyParam chairperson_id integer ID người chủ trì. Example: 1
      * @bodyParam location string Địa điểm. Example: Phòng họp A
      * @bodyParam prep_unit string Đơn vị chuẩn bị. Example: Văn phòng
      * @bodyParam driver_info string Thông tin lái xe. Example: Nguyễn Văn A
-
+     *
      * @bodyParam meeting_type string Loại cuộc họp: hop_thuong_ky, hop_dot_xuat, hop_chuyen_de, hoi_nghi, tiep_khach, di_cong_tac, khac. Example: hop_thuong_ky
      * @bodyParam nature string Tính chất: thuong, quan_trong, mat. Example: thuong
      * @bodyParam color_code string Mã màu. Example: #FF5733
@@ -165,13 +164,13 @@ class ScheduleController extends Controller
      * @bodyParam content string Nội dung lịch.
      * @bodyParam event_date date Ngày diễn ra (Y-m-d).
      * @bodyParam session string Buổi: sang, chieu, toi.
-     * @bodyParam department_id integer ID đơn vị.
+     * @bodyParam schedule_type string Loại lịch: thuong_truc, van_phong.
      * @bodyParam start_time string Giờ bắt đầu (HH:mm).
      * @bodyParam chairperson_id integer ID người chủ trì.
      * @bodyParam location string Địa điểm.
      * @bodyParam prep_unit string Đơn vị chuẩn bị.
      * @bodyParam driver_info string Thông tin lái xe.
-
+     *
      * @bodyParam meeting_type string Loại cuộc họp: hop_thuong_ky, hop_dot_xuat, hop_chuyen_de, hoi_nghi, tiep_khach, di_cong_tac, khac.
      * @bodyParam nature string Tính chất: thuong, quan_trong, mat.
      * @bodyParam color_code string Mã màu.
@@ -261,11 +260,11 @@ class ScheduleController extends Controller
     /**
      * Xuất Excel lịch công tác
      *
-     * Xuất ra các trường: id, ngày, buổi, thời gian, nội dung, chủ trì, thành phần, địa điểm, đơn vị chuẩn bị, số người, loại cuộc họp, tính chất, lái xe, mã màu, khối, trạng thái, người tạo, người sửa, ngày tạo, ngày cập nhật.
+     * Xuất ra các trường: id, ngày, buổi, thời gian, nội dung, chủ trì, thành phần, địa điểm, đơn vị chuẩn bị, số người, loại cuộc họp, tính chất, lái xe, mã màu, loại lịch, trạng thái, người tạo, người sửa, ngày tạo, ngày cập nhật.
      *
      * @queryParam search string Tìm kiếm theo nội dung.
      * @queryParam status string Trạng thái: active, inactive.
-     * @queryParam department_id integer ID đơn vị.
+     * @queryParam schedule_type string Loại lịch: thuong_truc, van_phong.
      * @queryParam from_date date Lọc từ ngày (Y-m-d).
      * @queryParam to_date date Lọc đến ngày (Y-m-d).
      */
@@ -277,7 +276,7 @@ class ScheduleController extends Controller
     /**
      * Nhập Excel lịch công tác
      *
-     * Cột bắt buộc: noi_dung, ngay, buoi. Cột không bắt buộc: thoi_gian, dia_diem, don_vi_chuan_bi, lai_xe, so_nguoi, ma_mau, khoi (mặc định "thuong_trac"), trang_thai (mặc định "active").
+     * Cột bắt buộc: noi_dung, ngay, buoi. Cột không bắt buộc: thoi_gian, dia_diem, don_vi_chuan_bi, lai_xe, so_nguoi, ma_mau, loai_lich (mặc định "thuong_truc"), trang_thai (mặc định "active").
      *
      * @bodyParam file file required File Excel (xlsx, xls, csv).
      *
@@ -295,7 +294,7 @@ class ScheduleController extends Controller
      *
      * Xuất lịch công tác ra file PDF theo bộ lọc.
      *
-     * @queryParam department_id integer ID đơn vị.
+     * @queryParam schedule_type string Loại lịch: thuong_truc, van_phong.
      * @queryParam from_date date Lọc từ ngày (Y-m-d).
      * @queryParam to_date date Lọc đến ngày (Y-m-d).
      * @queryParam session string Buổi: sang, chieu, toi.
@@ -310,7 +309,7 @@ class ScheduleController extends Controller
     /**
      * Di chuyển lịch lên trên
      *
-     * Swap vị trí với lịch liền trước cùng ngày và khối.
+     * Swap vị trí với lịch liền trước cùng ngày và loại lịch.
      *
      * @urlParam schedule integer required ID lịch. Example: 1
      */
@@ -324,7 +323,7 @@ class ScheduleController extends Controller
     /**
      * Di chuyển lịch xuống dưới
      *
-     * Swap vị trí với lịch liền sau cùng ngày và khối.
+     * Swap vị trí với lịch liền sau cùng ngày và loại lịch.
      *
      * @urlParam schedule integer required ID lịch. Example: 1
      */

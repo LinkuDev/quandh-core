@@ -27,7 +27,7 @@ class ScheduleFactory extends Factory
             'nature' => fake()->randomElement(['thuong', 'quan_trong', 'mat']),
             'color_code' => fake()->optional()->hexColor(),
             'sort_order' => fake()->numberBetween(0, 100),
-            'department_id' => null,
+            'schedule_type' => fake()->randomElement(['thuong_truc', 'van_phong']),
             'status' => fake()->randomElement(['active', 'inactive']),
             'created_by' => null,
             'updated_by' => null,

@@ -12,7 +12,7 @@ class SchedulesExport implements FromCollection, WithHeadings
 
     public function collection()
     {
-        return Schedule::with(['department', 'chairperson', 'participants', 'participants.user', 'creator', 'editor'])
+        return Schedule::with(['chairperson', 'participants', 'participants.user', 'creator', 'editor'])
             ->filter($this->filters)
             ->get()
             ->map(fn (Schedule $s) => [
@@ -30,7 +30,7 @@ class SchedulesExport implements FromCollection, WithHeadings
                 'nature' => $s->nature?->label(),
                 'driver_info' => $s->driver_info,
                 'color_code' => $s->color_code,
-                'department' => $s->department?->name,
+                'schedule_type' => $s->schedule_type?->label(),
                 'status' => $s->status,
                 'created_by' => $s->creator?->name,
                 'updated_by' => $s->editor?->name,
@@ -44,7 +44,7 @@ class SchedulesExport implements FromCollection, WithHeadings
         return [
             'ID', 'Ngày', 'Buổi', 'Thời gian', 'Nội dung', 'Chủ trì',
             'Thành phần', 'Địa điểm', 'Đơn vị chuẩn bị', 'Số người',
-            'Loại cuộc họp', 'Tính chất', 'Lái xe', 'Mã màu', 'Đơn vị',
+            'Loại cuộc họp', 'Tính chất', 'Lái xe', 'Mã màu', 'Loại lịch',
             'Trạng thái', 'Người tạo', 'Người sửa', 'Ngày tạo', 'Ngày cập nhật',
         ];
     }

@@ -16,7 +16,7 @@ use Symfony\Component\HttpFoundation\BinaryFileResponse;
 class ScheduleService
 {
     private array $eagerLoads = [
-        'department', 'chairperson',
+        'chairperson',
         'participants', 'participants.user',
         'notifications', 'notifications.user',
         'media', 'creator', 'editor',
@@ -40,7 +40,7 @@ class ScheduleService
 
     public function index(array $filters, int $limit)
     {
-        return Schedule::with(['department', 'chairperson', 'participants', 'participants.user', 'creator'])
+        return Schedule::with(['chairperson', 'participants', 'participants.user', 'creator'])
             ->filter($filters)
             ->paginate($limit);
     }
@@ -62,8 +62,8 @@ class ScheduleService
 
                 $schedule = Schedule::create($data);
 
-                /* Gán sort_order dựa trên start_time trong cùng scope (event_date, department_id) */
-                $this->recalculateSortOrder($schedule->event_date->format('Y-m-d'), $schedule->department_id);
+                /* Gán sort_order dựa trên start_time trong cùng scope (event_date, schedule_type) */
+                $this->recalculateSortOrder($schedule->event_date->format('Y-m-d'), $schedule->schedule_type?->value);
 
                 /* Thành phần tham dự */
                 $this->syncParticipants($schedule, $validated['participants'] ?? []);
@@ -167,9 +167,11 @@ class ScheduleService
             ->filter($filters)
             ->get();
 
-        $orgId = $filters['department_id'] ?? null;
-        $orgName = $orgId ? \App\Modules\Core\Models\Department::find($orgId)?->name : null;
-        $title = $orgName ? "Lịch công tác {$orgName}" : 'Tổng hợp lịch công tác';
+        $scheduleType = $filters['schedule_type'] ?? null;
+        $typeLabel = $scheduleType
+            ? \App\Modules\Schedule\Enums\ScheduleTypeEnum::tryFrom($scheduleType)?->label()
+            : null;
+        $title = $typeLabel ? "Lịch công tác {$typeLabel}" : 'Tổng hợp lịch công tác';
 
         $pdf = Pdf::loadView('exports.schedules', compact('schedules', 'title'))
             ->setPaper('a4', 'landscape');
@@ -180,21 +182,21 @@ class ScheduleService
     /* ── Sort Order ── */
 
     /**
-     * Scope query: event_date + department_id.
+     * Scope query: event_date + schedule_type.
      */
     private function scopeQuery(Schedule $schedule)
     {
         return Schedule::where('event_date', $schedule->event_date->format('Y-m-d'))
-            ->where('department_id', $schedule->department_id);
+            ->where('schedule_type', $schedule->schedule_type);
     }
 
     /**
      * Dồn lại sort_order liên tục (1, 2, 3...) cho scope hiện tại, loại trừ 1 bản ghi.
      */
-    private function reorderScope(string $eventDate, ?int $departmentId, ?int $excludeId = null): void
+    private function reorderScope(string $eventDate, ?string $scheduleType, ?int $excludeId = null): void
     {
         $query = Schedule::where('event_date', $eventDate)
-            ->where('department_id', $departmentId)
+            ->where('schedule_type', $scheduleType)
             ->orderBy('sort_order');
 
         if ($excludeId) {
@@ -213,10 +215,10 @@ class ScheduleService
      * Tính lại sort_order cho toàn bộ scope dựa trên start_time.
      * Dùng khi tạo mới — chèn đúng vị trí theo giờ bắt đầu.
      */
-    private function recalculateSortOrder(string $eventDate, ?int $departmentId): void
+    private function recalculateSortOrder(string $eventDate, ?string $scheduleType): void
     {
         $schedules = Schedule::where('event_date', $eventDate)
-            ->where('department_id', $departmentId)
+            ->where('schedule_type', $scheduleType)
             ->orderByRaw('start_time IS NULL, start_time ASC')
             ->orderBy('id')
             ->get();
@@ -230,9 +232,6 @@ class ScheduleService
 
     /**
      * Di chuyển lịch lên trên.
-     *
-     * Lấy danh sách đã sắp theo sort_order, tìm vị trí hiện tại,
-     * swap với item liền trước, rồi normalize lại toàn bộ sort_order.
      */
     public function moveUp(Schedule $schedule): Schedule
     {
@@ -249,11 +248,9 @@ class ScheduleService
                 return;
             }
 
-            // Swap vị trí trong collection
             $ordered[$currentIdx] = $ordered[$currentIdx - 1];
             $ordered[$currentIdx - 1] = $schedule->id;
 
-            // Normalize sort_order
             foreach ($ordered as $index => $id) {
                 Schedule::where('id', $id)->update(['sort_order' => $index + 1]);
             }
@@ -264,9 +261,6 @@ class ScheduleService
 
     /**
      * Di chuyển lịch xuống dưới.
-     *
-     * Lấy danh sách đã sắp theo sort_order, tìm vị trí hiện tại,
-     * swap với item liền sau, rồi normalize lại toàn bộ sort_order.
      */
     public function moveDown(Schedule $schedule): Schedule
     {
@@ -283,11 +277,9 @@ class ScheduleService
                 return;
             }
 
-            // Swap vị trí trong collection
             $ordered[$currentIdx] = $ordered[$currentIdx + 1];
             $ordered[$currentIdx + 1] = $schedule->id;
 
-            // Normalize sort_order
             foreach ($ordered as $index => $id) {
                 Schedule::where('id', $id)->update(['sort_order' => $index + 1]);
             }
@@ -306,11 +298,10 @@ class ScheduleService
 
         DB::transaction(function () use ($schedule, $target, $targetOrder) {
             $oldDate = $schedule->event_date->format('Y-m-d');
-            $oldDeptId = $schedule->department_id;
+            $oldType = $schedule->schedule_type?->value;
 
-            /* Dồn sort_order tại scope đích, exclude bản ghi đang di chuyển */
             Schedule::where('event_date', $target->event_date)
-                ->where('department_id', $target->department_id)
+                ->where('schedule_type', $target->schedule_type)
                 ->where('id', '!=', $schedule->id)
                 ->where('sort_order', '>=', $targetOrder)
                 ->increment('sort_order');
@@ -318,15 +309,14 @@ class ScheduleService
             $schedule->update([
                 'sort_order' => $targetOrder,
                 'event_date' => $target->event_date,
-                'department_id' => $target->department_id,
+                'schedule_type' => $target->schedule_type,
             ]);
 
-            /* Dồn lại scope cũ nếu khác scope đích */
             $isSameScope = $oldDate === $target->event_date->format('Y-m-d')
-                && $oldDeptId === $target->department_id;
+                && $oldType === $target->schedule_type?->value;
 
             if (! $isSameScope) {
-                $this->reorderScope($oldDate, $oldDeptId);
+                $this->reorderScope($oldDate, $oldType);
             }
         });
 
@@ -343,11 +333,10 @@ class ScheduleService
 
         DB::transaction(function () use ($schedule, $target, $targetOrder) {
             $oldDate = $schedule->event_date->format('Y-m-d');
-            $oldDeptId = $schedule->department_id;
+            $oldType = $schedule->schedule_type?->value;
 
-            /* Dồn sort_order tại scope đích, exclude bản ghi đang di chuyển */
             Schedule::where('event_date', $target->event_date)
-                ->where('department_id', $target->department_id)
+                ->where('schedule_type', $target->schedule_type)
                 ->where('id', '!=', $schedule->id)
                 ->where('sort_order', '>', $targetOrder)
                 ->increment('sort_order');
@@ -355,15 +344,14 @@ class ScheduleService
             $schedule->update([
                 'sort_order' => $targetOrder + 1,
                 'event_date' => $target->event_date,
-                'department_id' => $target->department_id,
+                'schedule_type' => $target->schedule_type,
             ]);
 
-            /* Dồn lại scope cũ nếu khác scope đích */
             $isSameScope = $oldDate === $target->event_date->format('Y-m-d')
-                && $oldDeptId === $target->department_id;
+                && $oldType === $target->schedule_type?->value;
 
             if (! $isSameScope) {
-                $this->reorderScope($oldDate, $oldDeptId);
+                $this->reorderScope($oldDate, $oldType);
             }
         });
 
@@ -374,7 +362,7 @@ class ScheduleService
 
     public function publicIndex(array $filters, int $limit)
     {
-        return Schedule::with(['department', 'chairperson', 'participants', 'participants.user'])
+        return Schedule::with(['chairperson', 'participants', 'participants.user'])
             ->where('schedules.status', ScheduleStatusEnum::Active->value)
             ->filter($filters)
             ->paginate($limit);

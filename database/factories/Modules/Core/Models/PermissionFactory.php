@@ -14,7 +14,7 @@ class PermissionFactory extends Factory
 
     public function definition(): array
     {
-        $resource = fake()->randomElement(['users', 'roles', 'departments', 'posts', 'documents']);
+        $resource = fake()->randomElement(['users', 'roles', 'permissions', 'schedules', 'settings']);
         $action = fake()->randomElement(['index', 'show', 'store', 'update', 'destroy', 'stats']);
 
         return [

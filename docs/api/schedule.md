@@ -8,7 +8,7 @@
 |--------|------|-------|
 | GET | `/api/schedules/public` | Lịch công tác công khai |
 
-### Protected (cần Bearer token + X-Department-Id)
+### Protected (cần Bearer token)
 
 | Method | Path | Permission | Mô tả |
 |--------|------|------------|-------|
@@ -39,10 +39,10 @@
 | from_date | date | Từ ngày |
 | to_date | date | Đến ngày |
 | session | string | sang, chieu, toi |
-| department_id | integer | ID tổ chức |
+| schedule_type | string | thuong_truc (Thường trực), van_phong (Văn phòng) |
 | chairperson_id | integer | ID chủ trì |
-| meeting_type_id | integer | ID loại cuộc họp |
-| nature_id | integer | ID tính chất |
+| meeting_type | string | Loại cuộc họp |
+| nature | string | Tính chất |
 | position | string | Lọc theo chức danh chủ trì |
 | participant_user_id | integer | Lọc theo thành phần tham dự |
 | sort_by | string | sort_order, event_date, start_time, created_at |
@@ -56,14 +56,14 @@
   "content": "Họp Ban Thường vụ",
   "event_date": "2026-04-01",
   "session": "sang",
-  "department_id": 1,
+  "schedule_type": "thuong_truc",
   "start_time": "08:00",
   "chairperson_id": 1,
   "location": "Phòng họp A",
   "prep_unit": "Văn phòng",
   "driver_info": "Nguyễn Văn A - 30A-12345",
-  "meeting_type_id": 1,
-  "nature_id": 1,
+  "meeting_type": "hop_thuong_ky",
+  "nature": "thuong",
   "color_code": "#FF5733",
   "participants": [
     { "user_id": 2 },
@@ -89,9 +89,12 @@
     "start_time": "08:00",
     "content": "Họp Ban Thường vụ",
     "chairperson": { "id": 1, "name": "Admin", "position": "Bí thư" },
-    "meeting_type": { "id": 1, "name": "Họp thường kỳ" },
-    "nature": { "id": 1, "name": "Thường" },
-    "department": { "id": 1, "name": "Thường trực Thành ủy" },
+    "meeting_type": "hop_thuong_ky",
+    "meeting_type_label": "Họp thường kỳ",
+    "nature": "thuong",
+    "nature_label": "Thường",
+    "schedule_type": "thuong_truc",
+    "schedule_type_label": "Thường trực Thành ủy",
     "participant_count": 3,
     "participants": [
       { "id": 1, "user_id": 2, "user_name": "Trần Văn C", "external_name": null },

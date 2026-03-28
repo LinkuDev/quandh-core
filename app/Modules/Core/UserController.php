@@ -18,7 +18,7 @@ use App\Modules\Core\Services\UserService;
 /**
  * @group Core - User
  *
- * Quản lý người dùng: danh sách, chi tiết, tạo, cập nhật, xóa, thao tác hàng loạt, xuất/nhập Excel, đổi trạng thái.
+ * Quản lý người dùng: stats, index, show, store, update, destroy, bulk delete, bulk status, export, import, đổi trạng thái.
  */
 class UserController extends Controller
 {
@@ -31,6 +31,8 @@ class UserController extends Controller
      *
      * @queryParam search string Từ khóa tìm kiếm (name, email, user_name). Example: john
      * @queryParam status string Lọc theo trạng thái: active, inactive, banned.
+     * @queryParam from_date string Lọc từ ngày (Y-m-d). Example: 2026-01-01
+     * @queryParam to_date string Lọc đến ngày (Y-m-d). Example: 2026-12-31
      * @queryParam sort_by string Sắp xếp theo: id, name, email, user_name, created_at. Example: created_at
      * @queryParam sort_order string Thứ tự: asc, desc. Example: desc
      *
@@ -46,6 +48,8 @@ class UserController extends Controller
      *
      * @queryParam search string Từ khóa tìm kiếm (name, email, user_name). Example: john
      * @queryParam status string Lọc theo trạng thái: active, inactive, banned.
+     * @queryParam from_date string Lọc từ ngày (Y-m-d). Example: 2026-01-01
+     * @queryParam to_date string Lọc đến ngày (Y-m-d). Example: 2026-12-31
      * @queryParam sort_by string Sắp xếp theo: id, name, email, user_name, created_at. Example: created_at
      * @queryParam sort_order string Thứ tự: asc, desc. Example: desc
      * @queryParam limit integer Số bản ghi mỗi trang (1-100). Example: 10
@@ -161,8 +165,10 @@ class UserController extends Controller
      *
      * Xuất ra các trường: id, name, email, user_name, position (từ role), phone, zalo_id, role, status, created_by, updated_by, created_at, updated_at.
      *
-     * @queryParam search string Từ khóa tìm kiếm (name, email).
+     * @queryParam search string Từ khóa tìm kiếm (name, email). Example: john
      * @queryParam status string Lọc theo trạng thái: active, inactive, banned.
+     * @queryParam from_date string Lọc từ ngày (Y-m-d). Example: 2026-01-01
+     * @queryParam to_date string Lọc đến ngày (Y-m-d). Example: 2026-12-31
      * @queryParam sort_by string Sắp xếp theo: id, name, email, created_at.
      * @queryParam sort_order string Thứ tự: asc, desc.
      */

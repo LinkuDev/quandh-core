@@ -21,7 +21,7 @@ class SchedulesImport implements ToModel, WithHeadingRow
             'meeting_type' => $row['loai_cuoc_hop'] ?? null,
             'nature' => $row['tinh_chat'] ?? null,
             'color_code' => $row['ma_mau'] ?? null,
-            'department_id' => $row['don_vi_id'] ?? null,
+            'schedule_type' => $row['loai_lich'] ?? 'thuong_truc',
             'status' => $row['trang_thai'] ?? 'active',
         ]);
     }

@@ -7,6 +7,7 @@ use App\Modules\Schedule\Enums\NotificationChannelEnum;
 use App\Modules\Schedule\Enums\ScheduleNatureEnum;
 use App\Modules\Schedule\Enums\ScheduleSessionEnum;
 use App\Modules\Schedule\Enums\ScheduleStatusEnum;
+use App\Modules\Schedule\Enums\ScheduleTypeEnum;
 use Illuminate\Foundation\Http\FormRequest;
 
 class UpdateScheduleRequest extends FormRequest
@@ -22,7 +23,7 @@ class UpdateScheduleRequest extends FormRequest
             'content' => 'sometimes|string',
             'event_date' => 'sometimes|date',
             'session' => ['sometimes', ScheduleSessionEnum::rule()],
-            'department_id' => 'sometimes|integer|exists:departments,id',
+            'schedule_type' => ['sometimes', ScheduleTypeEnum::rule()],
             'start_time' => 'nullable|date_format:H:i',
             'chairperson_id' => 'nullable|integer|exists:users,id',
             'location' => 'nullable|string|max:255',

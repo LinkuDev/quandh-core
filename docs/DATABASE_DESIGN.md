@@ -12,6 +12,7 @@ Bảng người dùng (Laravel Auth).
 | Cột | Kiểu | Nullable | Mặc định | Ràng buộc / Ghi chú |
 |-----|------|----------|----------|---------------------|
 | id | bigint unsigned | No | — | PK, auto increment |
+| organization_id | bigint unsigned | Yes | null | FK → organizations.id |
 | name | varchar(255) | No | — | |
 | email | varchar(255) | No | — | UNIQUE |
 | user_name | varchar(100) | Yes | null | UNIQUE, dùng để đăng nhập cùng email |
@@ -87,10 +88,10 @@ Bảng queue chuẩn Laravel. Cấu trúc mặc định.
 
 ---
 
-## 3. Core – Permission, Role, Department (Spatie Laravel Permission)
+## 3. Core – Organization, Permission, Role
 
-### `departments`
-Bảng tổ chức (dùng cho Spatie Permission teams mode). Ví dụ: "Thường trực Thành ủy", "Văn phòng Thành ủy".
+### `organizations`
+Bảng tổ chức (multi-tenant: mỗi tổ chức có users riêng).
 
 | Cột | Kiểu | Nullable | Mặc định | Ràng buộc / Ghi chú |
 |-----|------|----------|----------|---------------------|
@@ -98,8 +99,8 @@ Bảng tổ chức (dùng cho Spatie Permission teams mode). Ví dụ: "Thườn
 | name | varchar(255) | No | — | |
 | slug | varchar(255) | Yes | null | UNIQUE |
 | description | text | Yes | null | |
+| logo | varchar(255) | Yes | null | Đường dẫn logo |
 | status | varchar(255) | No | 'active' | active, inactive |
-| parent_id | bigint unsigned | Yes | null | FK → departments.id (cha) |
 | sort_order | int unsigned | No | 0 | |
 | created_by | bigint unsigned | Yes | null | FK → users.id |
 | updated_by | bigint unsigned | Yes | null | FK → users.id |
@@ -121,20 +122,19 @@ Quyền (Spatie). Bổ sung description, sort_order, parent_id để nhóm front
 | updated_at | timestamp | Yes | null | |
 
 ### `roles`
-Vai trò (Spatie, teams mode).
+Vai trò (Spatie, global mode — teams mode đã tắt).
 
 | Cột | Kiểu | Nullable | Mặc định | Ràng buộc / Ghi chú |
 |-----|------|----------|----------|---------------------|
 | id | bigint unsigned | No | — | PK, auto increment |
-| department_id | bigint unsigned | Yes | null | FK → departments.id |
-| name | varchar(255) | No | — | UNIQUE(department_id, name, guard_name) |
+| name | varchar(255) | No | — | UNIQUE(name, guard_name) |
 | guard_name | varchar(255) | No | — | |
 | created_at | timestamp | Yes | null | |
 | updated_at | timestamp | Yes | null | |
 
 ### Pivot tables (Spatie)
-- `model_has_permissions`: permission_id, model_type, model_id, department_id
-- `model_has_roles`: role_id, model_type, model_id, department_id
+- `model_has_permissions`: permission_id, model_type, model_id
+- `model_has_roles`: role_id, model_type, model_id
 - `role_has_permissions`: permission_id, role_id
 
 ### `log_activities`
@@ -146,7 +146,6 @@ Nhật ký truy cập.
 | description | varchar(255) | No | — | |
 | user_type | varchar(255) | No | 'Guest' | |
 | user_id | bigint unsigned | Yes | null | FK → users.id |
-| department_id | bigint unsigned | Yes | null | FK → departments.id |
 | route | varchar(255) | No | — | |
 | method_type | varchar(255) | No | — | |
 | status_code | int | No | — | |
@@ -237,23 +236,23 @@ Bảng trung tâm — lịch công tác.
 | meeting_type_id | bigint unsigned | Yes | null | FK → schedule_meeting_types.id |
 | nature_id | bigint unsigned | Yes | null | FK → schedule_natures.id |
 | color_code | varchar(20) | Yes | null | Mã màu hiển thị (#FF5733) |
-| sort_order | int unsigned | No | 0 | Thứ tự trong cùng ngày+tổ chức |
-| department_id | bigint unsigned | Yes | null | FK → departments.id (Thường trực / Văn phòng) |
+| sort_order | int unsigned | No | 0 | Thứ tự trong cùng ngày+loại lịch |
+| schedule_type | varchar(30) | No | 'thuong_truc' | thuong_truc (Thường trực), van_phong (Văn phòng) |
 | status | varchar(255) | No | 'active' | active, inactive |
 | created_by | bigint unsigned | Yes | null | FK → users.id (người lập = chủ sở hữu) |
 | updated_by | bigint unsigned | Yes | null | FK → users.id |
 | created_at | timestamp | Yes | null | |
 | updated_at | timestamp | Yes | null | |
 
-**Index:** (event_date, department_id), (event_date, session, department_id), FULLTEXT(content)
+**Index:** (event_date, schedule_type), (event_date, session, schedule_type), FULLTEXT(content)
 
 **Quan hệ:**
-- belongsTo: department, chairperson, meetingType, nature, creator, editor
+- belongsTo: chairperson, creator, editor
 - hasMany: participants, notifications
 - morphMany: media (collection `schedule-attachments`)
 
 **Logic đặc biệt:**
-- sort_order scoped theo (event_date, department_id)
+- sort_order scoped theo (event_date, schedule_type)
 - Ưu tiên chức danh khi sort: Bí thư trước, Phó Bí thư sau (POSITION_PRIORITY)
 - Owner permission: chỉ created_by mới sửa/xóa (trừ role có schedules.updateAll/destroyAll)
 
@@ -297,7 +296,8 @@ Thông báo nhắc lịch.
 ## Sơ đồ quan hệ (Module Schedule)
 
 ```
-departments ──── 1-n ──► schedules
+organizations ──── 1-n ──► users
+
 users ──┬── chairperson_id ──► schedules
         ├── created_by ──► schedules
         ├── user_id ──► schedule_participants

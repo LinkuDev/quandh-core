@@ -2,10 +2,10 @@
 
 namespace Database\Seeders;
 
-use App\Modules\Core\Models\Department;
 use App\Modules\Core\Models\User;
 use App\Modules\Schedule\Enums\MeetingTypeEnum;
 use App\Modules\Schedule\Enums\ScheduleNatureEnum;
+use App\Modules\Schedule\Enums\ScheduleTypeEnum;
 use App\Modules\Schedule\Models\Schedule;
 use App\Modules\Schedule\Models\ScheduleNotification;
 use App\Modules\Schedule\Models\ScheduleParticipant;
@@ -43,14 +43,14 @@ class DatabaseSeeder extends Seeder
     protected function seedScheduleData(): void
     {
         $users = User::all();
-        $departments = Department::where('status', 'active')->get();
 
-        if ($users->isEmpty() || $departments->isEmpty()) {
+        if ($users->isEmpty()) {
             return;
         }
 
         $meetingTypes = MeetingTypeEnum::values();
         $natures = ScheduleNatureEnum::values();
+        $scheduleTypes = ScheduleTypeEnum::values();
 
         $locations = ['Phòng họp A', 'Phòng họp B', 'Hội trường lớn', 'Phòng tiếp dân', 'Phòng làm việc Bí thư'];
         $contents = [
@@ -88,7 +88,7 @@ class DatabaseSeeder extends Seeder
             $schedulesPerDay = rand(2, 5);
 
             for ($i = 0; $i < $schedulesPerDay; $i++) {
-                $dept = $departments->random();
+                $scheduleType = fake()->randomElement($scheduleTypes);
                 $startTime = fake()->randomElement(['07:30', '08:00', '08:30', '09:00', '13:30', '14:00', '14:30', '19:00', '19:30']);
                 $session = match (true) {
                     (int) $startTime < 12 => 'sang',
@@ -102,11 +102,11 @@ class DatabaseSeeder extends Seeder
                 /* Người tạo lịch = chairperson hoặc 1 user khác */
                 $creator = fake()->boolean(70) ? $chairperson : $users->random();
 
-                $scopeKey = "{$date}_{$dept->id}";
+                $scopeKey = "{$date}_{$scheduleType}";
                 $sortOrder[$scopeKey] = ($sortOrder[$scopeKey] ?? 0) + 1;
 
                 $schedule = Schedule::withoutEvents(function () use (
-                    $date, $session, $startTime, $dept, $chairperson, $creator,
+                    $date, $session, $startTime, $scheduleType, $chairperson, $creator,
                     $meetingTypes, $natures, $contents, $locations, $prepUnits, $sortOrder, $scopeKey
                 ) {
                     return Schedule::create([
@@ -122,7 +122,7 @@ class DatabaseSeeder extends Seeder
                         'nature' => fake()->randomElement($natures),
                         'color_code' => fake()->optional(0.3)->hexColor(),
                         'sort_order' => $sortOrder[$scopeKey],
-                        'department_id' => $dept->id,
+                        'schedule_type' => $scheduleType,
                         'status' => 'active',
                         'created_by' => $creator->id,
                         'updated_by' => $creator->id,

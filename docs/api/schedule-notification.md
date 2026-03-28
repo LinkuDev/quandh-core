@@ -31,7 +31,7 @@
         "content": "Họp Ban Thường vụ",
         "event_date": "01/04/2026",
         "session": "sang",
-        "department": "Thường trực Thành ủy"
+        "schedule_type": "Thường trực Thành ủy"
       },
       "channel": "website",
       "status": "sent",

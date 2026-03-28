@@ -3,23 +3,25 @@
 namespace Database\Seeders;
 
 use App\Modules\Core\Enums\StatusEnum;
-use App\Modules\Core\Models\Department;
+use App\Modules\Core\Models\Organization;
 use App\Modules\Core\Models\Permission;
 use App\Modules\Core\Models\Role;
 use App\Modules\Core\Models\User;
 use Illuminate\Database\Seeder;
 
 /**
- * Seed permission, role, department và phân quyền cho dự án.
+ * Seed permission, role, organization và phân quyền cho dự án.
  *
  * Permissions tách theo module prefix:
- * - Core: users.*, permissions.*, roles.*, departments.*, log-activities.*, settings.*
+ * - Core: users.*, permissions.*, roles.*, log-activities.*, settings.*
  * - Thường trực: thuong-truc-schedules.*
  * - Văn phòng: van-phong-schedules.* (có thêm approve)
  */
 class PermissionSeeder extends Seeder
 {
     protected const GUARD = 'web';
+
+    protected Organization $defaultOrganization;
 
     protected static array $PERMISSIONS = [
         // Core - Users
@@ -66,7 +68,7 @@ class PermissionSeeder extends Seeder
     public function run(): void
     {
         $this->migrateGuardApiToWeb();
-        $this->seedDepartments();
+        $this->seedDefaultOrganization();
         $this->seedPermissions();
         $this->seedRoles();
         $this->assignPermissionsToRoles();
@@ -80,23 +82,14 @@ class PermissionSeeder extends Seeder
         app(\Spatie\Permission\PermissionRegistrar::class)->forgetCachedPermissions();
     }
 
-    /** Tạo departments theo cơ cấu Thành ủy (dùng cho schedule.department_id). */
-    protected function seedDepartments(): void
+    /** Tạo tổ chức mặc định (multi-tenant: mỗi tổ chức có users riêng). */
+    protected function seedDefaultOrganization(): void
     {
-        Department::firstOrCreate(
-            ['slug' => 'thuong-truc-thanh-uy'],
+        $this->defaultOrganization = Organization::firstOrCreate(
+            ['slug' => 'default'],
             [
-                'name' => 'Thường trực Thành ủy',
-                'description' => 'Thường trực Thành ủy',
-                'status' => StatusEnum::Active->value,
-            ]
-        );
-
-        Department::firstOrCreate(
-            ['slug' => 'van-phong-thanh-uy'],
-            [
-                'name' => 'Văn phòng Thành ủy',
-                'description' => 'Văn phòng Thành ủy',
+                'name' => 'Tổ chức mặc định',
+                'description' => 'Tổ chức mặc định của hệ thống',
                 'status' => StatusEnum::Active->value,
             ]
         );
@@ -250,6 +243,7 @@ class PermissionSeeder extends Seeder
                 'password' => '123123',
                 'status' => StatusEnum::Active->value,
                 'email_verified_at' => now(),
+                'organization_id' => $this->defaultOrganization->id,
             ]
         );
         $adminUser->forceFill(['created_by' => $adminUser->id, 'updated_by' => $adminUser->id])->save();
@@ -266,6 +260,7 @@ class PermissionSeeder extends Seeder
                 'password' => '123123',
                 'status' => StatusEnum::Active->value,
                 'email_verified_at' => now(),
+                'organization_id' => $this->defaultOrganization->id,
             ]
         );
         $thuKyUser->forceFill(['created_by' => $adminUser->id, 'updated_by' => $adminUser->id])->save();
@@ -282,6 +277,7 @@ class PermissionSeeder extends Seeder
                 'password' => '123123',
                 'status' => StatusEnum::Active->value,
                 'email_verified_at' => now(),
+                'organization_id' => $this->defaultOrganization->id,
             ]
         );
         $tongHopUser->forceFill(['created_by' => $adminUser->id, 'updated_by' => $adminUser->id])->save();
@@ -298,12 +294,16 @@ class PermissionSeeder extends Seeder
                 'password' => '123123',
                 'status' => StatusEnum::Active->value,
                 'email_verified_at' => now(),
+                'organization_id' => $this->defaultOrganization->id,
             ]
         );
         $canBoUser->forceFill(['created_by' => $adminUser->id, 'updated_by' => $adminUser->id])->save();
         if ($canBoRole) {
             $canBoUser->syncRoles([$canBoRole]);
         }
+
+        // Gán organization cho users đã tồn tại chưa có organization_id
+        User::whereNull('organization_id')->update(['organization_id' => $this->defaultOrganization->id]);
     }
 
     protected function getAllPermissionNames(): array

@@ -14,7 +14,7 @@ class LogActivitiesExport implements FromCollection, WithHeadings
 
     public function collection()
     {
-        $logs = LogActivity::with(['user', 'department'])
+        $logs = LogActivity::with(['user'])
             ->filter($this->filters)
             ->get();
 
@@ -24,7 +24,6 @@ class LogActivitiesExport implements FromCollection, WithHeadings
             'user_type' => $log->user_type,
             'user_id' => $log->user_id,
             'user_name' => $log->user?->name ?? 'Guest',
-            'department_id' => $log->department_id,
             'route' => $log->route,
             'method_type' => $log->method_type,
             'status_code' => $log->status_code,
@@ -45,7 +44,6 @@ class LogActivitiesExport implements FromCollection, WithHeadings
             'User Type',
             'User ID',
             'User Name',
-            'Department ID',
             'Route',
             'Method Type',
             'Status Code',
