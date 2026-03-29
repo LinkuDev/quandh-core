@@ -17,11 +17,13 @@ class PermissionTreeResource extends JsonResource
             'description' => $this->description,
             'sort_order' => $this->sort_order,
             'parent_id' => $this->parent_id,
+            'roles' => $this->whenLoaded('roles', fn () => $this->roles->pluck('name')->values(), []),
             'children' => $this->whenLoaded(
                 'children',
                 fn () => PermissionTreeResource::collection($this->children),
                 []
             ),
+            'created_at' => $this->created_at?->format('d/m/Y H:i:s'),
         ];
     }
 }

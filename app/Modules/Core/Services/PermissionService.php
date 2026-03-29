@@ -28,7 +28,7 @@ class PermissionService
 
     public function tree($parentIdProvided, $parentId)
     {
-        $query = Permission::query()
+        $query = Permission::with('roles')
             ->when($parentIdProvided, fn ($q) => $q->where('parent_id', $parentId));
 
         $items = $query->orderBy('sort_order')->orderBy('id')->get();
