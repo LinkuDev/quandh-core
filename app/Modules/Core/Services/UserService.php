@@ -14,6 +14,8 @@ use Symfony\Component\HttpFoundation\BinaryFileResponse;
 
 class UserService
 {
+    public function __construct(private MediaService $mediaService) {}
+
     public function stats(array $filters): array
     {
         $base = User::filter($filters);
@@ -39,7 +41,8 @@ class UserService
     {
         return DB::transaction(function () use ($data) {
             $roleId = $data['role_id'] ?? null;
-            unset($data['role_id']);
+            $avatar = $data['avatar'] ?? null;
+            unset($data['role_id'], $data['avatar']);
 
             $data['password'] = Hash::make($data['password']);
 
@@ -47,6 +50,10 @@ class UserService
 
             if ($roleId) {
                 $this->syncRole($user, (int) $roleId);
+            }
+
+            if ($avatar) {
+                $this->mediaService->uploadOne($user, $avatar, 'avatar', ['disk' => 'public']);
             }
 
             return $user->fresh();
@@ -58,7 +65,8 @@ class UserService
         return DB::transaction(function () use ($user, $data) {
             $hasRole = array_key_exists('role_id', $data);
             $roleId = $data['role_id'] ?? null;
-            unset($data['role_id']);
+            $avatar = $data['avatar'] ?? null;
+            unset($data['role_id'], $data['avatar']);
 
             if (isset($data['password'])) {
                 $data['password'] = Hash::make($data['password']);
@@ -68,6 +76,10 @@ class UserService
 
             if ($hasRole) {
                 $this->syncRole($user, $roleId ? (int) $roleId : null);
+            }
+
+            if ($avatar) {
+                $this->mediaService->uploadOne($user, $avatar, 'avatar', ['disk' => 'public']);
             }
 
             return $user->fresh();

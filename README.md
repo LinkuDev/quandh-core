@@ -40,6 +40,7 @@ cp .env.example .env
 ```bash
 ./vendor/bin/sail artisan key:generate
 ./vendor/bin/sail artisan migrate --seed
+./vendor/bin/sail artisan storage:link
 ```
 
 5. Cài frontend dependencies:

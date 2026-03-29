@@ -14,6 +14,7 @@ class UserResource extends JsonResource
     {
         return [
             'id' => $this->id,
+            'avatar' => $this->getFirstMedia('avatar') ? '/storage/'.$this->getFirstMedia('avatar')->getPathRelativeToRoot() : null,
             'name' => $this->name,
             'email' => $this->email,
             'user_name' => $this->user_name,

@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Modules\Core\Models\Organization;
+use App\Modules\Core\Models\Role;
 use App\Modules\Core\Models\User;
 use App\Modules\Schedule\Enums\MeetingTypeEnum;
 use App\Modules\Schedule\Enums\ScheduleNatureEnum;
@@ -27,13 +29,25 @@ class DatabaseSeeder extends Seeder
      */
     protected function seedRandomUsers(): void
     {
+        $org = Organization::where('slug', 'default')->first();
+        $roles = Role::where('guard_name', 'web')->get();
+
+        if (! $org || $roles->isEmpty()) {
+            return;
+        }
+
         for ($i = 0; $i < 10; $i++) {
-            User::factory()->create([
+            $user = User::factory()->create([
                 'phone' => fake()->numerify('09########'),
                 'zalo_id' => fake()->optional(0.5)->numerify('09########'),
                 'created_by' => 1,
                 'updated_by' => 1,
             ]);
+
+            // Gán random role trong org mặc định
+            $role = $roles->random();
+            setPermissionsTeamId($org->id);
+            $user->assignRole($role);
         }
     }
 

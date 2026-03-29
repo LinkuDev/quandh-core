@@ -12,6 +12,9 @@ class UpdateSettingRequest extends FormRequest
         return true;
     }
 
+    /** Key cho phép upload file thay vì text. */
+    protected array $fileKeys = ['logo', 'favicon', 'og_image'];
+
     public function rules(): array
     {
         $validKeys = Setting::pluck('type', 'key')->all();
@@ -23,7 +26,9 @@ class UpdateSettingRequest extends FormRequest
             }
 
             $type = $validKeys[$key];
-            $rules[$key] = $this->ruleForType($type);
+            $rules[$key] = in_array($key, $this->fileKeys)
+                ? ['nullable', 'file', 'image', 'max:2048']
+                : $this->ruleForType($type);
         }
 
         return $rules;

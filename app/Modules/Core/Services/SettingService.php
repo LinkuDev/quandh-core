@@ -3,6 +3,7 @@
 namespace App\Modules\Core\Services;
 
 use App\Modules\Core\Models\Setting;
+use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 
@@ -95,11 +96,18 @@ class SettingService
 
     /**
      * Chuyển value sang string để lưu DB.
+     * File upload (logo, favicon...) → store vào public disk rồi lưu URL.
      */
     protected function stringifyValue(mixed $value, string $type): ?string
     {
         if ($value === null) {
             return null;
+        }
+
+        if ($value instanceof UploadedFile) {
+            $path = $value->store('settings', 'public');
+
+            return '/storage/'.$path;
         }
 
         if ($type === 'json') {

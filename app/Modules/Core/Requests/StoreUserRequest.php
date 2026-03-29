@@ -30,6 +30,7 @@ class StoreUserRequest extends FormRequest
             'phone' => 'nullable|string|max:20',
             'zalo_id' => 'nullable|string|max:100',
             'role_id' => 'required|integer|exists:roles,id',
+            'avatar' => 'nullable|file|image|max:2048',
         ];
     }
 
@@ -64,6 +65,7 @@ class StoreUserRequest extends FormRequest
             'phone' => ['description' => 'Số điện thoại', 'example' => '0901234567'],
             'zalo_id' => ['description' => 'Zalo ID', 'example' => '0901234567'],
             'role_id' => ['description' => 'ID vai trò (position tự derive từ role name)', 'example' => 1],
+            'avatar' => ['description' => 'Ảnh đại diện (file upload, tối đa 2MB)'],
         ];
     }
 }

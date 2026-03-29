@@ -23,13 +23,14 @@ class UpdateUserRequest extends FormRequest
     {
         return [
             'name' => 'sometimes|string|max:255',
-            'email' => 'sometimes|email|unique:users,email,'.$this->route('user'),
-            'user_name' => 'sometimes|nullable|string|max:100|unique:users,user_name,'.$this->route('user').'|regex:/^[a-zA-Z0-9._-]*$/',
+            'email' => 'sometimes|email|unique:users,email,'.$this->route('user')?->id,
+            'user_name' => 'sometimes|nullable|string|max:100|unique:users,user_name,'.$this->route('user')?->id.'|regex:/^[a-zA-Z0-9._-]*$/',
             'password' => 'sometimes|string|min:6|confirmed',
             'status' => ['sometimes', 'in:'.implode(',', UserStatusEnum::values())],
             'phone' => 'sometimes|nullable|string|max:20',
             'zalo_id' => 'sometimes|nullable|string|max:100',
             'role_id' => 'sometimes|integer|exists:roles,id',
+            'avatar' => 'nullable|file|image|max:2048',
         ];
     }
 
@@ -60,6 +61,7 @@ class UpdateUserRequest extends FormRequest
             'phone' => ['description' => 'Số điện thoại', 'example' => '0901234567'],
             'zalo_id' => ['description' => 'Zalo ID', 'example' => '0901234567'],
             'role_id' => ['description' => 'ID vai trò (đổi role = đổi position)', 'example' => 1],
+            'avatar' => ['description' => 'Ảnh đại diện (file upload, tối đa 2MB)'],
         ];
     }
 }
