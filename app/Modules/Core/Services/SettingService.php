@@ -107,7 +107,7 @@ class SettingService
         }
 
         if ($type === 'boolean') {
-            return $value ? '1' : '0';
+            return in_array($value, [true, 1, '1', 'true'], false) ? '1' : '0';
         }
 
         return (string) $value;

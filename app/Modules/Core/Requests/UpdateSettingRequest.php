@@ -33,9 +33,9 @@ class UpdateSettingRequest extends FormRequest
     {
         return match ($type) {
             'integer' => ['nullable', 'integer', 'min:0'],
-            'boolean' => ['nullable', 'boolean'],
+            'boolean' => ['nullable', 'in:true,false,1,0,"1","0"'],
             'json' => ['nullable'], // Chấp nhận array hoặc JSON string
-            default => ['nullable', 'string', 'max:65535'],
+            default => ['nullable', 'max:65535'],
         };
     }
 
