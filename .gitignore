@@ -29,3 +29,6 @@ Thumbs.db
 /frontend
 
 /.scribe
+/resources/views/scribe
+/public/vendor/scribe
+
