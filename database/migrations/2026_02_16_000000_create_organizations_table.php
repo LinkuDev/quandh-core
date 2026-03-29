@@ -8,7 +8,7 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('departments', function (Blueprint $table) {
+        Schema::create('organizations', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->string('slug')->nullable()->unique();
@@ -20,19 +20,15 @@ return new class extends Migration
             $table->unsignedBigInteger('updated_by')->nullable();
             $table->timestamps();
 
-            $table->foreign('parent_id')->references('id')->on('departments')->nullOnDelete();
+            $table->foreign('parent_id')->references('id')->on('organizations')->nullOnDelete();
             $table->foreign('created_by')->references('id')->on('users')->nullOnDelete();
             $table->foreign('updated_by')->references('id')->on('users')->nullOnDelete();
         });
 
-        // Thêm FK department_id cho bảng users (bảng users tạo trước, departments sau)
-        Schema::table('users', function (Blueprint $table) {
-            $table->foreign('department_id')->references('id')->on('departments')->nullOnDelete();
-        });
     }
 
     public function down(): void
     {
-        Schema::dropIfExists('departments');
+        Schema::dropIfExists('organizations');
     }
 };

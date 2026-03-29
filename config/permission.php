@@ -19,7 +19,7 @@ return [
         'role_pivot_key' => null,
         'permission_pivot_key' => null,
         'model_morph_key' => 'model_id',
-        'team_foreign_key' => 'team_id', // Teams mode đã tắt, giữ giá trị mặc định
+        'team_foreign_key' => 'organization_id',
     ],
 
     'register_permission_check_method' => true,
@@ -27,9 +27,10 @@ return [
     'events_enabled' => false,
 
     /*
-     * Teams mode đã tắt — phân quyền global, không gắn theo tổ chức/đơn vị.
+     * Bật tính năng Teams (Spatie): roles và permissions gắn với organization_id.
+     * Cần có bảng organizations trước khi chạy migration permission.
      */
-    'teams' => false,
+    'teams' => true,
 
     'team_resolver' => \Spatie\Permission\DefaultTeamResolver::class,
     'use_passport_client_credentials' => false,

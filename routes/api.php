@@ -10,6 +10,8 @@ Route::prefix('auth')->middleware('log.activity')->group(function () {
 
 // Cấu hình công khai - không cần xác thực
 Route::get('/settings/public', [\App\Modules\Core\SettingController::class, 'public'])->middleware('log.activity');
+Route::get('/organizations/public', [\App\Modules\Core\OrganizationController::class, 'public'])->middleware('log.activity');
+Route::get('/organizations/public-options', [\App\Modules\Core\OrganizationController::class, 'publicOptions'])->middleware('log.activity');
 Route::get('/schedules/public', [\App\Modules\Schedule\ScheduleController::class, 'publicIndex'])->middleware('log.activity');
 
 // Route yêu cầu đăng nhập (Bearer token)
@@ -30,6 +32,9 @@ Route::middleware(['auth:sanctum', 'set.permissions.team', 'log.activity'])->gro
     });
     Route::prefix('settings')->group(function () {
         require base_path('app/Modules/Core/Routes/setting.php');
+    });
+    Route::prefix('organizations')->group(function () {
+        require base_path('app/Modules/Core/Routes/organization.php');
     });
     Route::prefix('schedules')->group(function () {
         require base_path('app/Modules/Schedule/Routes/schedule.php');

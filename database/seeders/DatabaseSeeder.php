@@ -15,26 +15,26 @@ class DatabaseSeeder extends Seeder
 {
     public function run(): void
     {
-        $this->seedUsers();
+        // PermissionSeeder tạo organization + fixed users + roles/permissions trước
         $this->call(PermissionSeeder::class);
         $this->call(SettingSeeder::class);
+        $this->seedRandomUsers();
         $this->seedScheduleData();
     }
 
     /**
-     * Tạo user mẫu (position tự derive từ role qua accessor).
+     * Tạo thêm user ngẫu nhiên để test.
      */
-    protected function seedUsers(): void
+    protected function seedRandomUsers(): void
     {
         for ($i = 0; $i < 10; $i++) {
             User::factory()->create([
                 'phone' => fake()->numerify('09########'),
                 'zalo_id' => fake()->optional(0.5)->numerify('09########'),
+                'created_by' => 1,
+                'updated_by' => 1,
             ]);
         }
-
-        User::where('id', 1)->update(['created_by' => 1, 'updated_by' => 1]);
-        User::where('id', '>', 1)->update(['created_by' => 1, 'updated_by' => 1]);
     }
 
     /**

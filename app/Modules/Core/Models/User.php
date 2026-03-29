@@ -28,7 +28,6 @@ class User extends Authenticatable
         'status',
         'phone',
         'zalo_id',
-        'organization_id',
         'created_by',
         'updated_by',
     ];
@@ -37,8 +36,6 @@ class User extends Authenticatable
         'password',
         'remember_token',
     ];
-
-    protected $appends = ['position'];
 
     protected static function booted()
     {
@@ -54,19 +51,6 @@ class User extends Authenticatable
         ];
     }
 
-    /**
-     * position = tên role đầu tiên của user (derive từ many-to-many với Spatie roles).
-     */
-    public function getPositionAttribute(): ?string
-    {
-        return $this->roles->first()?->name;
-    }
-
-    public function organization()
-    {
-        return $this->belongsTo(\App\Modules\Core\Models\Organization::class);
-    }
-
     public function creator()
     {
         return $this->belongsTo(User::class, 'created_by');
@@ -75,6 +59,12 @@ class User extends Authenticatable
     public function editor()
     {
         return $this->belongsTo(User::class, 'updated_by');
+    }
+
+    /** Tuỳ chọn 1–1: tổ chức làm việc gần nhất (lưu trong user_preferences). */
+    public function preference()
+    {
+        return $this->hasOne(UserPreference::class);
     }
 
     public function scopeFilter($query, array $filters)

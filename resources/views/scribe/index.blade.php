@@ -27,7 +27,7 @@
             </style>
 
     <script>
-        var tryItOutBaseUrl = "http://localhost:8000";
+        var tryItOutBaseUrl = "http://localhost";
         var useCsrf = Boolean();
         var csrfUrl = "/sanctum/csrf-cookie";
     </script>
@@ -85,11 +85,11 @@
                                                                                 <li class="tocify-item level-2" data-unique="auth-POSTapi-auth-logout">
                                 <a href="#auth-POSTapi-auth-logout">Đăng xuất</a>
                             </li>
-                                                                                <li class="tocify-item level-2" data-unique="auth-POSTapi-auth-switch-department">
-                                <a href="#auth-POSTapi-auth-switch-department">Chuyển đơn vị làm việc</a>
+                                                                                <li class="tocify-item level-2" data-unique="auth-POSTapi-auth-switch-organization">
+                                <a href="#auth-POSTapi-auth-switch-organization">Chuyển tổ chức làm việc</a>
                             </li>
                                                                                 <li class="tocify-item level-2" data-unique="auth-GETapi-user">
-                                <a href="#auth-GETapi-user">Lấy thông tin user đăng nhập hiện tại kèm roles và permissions của đơn vị đang chọn.</a>
+                                <a href="#auth-GETapi-user">Lấy thông tin user đăng nhập hiện tại kèm roles và permissions của tổ chức đang chọn.</a>
                             </li>
                                                                         </ul>
                             </ul>
@@ -121,6 +121,58 @@
                             </li>
                                                                                 <li class="tocify-item level-2" data-unique="core-logactivity-DELETEapi-log-activities--logActivity_id-">
                                 <a href="#core-logactivity-DELETEapi-log-activities--logActivity_id-">Xóa nhật ký</a>
+                            </li>
+                                                                        </ul>
+                            </ul>
+                    <ul id="tocify-header-core-organization" class="tocify-header">
+                <li class="tocify-item level-1" data-unique="core-organization">
+                    <a href="#core-organization">Core - Organization</a>
+                </li>
+                                    <ul id="tocify-subheader-core-organization" class="tocify-subheader">
+                                                    <li class="tocify-item level-2" data-unique="core-organization-GETapi-organizations-public">
+                                <a href="#core-organization-GETapi-organizations-public">Danh sách organization công khai</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="core-organization-GETapi-organizations-public-options">
+                                <a href="#core-organization-GETapi-organizations-public-options">Danh sách organization công khai cho dropdown</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="core-organization-GETapi-organizations-export">
+                                <a href="#core-organization-GETapi-organizations-export">Xuất danh sách organization</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="core-organization-POSTapi-organizations-import">
+                                <a href="#core-organization-POSTapi-organizations-import">Nhập danh sách organization</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="core-organization-POSTapi-organizations-bulk-delete">
+                                <a href="#core-organization-POSTapi-organizations-bulk-delete">Xóa hàng loạt organization</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="core-organization-PATCHapi-organizations-bulk-status">
+                                <a href="#core-organization-PATCHapi-organizations-bulk-status">Cập nhật trạng thái organization hàng loạt</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="core-organization-GETapi-organizations-stats">
+                                <a href="#core-organization-GETapi-organizations-stats">Thống kê organization</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="core-organization-GETapi-organizations-tree">
+                                <a href="#core-organization-GETapi-organizations-tree">Cây organization (toàn bộ cây, không phân trang). Cấu trúc parent_id.</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="core-organization-GETapi-organizations">
+                                <a href="#core-organization-GETapi-organizations">Danh sách organization</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="core-organization-GETapi-organizations--organization_id-">
+                                <a href="#core-organization-GETapi-organizations--organization_id-">Chi tiết organization</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="core-organization-POSTapi-organizations">
+                                <a href="#core-organization-POSTapi-organizations">Tạo organization mới</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="core-organization-PUTapi-organizations--organization_id-">
+                                <a href="#core-organization-PUTapi-organizations--organization_id-">Cập nhật organization</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="core-organization-PATCHapi-organizations--organization_id-">
+                                <a href="#core-organization-PATCHapi-organizations--organization_id-">Cập nhật organization</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="core-organization-DELETEapi-organizations--organization_id-">
+                                <a href="#core-organization-DELETEapi-organizations--organization_id-">Xóa organization</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="core-organization-PATCHapi-organizations--organization_id--status">
+                                <a href="#core-organization-PATCHapi-organizations--organization_id--status">Thay đổi trạng thái organization</a>
                             </li>
                                                                         </ul>
                             </ul>
@@ -352,7 +404,7 @@
     </ul>
 
     <ul class="toc-footer" id="last-updated">
-        <li>Last updated: March 26, 2026</li>
+        <li>Last updated: March 29, 2026</li>
     </ul>
 </div>
 
@@ -362,7 +414,7 @@
         <h1 id="introduction">Introduction</h1>
 <p>Quandh Core API - RESTful API cho quản lý xác thực (Auth), người dùng (User) và bài viết (Post). Sử dụng Laravel Sanctum để xác thực Bearer token.</p>
 <aside>
-    <strong>Base URL</strong>: <code>http://localhost:8000</code>
+    <strong>Base URL</strong>: <code>http://localhost</code>
 </aside>
 <pre><code>Tài liệu này cung cấp thông tin chi tiết để tích hợp và sử dụng Quandh Core API.
 
@@ -371,7 +423,7 @@
         <h1 id="authenticating-requests">Authenticating requests</h1>
 <p>To authenticate requests, include an <strong><code>Authorization</code></strong> header with the value <strong><code>"Bearer Bearer {YOUR_ACCESS_TOKEN}"</code></strong>.</p>
 <p>All authenticated endpoints are marked with a <code>requires authentication</code> badge in the documentation below.</p>
-<p>Đăng nhập qua <code>POST /api/auth/login</code> với email và password để nhận <code>access_token</code>. Gửi token trong header <code>Authorization: Bearer {token}</code> cho các endpoint cần xác thực.<br><br><strong>X-Department-Id (bắt buộc cho hầu hết endpoint yêu cầu auth):</strong> Các endpoint trong nhóm users, roles, permissions, departments, posts, post-categories, documents, log-activities, settings... cần thêm header <code>X-Department-Id: {department_id}</code> để xác định tổ chức làm việc. Các route <code>/api/auth/*</code> (login, logout, switch-department, forgot-password, reset-password) không cần header này.</p>
+<p>Đăng nhập qua <code>POST /api/auth/login</code> với email và password để nhận <code>access_token</code>. Gửi token trong header <code>Authorization: Bearer {token}</code> cho các endpoint cần xác thực.</p>
 
         <h1 id="auth">Auth</h1>
 
@@ -382,7 +434,8 @@
 <p>
 </p>
 
-<p>Trả về access_token, thông tin user và danh sách department user có thể truy cập.</p>
+<p>Trả về access_token, thông tin user và danh sách organization user có thể truy cập.
+<code>current_organization_id</code> lấy từ bảng <code>user_preferences</code> nếu còn hợp lệ; nếu user chỉ có đúng một tổ chức thì tự gán và lưu preference; nếu có nhiều tổ chức và chưa có preference hợp lệ thì trả <code>null</code> (frontend cần màn chọn tổ chức rồi gọi switch-organization).</p>
 
 <span id="example-requests-POSTapi-auth-login">
 <blockquote>Example request:</blockquote>
@@ -390,7 +443,7 @@
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost:8000/api/auth/login" \
+    "http://localhost/api/auth/login" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -402,7 +455,7 @@
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/auth/login"
+    "http://localhost/api/auth/login"
 );
 
 const headers = {
@@ -424,7 +477,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost:8000/api/auth/login';
+$url = 'http://localhost/api/auth/login';
 $response = $client-&gt;post(
     $url,
     [
@@ -459,13 +512,13 @@ print_r(json_decode((string) $body));</code></pre></div>
             &quot;id&quot;: 1,
             &quot;name&quot;: &quot;Admin&quot;
         },
-        &quot;available_departments&quot;: [
+        &quot;available_organizations&quot;: [
             {
                 &quot;id&quot;: 2,
                 &quot;name&quot;: &quot;Sở Nội vụ&quot;
             }
         ],
-        &quot;current_department_id&quot;: 2,
+        &quot;current_organization_id&quot;: 2,
         &quot;roles&quot;: [
             &quot;admin&quot;
         ],
@@ -598,7 +651,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost:8000/api/auth/forgot-password" \
+    "http://localhost/api/auth/forgot-password" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -609,7 +662,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/auth/forgot-password"
+    "http://localhost/api/auth/forgot-password"
 );
 
 const headers = {
@@ -630,7 +683,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost:8000/api/auth/forgot-password';
+$url = 'http://localhost/api/auth/forgot-password';
 $response = $client-&gt;post(
     $url,
     [
@@ -759,7 +812,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost:8000/api/auth/reset-password" \
+    "http://localhost/api/auth/reset-password" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -773,7 +826,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/auth/reset-password"
+    "http://localhost/api/auth/reset-password"
 );
 
 const headers = {
@@ -797,7 +850,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost:8000/api/auth/reset-password';
+$url = 'http://localhost/api/auth/reset-password';
 $response = $client-&gt;post(
     $url,
     [
@@ -966,7 +1019,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost:8000/api/auth/logout" \
+    "http://localhost/api/auth/logout" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -974,7 +1027,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/auth/logout"
+    "http://localhost/api/auth/logout"
 );
 
 const headers = {
@@ -992,7 +1045,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost:8000/api/auth/logout';
+$url = 'http://localhost/api/auth/logout';
 $response = $client-&gt;post(
     $url,
     [
@@ -1105,33 +1158,33 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </div>
                         </form>
 
-                    <h2 id="auth-POSTapi-auth-switch-department">Chuyển đơn vị làm việc</h2>
+                    <h2 id="auth-POSTapi-auth-switch-organization">Chuyển tổ chức làm việc</h2>
 
 <p>
 <small class="badge badge-darkred">requires authentication</small>
 </p>
 
-<p>Chọn department để frontend gắn vào header <code>X-Department-Id</code> cho các request tiếp theo.</p>
+<p>Chọn organization để frontend gắn vào header <code>X-Organization-Id</code> cho các request tiếp theo. Lưu <code>current_organization_id</code> vào bảng <code>user_preferences</code> để lần đăng nhập sau tự nhớ (nếu còn hợp lệ).</p>
 
-<span id="example-requests-POSTapi-auth-switch-department">
+<span id="example-requests-POSTapi-auth-switch-organization">
 <blockquote>Example request:</blockquote>
 
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost:8000/api/auth/switch-department" \
+    "http://localhost/api/auth/switch-organization" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"department_id\": 2
+    \"organization_id\": 2
 }"
 </code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/auth/switch-department"
+    "http://localhost/api/auth/switch-organization"
 );
 
 const headers = {
@@ -1141,7 +1194,7 @@ const headers = {
 };
 
 let body = {
-    "department_id": 2
+    "organization_id": 2
 };
 
 fetch(url, {
@@ -1153,7 +1206,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost:8000/api/auth/switch-department';
+$url = 'http://localhost/api/auth/switch-organization';
 $response = $client-&gt;post(
     $url,
     [
@@ -1163,7 +1216,7 @@ $response = $client-&gt;post(
             'Accept' =&gt; 'application/json',
         ],
         'json' =&gt; [
-            'department_id' =&gt; 2,
+            'organization_id' =&gt; 2,
         ],
     ]
 );
@@ -1172,7 +1225,7 @@ print_r(json_decode((string) $body));</code></pre></div>
 
 </span>
 
-<span id="example-responses-POSTapi-auth-switch-department">
+<span id="example-responses-POSTapi-auth-switch-organization">
             <blockquote>
             <p>Example response (200):</p>
         </blockquote>
@@ -1180,10 +1233,10 @@ print_r(json_decode((string) $body));</code></pre></div>
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;success&quot;: true,
-    &quot;message&quot;: &quot;Đ&atilde; chuyển đơn vị l&agrave;m việc.&quot;,
+    &quot;message&quot;: &quot;Đ&atilde; chuyển tổ chức l&agrave;m việc.&quot;,
     &quot;data&quot;: {
-        &quot;current_department_id&quot;: 2,
-        &quot;current_department&quot;: {
+        &quot;current_organization_id&quot;: 2,
+        &quot;current_organization&quot;: {
             &quot;id&quot;: 2,
             &quot;name&quot;: &quot;Sở Nội vụ&quot;
         },
@@ -1208,43 +1261,43 @@ print_r(json_decode((string) $body));</code></pre></div>
 }</code>
  </pre>
     </span>
-<span id="execution-results-POSTapi-auth-switch-department" hidden>
+<span id="execution-results-POSTapi-auth-switch-organization" hidden>
     <blockquote>Received response<span
-                id="execution-response-status-POSTapi-auth-switch-department"></span>:
+                id="execution-response-status-POSTapi-auth-switch-organization"></span>:
     </blockquote>
-    <pre class="json"><code id="execution-response-content-POSTapi-auth-switch-department"
+    <pre class="json"><code id="execution-response-content-POSTapi-auth-switch-organization"
       data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
 </span>
-<span id="execution-error-POSTapi-auth-switch-department" hidden>
+<span id="execution-error-POSTapi-auth-switch-organization" hidden>
     <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-POSTapi-auth-switch-department">
+    <pre><code id="execution-error-message-POSTapi-auth-switch-organization">
 
 Tip: Check that you&#039;re properly connected to the network.
 If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
 You can check the Dev Tools console for debugging information.</code></pre>
 </span>
-<form id="form-POSTapi-auth-switch-department" data-method="POST"
-      data-path="api/auth/switch-department"
+<form id="form-POSTapi-auth-switch-organization" data-method="POST"
+      data-path="api/auth/switch-organization"
       data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
       autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('POSTapi-auth-switch-department', this);">
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-auth-switch-organization', this);">
     <h3>
         Request&nbsp;&nbsp;&nbsp;
                     <button type="button"
                     style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-POSTapi-auth-switch-department"
-                    onclick="tryItOut('POSTapi-auth-switch-department');">Try it out ⚡
+                    id="btn-tryout-POSTapi-auth-switch-organization"
+                    onclick="tryItOut('POSTapi-auth-switch-organization');">Try it out ⚡
             </button>
             <button type="button"
                     style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-POSTapi-auth-switch-department"
-                    onclick="cancelTryOut('POSTapi-auth-switch-department');" hidden>Cancel 🛑
+                    id="btn-canceltryout-POSTapi-auth-switch-organization"
+                    onclick="cancelTryOut('POSTapi-auth-switch-organization');" hidden>Cancel 🛑
             </button>&nbsp;&nbsp;
             <button type="submit"
                     style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-POSTapi-auth-switch-department"
+                    id="btn-executetryout-POSTapi-auth-switch-organization"
                     data-initial-text="Send Request 💥"
                     data-loading-text="⏱ Sending..."
                     hidden>Send Request 💥
@@ -1252,7 +1305,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </h3>
             <p>
             <small class="badge badge-black">POST</small>
-            <b><code>api/auth/switch-department</code></b>
+            <b><code>api/auth/switch-organization</code></b>
         </p>
                 <h4 class="fancy-heading-panel"><b>Headers</b></h4>
                                 <div style="padding-left: 28px; clear: unset;">
@@ -1261,7 +1314,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="Authorization" class="auth-value"               data-endpoint="POSTapi-auth-switch-department"
+                              name="Authorization" class="auth-value"               data-endpoint="POSTapi-auth-switch-organization"
                value="Bearer Bearer {YOUR_ACCESS_TOKEN}"
                data-component="header">
     <br>
@@ -1273,7 +1326,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="Content-Type"                data-endpoint="POSTapi-auth-switch-department"
+                              name="Content-Type"                data-endpoint="POSTapi-auth-switch-organization"
                value="application/json"
                data-component="header">
     <br>
@@ -1285,7 +1338,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="Accept"                data-endpoint="POSTapi-auth-switch-department"
+                              name="Accept"                data-endpoint="POSTapi-auth-switch-organization"
                value="application/json"
                data-component="header">
     <br>
@@ -1293,26 +1346,26 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </div>
                                 <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
         <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>department_id</code></b>&nbsp;&nbsp;
+            <b style="line-height: 2;"><code>organization_id</code></b>&nbsp;&nbsp;
 <small>integer</small>&nbsp;
  &nbsp;
  &nbsp;
                 <input type="number" style="display: none"
-               step="any"               name="department_id"                data-endpoint="POSTapi-auth-switch-department"
+               step="any"               name="organization_id"                data-endpoint="POSTapi-auth-switch-organization"
                value="2"
                data-component="body">
     <br>
-<p>ID đơn vị muốn chuyển. Example: <code>2</code></p>
+<p>ID tổ chức muốn chuyển. Example: <code>2</code></p>
         </div>
         </form>
 
-                    <h2 id="auth-GETapi-user">Lấy thông tin user đăng nhập hiện tại kèm roles và permissions của đơn vị đang chọn.</h2>
+                    <h2 id="auth-GETapi-user">Lấy thông tin user đăng nhập hiện tại kèm roles và permissions của tổ chức đang chọn.</h2>
 
 <p>
 <small class="badge badge-darkred">requires authentication</small>
 </p>
 
-<p>Dùng để Vue Casl khởi tạo ability khi refresh trang. Cần header X-Department-Id (middleware set.permissions.team đã đặt ngữ cảnh).</p>
+<p>Dùng để Vue Casl khởi tạo ability khi refresh trang. Cần header X-Organization-Id (middleware set.permissions.team đã đặt ngữ cảnh).</p>
 
 <span id="example-requests-GETapi-user">
 <blockquote>Example request:</blockquote>
@@ -1320,7 +1373,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:8000/api/user" \
+    --get "http://localhost/api/user" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -1328,7 +1381,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/user"
+    "http://localhost/api/user"
 );
 
 const headers = {
@@ -1346,7 +1399,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost:8000/api/user';
+$url = 'http://localhost/api/user';
 $response = $client-&gt;get(
     $url,
     [
@@ -1483,7 +1536,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
                 <h1 id="core-logactivity">Core - LogActivity</h1>
 
-    
+    <p>Quản lý nhật ký truy cập: thống kê, danh sách, chi tiết, xuất Excel, xóa, xóa hàng loạt, xóa theo thời gian, xóa toàn bộ.</p>
 
                                 <h2 id="core-logactivity-GETapi-log-activities-export">Xuất danh sách nhật ký</h2>
 
@@ -1499,16 +1552,15 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:8000/api/log-activities/export?search=architecto&amp;status=active&amp;from_date=2026-01-01&amp;to_date=2026-12-31&amp;sort_by=architecto&amp;sort_order=desc%0A%0AXu%E1%BA%A5t+ra+c%C3%A1c+tr%C6%B0%E1%BB%9Dng%3A+id%2C+description%2C+user_type%2C+user_id%2C+user_name%2C+department_id%2C+route%2C+method_type%2C+status_code%2C+ip_address%2C+country%2C+user_agent%2C+request_data%2C+created_at%2C+updated_at.&amp;limit=10&amp;method_type=GET&amp;status_code=200" \
+    --get "http://localhost/api/log-activities/export?search=architecto&amp;status=active&amp;from_date=2026-01-01&amp;to_date=2026-12-31&amp;sort_by=architecto&amp;sort_order=desc%0A%0AXu%E1%BA%A5t+ra+c%C3%A1c+tr%C6%B0%E1%BB%9Dng%3A+id%2C+description%2C+user_type%2C+user_id%2C+user_name%2C+route%2C+method_type%2C+status_code%2C+ip_address%2C+country%2C+user_agent%2C+request_data%2C+created_at%2C+updated_at.&amp;limit=10&amp;method_type=GET&amp;status_code=200" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
-    --header "X-Department-Id: ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/log-activities/export"
+    "http://localhost/api/log-activities/export"
 );
 
 const params = {
@@ -1519,7 +1571,7 @@ const params = {
     "sort_by": "architecto",
     "sort_order": "desc
 
-Xuất ra các trường: id, description, user_type, user_id, user_name, department_id, route, method_type, status_code, ip_address, country, user_agent, request_data, created_at, updated_at.",
+Xuất ra các trường: id, description, user_type, user_id, user_name, route, method_type, status_code, ip_address, country, user_agent, request_data, created_at, updated_at.",
     "limit": "10",
     "method_type": "GET",
     "status_code": "200",
@@ -1529,7 +1581,6 @@ Object.keys(params)
 
 const headers = {
     "Authorization": "Bearer Bearer {YOUR_ACCESS_TOKEN}",
-    "X-Department-Id": "ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -1543,13 +1594,12 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost:8000/api/log-activities/export';
+$url = 'http://localhost/api/log-activities/export';
 $response = $client-&gt;get(
     $url,
     [
         'headers' =&gt; [
             'Authorization' =&gt; 'Bearer Bearer {YOUR_ACCESS_TOKEN}',
-            'X-Department-Id' =&gt; 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1',
             'Content-Type' =&gt; 'application/json',
             'Accept' =&gt; 'application/json',
         ],
@@ -1561,7 +1611,7 @@ $response = $client-&gt;get(
             'sort_by' =&gt; 'architecto',
             'sort_order' =&gt; 'desc
 
-Xuất ra các trường: id, description, user_type, user_id, user_name, department_id, route, method_type, status_code, ip_address, country, user_agent, request_data, created_at, updated_at.',
+Xuất ra các trường: id, description, user_type, user_id, user_name, route, method_type, status_code, ip_address, country, user_agent, request_data, created_at, updated_at.',
             'limit' =&gt; '10',
             'method_type' =&gt; 'GET',
             'status_code' =&gt; '200',
@@ -1649,18 +1699,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
                data-component="header">
     <br>
 <p>Example: <code>Bearer Bearer {YOUR_ACCESS_TOKEN}</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>X-Department-Id</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="X-Department-Id"                data-endpoint="GETapi-log-activities-export"
-               value="ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1"
-               data-component="header">
-    <br>
-<p>Example: <code>ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1</code></p>
             </div>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
@@ -1756,11 +1794,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
                               name="sort_order"                data-endpoint="GETapi-log-activities-export"
                value="desc
 
-Xuất ra các trường: id, description, user_type, user_id, user_name, department_id, route, method_type, status_code, ip_address, country, user_agent, request_data, created_at, updated_at."
+Xuất ra các trường: id, description, user_type, user_id, user_name, route, method_type, status_code, ip_address, country, user_agent, request_data, created_at, updated_at."
                data-component="query">
     <br>
 <p>asc, desc. Example: `desc</p>
-<p>Xuất ra các trường: id, description, user_type, user_id, user_name, department_id, route, method_type, status_code, ip_address, country, user_agent, request_data, created_at, updated_at.`</p>
+<p>Xuất ra các trường: id, description, user_type, user_id, user_name, route, method_type, status_code, ip_address, country, user_agent, request_data, created_at, updated_at.`</p>
             </div>
                                     <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>limit</code></b>&nbsp;&nbsp;
@@ -1814,16 +1852,15 @@ Xuất ra các trường: id, description, user_type, user_id, user_name, depart
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:8000/api/log-activities/stats?search=127.0.0.1&amp;status=active&amp;from_date=2026-01-01&amp;to_date=2026-12-31&amp;sort_by=created_at&amp;sort_order=desc&amp;limit=10&amp;method_type=GET&amp;status_code=200" \
+    --get "http://localhost/api/log-activities/stats?search=127.0.0.1&amp;status=active&amp;from_date=2026-01-01&amp;to_date=2026-12-31&amp;sort_by=created_at&amp;sort_order=desc&amp;limit=10&amp;method_type=GET&amp;status_code=200" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
-    --header "X-Department-Id: ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/log-activities/stats"
+    "http://localhost/api/log-activities/stats"
 );
 
 const params = {
@@ -1842,7 +1879,6 @@ Object.keys(params)
 
 const headers = {
     "Authorization": "Bearer Bearer {YOUR_ACCESS_TOKEN}",
-    "X-Department-Id": "ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -1856,13 +1892,12 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost:8000/api/log-activities/stats';
+$url = 'http://localhost/api/log-activities/stats';
 $response = $client-&gt;get(
     $url,
     [
         'headers' =&gt; [
             'Authorization' =&gt; 'Bearer Bearer {YOUR_ACCESS_TOKEN}',
-            'X-Department-Id' =&gt; 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1',
             'Content-Type' =&gt; 'application/json',
             'Accept' =&gt; 'application/json',
         ],
@@ -1956,18 +1991,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
                data-component="header">
     <br>
 <p>Example: <code>Bearer Bearer {YOUR_ACCESS_TOKEN}</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>X-Department-Id</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="X-Department-Id"                data-endpoint="GETapi-log-activities-stats"
-               value="ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1"
-               data-component="header">
-    <br>
-<p>Example: <code>ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1</code></p>
             </div>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
@@ -2118,9 +2141,8 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost:8000/api/log-activities/delete-by-date" \
+    "http://localhost/api/log-activities/delete-by-date" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
-    --header "X-Department-Id: ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -2132,12 +2154,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/log-activities/delete-by-date"
+    "http://localhost/api/log-activities/delete-by-date"
 );
 
 const headers = {
     "Authorization": "Bearer Bearer {YOUR_ACCESS_TOKEN}",
-    "X-Department-Id": "ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -2156,13 +2177,12 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost:8000/api/log-activities/delete-by-date';
+$url = 'http://localhost/api/log-activities/delete-by-date';
 $response = $client-&gt;post(
     $url,
     [
         'headers' =&gt; [
             'Authorization' =&gt; 'Bearer Bearer {YOUR_ACCESS_TOKEN}',
-            'X-Department-Id' =&gt; 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1',
             'Content-Type' =&gt; 'application/json',
             'Accept' =&gt; 'application/json',
         ],
@@ -2249,18 +2269,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <p>Example: <code>Bearer Bearer {YOUR_ACCESS_TOKEN}</code></p>
             </div>
                                 <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>X-Department-Id</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="X-Department-Id"                data-endpoint="POSTapi-log-activities-delete-by-date"
-               value="ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1"
-               data-component="header">
-    <br>
-<p>Example: <code>ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
@@ -2325,21 +2333,19 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost:8000/api/log-activities/clear" \
+    "http://localhost/api/log-activities/clear" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
-    --header "X-Department-Id: ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/log-activities/clear"
+    "http://localhost/api/log-activities/clear"
 );
 
 const headers = {
     "Authorization": "Bearer Bearer {YOUR_ACCESS_TOKEN}",
-    "X-Department-Id": "ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -2353,13 +2359,12 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost:8000/api/log-activities/clear';
+$url = 'http://localhost/api/log-activities/clear';
 $response = $client-&gt;post(
     $url,
     [
         'headers' =&gt; [
             'Authorization' =&gt; 'Bearer Bearer {YOUR_ACCESS_TOKEN}',
-            'X-Department-Id' =&gt; 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1',
             'Content-Type' =&gt; 'application/json',
             'Accept' =&gt; 'application/json',
         ],
@@ -2442,18 +2447,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <p>Example: <code>Bearer Bearer {YOUR_ACCESS_TOKEN}</code></p>
             </div>
                                 <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>X-Department-Id</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="X-Department-Id"                data-endpoint="POSTapi-log-activities-clear"
-               value="ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1"
-               data-component="header">
-    <br>
-<p>Example: <code>ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
@@ -2493,9 +2486,8 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost:8000/api/log-activities/bulk-delete" \
+    "http://localhost/api/log-activities/bulk-delete" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
-    --header "X-Department-Id: ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -2510,12 +2502,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/log-activities/bulk-delete"
+    "http://localhost/api/log-activities/bulk-delete"
 );
 
 const headers = {
     "Authorization": "Bearer Bearer {YOUR_ACCESS_TOKEN}",
-    "X-Department-Id": "ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -2537,13 +2528,12 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost:8000/api/log-activities/bulk-delete';
+$url = 'http://localhost/api/log-activities/bulk-delete';
 $response = $client-&gt;post(
     $url,
     [
         'headers' =&gt; [
             'Authorization' =&gt; 'Bearer Bearer {YOUR_ACCESS_TOKEN}',
-            'X-Department-Id' =&gt; 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1',
             'Content-Type' =&gt; 'application/json',
             'Accept' =&gt; 'application/json',
         ],
@@ -2633,18 +2623,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <p>Example: <code>Bearer Bearer {YOUR_ACCESS_TOKEN}</code></p>
             </div>
                                 <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>X-Department-Id</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="X-Department-Id"                data-endpoint="POSTapi-log-activities-bulk-delete"
-               value="ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1"
-               data-component="header">
-    <br>
-<p>Example: <code>ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
@@ -2699,16 +2677,15 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:8000/api/log-activities?search=login&amp;status=active&amp;from_date=2026-01-01&amp;to_date=2026-12-31&amp;sort_by=created_at&amp;sort_order=desc&amp;limit=10&amp;method_type=architecto&amp;status_code=16" \
+    --get "http://localhost/api/log-activities?search=login&amp;status=active&amp;from_date=2026-01-01&amp;to_date=2026-12-31&amp;sort_by=created_at&amp;sort_order=desc&amp;limit=10&amp;method_type=architecto&amp;status_code=16" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
-    --header "X-Department-Id: ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/log-activities"
+    "http://localhost/api/log-activities"
 );
 
 const params = {
@@ -2727,7 +2704,6 @@ Object.keys(params)
 
 const headers = {
     "Authorization": "Bearer Bearer {YOUR_ACCESS_TOKEN}",
-    "X-Department-Id": "ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -2741,13 +2717,12 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost:8000/api/log-activities';
+$url = 'http://localhost/api/log-activities';
 $response = $client-&gt;get(
     $url,
     [
         'headers' =&gt; [
             'Authorization' =&gt; 'Bearer Bearer {YOUR_ACCESS_TOKEN}',
-            'X-Department-Id' =&gt; 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1',
             'Content-Type' =&gt; 'application/json',
             'Accept' =&gt; 'application/json',
         ],
@@ -2783,18 +2758,17 @@ print_r(json_decode((string) $body));</code></pre></div>
             &quot;user_type&quot;: &quot;User&quot;,
             &quot;user_id&quot;: null,
             &quot;user_name&quot;: &quot;Guest&quot;,
-            &quot;department_id&quot;: null,
             &quot;route&quot;: &quot;http://www.dach.com/mollitia-modi-deserunt-aut-ab-provident-perspiciatis-quo.html&quot;,
             &quot;method_type&quot;: &quot;PATCH&quot;,
             &quot;status_code&quot;: 404,
             &quot;ip_address&quot;: &quot;125.161.29.220&quot;,
             &quot;country&quot;: &quot;Pakistan&quot;,
-            &quot;user_agent&quot;: &quot;Mozilla/5.0 (Windows NT 5.0; en-US; rv:1.9.2.20) Gecko/20251104 Firefox/35.0&quot;,
+            &quot;user_agent&quot;: &quot;Mozilla/5.0 (Windows NT 5.0; en-US; rv:1.9.2.20) Gecko/20251021 Firefox/35.0&quot;,
             &quot;request_data&quot;: {
                 &quot;sample&quot;: &quot;et&quot;
             },
-            &quot;created_at&quot;: &quot;09:58:06 26/03/2026&quot;,
-            &quot;updated_at&quot;: &quot;09:58:06 26/03/2026&quot;
+            &quot;created_at&quot;: &quot;03:10:03 29/03/2026&quot;,
+            &quot;updated_at&quot;: &quot;03:10:03 29/03/2026&quot;
         },
         {
             &quot;id&quot;: 3,
@@ -2802,7 +2776,6 @@ print_r(json_decode((string) $body));</code></pre></div>
             &quot;user_type&quot;: &quot;User&quot;,
             &quot;user_id&quot;: null,
             &quot;user_name&quot;: &quot;Guest&quot;,
-            &quot;department_id&quot;: null,
             &quot;route&quot;: &quot;http://raynor.org/molestias-fugit-deleniti-distinctio-eum-doloremque-id&quot;,
             &quot;method_type&quot;: &quot;PATCH&quot;,
             &quot;status_code&quot;: 201,
@@ -2812,8 +2785,8 @@ print_r(json_decode((string) $body));</code></pre></div>
             &quot;request_data&quot;: {
                 &quot;sample&quot;: &quot;accusamus&quot;
             },
-            &quot;created_at&quot;: &quot;09:58:06 26/03/2026&quot;,
-            &quot;updated_at&quot;: &quot;09:58:06 26/03/2026&quot;
+            &quot;created_at&quot;: &quot;03:10:03 29/03/2026&quot;,
+            &quot;updated_at&quot;: &quot;03:10:03 29/03/2026&quot;
         }
     ],
     &quot;links&quot;: {
@@ -2913,18 +2886,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
                data-component="header">
     <br>
 <p>Example: <code>Bearer Bearer {YOUR_ACCESS_TOKEN}</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>X-Department-Id</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="X-Department-Id"                data-endpoint="GETapi-log-activities"
-               value="ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1"
-               data-component="header">
-    <br>
-<p>Example: <code>ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1</code></p>
             </div>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
@@ -3075,21 +3036,19 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:8000/api/log-activities/16" \
+    --get "http://localhost/api/log-activities/16" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
-    --header "X-Department-Id: ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/log-activities/16"
+    "http://localhost/api/log-activities/16"
 );
 
 const headers = {
     "Authorization": "Bearer Bearer {YOUR_ACCESS_TOKEN}",
-    "X-Department-Id": "ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -3103,13 +3062,12 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost:8000/api/log-activities/16';
+$url = 'http://localhost/api/log-activities/16';
 $response = $client-&gt;get(
     $url,
     [
         'headers' =&gt; [
             'Authorization' =&gt; 'Bearer Bearer {YOUR_ACCESS_TOKEN}',
-            'X-Department-Id' =&gt; 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1',
             'Content-Type' =&gt; 'application/json',
             'Accept' =&gt; 'application/json',
         ],
@@ -3133,7 +3091,6 @@ print_r(json_decode((string) $body));</code></pre></div>
         &quot;user_type&quot;: &quot;User&quot;,
         &quot;user_id&quot;: 15,
         &quot;user_name&quot;: &quot;Bridget Schaden&quot;,
-        &quot;department_id&quot;: 3,
         &quot;route&quot;: &quot;https://mclaughlin.com/ipsum-nostrum-omnis-autem-et-consequatur-aut-dolores-enim.html&quot;,
         &quot;method_type&quot;: &quot;POST&quot;,
         &quot;status_code&quot;: 401,
@@ -3143,8 +3100,8 @@ print_r(json_decode((string) $body));</code></pre></div>
         &quot;request_data&quot;: {
             &quot;sample&quot;: &quot;veniam&quot;
         },
-        &quot;created_at&quot;: &quot;09:58:06 26/03/2026&quot;,
-        &quot;updated_at&quot;: &quot;09:58:06 26/03/2026&quot;
+        &quot;created_at&quot;: &quot;03:10:03 29/03/2026&quot;,
+        &quot;updated_at&quot;: &quot;03:10:03 29/03/2026&quot;
     },
     &quot;success&quot;: &quot;true&quot;
 }</code>
@@ -3208,18 +3165,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
                data-component="header">
     <br>
 <p>Example: <code>Bearer Bearer {YOUR_ACCESS_TOKEN}</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>X-Department-Id</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="X-Department-Id"                data-endpoint="GETapi-log-activities--logActivity_id-"
-               value="ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1"
-               data-component="header">
-    <br>
-<p>Example: <code>ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1</code></p>
             </div>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
@@ -3286,21 +3231,19 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request DELETE \
-    "http://localhost:8000/api/log-activities/16" \
+    "http://localhost/api/log-activities/16" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
-    --header "X-Department-Id: ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/log-activities/16"
+    "http://localhost/api/log-activities/16"
 );
 
 const headers = {
     "Authorization": "Bearer Bearer {YOUR_ACCESS_TOKEN}",
-    "X-Department-Id": "ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -3314,13 +3257,12 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost:8000/api/log-activities/16';
+$url = 'http://localhost/api/log-activities/16';
 $response = $client-&gt;delete(
     $url,
     [
         'headers' =&gt; [
             'Authorization' =&gt; 'Bearer Bearer {YOUR_ACCESS_TOKEN}',
-            'X-Department-Id' =&gt; 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1',
             'Content-Type' =&gt; 'application/json',
             'Accept' =&gt; 'application/json',
         ],
@@ -3403,18 +3345,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <p>Example: <code>Bearer Bearer {YOUR_ACCESS_TOKEN}</code></p>
             </div>
                                 <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>X-Department-Id</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="X-Department-Id"                data-endpoint="DELETEapi-log-activities--logActivity_id-"
-               value="ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1"
-               data-component="header">
-    <br>
-<p>Example: <code>ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
@@ -3465,9 +3395,3929 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </div>
                     </form>
 
-                <h1 id="core-permission">Core - Permission</h1>
+                <h1 id="core-organization">Core - Organization</h1>
 
     
+
+                                <h2 id="core-organization-GETapi-organizations-public">Danh sách organization công khai</h2>
+
+<p>
+</p>
+
+<p>Trả về danh sách organization đang hoạt động (active), thứ tự theo cây, dùng cho các chức năng công khai.</p>
+
+<span id="example-requests-GETapi-organizations-public">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost/api/organizations/public?search=cong-ty&amp;status=active&amp;from_date=2026-01-01&amp;to_date=2026-12-31&amp;sort_by=created_at&amp;sort_order=desc&amp;limit=10" \
+    --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/organizations/public"
+);
+
+const params = {
+    "search": "cong-ty",
+    "status": "active",
+    "from_date": "2026-01-01",
+    "to_date": "2026-12-31",
+    "sort_by": "created_at",
+    "sort_order": "desc",
+    "limit": "10",
+};
+Object.keys(params)
+    .forEach(key =&gt; url.searchParams.append(key, params[key]));
+
+const headers = {
+    "X-Organization-Id": "ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/organizations/public';
+$response = $client-&gt;get(
+    $url,
+    [
+        'headers' =&gt; [
+            'X-Organization-Id' =&gt; 'ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1',
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+        'query' =&gt; [
+            'search' =&gt; 'cong-ty',
+            'status' =&gt; 'active',
+            'from_date' =&gt; '2026-01-01',
+            'to_date' =&gt; '2026-12-31',
+            'sort_by' =&gt; 'created_at',
+            'sort_order' =&gt; 'desc',
+            'limit' =&gt; '10',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-organizations-public">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: [
+        {
+            &quot;id&quot;: 2,
+            &quot;name&quot;: &quot;Bailey Inc&quot;,
+            &quot;slug&quot;: &quot;quos-velit-et-fugiat-sunt-nihil-accusantium-harum&quot;,
+            &quot;description&quot;: null,
+            &quot;status&quot;: &quot;active&quot;,
+            &quot;parent_id&quot;: null,
+            &quot;sort_order&quot;: 7,
+            &quot;depth&quot;: 0,
+            &quot;created_by&quot;: &quot;N/A&quot;,
+            &quot;updated_by&quot;: &quot;N/A&quot;,
+            &quot;created_at&quot;: &quot;03:10:00 29/03/2026&quot;,
+            &quot;updated_at&quot;: &quot;03:10:00 29/03/2026&quot;
+        },
+        {
+            &quot;id&quot;: 3,
+            &quot;name&quot;: &quot;DuBuque Inc&quot;,
+            &quot;slug&quot;: &quot;quo-omnis-nostrum-aut-adipisci&quot;,
+            &quot;description&quot;: &quot;Qui commodi incidunt iure odit.&quot;,
+            &quot;status&quot;: &quot;active&quot;,
+            &quot;parent_id&quot;: null,
+            &quot;sort_order&quot;: 20,
+            &quot;depth&quot;: 0,
+            &quot;created_by&quot;: &quot;N/A&quot;,
+            &quot;updated_by&quot;: &quot;N/A&quot;,
+            &quot;created_at&quot;: &quot;03:10:00 29/03/2026&quot;,
+            &quot;updated_at&quot;: &quot;03:10:00 29/03/2026&quot;
+        }
+    ],
+    &quot;success&quot;: &quot;true&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-organizations-public" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-organizations-public"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-organizations-public"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-organizations-public" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-organizations-public">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-organizations-public" data-method="GET"
+      data-path="api/organizations/public"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-organizations-public', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-organizations-public"
+                    onclick="tryItOut('GETapi-organizations-public');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-organizations-public"
+                    onclick="cancelTryOut('GETapi-organizations-public');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-organizations-public"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/organizations/public</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>X-Organization-Id</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="X-Organization-Id"                data-endpoint="GETapi-organizations-public"
+               value="ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1"
+               data-component="header">
+    <br>
+<p>Example: <code>ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-organizations-public"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-organizations-public"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                            <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>search</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="search"                data-endpoint="GETapi-organizations-public"
+               value="cong-ty"
+               data-component="query">
+    <br>
+<p>Từ khóa tìm kiếm (name, slug). Example: <code>cong-ty</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>status</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="status"                data-endpoint="GETapi-organizations-public"
+               value="active"
+               data-component="query">
+    <br>
+<p>Lọc theo trạng thái. Example: <code>active</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>from_date</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="from_date"                data-endpoint="GETapi-organizations-public"
+               value="2026-01-01"
+               data-component="query">
+    <br>
+<p>Lọc từ ngày tạo (Y-m-d). Must be a valid date. Example: <code>2026-01-01</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>to_date</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="to_date"                data-endpoint="GETapi-organizations-public"
+               value="2026-12-31"
+               data-component="query">
+    <br>
+<p>Lọc đến ngày tạo (Y-m-d). Must be a valid date. Must be a date after or equal to <code>from_date</code>. Example: <code>2026-12-31</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>sort_by</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="sort_by"                data-endpoint="GETapi-organizations-public"
+               value="created_at"
+               data-component="query">
+    <br>
+<p>Trường dùng để sắp xếp. Must not be greater than 50 characters. Example: <code>created_at</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>sort_order</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="sort_order"                data-endpoint="GETapi-organizations-public"
+               value="desc"
+               data-component="query">
+    <br>
+<p>Thứ tự sắp xếp. Example: <code>desc</code></p>
+Must be one of:
+<ul style="list-style-type: square;"><li><code>asc</code></li> <li><code>desc</code></li></ul>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>limit</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+<i>optional</i> &nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="limit"                data-endpoint="GETapi-organizations-public"
+               value="10"
+               data-component="query">
+    <br>
+<p>Số bản ghi mỗi trang (1-100). Must be at least 1. Must not be greater than 100. Example: <code>10</code></p>
+            </div>
+                </form>
+
+                    <h2 id="core-organization-GETapi-organizations-public-options">Danh sách organization công khai cho dropdown</h2>
+
+<p>
+</p>
+
+<p>Trả về dữ liệu tối giản chỉ gồm id, name, description để tối ưu payload cho dropdown.</p>
+
+<span id="example-requests-GETapi-organizations-public-options">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost/api/organizations/public-options?search=cong-ty&amp;status=active&amp;from_date=2026-01-01&amp;to_date=2026-12-31&amp;sort_by=created_at&amp;sort_order=desc&amp;limit=10" \
+    --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/organizations/public-options"
+);
+
+const params = {
+    "search": "cong-ty",
+    "status": "active",
+    "from_date": "2026-01-01",
+    "to_date": "2026-12-31",
+    "sort_by": "created_at",
+    "sort_order": "desc",
+    "limit": "10",
+};
+Object.keys(params)
+    .forEach(key =&gt; url.searchParams.append(key, params[key]));
+
+const headers = {
+    "X-Organization-Id": "ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/organizations/public-options';
+$response = $client-&gt;get(
+    $url,
+    [
+        'headers' =&gt; [
+            'X-Organization-Id' =&gt; 'ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1',
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+        'query' =&gt; [
+            'search' =&gt; 'cong-ty',
+            'status' =&gt; 'active',
+            'from_date' =&gt; '2026-01-01',
+            'to_date' =&gt; '2026-12-31',
+            'sort_by' =&gt; 'created_at',
+            'sort_order' =&gt; 'desc',
+            'limit' =&gt; '10',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-organizations-public-options">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: [
+        {
+            &quot;id&quot;: 4,
+            &quot;name&quot;: &quot;Okuneva, Rempel and Gulgowski&quot;,
+            &quot;description&quot;: null
+        },
+        {
+            &quot;id&quot;: 5,
+            &quot;name&quot;: &quot;Cormier Inc&quot;,
+            &quot;description&quot;: &quot;Odit et et modi.&quot;
+        }
+    ],
+    &quot;success&quot;: &quot;true&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-organizations-public-options" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-organizations-public-options"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-organizations-public-options"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-organizations-public-options" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-organizations-public-options">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-organizations-public-options" data-method="GET"
+      data-path="api/organizations/public-options"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-organizations-public-options', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-organizations-public-options"
+                    onclick="tryItOut('GETapi-organizations-public-options');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-organizations-public-options"
+                    onclick="cancelTryOut('GETapi-organizations-public-options');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-organizations-public-options"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/organizations/public-options</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>X-Organization-Id</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="X-Organization-Id"                data-endpoint="GETapi-organizations-public-options"
+               value="ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1"
+               data-component="header">
+    <br>
+<p>Example: <code>ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-organizations-public-options"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-organizations-public-options"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                            <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>search</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="search"                data-endpoint="GETapi-organizations-public-options"
+               value="cong-ty"
+               data-component="query">
+    <br>
+<p>Từ khóa tìm kiếm (name, slug). Example: <code>cong-ty</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>status</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="status"                data-endpoint="GETapi-organizations-public-options"
+               value="active"
+               data-component="query">
+    <br>
+<p>Lọc theo trạng thái. Example: <code>active</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>from_date</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="from_date"                data-endpoint="GETapi-organizations-public-options"
+               value="2026-01-01"
+               data-component="query">
+    <br>
+<p>Lọc từ ngày tạo (Y-m-d). Must be a valid date. Example: <code>2026-01-01</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>to_date</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="to_date"                data-endpoint="GETapi-organizations-public-options"
+               value="2026-12-31"
+               data-component="query">
+    <br>
+<p>Lọc đến ngày tạo (Y-m-d). Must be a valid date. Must be a date after or equal to <code>from_date</code>. Example: <code>2026-12-31</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>sort_by</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="sort_by"                data-endpoint="GETapi-organizations-public-options"
+               value="created_at"
+               data-component="query">
+    <br>
+<p>Trường dùng để sắp xếp. Must not be greater than 50 characters. Example: <code>created_at</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>sort_order</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="sort_order"                data-endpoint="GETapi-organizations-public-options"
+               value="desc"
+               data-component="query">
+    <br>
+<p>Thứ tự sắp xếp. Example: <code>desc</code></p>
+Must be one of:
+<ul style="list-style-type: square;"><li><code>asc</code></li> <li><code>desc</code></li></ul>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>limit</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+<i>optional</i> &nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="limit"                data-endpoint="GETapi-organizations-public-options"
+               value="10"
+               data-component="query">
+    <br>
+<p>Số bản ghi mỗi trang (1-100). Must be at least 1. Must not be greater than 100. Example: <code>10</code></p>
+            </div>
+                </form>
+
+                    <h2 id="core-organization-GETapi-organizations-export">Xuất danh sách organization</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+<p>Áp dụng cùng bộ lọc với index. Xuất ra các trường: id, name, slug, description, status, parent_id, parent_slug, sort_order, depth, created_by, updated_by, created_at, updated_at.</p>
+
+<span id="example-requests-GETapi-organizations-export">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost/api/organizations/export?search=architecto&amp;status=architecto&amp;from_date=architecto&amp;to_date=architecto&amp;sort_by=architecto&amp;sort_order=architecto&amp;limit=10" \
+    --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
+    --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/organizations/export"
+);
+
+const params = {
+    "search": "architecto",
+    "status": "architecto",
+    "from_date": "architecto",
+    "to_date": "architecto",
+    "sort_by": "architecto",
+    "sort_order": "architecto",
+    "limit": "10",
+};
+Object.keys(params)
+    .forEach(key =&gt; url.searchParams.append(key, params[key]));
+
+const headers = {
+    "Authorization": "Bearer Bearer {YOUR_ACCESS_TOKEN}",
+    "X-Organization-Id": "ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/organizations/export';
+$response = $client-&gt;get(
+    $url,
+    [
+        'headers' =&gt; [
+            'Authorization' =&gt; 'Bearer Bearer {YOUR_ACCESS_TOKEN}',
+            'X-Organization-Id' =&gt; 'ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1',
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+        'query' =&gt; [
+            'search' =&gt; 'architecto',
+            'status' =&gt; 'architecto',
+            'from_date' =&gt; 'architecto',
+            'to_date' =&gt; 'architecto',
+            'sort_by' =&gt; 'architecto',
+            'sort_order' =&gt; 'architecto',
+            'limit' =&gt; '10',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-organizations-export">
+            <blockquote>
+            <p>Example response (401):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary style="cursor: pointer;">
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+access-control-allow-origin: *
+ </code></pre></details>         <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-organizations-export" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-organizations-export"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-organizations-export"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-organizations-export" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-organizations-export">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-organizations-export" data-method="GET"
+      data-path="api/organizations/export"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-organizations-export', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-organizations-export"
+                    onclick="tryItOut('GETapi-organizations-export');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-organizations-export"
+                    onclick="cancelTryOut('GETapi-organizations-export');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-organizations-export"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/organizations/export</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="GETapi-organizations-export"
+               value="Bearer Bearer {YOUR_ACCESS_TOKEN}"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer Bearer {YOUR_ACCESS_TOKEN}</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>X-Organization-Id</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="X-Organization-Id"                data-endpoint="GETapi-organizations-export"
+               value="ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1"
+               data-component="header">
+    <br>
+<p>Example: <code>ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-organizations-export"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-organizations-export"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                            <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>search</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="search"                data-endpoint="GETapi-organizations-export"
+               value="architecto"
+               data-component="query">
+    <br>
+<p>Từ khóa tìm kiếm (name, slug). Example: <code>architecto</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>status</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="status"                data-endpoint="GETapi-organizations-export"
+               value="architecto"
+               data-component="query">
+    <br>
+<p>Lọc theo trạng thái: active, inactive. Example: <code>architecto</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>from_date</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="from_date"                data-endpoint="GETapi-organizations-export"
+               value="architecto"
+               data-component="query">
+    <br>
+<p>date Lọc từ ngày tạo (created_at) (Y-m-d). Example: <code>architecto</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>to_date</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="to_date"                data-endpoint="GETapi-organizations-export"
+               value="architecto"
+               data-component="query">
+    <br>
+<p>date Lọc đến ngày tạo (created_at) (Y-m-d). Example: <code>architecto</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>sort_by</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="sort_by"                data-endpoint="GETapi-organizations-export"
+               value="architecto"
+               data-component="query">
+    <br>
+<p>Sắp xếp theo: id, name, slug, status, created_at, updated_at. Example: <code>architecto</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>sort_order</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="sort_order"                data-endpoint="GETapi-organizations-export"
+               value="architecto"
+               data-component="query">
+    <br>
+<p>Thứ tự: asc, desc. Example: <code>architecto</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>limit</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+<i>optional</i> &nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="limit"                data-endpoint="GETapi-organizations-export"
+               value="10"
+               data-component="query">
+    <br>
+<p>Số bản ghi mỗi trang (1-100). Must be at least 1. Must not be greater than 100. Example: <code>10</code></p>
+            </div>
+                </form>
+
+                    <h2 id="core-organization-POSTapi-organizations-import">Nhập danh sách organization</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+<p>Cột bắt buộc: name. Cột không bắt buộc: slug, description, status (mặc định "active"), parent_id.</p>
+
+<span id="example-requests-POSTapi-organizations-import">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://localhost/api/organizations/import" \
+    --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
+    --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
+    --header "Content-Type: multipart/form-data" \
+    --header "Accept: application/json" \
+    --form "file=@C:\Users\tuanl\AppData\Local\Temp\phpF5C4.tmp" </code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/organizations/import"
+);
+
+const headers = {
+    "Authorization": "Bearer Bearer {YOUR_ACCESS_TOKEN}",
+    "X-Organization-Id": "ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1",
+    "Content-Type": "multipart/form-data",
+    "Accept": "application/json",
+};
+
+const body = new FormData();
+body.append('file', document.querySelector('input[name="file"]').files[0]);
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body,
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/organizations/import';
+$response = $client-&gt;post(
+    $url,
+    [
+        'headers' =&gt; [
+            'Authorization' =&gt; 'Bearer Bearer {YOUR_ACCESS_TOKEN}',
+            'X-Organization-Id' =&gt; 'ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1',
+            'Content-Type' =&gt; 'multipart/form-data',
+            'Accept' =&gt; 'application/json',
+        ],
+        'multipart' =&gt; [
+            [
+                'name' =&gt; 'file',
+                'contents' =&gt; fopen('C:\Users\tuanl\AppData\Local\Temp\phpF5C4.tmp', 'r')
+            ],
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-organizations-import">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: true,
+    &quot;message&quot;: &quot;Import organization th&agrave;nh c&ocirc;ng.&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-POSTapi-organizations-import" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-organizations-import"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-organizations-import"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-organizations-import" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-organizations-import">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-organizations-import" data-method="POST"
+      data-path="api/organizations/import"
+      data-authed="1"
+      data-hasfiles="1"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-organizations-import', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-organizations-import"
+                    onclick="tryItOut('POSTapi-organizations-import');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-organizations-import"
+                    onclick="cancelTryOut('POSTapi-organizations-import');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-organizations-import"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/organizations/import</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="POSTapi-organizations-import"
+               value="Bearer Bearer {YOUR_ACCESS_TOKEN}"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer Bearer {YOUR_ACCESS_TOKEN}</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>X-Organization-Id</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="X-Organization-Id"                data-endpoint="POSTapi-organizations-import"
+               value="ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1"
+               data-component="header">
+    <br>
+<p>Example: <code>ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-organizations-import"
+               value="multipart/form-data"
+               data-component="header">
+    <br>
+<p>Example: <code>multipart/form-data</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-organizations-import"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>file</code></b>&nbsp;&nbsp;
+<small>file</small>&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="file" style="display: none"
+                              name="file"                data-endpoint="POSTapi-organizations-import"
+               value=""
+               data-component="body">
+    <br>
+<p>File Excel (xlsx, xls, csv). Cột theo chuẩn export. Example: <code>C:\Users\tuanl\AppData\Local\Temp\phpF5C4.tmp</code></p>
+        </div>
+        </form>
+
+                    <h2 id="core-organization-POSTapi-organizations-bulk-delete">Xóa hàng loạt organization</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+
+
+<span id="example-requests-POSTapi-organizations-bulk-delete">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://localhost/api/organizations/bulk-delete" \
+    --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
+    --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"ids\": [
+        1,
+        2,
+        3
+    ]
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/organizations/bulk-delete"
+);
+
+const headers = {
+    "Authorization": "Bearer Bearer {YOUR_ACCESS_TOKEN}",
+    "X-Organization-Id": "ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "ids": [
+        1,
+        2,
+        3
+    ]
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/organizations/bulk-delete';
+$response = $client-&gt;post(
+    $url,
+    [
+        'headers' =&gt; [
+            'Authorization' =&gt; 'Bearer Bearer {YOUR_ACCESS_TOKEN}',
+            'X-Organization-Id' =&gt; 'ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1',
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+        'json' =&gt; [
+            'ids' =&gt; [
+                1,
+                2,
+                3,
+            ],
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-organizations-bulk-delete">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: true,
+    &quot;message&quot;: &quot;Đ&atilde; x&oacute;a th&agrave;nh c&ocirc;ng c&aacute;c organization được chọn!&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-POSTapi-organizations-bulk-delete" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-organizations-bulk-delete"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-organizations-bulk-delete"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-organizations-bulk-delete" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-organizations-bulk-delete">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-organizations-bulk-delete" data-method="POST"
+      data-path="api/organizations/bulk-delete"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-organizations-bulk-delete', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-organizations-bulk-delete"
+                    onclick="tryItOut('POSTapi-organizations-bulk-delete');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-organizations-bulk-delete"
+                    onclick="cancelTryOut('POSTapi-organizations-bulk-delete');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-organizations-bulk-delete"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/organizations/bulk-delete</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="POSTapi-organizations-bulk-delete"
+               value="Bearer Bearer {YOUR_ACCESS_TOKEN}"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer Bearer {YOUR_ACCESS_TOKEN}</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>X-Organization-Id</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="X-Organization-Id"                data-endpoint="POSTapi-organizations-bulk-delete"
+               value="ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1"
+               data-component="header">
+    <br>
+<p>Example: <code>ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-organizations-bulk-delete"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-organizations-bulk-delete"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>ids</code></b>&nbsp;&nbsp;
+<small>string[]</small>&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="ids[0]"                data-endpoint="POSTapi-organizations-bulk-delete"
+               data-component="body">
+        <input type="text" style="display: none"
+               name="ids[1]"                data-endpoint="POSTapi-organizations-bulk-delete"
+               data-component="body">
+    <br>
+<p>Danh sách ID.</p>
+        </div>
+        </form>
+
+                    <h2 id="core-organization-PATCHapi-organizations-bulk-status">Cập nhật trạng thái organization hàng loạt</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+
+
+<span id="example-requests-PATCHapi-organizations-bulk-status">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request PATCH \
+    "http://localhost/api/organizations/bulk-status" \
+    --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
+    --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"ids\": [
+        1,
+        2,
+        3
+    ],
+    \"status\": \"active\"
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/organizations/bulk-status"
+);
+
+const headers = {
+    "Authorization": "Bearer Bearer {YOUR_ACCESS_TOKEN}",
+    "X-Organization-Id": "ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "ids": [
+        1,
+        2,
+        3
+    ],
+    "status": "active"
+};
+
+fetch(url, {
+    method: "PATCH",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/organizations/bulk-status';
+$response = $client-&gt;patch(
+    $url,
+    [
+        'headers' =&gt; [
+            'Authorization' =&gt; 'Bearer Bearer {YOUR_ACCESS_TOKEN}',
+            'X-Organization-Id' =&gt; 'ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1',
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+        'json' =&gt; [
+            'ids' =&gt; [
+                1,
+                2,
+                3,
+            ],
+            'status' =&gt; 'active',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-PATCHapi-organizations-bulk-status">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: true,
+    &quot;message&quot;: &quot;Cập nhật trạng th&aacute;i organization th&agrave;nh c&ocirc;ng.&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-PATCHapi-organizations-bulk-status" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-PATCHapi-organizations-bulk-status"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-PATCHapi-organizations-bulk-status"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-PATCHapi-organizations-bulk-status" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-PATCHapi-organizations-bulk-status">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-PATCHapi-organizations-bulk-status" data-method="PATCH"
+      data-path="api/organizations/bulk-status"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('PATCHapi-organizations-bulk-status', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-PATCHapi-organizations-bulk-status"
+                    onclick="tryItOut('PATCHapi-organizations-bulk-status');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-PATCHapi-organizations-bulk-status"
+                    onclick="cancelTryOut('PATCHapi-organizations-bulk-status');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-PATCHapi-organizations-bulk-status"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-purple">PATCH</small>
+            <b><code>api/organizations/bulk-status</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="PATCHapi-organizations-bulk-status"
+               value="Bearer Bearer {YOUR_ACCESS_TOKEN}"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer Bearer {YOUR_ACCESS_TOKEN}</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>X-Organization-Id</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="X-Organization-Id"                data-endpoint="PATCHapi-organizations-bulk-status"
+               value="ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1"
+               data-component="header">
+    <br>
+<p>Example: <code>ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="PATCHapi-organizations-bulk-status"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="PATCHapi-organizations-bulk-status"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>ids</code></b>&nbsp;&nbsp;
+<small>string[]</small>&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="ids[0]"                data-endpoint="PATCHapi-organizations-bulk-status"
+               data-component="body">
+        <input type="text" style="display: none"
+               name="ids[1]"                data-endpoint="PATCHapi-organizations-bulk-status"
+               data-component="body">
+    <br>
+<p>Danh sách ID.</p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>status</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="status"                data-endpoint="PATCHapi-organizations-bulk-status"
+               value="active"
+               data-component="body">
+    <br>
+<p>Trạng thái: active, inactive. Example: <code>active</code></p>
+        </div>
+        </form>
+
+                    <h2 id="core-organization-GETapi-organizations-stats">Thống kê organization</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+<p>Tổng số, đang kích hoạt (active), không kích hoạt (inactive). Áp dụng cùng bộ lọc với index.</p>
+
+<span id="example-requests-GETapi-organizations-stats">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost/api/organizations/stats?search=cong-ty&amp;status=architecto&amp;from_date=2026-02-01&amp;to_date=2026-02-17&amp;sort_by=created_at&amp;sort_order=desc&amp;limit=10" \
+    --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
+    --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/organizations/stats"
+);
+
+const params = {
+    "search": "cong-ty",
+    "status": "architecto",
+    "from_date": "2026-02-01",
+    "to_date": "2026-02-17",
+    "sort_by": "created_at",
+    "sort_order": "desc",
+    "limit": "10",
+};
+Object.keys(params)
+    .forEach(key =&gt; url.searchParams.append(key, params[key]));
+
+const headers = {
+    "Authorization": "Bearer Bearer {YOUR_ACCESS_TOKEN}",
+    "X-Organization-Id": "ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/organizations/stats';
+$response = $client-&gt;get(
+    $url,
+    [
+        'headers' =&gt; [
+            'Authorization' =&gt; 'Bearer Bearer {YOUR_ACCESS_TOKEN}',
+            'X-Organization-Id' =&gt; 'ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1',
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+        'query' =&gt; [
+            'search' =&gt; 'cong-ty',
+            'status' =&gt; 'architecto',
+            'from_date' =&gt; '2026-02-01',
+            'to_date' =&gt; '2026-02-17',
+            'sort_by' =&gt; 'created_at',
+            'sort_order' =&gt; 'desc',
+            'limit' =&gt; '10',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-organizations-stats">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: true,
+    &quot;data&quot;: {
+        &quot;total&quot;: 10,
+        &quot;active&quot;: 5,
+        &quot;inactive&quot;: 5
+    }
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-organizations-stats" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-organizations-stats"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-organizations-stats"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-organizations-stats" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-organizations-stats">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-organizations-stats" data-method="GET"
+      data-path="api/organizations/stats"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-organizations-stats', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-organizations-stats"
+                    onclick="tryItOut('GETapi-organizations-stats');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-organizations-stats"
+                    onclick="cancelTryOut('GETapi-organizations-stats');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-organizations-stats"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/organizations/stats</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="GETapi-organizations-stats"
+               value="Bearer Bearer {YOUR_ACCESS_TOKEN}"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer Bearer {YOUR_ACCESS_TOKEN}</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>X-Organization-Id</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="X-Organization-Id"                data-endpoint="GETapi-organizations-stats"
+               value="ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1"
+               data-component="header">
+    <br>
+<p>Example: <code>ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-organizations-stats"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-organizations-stats"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                            <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>search</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="search"                data-endpoint="GETapi-organizations-stats"
+               value="cong-ty"
+               data-component="query">
+    <br>
+<p>Từ khóa tìm kiếm (name, slug). Example: <code>cong-ty</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>status</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="status"                data-endpoint="GETapi-organizations-stats"
+               value="architecto"
+               data-component="query">
+    <br>
+<p>Lọc theo trạng thái: active, inactive. Example: <code>architecto</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>from_date</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="from_date"                data-endpoint="GETapi-organizations-stats"
+               value="2026-02-01"
+               data-component="query">
+    <br>
+<p>date Lọc từ ngày tạo (created_at) (Y-m-d). Example: <code>2026-02-01</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>to_date</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="to_date"                data-endpoint="GETapi-organizations-stats"
+               value="2026-02-17"
+               data-component="query">
+    <br>
+<p>date Lọc đến ngày tạo (created_at) (Y-m-d). Example: <code>2026-02-17</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>sort_by</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="sort_by"                data-endpoint="GETapi-organizations-stats"
+               value="created_at"
+               data-component="query">
+    <br>
+<p>Sắp xếp theo: id, name, slug, status, created_at, updated_at. Example: <code>created_at</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>sort_order</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="sort_order"                data-endpoint="GETapi-organizations-stats"
+               value="desc"
+               data-component="query">
+    <br>
+<p>Thứ tự: asc, desc. Example: <code>desc</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>limit</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+<i>optional</i> &nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="limit"                data-endpoint="GETapi-organizations-stats"
+               value="10"
+               data-component="query">
+    <br>
+<p>Số bản ghi mỗi trang (1-100). Example: <code>10</code></p>
+            </div>
+                </form>
+
+                    <h2 id="core-organization-GETapi-organizations-tree">Cây organization (toàn bộ cây, không phân trang). Cấu trúc parent_id.</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+
+
+<span id="example-requests-GETapi-organizations-tree">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost/api/organizations/tree?status=architecto" \
+    --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
+    --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/organizations/tree"
+);
+
+const params = {
+    "status": "architecto",
+};
+Object.keys(params)
+    .forEach(key =&gt; url.searchParams.append(key, params[key]));
+
+const headers = {
+    "Authorization": "Bearer Bearer {YOUR_ACCESS_TOKEN}",
+    "X-Organization-Id": "ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/organizations/tree';
+$response = $client-&gt;get(
+    $url,
+    [
+        'headers' =&gt; [
+            'Authorization' =&gt; 'Bearer Bearer {YOUR_ACCESS_TOKEN}',
+            'X-Organization-Id' =&gt; 'ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1',
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+        'query' =&gt; [
+            'status' =&gt; 'architecto',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-organizations-tree">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: true,
+    &quot;data&quot;: [
+        {
+            &quot;id&quot;: 1,
+            &quot;name&quot;: &quot;C&ocirc;ng ty A&quot;,
+            &quot;slug&quot;: &quot;cong-ty-a&quot;,
+            &quot;status&quot;: &quot;active&quot;,
+            &quot;parent_id&quot;: null,
+            &quot;children&quot;: []
+        }
+    ]
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-organizations-tree" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-organizations-tree"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-organizations-tree"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-organizations-tree" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-organizations-tree">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-organizations-tree" data-method="GET"
+      data-path="api/organizations/tree"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-organizations-tree', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-organizations-tree"
+                    onclick="tryItOut('GETapi-organizations-tree');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-organizations-tree"
+                    onclick="cancelTryOut('GETapi-organizations-tree');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-organizations-tree"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/organizations/tree</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="GETapi-organizations-tree"
+               value="Bearer Bearer {YOUR_ACCESS_TOKEN}"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer Bearer {YOUR_ACCESS_TOKEN}</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>X-Organization-Id</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="X-Organization-Id"                data-endpoint="GETapi-organizations-tree"
+               value="ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1"
+               data-component="header">
+    <br>
+<p>Example: <code>ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-organizations-tree"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-organizations-tree"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                            <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>status</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="status"                data-endpoint="GETapi-organizations-tree"
+               value="architecto"
+               data-component="query">
+    <br>
+<p>Lọc theo trạng thái: active, inactive. Example: <code>architecto</code></p>
+            </div>
+                </form>
+
+                    <h2 id="core-organization-GETapi-organizations">Danh sách organization</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+<p>Lấy danh sách có phân trang, lọc và sắp xếp.</p>
+
+<span id="example-requests-GETapi-organizations">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost/api/organizations?search=cong-ty&amp;status=architecto&amp;from_date=2026-02-01&amp;to_date=2026-02-17&amp;sort_by=id&amp;sort_order=desc&amp;limit=10" \
+    --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
+    --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/organizations"
+);
+
+const params = {
+    "search": "cong-ty",
+    "status": "architecto",
+    "from_date": "2026-02-01",
+    "to_date": "2026-02-17",
+    "sort_by": "id",
+    "sort_order": "desc",
+    "limit": "10",
+};
+Object.keys(params)
+    .forEach(key =&gt; url.searchParams.append(key, params[key]));
+
+const headers = {
+    "Authorization": "Bearer Bearer {YOUR_ACCESS_TOKEN}",
+    "X-Organization-Id": "ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/organizations';
+$response = $client-&gt;get(
+    $url,
+    [
+        'headers' =&gt; [
+            'Authorization' =&gt; 'Bearer Bearer {YOUR_ACCESS_TOKEN}',
+            'X-Organization-Id' =&gt; 'ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1',
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+        'query' =&gt; [
+            'search' =&gt; 'cong-ty',
+            'status' =&gt; 'architecto',
+            'from_date' =&gt; '2026-02-01',
+            'to_date' =&gt; '2026-02-17',
+            'sort_by' =&gt; 'id',
+            'sort_order' =&gt; 'desc',
+            'limit' =&gt; '10',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-organizations">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: [
+        {
+            &quot;id&quot;: 6,
+            &quot;name&quot;: &quot;Bailey Ltd&quot;,
+            &quot;slug&quot;: &quot;velit-et-fugiat-sunt-nihil-accusantium&quot;,
+            &quot;description&quot;: &quot;Modi deserunt aut ab provident perspiciatis.&quot;,
+            &quot;status&quot;: &quot;active&quot;,
+            &quot;parent_id&quot;: null,
+            &quot;sort_order&quot;: 23,
+            &quot;depth&quot;: 0,
+            &quot;created_by&quot;: &quot;N/A&quot;,
+            &quot;updated_by&quot;: &quot;N/A&quot;,
+            &quot;created_at&quot;: &quot;03:10:04 29/03/2026&quot;,
+            &quot;updated_at&quot;: &quot;03:10:04 29/03/2026&quot;
+        },
+        {
+            &quot;id&quot;: 7,
+            &quot;name&quot;: &quot;Marquardt Inc&quot;,
+            &quot;slug&quot;: &quot;nostrum-qui-commodi-incidunt-iure&quot;,
+            &quot;description&quot;: null,
+            &quot;status&quot;: &quot;active&quot;,
+            &quot;parent_id&quot;: null,
+            &quot;sort_order&quot;: 20,
+            &quot;depth&quot;: 0,
+            &quot;created_by&quot;: &quot;N/A&quot;,
+            &quot;updated_by&quot;: &quot;N/A&quot;,
+            &quot;created_at&quot;: &quot;03:10:04 29/03/2026&quot;,
+            &quot;updated_at&quot;: &quot;03:10:04 29/03/2026&quot;
+        }
+    ],
+    &quot;links&quot;: {
+        &quot;first&quot;: &quot;/?page=1&quot;,
+        &quot;last&quot;: &quot;/?page=1&quot;,
+        &quot;prev&quot;: null,
+        &quot;next&quot;: null
+    },
+    &quot;meta&quot;: {
+        &quot;current_page&quot;: 1,
+        &quot;from&quot;: 1,
+        &quot;last_page&quot;: 1,
+        &quot;links&quot;: [
+            {
+                &quot;url&quot;: null,
+                &quot;label&quot;: &quot;&amp;laquo; Previous&quot;,
+                &quot;page&quot;: null,
+                &quot;active&quot;: false
+            },
+            {
+                &quot;url&quot;: &quot;/?page=1&quot;,
+                &quot;label&quot;: &quot;1&quot;,
+                &quot;page&quot;: 1,
+                &quot;active&quot;: true
+            },
+            {
+                &quot;url&quot;: null,
+                &quot;label&quot;: &quot;Next &amp;raquo;&quot;,
+                &quot;page&quot;: null,
+                &quot;active&quot;: false
+            }
+        ],
+        &quot;path&quot;: &quot;/&quot;,
+        &quot;per_page&quot;: 10,
+        &quot;to&quot;: 2,
+        &quot;total&quot;: 2
+    },
+    &quot;success&quot;: &quot;true&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-organizations" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-organizations"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-organizations"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-organizations" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-organizations">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-organizations" data-method="GET"
+      data-path="api/organizations"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-organizations', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-organizations"
+                    onclick="tryItOut('GETapi-organizations');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-organizations"
+                    onclick="cancelTryOut('GETapi-organizations');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-organizations"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/organizations</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="GETapi-organizations"
+               value="Bearer Bearer {YOUR_ACCESS_TOKEN}"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer Bearer {YOUR_ACCESS_TOKEN}</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>X-Organization-Id</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="X-Organization-Id"                data-endpoint="GETapi-organizations"
+               value="ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1"
+               data-component="header">
+    <br>
+<p>Example: <code>ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-organizations"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-organizations"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                            <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>search</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="search"                data-endpoint="GETapi-organizations"
+               value="cong-ty"
+               data-component="query">
+    <br>
+<p>Từ khóa tìm kiếm (name, slug). Example: <code>cong-ty</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>status</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="status"                data-endpoint="GETapi-organizations"
+               value="architecto"
+               data-component="query">
+    <br>
+<p>Lọc theo trạng thái: active, inactive. Example: <code>architecto</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>from_date</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="from_date"                data-endpoint="GETapi-organizations"
+               value="2026-02-01"
+               data-component="query">
+    <br>
+<p>date Lọc từ ngày tạo (created_at) (Y-m-d). Example: <code>2026-02-01</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>to_date</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="to_date"                data-endpoint="GETapi-organizations"
+               value="2026-02-17"
+               data-component="query">
+    <br>
+<p>date Lọc đến ngày tạo (created_at) (Y-m-d). Example: <code>2026-02-17</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>sort_by</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="sort_by"                data-endpoint="GETapi-organizations"
+               value="id"
+               data-component="query">
+    <br>
+<p>Sắp xếp theo: id, name, slug, status, created_at, updated_at. Example: <code>id</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>sort_order</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="sort_order"                data-endpoint="GETapi-organizations"
+               value="desc"
+               data-component="query">
+    <br>
+<p>Thứ tự: asc, desc. Example: <code>desc</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>limit</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+<i>optional</i> &nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="limit"                data-endpoint="GETapi-organizations"
+               value="10"
+               data-component="query">
+    <br>
+<p>Số bản ghi mỗi trang (1-100). Example: <code>10</code></p>
+            </div>
+                </form>
+
+                    <h2 id="core-organization-GETapi-organizations--organization_id-">Chi tiết organization</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+
+
+<span id="example-requests-GETapi-organizations--organization_id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost/api/organizations/1" \
+    --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
+    --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/organizations/1"
+);
+
+const headers = {
+    "Authorization": "Bearer Bearer {YOUR_ACCESS_TOKEN}",
+    "X-Organization-Id": "ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/organizations/1';
+$response = $client-&gt;get(
+    $url,
+    [
+        'headers' =&gt; [
+            'Authorization' =&gt; 'Bearer Bearer {YOUR_ACCESS_TOKEN}',
+            'X-Organization-Id' =&gt; 'ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1',
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-organizations--organization_id-">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: {
+        &quot;id&quot;: 9,
+        &quot;name&quot;: &quot;Price Ltd&quot;,
+        &quot;slug&quot;: &quot;qui-commodi-incidunt-iure-odit&quot;,
+        &quot;description&quot;: &quot;Modi ipsum nostrum omnis autem et.&quot;,
+        &quot;status&quot;: &quot;inactive&quot;,
+        &quot;parent_id&quot;: 8,
+        &quot;sort_order&quot;: 84,
+        &quot;depth&quot;: 1,
+        &quot;created_by&quot;: &quot;N/A&quot;,
+        &quot;updated_by&quot;: &quot;N/A&quot;,
+        &quot;created_at&quot;: &quot;03:10:04 29/03/2026&quot;,
+        &quot;updated_at&quot;: &quot;03:10:04 29/03/2026&quot;,
+        &quot;parent&quot;: {
+            &quot;id&quot;: 8,
+            &quot;name&quot;: &quot;Stokes and Sons&quot;,
+            &quot;slug&quot;: &quot;tempora-ex-voluptatem-laboriosam-praesentium-quis&quot;,
+            &quot;description&quot;: &quot;Fugit deleniti distinctio eum doloremque id aut libero.&quot;,
+            &quot;status&quot;: &quot;inactive&quot;,
+            &quot;parent_id&quot;: null,
+            &quot;sort_order&quot;: 49,
+            &quot;depth&quot;: 0,
+            &quot;created_by&quot;: &quot;N/A&quot;,
+            &quot;updated_by&quot;: &quot;N/A&quot;,
+            &quot;created_at&quot;: &quot;03:10:04 29/03/2026&quot;,
+            &quot;updated_at&quot;: &quot;03:10:04 29/03/2026&quot;
+        },
+        &quot;children&quot;: [
+            {
+                &quot;id&quot;: 10,
+                &quot;name&quot;: &quot;Kutch and Sons&quot;,
+                &quot;slug&quot;: &quot;nemo-odit-quia-officia-est-dignissimos&quot;,
+                &quot;description&quot;: null,
+                &quot;status&quot;: &quot;inactive&quot;,
+                &quot;parent_id&quot;: 9,
+                &quot;sort_order&quot;: 6,
+                &quot;depth&quot;: 2,
+                &quot;created_by&quot;: &quot;N/A&quot;,
+                &quot;updated_by&quot;: &quot;N/A&quot;,
+                &quot;created_at&quot;: &quot;03:10:04 29/03/2026&quot;,
+                &quot;updated_at&quot;: &quot;03:10:04 29/03/2026&quot;
+            }
+        ]
+    },
+    &quot;success&quot;: &quot;true&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-organizations--organization_id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-organizations--organization_id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-organizations--organization_id-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-organizations--organization_id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-organizations--organization_id-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-organizations--organization_id-" data-method="GET"
+      data-path="api/organizations/{organization_id}"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-organizations--organization_id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-organizations--organization_id-"
+                    onclick="tryItOut('GETapi-organizations--organization_id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-organizations--organization_id-"
+                    onclick="cancelTryOut('GETapi-organizations--organization_id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-organizations--organization_id-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/organizations/{organization_id}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="GETapi-organizations--organization_id-"
+               value="Bearer Bearer {YOUR_ACCESS_TOKEN}"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer Bearer {YOUR_ACCESS_TOKEN}</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>X-Organization-Id</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="X-Organization-Id"                data-endpoint="GETapi-organizations--organization_id-"
+               value="ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1"
+               data-component="header">
+    <br>
+<p>Example: <code>ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-organizations--organization_id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-organizations--organization_id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>organization_id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="organization_id"                data-endpoint="GETapi-organizations--organization_id-"
+               value="1"
+               data-component="url">
+    <br>
+<p>The ID of the organization. Example: <code>1</code></p>
+            </div>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>organization</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="organization"                data-endpoint="GETapi-organizations--organization_id-"
+               value="1"
+               data-component="url">
+    <br>
+<p>ID organization. Example: <code>1</code></p>
+            </div>
+                    </form>
+
+                    <h2 id="core-organization-POSTapi-organizations">Tạo organization mới</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+
+
+<span id="example-requests-POSTapi-organizations">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://localhost/api/organizations" \
+    --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
+    --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"name\": \"Công ty A\",
+    \"slug\": \"cong-ty-a\",
+    \"description\": \"Tổ chức quản trị\",
+    \"status\": \"active\",
+    \"parent_id\": null,
+    \"sort_order\": 0
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/organizations"
+);
+
+const headers = {
+    "Authorization": "Bearer Bearer {YOUR_ACCESS_TOKEN}",
+    "X-Organization-Id": "ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "name": "Công ty A",
+    "slug": "cong-ty-a",
+    "description": "Tổ chức quản trị",
+    "status": "active",
+    "parent_id": null,
+    "sort_order": 0
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/organizations';
+$response = $client-&gt;post(
+    $url,
+    [
+        'headers' =&gt; [
+            'Authorization' =&gt; 'Bearer Bearer {YOUR_ACCESS_TOKEN}',
+            'X-Organization-Id' =&gt; 'ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1',
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+        'json' =&gt; [
+            'name' =&gt; 'Công ty A',
+            'slug' =&gt; 'cong-ty-a',
+            'description' =&gt; 'Tổ chức quản trị',
+            'status' =&gt; 'active',
+            'parent_id' =&gt; null,
+            'sort_order' =&gt; 0,
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-organizations">
+            <blockquote>
+            <p>Example response (201):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: {
+        &quot;id&quot;: 11,
+        &quot;name&quot;: &quot;Dach-Gaylord&quot;,
+        &quot;slug&quot;: &quot;mollitia-modi-deserunt-aut-ab-provident-perspiciatis-quo&quot;,
+        &quot;description&quot;: null,
+        &quot;status&quot;: &quot;active&quot;,
+        &quot;parent_id&quot;: null,
+        &quot;sort_order&quot;: 49,
+        &quot;depth&quot;: 0,
+        &quot;created_by&quot;: &quot;N/A&quot;,
+        &quot;updated_by&quot;: &quot;N/A&quot;,
+        &quot;created_at&quot;: &quot;03:10:04 29/03/2026&quot;,
+        &quot;updated_at&quot;: &quot;03:10:04 29/03/2026&quot;
+    },
+    &quot;success&quot;: &quot;true&quot;,
+    &quot;message&quot;: &quot;Organization đ&atilde; được tạo th&agrave;nh c&ocirc;ng!&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-POSTapi-organizations" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-organizations"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-organizations"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-organizations" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-organizations">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-organizations" data-method="POST"
+      data-path="api/organizations"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-organizations', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-organizations"
+                    onclick="tryItOut('POSTapi-organizations');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-organizations"
+                    onclick="cancelTryOut('POSTapi-organizations');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-organizations"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/organizations</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="POSTapi-organizations"
+               value="Bearer Bearer {YOUR_ACCESS_TOKEN}"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer Bearer {YOUR_ACCESS_TOKEN}</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>X-Organization-Id</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="X-Organization-Id"                data-endpoint="POSTapi-organizations"
+               value="ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1"
+               data-component="header">
+    <br>
+<p>Example: <code>ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-organizations"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-organizations"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>name</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="name"                data-endpoint="POSTapi-organizations"
+               value="Công ty A"
+               data-component="body">
+    <br>
+<p>Tên organization. Example: <code>Công ty A</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>slug</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="slug"                data-endpoint="POSTapi-organizations"
+               value="cong-ty-a"
+               data-component="body">
+    <br>
+<p>Slug (nếu không gửi sẽ tự sinh từ name). Example: <code>cong-ty-a</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>description</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="description"                data-endpoint="POSTapi-organizations"
+               value="Tổ chức quản trị"
+               data-component="body">
+    <br>
+<p>Mô tả. Example: <code>Tổ chức quản trị</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>status</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="status"                data-endpoint="POSTapi-organizations"
+               value="active"
+               data-component="body">
+    <br>
+<p>Trạng thái: active, inactive. Example: <code>active</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>parent_id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+<i>optional</i> &nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="parent_id"                data-endpoint="POSTapi-organizations"
+               value=""
+               data-component="body">
+    <br>
+<p>ID organization cha (null = gốc).</p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>sort_order</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+<i>optional</i> &nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="sort_order"                data-endpoint="POSTapi-organizations"
+               value="0"
+               data-component="body">
+    <br>
+<p>Thứ tự. Example: <code>0</code></p>
+        </div>
+        </form>
+
+                    <h2 id="core-organization-PUTapi-organizations--organization_id-">Cập nhật organization</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+
+
+<span id="example-requests-PUTapi-organizations--organization_id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request PUT \
+    "http://localhost/api/organizations/1" \
+    --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
+    --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"name\": \"Công ty A\",
+    \"slug\": \"cong-ty-a\",
+    \"description\": \"Tổ chức quản trị\",
+    \"status\": \"inactive\",
+    \"parent_id\": null,
+    \"sort_order\": 0
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/organizations/1"
+);
+
+const headers = {
+    "Authorization": "Bearer Bearer {YOUR_ACCESS_TOKEN}",
+    "X-Organization-Id": "ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "name": "Công ty A",
+    "slug": "cong-ty-a",
+    "description": "Tổ chức quản trị",
+    "status": "inactive",
+    "parent_id": null,
+    "sort_order": 0
+};
+
+fetch(url, {
+    method: "PUT",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/organizations/1';
+$response = $client-&gt;put(
+    $url,
+    [
+        'headers' =&gt; [
+            'Authorization' =&gt; 'Bearer Bearer {YOUR_ACCESS_TOKEN}',
+            'X-Organization-Id' =&gt; 'ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1',
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+        'json' =&gt; [
+            'name' =&gt; 'Công ty A',
+            'slug' =&gt; 'cong-ty-a',
+            'description' =&gt; 'Tổ chức quản trị',
+            'status' =&gt; 'inactive',
+            'parent_id' =&gt; null,
+            'sort_order' =&gt; 0,
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-PUTapi-organizations--organization_id-">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: {
+        &quot;id&quot;: 13,
+        &quot;name&quot;: &quot;Tillman-Runte&quot;,
+        &quot;slug&quot;: &quot;aut-ab-provident-perspiciatis-quo-omnis-nostrum-aut&quot;,
+        &quot;description&quot;: &quot;Nostrum qui commodi incidunt iure.&quot;,
+        &quot;status&quot;: &quot;inactive&quot;,
+        &quot;parent_id&quot;: 12,
+        &quot;sort_order&quot;: 45,
+        &quot;depth&quot;: 1,
+        &quot;created_by&quot;: &quot;N/A&quot;,
+        &quot;updated_by&quot;: &quot;N/A&quot;,
+        &quot;created_at&quot;: &quot;03:10:04 29/03/2026&quot;,
+        &quot;updated_at&quot;: &quot;03:10:04 29/03/2026&quot;,
+        &quot;parent&quot;: {
+            &quot;id&quot;: 12,
+            &quot;name&quot;: &quot;Bauch, Fritsch and O&#039;Keefe&quot;,
+            &quot;slug&quot;: &quot;autem-et-consequatur-aut-dolores-enim-non-facere-tempora&quot;,
+            &quot;description&quot;: &quot;Laboriosam praesentium quis adipisci molestias fugit deleniti distinctio.&quot;,
+            &quot;status&quot;: &quot;active&quot;,
+            &quot;parent_id&quot;: null,
+            &quot;sort_order&quot;: 35,
+            &quot;depth&quot;: 0,
+            &quot;created_by&quot;: &quot;N/A&quot;,
+            &quot;updated_by&quot;: &quot;N/A&quot;,
+            &quot;created_at&quot;: &quot;03:10:04 29/03/2026&quot;,
+            &quot;updated_at&quot;: &quot;03:10:04 29/03/2026&quot;
+        },
+        &quot;children&quot;: [
+            {
+                &quot;id&quot;: 14,
+                &quot;name&quot;: &quot;Ankunding PLC&quot;,
+                &quot;slug&quot;: &quot;veniam-corporis-dolorem-mollitia&quot;,
+                &quot;description&quot;: &quot;Odit quia officia est dignissimos neque blanditiis odio.&quot;,
+                &quot;status&quot;: &quot;inactive&quot;,
+                &quot;parent_id&quot;: 13,
+                &quot;sort_order&quot;: 16,
+                &quot;depth&quot;: 2,
+                &quot;created_by&quot;: &quot;N/A&quot;,
+                &quot;updated_by&quot;: &quot;N/A&quot;,
+                &quot;created_at&quot;: &quot;03:10:04 29/03/2026&quot;,
+                &quot;updated_at&quot;: &quot;03:10:04 29/03/2026&quot;
+            }
+        ]
+    },
+    &quot;success&quot;: &quot;true&quot;,
+    &quot;message&quot;: &quot;Organization đ&atilde; được cập nhật!&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-PUTapi-organizations--organization_id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-PUTapi-organizations--organization_id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-PUTapi-organizations--organization_id-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-PUTapi-organizations--organization_id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-PUTapi-organizations--organization_id-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-PUTapi-organizations--organization_id-" data-method="PUT"
+      data-path="api/organizations/{organization_id}"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('PUTapi-organizations--organization_id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-PUTapi-organizations--organization_id-"
+                    onclick="tryItOut('PUTapi-organizations--organization_id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-PUTapi-organizations--organization_id-"
+                    onclick="cancelTryOut('PUTapi-organizations--organization_id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-PUTapi-organizations--organization_id-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-darkblue">PUT</small>
+            <b><code>api/organizations/{organization_id}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="PUTapi-organizations--organization_id-"
+               value="Bearer Bearer {YOUR_ACCESS_TOKEN}"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer Bearer {YOUR_ACCESS_TOKEN}</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>X-Organization-Id</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="X-Organization-Id"                data-endpoint="PUTapi-organizations--organization_id-"
+               value="ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1"
+               data-component="header">
+    <br>
+<p>Example: <code>ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="PUTapi-organizations--organization_id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="PUTapi-organizations--organization_id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>organization_id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="organization_id"                data-endpoint="PUTapi-organizations--organization_id-"
+               value="1"
+               data-component="url">
+    <br>
+<p>The ID of the organization. Example: <code>1</code></p>
+            </div>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>organization</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="organization"                data-endpoint="PUTapi-organizations--organization_id-"
+               value="1"
+               data-component="url">
+    <br>
+<p>ID organization. Example: <code>1</code></p>
+            </div>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>name</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="name"                data-endpoint="PUTapi-organizations--organization_id-"
+               value="Công ty A"
+               data-component="body">
+    <br>
+<p>Tên organization. Example: <code>Công ty A</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>slug</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="slug"                data-endpoint="PUTapi-organizations--organization_id-"
+               value="cong-ty-a"
+               data-component="body">
+    <br>
+<p>Slug. Example: <code>cong-ty-a</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>description</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="description"                data-endpoint="PUTapi-organizations--organization_id-"
+               value="Tổ chức quản trị"
+               data-component="body">
+    <br>
+<p>Mô tả. Example: <code>Tổ chức quản trị</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>status</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="status"                data-endpoint="PUTapi-organizations--organization_id-"
+               value="inactive"
+               data-component="body">
+    <br>
+<p>Trạng thái: active, inactive. Example: <code>inactive</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>parent_id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+<i>optional</i> &nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="parent_id"                data-endpoint="PUTapi-organizations--organization_id-"
+               value=""
+               data-component="body">
+    <br>
+<p>ID organization cha (null = gốc).</p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>sort_order</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+<i>optional</i> &nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="sort_order"                data-endpoint="PUTapi-organizations--organization_id-"
+               value="0"
+               data-component="body">
+    <br>
+<p>Thứ tự. Example: <code>0</code></p>
+        </div>
+        </form>
+
+                    <h2 id="core-organization-PATCHapi-organizations--organization_id-">Cập nhật organization</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+
+
+<span id="example-requests-PATCHapi-organizations--organization_id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request PATCH \
+    "http://localhost/api/organizations/1" \
+    --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
+    --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"name\": \"Công ty A\",
+    \"slug\": \"cong-ty-a\",
+    \"description\": \"Tổ chức quản trị\",
+    \"status\": \"inactive\",
+    \"parent_id\": null,
+    \"sort_order\": 0
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/organizations/1"
+);
+
+const headers = {
+    "Authorization": "Bearer Bearer {YOUR_ACCESS_TOKEN}",
+    "X-Organization-Id": "ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "name": "Công ty A",
+    "slug": "cong-ty-a",
+    "description": "Tổ chức quản trị",
+    "status": "inactive",
+    "parent_id": null,
+    "sort_order": 0
+};
+
+fetch(url, {
+    method: "PATCH",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/organizations/1';
+$response = $client-&gt;patch(
+    $url,
+    [
+        'headers' =&gt; [
+            'Authorization' =&gt; 'Bearer Bearer {YOUR_ACCESS_TOKEN}',
+            'X-Organization-Id' =&gt; 'ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1',
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+        'json' =&gt; [
+            'name' =&gt; 'Công ty A',
+            'slug' =&gt; 'cong-ty-a',
+            'description' =&gt; 'Tổ chức quản trị',
+            'status' =&gt; 'inactive',
+            'parent_id' =&gt; null,
+            'sort_order' =&gt; 0,
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-PATCHapi-organizations--organization_id-">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: {
+        &quot;id&quot;: 16,
+        &quot;name&quot;: &quot;Schuster Inc&quot;,
+        &quot;slug&quot;: &quot;perspiciatis-quo-omnis-nostrum-aut-adipisci-quidem-nostrum-qui&quot;,
+        &quot;description&quot;: &quot;Iure odit et et modi ipsum nostrum omnis.&quot;,
+        &quot;status&quot;: &quot;active&quot;,
+        &quot;parent_id&quot;: 15,
+        &quot;sort_order&quot;: 54,
+        &quot;depth&quot;: 1,
+        &quot;created_by&quot;: &quot;N/A&quot;,
+        &quot;updated_by&quot;: &quot;N/A&quot;,
+        &quot;created_at&quot;: &quot;03:10:04 29/03/2026&quot;,
+        &quot;updated_at&quot;: &quot;03:10:04 29/03/2026&quot;,
+        &quot;parent&quot;: {
+            &quot;id&quot;: 15,
+            &quot;name&quot;: &quot;Tromp-Leffler&quot;,
+            &quot;slug&quot;: &quot;non-facere-tempora-ex-voluptatem-laboriosam-praesentium&quot;,
+            &quot;description&quot;: &quot;Molestias fugit deleniti distinctio eum doloremque id.&quot;,
+            &quot;status&quot;: &quot;active&quot;,
+            &quot;parent_id&quot;: null,
+            &quot;sort_order&quot;: 61,
+            &quot;depth&quot;: 0,
+            &quot;created_by&quot;: &quot;N/A&quot;,
+            &quot;updated_by&quot;: &quot;N/A&quot;,
+            &quot;created_at&quot;: &quot;03:10:04 29/03/2026&quot;,
+            &quot;updated_at&quot;: &quot;03:10:04 29/03/2026&quot;
+        },
+        &quot;children&quot;: [
+            {
+                &quot;id&quot;: 17,
+                &quot;name&quot;: &quot;Batz Inc&quot;,
+                &quot;slug&quot;: &quot;mollitia-deleniti-nemo-odit-quia-officia&quot;,
+                &quot;description&quot;: &quot;Neque blanditiis odio veritatis excepturi doloribus delectus.&quot;,
+                &quot;status&quot;: &quot;inactive&quot;,
+                &quot;parent_id&quot;: 16,
+                &quot;sort_order&quot;: 22,
+                &quot;depth&quot;: 2,
+                &quot;created_by&quot;: &quot;N/A&quot;,
+                &quot;updated_by&quot;: &quot;N/A&quot;,
+                &quot;created_at&quot;: &quot;03:10:04 29/03/2026&quot;,
+                &quot;updated_at&quot;: &quot;03:10:04 29/03/2026&quot;
+            }
+        ]
+    },
+    &quot;success&quot;: &quot;true&quot;,
+    &quot;message&quot;: &quot;Organization đ&atilde; được cập nhật!&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-PATCHapi-organizations--organization_id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-PATCHapi-organizations--organization_id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-PATCHapi-organizations--organization_id-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-PATCHapi-organizations--organization_id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-PATCHapi-organizations--organization_id-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-PATCHapi-organizations--organization_id-" data-method="PATCH"
+      data-path="api/organizations/{organization_id}"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('PATCHapi-organizations--organization_id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-PATCHapi-organizations--organization_id-"
+                    onclick="tryItOut('PATCHapi-organizations--organization_id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-PATCHapi-organizations--organization_id-"
+                    onclick="cancelTryOut('PATCHapi-organizations--organization_id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-PATCHapi-organizations--organization_id-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-purple">PATCH</small>
+            <b><code>api/organizations/{organization_id}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="PATCHapi-organizations--organization_id-"
+               value="Bearer Bearer {YOUR_ACCESS_TOKEN}"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer Bearer {YOUR_ACCESS_TOKEN}</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>X-Organization-Id</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="X-Organization-Id"                data-endpoint="PATCHapi-organizations--organization_id-"
+               value="ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1"
+               data-component="header">
+    <br>
+<p>Example: <code>ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="PATCHapi-organizations--organization_id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="PATCHapi-organizations--organization_id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>organization_id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="organization_id"                data-endpoint="PATCHapi-organizations--organization_id-"
+               value="1"
+               data-component="url">
+    <br>
+<p>The ID of the organization. Example: <code>1</code></p>
+            </div>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>organization</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="organization"                data-endpoint="PATCHapi-organizations--organization_id-"
+               value="1"
+               data-component="url">
+    <br>
+<p>ID organization. Example: <code>1</code></p>
+            </div>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>name</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="name"                data-endpoint="PATCHapi-organizations--organization_id-"
+               value="Công ty A"
+               data-component="body">
+    <br>
+<p>Tên organization. Example: <code>Công ty A</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>slug</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="slug"                data-endpoint="PATCHapi-organizations--organization_id-"
+               value="cong-ty-a"
+               data-component="body">
+    <br>
+<p>Slug. Example: <code>cong-ty-a</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>description</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="description"                data-endpoint="PATCHapi-organizations--organization_id-"
+               value="Tổ chức quản trị"
+               data-component="body">
+    <br>
+<p>Mô tả. Example: <code>Tổ chức quản trị</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>status</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="status"                data-endpoint="PATCHapi-organizations--organization_id-"
+               value="inactive"
+               data-component="body">
+    <br>
+<p>Trạng thái: active, inactive. Example: <code>inactive</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>parent_id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+<i>optional</i> &nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="parent_id"                data-endpoint="PATCHapi-organizations--organization_id-"
+               value=""
+               data-component="body">
+    <br>
+<p>ID organization cha (null = gốc).</p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>sort_order</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+<i>optional</i> &nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="sort_order"                data-endpoint="PATCHapi-organizations--organization_id-"
+               value="0"
+               data-component="body">
+    <br>
+<p>Thứ tự. Example: <code>0</code></p>
+        </div>
+        </form>
+
+                    <h2 id="core-organization-DELETEapi-organizations--organization_id-">Xóa organization</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+
+
+<span id="example-requests-DELETEapi-organizations--organization_id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request DELETE \
+    "http://localhost/api/organizations/1" \
+    --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
+    --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/organizations/1"
+);
+
+const headers = {
+    "Authorization": "Bearer Bearer {YOUR_ACCESS_TOKEN}",
+    "X-Organization-Id": "ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+
+fetch(url, {
+    method: "DELETE",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/organizations/1';
+$response = $client-&gt;delete(
+    $url,
+    [
+        'headers' =&gt; [
+            'Authorization' =&gt; 'Bearer Bearer {YOUR_ACCESS_TOKEN}',
+            'X-Organization-Id' =&gt; 'ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1',
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-DELETEapi-organizations--organization_id-">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: true,
+    &quot;message&quot;: &quot;Organization đ&atilde; được x&oacute;a!&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-DELETEapi-organizations--organization_id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-DELETEapi-organizations--organization_id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-DELETEapi-organizations--organization_id-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-DELETEapi-organizations--organization_id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-DELETEapi-organizations--organization_id-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-DELETEapi-organizations--organization_id-" data-method="DELETE"
+      data-path="api/organizations/{organization_id}"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('DELETEapi-organizations--organization_id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-DELETEapi-organizations--organization_id-"
+                    onclick="tryItOut('DELETEapi-organizations--organization_id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-DELETEapi-organizations--organization_id-"
+                    onclick="cancelTryOut('DELETEapi-organizations--organization_id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-DELETEapi-organizations--organization_id-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-red">DELETE</small>
+            <b><code>api/organizations/{organization_id}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="DELETEapi-organizations--organization_id-"
+               value="Bearer Bearer {YOUR_ACCESS_TOKEN}"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer Bearer {YOUR_ACCESS_TOKEN}</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>X-Organization-Id</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="X-Organization-Id"                data-endpoint="DELETEapi-organizations--organization_id-"
+               value="ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1"
+               data-component="header">
+    <br>
+<p>Example: <code>ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="DELETEapi-organizations--organization_id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="DELETEapi-organizations--organization_id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>organization_id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="organization_id"                data-endpoint="DELETEapi-organizations--organization_id-"
+               value="1"
+               data-component="url">
+    <br>
+<p>The ID of the organization. Example: <code>1</code></p>
+            </div>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>organization</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="organization"                data-endpoint="DELETEapi-organizations--organization_id-"
+               value="1"
+               data-component="url">
+    <br>
+<p>ID organization. Example: <code>1</code></p>
+            </div>
+                    </form>
+
+                    <h2 id="core-organization-PATCHapi-organizations--organization_id--status">Thay đổi trạng thái organization</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+
+
+<span id="example-requests-PATCHapi-organizations--organization_id--status">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request PATCH \
+    "http://localhost/api/organizations/1/status" \
+    --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
+    --header "X-Organization-Id: ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"status\": \"inactive\"
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/organizations/1/status"
+);
+
+const headers = {
+    "Authorization": "Bearer Bearer {YOUR_ACCESS_TOKEN}",
+    "X-Organization-Id": "ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "status": "inactive"
+};
+
+fetch(url, {
+    method: "PATCH",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/organizations/1/status';
+$response = $client-&gt;patch(
+    $url,
+    [
+        'headers' =&gt; [
+            'Authorization' =&gt; 'Bearer Bearer {YOUR_ACCESS_TOKEN}',
+            'X-Organization-Id' =&gt; 'ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1',
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+        'json' =&gt; [
+            'status' =&gt; 'inactive',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-PATCHapi-organizations--organization_id--status">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: {
+        &quot;id&quot;: 19,
+        &quot;name&quot;: &quot;Dare Group&quot;,
+        &quot;slug&quot;: &quot;iure-odit-et-et-modi-ipsum-nostrum-omnis&quot;,
+        &quot;description&quot;: &quot;Consequatur aut dolores enim non facere tempora.&quot;,
+        &quot;status&quot;: &quot;inactive&quot;,
+        &quot;parent_id&quot;: 18,
+        &quot;sort_order&quot;: 78,
+        &quot;depth&quot;: 1,
+        &quot;created_by&quot;: &quot;N/A&quot;,
+        &quot;updated_by&quot;: &quot;N/A&quot;,
+        &quot;created_at&quot;: &quot;03:10:04 29/03/2026&quot;,
+        &quot;updated_at&quot;: &quot;03:10:04 29/03/2026&quot;,
+        &quot;parent&quot;: {
+            &quot;id&quot;: 18,
+            &quot;name&quot;: &quot;Raynor Ltd&quot;,
+            &quot;slug&quot;: &quot;molestias-fugit-deleniti-distinctio-eum-doloremque-id&quot;,
+            &quot;description&quot;: null,
+            &quot;status&quot;: &quot;active&quot;,
+            &quot;parent_id&quot;: null,
+            &quot;sort_order&quot;: 49,
+            &quot;depth&quot;: 0,
+            &quot;created_by&quot;: &quot;N/A&quot;,
+            &quot;updated_by&quot;: &quot;N/A&quot;,
+            &quot;created_at&quot;: &quot;03:10:04 29/03/2026&quot;,
+            &quot;updated_at&quot;: &quot;03:10:04 29/03/2026&quot;
+        },
+        &quot;children&quot;: [
+            {
+                &quot;id&quot;: 20,
+                &quot;name&quot;: &quot;Mayer-Kutch&quot;,
+                &quot;slug&quot;: &quot;deleniti-nemo-odit-quia-officia&quot;,
+                &quot;description&quot;: &quot;Neque blanditiis odio veritatis excepturi doloribus delectus.&quot;,
+                &quot;status&quot;: &quot;inactive&quot;,
+                &quot;parent_id&quot;: 19,
+                &quot;sort_order&quot;: 22,
+                &quot;depth&quot;: 2,
+                &quot;created_by&quot;: &quot;N/A&quot;,
+                &quot;updated_by&quot;: &quot;N/A&quot;,
+                &quot;created_at&quot;: &quot;03:10:04 29/03/2026&quot;,
+                &quot;updated_at&quot;: &quot;03:10:04 29/03/2026&quot;
+            }
+        ]
+    },
+    &quot;success&quot;: &quot;true&quot;,
+    &quot;message&quot;: &quot;Cập nhật trạng th&aacute;i th&agrave;nh c&ocirc;ng!&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-PATCHapi-organizations--organization_id--status" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-PATCHapi-organizations--organization_id--status"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-PATCHapi-organizations--organization_id--status"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-PATCHapi-organizations--organization_id--status" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-PATCHapi-organizations--organization_id--status">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-PATCHapi-organizations--organization_id--status" data-method="PATCH"
+      data-path="api/organizations/{organization_id}/status"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('PATCHapi-organizations--organization_id--status', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-PATCHapi-organizations--organization_id--status"
+                    onclick="tryItOut('PATCHapi-organizations--organization_id--status');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-PATCHapi-organizations--organization_id--status"
+                    onclick="cancelTryOut('PATCHapi-organizations--organization_id--status');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-PATCHapi-organizations--organization_id--status"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-purple">PATCH</small>
+            <b><code>api/organizations/{organization_id}/status</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="PATCHapi-organizations--organization_id--status"
+               value="Bearer Bearer {YOUR_ACCESS_TOKEN}"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer Bearer {YOUR_ACCESS_TOKEN}</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>X-Organization-Id</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="X-Organization-Id"                data-endpoint="PATCHapi-organizations--organization_id--status"
+               value="ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1"
+               data-component="header">
+    <br>
+<p>Example: <code>ID tổ chức cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="PATCHapi-organizations--organization_id--status"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="PATCHapi-organizations--organization_id--status"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>organization_id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="organization_id"                data-endpoint="PATCHapi-organizations--organization_id--status"
+               value="1"
+               data-component="url">
+    <br>
+<p>The ID of the organization. Example: <code>1</code></p>
+            </div>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>organization</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="organization"                data-endpoint="PATCHapi-organizations--organization_id--status"
+               value="1"
+               data-component="url">
+    <br>
+<p>ID organization. Example: <code>1</code></p>
+            </div>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>status</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="status"                data-endpoint="PATCHapi-organizations--organization_id--status"
+               value="inactive"
+               data-component="body">
+    <br>
+<p>Trạng thái mới: active, inactive. Example: <code>inactive</code></p>
+        </div>
+        </form>
+
+                <h1 id="core-permission">Core - Permission</h1>
+
+    <p>Quản lý quyền (permission): stats, index, show, store, update, destroy, bulk delete, export, import.</p>
 
                                 <h2 id="core-permission-GETapi-permissions-export">Xuất danh sách permission</h2>
 
@@ -3483,16 +7333,15 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:8000/api/permissions/export?search=architecto&amp;status=active&amp;from_date=architecto&amp;to_date=architecto&amp;sort_by=architecto&amp;sort_order=architecto&amp;limit=10" \
+    --get "http://localhost/api/permissions/export?search=architecto&amp;status=active&amp;from_date=architecto&amp;to_date=architecto&amp;sort_by=architecto&amp;sort_order=architecto&amp;limit=10" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
-    --header "X-Department-Id: ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/permissions/export"
+    "http://localhost/api/permissions/export"
 );
 
 const params = {
@@ -3509,7 +7358,6 @@ Object.keys(params)
 
 const headers = {
     "Authorization": "Bearer Bearer {YOUR_ACCESS_TOKEN}",
-    "X-Department-Id": "ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -3523,13 +7371,12 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost:8000/api/permissions/export';
+$url = 'http://localhost/api/permissions/export';
 $response = $client-&gt;get(
     $url,
     [
         'headers' =&gt; [
             'Authorization' =&gt; 'Bearer Bearer {YOUR_ACCESS_TOKEN}',
-            'X-Department-Id' =&gt; 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1',
             'Content-Type' =&gt; 'application/json',
             'Accept' =&gt; 'application/json',
         ],
@@ -3625,18 +7472,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
                data-component="header">
     <br>
 <p>Example: <code>Bearer Bearer {YOUR_ACCESS_TOKEN}</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>X-Department-Id</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="X-Department-Id"                data-endpoint="GETapi-permissions-export"
-               value="ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1"
-               data-component="header">
-    <br>
-<p>Example: <code>ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1</code></p>
             </div>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
@@ -3763,22 +7598,20 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost:8000/api/permissions/import" \
+    "http://localhost/api/permissions/import" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
-    --header "X-Department-Id: ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: multipart/form-data" \
     --header "Accept: application/json" \
-    --form "file=@/tmp/php32se81edmlrmepe0pi3" </code></pre></div>
+    --form "file=@C:\Users\tuanl\AppData\Local\Temp\phpF1A8.tmp" </code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/permissions/import"
+    "http://localhost/api/permissions/import"
 );
 
 const headers = {
     "Authorization": "Bearer Bearer {YOUR_ACCESS_TOKEN}",
-    "X-Department-Id": "ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1",
     "Content-Type": "multipart/form-data",
     "Accept": "application/json",
 };
@@ -3795,20 +7628,19 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost:8000/api/permissions/import';
+$url = 'http://localhost/api/permissions/import';
 $response = $client-&gt;post(
     $url,
     [
         'headers' =&gt; [
             'Authorization' =&gt; 'Bearer Bearer {YOUR_ACCESS_TOKEN}',
-            'X-Department-Id' =&gt; 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1',
             'Content-Type' =&gt; 'multipart/form-data',
             'Accept' =&gt; 'application/json',
         ],
         'multipart' =&gt; [
             [
                 'name' =&gt; 'file',
-                'contents' =&gt; fopen('/tmp/php32se81edmlrmepe0pi3', 'r')
+                'contents' =&gt; fopen('C:\Users\tuanl\AppData\Local\Temp\phpF1A8.tmp', 'r')
             ],
         ],
     ]
@@ -3890,18 +7722,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <p>Example: <code>Bearer Bearer {YOUR_ACCESS_TOKEN}</code></p>
             </div>
                                 <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>X-Department-Id</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="X-Department-Id"                data-endpoint="POSTapi-permissions-import"
-               value="ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1"
-               data-component="header">
-    <br>
-<p>Example: <code>ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
@@ -3936,7 +7756,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>File Excel (xlsx, xls, csv). Cột theo chuẩn export. Example: <code>/tmp/php32se81edmlrmepe0pi3</code></p>
+<p>File Excel (xlsx, xls, csv). Cột theo chuẩn export. Example: <code>C:\Users\tuanl\AppData\Local\Temp\phpF1A8.tmp</code></p>
         </div>
         </form>
 
@@ -3954,9 +7774,8 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost:8000/api/permissions/bulk-delete" \
+    "http://localhost/api/permissions/bulk-delete" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
-    --header "X-Department-Id: ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -3971,12 +7790,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/permissions/bulk-delete"
+    "http://localhost/api/permissions/bulk-delete"
 );
 
 const headers = {
     "Authorization": "Bearer Bearer {YOUR_ACCESS_TOKEN}",
-    "X-Department-Id": "ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -3998,13 +7816,12 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost:8000/api/permissions/bulk-delete';
+$url = 'http://localhost/api/permissions/bulk-delete';
 $response = $client-&gt;post(
     $url,
     [
         'headers' =&gt; [
             'Authorization' =&gt; 'Bearer Bearer {YOUR_ACCESS_TOKEN}',
-            'X-Department-Id' =&gt; 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1',
             'Content-Type' =&gt; 'application/json',
             'Accept' =&gt; 'application/json',
         ],
@@ -4094,18 +7911,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <p>Example: <code>Bearer Bearer {YOUR_ACCESS_TOKEN}</code></p>
             </div>
                                 <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>X-Department-Id</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="X-Department-Id"                data-endpoint="POSTapi-permissions-bulk-delete"
-               value="ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1"
-               data-component="header">
-    <br>
-<p>Example: <code>ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
@@ -4160,16 +7965,15 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:8000/api/permissions/stats?search=posts&amp;status=active&amp;from_date=2026-02-01&amp;to_date=2026-02-17&amp;sort_by=created_at&amp;sort_order=desc&amp;limit=10" \
+    --get "http://localhost/api/permissions/stats?search=posts&amp;status=active&amp;from_date=2026-02-01&amp;to_date=2026-02-17&amp;sort_by=created_at&amp;sort_order=desc&amp;limit=10" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
-    --header "X-Department-Id: ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/permissions/stats"
+    "http://localhost/api/permissions/stats"
 );
 
 const params = {
@@ -4186,7 +7990,6 @@ Object.keys(params)
 
 const headers = {
     "Authorization": "Bearer Bearer {YOUR_ACCESS_TOKEN}",
-    "X-Department-Id": "ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -4200,13 +8003,12 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost:8000/api/permissions/stats';
+$url = 'http://localhost/api/permissions/stats';
 $response = $client-&gt;get(
     $url,
     [
         'headers' =&gt; [
             'Authorization' =&gt; 'Bearer Bearer {YOUR_ACCESS_TOKEN}',
-            'X-Department-Id' =&gt; 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1',
             'Content-Type' =&gt; 'application/json',
             'Accept' =&gt; 'application/json',
         ],
@@ -4298,18 +8100,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
                data-component="header">
     <br>
 <p>Example: <code>Bearer Bearer {YOUR_ACCESS_TOKEN}</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>X-Department-Id</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="X-Department-Id"                data-endpoint="GETapi-permissions-stats"
-               value="ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1"
-               data-component="header">
-    <br>
-<p>Example: <code>ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1</code></p>
             </div>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
@@ -4436,16 +8226,15 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:8000/api/permissions/tree?parent_id=" \
+    --get "http://localhost/api/permissions/tree?parent_id=" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
-    --header "X-Department-Id: ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/permissions/tree"
+    "http://localhost/api/permissions/tree"
 );
 
 const params = {
@@ -4456,7 +8245,6 @@ Object.keys(params)
 
 const headers = {
     "Authorization": "Bearer Bearer {YOUR_ACCESS_TOKEN}",
-    "X-Department-Id": "ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -4470,13 +8258,12 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost:8000/api/permissions/tree';
+$url = 'http://localhost/api/permissions/tree';
 $response = $client-&gt;get(
     $url,
     [
         'headers' =&gt; [
             'Authorization' =&gt; 'Bearer Bearer {YOUR_ACCESS_TOKEN}',
-            'X-Department-Id' =&gt; 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1',
             'Content-Type' =&gt; 'application/json',
             'Accept' =&gt; 'application/json',
         ],
@@ -4572,18 +8359,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <p>Example: <code>Bearer Bearer {YOUR_ACCESS_TOKEN}</code></p>
             </div>
                                 <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>X-Department-Id</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="X-Department-Id"                data-endpoint="GETapi-permissions-tree"
-               value="ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1"
-               data-component="header">
-    <br>
-<p>Example: <code>ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
@@ -4636,16 +8411,15 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:8000/api/permissions?search=posts&amp;status=active&amp;from_date=2026-02-01&amp;to_date=2026-02-17&amp;sort_by=sort_order&amp;sort_order=asc&amp;limit=10" \
+    --get "http://localhost/api/permissions?search=posts&amp;status=active&amp;from_date=2026-02-01&amp;to_date=2026-02-17&amp;sort_by=sort_order&amp;sort_order=asc&amp;limit=10" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
-    --header "X-Department-Id: ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/permissions"
+    "http://localhost/api/permissions"
 );
 
 const params = {
@@ -4662,7 +8436,6 @@ Object.keys(params)
 
 const headers = {
     "Authorization": "Bearer Bearer {YOUR_ACCESS_TOKEN}",
-    "X-Department-Id": "ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -4676,13 +8449,12 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost:8000/api/permissions';
+$url = 'http://localhost/api/permissions';
 $response = $client-&gt;get(
     $url,
     [
         'headers' =&gt; [
             'Authorization' =&gt; 'Bearer Bearer {YOUR_ACCESS_TOKEN}',
-            'X-Department-Id' =&gt; 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1',
             'Content-Type' =&gt; 'application/json',
             'Accept' =&gt; 'application/json',
         ],
@@ -4711,24 +8483,24 @@ print_r(json_decode((string) $body));</code></pre></div>
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: [
         {
-            &quot;id&quot;: 80,
+            &quot;id&quot;: 93,
             &quot;name&quot;: &quot;users.update.4027&quot;,
             &quot;guard_name&quot;: &quot;web&quot;,
             &quot;description&quot;: null,
             &quot;sort_order&quot;: 95,
             &quot;parent_id&quot;: null,
-            &quot;created_at&quot;: &quot;09:58:05 26/03/2026&quot;,
-            &quot;updated_at&quot;: &quot;09:58:05 26/03/2026&quot;
+            &quot;created_at&quot;: &quot;03:10:02 29/03/2026&quot;,
+            &quot;updated_at&quot;: &quot;03:10:02 29/03/2026&quot;
         },
         {
-            &quot;id&quot;: 81,
-            &quot;name&quot;: &quot;documents.index.6955&quot;,
+            &quot;id&quot;: 94,
+            &quot;name&quot;: &quot;settings.index.6955&quot;,
             &quot;guard_name&quot;: &quot;web&quot;,
             &quot;description&quot;: null,
             &quot;sort_order&quot;: 39,
             &quot;parent_id&quot;: null,
-            &quot;created_at&quot;: &quot;09:58:05 26/03/2026&quot;,
-            &quot;updated_at&quot;: &quot;09:58:05 26/03/2026&quot;
+            &quot;created_at&quot;: &quot;03:10:03 29/03/2026&quot;,
+            &quot;updated_at&quot;: &quot;03:10:03 29/03/2026&quot;
         }
     ],
     &quot;links&quot;: {
@@ -4828,18 +8600,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
                data-component="header">
     <br>
 <p>Example: <code>Bearer Bearer {YOUR_ACCESS_TOKEN}</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>X-Department-Id</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="X-Department-Id"                data-endpoint="GETapi-permissions"
-               value="ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1"
-               data-component="header">
-    <br>
-<p>Example: <code>ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1</code></p>
             </div>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
@@ -4966,21 +8726,19 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:8000/api/permissions/1" \
+    --get "http://localhost/api/permissions/1" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
-    --header "X-Department-Id: ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/permissions/1"
+    "http://localhost/api/permissions/1"
 );
 
 const headers = {
     "Authorization": "Bearer Bearer {YOUR_ACCESS_TOKEN}",
-    "X-Department-Id": "ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -4994,13 +8752,12 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost:8000/api/permissions/1';
+$url = 'http://localhost/api/permissions/1';
 $response = $client-&gt;get(
     $url,
     [
         'headers' =&gt; [
             'Authorization' =&gt; 'Bearer Bearer {YOUR_ACCESS_TOKEN}',
-            'X-Department-Id' =&gt; 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1',
             'Content-Type' =&gt; 'application/json',
             'Accept' =&gt; 'application/json',
         ],
@@ -5019,30 +8776,30 @@ print_r(json_decode((string) $body));</code></pre></div>
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: {
-        &quot;id&quot;: 83,
+        &quot;id&quot;: 96,
         &quot;name&quot;: &quot;users.index.4524&quot;,
         &quot;guard_name&quot;: &quot;web&quot;,
         &quot;description&quot;: &quot;Commodi incidunt iure odit.&quot;,
         &quot;sort_order&quot;: 45,
-        &quot;parent_id&quot;: 82,
+        &quot;parent_id&quot;: 95,
         &quot;parent&quot;: {
-            &quot;id&quot;: 82,
-            &quot;name&quot;: &quot;documents.show.967&quot;
+            &quot;id&quot;: 95,
+            &quot;name&quot;: &quot;settings.show.967&quot;
         },
         &quot;children&quot;: [
             {
-                &quot;id&quot;: 84,
+                &quot;id&quot;: 97,
                 &quot;name&quot;: &quot;roles.destroy.1904&quot;,
                 &quot;guard_name&quot;: &quot;web&quot;,
                 &quot;description&quot;: null,
                 &quot;sort_order&quot;: 93,
-                &quot;parent_id&quot;: 83,
-                &quot;created_at&quot;: &quot;09:58:05 26/03/2026&quot;,
-                &quot;updated_at&quot;: &quot;09:58:05 26/03/2026&quot;
+                &quot;parent_id&quot;: 96,
+                &quot;created_at&quot;: &quot;03:10:03 29/03/2026&quot;,
+                &quot;updated_at&quot;: &quot;03:10:03 29/03/2026&quot;
             }
         ],
-        &quot;created_at&quot;: &quot;09:58:05 26/03/2026&quot;,
-        &quot;updated_at&quot;: &quot;09:58:05 26/03/2026&quot;
+        &quot;created_at&quot;: &quot;03:10:03 29/03/2026&quot;,
+        &quot;updated_at&quot;: &quot;03:10:03 29/03/2026&quot;
     },
     &quot;success&quot;: &quot;true&quot;
 }</code>
@@ -5106,18 +8863,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
                data-component="header">
     <br>
 <p>Example: <code>Bearer Bearer {YOUR_ACCESS_TOKEN}</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>X-Department-Id</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="X-Department-Id"                data-endpoint="GETapi-permissions--permission_id-"
-               value="ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1"
-               data-component="header">
-    <br>
-<p>Example: <code>ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1</code></p>
             </div>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
@@ -5184,9 +8929,8 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost:8000/api/permissions" \
+    "http://localhost/api/permissions" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
-    --header "X-Department-Id: ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -5201,12 +8945,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/permissions"
+    "http://localhost/api/permissions"
 );
 
 const headers = {
     "Authorization": "Bearer Bearer {YOUR_ACCESS_TOKEN}",
-    "X-Department-Id": "ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -5228,13 +8971,12 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost:8000/api/permissions';
+$url = 'http://localhost/api/permissions';
 $response = $client-&gt;post(
     $url,
     [
         'headers' =&gt; [
             'Authorization' =&gt; 'Bearer Bearer {YOUR_ACCESS_TOKEN}',
-            'X-Department-Id' =&gt; 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1',
             'Content-Type' =&gt; 'application/json',
             'Accept' =&gt; 'application/json',
         ],
@@ -5260,14 +9002,14 @@ print_r(json_decode((string) $body));</code></pre></div>
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: {
-        &quot;id&quot;: 85,
+        &quot;id&quot;: 98,
         &quot;name&quot;: &quot;roles.index.660&quot;,
         &quot;guard_name&quot;: &quot;web&quot;,
         &quot;description&quot;: &quot;Et fugiat sunt nihil accusantium.&quot;,
         &quot;sort_order&quot;: 91,
         &quot;parent_id&quot;: null,
-        &quot;created_at&quot;: &quot;09:58:05 26/03/2026&quot;,
-        &quot;updated_at&quot;: &quot;09:58:05 26/03/2026&quot;
+        &quot;created_at&quot;: &quot;03:10:03 29/03/2026&quot;,
+        &quot;updated_at&quot;: &quot;03:10:03 29/03/2026&quot;
     },
     &quot;success&quot;: &quot;true&quot;,
     &quot;message&quot;: &quot;Quyền đ&atilde; được tạo th&agrave;nh c&ocirc;ng!&quot;
@@ -5332,18 +9074,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
                data-component="header">
     <br>
 <p>Example: <code>Bearer Bearer {YOUR_ACCESS_TOKEN}</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>X-Department-Id</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="X-Department-Id"                data-endpoint="POSTapi-permissions"
-               value="ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1"
-               data-component="header">
-    <br>
-<p>Example: <code>ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1</code></p>
             </div>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
@@ -5446,9 +9176,8 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://localhost:8000/api/permissions/1" \
+    "http://localhost/api/permissions/1" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
-    --header "X-Department-Id: ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -5463,12 +9192,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/permissions/1"
+    "http://localhost/api/permissions/1"
 );
 
 const headers = {
     "Authorization": "Bearer Bearer {YOUR_ACCESS_TOKEN}",
-    "X-Department-Id": "ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -5490,13 +9218,12 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost:8000/api/permissions/1';
+$url = 'http://localhost/api/permissions/1';
 $response = $client-&gt;put(
     $url,
     [
         'headers' =&gt; [
             'Authorization' =&gt; 'Bearer Bearer {YOUR_ACCESS_TOKEN}',
-            'X-Department-Id' =&gt; 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1',
             'Content-Type' =&gt; 'application/json',
             'Accept' =&gt; 'application/json',
         ],
@@ -5522,14 +9249,14 @@ print_r(json_decode((string) $body));</code></pre></div>
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: {
-        &quot;id&quot;: 86,
+        &quot;id&quot;: 99,
         &quot;name&quot;: &quot;roles.index.4338&quot;,
         &quot;guard_name&quot;: &quot;web&quot;,
         &quot;description&quot;: null,
         &quot;sort_order&quot;: 7,
         &quot;parent_id&quot;: null,
-        &quot;created_at&quot;: &quot;09:58:05 26/03/2026&quot;,
-        &quot;updated_at&quot;: &quot;09:58:05 26/03/2026&quot;
+        &quot;created_at&quot;: &quot;03:10:03 29/03/2026&quot;,
+        &quot;updated_at&quot;: &quot;03:10:03 29/03/2026&quot;
     },
     &quot;success&quot;: &quot;true&quot;,
     &quot;message&quot;: &quot;Quyền đ&atilde; được cập nhật!&quot;
@@ -5594,18 +9321,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
                data-component="header">
     <br>
 <p>Example: <code>Bearer Bearer {YOUR_ACCESS_TOKEN}</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>X-Department-Id</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="X-Department-Id"                data-endpoint="PUTapi-permissions--permission_id-"
-               value="ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1"
-               data-component="header">
-    <br>
-<p>Example: <code>ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1</code></p>
             </div>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
@@ -5733,9 +9448,8 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PATCH \
-    "http://localhost:8000/api/permissions/1" \
+    "http://localhost/api/permissions/1" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
-    --header "X-Department-Id: ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -5750,12 +9464,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/permissions/1"
+    "http://localhost/api/permissions/1"
 );
 
 const headers = {
     "Authorization": "Bearer Bearer {YOUR_ACCESS_TOKEN}",
-    "X-Department-Id": "ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -5777,13 +9490,12 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost:8000/api/permissions/1';
+$url = 'http://localhost/api/permissions/1';
 $response = $client-&gt;patch(
     $url,
     [
         'headers' =&gt; [
             'Authorization' =&gt; 'Bearer Bearer {YOUR_ACCESS_TOKEN}',
-            'X-Department-Id' =&gt; 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1',
             'Content-Type' =&gt; 'application/json',
             'Accept' =&gt; 'application/json',
         ],
@@ -5809,14 +9521,14 @@ print_r(json_decode((string) $body));</code></pre></div>
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: {
-        &quot;id&quot;: 87,
+        &quot;id&quot;: 100,
         &quot;name&quot;: &quot;roles.index.3491&quot;,
         &quot;guard_name&quot;: &quot;web&quot;,
         &quot;description&quot;: &quot;Sunt nihil accusantium harum mollitia.&quot;,
         &quot;sort_order&quot;: 86,
         &quot;parent_id&quot;: null,
-        &quot;created_at&quot;: &quot;09:58:05 26/03/2026&quot;,
-        &quot;updated_at&quot;: &quot;09:58:05 26/03/2026&quot;
+        &quot;created_at&quot;: &quot;03:10:03 29/03/2026&quot;,
+        &quot;updated_at&quot;: &quot;03:10:03 29/03/2026&quot;
     },
     &quot;success&quot;: &quot;true&quot;,
     &quot;message&quot;: &quot;Quyền đ&atilde; được cập nhật!&quot;
@@ -5881,18 +9593,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
                data-component="header">
     <br>
 <p>Example: <code>Bearer Bearer {YOUR_ACCESS_TOKEN}</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>X-Department-Id</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="X-Department-Id"                data-endpoint="PATCHapi-permissions--permission_id-"
-               value="ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1"
-               data-component="header">
-    <br>
-<p>Example: <code>ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1</code></p>
             </div>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
@@ -6020,21 +9720,19 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request DELETE \
-    "http://localhost:8000/api/permissions/1" \
+    "http://localhost/api/permissions/1" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
-    --header "X-Department-Id: ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/permissions/1"
+    "http://localhost/api/permissions/1"
 );
 
 const headers = {
     "Authorization": "Bearer Bearer {YOUR_ACCESS_TOKEN}",
-    "X-Department-Id": "ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -6048,13 +9746,12 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost:8000/api/permissions/1';
+$url = 'http://localhost/api/permissions/1';
 $response = $client-&gt;delete(
     $url,
     [
         'headers' =&gt; [
             'Authorization' =&gt; 'Bearer Bearer {YOUR_ACCESS_TOKEN}',
-            'X-Department-Id' =&gt; 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1',
             'Content-Type' =&gt; 'application/json',
             'Accept' =&gt; 'application/json',
         ],
@@ -6137,18 +9834,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <p>Example: <code>Bearer Bearer {YOUR_ACCESS_TOKEN}</code></p>
             </div>
                                 <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>X-Department-Id</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="X-Department-Id"                data-endpoint="DELETEapi-permissions--permission_id-"
-               value="ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1"
-               data-component="header">
-    <br>
-<p>Example: <code>ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
@@ -6201,7 +9886,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
                 <h1 id="core-role">Core - Role</h1>
 
-    
+    <p>Quản lý vai trò (role) theo Spatie: stats, index, show, store, update, destroy, bulk delete, export, import.</p>
 
                                 <h2 id="core-role-GETapi-roles-export">Xuất danh sách role</h2>
 
@@ -6217,16 +9902,15 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:8000/api/roles/export?search=architecto&amp;status=active&amp;from_date=architecto&amp;to_date=architecto&amp;sort_by=architecto&amp;sort_order=architecto&amp;limit=10" \
+    --get "http://localhost/api/roles/export?search=architecto&amp;status=active&amp;from_date=architecto&amp;to_date=architecto&amp;sort_by=architecto&amp;sort_order=architecto&amp;limit=10" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
-    --header "X-Department-Id: ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/roles/export"
+    "http://localhost/api/roles/export"
 );
 
 const params = {
@@ -6243,7 +9927,6 @@ Object.keys(params)
 
 const headers = {
     "Authorization": "Bearer Bearer {YOUR_ACCESS_TOKEN}",
-    "X-Department-Id": "ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -6257,13 +9940,12 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost:8000/api/roles/export';
+$url = 'http://localhost/api/roles/export';
 $response = $client-&gt;get(
     $url,
     [
         'headers' =&gt; [
             'Authorization' =&gt; 'Bearer Bearer {YOUR_ACCESS_TOKEN}',
-            'X-Department-Id' =&gt; 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1',
             'Content-Type' =&gt; 'application/json',
             'Accept' =&gt; 'application/json',
         ],
@@ -6359,18 +10041,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
                data-component="header">
     <br>
 <p>Example: <code>Bearer Bearer {YOUR_ACCESS_TOKEN}</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>X-Department-Id</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="X-Department-Id"                data-endpoint="GETapi-roles-export"
-               value="ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1"
-               data-component="header">
-    <br>
-<p>Example: <code>ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1</code></p>
             </div>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
@@ -6497,22 +10167,20 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost:8000/api/roles/import" \
+    "http://localhost/api/roles/import" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
-    --header "X-Department-Id: ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: multipart/form-data" \
     --header "Accept: application/json" \
-    --form "file=@/tmp/php75rkbb7k2g00fKIVsyM" </code></pre></div>
+    --form "file=@C:\Users\tuanl\AppData\Local\Temp\phpF312.tmp" </code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/roles/import"
+    "http://localhost/api/roles/import"
 );
 
 const headers = {
     "Authorization": "Bearer Bearer {YOUR_ACCESS_TOKEN}",
-    "X-Department-Id": "ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1",
     "Content-Type": "multipart/form-data",
     "Accept": "application/json",
 };
@@ -6529,20 +10197,19 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost:8000/api/roles/import';
+$url = 'http://localhost/api/roles/import';
 $response = $client-&gt;post(
     $url,
     [
         'headers' =&gt; [
             'Authorization' =&gt; 'Bearer Bearer {YOUR_ACCESS_TOKEN}',
-            'X-Department-Id' =&gt; 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1',
             'Content-Type' =&gt; 'multipart/form-data',
             'Accept' =&gt; 'application/json',
         ],
         'multipart' =&gt; [
             [
                 'name' =&gt; 'file',
-                'contents' =&gt; fopen('/tmp/php75rkbb7k2g00fKIVsyM', 'r')
+                'contents' =&gt; fopen('C:\Users\tuanl\AppData\Local\Temp\phpF312.tmp', 'r')
             ],
         ],
     ]
@@ -6624,18 +10291,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <p>Example: <code>Bearer Bearer {YOUR_ACCESS_TOKEN}</code></p>
             </div>
                                 <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>X-Department-Id</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="X-Department-Id"                data-endpoint="POSTapi-roles-import"
-               value="ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1"
-               data-component="header">
-    <br>
-<p>Example: <code>ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
@@ -6670,7 +10325,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>File Excel (xlsx, xls, csv). Cột theo chuẩn export. Example: <code>/tmp/php75rkbb7k2g00fKIVsyM</code></p>
+<p>File Excel (xlsx, xls, csv). Cột theo chuẩn export. Example: <code>C:\Users\tuanl\AppData\Local\Temp\phpF312.tmp</code></p>
         </div>
         </form>
 
@@ -6688,9 +10343,8 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost:8000/api/roles/bulk-delete" \
+    "http://localhost/api/roles/bulk-delete" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
-    --header "X-Department-Id: ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -6705,12 +10359,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/roles/bulk-delete"
+    "http://localhost/api/roles/bulk-delete"
 );
 
 const headers = {
     "Authorization": "Bearer Bearer {YOUR_ACCESS_TOKEN}",
-    "X-Department-Id": "ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -6732,13 +10385,12 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost:8000/api/roles/bulk-delete';
+$url = 'http://localhost/api/roles/bulk-delete';
 $response = $client-&gt;post(
     $url,
     [
         'headers' =&gt; [
             'Authorization' =&gt; 'Bearer Bearer {YOUR_ACCESS_TOKEN}',
-            'X-Department-Id' =&gt; 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1',
             'Content-Type' =&gt; 'application/json',
             'Accept' =&gt; 'application/json',
         ],
@@ -6828,18 +10480,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <p>Example: <code>Bearer Bearer {YOUR_ACCESS_TOKEN}</code></p>
             </div>
                                 <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>X-Department-Id</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="X-Department-Id"                data-endpoint="POSTapi-roles-bulk-delete"
-               value="ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1"
-               data-component="header">
-    <br>
-<p>Example: <code>ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
@@ -6894,16 +10534,15 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:8000/api/roles/stats?search=admin&amp;status=active&amp;from_date=2026-02-01&amp;to_date=2026-02-17&amp;sort_by=created_at&amp;sort_order=desc&amp;limit=10" \
+    --get "http://localhost/api/roles/stats?search=admin&amp;status=active&amp;from_date=2026-02-01&amp;to_date=2026-02-17&amp;sort_by=created_at&amp;sort_order=desc&amp;limit=10" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
-    --header "X-Department-Id: ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/roles/stats"
+    "http://localhost/api/roles/stats"
 );
 
 const params = {
@@ -6920,7 +10559,6 @@ Object.keys(params)
 
 const headers = {
     "Authorization": "Bearer Bearer {YOUR_ACCESS_TOKEN}",
-    "X-Department-Id": "ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -6934,13 +10572,12 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost:8000/api/roles/stats';
+$url = 'http://localhost/api/roles/stats';
 $response = $client-&gt;get(
     $url,
     [
         'headers' =&gt; [
             'Authorization' =&gt; 'Bearer Bearer {YOUR_ACCESS_TOKEN}',
-            'X-Department-Id' =&gt; 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1',
             'Content-Type' =&gt; 'application/json',
             'Accept' =&gt; 'application/json',
         ],
@@ -7032,18 +10669,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
                data-component="header">
     <br>
 <p>Example: <code>Bearer Bearer {YOUR_ACCESS_TOKEN}</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>X-Department-Id</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="X-Department-Id"                data-endpoint="GETapi-roles-stats"
-               value="ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1"
-               data-component="header">
-    <br>
-<p>Example: <code>ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1</code></p>
             </div>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
@@ -7170,16 +10795,15 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:8000/api/roles?search=admin&amp;status=active&amp;from_date=2026-02-01&amp;to_date=2026-02-17&amp;sort_by=id&amp;sort_order=desc&amp;limit=10" \
+    --get "http://localhost/api/roles?search=admin&amp;status=active&amp;from_date=2026-02-01&amp;to_date=2026-02-17&amp;sort_by=id&amp;sort_order=desc&amp;limit=10" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
-    --header "X-Department-Id: ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/roles"
+    "http://localhost/api/roles"
 );
 
 const params = {
@@ -7196,7 +10820,6 @@ Object.keys(params)
 
 const headers = {
     "Authorization": "Bearer Bearer {YOUR_ACCESS_TOKEN}",
-    "X-Department-Id": "ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -7210,13 +10833,12 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost:8000/api/roles';
+$url = 'http://localhost/api/roles';
 $response = $client-&gt;get(
     $url,
     [
         'headers' =&gt; [
             'Authorization' =&gt; 'Bearer Bearer {YOUR_ACCESS_TOKEN}',
-            'X-Department-Id' =&gt; 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1',
             'Content-Type' =&gt; 'application/json',
             'Accept' =&gt; 'application/json',
         ],
@@ -7248,15 +10870,15 @@ print_r(json_decode((string) $body));</code></pre></div>
             &quot;id&quot;: 6,
             &quot;name&quot;: &quot;role_ng775&quot;,
             &quot;guard_name&quot;: &quot;web&quot;,
-            &quot;created_at&quot;: &quot;09:58:05 26/03/2026&quot;,
-            &quot;updated_at&quot;: &quot;09:58:05 26/03/2026&quot;
+            &quot;created_at&quot;: &quot;03:10:03 29/03/2026&quot;,
+            &quot;updated_at&quot;: &quot;03:10:03 29/03/2026&quot;
         },
         {
             &quot;id&quot;: 7,
             &quot;name&quot;: &quot;role_mi365&quot;,
             &quot;guard_name&quot;: &quot;web&quot;,
-            &quot;created_at&quot;: &quot;09:58:05 26/03/2026&quot;,
-            &quot;updated_at&quot;: &quot;09:58:05 26/03/2026&quot;
+            &quot;created_at&quot;: &quot;03:10:03 29/03/2026&quot;,
+            &quot;updated_at&quot;: &quot;03:10:03 29/03/2026&quot;
         }
     ],
     &quot;links&quot;: {
@@ -7356,18 +10978,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
                data-component="header">
     <br>
 <p>Example: <code>Bearer Bearer {YOUR_ACCESS_TOKEN}</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>X-Department-Id</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="X-Department-Id"                data-endpoint="GETapi-roles"
-               value="ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1"
-               data-component="header">
-    <br>
-<p>Example: <code>ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1</code></p>
             </div>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
@@ -7494,21 +11104,19 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:8000/api/roles/1" \
+    --get "http://localhost/api/roles/1" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
-    --header "X-Department-Id: ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/roles/1"
+    "http://localhost/api/roles/1"
 );
 
 const headers = {
     "Authorization": "Bearer Bearer {YOUR_ACCESS_TOKEN}",
-    "X-Department-Id": "ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -7522,13 +11130,12 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost:8000/api/roles/1';
+$url = 'http://localhost/api/roles/1';
 $response = $client-&gt;get(
     $url,
     [
         'headers' =&gt; [
             'Authorization' =&gt; 'Bearer Bearer {YOUR_ACCESS_TOKEN}',
-            'X-Department-Id' =&gt; 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1',
             'Content-Type' =&gt; 'application/json',
             'Accept' =&gt; 'application/json',
         ],
@@ -7551,10 +11158,10 @@ print_r(json_decode((string) $body));</code></pre></div>
         &quot;name&quot;: &quot;role_wp680&quot;,
         &quot;guard_name&quot;: &quot;web&quot;,
         &quot;permissions&quot;: [
-            &quot;departments.show.5485&quot;
+            &quot;permissions.show.5485&quot;
         ],
-        &quot;created_at&quot;: &quot;09:58:05 26/03/2026&quot;,
-        &quot;updated_at&quot;: &quot;09:58:05 26/03/2026&quot;
+        &quot;created_at&quot;: &quot;03:10:03 29/03/2026&quot;,
+        &quot;updated_at&quot;: &quot;03:10:03 29/03/2026&quot;
     },
     &quot;success&quot;: &quot;true&quot;
 }</code>
@@ -7618,18 +11225,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
                data-component="header">
     <br>
 <p>Example: <code>Bearer Bearer {YOUR_ACCESS_TOKEN}</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>X-Department-Id</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="X-Department-Id"                data-endpoint="GETapi-roles--role_id-"
-               value="ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1"
-               data-component="header">
-    <br>
-<p>Example: <code>ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1</code></p>
             </div>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
@@ -7696,9 +11291,8 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost:8000/api/roles" \
+    "http://localhost/api/roles" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
-    --header "X-Department-Id: ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -7715,12 +11309,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/roles"
+    "http://localhost/api/roles"
 );
 
 const headers = {
     "Authorization": "Bearer Bearer {YOUR_ACCESS_TOKEN}",
-    "X-Department-Id": "ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -7744,13 +11337,12 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost:8000/api/roles';
+$url = 'http://localhost/api/roles';
 $response = $client-&gt;post(
     $url,
     [
         'headers' =&gt; [
             'Authorization' =&gt; 'Bearer Bearer {YOUR_ACCESS_TOKEN}',
-            'X-Department-Id' =&gt; 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1',
             'Content-Type' =&gt; 'application/json',
             'Accept' =&gt; 'application/json',
         ],
@@ -7782,10 +11374,10 @@ print_r(json_decode((string) $body));</code></pre></div>
         &quot;name&quot;: &quot;role_zm806&quot;,
         &quot;guard_name&quot;: &quot;web&quot;,
         &quot;permissions&quot;: [
-            &quot;documents.index.5606&quot;
+            &quot;settings.index.5606&quot;
         ],
-        &quot;created_at&quot;: &quot;09:58:05 26/03/2026&quot;,
-        &quot;updated_at&quot;: &quot;09:58:05 26/03/2026&quot;
+        &quot;created_at&quot;: &quot;03:10:03 29/03/2026&quot;,
+        &quot;updated_at&quot;: &quot;03:10:03 29/03/2026&quot;
     },
     &quot;success&quot;: &quot;true&quot;,
     &quot;message&quot;: &quot;Vai tr&ograve; đ&atilde; được tạo th&agrave;nh c&ocirc;ng!&quot;
@@ -7850,18 +11442,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
                data-component="header">
     <br>
 <p>Example: <code>Bearer Bearer {YOUR_ACCESS_TOKEN}</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>X-Department-Id</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="X-Department-Id"                data-endpoint="POSTapi-roles"
-               value="ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1"
-               data-component="header">
-    <br>
-<p>Example: <code>ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1</code></p>
             </div>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
@@ -7942,9 +11522,8 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://localhost:8000/api/roles/1" \
+    "http://localhost/api/roles/1" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
-    --header "X-Department-Id: ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -7960,12 +11539,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/roles/1"
+    "http://localhost/api/roles/1"
 );
 
 const headers = {
     "Authorization": "Bearer Bearer {YOUR_ACCESS_TOKEN}",
-    "X-Department-Id": "ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -7988,13 +11566,12 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost:8000/api/roles/1';
+$url = 'http://localhost/api/roles/1';
 $response = $client-&gt;put(
     $url,
     [
         'headers' =&gt; [
             'Authorization' =&gt; 'Bearer Bearer {YOUR_ACCESS_TOKEN}',
-            'X-Department-Id' =&gt; 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1',
             'Content-Type' =&gt; 'application/json',
             'Accept' =&gt; 'application/json',
         ],
@@ -8027,8 +11604,8 @@ print_r(json_decode((string) $body));</code></pre></div>
         &quot;permissions&quot;: [
             &quot;users.update.3433&quot;
         ],
-        &quot;created_at&quot;: &quot;09:58:05 26/03/2026&quot;,
-        &quot;updated_at&quot;: &quot;09:58:05 26/03/2026&quot;
+        &quot;created_at&quot;: &quot;03:10:03 29/03/2026&quot;,
+        &quot;updated_at&quot;: &quot;03:10:03 29/03/2026&quot;
     },
     &quot;success&quot;: &quot;true&quot;,
     &quot;message&quot;: &quot;Vai tr&ograve; đ&atilde; được cập nhật!&quot;
@@ -8093,18 +11670,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
                data-component="header">
     <br>
 <p>Example: <code>Bearer Bearer {YOUR_ACCESS_TOKEN}</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>X-Department-Id</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="X-Department-Id"                data-endpoint="PUTapi-roles--role_id-"
-               value="ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1"
-               data-component="header">
-    <br>
-<p>Example: <code>ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1</code></p>
             </div>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
@@ -8210,9 +11775,8 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PATCH \
-    "http://localhost:8000/api/roles/1" \
+    "http://localhost/api/roles/1" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
-    --header "X-Department-Id: ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -8228,12 +11792,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/roles/1"
+    "http://localhost/api/roles/1"
 );
 
 const headers = {
     "Authorization": "Bearer Bearer {YOUR_ACCESS_TOKEN}",
-    "X-Department-Id": "ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -8256,13 +11819,12 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost:8000/api/roles/1';
+$url = 'http://localhost/api/roles/1';
 $response = $client-&gt;patch(
     $url,
     [
         'headers' =&gt; [
             'Authorization' =&gt; 'Bearer Bearer {YOUR_ACCESS_TOKEN}',
-            'X-Department-Id' =&gt; 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1',
             'Content-Type' =&gt; 'application/json',
             'Accept' =&gt; 'application/json',
         ],
@@ -8295,8 +11857,8 @@ print_r(json_decode((string) $body));</code></pre></div>
         &quot;permissions&quot;: [
             &quot;roles.destroy.6854&quot;
         ],
-        &quot;created_at&quot;: &quot;09:58:05 26/03/2026&quot;,
-        &quot;updated_at&quot;: &quot;09:58:05 26/03/2026&quot;
+        &quot;created_at&quot;: &quot;03:10:03 29/03/2026&quot;,
+        &quot;updated_at&quot;: &quot;03:10:03 29/03/2026&quot;
     },
     &quot;success&quot;: &quot;true&quot;,
     &quot;message&quot;: &quot;Vai tr&ograve; đ&atilde; được cập nhật!&quot;
@@ -8361,18 +11923,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
                data-component="header">
     <br>
 <p>Example: <code>Bearer Bearer {YOUR_ACCESS_TOKEN}</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>X-Department-Id</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="X-Department-Id"                data-endpoint="PATCHapi-roles--role_id-"
-               value="ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1"
-               data-component="header">
-    <br>
-<p>Example: <code>ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1</code></p>
             </div>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
@@ -8478,21 +12028,19 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request DELETE \
-    "http://localhost:8000/api/roles/1" \
+    "http://localhost/api/roles/1" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
-    --header "X-Department-Id: ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/roles/1"
+    "http://localhost/api/roles/1"
 );
 
 const headers = {
     "Authorization": "Bearer Bearer {YOUR_ACCESS_TOKEN}",
-    "X-Department-Id": "ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -8506,13 +12054,12 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost:8000/api/roles/1';
+$url = 'http://localhost/api/roles/1';
 $response = $client-&gt;delete(
     $url,
     [
         'headers' =&gt; [
             'Authorization' =&gt; 'Bearer Bearer {YOUR_ACCESS_TOKEN}',
-            'X-Department-Id' =&gt; 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1',
             'Content-Type' =&gt; 'application/json',
             'Accept' =&gt; 'application/json',
         ],
@@ -8595,18 +12142,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <p>Example: <code>Bearer Bearer {YOUR_ACCESS_TOKEN}</code></p>
             </div>
                                 <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>X-Department-Id</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="X-Department-Id"                data-endpoint="DELETEapi-roles--role_id-"
-               value="ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1"
-               data-component="header">
-    <br>
-<p>Example: <code>ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
@@ -8659,7 +12194,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
                 <h1 id="core-setting">Core - Setting</h1>
 
-    
+    <p>Quản lý cấu hình hệ thống: lấy công khai, lấy toàn bộ (auth), cập nhật.</p>
 
                                 <h2 id="core-setting-GETapi-settings-public">Lấy cấu hình công khai</h2>
 
@@ -8674,19 +12209,17 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:8000/api/settings/public" \
-    --header "X-Department-Id: ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
+    --get "http://localhost/api/settings/public" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/settings/public"
+    "http://localhost/api/settings/public"
 );
 
 const headers = {
-    "X-Department-Id": "ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -8700,12 +12233,11 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost:8000/api/settings/public';
+$url = 'http://localhost/api/settings/public';
 $response = $client-&gt;get(
     $url,
     [
         'headers' =&gt; [
-            'X-Department-Id' =&gt; 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1',
             'Content-Type' =&gt; 'application/json',
             'Accept' =&gt; 'application/json',
         ],
@@ -8773,18 +12305,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
         </p>
                 <h4 class="fancy-heading-panel"><b>Headers</b></h4>
                                 <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>X-Department-Id</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="X-Department-Id"                data-endpoint="GETapi-settings-public"
-               value="ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1"
-               data-component="header">
-    <br>
-<p>Example: <code>ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
@@ -8824,21 +12344,19 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:8000/api/settings" \
+    --get "http://localhost/api/settings" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
-    --header "X-Department-Id: ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/settings"
+    "http://localhost/api/settings"
 );
 
 const headers = {
     "Authorization": "Bearer Bearer {YOUR_ACCESS_TOKEN}",
-    "X-Department-Id": "ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -8852,13 +12370,12 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost:8000/api/settings';
+$url = 'http://localhost/api/settings';
 $response = $client-&gt;get(
     $url,
     [
         'headers' =&gt; [
             'Authorization' =&gt; 'Bearer Bearer {YOUR_ACCESS_TOKEN}',
-            'X-Department-Id' =&gt; 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1',
             'Content-Type' =&gt; 'application/json',
             'Accept' =&gt; 'application/json',
         ],
@@ -8938,18 +12455,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <p>Example: <code>Bearer Bearer {YOUR_ACCESS_TOKEN}</code></p>
             </div>
                                 <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>X-Department-Id</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="X-Department-Id"                data-endpoint="GETapi-settings"
-               value="ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1"
-               data-component="header">
-    <br>
-<p>Example: <code>ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
@@ -8989,21 +12494,19 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:8000/api/settings/copyright" \
+    --get "http://localhost/api/settings/copyright" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
-    --header "X-Department-Id: ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/settings/copyright"
+    "http://localhost/api/settings/copyright"
 );
 
 const headers = {
     "Authorization": "Bearer Bearer {YOUR_ACCESS_TOKEN}",
-    "X-Department-Id": "ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -9017,13 +12520,12 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost:8000/api/settings/copyright';
+$url = 'http://localhost/api/settings/copyright';
 $response = $client-&gt;get(
     $url,
     [
         'headers' =&gt; [
             'Authorization' =&gt; 'Bearer Bearer {YOUR_ACCESS_TOKEN}',
-            'X-Department-Id' =&gt; 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1',
             'Content-Type' =&gt; 'application/json',
             'Accept' =&gt; 'application/json',
         ],
@@ -9110,18 +12612,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <p>Example: <code>Bearer Bearer {YOUR_ACCESS_TOKEN}</code></p>
             </div>
                                 <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>X-Department-Id</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="X-Department-Id"                data-endpoint="GETapi-settings--key-"
-               value="ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1"
-               data-component="header">
-    <br>
-<p>Example: <code>ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
@@ -9174,9 +12664,8 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://localhost:8000/api/settings" \
+    "http://localhost/api/settings" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
-    --header "X-Department-Id: ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -9189,12 +12678,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/settings"
+    "http://localhost/api/settings"
 );
 
 const headers = {
     "Authorization": "Bearer Bearer {YOUR_ACCESS_TOKEN}",
-    "X-Department-Id": "ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -9214,13 +12702,12 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost:8000/api/settings';
+$url = 'http://localhost/api/settings';
 $response = $client-&gt;put(
     $url,
     [
         'headers' =&gt; [
             'Authorization' =&gt; 'Bearer Bearer {YOUR_ACCESS_TOKEN}',
-            'X-Department-Id' =&gt; 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1',
             'Content-Type' =&gt; 'application/json',
             'Accept' =&gt; 'application/json',
         ],
@@ -9309,18 +12796,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <p>Example: <code>Bearer Bearer {YOUR_ACCESS_TOKEN}</code></p>
             </div>
                                 <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>X-Department-Id</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="X-Department-Id"                data-endpoint="PUTapi-settings"
-               value="ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1"
-               data-component="header">
-    <br>
-<p>Example: <code>ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
@@ -9385,7 +12860,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
                 <h1 id="core-user">Core - User</h1>
 
-    <p>Quản lý người dùng: danh sách, chi tiết, tạo, cập nhật, xóa, thao tác hàng loạt, xuất/nhập Excel, đổi trạng thái.</p>
+    <p>Quản lý người dùng: stats, index, show, store, update, destroy, bulk delete, bulk status, export, import, đổi trạng thái.</p>
 
                                 <h2 id="core-user-GETapi-users-export">Xuất danh sách người dùng</h2>
 
@@ -9401,7 +12876,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:8000/api/users/export?search=architecto&amp;status=architecto&amp;from_date=2026-01-01&amp;to_date=2026-12-31&amp;sort_by=architecto&amp;sort_order=architecto&amp;limit=10" \
+    --get "http://localhost/api/users/export?search=john&amp;status=architecto&amp;from_date=2026-01-01&amp;to_date=2026-12-31&amp;sort_by=architecto&amp;sort_order=architecto&amp;limit=10" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -9409,11 +12884,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/users/export"
+    "http://localhost/api/users/export"
 );
 
 const params = {
-    "search": "architecto",
+    "search": "john",
     "status": "architecto",
     "from_date": "2026-01-01",
     "to_date": "2026-12-31",
@@ -9439,7 +12914,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost:8000/api/users/export';
+$url = 'http://localhost/api/users/export';
 $response = $client-&gt;get(
     $url,
     [
@@ -9449,7 +12924,7 @@ $response = $client-&gt;get(
             'Accept' =&gt; 'application/json',
         ],
         'query' =&gt; [
-            'search' =&gt; 'architecto',
+            'search' =&gt; 'john',
             'status' =&gt; 'architecto',
             'from_date' =&gt; '2026-01-01',
             'to_date' =&gt; '2026-12-31',
@@ -9573,10 +13048,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="search"                data-endpoint="GETapi-users-export"
-               value="architecto"
+               value="john"
                data-component="query">
     <br>
-<p>Từ khóa tìm kiếm (name, email). Example: <code>architecto</code></p>
+<p>Từ khóa tìm kiếm (name, email). Example: <code>john</code></p>
             </div>
                                     <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>status</code></b>&nbsp;&nbsp;
@@ -9600,7 +13075,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="2026-01-01"
                data-component="query">
     <br>
-<p>Lọc từ ngày tạo (Y-m-d). Must be a valid date. Example: <code>2026-01-01</code></p>
+<p>Lọc từ ngày (Y-m-d). Example: <code>2026-01-01</code></p>
             </div>
                                     <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>to_date</code></b>&nbsp;&nbsp;
@@ -9612,7 +13087,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="2026-12-31"
                data-component="query">
     <br>
-<p>Lọc đến ngày tạo (Y-m-d). Must be a valid date. Must be a date after or equal to <code>from_date</code>. Example: <code>2026-12-31</code></p>
+<p>Lọc đến ngày (Y-m-d). Example: <code>2026-12-31</code></p>
             </div>
                                     <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>sort_by</code></b>&nbsp;&nbsp;
@@ -9666,16 +13141,16 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost:8000/api/users/import" \
+    "http://localhost/api/users/import" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "Content-Type: multipart/form-data" \
     --header "Accept: application/json" \
-    --form "file=@/tmp/php0tk1he3thqbr8XYK8MZ" </code></pre></div>
+    --form "file=@C:\Users\tuanl\AppData\Local\Temp\phpF08B.tmp" </code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/users/import"
+    "http://localhost/api/users/import"
 );
 
 const headers = {
@@ -9696,7 +13171,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost:8000/api/users/import';
+$url = 'http://localhost/api/users/import';
 $response = $client-&gt;post(
     $url,
     [
@@ -9708,7 +13183,7 @@ $response = $client-&gt;post(
         'multipart' =&gt; [
             [
                 'name' =&gt; 'file',
-                'contents' =&gt; fopen('/tmp/php0tk1he3thqbr8XYK8MZ', 'r')
+                'contents' =&gt; fopen('C:\Users\tuanl\AppData\Local\Temp\phpF08B.tmp', 'r')
             ],
         ],
     ]
@@ -9824,7 +13299,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>File Excel (xlsx, xls, csv). Example: <code>/tmp/php0tk1he3thqbr8XYK8MZ</code></p>
+<p>File Excel (xlsx, xls, csv). Example: <code>C:\Users\tuanl\AppData\Local\Temp\phpF08B.tmp</code></p>
         </div>
         </form>
 
@@ -9842,7 +13317,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost:8000/api/users/bulk-delete" \
+    "http://localhost/api/users/bulk-delete" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
@@ -9858,7 +13333,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/users/bulk-delete"
+    "http://localhost/api/users/bulk-delete"
 );
 
 const headers = {
@@ -9884,7 +13359,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost:8000/api/users/bulk-delete';
+$url = 'http://localhost/api/users/bulk-delete';
 $response = $client-&gt;post(
     $url,
     [
@@ -10033,7 +13508,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PATCH \
-    "http://localhost:8000/api/users/bulk-status" \
+    "http://localhost/api/users/bulk-status" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
@@ -10050,7 +13525,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/users/bulk-status"
+    "http://localhost/api/users/bulk-status"
 );
 
 const headers = {
@@ -10077,7 +13552,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost:8000/api/users/bulk-status';
+$url = 'http://localhost/api/users/bulk-status';
 $response = $client-&gt;patch(
     $url,
     [
@@ -10239,7 +13714,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:8000/api/users/stats?search=john&amp;status=architecto&amp;from_date=2026-01-01&amp;to_date=2026-12-31&amp;sort_by=created_at&amp;sort_order=desc&amp;limit=10" \
+    --get "http://localhost/api/users/stats?search=john&amp;status=architecto&amp;from_date=2026-01-01&amp;to_date=2026-12-31&amp;sort_by=created_at&amp;sort_order=desc&amp;limit=10" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -10247,7 +13722,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/users/stats"
+    "http://localhost/api/users/stats"
 );
 
 const params = {
@@ -10277,7 +13752,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost:8000/api/users/stats';
+$url = 'http://localhost/api/users/stats';
 $response = $client-&gt;get(
     $url,
     [
@@ -10436,7 +13911,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="2026-01-01"
                data-component="query">
     <br>
-<p>Lọc từ ngày tạo (Y-m-d). Must be a valid date. Example: <code>2026-01-01</code></p>
+<p>Lọc từ ngày (Y-m-d). Example: <code>2026-01-01</code></p>
             </div>
                                     <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>to_date</code></b>&nbsp;&nbsp;
@@ -10448,7 +13923,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="2026-12-31"
                data-component="query">
     <br>
-<p>Lọc đến ngày tạo (Y-m-d). Must be a valid date. Must be a date after or equal to <code>from_date</code>. Example: <code>2026-12-31</code></p>
+<p>Lọc đến ngày (Y-m-d). Example: <code>2026-12-31</code></p>
             </div>
                                     <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>sort_by</code></b>&nbsp;&nbsp;
@@ -10502,7 +13977,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:8000/api/users?search=john&amp;status=architecto&amp;from_date=2026-01-01&amp;to_date=2026-12-31&amp;sort_by=created_at&amp;sort_order=desc&amp;limit=10" \
+    --get "http://localhost/api/users?search=john&amp;status=architecto&amp;from_date=2026-01-01&amp;to_date=2026-12-31&amp;sort_by=created_at&amp;sort_order=desc&amp;limit=10" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -10510,7 +13985,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/users"
+    "http://localhost/api/users"
 );
 
 const params = {
@@ -10540,7 +14015,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost:8000/api/users';
+$url = 'http://localhost/api/users';
 $response = $client-&gt;get(
     $url,
     [
@@ -10701,7 +14176,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="2026-01-01"
                data-component="query">
     <br>
-<p>Lọc từ ngày tạo (Y-m-d). Must be a valid date. Example: <code>2026-01-01</code></p>
+<p>Lọc từ ngày (Y-m-d). Example: <code>2026-01-01</code></p>
             </div>
                                     <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>to_date</code></b>&nbsp;&nbsp;
@@ -10713,7 +14188,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="2026-12-31"
                data-component="query">
     <br>
-<p>Lọc đến ngày tạo (Y-m-d). Must be a valid date. Must be a date after or equal to <code>from_date</code>. Example: <code>2026-12-31</code></p>
+<p>Lọc đến ngày (Y-m-d). Example: <code>2026-12-31</code></p>
             </div>
                                     <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>sort_by</code></b>&nbsp;&nbsp;
@@ -10767,7 +14242,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost:8000/api/users" \
+    "http://localhost/api/users" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
@@ -10787,7 +14262,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/users"
+    "http://localhost/api/users"
 );
 
 const headers = {
@@ -10817,7 +14292,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost:8000/api/users';
+$url = 'http://localhost/api/users';
 $response = $client-&gt;post(
     $url,
     [
@@ -11054,7 +14529,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PATCH \
-    "http://localhost:8000/api/users/1/status" \
+    "http://localhost/api/users/1/status" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
@@ -11066,7 +14541,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/users/1/status"
+    "http://localhost/api/users/1/status"
 );
 
 const headers = {
@@ -11088,7 +14563,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost:8000/api/users/1/status';
+$url = 'http://localhost/api/users/1/status';
 $response = $client-&gt;patch(
     $url,
     [
@@ -11246,7 +14721,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:8000/api/users/1" \
+    --get "http://localhost/api/users/1" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -11254,7 +14729,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/users/1"
+    "http://localhost/api/users/1"
 );
 
 const headers = {
@@ -11272,7 +14747,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost:8000/api/users/1';
+$url = 'http://localhost/api/users/1';
 $response = $client-&gt;get(
     $url,
     [
@@ -11430,7 +14905,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://localhost:8000/api/users/1" \
+    "http://localhost/api/users/1" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
@@ -11450,7 +14925,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/users/1"
+    "http://localhost/api/users/1"
 );
 
 const headers = {
@@ -11480,7 +14955,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost:8000/api/users/1';
+$url = 'http://localhost/api/users/1';
 $response = $client-&gt;put(
     $url,
     [
@@ -11742,7 +15217,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PATCH \
-    "http://localhost:8000/api/users/1" \
+    "http://localhost/api/users/1" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
@@ -11762,7 +15237,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/users/1"
+    "http://localhost/api/users/1"
 );
 
 const headers = {
@@ -11792,7 +15267,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost:8000/api/users/1';
+$url = 'http://localhost/api/users/1';
 $response = $client-&gt;patch(
     $url,
     [
@@ -12054,7 +15529,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request DELETE \
-    "http://localhost:8000/api/users/1" \
+    "http://localhost/api/users/1" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -12062,7 +15537,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/users/1"
+    "http://localhost/api/users/1"
 );
 
 const headers = {
@@ -12080,7 +15555,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost:8000/api/users/1';
+$url = 'http://localhost/api/users/1';
 $response = $client-&gt;delete(
     $url,
     [
@@ -12220,7 +15695,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
                 <h1 id="schedule-lich-cong-tac">Schedule - Lịch công tác</h1>
 
-    
+    <p>Quản lý lịch công tác Thường trực Thành ủy và Văn phòng Thành ủy: thống kê, danh sách, chi tiết, tạo, cập nhật, xóa, thao tác hàng loạt, sắp xếp thứ tự, xuất Excel/PDF, nhập Excel.</p>
 
                                 <h2 id="schedule-lich-cong-tac-GETapi-schedules-public">Lịch công tác công khai</h2>
 
@@ -12235,15 +15710,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:8000/api/schedules/public?search=van-ban&amp;status=active&amp;from_date=2026-04-01&amp;to_date=2026-04-30&amp;sort_by=created_at&amp;sort_order=desc&amp;limit=20&amp;department_id=16&amp;session=architecto" \
-    --header "X-Department-Id: ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
+    --get "http://localhost/api/schedules/public?search=van-ban&amp;status=active&amp;from_date=2026-04-01&amp;to_date=2026-04-30&amp;sort_by=created_at&amp;sort_order=desc&amp;limit=20&amp;schedule_type=architecto&amp;session=architecto" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/schedules/public"
+    "http://localhost/api/schedules/public"
 );
 
 const params = {
@@ -12254,14 +15728,13 @@ const params = {
     "sort_by": "created_at",
     "sort_order": "desc",
     "limit": "20",
-    "department_id": "16",
+    "schedule_type": "architecto",
     "session": "architecto",
 };
 Object.keys(params)
     .forEach(key =&gt; url.searchParams.append(key, params[key]));
 
 const headers = {
-    "X-Department-Id": "ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -12275,12 +15748,11 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost:8000/api/schedules/public';
+$url = 'http://localhost/api/schedules/public';
 $response = $client-&gt;get(
     $url,
     [
         'headers' =&gt; [
-            'X-Department-Id' =&gt; 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1',
             'Content-Type' =&gt; 'application/json',
             'Accept' =&gt; 'application/json',
         ],
@@ -12292,7 +15764,7 @@ $response = $client-&gt;get(
             'sort_by' =&gt; 'created_at',
             'sort_order' =&gt; 'desc',
             'limit' =&gt; '20',
-            'department_id' =&gt; '16',
+            'schedule_type' =&gt; 'architecto',
             'session' =&gt; 'architecto',
         ],
     ]
@@ -12318,8 +15790,8 @@ access-control-allow-origin: *
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: [],
     &quot;links&quot;: {
-        &quot;first&quot;: &quot;http://localhost:8000/api/schedules/public?page=1&quot;,
-        &quot;last&quot;: &quot;http://localhost:8000/api/schedules/public?page=1&quot;,
+        &quot;first&quot;: &quot;http://localhost/api/schedules/public?page=1&quot;,
+        &quot;last&quot;: &quot;http://localhost/api/schedules/public?page=1&quot;,
         &quot;prev&quot;: null,
         &quot;next&quot;: null
     },
@@ -12335,7 +15807,7 @@ access-control-allow-origin: *
                 &quot;active&quot;: false
             },
             {
-                &quot;url&quot;: &quot;http://localhost:8000/api/schedules/public?page=1&quot;,
+                &quot;url&quot;: &quot;http://localhost/api/schedules/public?page=1&quot;,
                 &quot;label&quot;: &quot;1&quot;,
                 &quot;page&quot;: 1,
                 &quot;active&quot;: true
@@ -12347,7 +15819,7 @@ access-control-allow-origin: *
                 &quot;active&quot;: false
             }
         ],
-        &quot;path&quot;: &quot;http://localhost:8000/api/schedules/public&quot;,
+        &quot;path&quot;: &quot;http://localhost/api/schedules/public&quot;,
         &quot;per_page&quot;: 20,
         &quot;to&quot;: null,
         &quot;total&quot;: 0
@@ -12403,18 +15875,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b><code>api/schedules/public</code></b>
         </p>
                 <h4 class="fancy-heading-panel"><b>Headers</b></h4>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>X-Department-Id</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="X-Department-Id"                data-endpoint="GETapi-schedules-public"
-               value="ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1"
-               data-component="header">
-    <br>
-<p>Example: <code>ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1</code></p>
-            </div>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
@@ -12527,16 +15987,16 @@ Must be one of:
 <p>Số bản ghi mỗi trang (1-100). Example: <code>20</code></p>
             </div>
                                     <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>department_id</code></b>&nbsp;&nbsp;
-<small>integer</small>&nbsp;
+                <b style="line-height: 2;"><code>schedule_type</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
 <i>optional</i> &nbsp;
  &nbsp;
-                <input type="number" style="display: none"
-               step="any"               name="department_id"                data-endpoint="GETapi-schedules-public"
-               value="16"
+                <input type="text" style="display: none"
+                              name="schedule_type"                data-endpoint="GETapi-schedules-public"
+               value="architecto"
                data-component="query">
     <br>
-<p>ID đơn vị. Example: <code>16</code></p>
+<p>Loại lịch: thuong_truc, van_phong. Example: <code>architecto</code></p>
             </div>
                                     <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>session</code></b>&nbsp;&nbsp;
@@ -12558,7 +16018,7 @@ Must be one of:
 <small class="badge badge-darkred">requires authentication</small>
 </p>
 
-<p>Xuất ra các trường: id, ngày, buổi, thời gian, nội dung, chủ trì, thành phần, địa điểm, đơn vị chuẩn bị, số người, loại cuộc họp, tính chất, lái xe, mã màu, khối, trạng thái, người tạo, người sửa, ngày tạo, ngày cập nhật.</p>
+<p>Xuất ra các trường: id, ngày, buổi, thời gian, nội dung, chủ trì, thành phần, địa điểm, đơn vị chuẩn bị, số người, loại cuộc họp, tính chất, lái xe, mã màu, loại lịch, trạng thái, người tạo, người sửa, ngày tạo, ngày cập nhật.</p>
 
 <span id="example-requests-GETapi-schedules-export">
 <blockquote>Example request:</blockquote>
@@ -12566,16 +16026,15 @@ Must be one of:
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:8000/api/schedules/export?search=architecto&amp;status=architecto&amp;from_date=architecto&amp;to_date=architecto&amp;sort_by=created_at&amp;sort_order=desc&amp;limit=10&amp;department_id=16" \
+    --get "http://localhost/api/schedules/export?search=architecto&amp;status=architecto&amp;from_date=architecto&amp;to_date=architecto&amp;sort_by=created_at&amp;sort_order=desc&amp;limit=10&amp;schedule_type=architecto" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
-    --header "X-Department-Id: ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/schedules/export"
+    "http://localhost/api/schedules/export"
 );
 
 const params = {
@@ -12586,14 +16045,13 @@ const params = {
     "sort_by": "created_at",
     "sort_order": "desc",
     "limit": "10",
-    "department_id": "16",
+    "schedule_type": "architecto",
 };
 Object.keys(params)
     .forEach(key =&gt; url.searchParams.append(key, params[key]));
 
 const headers = {
     "Authorization": "Bearer Bearer {YOUR_ACCESS_TOKEN}",
-    "X-Department-Id": "ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -12607,13 +16065,12 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost:8000/api/schedules/export';
+$url = 'http://localhost/api/schedules/export';
 $response = $client-&gt;get(
     $url,
     [
         'headers' =&gt; [
             'Authorization' =&gt; 'Bearer Bearer {YOUR_ACCESS_TOKEN}',
-            'X-Department-Id' =&gt; 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1',
             'Content-Type' =&gt; 'application/json',
             'Accept' =&gt; 'application/json',
         ],
@@ -12625,7 +16082,7 @@ $response = $client-&gt;get(
             'sort_by' =&gt; 'created_at',
             'sort_order' =&gt; 'desc',
             'limit' =&gt; '10',
-            'department_id' =&gt; '16',
+            'schedule_type' =&gt; 'architecto',
         ],
     ]
 );
@@ -12710,18 +16167,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
                data-component="header">
     <br>
 <p>Example: <code>Bearer Bearer {YOUR_ACCESS_TOKEN}</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>X-Department-Id</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="X-Department-Id"                data-endpoint="GETapi-schedules-export"
-               value="ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1"
-               data-component="header">
-    <br>
-<p>Example: <code>ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1</code></p>
             </div>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
@@ -12835,16 +16280,16 @@ Must be one of:
 <p>Số bản ghi mỗi trang (1-100). Must be at least 1. Must not be greater than 100. Example: <code>10</code></p>
             </div>
                                     <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>department_id</code></b>&nbsp;&nbsp;
-<small>integer</small>&nbsp;
+                <b style="line-height: 2;"><code>schedule_type</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
 <i>optional</i> &nbsp;
  &nbsp;
-                <input type="number" style="display: none"
-               step="any"               name="department_id"                data-endpoint="GETapi-schedules-export"
-               value="16"
+                <input type="text" style="display: none"
+                              name="schedule_type"                data-endpoint="GETapi-schedules-export"
+               value="architecto"
                data-component="query">
     <br>
-<p>ID đơn vị. Example: <code>16</code></p>
+<p>Loại lịch: thuong_truc, van_phong. Example: <code>architecto</code></p>
             </div>
                 </form>
 
@@ -12862,16 +16307,15 @@ Must be one of:
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:8000/api/schedules/export-pdf?search=van-ban&amp;status=active&amp;from_date=architecto&amp;to_date=architecto&amp;sort_by=created_at&amp;sort_order=desc&amp;limit=10&amp;department_id=16&amp;session=architecto" \
+    --get "http://localhost/api/schedules/export-pdf?search=van-ban&amp;status=active&amp;from_date=architecto&amp;to_date=architecto&amp;sort_by=created_at&amp;sort_order=desc&amp;limit=10&amp;schedule_type=architecto&amp;session=architecto" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
-    --header "X-Department-Id: ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/schedules/export-pdf"
+    "http://localhost/api/schedules/export-pdf"
 );
 
 const params = {
@@ -12882,7 +16326,7 @@ const params = {
     "sort_by": "created_at",
     "sort_order": "desc",
     "limit": "10",
-    "department_id": "16",
+    "schedule_type": "architecto",
     "session": "architecto",
 };
 Object.keys(params)
@@ -12890,7 +16334,6 @@ Object.keys(params)
 
 const headers = {
     "Authorization": "Bearer Bearer {YOUR_ACCESS_TOKEN}",
-    "X-Department-Id": "ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -12904,13 +16347,12 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost:8000/api/schedules/export-pdf';
+$url = 'http://localhost/api/schedules/export-pdf';
 $response = $client-&gt;get(
     $url,
     [
         'headers' =&gt; [
             'Authorization' =&gt; 'Bearer Bearer {YOUR_ACCESS_TOKEN}',
-            'X-Department-Id' =&gt; 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1',
             'Content-Type' =&gt; 'application/json',
             'Accept' =&gt; 'application/json',
         ],
@@ -12922,7 +16364,7 @@ $response = $client-&gt;get(
             'sort_by' =&gt; 'created_at',
             'sort_order' =&gt; 'desc',
             'limit' =&gt; '10',
-            'department_id' =&gt; '16',
+            'schedule_type' =&gt; 'architecto',
             'session' =&gt; 'architecto',
         ],
     ]
@@ -13008,18 +16450,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
                data-component="header">
     <br>
 <p>Example: <code>Bearer Bearer {YOUR_ACCESS_TOKEN}</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>X-Department-Id</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="X-Department-Id"                data-endpoint="GETapi-schedules-export-pdf"
-               value="ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1"
-               data-component="header">
-    <br>
-<p>Example: <code>ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1</code></p>
             </div>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
@@ -13133,16 +16563,16 @@ Must be one of:
 <p>Số bản ghi mỗi trang (1-100). Must be at least 1. Must not be greater than 100. Example: <code>10</code></p>
             </div>
                                     <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>department_id</code></b>&nbsp;&nbsp;
-<small>integer</small>&nbsp;
+                <b style="line-height: 2;"><code>schedule_type</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
 <i>optional</i> &nbsp;
  &nbsp;
-                <input type="number" style="display: none"
-               step="any"               name="department_id"                data-endpoint="GETapi-schedules-export-pdf"
-               value="16"
+                <input type="text" style="display: none"
+                              name="schedule_type"                data-endpoint="GETapi-schedules-export-pdf"
+               value="architecto"
                data-component="query">
     <br>
-<p>ID đơn vị. Example: <code>16</code></p>
+<p>Loại lịch: thuong_truc, van_phong. Example: <code>architecto</code></p>
             </div>
                                     <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>session</code></b>&nbsp;&nbsp;
@@ -13164,7 +16594,7 @@ Must be one of:
 <small class="badge badge-darkred">requires authentication</small>
 </p>
 
-<p>Cột bắt buộc: noi_dung, ngay, buoi. Cột không bắt buộc: thoi_gian, dia_diem, don_vi_chuan_bi, lai_xe, so_nguoi, ma_mau, khoi (mặc định "thuong_trac"), trang_thai (mặc định "active").</p>
+<p>Cột bắt buộc: noi_dung, ngay, buoi. Cột không bắt buộc: thoi_gian, dia_diem, don_vi_chuan_bi, lai_xe, so_nguoi, ma_mau, loai_lich (mặc định "thuong_truc"), trang_thai (mặc định "active").</p>
 
 <span id="example-requests-POSTapi-schedules-import">
 <blockquote>Example request:</blockquote>
@@ -13172,22 +16602,20 @@ Must be one of:
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost:8000/api/schedules/import" \
+    "http://localhost/api/schedules/import" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
-    --header "X-Department-Id: ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: multipart/form-data" \
     --header "Accept: application/json" \
-    --form "file=@/tmp/phpur6as5mdasbn53RUrOJ" </code></pre></div>
+    --form "file=@C:\Users\tuanl\AppData\Local\Temp\phpF6EE.tmp" </code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/schedules/import"
+    "http://localhost/api/schedules/import"
 );
 
 const headers = {
     "Authorization": "Bearer Bearer {YOUR_ACCESS_TOKEN}",
-    "X-Department-Id": "ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1",
     "Content-Type": "multipart/form-data",
     "Accept": "application/json",
 };
@@ -13204,20 +16632,19 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost:8000/api/schedules/import';
+$url = 'http://localhost/api/schedules/import';
 $response = $client-&gt;post(
     $url,
     [
         'headers' =&gt; [
             'Authorization' =&gt; 'Bearer Bearer {YOUR_ACCESS_TOKEN}',
-            'X-Department-Id' =&gt; 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1',
             'Content-Type' =&gt; 'multipart/form-data',
             'Accept' =&gt; 'application/json',
         ],
         'multipart' =&gt; [
             [
                 'name' =&gt; 'file',
-                'contents' =&gt; fopen('/tmp/phpur6as5mdasbn53RUrOJ', 'r')
+                'contents' =&gt; fopen('C:\Users\tuanl\AppData\Local\Temp\phpF6EE.tmp', 'r')
             ],
         ],
     ]
@@ -13299,18 +16726,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <p>Example: <code>Bearer Bearer {YOUR_ACCESS_TOKEN}</code></p>
             </div>
                                 <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>X-Department-Id</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="X-Department-Id"                data-endpoint="POSTapi-schedules-import"
-               value="ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1"
-               data-component="header">
-    <br>
-<p>Example: <code>ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
@@ -13345,7 +16760,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>File Excel (xlsx, xls, csv). Example: <code>/tmp/phpur6as5mdasbn53RUrOJ</code></p>
+<p>File Excel (xlsx, xls, csv). Example: <code>C:\Users\tuanl\AppData\Local\Temp\phpF6EE.tmp</code></p>
         </div>
         </form>
 
@@ -13363,9 +16778,8 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost:8000/api/schedules/bulk-delete" \
+    "http://localhost/api/schedules/bulk-delete" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
-    --header "X-Department-Id: ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -13380,12 +16794,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/schedules/bulk-delete"
+    "http://localhost/api/schedules/bulk-delete"
 );
 
 const headers = {
     "Authorization": "Bearer Bearer {YOUR_ACCESS_TOKEN}",
-    "X-Department-Id": "ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -13407,13 +16820,12 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost:8000/api/schedules/bulk-delete';
+$url = 'http://localhost/api/schedules/bulk-delete';
 $response = $client-&gt;post(
     $url,
     [
         'headers' =&gt; [
             'Authorization' =&gt; 'Bearer Bearer {YOUR_ACCESS_TOKEN}',
-            'X-Department-Id' =&gt; 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1',
             'Content-Type' =&gt; 'application/json',
             'Accept' =&gt; 'application/json',
         ],
@@ -13503,18 +16915,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <p>Example: <code>Bearer Bearer {YOUR_ACCESS_TOKEN}</code></p>
             </div>
                                 <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>X-Department-Id</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="X-Department-Id"                data-endpoint="POSTapi-schedules-bulk-delete"
-               value="ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1"
-               data-component="header">
-    <br>
-<p>Example: <code>ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
@@ -13569,9 +16969,8 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PATCH \
-    "http://localhost:8000/api/schedules/bulk-status" \
+    "http://localhost/api/schedules/bulk-status" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
-    --header "X-Department-Id: ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -13587,12 +16986,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/schedules/bulk-status"
+    "http://localhost/api/schedules/bulk-status"
 );
 
 const headers = {
     "Authorization": "Bearer Bearer {YOUR_ACCESS_TOKEN}",
-    "X-Department-Id": "ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -13615,13 +17013,12 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost:8000/api/schedules/bulk-status';
+$url = 'http://localhost/api/schedules/bulk-status';
 $response = $client-&gt;patch(
     $url,
     [
         'headers' =&gt; [
             'Authorization' =&gt; 'Bearer Bearer {YOUR_ACCESS_TOKEN}',
-            'X-Department-Id' =&gt; 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1',
             'Content-Type' =&gt; 'application/json',
             'Accept' =&gt; 'application/json',
         ],
@@ -13712,18 +17109,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <p>Example: <code>Bearer Bearer {YOUR_ACCESS_TOKEN}</code></p>
             </div>
                                 <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>X-Department-Id</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="X-Department-Id"                data-endpoint="PATCHapi-schedules-bulk-status"
-               value="ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1"
-               data-component="header">
-    <br>
-<p>Example: <code>ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
@@ -13790,16 +17175,15 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:8000/api/schedules/stats?search=architecto&amp;status=architecto&amp;from_date=2026-04-01&amp;to_date=2026-04-30&amp;sort_by=created_at&amp;sort_order=desc&amp;limit=10&amp;department_id=16" \
+    --get "http://localhost/api/schedules/stats?search=architecto&amp;status=architecto&amp;from_date=2026-04-01&amp;to_date=2026-04-30&amp;sort_by=created_at&amp;sort_order=desc&amp;limit=10&amp;schedule_type=architecto" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
-    --header "X-Department-Id: ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/schedules/stats"
+    "http://localhost/api/schedules/stats"
 );
 
 const params = {
@@ -13810,14 +17194,13 @@ const params = {
     "sort_by": "created_at",
     "sort_order": "desc",
     "limit": "10",
-    "department_id": "16",
+    "schedule_type": "architecto",
 };
 Object.keys(params)
     .forEach(key =&gt; url.searchParams.append(key, params[key]));
 
 const headers = {
     "Authorization": "Bearer Bearer {YOUR_ACCESS_TOKEN}",
-    "X-Department-Id": "ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -13831,13 +17214,12 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost:8000/api/schedules/stats';
+$url = 'http://localhost/api/schedules/stats';
 $response = $client-&gt;get(
     $url,
     [
         'headers' =&gt; [
             'Authorization' =&gt; 'Bearer Bearer {YOUR_ACCESS_TOKEN}',
-            'X-Department-Id' =&gt; 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1',
             'Content-Type' =&gt; 'application/json',
             'Accept' =&gt; 'application/json',
         ],
@@ -13849,7 +17231,7 @@ $response = $client-&gt;get(
             'sort_by' =&gt; 'created_at',
             'sort_order' =&gt; 'desc',
             'limit' =&gt; '10',
-            'department_id' =&gt; '16',
+            'schedule_type' =&gt; 'architecto',
         ],
     ]
 );
@@ -13932,18 +17314,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
                data-component="header">
     <br>
 <p>Example: <code>Bearer Bearer {YOUR_ACCESS_TOKEN}</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>X-Department-Id</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="X-Department-Id"                data-endpoint="GETapi-schedules-stats"
-               value="ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1"
-               data-component="header">
-    <br>
-<p>Example: <code>ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1</code></p>
             </div>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
@@ -14057,16 +17427,16 @@ Must be one of:
 <p>Số bản ghi mỗi trang (1-100). Must be at least 1. Must not be greater than 100. Example: <code>10</code></p>
             </div>
                                     <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>department_id</code></b>&nbsp;&nbsp;
-<small>integer</small>&nbsp;
+                <b style="line-height: 2;"><code>schedule_type</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
 <i>optional</i> &nbsp;
  &nbsp;
-                <input type="number" style="display: none"
-               step="any"               name="department_id"                data-endpoint="GETapi-schedules-stats"
-               value="16"
+                <input type="text" style="display: none"
+                              name="schedule_type"                data-endpoint="GETapi-schedules-stats"
+               value="architecto"
                data-component="query">
     <br>
-<p>ID đơn vị. Example: <code>16</code></p>
+<p>Loại lịch: thuong_truc, van_phong. Example: <code>architecto</code></p>
             </div>
                 </form>
 
@@ -14084,16 +17454,15 @@ Must be one of:
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:8000/api/schedules?search=architecto&amp;status=architecto&amp;from_date=architecto&amp;to_date=architecto&amp;sort_by=sort_order&amp;sort_order=desc&amp;limit=20&amp;event_date=architecto&amp;session=architecto&amp;department_id=16&amp;chairperson_id=16&amp;meeting_type=architecto&amp;nature=architecto&amp;position=architecto&amp;participant_user_id=16&amp;sort_dir=asc" \
+    --get "http://localhost/api/schedules?search=architecto&amp;status=architecto&amp;from_date=architecto&amp;to_date=architecto&amp;sort_by=sort_order&amp;sort_order=desc&amp;limit=20&amp;event_date=architecto&amp;session=architecto&amp;schedule_type=architecto&amp;chairperson_id=16&amp;meeting_type=architecto&amp;nature=architecto&amp;position=architecto&amp;participant_user_id=16&amp;sort_dir=asc" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
-    --header "X-Department-Id: ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/schedules"
+    "http://localhost/api/schedules"
 );
 
 const params = {
@@ -14106,7 +17475,7 @@ const params = {
     "limit": "20",
     "event_date": "architecto",
     "session": "architecto",
-    "department_id": "16",
+    "schedule_type": "architecto",
     "chairperson_id": "16",
     "meeting_type": "architecto",
     "nature": "architecto",
@@ -14119,7 +17488,6 @@ Object.keys(params)
 
 const headers = {
     "Authorization": "Bearer Bearer {YOUR_ACCESS_TOKEN}",
-    "X-Department-Id": "ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -14133,13 +17501,12 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost:8000/api/schedules';
+$url = 'http://localhost/api/schedules';
 $response = $client-&gt;get(
     $url,
     [
         'headers' =&gt; [
             'Authorization' =&gt; 'Bearer Bearer {YOUR_ACCESS_TOKEN}',
-            'X-Department-Id' =&gt; 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1',
             'Content-Type' =&gt; 'application/json',
             'Accept' =&gt; 'application/json',
         ],
@@ -14153,7 +17520,7 @@ $response = $client-&gt;get(
             'limit' =&gt; '20',
             'event_date' =&gt; 'architecto',
             'session' =&gt; 'architecto',
-            'department_id' =&gt; '16',
+            'schedule_type' =&gt; 'architecto',
             'chairperson_id' =&gt; '16',
             'meeting_type' =&gt; 'architecto',
             'nature' =&gt; 'architecto',
@@ -14177,17 +17544,18 @@ print_r(json_decode((string) $body));</code></pre></div>
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: [
         {
-            &quot;id&quot;: 57,
-            &quot;event_date&quot;: &quot;14/04/2026&quot;,
+            &quot;id&quot;: 61,
+            &quot;event_date&quot;: &quot;17/04/2026&quot;,
             &quot;session&quot;: &quot;sang&quot;,
-            &quot;start_time&quot;: &quot;13:17:00&quot;,
+            &quot;start_time&quot;: &quot;20:06:00&quot;,
             &quot;content&quot;: &quot;Velit et fugiat sunt nihil accusantium.&quot;,
             &quot;location&quot;: &quot;78142 Nick Field\nWest Noahmouth, WV 59021-4902&quot;,
             &quot;prep_unit&quot;: null,
             &quot;driver_info&quot;: null,
             &quot;color_code&quot;: &quot;#865450&quot;,
             &quot;sort_order&quot;: 8,
-            &quot;department_id&quot;: null,
+            &quot;schedule_type&quot;: &quot;thuong_truc&quot;,
+            &quot;schedule_type_label&quot;: &quot;Thường trực Th&agrave;nh ủy&quot;,
             &quot;status&quot;: &quot;active&quot;,
             &quot;chairperson_id&quot;: null,
             &quot;meeting_type&quot;: &quot;hop_dot_xuat&quot;,
@@ -14196,31 +17564,32 @@ print_r(json_decode((string) $body));</code></pre></div>
             &quot;nature_label&quot;: &quot;Mật&quot;,
             &quot;created_by&quot;: &quot;N/A&quot;,
             &quot;updated_by&quot;: &quot;N/A&quot;,
-            &quot;created_at&quot;: &quot;09:58:06 26/03/2026&quot;,
-            &quot;updated_at&quot;: &quot;09:58:06 26/03/2026&quot;
+            &quot;created_at&quot;: &quot;03:10:04 29/03/2026&quot;,
+            &quot;updated_at&quot;: &quot;03:10:04 29/03/2026&quot;
         },
         {
-            &quot;id&quot;: 58,
-            &quot;event_date&quot;: &quot;17/04/2026&quot;,
+            &quot;id&quot;: 62,
+            &quot;event_date&quot;: &quot;14/04/2026&quot;,
             &quot;session&quot;: &quot;chieu&quot;,
-            &quot;start_time&quot;: &quot;08:01:00&quot;,
-            &quot;content&quot;: &quot;Dolores enim non facere tempora.&quot;,
-            &quot;location&quot;: &quot;47809 Considine Landing Suite 782\nNitzschetown, CA 87335-0574&quot;,
-            &quot;prep_unit&quot;: &quot;Schaden, King and Fahey&quot;,
-            &quot;driver_info&quot;: &quot;Prof. Carson Emard&quot;,
+            &quot;start_time&quot;: &quot;13:55:00&quot;,
+            &quot;content&quot;: &quot;Enim non facere tempora ex voluptatem laboriosam praesentium.&quot;,
+            &quot;location&quot;: &quot;6170 Micaela Route Apt. 203\nMadisenborough, MT 77824&quot;,
+            &quot;prep_unit&quot;: null,
+            &quot;driver_info&quot;: null,
             &quot;color_code&quot;: null,
-            &quot;sort_order&quot;: 6,
-            &quot;department_id&quot;: null,
-            &quot;status&quot;: &quot;active&quot;,
+            &quot;sort_order&quot;: 30,
+            &quot;schedule_type&quot;: &quot;van_phong&quot;,
+            &quot;schedule_type_label&quot;: &quot;Văn ph&ograve;ng Th&agrave;nh ủy&quot;,
+            &quot;status&quot;: &quot;inactive&quot;,
             &quot;chairperson_id&quot;: null,
-            &quot;meeting_type&quot;: &quot;hop_dot_xuat&quot;,
-            &quot;meeting_type_label&quot;: &quot;Họp đột xuất&quot;,
+            &quot;meeting_type&quot;: &quot;tiep_khach&quot;,
+            &quot;meeting_type_label&quot;: &quot;Tiếp kh&aacute;ch&quot;,
             &quot;nature&quot;: &quot;mat&quot;,
             &quot;nature_label&quot;: &quot;Mật&quot;,
             &quot;created_by&quot;: &quot;N/A&quot;,
             &quot;updated_by&quot;: &quot;N/A&quot;,
-            &quot;created_at&quot;: &quot;09:58:06 26/03/2026&quot;,
-            &quot;updated_at&quot;: &quot;09:58:06 26/03/2026&quot;
+            &quot;created_at&quot;: &quot;03:10:04 29/03/2026&quot;,
+            &quot;updated_at&quot;: &quot;03:10:04 29/03/2026&quot;
         }
     ],
     &quot;links&quot;: {
@@ -14320,18 +17689,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
                data-component="header">
     <br>
 <p>Example: <code>Bearer Bearer {YOUR_ACCESS_TOKEN}</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>X-Department-Id</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="X-Department-Id"                data-endpoint="GETapi-schedules"
-               value="ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1"
-               data-component="header">
-    <br>
-<p>Example: <code>ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1</code></p>
             </div>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
@@ -14469,16 +17826,16 @@ Must be one of:
 <p>Buổi: sang, chieu, toi. Example: <code>architecto</code></p>
             </div>
                                     <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>department_id</code></b>&nbsp;&nbsp;
-<small>integer</small>&nbsp;
+                <b style="line-height: 2;"><code>schedule_type</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
 <i>optional</i> &nbsp;
  &nbsp;
-                <input type="number" style="display: none"
-               step="any"               name="department_id"                data-endpoint="GETapi-schedules"
-               value="16"
+                <input type="text" style="display: none"
+                              name="schedule_type"                data-endpoint="GETapi-schedules"
+               value="architecto"
                data-component="query">
     <br>
-<p>ID đơn vị. Example: <code>16</code></p>
+<p>Loại lịch: thuong_truc, van_phong. Example: <code>architecto</code></p>
             </div>
                                     <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>chairperson_id</code></b>&nbsp;&nbsp;
@@ -14568,15 +17925,14 @@ Must be one of:
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost:8000/api/schedules" \
+    "http://localhost/api/schedules" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
-    --header "X-Department-Id: ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: multipart/form-data" \
     --header "Accept: application/json" \
     --form "content=Họp Ban Thường vụ"\
     --form "event_date=2026-04-01"\
     --form "session=sang"\
-    --form "department_id=1"\
+    --form "schedule_type=thuong_truc"\
     --form "start_time=08:00"\
     --form "chairperson_id=1"\
     --form "location=Phòng họp A"\
@@ -14585,22 +17941,21 @@ Must be one of:
     --form "meeting_type=hop_thuong_ky"\
     --form "nature=thuong"\
     --form "color_code=#FF5733"\
-    --form "status=inactive"\
+    --form "status=active"\
     --form "participants[]=architecto"\
-    --form "notification[channel]=sms"\
-    --form "notification[remind_at]=2026-03-26T09:58:06"\
+    --form "notification[channel]=zalo"\
+    --form "notification[remind_at]=2026-03-29T03:10:04"\
     --form "notifications[]=architecto"\
-    --form "attachments[]=@/tmp/phpv1ggc0lkndi74WdbVY2" </code></pre></div>
+    --form "attachments[]=@C:\Users\tuanl\AppData\Local\Temp\phpF77E.tmp" </code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/schedules"
+    "http://localhost/api/schedules"
 );
 
 const headers = {
     "Authorization": "Bearer Bearer {YOUR_ACCESS_TOKEN}",
-    "X-Department-Id": "ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1",
     "Content-Type": "multipart/form-data",
     "Accept": "application/json",
 };
@@ -14609,7 +17964,7 @@ const body = new FormData();
 body.append('content', 'Họp Ban Thường vụ');
 body.append('event_date', '2026-04-01');
 body.append('session', 'sang');
-body.append('department_id', '1');
+body.append('schedule_type', 'thuong_truc');
 body.append('start_time', '08:00');
 body.append('chairperson_id', '1');
 body.append('location', 'Phòng họp A');
@@ -14618,10 +17973,10 @@ body.append('driver_info', 'Nguyễn Văn A');
 body.append('meeting_type', 'hop_thuong_ky');
 body.append('nature', 'thuong');
 body.append('color_code', '#FF5733');
-body.append('status', 'inactive');
+body.append('status', 'active');
 body.append('participants[]', 'architecto');
-body.append('notification[channel]', 'sms');
-body.append('notification[remind_at]', '2026-03-26T09:58:06');
+body.append('notification[channel]', 'zalo');
+body.append('notification[remind_at]', '2026-03-29T03:10:04');
 body.append('notifications[]', 'architecto');
 body.append('attachments[]', document.querySelector('input[name="attachments[]"]').files[0]);
 
@@ -14634,13 +17989,12 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost:8000/api/schedules';
+$url = 'http://localhost/api/schedules';
 $response = $client-&gt;post(
     $url,
     [
         'headers' =&gt; [
             'Authorization' =&gt; 'Bearer Bearer {YOUR_ACCESS_TOKEN}',
-            'X-Department-Id' =&gt; 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1',
             'Content-Type' =&gt; 'multipart/form-data',
             'Accept' =&gt; 'application/json',
         ],
@@ -14658,8 +18012,8 @@ $response = $client-&gt;post(
                 'contents' =&gt; 'sang'
             ],
             [
-                'name' =&gt; 'department_id',
-                'contents' =&gt; '1'
+                'name' =&gt; 'schedule_type',
+                'contents' =&gt; 'thuong_truc'
             ],
             [
                 'name' =&gt; 'start_time',
@@ -14695,7 +18049,7 @@ $response = $client-&gt;post(
             ],
             [
                 'name' =&gt; 'status',
-                'contents' =&gt; 'inactive'
+                'contents' =&gt; 'active'
             ],
             [
                 'name' =&gt; 'participants[]',
@@ -14703,11 +18057,11 @@ $response = $client-&gt;post(
             ],
             [
                 'name' =&gt; 'notification[channel]',
-                'contents' =&gt; 'sms'
+                'contents' =&gt; 'zalo'
             ],
             [
                 'name' =&gt; 'notification[remind_at]',
-                'contents' =&gt; '2026-03-26T09:58:06'
+                'contents' =&gt; '2026-03-29T03:10:04'
             ],
             [
                 'name' =&gt; 'notifications[]',
@@ -14715,7 +18069,7 @@ $response = $client-&gt;post(
             ],
             [
                 'name' =&gt; 'attachments[]',
-                'contents' =&gt; fopen('/tmp/phpv1ggc0lkndi74WdbVY2', 'r')
+                'contents' =&gt; fopen('C:\Users\tuanl\AppData\Local\Temp\phpF77E.tmp', 'r')
             ],
         ],
     ]
@@ -14733,17 +18087,18 @@ print_r(json_decode((string) $body));</code></pre></div>
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: {
-        &quot;id&quot;: 59,
-        &quot;event_date&quot;: &quot;05/04/2026&quot;,
+        &quot;id&quot;: 63,
+        &quot;event_date&quot;: &quot;08/04/2026&quot;,
         &quot;session&quot;: &quot;sang&quot;,
-        &quot;start_time&quot;: &quot;18:41:00&quot;,
+        &quot;start_time&quot;: &quot;01:30:00&quot;,
         &quot;content&quot;: &quot;Quos velit et fugiat sunt nihil accusantium harum.&quot;,
         &quot;location&quot;: null,
         &quot;prep_unit&quot;: null,
         &quot;driver_info&quot;: null,
         &quot;color_code&quot;: &quot;#3d1ffb&quot;,
         &quot;sort_order&quot;: 88,
-        &quot;department_id&quot;: null,
+        &quot;schedule_type&quot;: &quot;thuong_truc&quot;,
+        &quot;schedule_type_label&quot;: &quot;Thường trực Th&agrave;nh ủy&quot;,
         &quot;status&quot;: &quot;active&quot;,
         &quot;chairperson_id&quot;: null,
         &quot;meeting_type&quot;: &quot;hoi_nghi&quot;,
@@ -14752,8 +18107,8 @@ print_r(json_decode((string) $body));</code></pre></div>
         &quot;nature_label&quot;: &quot;Thường&quot;,
         &quot;created_by&quot;: &quot;N/A&quot;,
         &quot;updated_by&quot;: &quot;N/A&quot;,
-        &quot;created_at&quot;: &quot;09:58:06 26/03/2026&quot;,
-        &quot;updated_at&quot;: &quot;09:58:06 26/03/2026&quot;
+        &quot;created_at&quot;: &quot;03:10:04 29/03/2026&quot;,
+        &quot;updated_at&quot;: &quot;03:10:04 29/03/2026&quot;
     },
     &quot;success&quot;: &quot;true&quot;,
     &quot;message&quot;: &quot;Tạo lịch c&ocirc;ng t&aacute;c th&agrave;nh c&ocirc;ng!&quot;
@@ -14820,18 +18175,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <p>Example: <code>Bearer Bearer {YOUR_ACCESS_TOKEN}</code></p>
             </div>
                                 <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>X-Department-Id</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="X-Department-Id"                data-endpoint="POSTapi-schedules"
-               value="ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1"
-               data-component="header">
-    <br>
-<p>Example: <code>ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
@@ -14893,16 +18236,16 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <p>Buổi: sang, chieu, toi. Example: <code>sang</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>department_id</code></b>&nbsp;&nbsp;
-<small>integer</small>&nbsp;
+            <b style="line-height: 2;"><code>schedule_type</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
  &nbsp;
  &nbsp;
-                <input type="number" style="display: none"
-               step="any"               name="department_id"                data-endpoint="POSTapi-schedules"
-               value="1"
+                <input type="text" style="display: none"
+                              name="schedule_type"                data-endpoint="POSTapi-schedules"
+               value="thuong_truc"
                data-component="body">
     <br>
-<p>ID đơn vị. Example: <code>1</code></p>
+<p>Loại lịch: thuong_truc (Thường trực), van_phong (Văn phòng). Example: <code>thuong_truc</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>start_time</code></b>&nbsp;&nbsp;
@@ -15007,10 +18350,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="status"                data-endpoint="POSTapi-schedules"
-               value="inactive"
+               value="active"
                data-component="body">
     <br>
-<p>Example: <code>inactive</code></p>
+<p>Example: <code>active</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>active</code></li> <li><code>inactive</code></li></ul>
         </div>
@@ -15103,10 +18446,10 @@ Must be one of:
  &nbsp;
                 <input type="text" style="display: none"
                               name="notification.channel"                data-endpoint="POSTapi-schedules"
-               value="sms"
+               value="zalo"
                data-component="body">
     <br>
-<p>This field is required when <code>notification</code> is present. Example: <code>sms</code></p>
+<p>This field is required when <code>notification</code> is present. Example: <code>zalo</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>sms</code></li> <li><code>zalo</code></li> <li><code>website</code></li> <li><code>app</code></li></ul>
                     </div>
@@ -15117,10 +18460,10 @@ Must be one of:
  &nbsp;
                 <input type="text" style="display: none"
                               name="notification.remind_at"                data-endpoint="POSTapi-schedules"
-               value="2026-03-26T09:58:06"
+               value="2026-03-29T03:10:04"
                data-component="body">
     <br>
-<p>This field is required when <code>notification</code> is present. Must be a valid date. Example: <code>2026-03-26T09:58:06</code></p>
+<p>This field is required when <code>notification</code> is present. Must be a valid date. Example: <code>2026-03-29T03:10:04</code></p>
                     </div>
                                     </details>
         </div>
@@ -15206,7 +18549,7 @@ Must be one of:
 <small class="badge badge-darkred">requires authentication</small>
 </p>
 
-<p>Swap vị trí với lịch liền trước cùng ngày và khối.</p>
+<p>Swap vị trí với lịch liền trước cùng ngày và loại lịch.</p>
 
 <span id="example-requests-PATCHapi-schedules--schedule_id--move-up">
 <blockquote>Example request:</blockquote>
@@ -15214,21 +18557,19 @@ Must be one of:
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PATCH \
-    "http://localhost:8000/api/schedules/1/move-up" \
+    "http://localhost/api/schedules/1/move-up" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
-    --header "X-Department-Id: ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/schedules/1/move-up"
+    "http://localhost/api/schedules/1/move-up"
 );
 
 const headers = {
     "Authorization": "Bearer Bearer {YOUR_ACCESS_TOKEN}",
-    "X-Department-Id": "ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -15242,13 +18583,12 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost:8000/api/schedules/1/move-up';
+$url = 'http://localhost/api/schedules/1/move-up';
 $response = $client-&gt;patch(
     $url,
     [
         'headers' =&gt; [
             'Authorization' =&gt; 'Bearer Bearer {YOUR_ACCESS_TOKEN}',
-            'X-Department-Id' =&gt; 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1',
             'Content-Type' =&gt; 'application/json',
             'Accept' =&gt; 'application/json',
         ],
@@ -15321,18 +18661,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <p>Example: <code>Bearer Bearer {YOUR_ACCESS_TOKEN}</code></p>
             </div>
                                 <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>X-Department-Id</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="X-Department-Id"                data-endpoint="PATCHapi-schedules--schedule_id--move-up"
-               value="ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1"
-               data-component="header">
-    <br>
-<p>Example: <code>ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
@@ -15389,7 +18717,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <small class="badge badge-darkred">requires authentication</small>
 </p>
 
-<p>Swap vị trí với lịch liền sau cùng ngày và khối.</p>
+<p>Swap vị trí với lịch liền sau cùng ngày và loại lịch.</p>
 
 <span id="example-requests-PATCHapi-schedules--schedule_id--move-down">
 <blockquote>Example request:</blockquote>
@@ -15397,21 +18725,19 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PATCH \
-    "http://localhost:8000/api/schedules/1/move-down" \
+    "http://localhost/api/schedules/1/move-down" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
-    --header "X-Department-Id: ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/schedules/1/move-down"
+    "http://localhost/api/schedules/1/move-down"
 );
 
 const headers = {
     "Authorization": "Bearer Bearer {YOUR_ACCESS_TOKEN}",
-    "X-Department-Id": "ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -15425,13 +18751,12 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost:8000/api/schedules/1/move-down';
+$url = 'http://localhost/api/schedules/1/move-down';
 $response = $client-&gt;patch(
     $url,
     [
         'headers' =&gt; [
             'Authorization' =&gt; 'Bearer Bearer {YOUR_ACCESS_TOKEN}',
-            'X-Department-Id' =&gt; 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1',
             'Content-Type' =&gt; 'application/json',
             'Accept' =&gt; 'application/json',
         ],
@@ -15504,18 +18829,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <p>Example: <code>Bearer Bearer {YOUR_ACCESS_TOKEN}</code></p>
             </div>
                                 <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>X-Department-Id</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="X-Department-Id"                data-endpoint="PATCHapi-schedules--schedule_id--move-down"
-               value="ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1"
-               data-component="header">
-    <br>
-<p>Example: <code>ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
@@ -15580,9 +18893,8 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PATCH \
-    "http://localhost:8000/api/schedules/1/insert-above" \
+    "http://localhost/api/schedules/1/insert-above" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
-    --header "X-Department-Id: ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -15593,12 +18905,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/schedules/1/insert-above"
+    "http://localhost/api/schedules/1/insert-above"
 );
 
 const headers = {
     "Authorization": "Bearer Bearer {YOUR_ACCESS_TOKEN}",
-    "X-Department-Id": "ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -15616,13 +18927,12 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost:8000/api/schedules/1/insert-above';
+$url = 'http://localhost/api/schedules/1/insert-above';
 $response = $client-&gt;patch(
     $url,
     [
         'headers' =&gt; [
             'Authorization' =&gt; 'Bearer Bearer {YOUR_ACCESS_TOKEN}',
-            'X-Department-Id' =&gt; 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1',
             'Content-Type' =&gt; 'application/json',
             'Accept' =&gt; 'application/json',
         ],
@@ -15696,18 +19006,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
                data-component="header">
     <br>
 <p>Example: <code>Bearer Bearer {YOUR_ACCESS_TOKEN}</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>X-Department-Id</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="X-Department-Id"                data-endpoint="PATCHapi-schedules--schedule_id--insert-above"
-               value="ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1"
-               data-component="header">
-    <br>
-<p>Example: <code>ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1</code></p>
             </div>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
@@ -15787,9 +19085,8 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PATCH \
-    "http://localhost:8000/api/schedules/1/insert-below" \
+    "http://localhost/api/schedules/1/insert-below" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
-    --header "X-Department-Id: ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -15800,12 +19097,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/schedules/1/insert-below"
+    "http://localhost/api/schedules/1/insert-below"
 );
 
 const headers = {
     "Authorization": "Bearer Bearer {YOUR_ACCESS_TOKEN}",
-    "X-Department-Id": "ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -15823,13 +19119,12 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost:8000/api/schedules/1/insert-below';
+$url = 'http://localhost/api/schedules/1/insert-below';
 $response = $client-&gt;patch(
     $url,
     [
         'headers' =&gt; [
             'Authorization' =&gt; 'Bearer Bearer {YOUR_ACCESS_TOKEN}',
-            'X-Department-Id' =&gt; 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1',
             'Content-Type' =&gt; 'application/json',
             'Accept' =&gt; 'application/json',
         ],
@@ -15903,18 +19198,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
                data-component="header">
     <br>
 <p>Example: <code>Bearer Bearer {YOUR_ACCESS_TOKEN}</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>X-Department-Id</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="X-Department-Id"                data-endpoint="PATCHapi-schedules--schedule_id--insert-below"
-               value="ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1"
-               data-component="header">
-    <br>
-<p>Example: <code>ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1</code></p>
             </div>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
@@ -15994,9 +19277,8 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PATCH \
-    "http://localhost:8000/api/schedules/1/status" \
+    "http://localhost/api/schedules/1/status" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
-    --header "X-Department-Id: ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -16007,12 +19289,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/schedules/1/status"
+    "http://localhost/api/schedules/1/status"
 );
 
 const headers = {
     "Authorization": "Bearer Bearer {YOUR_ACCESS_TOKEN}",
-    "X-Department-Id": "ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -16030,13 +19311,12 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost:8000/api/schedules/1/status';
+$url = 'http://localhost/api/schedules/1/status';
 $response = $client-&gt;patch(
     $url,
     [
         'headers' =&gt; [
             'Authorization' =&gt; 'Bearer Bearer {YOUR_ACCESS_TOKEN}',
-            'X-Department-Id' =&gt; 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1',
             'Content-Type' =&gt; 'application/json',
             'Accept' =&gt; 'application/json',
         ],
@@ -16110,18 +19390,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
                data-component="header">
     <br>
 <p>Example: <code>Bearer Bearer {YOUR_ACCESS_TOKEN}</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>X-Department-Id</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="X-Department-Id"                data-endpoint="PATCHapi-schedules--schedule_id--status"
-               value="ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1"
-               data-component="header">
-    <br>
-<p>Example: <code>ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1</code></p>
             </div>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
@@ -16201,21 +19469,19 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:8000/api/schedules/1" \
+    --get "http://localhost/api/schedules/1" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
-    --header "X-Department-Id: ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/schedules/1"
+    "http://localhost/api/schedules/1"
 );
 
 const headers = {
     "Authorization": "Bearer Bearer {YOUR_ACCESS_TOKEN}",
-    "X-Department-Id": "ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -16229,13 +19495,12 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost:8000/api/schedules/1';
+$url = 'http://localhost/api/schedules/1';
 $response = $client-&gt;get(
     $url,
     [
         'headers' =&gt; [
             'Authorization' =&gt; 'Bearer Bearer {YOUR_ACCESS_TOKEN}',
-            'X-Department-Id' =&gt; 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1',
             'Content-Type' =&gt; 'application/json',
             'Accept' =&gt; 'application/json',
         ],
@@ -16254,17 +19519,18 @@ print_r(json_decode((string) $body));</code></pre></div>
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: {
-        &quot;id&quot;: 60,
-        &quot;event_date&quot;: &quot;31/03/2026&quot;,
+        &quot;id&quot;: 64,
+        &quot;event_date&quot;: &quot;02/04/2026&quot;,
         &quot;session&quot;: &quot;sang&quot;,
-        &quot;start_time&quot;: &quot;17:04:00&quot;,
+        &quot;start_time&quot;: &quot;23:52:00&quot;,
         &quot;content&quot;: &quot;Qui commodi incidunt iure odit.&quot;,
         &quot;location&quot;: &quot;77365 Christian Turnpike Suite 432\nNorth Roderick, SD 69128-2316&quot;,
         &quot;prep_unit&quot;: &quot;Haag and Sons&quot;,
         &quot;driver_info&quot;: null,
         &quot;color_code&quot;: null,
         &quot;sort_order&quot;: 57,
-        &quot;department_id&quot;: null,
+        &quot;schedule_type&quot;: &quot;thuong_truc&quot;,
+        &quot;schedule_type_label&quot;: &quot;Thường trực Th&agrave;nh ủy&quot;,
         &quot;status&quot;: &quot;active&quot;,
         &quot;chairperson_id&quot;: null,
         &quot;meeting_type&quot;: &quot;hop_dot_xuat&quot;,
@@ -16273,8 +19539,8 @@ print_r(json_decode((string) $body));</code></pre></div>
         &quot;nature_label&quot;: &quot;Mật&quot;,
         &quot;created_by&quot;: &quot;N/A&quot;,
         &quot;updated_by&quot;: &quot;N/A&quot;,
-        &quot;created_at&quot;: &quot;09:58:06 26/03/2026&quot;,
-        &quot;updated_at&quot;: &quot;09:58:06 26/03/2026&quot;
+        &quot;created_at&quot;: &quot;03:10:04 29/03/2026&quot;,
+        &quot;updated_at&quot;: &quot;03:10:04 29/03/2026&quot;
     },
     &quot;success&quot;: &quot;true&quot;
 }</code>
@@ -16338,18 +19604,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
                data-component="header">
     <br>
 <p>Example: <code>Bearer Bearer {YOUR_ACCESS_TOKEN}</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>X-Department-Id</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="X-Department-Id"                data-endpoint="GETapi-schedules--schedule_id-"
-               value="ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1"
-               data-component="header">
-    <br>
-<p>Example: <code>ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1</code></p>
             </div>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
@@ -16416,15 +19670,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://localhost:8000/api/schedules/1" \
+    "http://localhost/api/schedules/1" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
-    --header "X-Department-Id: ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: multipart/form-data" \
     --header "Accept: application/json" \
     --form "content=architecto"\
     --form "event_date=architecto"\
     --form "session=architecto"\
-    --form "department_id=16"\
+    --form "schedule_type=architecto"\
     --form "start_time=architecto"\
     --form "chairperson_id=16"\
     --form "location=architecto"\
@@ -16433,23 +19686,22 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --form "meeting_type=architecto"\
     --form "nature=architecto"\
     --form "color_code=architecto"\
-    --form "status=inactive"\
+    --form "status=active"\
     --form "participants[]=architecto"\
-    --form "notification[channel]=zalo"\
-    --form "notification[remind_at]=2026-03-26T09:58:06"\
+    --form "notification[channel]=app"\
+    --form "notification[remind_at]=2026-03-29T03:10:04"\
     --form "remove_attachment_ids[]=architecto"\
     --form "notifications[]=architecto"\
-    --form "attachments[]=@/tmp/phpqgur7gnj6vaq31vU6qd" </code></pre></div>
+    --form "attachments[]=@C:\Users\tuanl\AppData\Local\Temp\phpF7DE.tmp" </code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/schedules/1"
+    "http://localhost/api/schedules/1"
 );
 
 const headers = {
     "Authorization": "Bearer Bearer {YOUR_ACCESS_TOKEN}",
-    "X-Department-Id": "ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1",
     "Content-Type": "multipart/form-data",
     "Accept": "application/json",
 };
@@ -16458,7 +19710,7 @@ const body = new FormData();
 body.append('content', 'architecto');
 body.append('event_date', 'architecto');
 body.append('session', 'architecto');
-body.append('department_id', '16');
+body.append('schedule_type', 'architecto');
 body.append('start_time', 'architecto');
 body.append('chairperson_id', '16');
 body.append('location', 'architecto');
@@ -16467,10 +19719,10 @@ body.append('driver_info', 'architecto');
 body.append('meeting_type', 'architecto');
 body.append('nature', 'architecto');
 body.append('color_code', 'architecto');
-body.append('status', 'inactive');
+body.append('status', 'active');
 body.append('participants[]', 'architecto');
-body.append('notification[channel]', 'zalo');
-body.append('notification[remind_at]', '2026-03-26T09:58:06');
+body.append('notification[channel]', 'app');
+body.append('notification[remind_at]', '2026-03-29T03:10:04');
 body.append('remove_attachment_ids[]', 'architecto');
 body.append('notifications[]', 'architecto');
 body.append('attachments[]', document.querySelector('input[name="attachments[]"]').files[0]);
@@ -16484,13 +19736,12 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost:8000/api/schedules/1';
+$url = 'http://localhost/api/schedules/1';
 $response = $client-&gt;put(
     $url,
     [
         'headers' =&gt; [
             'Authorization' =&gt; 'Bearer Bearer {YOUR_ACCESS_TOKEN}',
-            'X-Department-Id' =&gt; 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1',
             'Content-Type' =&gt; 'multipart/form-data',
             'Accept' =&gt; 'application/json',
         ],
@@ -16508,8 +19759,8 @@ $response = $client-&gt;put(
                 'contents' =&gt; 'architecto'
             ],
             [
-                'name' =&gt; 'department_id',
-                'contents' =&gt; '16'
+                'name' =&gt; 'schedule_type',
+                'contents' =&gt; 'architecto'
             ],
             [
                 'name' =&gt; 'start_time',
@@ -16545,7 +19796,7 @@ $response = $client-&gt;put(
             ],
             [
                 'name' =&gt; 'status',
-                'contents' =&gt; 'inactive'
+                'contents' =&gt; 'active'
             ],
             [
                 'name' =&gt; 'participants[]',
@@ -16553,11 +19804,11 @@ $response = $client-&gt;put(
             ],
             [
                 'name' =&gt; 'notification[channel]',
-                'contents' =&gt; 'zalo'
+                'contents' =&gt; 'app'
             ],
             [
                 'name' =&gt; 'notification[remind_at]',
-                'contents' =&gt; '2026-03-26T09:58:06'
+                'contents' =&gt; '2026-03-29T03:10:04'
             ],
             [
                 'name' =&gt; 'remove_attachment_ids[]',
@@ -16569,7 +19820,7 @@ $response = $client-&gt;put(
             ],
             [
                 'name' =&gt; 'attachments[]',
-                'contents' =&gt; fopen('/tmp/phpqgur7gnj6vaq31vU6qd', 'r')
+                'contents' =&gt; fopen('C:\Users\tuanl\AppData\Local\Temp\phpF7DE.tmp', 'r')
             ],
         ],
     ]
@@ -16587,17 +19838,18 @@ print_r(json_decode((string) $body));</code></pre></div>
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: {
-        &quot;id&quot;: 61,
-        &quot;event_date&quot;: &quot;05/04/2026&quot;,
+        &quot;id&quot;: 65,
+        &quot;event_date&quot;: &quot;08/04/2026&quot;,
         &quot;session&quot;: &quot;sang&quot;,
-        &quot;start_time&quot;: &quot;18:41:00&quot;,
+        &quot;start_time&quot;: &quot;01:30:00&quot;,
         &quot;content&quot;: &quot;Quos velit et fugiat sunt nihil accusantium harum.&quot;,
         &quot;location&quot;: null,
         &quot;prep_unit&quot;: null,
         &quot;driver_info&quot;: null,
         &quot;color_code&quot;: &quot;#3d1ffb&quot;,
         &quot;sort_order&quot;: 88,
-        &quot;department_id&quot;: null,
+        &quot;schedule_type&quot;: &quot;thuong_truc&quot;,
+        &quot;schedule_type_label&quot;: &quot;Thường trực Th&agrave;nh ủy&quot;,
         &quot;status&quot;: &quot;active&quot;,
         &quot;chairperson_id&quot;: null,
         &quot;meeting_type&quot;: &quot;hoi_nghi&quot;,
@@ -16606,8 +19858,8 @@ print_r(json_decode((string) $body));</code></pre></div>
         &quot;nature_label&quot;: &quot;Thường&quot;,
         &quot;created_by&quot;: &quot;N/A&quot;,
         &quot;updated_by&quot;: &quot;N/A&quot;,
-        &quot;created_at&quot;: &quot;09:58:06 26/03/2026&quot;,
-        &quot;updated_at&quot;: &quot;09:58:06 26/03/2026&quot;
+        &quot;created_at&quot;: &quot;03:10:04 29/03/2026&quot;,
+        &quot;updated_at&quot;: &quot;03:10:04 29/03/2026&quot;
     },
     &quot;success&quot;: &quot;true&quot;,
     &quot;message&quot;: &quot;Cập nhật lịch c&ocirc;ng t&aacute;c th&agrave;nh c&ocirc;ng!&quot;
@@ -16672,18 +19924,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
                data-component="header">
     <br>
 <p>Example: <code>Bearer Bearer {YOUR_ACCESS_TOKEN}</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>X-Department-Id</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="X-Department-Id"                data-endpoint="PUTapi-schedules--schedule_id-"
-               value="ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1"
-               data-component="header">
-    <br>
-<p>Example: <code>ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1</code></p>
             </div>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
@@ -16772,16 +20012,16 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <p>Buổi: sang, chieu, toi. Example: <code>architecto</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>department_id</code></b>&nbsp;&nbsp;
-<small>integer</small>&nbsp;
+            <b style="line-height: 2;"><code>schedule_type</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
 <i>optional</i> &nbsp;
  &nbsp;
-                <input type="number" style="display: none"
-               step="any"               name="department_id"                data-endpoint="PUTapi-schedules--schedule_id-"
-               value="16"
+                <input type="text" style="display: none"
+                              name="schedule_type"                data-endpoint="PUTapi-schedules--schedule_id-"
+               value="architecto"
                data-component="body">
     <br>
-<p>ID đơn vị. Example: <code>16</code></p>
+<p>Loại lịch: thuong_truc, van_phong. Example: <code>architecto</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>start_time</code></b>&nbsp;&nbsp;
@@ -16886,10 +20126,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="status"                data-endpoint="PUTapi-schedules--schedule_id-"
-               value="inactive"
+               value="active"
                data-component="body">
     <br>
-<p>Example: <code>inactive</code></p>
+<p>Example: <code>active</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>active</code></li> <li><code>inactive</code></li></ul>
         </div>
@@ -16946,10 +20186,10 @@ Must be one of:
  &nbsp;
                 <input type="text" style="display: none"
                               name="notification.channel"                data-endpoint="PUTapi-schedules--schedule_id-"
-               value="zalo"
+               value="app"
                data-component="body">
     <br>
-<p>This field is required when <code>notification</code> is present. Example: <code>zalo</code></p>
+<p>This field is required when <code>notification</code> is present. Example: <code>app</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>sms</code></li> <li><code>zalo</code></li> <li><code>website</code></li> <li><code>app</code></li></ul>
                     </div>
@@ -16960,10 +20200,10 @@ Must be one of:
  &nbsp;
                 <input type="text" style="display: none"
                               name="notification.remind_at"                data-endpoint="PUTapi-schedules--schedule_id-"
-               value="2026-03-26T09:58:06"
+               value="2026-03-29T03:10:04"
                data-component="body">
     <br>
-<p>This field is required when <code>notification</code> is present. Must be a valid date. Example: <code>2026-03-26T09:58:06</code></p>
+<p>This field is required when <code>notification</code> is present. Must be a valid date. Example: <code>2026-03-29T03:10:04</code></p>
                     </div>
                                     </details>
         </div>
@@ -17025,15 +20265,14 @@ Must be one of:
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PATCH \
-    "http://localhost:8000/api/schedules/1" \
+    "http://localhost/api/schedules/1" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
-    --header "X-Department-Id: ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: multipart/form-data" \
     --header "Accept: application/json" \
     --form "content=architecto"\
     --form "event_date=architecto"\
     --form "session=architecto"\
-    --form "department_id=16"\
+    --form "schedule_type=architecto"\
     --form "start_time=architecto"\
     --form "chairperson_id=16"\
     --form "location=architecto"\
@@ -17044,21 +20283,20 @@ Must be one of:
     --form "color_code=architecto"\
     --form "status=inactive"\
     --form "participants[]=architecto"\
-    --form "notification[channel]=zalo"\
-    --form "notification[remind_at]=2026-03-26T09:58:06"\
+    --form "notification[channel]=app"\
+    --form "notification[remind_at]=2026-03-29T03:10:04"\
     --form "remove_attachment_ids[]=architecto"\
     --form "notifications[]=architecto"\
-    --form "attachments[]=@/tmp/phpmdnvpumfrdal00nkOG9" </code></pre></div>
+    --form "attachments[]=@C:\Users\tuanl\AppData\Local\Temp\phpF7EF.tmp" </code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/schedules/1"
+    "http://localhost/api/schedules/1"
 );
 
 const headers = {
     "Authorization": "Bearer Bearer {YOUR_ACCESS_TOKEN}",
-    "X-Department-Id": "ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1",
     "Content-Type": "multipart/form-data",
     "Accept": "application/json",
 };
@@ -17067,7 +20305,7 @@ const body = new FormData();
 body.append('content', 'architecto');
 body.append('event_date', 'architecto');
 body.append('session', 'architecto');
-body.append('department_id', '16');
+body.append('schedule_type', 'architecto');
 body.append('start_time', 'architecto');
 body.append('chairperson_id', '16');
 body.append('location', 'architecto');
@@ -17078,8 +20316,8 @@ body.append('nature', 'architecto');
 body.append('color_code', 'architecto');
 body.append('status', 'inactive');
 body.append('participants[]', 'architecto');
-body.append('notification[channel]', 'zalo');
-body.append('notification[remind_at]', '2026-03-26T09:58:06');
+body.append('notification[channel]', 'app');
+body.append('notification[remind_at]', '2026-03-29T03:10:04');
 body.append('remove_attachment_ids[]', 'architecto');
 body.append('notifications[]', 'architecto');
 body.append('attachments[]', document.querySelector('input[name="attachments[]"]').files[0]);
@@ -17093,13 +20331,12 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost:8000/api/schedules/1';
+$url = 'http://localhost/api/schedules/1';
 $response = $client-&gt;patch(
     $url,
     [
         'headers' =&gt; [
             'Authorization' =&gt; 'Bearer Bearer {YOUR_ACCESS_TOKEN}',
-            'X-Department-Id' =&gt; 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1',
             'Content-Type' =&gt; 'multipart/form-data',
             'Accept' =&gt; 'application/json',
         ],
@@ -17117,8 +20354,8 @@ $response = $client-&gt;patch(
                 'contents' =&gt; 'architecto'
             ],
             [
-                'name' =&gt; 'department_id',
-                'contents' =&gt; '16'
+                'name' =&gt; 'schedule_type',
+                'contents' =&gt; 'architecto'
             ],
             [
                 'name' =&gt; 'start_time',
@@ -17162,11 +20399,11 @@ $response = $client-&gt;patch(
             ],
             [
                 'name' =&gt; 'notification[channel]',
-                'contents' =&gt; 'zalo'
+                'contents' =&gt; 'app'
             ],
             [
                 'name' =&gt; 'notification[remind_at]',
-                'contents' =&gt; '2026-03-26T09:58:06'
+                'contents' =&gt; '2026-03-29T03:10:04'
             ],
             [
                 'name' =&gt; 'remove_attachment_ids[]',
@@ -17178,7 +20415,7 @@ $response = $client-&gt;patch(
             ],
             [
                 'name' =&gt; 'attachments[]',
-                'contents' =&gt; fopen('/tmp/phpmdnvpumfrdal00nkOG9', 'r')
+                'contents' =&gt; fopen('C:\Users\tuanl\AppData\Local\Temp\phpF7EF.tmp', 'r')
             ],
         ],
     ]
@@ -17196,17 +20433,18 @@ print_r(json_decode((string) $body));</code></pre></div>
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: {
-        &quot;id&quot;: 62,
-        &quot;event_date&quot;: &quot;05/04/2026&quot;,
+        &quot;id&quot;: 66,
+        &quot;event_date&quot;: &quot;08/04/2026&quot;,
         &quot;session&quot;: &quot;sang&quot;,
-        &quot;start_time&quot;: &quot;18:41:00&quot;,
+        &quot;start_time&quot;: &quot;01:30:00&quot;,
         &quot;content&quot;: &quot;Quos velit et fugiat sunt nihil accusantium harum.&quot;,
         &quot;location&quot;: null,
         &quot;prep_unit&quot;: null,
         &quot;driver_info&quot;: null,
         &quot;color_code&quot;: &quot;#3d1ffb&quot;,
         &quot;sort_order&quot;: 88,
-        &quot;department_id&quot;: null,
+        &quot;schedule_type&quot;: &quot;thuong_truc&quot;,
+        &quot;schedule_type_label&quot;: &quot;Thường trực Th&agrave;nh ủy&quot;,
         &quot;status&quot;: &quot;active&quot;,
         &quot;chairperson_id&quot;: null,
         &quot;meeting_type&quot;: &quot;hoi_nghi&quot;,
@@ -17215,8 +20453,8 @@ print_r(json_decode((string) $body));</code></pre></div>
         &quot;nature_label&quot;: &quot;Thường&quot;,
         &quot;created_by&quot;: &quot;N/A&quot;,
         &quot;updated_by&quot;: &quot;N/A&quot;,
-        &quot;created_at&quot;: &quot;09:58:06 26/03/2026&quot;,
-        &quot;updated_at&quot;: &quot;09:58:06 26/03/2026&quot;
+        &quot;created_at&quot;: &quot;03:10:04 29/03/2026&quot;,
+        &quot;updated_at&quot;: &quot;03:10:04 29/03/2026&quot;
     },
     &quot;success&quot;: &quot;true&quot;,
     &quot;message&quot;: &quot;Cập nhật lịch c&ocirc;ng t&aacute;c th&agrave;nh c&ocirc;ng!&quot;
@@ -17281,18 +20519,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
                data-component="header">
     <br>
 <p>Example: <code>Bearer Bearer {YOUR_ACCESS_TOKEN}</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>X-Department-Id</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="X-Department-Id"                data-endpoint="PATCHapi-schedules--schedule_id-"
-               value="ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1"
-               data-component="header">
-    <br>
-<p>Example: <code>ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1</code></p>
             </div>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
@@ -17381,16 +20607,16 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <p>Buổi: sang, chieu, toi. Example: <code>architecto</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>department_id</code></b>&nbsp;&nbsp;
-<small>integer</small>&nbsp;
+            <b style="line-height: 2;"><code>schedule_type</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
 <i>optional</i> &nbsp;
  &nbsp;
-                <input type="number" style="display: none"
-               step="any"               name="department_id"                data-endpoint="PATCHapi-schedules--schedule_id-"
-               value="16"
+                <input type="text" style="display: none"
+                              name="schedule_type"                data-endpoint="PATCHapi-schedules--schedule_id-"
+               value="architecto"
                data-component="body">
     <br>
-<p>ID đơn vị. Example: <code>16</code></p>
+<p>Loại lịch: thuong_truc, van_phong. Example: <code>architecto</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>start_time</code></b>&nbsp;&nbsp;
@@ -17555,10 +20781,10 @@ Must be one of:
  &nbsp;
                 <input type="text" style="display: none"
                               name="notification.channel"                data-endpoint="PATCHapi-schedules--schedule_id-"
-               value="zalo"
+               value="app"
                data-component="body">
     <br>
-<p>This field is required when <code>notification</code> is present. Example: <code>zalo</code></p>
+<p>This field is required when <code>notification</code> is present. Example: <code>app</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>sms</code></li> <li><code>zalo</code></li> <li><code>website</code></li> <li><code>app</code></li></ul>
                     </div>
@@ -17569,10 +20795,10 @@ Must be one of:
  &nbsp;
                 <input type="text" style="display: none"
                               name="notification.remind_at"                data-endpoint="PATCHapi-schedules--schedule_id-"
-               value="2026-03-26T09:58:06"
+               value="2026-03-29T03:10:04"
                data-component="body">
     <br>
-<p>This field is required when <code>notification</code> is present. Must be a valid date. Example: <code>2026-03-26T09:58:06</code></p>
+<p>This field is required when <code>notification</code> is present. Must be a valid date. Example: <code>2026-03-29T03:10:04</code></p>
                     </div>
                                     </details>
         </div>
@@ -17634,21 +20860,19 @@ Must be one of:
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request DELETE \
-    "http://localhost:8000/api/schedules/1" \
+    "http://localhost/api/schedules/1" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
-    --header "X-Department-Id: ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/schedules/1"
+    "http://localhost/api/schedules/1"
 );
 
 const headers = {
     "Authorization": "Bearer Bearer {YOUR_ACCESS_TOKEN}",
-    "X-Department-Id": "ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -17662,13 +20886,12 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost:8000/api/schedules/1';
+$url = 'http://localhost/api/schedules/1';
 $response = $client-&gt;delete(
     $url,
     [
         'headers' =&gt; [
             'Authorization' =&gt; 'Bearer Bearer {YOUR_ACCESS_TOKEN}',
-            'X-Department-Id' =&gt; 'ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1',
             'Content-Type' =&gt; 'application/json',
             'Accept' =&gt; 'application/json',
         ],
@@ -17751,18 +20974,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <p>Example: <code>Bearer Bearer {YOUR_ACCESS_TOKEN}</code></p>
             </div>
                                 <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>X-Department-Id</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="X-Department-Id"                data-endpoint="DELETEapi-schedules--schedule_id-"
-               value="ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1"
-               data-component="header">
-    <br>
-<p>Example: <code>ID đơn vị cần làm việc (bắt buộc với endpoint yêu cầu auth). Example: 1</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
@@ -17815,7 +21026,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
                 <h1 id="schedule-thong-bao">Schedule - Thông báo</h1>
 
-    
+    <p>API thông báo lịch công tác cho user hiện tại: đếm chưa đọc (badge), danh sách, đánh dấu đã đọc.</p>
 
                                 <h2 id="schedule-thong-bao-GETapi-schedule-notifications-unread-count">Số thông báo chưa đọc (badge)</h2>
 
@@ -17831,21 +21042,19 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:8000/api/schedule-notifications/unread-count" \
+    --get "http://localhost/api/schedule-notifications/unread-count" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
-    --header "X-Department-Id: ID đơn vị cần làm việc. Example: 1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/schedule-notifications/unread-count"
+    "http://localhost/api/schedule-notifications/unread-count"
 );
 
 const headers = {
     "Authorization": "Bearer Bearer {YOUR_ACCESS_TOKEN}",
-    "X-Department-Id": "ID đơn vị cần làm việc. Example: 1",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -17859,13 +21068,12 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost:8000/api/schedule-notifications/unread-count';
+$url = 'http://localhost/api/schedule-notifications/unread-count';
 $response = $client-&gt;get(
     $url,
     [
         'headers' =&gt; [
             'Authorization' =&gt; 'Bearer Bearer {YOUR_ACCESS_TOKEN}',
-            'X-Department-Id' =&gt; 'ID đơn vị cần làm việc. Example: 1',
             'Content-Type' =&gt; 'application/json',
             'Accept' =&gt; 'application/json',
         ],
@@ -17950,18 +21158,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <p>Example: <code>Bearer Bearer {YOUR_ACCESS_TOKEN}</code></p>
             </div>
                                 <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>X-Department-Id</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="X-Department-Id"                data-endpoint="GETapi-schedule-notifications-unread-count"
-               value="ID đơn vị cần làm việc. Example: 1"
-               data-component="header">
-    <br>
-<p>Example: <code>ID đơn vị cần làm việc. Example: 1</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
@@ -18001,16 +21197,15 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:8000/api/schedule-notifications?limit=20" \
+    --get "http://localhost/api/schedule-notifications?limit=20" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
-    --header "X-Department-Id: ID đơn vị cần làm việc. Example: 1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/schedule-notifications"
+    "http://localhost/api/schedule-notifications"
 );
 
 const params = {
@@ -18021,7 +21216,6 @@ Object.keys(params)
 
 const headers = {
     "Authorization": "Bearer Bearer {YOUR_ACCESS_TOKEN}",
-    "X-Department-Id": "ID đơn vị cần làm việc. Example: 1",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -18035,13 +21229,12 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost:8000/api/schedule-notifications';
+$url = 'http://localhost/api/schedule-notifications';
 $response = $client-&gt;get(
     $url,
     [
         'headers' =&gt; [
             'Authorization' =&gt; 'Bearer Bearer {YOUR_ACCESS_TOKEN}',
-            'X-Department-Id' =&gt; 'ID đơn vị cần làm việc. Example: 1',
             'Content-Type' =&gt; 'application/json',
             'Accept' =&gt; 'application/json',
         ],
@@ -18064,26 +21257,26 @@ print_r(json_decode((string) $body));</code></pre></div>
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: [
         {
-            &quot;id&quot;: 92,
-            &quot;schedule_id&quot;: 63,
+            &quot;id&quot;: 118,
+            &quot;schedule_id&quot;: 67,
             &quot;channel&quot;: &quot;sms&quot;,
             &quot;status&quot;: &quot;pending&quot;,
-            &quot;remind_at&quot;: &quot;23:55:53 27/03/2026&quot;,
+            &quot;remind_at&quot;: &quot;17:07:51 30/03/2026&quot;,
             &quot;sent_at&quot;: null,
             &quot;read_at&quot;: null,
             &quot;is_read&quot;: false,
-            &quot;created_at&quot;: &quot;09:58:06 26/03/2026&quot;
+            &quot;created_at&quot;: &quot;03:10:04 29/03/2026&quot;
         },
         {
-            &quot;id&quot;: 93,
-            &quot;schedule_id&quot;: 64,
-            &quot;channel&quot;: &quot;sms&quot;,
+            &quot;id&quot;: 119,
+            &quot;schedule_id&quot;: 68,
+            &quot;channel&quot;: &quot;website&quot;,
             &quot;status&quot;: &quot;pending&quot;,
-            &quot;remind_at&quot;: &quot;21:37:00 26/03/2026&quot;,
+            &quot;remind_at&quot;: &quot;00:32:43 30/03/2026&quot;,
             &quot;sent_at&quot;: null,
             &quot;read_at&quot;: null,
             &quot;is_read&quot;: false,
-            &quot;created_at&quot;: &quot;09:58:06 26/03/2026&quot;
+            &quot;created_at&quot;: &quot;03:10:04 29/03/2026&quot;
         }
     ],
     &quot;links&quot;: {
@@ -18185,18 +21378,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <p>Example: <code>Bearer Bearer {YOUR_ACCESS_TOKEN}</code></p>
             </div>
                                 <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>X-Department-Id</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="X-Department-Id"                data-endpoint="GETapi-schedule-notifications"
-               value="ID đơn vị cần làm việc. Example: 1"
-               data-component="header">
-    <br>
-<p>Example: <code>ID đơn vị cần làm việc. Example: 1</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
@@ -18249,21 +21430,19 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PATCH \
-    "http://localhost:8000/api/schedule-notifications/1/read" \
+    "http://localhost/api/schedule-notifications/1/read" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
-    --header "X-Department-Id: ID đơn vị cần làm việc. Example: 1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/schedule-notifications/1/read"
+    "http://localhost/api/schedule-notifications/1/read"
 );
 
 const headers = {
     "Authorization": "Bearer Bearer {YOUR_ACCESS_TOKEN}",
-    "X-Department-Id": "ID đơn vị cần làm việc. Example: 1",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -18277,13 +21456,12 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost:8000/api/schedule-notifications/1/read';
+$url = 'http://localhost/api/schedule-notifications/1/read';
 $response = $client-&gt;patch(
     $url,
     [
         'headers' =&gt; [
             'Authorization' =&gt; 'Bearer Bearer {YOUR_ACCESS_TOKEN}',
-            'X-Department-Id' =&gt; 'ID đơn vị cần làm việc. Example: 1',
             'Content-Type' =&gt; 'application/json',
             'Accept' =&gt; 'application/json',
         ],
@@ -18366,18 +21544,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <p>Example: <code>Bearer Bearer {YOUR_ACCESS_TOKEN}</code></p>
             </div>
                                 <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>X-Department-Id</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="X-Department-Id"                data-endpoint="PATCHapi-schedule-notifications--scheduleNotification_id--read"
-               value="ID đơn vị cần làm việc. Example: 1"
-               data-component="header">
-    <br>
-<p>Example: <code>ID đơn vị cần làm việc. Example: 1</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
@@ -18442,21 +21608,19 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PATCH \
-    "http://localhost:8000/api/schedule-notifications/read-all" \
+    "http://localhost/api/schedule-notifications/read-all" \
     --header "Authorization: Bearer Bearer {YOUR_ACCESS_TOKEN}" \
-    --header "X-Department-Id: ID đơn vị cần làm việc. Example: 1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/schedule-notifications/read-all"
+    "http://localhost/api/schedule-notifications/read-all"
 );
 
 const headers = {
     "Authorization": "Bearer Bearer {YOUR_ACCESS_TOKEN}",
-    "X-Department-Id": "ID đơn vị cần làm việc. Example: 1",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -18470,13 +21634,12 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost:8000/api/schedule-notifications/read-all';
+$url = 'http://localhost/api/schedule-notifications/read-all';
 $response = $client-&gt;patch(
     $url,
     [
         'headers' =&gt; [
             'Authorization' =&gt; 'Bearer Bearer {YOUR_ACCESS_TOKEN}',
-            'X-Department-Id' =&gt; 'ID đơn vị cần làm việc. Example: 1',
             'Content-Type' =&gt; 'application/json',
             'Accept' =&gt; 'application/json',
         ],
@@ -18557,18 +21720,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
                data-component="header">
     <br>
 <p>Example: <code>Bearer Bearer {YOUR_ACCESS_TOKEN}</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>X-Department-Id</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="X-Department-Id"                data-endpoint="PATCHapi-schedule-notifications-read-all"
-               value="ID đơn vị cần làm việc. Example: 1"
-               data-component="header">
-    <br>
-<p>Example: <code>ID đơn vị cần làm việc. Example: 1</code></p>
             </div>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;

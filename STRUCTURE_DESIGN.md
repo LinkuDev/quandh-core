@@ -33,7 +33,7 @@ app/Modules/
 │   │   ├── ForgotPasswordRequest.php
 │   │   ├── LoginRequest.php
 │   │   ├── ResetPasswordRequest.php
-│   │   └── SwitchDepartmentRequest.php
+│   │   └── SwitchOrganizationRequest.php
 │   ├── Routes/
 │   │   └── auth.php
 │   └── Services/
@@ -59,6 +59,7 @@ app/Modules/
 │   ├── Models/
 │   │   ├── LogActivity.php
 │   │   ├── Organization.php
+│   │   ├── UserPreference.php
 │   │   ├── Permission.php
 │   │   ├── Role.php
 │   │   ├── Setting.php
@@ -78,7 +79,8 @@ app/Modules/
 │   │   ├── MediaService.php
 │   │   ├── PermissionService.php
 │   │   ├── RoleService.php
-│   │   └── SettingService.php
+│   │   ├── SettingService.php
+│   │   └── UserPreferenceService.php
 │   ├── Traits/
 │   │   └── RespondsWithJson.php
 │   ├── LogActivityController.php

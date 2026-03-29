@@ -2,22 +2,31 @@
 
 namespace App\Modules\Core\Models;
 
+use App\Modules\Core\Services\OrganizationService;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 
 /**
- * Model Organization – tổ chức (hỗ trợ multi-tenant, mỗi tổ chức có users riêng).
+ * Model Organization – tổ chức (thay thế teams, dùng cho Spatie Permission teams).
  */
 class Organization extends Model
 {
+    use HasFactory;
+
+    protected static function newFactory()
+    {
+        return \Database\Factories\Modules\Core\Models\OrganizationFactory::new();
+    }
+
     protected $table = 'organizations';
 
     protected $fillable = [
         'name',
         'slug',
         'description',
-        'logo',
         'status',
+        'parent_id',
         'sort_order',
         'created_by',
         'updated_by',
@@ -27,23 +36,37 @@ class Organization extends Model
         'sort_order' => 'integer',
     ];
 
+    public function parent()
+    {
+        return $this->belongsTo(Organization::class, 'parent_id');
+    }
+
+    public function children()
+    {
+        return $this->hasMany(Organization::class, 'parent_id')->orderBy('sort_order');
+    }
+
     protected static function booted()
     {
-        static::creating(function (Organization $org) {
-            $org->created_by = $org->updated_by = auth()->id();
-            if (empty($org->slug)) {
-                $org->slug = Str::slug($org->name);
+        static::creating(function (Organization $organization) {
+            $organization->created_by = $organization->updated_by = auth()->id();
+            if (empty($organization->slug)) {
+                $organization->slug = app(OrganizationService::class)->generateUniqueSlug(Str::slug($organization->name));
             }
         });
 
-        static::updating(function (Organization $org) {
-            $org->updated_by = auth()->id();
+        static::updating(function (Organization $organization) {
+            $organization->updated_by = auth()->id();
+            if ($organization->isDirty('name') && ! $organization->isDirty('slug')) {
+                $organization->slug = app(OrganizationService::class)->generateUniqueSlug(Str::slug($organization->name), $organization->id);
+            }
         });
-    }
 
-    public function users()
-    {
-        return $this->hasMany(User::class);
+        static::deleting(function (Organization $organization) {
+            foreach ($organization->children as $child) {
+                $child->delete();
+            }
+        });
     }
 
     public function creator()
@@ -70,11 +93,25 @@ class Organization extends Model
         })->when(isset($filters['to_date']) && $filters['to_date'], function ($q) use ($filters) {
             $q->whereDate('created_at', '<=', $filters['to_date']);
         })->when($filters['sort_by'] ?? 'id', function ($q, $sortBy) use ($filters) {
-            $allowed = ['id', 'name', 'slug', 'status', 'sort_order', 'created_at', 'updated_at'];
+            $allowed = ['id', 'name', 'slug', 'status', 'parent_id', 'sort_order', 'created_at', 'updated_at'];
             $column = in_array($sortBy, $allowed) ? $sortBy : 'id';
             $q->orderBy($column, $filters['sort_order'] ?? 'desc');
         });
 
         return $query;
+    }
+
+    public function scopeTreeOrder($query)
+    {
+        return $query->orderByRaw('COALESCE(parent_id, 0), sort_order, id');
+    }
+
+    public function getDepthAttribute(): int
+    {
+        if (array_key_exists('depth', $this->attributes)) {
+            return (int) $this->attributes['depth'];
+        }
+
+        return app(OrganizationService::class)->getDepth($this);
     }
 }

@@ -12,7 +12,7 @@ Quản lý tài khoản người dùng: thống kê, danh sách, chi tiết, CRU
 |---|---|
 | **Method** | GET |
 | **Path** | `/api/users/stats` |
-| **Query** | `search` (name, email), `status` (active \| inactive \| banned), `from_date` (Y-m-d), `to_date` (Y-m-d), `sort_by`, `sort_order`, `limit` (1-100). Cùng bộ lọc với index. |
+| **Query** | `search` (name, email, user_name), `status` (active \| inactive \| banned), `from_date` (Y-m-d), `to_date` (Y-m-d), `sort_by`, `sort_order`, `limit` (1-100). Cùng bộ lọc với index. |
 | **Response** | `{ "total": 100, "active": 80, "inactive": 20 }` — total (sau lọc), active, inactive (gồm banned). |
 
 ---
@@ -23,7 +23,7 @@ Quản lý tài khoản người dùng: thống kê, danh sách, chi tiết, CRU
 |---|---|
 | **Method** | GET |
 | **Path** | `/api/users` |
-| **Query** | `search` (name, email), `status` (active \| inactive \| banned), `from_date`, `to_date`, `sort_by` (id \| name \| created_at), `sort_order` (asc \| desc), `limit` (1-100). |
+| **Query** | `search` (name, email, user_name), `status` (active \| inactive \| banned), `from_date`, `to_date`, `sort_by` (id \| name \| email \| user_name \| created_at), `sort_order` (asc \| desc), `limit` (1-100). |
 | **Response** | Paginated collection (UserResource). |
 
 ---
@@ -45,16 +45,8 @@ Quản lý tài khoản người dùng: thống kê, danh sách, chi tiết, CRU
 |---|---|
 | **Method** | POST |
 | **Path** | `/api/users` |
-| **Body** | `name` (required), `email` (required, unique), `password` (required, min 6, confirmed), `password_confirmation` (required), `status` (optional: active \| inactive \| banned), `organization_id` (optional, FK → organizations.id), `assignments` (optional). |
+| **Body** | `name` (required), `email` (required, unique), `user_name` (string), `password` (required, min 6, confirmed), `password_confirmation` (required), `status` (optional: active \| inactive \| banned), `phone` (string), `zalo_id` (string), `role_id` (required, integer — ID vai trò). |
 | **Response** | 201, object người dùng + `"message": "Tài khoản đã được tạo thành công!"`. |
-
-**Mẫu assignments**
-```json
-[
-  { "role_id": 1 },
-  { "role_id": 5 }
-]
-```
 
 ---
 
@@ -64,7 +56,7 @@ Quản lý tài khoản người dùng: thống kê, danh sách, chi tiết, CRU
 |---|---|
 | **Method** | PUT / PATCH |
 | **Path** | `/api/users/{id}` |
-| **Body** | `name`, `email` (unique nếu đổi), `password` (optional, min 6, confirmed), `password_confirmation`, `status`, `organization_id` (optional), `assignments` (optional). Khi gửi `assignments`, hệ thống đồng bộ lại toàn bộ phân quyền theo tổ chức của user. |
+| **Body** | `name`, `email` (unique nếu đổi), `user_name`, `password` (optional, min 6, confirmed), `password_confirmation`, `status`, `phone`, `zalo_id`, `role_id` (integer, đổi role = đổi position). |
 | **Response** | Object người dùng đã cập nhật. |
 
 ---

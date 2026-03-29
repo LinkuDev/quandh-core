@@ -12,7 +12,6 @@ Bảng người dùng (Laravel Auth).
 | Cột | Kiểu | Nullable | Mặc định | Ràng buộc / Ghi chú |
 |-----|------|----------|----------|---------------------|
 | id | bigint unsigned | No | — | PK, auto increment |
-| organization_id | bigint unsigned | Yes | null | FK → organizations.id |
 | name | varchar(255) | No | — | |
 | email | varchar(255) | No | — | UNIQUE |
 | user_name | varchar(100) | Yes | null | UNIQUE, dùng để đăng nhập cùng email |
@@ -88,7 +87,18 @@ Bảng queue chuẩn Laravel. Cấu trúc mặc định.
 
 ---
 
-## 3. Core – Organization, Permission, Role
+## 3. Core – Organization, Preference, Permission, Role
+
+### `user_preferences`
+Tuỳ chọn người dùng (1–1 với users): lưu tổ chức làm việc gần nhất để đăng nhập sau nhớ ngữ cảnh.
+
+| Cột | Kiểu | Nullable | Mặc định | Ràng buộc / Ghi chú |
+|-----|------|----------|----------|---------------------|
+| id | bigint unsigned | No | — | PK, auto increment |
+| user_id | bigint unsigned | No | — | FK → users.id, CASCADE, UNIQUE |
+| current_organization_id | bigint unsigned | Yes | null | FK → organizations.id, NULL ON DELETE |
+| created_at | timestamp | Yes | null | |
+| updated_at | timestamp | Yes | null | |
 
 ### `organizations`
 Bảng tổ chức (multi-tenant: mỗi tổ chức có users riêng).
@@ -122,19 +132,20 @@ Quyền (Spatie). Bổ sung description, sort_order, parent_id để nhóm front
 | updated_at | timestamp | Yes | null | |
 
 ### `roles`
-Vai trò (Spatie, global mode — teams mode đã tắt).
+Vai trò (Spatie, teams mode BẬT — scoped theo organization).
 
 | Cột | Kiểu | Nullable | Mặc định | Ràng buộc / Ghi chú |
 |-----|------|----------|----------|---------------------|
 | id | bigint unsigned | No | — | PK, auto increment |
-| name | varchar(255) | No | — | UNIQUE(name, guard_name) |
+| organization_id | bigint unsigned | Yes | null | FK → organizations.id (team_foreign_key) |
+| name | varchar(255) | No | — | UNIQUE(organization_id, name, guard_name) |
 | guard_name | varchar(255) | No | — | |
 | created_at | timestamp | Yes | null | |
 | updated_at | timestamp | Yes | null | |
 
-### Pivot tables (Spatie)
-- `model_has_permissions`: permission_id, model_type, model_id
-- `model_has_roles`: role_id, model_type, model_id
+### Pivot tables (Spatie — teams mode)
+- `model_has_permissions`: organization_id, permission_id, model_type, model_id
+- `model_has_roles`: organization_id, role_id, model_type, model_id
 - `role_has_permissions`: permission_id, role_id
 
 ### `log_activities`
@@ -233,8 +244,8 @@ Bảng trung tâm — lịch công tác.
 | location | varchar(255) | Yes | null | Địa điểm |
 | prep_unit | varchar(255) | Yes | null | Đơn vị chuẩn bị |
 | driver_info | varchar(255) | Yes | null | Thông tin lái xe |
-| meeting_type_id | bigint unsigned | Yes | null | FK → schedule_meeting_types.id |
-| nature_id | bigint unsigned | Yes | null | FK → schedule_natures.id |
+| meeting_type | varchar(50) | Yes | null | Loại cuộc họp (enum) |
+| nature | varchar(50) | Yes | null | Tính chất cuộc họp (enum) |
 | color_code | varchar(20) | Yes | null | Mã màu hiển thị (#FF5733) |
 | sort_order | int unsigned | No | 0 | Thứ tự trong cùng ngày+loại lịch |
 | schedule_type | varchar(30) | No | 'thuong_truc' | thuong_truc (Thường trực), van_phong (Văn phòng) |

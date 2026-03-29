@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('nature', 50)->nullable();
             $table->string('color_code', 20)->nullable();
             $table->unsignedInteger('sort_order')->default(0);
-            $table->foreignId('department_id')->nullable()->constrained('departments')->nullOnDelete();
+            $table->string('schedule_type', 30)->default('thuong_truc');
             $table->string('status')->default('active');
             $table->unsignedBigInteger('created_by')->nullable();
             $table->unsignedBigInteger('updated_by')->nullable();
@@ -31,8 +31,9 @@ return new class extends Migration
             $table->foreign('created_by')->references('id')->on('users')->nullOnDelete();
             $table->foreign('updated_by')->references('id')->on('users')->nullOnDelete();
 
-            $table->index(['event_date', 'department_id']);
-            $table->index(['event_date', 'session', 'department_id']);
+            $table->index('schedule_type');
+            $table->index(['event_date', 'schedule_type']);
+            $table->index(['event_date', 'session', 'schedule_type']);
             $table->fullText('content');
         });
 

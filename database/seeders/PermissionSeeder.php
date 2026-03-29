@@ -39,6 +39,11 @@ class PermissionSeeder extends Seeder
             'stats', 'index', 'show', 'store', 'update', 'destroy',
             'bulkDestroy', 'export', 'import',
         ],
+        // Core - Organizations (cấu trúc cây parent_id)
+        'organizations' => [
+            'stats', 'index', 'tree', 'show', 'store', 'update', 'destroy',
+            'bulkDestroy', 'bulkUpdateStatus', 'changeStatus', 'export', 'import',
+        ],
         // Core - Nhật ký truy cập
         'log-activities' => [
             'stats', 'index', 'show', 'export', 'destroy', 'bulkDestroy',
@@ -69,6 +74,10 @@ class PermissionSeeder extends Seeder
     {
         $this->migrateGuardApiToWeb();
         $this->seedDefaultOrganization();
+
+        // Teams mode: set context trước khi assign roles/permissions
+        setPermissionsTeamId($this->defaultOrganization->id);
+
         $this->seedPermissions();
         $this->seedRoles();
         $this->assignPermissionsToRoles();
@@ -100,6 +109,7 @@ class PermissionSeeder extends Seeder
         'permissions' => 'Quyền',
         'roles' => 'Vai trò',
         'log-activities' => 'Nhật ký truy cập',
+        'organizations' => 'Tổ chức',
         'settings' => 'Cấu hình hệ thống',
         'thuong-truc-schedules' => 'Thường trực - Lịch công tác',
         'van-phong-schedules' => 'Văn phòng - Lịch công tác',
@@ -243,7 +253,6 @@ class PermissionSeeder extends Seeder
                 'password' => '123123',
                 'status' => StatusEnum::Active->value,
                 'email_verified_at' => now(),
-                'organization_id' => $this->defaultOrganization->id,
             ]
         );
         $adminUser->forceFill(['created_by' => $adminUser->id, 'updated_by' => $adminUser->id])->save();
@@ -260,7 +269,6 @@ class PermissionSeeder extends Seeder
                 'password' => '123123',
                 'status' => StatusEnum::Active->value,
                 'email_verified_at' => now(),
-                'organization_id' => $this->defaultOrganization->id,
             ]
         );
         $thuKyUser->forceFill(['created_by' => $adminUser->id, 'updated_by' => $adminUser->id])->save();
@@ -277,7 +285,6 @@ class PermissionSeeder extends Seeder
                 'password' => '123123',
                 'status' => StatusEnum::Active->value,
                 'email_verified_at' => now(),
-                'organization_id' => $this->defaultOrganization->id,
             ]
         );
         $tongHopUser->forceFill(['created_by' => $adminUser->id, 'updated_by' => $adminUser->id])->save();
@@ -294,7 +301,6 @@ class PermissionSeeder extends Seeder
                 'password' => '123123',
                 'status' => StatusEnum::Active->value,
                 'email_verified_at' => now(),
-                'organization_id' => $this->defaultOrganization->id,
             ]
         );
         $canBoUser->forceFill(['created_by' => $adminUser->id, 'updated_by' => $adminUser->id])->save();
@@ -302,8 +308,6 @@ class PermissionSeeder extends Seeder
             $canBoUser->syncRoles([$canBoRole]);
         }
 
-        // Gán organization cho users đã tồn tại chưa có organization_id
-        User::whereNull('organization_id')->update(['organization_id' => $this->defaultOrganization->id]);
     }
 
     protected function getAllPermissionNames(): array

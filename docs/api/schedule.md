@@ -12,22 +12,22 @@
 
 | Method | Path | Permission | Mô tả |
 |--------|------|------------|-------|
-| GET | `/api/schedules/stats` | schedules.stats | Thống kê (total, active, inactive) |
-| GET | `/api/schedules` | schedules.index | Danh sách (phân trang, bộ lọc thông minh) |
-| GET | `/api/schedules/{id}` | schedules.show | Chi tiết |
-| POST | `/api/schedules` | schedules.store | Tạo mới (kèm participants, notification, attachments) |
-| PUT/PATCH | `/api/schedules/{id}` | schedules.update | Cập nhật (Policy: owner hoặc updateAll) |
-| DELETE | `/api/schedules/{id}` | schedules.destroy | Xóa (Policy: owner hoặc destroyAll) |
-| POST | `/api/schedules/bulk-delete` | schedules.bulkDestroy | Xóa hàng loạt |
-| PATCH | `/api/schedules/bulk-status` | schedules.bulkUpdateStatus | Đổi trạng thái hàng loạt |
-| PATCH | `/api/schedules/{id}/status` | schedules.changeStatus | Đổi trạng thái |
-| GET | `/api/schedules/export` | schedules.export | Xuất Excel |
-| GET | `/api/schedules/export-pdf` | schedules.exportPdf | Xuất PDF |
-| POST | `/api/schedules/import` | schedules.import | Nhập Excel |
-| PATCH | `/api/schedules/{id}/move-up` | schedules.reorder | Di chuyển lên |
-| PATCH | `/api/schedules/{id}/move-down` | schedules.reorder | Di chuyển xuống |
-| PATCH | `/api/schedules/{id}/insert-above` | schedules.reorder | Chèn phía trên (body: target_id) |
-| PATCH | `/api/schedules/{id}/insert-below` | schedules.reorder | Chèn phía dưới (body: target_id) |
+| GET | `/api/schedules/stats` | thuong-truc-schedules.stats \| van-phong-schedules.stats | Thống kê (total, active, inactive) |
+| GET | `/api/schedules` | thuong-truc-schedules.index \| van-phong-schedules.index | Danh sách (phân trang, bộ lọc thông minh) |
+| GET | `/api/schedules/{id}` | thuong-truc-schedules.show \| van-phong-schedules.show | Chi tiết |
+| POST | `/api/schedules` | thuong-truc-schedules.store \| van-phong-schedules.store | Tạo mới (kèm participants, notification, attachments) |
+| PUT/PATCH | `/api/schedules/{id}` | thuong-truc-schedules.update \| van-phong-schedules.update | Cập nhật (Policy: owner hoặc updateAll) |
+| DELETE | `/api/schedules/{id}` | thuong-truc-schedules.destroy \| van-phong-schedules.destroy | Xóa (Policy: owner hoặc destroyAll) |
+| POST | `/api/schedules/bulk-delete` | thuong-truc-schedules.bulkDestroy \| van-phong-schedules.bulkDestroy | Xóa hàng loạt |
+| PATCH | `/api/schedules/bulk-status` | thuong-truc-schedules.bulkUpdateStatus \| van-phong-schedules.bulkUpdateStatus | Đổi trạng thái hàng loạt |
+| PATCH | `/api/schedules/{id}/status` | thuong-truc-schedules.changeStatus \| van-phong-schedules.changeStatus | Đổi trạng thái |
+| GET | `/api/schedules/export` | thuong-truc-schedules.export \| van-phong-schedules.export | Xuất Excel |
+| GET | `/api/schedules/export-pdf` | thuong-truc-schedules.exportPdf \| van-phong-schedules.exportPdf | Xuất PDF |
+| POST | `/api/schedules/import` | thuong-truc-schedules.import \| van-phong-schedules.import | Nhập Excel |
+| PATCH | `/api/schedules/{id}/move-up` | thuong-truc-schedules.reorder \| van-phong-schedules.reorder | Di chuyển lên |
+| PATCH | `/api/schedules/{id}/move-down` | thuong-truc-schedules.reorder \| van-phong-schedules.reorder | Di chuyển xuống |
+| PATCH | `/api/schedules/{id}/insert-above` | thuong-truc-schedules.reorder \| van-phong-schedules.reorder | Chèn phía trên (body: target_id) |
+| PATCH | `/api/schedules/{id}/insert-below` | thuong-truc-schedules.reorder \| van-phong-schedules.reorder | Chèn phía dưới (body: target_id) |
 
 ## Bộ lọc index (query params)
 
@@ -46,7 +46,7 @@
 | position | string | Lọc theo chức danh chủ trì |
 | participant_user_id | integer | Lọc theo thành phần tham dự |
 | sort_by | string | sort_order, event_date, start_time, created_at |
-| sort_dir | string | asc, desc |
+| sort_order | string | asc, desc |
 | limit | integer | Số bản ghi/trang (1-100) |
 
 ## Request body (store/update)
