@@ -30,11 +30,15 @@ class DatabaseSeeder extends Seeder
     protected function seedRandomUsers(): void
     {
         $org = Organization::where('slug', 'default')->first();
-        $roles = Role::where('guard_name', 'web')->get();
+        $roles = Role::whereIn('name', ['Thư ký', 'Cán bộ công chức'])
+            ->where('guard_name', 'web')
+            ->get();
 
         if (! $org || $roles->isEmpty()) {
             return;
         }
+
+        setPermissionsTeamId($org->id);
 
         for ($i = 0; $i < 10; $i++) {
             $user = User::factory()->create([
@@ -44,10 +48,7 @@ class DatabaseSeeder extends Seeder
                 'updated_by' => 1,
             ]);
 
-            // Gán random role trong org mặc định
-            $role = $roles->random();
-            setPermissionsTeamId($org->id);
-            $user->assignRole($role);
+            $user->assignRole($roles->random());
         }
     }
 
